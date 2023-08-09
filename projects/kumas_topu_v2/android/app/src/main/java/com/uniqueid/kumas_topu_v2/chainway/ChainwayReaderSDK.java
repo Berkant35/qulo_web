@@ -11,8 +11,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.rscja.barcode.BarcodeDecoder;
 import com.rscja.barcode.BarcodeFactory;
-import com.rscja.deviceapi.RFIDWithUHFUART;
 import com.rscja.deviceapi.entity.BarcodeEntity;
+import com.rscja.deviceapi.RFIDWithUHFUART;
+
 import com.rscja.deviceapi.entity.UHFTAGInfo;
 import com.rscja.deviceapi.interfaces.ConnectionStatus;
 import com.uniqueid.kumas_topu_v2.Constants;
@@ -79,7 +80,9 @@ public class ChainwayReaderSDK {
 
         stop();
         barcodeScanStatus = BarcodeModes.STOPPED;
+
         barcodeDecoder.startScan();
+
 
 
     }
@@ -262,6 +265,27 @@ public class ChainwayReaderSDK {
 
     }
 
+   public void writeDataByTID(String generatedEpc,String tid) {
+
+       //Yazmak için gücü 30'a çıkarıyoruz
+       mReader.setPower(30);
+
+       boolean isWrote = mReader.writeData(
+               Constants.password,
+               RFIDWithUHFUART.Bank_TID,
+               0,
+               (tid.length() / 4) * 16,
+               tid,
+               RFIDWithUHFUART.Bank_EPC,
+               1,
+               9,
+               "4000" + generatedEpc
+       );
+
+
+
+   }
+
 
     public void writeData(String generatedEpc) {
 
@@ -321,7 +345,8 @@ public class ChainwayReaderSDK {
                         RFIDWithUHFUART.Bank_EPC,
                         1,
                         9,
-                        "4000" + generatedEpc);
+                        "4000" + generatedEpc
+                );
 
 
                 Log.i(TAG, "writeData: isWorte:" + isWrote);

@@ -25,6 +25,8 @@ public class Constants {
     public static final String setPower = "setPower";
     public static final String scanBarcode = "scanBarcode";
     public static final String writeEpc = "writeEpc";
+
+    public static final String writeEpcByTID = "writeEpcByTID";
     public static final String scanBarcodeButton = "scanBarcodeButton";
     public static final String scanToMatchStatus = "setScanToMatchStatus";
 

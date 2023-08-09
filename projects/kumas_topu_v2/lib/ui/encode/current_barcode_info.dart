@@ -93,10 +93,11 @@ class _CurrentBarcodeInfoState extends ConsumerState<CurrentBarcodeInfo> {
                     : "Boş Bırakılamaz";
                 return null;
               },
-              onChanged: (value) {
-                debugPrint("Triggered!: $value");
+              onChanged: (value)
+              {
                 var barcodeProvider = ref.read(currentBarcodeInfoProvider);
                 barcodeProvider.barcodeInfo = value;
+
                 ref
                     .read(currentBarcodeInfoProvider.notifier)
                     .changeState(barcodeProvider);

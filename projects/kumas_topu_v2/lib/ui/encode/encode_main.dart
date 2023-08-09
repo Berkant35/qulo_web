@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kumas_topu/ui/encode/current_qr_tid_info.dart';
 import 'package:kumas_topu/ui/encode/select_standart.dart';
-import 'package:kumas_topu/utilities/components/custom_svg.dart';
 import 'package:kumas_topu/utilities/components/appbars/title_app_bar.dart';
 import 'package:kumas_topu/utilities/constants/app/enums.dart';
 import 'package:kumas_topu/utilities/init/navigation/navigation_constants.dart';
@@ -9,8 +9,6 @@ import 'package:kumas_topu/utilities/init/navigation/navigation_service.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../line/global_providers.dart';
-
-import '../../utilities/constants/extension/image_path.dart';
 import 'current_barcode_info.dart';
 
 class EncodeMain extends ConsumerStatefulWidget {
@@ -31,6 +29,9 @@ class _EncodeMainState extends ConsumerState<EncodeMain> {
 
   @override
   Widget build(BuildContext context) {
+
+    debugPrint("Trigger Mode: ${ref.read(currentTriggerModeProvider).name}");
+
     return Scaffold(
       appBar: TitleAppBar(
         onTap: () {
@@ -43,7 +44,8 @@ class _EncodeMainState extends ConsumerState<EncodeMain> {
           NavigationService.instance
               .navigateToPageClear(path: NavigationConstants.mainPage);
         },
-        label: "Kodlama",
+        label: "${ref.read(currentTriggerModeProvider) ==
+            TriggerModeStatus.BARCODE ? "": "QR"} Kodlama",
         leadingWidget: IconButton(
           icon: Icon(Icons.arrow_back, size: 4.h),
           onPressed: () {
@@ -61,22 +63,29 @@ class _EncodeMainState extends ConsumerState<EncodeMain> {
       body: ref.watch(stateManagerProvider) != LoadingStates.loading
           ? Center(
               child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    /*CustomSvg(
-                      imagepath: ImagePath.scanSvg,
-                      width: 30.w,
-                    ),*/
-                    SelectStandart(),
-                    CurrentBarcodeInfo()
-                  ],
-                ),
+                child: barcodeBody(),
               ),
             )
           : const Center(
               child: CircularProgressIndicator.adaptive(),
             ),
+    );
+  }
+
+
+
+
+  Column barcodeBody() {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        /*CustomSvg(
+                    imagepath: ImagePath.scanSvg,
+                    width: 30.w,
+                  ),*/
+        SelectStandart(),
+        CurrentBarcodeInfo()
+      ],
     );
   }
 

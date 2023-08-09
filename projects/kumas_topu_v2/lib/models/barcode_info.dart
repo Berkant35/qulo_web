@@ -47,4 +47,29 @@ class BarcodeInfo {
     data['epc'] = epc;
     return data;
   }
+
+  BarcodeInfo copyWith({
+    String? barcodeInfo,
+    String? barcodeType,
+    String? barcodeErrorCode,
+    String? timeout,
+    PerStandart? perStandart,
+    String? epc,
+    String? tid,
+    String? userData,
+    String? password,
+  }) {
+    return BarcodeInfo(
+      barcodeInfo: barcodeInfo ?? this.barcodeInfo,
+      barcodeType: barcodeType ?? this.barcodeType,
+      barcodeErrorCode: barcodeErrorCode ?? this.barcodeErrorCode,
+      timeout: timeout ?? this.timeout,
+      perStandart: perStandart ?? this.perStandart,
+      epc: epc ?? this.epc,
+      tid: tid ?? this.tid,
+      userData: userData ?? this.userData,
+      password: password ?? this.password,
+    );
+  }
+
 }

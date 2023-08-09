@@ -18,19 +18,23 @@ class TriggerModeManager extends StateNotifier<TriggerModeStatus>{
         // TODO: Handle this case.
         break;
       case TriggerModeStatus.BARCODE:
-       _changeToBarcodeStateOn(ref);
+        _changeToBarcodeStateOn(ref,value);
         break;
       case TriggerModeStatus.RFID:
         // TODO: Handle this case.
+        break;
+      case TriggerModeStatus.QRBARCODE:
+
+        _changeToBarcodeStateOn(ref,value);
         break;
     }
 
   }
 
-  Future<void> _changeToBarcodeStateOn(WidgetRef ref) async {
+  Future<void> _changeToBarcodeStateOn(WidgetRef ref,TriggerModeStatus mode) async {
     var result =  await nativeManager!.barcodeModeOn(ref);
     if(result){
-      state = TriggerModeStatus.BARCODE;
+      state = mode;
     }
   }
 

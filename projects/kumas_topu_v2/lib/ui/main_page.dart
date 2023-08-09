@@ -117,6 +117,24 @@ class MainPage extends ConsumerWidget {
                                 path: NavigationConstants.encodeMainPage);
                           }),
                       PerItemOfMenu(
+                          imagePath: ImagePath.barcodeSvg,
+                          scaleHigh: 8.h,
+                          title: 'QR',
+                          onTap: () async {
+
+                            await SystemChannels.platform.invokeMethod<void>(
+                              'SystemSound.play',
+                              SystemSoundType.click.toString(),
+                            );
+
+                            ref
+                                .read(currentTriggerModeProvider.notifier)
+                                .changeState(TriggerModeStatus.BARCODE, ref);
+
+                            NavigationService.instance.navigateToPage(
+                                path: NavigationConstants.currentQrTidInfoPage);
+                          }),
+                      PerItemOfMenu(
                           imagePath: ImagePath.wifiTruckSvg,
                           title: 'SEVK',
                           onTap: () async {
@@ -193,24 +211,21 @@ class MainPage extends ConsumerWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: InkWell(
-              onTap: _launchUrl,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 1.h),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      ApplicationConstants.uniqueidURL,
-                      style: ThemeValueExtension.subtitle2
-                          .copyWith(color: CustomColors.pinkColor),
-                    ),
-                    Text(
-                      "V: 1.0.2",
-                      style: ThemeValueExtension.subtitle4,
-                    )
-                  ],
-                ),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 1.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    ApplicationConstants.uniqueidURL,
+                    style: ThemeValueExtension.subtitle2
+                        .copyWith(color: CustomColors.pinkColor),
+                  ),
+                  Text(
+                    "V: 1.0.4",
+                    style: ThemeValueExtension.subtitle4,
+                  )
+                ],
               ),
             ),
           ),

@@ -206,9 +206,21 @@ public class MainActivity extends FlutterActivity {
                     zebraReaderSDK.writeData(generatedEpc);
                 } else {
                     chainwayReaderSDK.writeData(generatedEpc);
+
                 }
+                break;
+            case Constants.writeEpcByTID:
+                allAttributeMode.currentReadMode = ReaderModes.WRITE_MODE;
 
+                String generatedEpcCustom = call.argument("epc");
+                String detectedTID = call.argument("tid");
 
+                if (Objects.equals(Build.BRAND, "ZEBRA")) {
+                    zebraReaderSDK.writeDataByTID(generatedEpcCustom,detectedTID);
+                } else {
+                    chainwayReaderSDK.writeDataByTID(generatedEpcCustom,detectedTID);
+
+                }
                 break;
             case Constants.barcodeModeOn:
                 allAttributeMode.currentReadMode = ReaderModes.BARCODE_MODE;

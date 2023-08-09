@@ -13,7 +13,6 @@ import 'package:kumas_topu/utilities/init/navigation/navigation_service.dart';
 
 import '../../models/barcode_info.dart';
 import '../../models/rfid_device.dart';
-import '../../models/uhf_tag_info.dart';
 import '../../utilities/constants/app/enums.dart';
 import '../global_providers.dart';
 import '../viewmodel/scan_stop_manager.dart';
@@ -104,14 +103,12 @@ class NativeManager extends NativeInterface {
                 .changeState(ScanModes.scan);
           }
         } else {
-
-
           if (ref
               .read(currentInventoryProvider)!
               .inventory!
               .prefix!
               .split(",")
-              .contains(event.toString().substring(0, 4)) ) {
+              .contains(event.toString().substring(0, 4))) {
             var addedTimeFormatUTC = DateFormat("yyyy-MM-dd HH:mm:ss")
                 .format(DateTime.now().toUtc());
             ref
@@ -169,12 +166,23 @@ class NativeManager extends NativeInterface {
     var result =
         await _methodChannel.invokeMethod(InvokeMethods.scanBarcode.name);
 
-    debugPrint('$result <-Flutter');
-    //var barcodeJson = json.decode(result.toString());
+    debugPrint('$result <-scanBarcodeButton');
 
-    var barcodeInfo = BarcodeInfo(barcodeInfo: result);
+    if (ref.read(currentBarcodeInfoProvider).barcodeInfo == null ) {
+      var barcodeInfo = BarcodeInfo(barcodeInfo: result);
+      ref.read(currentBarcodeInfoProvider.notifier).changeState(barcodeInfo);
+    } else {
 
-    ref.read(currentBarcodeInfoProvider.notifier).changeState(barcodeInfo);
+      final updatedBarcodeInfo = ref.read(currentBarcodeInfoProvider).copyWith(
+            tid: result,
+          );
+
+      debugPrint("Yes:${updatedBarcodeInfo.tid}");
+
+      ref
+          .read(currentBarcodeInfoProvider.notifier)
+          .changeState(updatedBarcodeInfo);
+    }
 
     scanBarcode(ref, false);
   }
@@ -183,10 +191,24 @@ class NativeManager extends NativeInterface {
     var result = await _methodSupportChannel
         .invokeMethod(InvokeMethods.scanBarcodeButton.name);
 
-    debugPrint('$result <-Flutter');
+    debugPrint('$result <-scanBarcodeButtodasdan');
+
     //var barcodeJson = json.decode(result.toString());
-    var barcodeInfo = BarcodeInfo(barcodeInfo: result);
-    ref.read(currentBarcodeInfoProvider.notifier).changeState(barcodeInfo);
+    if (ref.read(currentBarcodeInfoProvider).barcodeInfo == null) {
+      var barcodeInfo = BarcodeInfo(barcodeInfo: result);
+      ref.read(currentBarcodeInfoProvider.notifier).changeState(barcodeInfo);
+    } else {
+      var barcodeInfo = BarcodeInfo(
+          barcodeInfo: ref.read(currentBarcodeInfoProvider).barcodeInfo,
+         tid: result);
+
+      debugPrint("Yes:${barcodeInfo.tid}");
+
+      ref
+          .read(currentBarcodeInfoProvider.notifier)
+          .changeState(barcodeInfo);
+    }
+
     scanBarcode(ref, false);
   }
 
@@ -229,7 +251,6 @@ class NativeManager extends NativeInterface {
     _eventChannel
         .receiveBroadcastStream(BroadCastStates.listenTriggerForWrite.name)
         .listen((event) {
-      debugPrint('$event<---event');
       if (event == TriggerPressStatus.PRESSING.name) {
         ref
             .read(loginButtonStateProvider.notifier)
@@ -290,7 +311,6 @@ class NativeManager extends NativeInterface {
       Map<String, dynamic> valueMap = json.decode(result.toString());
 
       var getResult = showDialogFromSuccessOrWrite(valueMap["status"]);
-
 
       if (getResult) {
         ref
@@ -361,15 +381,11 @@ class NativeManager extends NativeInterface {
         } else {
           ref
               .read(currentEpcDetailInfoProvider.notifier)
-              .changeState(
-                CurrentEpcDetail(
-                    currentEpc: event
-                )
-          );
+              .changeState(CurrentEpcDetail(currentEpc: event));
 
           ref
               .read(currentEpcDetailInfoProvider.notifier)
-              .getCurrentDetailThenSet(ref,true);
+              .getCurrentDetailThenSet(ref, true);
         }
       });
     } catch (e) {

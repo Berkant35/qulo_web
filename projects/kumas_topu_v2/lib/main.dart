@@ -12,11 +12,26 @@ import 'package:kumas_topu/utilities/constants/app/url_constants.dart';
 import 'package:kumas_topu/utilities/init/navigation/navigation_route.dart';
 import 'package:kumas_topu/utilities/init/navigation/navigation_service.dart';
 import 'package:kumas_topu/utilities/init/theme/custom_colors.dart';
+import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'line/network/network_manager.dart';
 import 'line/repository/repository/locator.dart';
+import 'package:logger/logger.dart' as lg;
+import 'package:logger/logger.dart';
+
+
+Future<void> initCpFlutterLib() async {
+  final logger = lg.Logger(
+    printer: PrettyPrinter(),
+    //output: LogConsole.wrap(innerOutput: ConsoleOutput()),
+    filter: DevelopmentFilter(),
+  );
+
+  lg.Logger.level = Level.debug;
+
+}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +50,7 @@ Future<void> main() async {
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp]);
 
-
+  initCpFlutterLib();
   runApp(const ProviderScope(child: KumasTopu()));
 }
 

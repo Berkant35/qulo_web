@@ -160,7 +160,6 @@ public class CustomBarcodeManager implements EMDKListener, StatusListener, DataL
 
             while (var3.hasNext()) {
                 ScanData data = (ScanData) var3.next();
-
                 barcodeTag = data.getData();
 
                 if (mainActivity.currentResult != null) {
@@ -169,9 +168,6 @@ public class CustomBarcodeManager implements EMDKListener, StatusListener, DataL
                 } else if (mainSupportResultChannel != null) {
                     mainSupportResultChannel.success(barcodeTag);
                 }
-
-
-
 
                 Log.i("CustomBarcodeManager", "onData: " + data.getData());
             }
@@ -190,6 +186,7 @@ public class CustomBarcodeManager implements EMDKListener, StatusListener, DataL
                     this.bSoftTriggerSelected = false;
                 } else {
                     this.scanner.triggerType = TriggerType.HARD;
+
                 }
 
                 if (this.bDecoderSettingsChanged) {
@@ -234,7 +231,6 @@ public class CustomBarcodeManager implements EMDKListener, StatusListener, DataL
                 this.updateStatus(var2.getMessage());
             }
         }
-
     }
 
     public void initializeMainSupportResultChannel(MethodChannel.Result result){

@@ -1,6 +1,7 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:kumas_topu/ui/auth/login_page.dart';
+import 'package:kumas_topu/ui/encode/current_qr_tid_info.dart';
 import 'package:kumas_topu/ui/encode/match_with_rfid.dart';
 import 'package:kumas_topu/ui/inventory/do_inventory.dart';
 import 'package:kumas_topu/ui/main_page.dart';
@@ -36,6 +37,8 @@ class NavigationRoute {
         return normalNavigate(MatchWithRFID(controller: map['controller']));
       case NavigationConstants.inventoryMainPage:
         return normalNavigate(const InventoryMain());
+      case NavigationConstants.currentQrTidInfoPage:
+        return normalNavigate(const CurrentQrTIDInfoPage());
       case NavigationConstants.doInventoryPage:
         return normalNavigate(const DoInventory());
       case NavigationConstants.shipmentMainPage:

@@ -10,4 +10,5 @@ class NavigationConstants{
   static const doInventoryPage = '/DoInventory';
   static const shipmentMainPage = '/ShipmentMain';
   static const detailOfProductPage = '/DetailOfProduct';
+  static const currentQrTidInfoPage = '/CurrentQrTIDInfoPage';
 }

@@ -41,7 +41,7 @@ class DetailOfProduct extends ConsumerWidget {
               ),
               Text("Epc",
                   style: ThemeValueExtension.subtitle
-                      .copyWith( fontWeight: FontWeight.bold)),
+                      .copyWith(fontWeight: FontWeight.bold)),
               SizedBox(
                 height: 2.h,
               ),
@@ -54,7 +54,8 @@ class DetailOfProduct extends ConsumerWidget {
                         Radius.circular(EdgeExtension.lowEdge.edgeValue))),
                 child: Center(
                   child: Text(
-                      ref.watch(currentEpcDetailInfoProvider)?.currentEpc ?? "-",
+                      ref.watch(currentEpcDetailInfoProvider)?.currentEpc ??
+                          "-",
                       style: ThemeValueExtension.subtitle2.copyWith(
                           color: Colors.white, fontWeight: FontWeight.w500)),
                 ),
@@ -78,9 +79,7 @@ class DetailOfProduct extends ConsumerWidget {
               SizedBox(height: 2.h),
               Text("Epc Detay",
                   style: ThemeValueExtension.subtitle
-                      .copyWith(
-                          fontWeight: FontWeight.bold
-                  )),
+                      .copyWith(fontWeight: FontWeight.bold)),
               SizedBox(height: 2.h),
               ref.watch(currentEpcDetailInfoProvider)?.epcDetail != null
                   ? Column(
@@ -90,11 +89,26 @@ class DetailOfProduct extends ConsumerWidget {
                         buildRow(
                             "Barcode:",
                             ref
-                                .watch(currentEpcDetailInfoProvider)
-                                ?.epcDetail!
-                                .data!
-                                .barcode ??
+                                    .watch(currentEpcDetailInfoProvider)
+                                    ?.epcDetail!
+                                    .data!
+                                    .barcode ??
                                 "-"),
+                        ref
+                                    .watch(currentEpcDetailInfoProvider)
+                                    ?.epcDetail!
+                                    .data!
+                                    .alphaNumericBarcode !=
+                                null
+                            ? buildRow(
+                                "A. Barcode:",
+                                ref
+                                        .watch(currentEpcDetailInfoProvider)
+                                        ?.epcDetail!
+                                        .data!
+                                        .alphaNumericBarcode ??
+                                    "-")
+                            : const SizedBox(),
                         buildRow(
                             "Şirket Adı:",
                             ref
@@ -135,7 +149,9 @@ class DetailOfProduct extends ConsumerWidget {
                                     .data!
                                     .recordUser ??
                                 "-"),
-                        SizedBox(height: 10.h,)
+                        SizedBox(
+                          height: 10.h,
+                        )
                       ],
                     )
                   : Center(

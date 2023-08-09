@@ -430,6 +430,16 @@ public class ZebraReaderSDK implements Readers.RFIDReaderEventHandler {
         return  tagData;
     }
 
+
+
+
+
+    synchronized public void writeDataByTID(String generatedEpcCustom,String detectedTID)
+    {
+        //TODO ZEBRA İÇİN YAPILMASI BEKLENİLİYOR..
+    }
+
+
     synchronized public void writeData(String epc) {
         if (!isReaderConnected()) {
             Log.e(TAG, "writeData: Reader Not Connected!");
@@ -484,13 +494,12 @@ public class ZebraReaderSDK implements Readers.RFIDReaderEventHandler {
                     String prefixString = "4000";
                     String prefixWithEpc = prefixString + epc;
                     Log.i(TAG, "setWriteDataLength: " + (prefixWithEpc.length() / 4));
+
                     writeAccessParams.setWriteData(prefixWithEpc);
                     Log.i(TAG, "epc: " + prefixWithEpc);
                     writeAccessParams.setWriteRetries(3);
 
                     Log.i(TAG, "Last seen epc:" + tempTags.get(0));
-
-
 
                     reader.Actions.TagAccess.writeWait(tempTags.get(0), writeAccessParams, null, null);
 
