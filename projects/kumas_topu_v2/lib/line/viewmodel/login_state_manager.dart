@@ -8,8 +8,8 @@ import '../../utilities/constants/app/enums.dart';
 class LoginButtonStateManager extends StateNotifier<LoadingStates>{
   LoginButtonStateManager(LoadingStates state) : super(LoadingStates.loaded);
 
-  changeState(LoadingStates value){
+  changeState(LoadingStates value, {required String path}){
     state = value;
-    debugPrint("State ${state.toString()}");
+    debugPrint("Login Button State: $state Path: $path");
   }
 }

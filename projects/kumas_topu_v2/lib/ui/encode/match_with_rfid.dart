@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kumas_topu/models/barcode_info.dart';
+import 'package:kumas_topu/utilities/components/appbars/title_app_bar.dart';
 import 'package:kumas_topu/utilities/components/custom_elevated_button.dart';
 import 'package:kumas_topu/utilities/components/seperate_padding.dart';
-import 'package:kumas_topu/utilities/components/appbars/title_app_bar.dart';
 import 'package:kumas_topu/utilities/constants/app/enums.dart';
+import 'package:kumas_topu/utilities/init/navigation/navigation_constants.dart';
 import 'package:kumas_topu/utilities/init/navigation/navigation_service.dart';
 import 'package:kumas_topu/utilities/init/theme/custom_colors.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -15,40 +17,36 @@ import '../../utilities/constants/extension/image_path.dart';
 
 class MatchWithRFID extends ConsumerStatefulWidget {
   final TextEditingController controller;
-  const MatchWithRFID({
-    Key? key,
-    required this.controller
-  }) : super(key: key);
+  final TextEditingController? controller2;
+
+  const MatchWithRFID({Key? key, required this.controller, this.controller2})
+      : super(key: key);
 
   @override
   ConsumerState createState() => _MatchWithRFIDState();
 }
 
 class _MatchWithRFIDState extends ConsumerState<MatchWithRFID> {
-
   @override
   void initState() {
     super.initState();
     ref
-        .read(
-        currentTriggerModeProvider.notifier)
+        .read(currentTriggerModeProvider.notifier)
         .nativeManager!
         .listenTriggerForWriteMode(
-        ref,
-        ref
-            .read(
-            currentBarcodeInfoProvider)
-            .epc!);
+            ref,
+            ref.read(currentBarcodeInfoProvider).epc!,
+            widget.controller2 != null
+                ? NavigationConstants.currentQrTidInfoPage
+                : NavigationConstants.encodeMainPage);
   }
-
 
   @override
   void dispose() {
     super.dispose();
-    widget.controller.clear();
 
+    if (widget.controller2 != null) widget.controller2!.clear();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -73,11 +71,28 @@ class _MatchWithRFIDState extends ConsumerState<MatchWithRFID> {
         ? CustomElevatedButton(
             onPressed: ref.read(currentBarcodeInfoProvider).epc != null
                 ? () {
-                    ref
-                        .read(currentTriggerModeProvider.notifier)
-                        .nativeManager!
-                        .writeData(
-                            ref, ref.read(currentBarcodeInfoProvider).epc!);
+                    if (!ref.read(currentBarcodeInfoProvider).isQrStatus) {
+                      ref
+                          .read(currentTriggerModeProvider.notifier)
+                          .nativeManager!
+                          .writeData(
+                              ref, ref.read(currentBarcodeInfoProvider).epc!);
+                    } else {
+                      ref
+                          .read(currentTriggerModeProvider.notifier)
+                          .nativeManager!
+                          .writeEpcByTID(
+                              ref,
+                              ref.read(currentBarcodeInfoProvider).epc!,
+                              ref.read(currentBarcodeInfoProvider).tid!)
+                          .then((value) {
+                        if (value) {
+                          ref
+                              .read(currentBarcodeInfoProvider.notifier)
+                              .changeState(BarcodeInfo());
+                        }
+                      });
+                    }
                   }
                 : null,
             inButtonText: "EŞLEŞTİR",
@@ -109,11 +124,28 @@ class _MatchWithRFIDState extends ConsumerState<MatchWithRFID> {
           Text(ref.watch(currentBarcodeInfoProvider).epc ?? "-",
               style: ThemeValueExtension.subtitle),
           const Divider(),
+          tidCol(),
           SizedBox(
             height: 4.h,
           ),
         ],
       ),
     );
+  }
+
+  Widget tidCol() {
+    return ref.watch(currentTriggerModeProvider) == TriggerModeStatus.QRBARCODE
+        ? Column(
+            children: [
+              Text("TID", style: ThemeValueExtension.headline6),
+              SizedBox(
+                height: 2.h,
+              ),
+              Text(ref.watch(currentBarcodeInfoProvider).tid ?? "-",
+                  style: ThemeValueExtension.subtitle),
+              const Divider(),
+            ],
+          )
+        : const SizedBox();
   }
 }

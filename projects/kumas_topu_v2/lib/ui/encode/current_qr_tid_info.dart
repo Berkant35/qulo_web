@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kumas_topu/line/global_providers.dart';
+import 'package:kumas_topu/models/barcode_info.dart';
 import 'package:kumas_topu/ui/encode/select_standart.dart';
 import 'package:kumas_topu/utilities/components/custom_elevated_button.dart';
 import 'package:kumas_topu/utilities/components/dialogs.dart';
@@ -32,6 +33,9 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
   @override
   void initState() {
     super.initState();
+
+    barcodeModeOn(ref);
+
     tidQrEditingController = TextEditingController(
         text: ref.read(currentBarcodeInfoProvider).tid ?? "-");
     barcodeEditingController = TextEditingController(
@@ -41,17 +45,16 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
   @override
   void dispose() {
     super.dispose();
+    tidQrEditingController.clear();
+    barcodeEditingController.clear();
+
     tidQrEditingController.dispose();
     barcodeEditingController.dispose();
+
   }
 
   @override
   Widget build(BuildContext context) {
-    tidQrEditingController.text =
-        ref.watch(currentBarcodeInfoProvider).tid ?? "";
-    barcodeEditingController.text =
-        ref.watch(currentBarcodeInfoProvider).barcodeInfo ?? "-";
-
     return Scaffold(
       appBar: TitleAppBar(
         onTap: () {
@@ -60,6 +63,10 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
           ref
               .read(currentBarcodeStandartProvider.notifier)
               .changeState(standart);
+
+          ref.read(currentBarcodeInfoProvider.notifier).changeState(BarcodeInfo());
+
+
 
           NavigationService.instance
               .navigateToPageClear(path: NavigationConstants.mainPage);
@@ -74,129 +81,179 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
                 .read(currentBarcodeStandartProvider.notifier)
                 .changeState(standart);
 
+            ref.read(currentBarcodeInfoProvider.notifier).changeState(BarcodeInfo());
+
+
             NavigationService.instance
                 .navigateToPageClear(path: NavigationConstants.mainPage);
           },
         ),
       ),
-      body: Form(
-        key: qrTidFormState,
-        child: Padding(
-          padding: seperatePadding(),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SelectStandart(),
-                const Divider(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Consumer(
+        builder: (context, customref, child) {
+
+
+
+          String initialBarcodeText =
+              ref.watch(currentBarcodeInfoProvider).barcodeInfo ?? "-";
+          String initialTidText =
+              ref.read(currentBarcodeInfoProvider).tid ?? "-";
+
+          int barcodeCursorPosition = barcodeEditingController.selection.baseOffset;
+          int tidCursorPosition = tidQrEditingController.selection.baseOffset;
+
+// Eğer bir karakter silindi ise ve silinen karakterin pozisyonu 3 ise,
+// metinde 3. karakterin pozisyonuna gidilir.
+
+          barcodeEditingController.text = initialBarcodeText;
+          tidQrEditingController.text = initialTidText;
+
+          TextSelection barcodeSelection = TextSelection.fromPosition(
+              TextPosition(offset: barcodeCursorPosition));
+          barcodeEditingController.selection = barcodeSelection;
+
+          TextSelection tidSelection = TextSelection.fromPosition(
+              TextPosition(offset: tidCursorPosition));
+          tidQrEditingController.selection = tidSelection;
+
+          return Form(
+            key: qrTidFormState,
+            child: Padding(
+              padding: seperatePadding(),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Barkod Numarası",
-                        style: ThemeValueExtension.headline6),
-                    ref.read(loginButtonStateProvider) != LoadingStates.loading
-                        ? IconButton(
-                            onPressed: () {
-                              ref
-                                  .read(viewModelStateProvider.notifier)
-                                  .getSerialNumber(ref)
-                                  .then((value) {
-                                if (value != null) {
-                                  var barcodeProvider =
-                                      ref.read(currentBarcodeInfoProvider);
-                                  barcodeProvider.barcodeInfo =
-                                      value.data!.serialNumber.toString();
-                                  ref
-                                      .watch(
-                                          currentBarcodeInfoProvider.notifier)
-                                      .changeState(barcodeProvider);
-                                }
-                              });
-                            },
-                            icon: Icon(
-                              Icons.add_box,
-                              size: 5.h,
-                            ))
-                        : const Center(
-                            child: CircularProgressIndicator.adaptive(),
-                          )
+                    const SelectStandart(),
+                    const Divider(),
+                    standartCheck(),
+                    SizedBox(
+                      height: 10.h,
+                    )
                   ],
                 ),
-                RowFormField(
-                  headerName: "",
-                  verticalContentPadding: 0.h,
-                  prefixIcon: Icons.document_scanner,
-                  hintText: "Barcode Numarası",
-                  editingController: barcodeEditingController,
-                  custValidateFunction: (value) {
-                    (ref.read(currentBarcodeInfoProvider).barcodeInfo != "" &&
-                            ref.read(currentBarcodeInfoProvider).barcodeInfo !=
-                                null &&
-                            ref.read(currentBarcodeInfoProvider).barcodeInfo !=
-                                "-")
-                        ? null
-                        : "Boş Bırakılamaz";
-                    return null;
-                  },
-                  onChanged: (value) {},
-                ),
-                anyBarcode()
-                    ? Column(
-                        children: [
-                          SizedBox(
-                            width: 100.w,
-                            child: Text(
-                              "TID Numarası",
-                              style: ThemeValueExtension.headline6,
-                              textAlign: TextAlign.start,
-                            ),
-                          ),
-                          RowFormField(
-                            headerName: "",
-                            verticalContentPadding: 0.h,
-                            prefixIcon: Icons.qr_code_scanner_rounded,
-                            hintText: "Tid Numarası",
-                            editingController: tidQrEditingController,
-                            custValidateFunction: (value) {
-                              (ref.read(currentBarcodeInfoProvider).tid != "" &&
-                                      ref
-                                              .read(currentBarcodeInfoProvider)
-                                              .tid !=
-                                          null &&
-                                      ref
-                                              .read(currentBarcodeInfoProvider)
-                                              .tid !=
-                                          "-")
-                                  ? value!.length != 24
-                                      ? "Gerçersiz TID"
-                                      : null
-                                  : "Boş Bırakılamaz";
-                              return null;
-                            },
-                            onChanged: (value) {},
-                          ),
-                        ],
-                      )
-                    : const SizedBox(),
-                const Divider(),
-                SizedBox(
-                  height: 4.h,
-                ),
-                buttons(),
-                SizedBox(
-                  height: 10.h,
-                )
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
 
+  Widget standartCheck() {
+    return (ref.watch(currentBarcodeStandartProvider)?.encodeName != '' &&
+            ref.watch(currentBarcodeStandartProvider)?.encodeName != null)
+        ? Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Barkod Numarası", style: ThemeValueExtension.headline6),
+                  ref.read(loginButtonStateProvider) != LoadingStates.loading
+                      ? IconButton(
+                          onPressed: () {
+                            ref
+                                .read(viewModelStateProvider.notifier)
+                                .getSerialNumber(ref)
+                                .then((value) {
+                              if (value != null) {
+                                var barcodeProvider =
+                                    ref.read(currentBarcodeInfoProvider);
+                                barcodeProvider.barcodeInfo =
+                                    value.data!.serialNumber.toString();
+                                ref
+                                    .watch(currentBarcodeInfoProvider.notifier)
+                                    .changeState(barcodeProvider);
+                              }
+                            });
+                          },
+                          icon: Icon(
+                            Icons.add_box,
+                            size: 5.h,
+                          ))
+                      : const Center(
+                          child: CircularProgressIndicator.adaptive(),
+                        )
+                ],
+              ),
+              RowFormField(
+                headerName: "",
+                verticalContentPadding: 0.h,
+                prefixIcon: Icons.document_scanner,
+                hintText: "Barcode Numarası",
+                editingController: barcodeEditingController,
+                custValidateFunction: (value) {
+                  (ref.read(currentBarcodeInfoProvider).barcodeInfo != "" &&
+                          ref.read(currentBarcodeInfoProvider).barcodeInfo !=
+                              null &&
+                          ref.read(currentBarcodeInfoProvider).barcodeInfo !=
+                              "-")
+                      ? null
+                      : "Boş Bırakılamaz";
+                  return null;
+                },
+                onChanged: (value) {
+                  ref.read(currentBarcodeInfoProvider.notifier).changeState(ref
+                      .read(currentBarcodeInfoProvider)
+                      .copyWith(barcodeInfo: value));
+                },
+              ),
+              anyBarcode()
+                  ? Column(
+                      children: [
+                        SizedBox(
+                          width: 100.w,
+                          child: Text(
+                            "TID Numarası",
+                            style: ThemeValueExtension.headline6,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        RowFormField(
+                          headerName: "",
+                          verticalContentPadding: 0.h,
+                          prefixIcon: Icons.qr_code_scanner_rounded,
+                          hintText: "Tid Numarası",
+                          editingController: tidQrEditingController,
+                          custValidateFunction: (value) {
+                            (ref.read(currentBarcodeInfoProvider).tid != "" &&
+                                    ref.read(currentBarcodeInfoProvider).tid !=
+                                        null &&
+                                    ref.read(currentBarcodeInfoProvider).tid !=
+                                        "-")
+                                ? value!.length != 24
+                                    ? "Gerçersiz TID"
+                                    : null
+                                : "Boş Bırakılamaz";
+                            return null;
+                          },
+                          onChanged: (value) {
+                            ref
+                                .read(currentBarcodeInfoProvider.notifier)
+                                .changeState(ref
+                                    .read(currentBarcodeInfoProvider)
+                                    .copyWith(
+                                        tid: tidQrEditingController.text));
+                          },
+                          onChangedEnd: () {},
+                        ),
+                      ],
+                    )
+                  : const SizedBox(),
+              const Divider(),
+              SizedBox(
+                height: 4.h,
+              ),
+              buttons(),
+            ],
+          )
+        : const SizedBox();
+  }
+
   bool anyBarcode() {
-    return (ref.watch(currentBarcodeInfoProvider).barcodeInfo != null &&
+    return (barcodeEditingController.text.isNotEmpty &&
+        ref.watch(currentBarcodeInfoProvider).barcodeInfo != null &&
         ref.watch(currentBarcodeInfoProvider).barcodeInfo!.isNotEmpty);
   }
 
@@ -219,6 +276,16 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
                 height: 4.h,
               ),
               ((ref.read(currentBarcodeInfoProvider).tid != null &&
+                          ref
+                              .read(currentBarcodeInfoProvider)
+                              .tid!
+                              .isNotEmpty && ref
+                  .read(currentBarcodeInfoProvider)
+                  .tid!.length == 24 && ref
+                  .read(currentBarcodeInfoProvider)
+                  .tid!.startsWith("E2") && ref
+                  .read(currentBarcodeInfoProvider)
+                  .tid!.isNotEmpty &&
                           ref.read(currentBarcodeInfoProvider).barcodeInfo !=
                               null) &&
                       ref.watch(currentBarcodeInfoProvider).barcodeInfo !=
@@ -251,7 +318,10 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
 
                                 NavigationService.instance.navigateToPage(
                                     path: NavigationConstants.matchWithRFIDPage,
-                                    data: {"controller": qrTidFormState});
+                                    data: {
+                                      "controller": barcodeEditingController,
+                                      "controller2": tidQrEditingController
+                                    });
                               }
                             });
                           } else {
@@ -274,5 +344,12 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
               style: ThemeValueExtension.subtitle,
             ),
           );
+  }
+
+  Future<void> barcodeModeOn(WidgetRef ref) async {
+    ref
+        .read(currentTriggerModeProvider.notifier)
+        .nativeManager!
+        .scanBarcode(ref, false);
   }
 }

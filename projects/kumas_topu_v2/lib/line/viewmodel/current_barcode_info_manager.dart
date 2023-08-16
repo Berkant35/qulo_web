@@ -8,8 +8,7 @@ class CurrentBarcodeInfoManager extends StateNotifier<BarcodeInfo>{
 
   changeState(BarcodeInfo value)
   {
-    debugPrint("Barcode Info -> ${value.barcodeInfo}");
-    debugPrint("Filter TID -> ${value.tid.toString()}");
+
     state = value;
   }
 

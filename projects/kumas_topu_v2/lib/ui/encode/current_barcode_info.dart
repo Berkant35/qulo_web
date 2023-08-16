@@ -51,7 +51,7 @@ class _CurrentBarcodeInfoState extends ConsumerState<CurrentBarcodeInfo> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Barkod Numarası", style: ThemeValueExtension.headline6),
-                ref.read(loginButtonStateProvider) != LoadingStates.loading
+                ref.watch(loginButtonStateProvider) != LoadingStates.loading
                     ? IconButton(
                         onPressed: () {
                           ref

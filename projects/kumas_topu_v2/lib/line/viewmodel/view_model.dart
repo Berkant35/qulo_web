@@ -19,7 +19,7 @@ class ViewModel extends StateNotifier<void> {
     try {
       ref
           .read(loginButtonStateProvider.notifier)
-          .changeState(LoadingStates.loading);
+          .changeState(LoadingStates.loading,path: "login");
       var result = await repository!.login(email, password);
 
       if (result != null) {
@@ -33,7 +33,7 @@ class ViewModel extends StateNotifier<void> {
     } finally {
       ref
           .read(loginButtonStateProvider.notifier)
-          .changeState(LoadingStates.loaded);
+          .changeState(LoadingStates.loaded,path: "login");
     }
   }
 
@@ -95,7 +95,7 @@ class ViewModel extends StateNotifier<void> {
     try {
       ref
           .read(loginButtonStateProvider.notifier)
-          .changeState(LoadingStates.loading);
+          .changeState(LoadingStates.loading,path: "createEPCForMatch");
       var result = await repository!.createEPCForMatch(ref);
       return result;
     } catch (e) {
@@ -103,7 +103,7 @@ class ViewModel extends StateNotifier<void> {
     } finally {
       ref
           .read(loginButtonStateProvider.notifier)
-          .changeState(LoadingStates.loaded);
+          .changeState(LoadingStates.loaded,path: "createEPCForMatch");
     }
   }
 
@@ -111,7 +111,7 @@ class ViewModel extends StateNotifier<void> {
     try {
       ref
           .read(loginButtonStateProvider.notifier)
-          .changeState(LoadingStates.loading);
+          .changeState(LoadingStates.loading,path: "getSerialNumber");
       var result = await repository!.getSerialNumber(ref);
       return result;
     } catch (e) {
@@ -119,7 +119,7 @@ class ViewModel extends StateNotifier<void> {
     } finally {
       ref
           .read(loginButtonStateProvider.notifier)
-          .changeState(LoadingStates.loaded);
+          .changeState(LoadingStates.loaded,path:"getSerialNumber" );
     }
   }
 
@@ -127,7 +127,7 @@ class ViewModel extends StateNotifier<void> {
     try {
       ref
           .read(loginButtonStateProvider.notifier)
-          .changeState(LoadingStates.loading);
+          .changeState(LoadingStates.loading,path: "addInventory");
       var result = await repository!.addInventory(title,isShipment);
       return result;
     } catch (e) {
@@ -135,7 +135,7 @@ class ViewModel extends StateNotifier<void> {
     } finally {
       ref
           .read(loginButtonStateProvider.notifier)
-          .changeState(LoadingStates.loaded);
+          .changeState(LoadingStates.loaded,path: "addInventory");
     }
   }
 

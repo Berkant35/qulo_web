@@ -20,6 +20,7 @@ class RowFormField extends StatefulWidget {
   final TextAlign? textAlign;
   final String? Function(String? value) custValidateFunction;
   final String? Function(String? value)? onChanged;
+  final String? Function()? onChangedEnd;
 
   const RowFormField(
       {Key? key,
@@ -28,6 +29,7 @@ class RowFormField extends StatefulWidget {
       required this.custValidateFunction,
       this.visibleStatus,
       this.onChanged,
+      this.onChangedEnd,
       this.padding,
       this.prefixIcon,
       this.canEdit,
@@ -61,6 +63,7 @@ class _RowFormFieldState extends State<RowFormField> {
           authEditingFormController: widget.editingController,
           validateFunction: widget.custValidateFunction,
           onChanged: widget.onChanged,
+          onChangedEnd: widget.onChangedEnd ?? () {},
           visibleStatus: widget.visibleStatus,
           inputType: widget.inputType,
           maxLines: widget.maxLines,
@@ -73,6 +76,7 @@ class _RowFormFieldState extends State<RowFormField> {
             widget.prefixIcon,
             color: CustomColors.primaryColor,
           ),
+
         ),
       ],
     );

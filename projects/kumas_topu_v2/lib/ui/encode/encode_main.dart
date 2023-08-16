@@ -29,9 +29,6 @@ class _EncodeMainState extends ConsumerState<EncodeMain> {
 
   @override
   Widget build(BuildContext context) {
-
-    debugPrint("Trigger Mode: ${ref.read(currentTriggerModeProvider).name}");
-
     return Scaffold(
       appBar: TitleAppBar(
         onTap: () {
@@ -45,7 +42,7 @@ class _EncodeMainState extends ConsumerState<EncodeMain> {
               .navigateToPageClear(path: NavigationConstants.mainPage);
         },
         label: "${ref.read(currentTriggerModeProvider) ==
-            TriggerModeStatus.BARCODE ? "": "QR"} Kodlama",
+            TriggerModeStatus.BARCODE ? "" : "QR"} Kodlama",
         leadingWidget: IconButton(
           icon: Icon(Icons.arrow_back, size: 4.h),
           onPressed: () {
@@ -62,29 +59,32 @@ class _EncodeMainState extends ConsumerState<EncodeMain> {
       ),
       body: ref.watch(stateManagerProvider) != LoadingStates.loading
           ? Center(
-              child: SingleChildScrollView(
-                child: barcodeBody(),
-              ),
-            )
+        child: SingleChildScrollView(
+          child: barcodeBody(),
+        ),
+      )
           : const Center(
-              child: CircularProgressIndicator.adaptive(),
-            ),
+        child: CircularProgressIndicator.adaptive(),
+      ),
     );
   }
 
 
-
-
   Column barcodeBody() {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         /*CustomSvg(
                     imagepath: ImagePath.scanSvg,
                     width: 30.w,
                   ),*/
-        SelectStandart(),
-        CurrentBarcodeInfo()
+        const SelectStandart(),
+        (ref
+            .watch(currentBarcodeStandartProvider)
+            ?.encodeName != null && ref
+            .watch(currentBarcodeStandartProvider)
+            !.encodeName!
+            .isNotEmpty) ? const CurrentBarcodeInfo() : const SizedBox()
       ],
     );
   }

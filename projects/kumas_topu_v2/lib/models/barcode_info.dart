@@ -72,4 +72,8 @@ class BarcodeInfo {
     );
   }
 
+
+  bool get isQrStatus => (barcodeInfo != null && tid != null);
+
+
 }

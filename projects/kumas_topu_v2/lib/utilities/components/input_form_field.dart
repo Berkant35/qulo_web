@@ -18,6 +18,7 @@ class CustomFormField extends StatefulWidget {
   final TextInputType? inputType;
   String? Function(String? value) validateFunction;
   String? Function(String? value)? onChanged;
+  String? Function()? onChangedEnd;
 
   CustomFormField(
       {Key? key,
@@ -33,6 +34,7 @@ class CustomFormField extends StatefulWidget {
       this.hintStyle,
       this.inputType,
       this.onChanged,
+      this.onChangedEnd,
       required this.validateFunction,
       this.iconData})
       : super(key: key);
@@ -57,6 +59,8 @@ class _CustomFormFieldState extends State<CustomFormField> {
         maxLines: widget.maxLines ?? 1,
         maxLength: widget.maxLength,
         onChanged: widget.onChanged,
+        onEditingComplete: widget.onChangedEnd,
+
         validator: widget.validateFunction,
         decoration: InputDecoration(
             filled: true,
@@ -118,6 +122,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
             contentPadding: EdgeInsets.symmetric(
                 vertical: widget.verticialContentPadding ?? context.normalValue,
                 horizontal: context.lowValue)),
+
       ),
     );
   }

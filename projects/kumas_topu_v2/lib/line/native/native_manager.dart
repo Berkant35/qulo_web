@@ -33,7 +33,7 @@ class NativeManager extends NativeInterface {
   Future<RFIDDevice?> connectRFIDDevice() async {
     try {
       var result = await _methodChannel.invokeMethod(InvokeMethods.init.name);
-      debugPrint("Result: $result");
+
       if (result.toString() == RFIDStatus.connected.name.toUpperCase()) {
         RFIDDevice rfidDevice = RFIDDevice(result);
         return rfidDevice;
@@ -168,16 +168,14 @@ class NativeManager extends NativeInterface {
 
     debugPrint('$result <-scanBarcodeButton');
 
-    if (ref.read(currentBarcodeInfoProvider).barcodeInfo == null ) {
+    if (ref.read(currentBarcodeInfoProvider).barcodeInfo == null ||
+        ref.read(currentBarcodeInfoProvider).barcodeInfo!.isEmpty) {
       var barcodeInfo = BarcodeInfo(barcodeInfo: result);
       ref.read(currentBarcodeInfoProvider.notifier).changeState(barcodeInfo);
     } else {
-
       final updatedBarcodeInfo = ref.read(currentBarcodeInfoProvider).copyWith(
             tid: result,
           );
-
-      debugPrint("Yes:${updatedBarcodeInfo.tid}");
 
       ref
           .read(currentBarcodeInfoProvider.notifier)
@@ -194,19 +192,18 @@ class NativeManager extends NativeInterface {
     debugPrint('$result <-scanBarcodeButtodasdan');
 
     //var barcodeJson = json.decode(result.toString());
-    if (ref.read(currentBarcodeInfoProvider).barcodeInfo == null) {
+    if (ref.read(currentBarcodeInfoProvider).barcodeInfo == null ||
+        ref.read(currentBarcodeInfoProvider).barcodeInfo!.isEmpty) {
       var barcodeInfo = BarcodeInfo(barcodeInfo: result);
       ref.read(currentBarcodeInfoProvider.notifier).changeState(barcodeInfo);
     } else {
       var barcodeInfo = BarcodeInfo(
           barcodeInfo: ref.read(currentBarcodeInfoProvider).barcodeInfo,
-         tid: result);
+          tid: result);
 
       debugPrint("Yes:${barcodeInfo.tid}");
 
-      ref
-          .read(currentBarcodeInfoProvider.notifier)
-          .changeState(barcodeInfo);
+      ref.read(currentBarcodeInfoProvider.notifier).changeState(barcodeInfo);
     }
 
     scanBarcode(ref, false);
@@ -244,7 +241,8 @@ class NativeManager extends NativeInterface {
     }
   }
 
-  Future<void> listenTriggerForWriteMode(WidgetRef ref, String epc) async {
+  Future<void> listenTriggerForWriteMode(
+      WidgetRef ref, String epc, String path) async {
     await _methodChannel
         .invokeMethod(InvokeMethods.writeEpc.name, {"epc": epc});
 
@@ -252,17 +250,18 @@ class NativeManager extends NativeInterface {
         .receiveBroadcastStream(BroadCastStates.listenTriggerForWrite.name)
         .listen((event) {
       if (event == TriggerPressStatus.PRESSING.name) {
-        ref
-            .read(loginButtonStateProvider.notifier)
-            .changeState(LoadingStates.loading);
+        debugPrint("listenTriggerForWriteMode loading");
+        ref.read(loginButtonStateProvider.notifier).changeState(
+            LoadingStates.loading,
+            path: "listenTriggerForWriteMode");
       } else if (event == TriggerPressStatus.IDLE.name) {
-        ref
-            .read(loginButtonStateProvider.notifier)
-            .changeState(LoadingStates.loaded);
+        ref.read(loginButtonStateProvider.notifier).changeState(
+            LoadingStates.loaded,
+            path: "listenTriggerForWriteMode");
       } else if (event == TriggerPressStatus.STOPPED.name) {
-        ref
-            .read(loginButtonStateProvider.notifier)
-            .changeState(LoadingStates.loaded);
+        ref.read(loginButtonStateProvider.notifier).changeState(
+            LoadingStates.loaded,
+            path: "listenTriggerForWriteMode");
       } else {
         Map<String, dynamic> valueMap = json.decode(event.toString());
 
@@ -282,7 +281,7 @@ class NativeManager extends NativeInterface {
                   .networkManager!
                   .encodeStatusOK(epc, "1", token, valueMap['tid'])
                   .then((value) {
-                goFirstPage(value, ref);
+                goFirstPage(value, ref, path);
               });
             }
           });
@@ -291,19 +290,60 @@ class NativeManager extends NativeInterface {
     });
   }
 
-  Future<void> goFirstPage(EncodeStatus? value, WidgetRef ref) async {
+  Future<void> goFirstPage(
+      EncodeStatus? value, WidgetRef ref, String path) async {
+    ref.read(currentBarcodeInfoProvider.notifier).changeState(BarcodeInfo());
     if (value != null && value.code == 200) {
-      NavigationService.instance
-          .navigateToPageClear(path: NavigationConstants.encodeMainPage);
+      NavigationService.instance.navigateToPageClear(path: path);
+
       scanBarcode(ref, true);
     }
+  }
+
+  Future<bool> writeEpcByTID(WidgetRef ref, String epc, String tid) async {
+    try {
+      var result = await _methodSupportChannel.invokeMethod(
+          InvokeMethods.writeEpcByTID.name, {"epc": epc, "tid": tid});
+
+      Map<String, dynamic> valueMap = json.decode(result.toString());
+
+      var getResult = showDialogFromSuccessOrWrite(valueMap["status"]);
+
+      if (getResult) {
+        ref
+            .read(viewModelStateProvider.notifier)
+            .repository!
+            .localService
+            .getToken()
+            .then((token) {
+          if (token != null) {
+            ref
+                .read(viewModelStateProvider.notifier)
+                .repository!
+                .networkManager!
+                .encodeStatusOK(epc, "1", token, valueMap['tid'])
+                .then((value) {
+              ref
+                  .read(currentBarcodeInfoProvider.notifier)
+                  .changeState(BarcodeInfo());
+
+              goFirstPage(value, ref, NavigationConstants.currentQrTidInfoPage);
+            });
+          }
+        });
+      }
+
+      return getResult;
+    } finally {}
+
+    return true;
   }
 
   Future<bool> writeData(WidgetRef ref, String epc) async {
     try {
       ref
           .read(loginButtonStateProvider.notifier)
-          .changeState(LoadingStates.loading);
+          .changeState(LoadingStates.loading, path: "writeData");
 
       var result = await _methodSupportChannel
           .invokeMethod(InvokeMethods.writeEpc.name, {"epc": epc});
@@ -326,7 +366,7 @@ class NativeManager extends NativeInterface {
                 .networkManager!
                 .encodeStatusOK(epc, "1", token, valueMap['tid'])
                 .then((value) {
-              goFirstPage(value, ref);
+              goFirstPage(value, ref, NavigationConstants.encodeMainPage);
             });
           }
         });
@@ -336,7 +376,7 @@ class NativeManager extends NativeInterface {
     } finally {
       ref
           .read(loginButtonStateProvider.notifier)
-          .changeState(LoadingStates.loaded);
+          .changeState(LoadingStates.loaded, path: "writeData");
     }
   }
 

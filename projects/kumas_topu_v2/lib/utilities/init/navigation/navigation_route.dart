@@ -1,11 +1,10 @@
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:kumas_topu/ui/auth/login_page.dart';
 import 'package:kumas_topu/ui/encode/current_qr_tid_info.dart';
+import 'package:kumas_topu/ui/encode/encode_main.dart';
 import 'package:kumas_topu/ui/encode/match_with_rfid.dart';
 import 'package:kumas_topu/ui/inventory/do_inventory.dart';
 import 'package:kumas_topu/ui/main_page.dart';
-import 'package:kumas_topu/ui/encode/encode_main.dart';
 import 'package:kumas_topu/ui/reviews/detail_of_product.dart';
 import 'package:kumas_topu/ui/settings/settings_page.dart';
 
@@ -27,14 +26,15 @@ class NavigationRoute {
       case NavigationConstants.loginPage:
         return normalNavigate(const LoginPage());
       case NavigationConstants.settingsPage:
-        Map<String,dynamic> map = args.arguments as Map<String,dynamic>;
+        Map<String, dynamic> map = args.arguments as Map<String, dynamic>;
         debugPrint(map['maxValue'].toString());
         return normalNavigate(SettingsPage(maxValue: map['maxValue']));
       case NavigationConstants.encodeMainPage:
         return normalNavigate(const EncodeMain());
       case NavigationConstants.matchWithRFIDPage:
-        Map<String,dynamic> map = args.arguments as Map<String,dynamic>;
-        return normalNavigate(MatchWithRFID(controller: map['controller']));
+        Map<String, dynamic> map = args.arguments as Map<String, dynamic>;
+        return normalNavigate(MatchWithRFID(
+            controller: map['controller'], controller2: map['controller2']));
       case NavigationConstants.inventoryMainPage:
         return normalNavigate(const InventoryMain());
       case NavigationConstants.currentQrTidInfoPage:

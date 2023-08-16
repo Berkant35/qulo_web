@@ -24,7 +24,8 @@ enum InvokeMethods {
   singleInventory,
   initInventory,
   barcodeModeOn,
-  writeEpc
+  writeEpc,
+  writeEpcByTID
 }
 
 enum BroadCastStates { inventoryAndGetTag,scanToMatchAndGetTagWithBarcodeNumber,listenTriggerForWrite}

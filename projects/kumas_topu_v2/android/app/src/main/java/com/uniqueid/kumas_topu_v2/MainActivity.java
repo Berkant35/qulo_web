@@ -219,7 +219,6 @@ public class MainActivity extends FlutterActivity {
                     zebraReaderSDK.writeDataByTID(generatedEpcCustom,detectedTID);
                 } else {
                     chainwayReaderSDK.writeDataByTID(generatedEpcCustom,detectedTID);
-
                 }
                 break;
             case Constants.barcodeModeOn:

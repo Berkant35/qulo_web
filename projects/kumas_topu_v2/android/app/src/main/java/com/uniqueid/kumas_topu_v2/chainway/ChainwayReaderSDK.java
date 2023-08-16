@@ -105,14 +105,16 @@ public class ChainwayReaderSDK {
                 if (barcodeEntity.getResultCode() == BarcodeDecoder.DECODE_SUCCESS) {
                     MediaPlayer.create(context, R.raw.barcodebeep).start();
 
-                    Log.i("BARCODE_DATA", barcodeEntity.getBarcodeData());
-
+                    Log.i("barcodeInfo", barcodeEntity.getBarcodeData());
+                    Log.i("barcodeType", barcodeEntity.getBarcodeName());
+                  
 
                     barcodeEntitiy.put("barcodeInfo", barcodeEntity.getBarcodeData());
                     barcodeEntitiy.put("barcodeType", barcodeEntity.getBarcodeName());
                     barcodeEntitiy.put("barcodeErrorCode", String.valueOf(barcodeEntity.getErrCode()));
 
                     //result.success(new JSONObject(barcodeEntitiy).toString());
+
 
 
                     if (context.currentResult != null) {
@@ -282,7 +284,56 @@ public class ChainwayReaderSDK {
                "4000" + generatedEpc
        );
 
+       Log.i("WRITE_STATUS",String.valueOf(isWrote));
+       Log.i("WRITE_STATUS_GENERATED_EPC",("4000" + generatedEpc));
+       Log.i("WRITE_STATUS_GENERATED_TID",tid);
 
+       if (isWrote) {
+
+           HashMap<String, Object> resultOKObject = new HashMap<String, Object>();
+
+           resultOKObject.put("tid", tid);
+           resultOKObject.put("status", Constants.methodChannelResultOk);
+           Gson gson = new GsonBuilder().create();
+           String jsonString = gson.toJson(resultOKObject);
+
+           MediaPlayer.create(context, R.raw.barcodebeep).start();
+
+           if (mainMethodChannelResult != null) {
+               mainMethodChannelResult.success(jsonString);
+               mainMethodChannelResult = null;
+           } else if (context.currentEventSink != null) {
+               context.currentEventSink.success(jsonString);
+           } else {
+               if (context.currentResult != null) {
+                   context.currentResult.success(jsonString);
+                   context.currentResult = null;
+               }
+           }
+       }
+       else {
+           HashMap<String, Object> resultFailedObject = new HashMap<String, Object>();
+
+           resultFailedObject.put("tid", "");
+           resultFailedObject.put("status", Constants.methodChannelResultFailed);
+           Gson gson = new GsonBuilder().create();
+           String jsonString = gson.toJson(resultFailedObject);
+
+
+           MediaPlayer.create(context, R.raw.serror).start();
+
+           if (mainMethodChannelResult != null) {
+               mainMethodChannelResult.success(jsonString);
+               mainMethodChannelResult = null;
+           } else if (context.currentEventSink != null) {
+               context.currentEventSink.success(jsonString);
+           } else {
+               if (context.currentResult != null) {
+                   context.currentResult.success(jsonString);
+                   context.currentResult = null;
+               }
+           }
+       }
 
    }
 
@@ -407,7 +458,8 @@ public class ChainwayReaderSDK {
                             context.currentResult = null;
                         }
                     }
-                } else {
+                }
+                else {
                     HashMap<String, Object> resultFailedObject = new HashMap<String, Object>();
 
                     resultFailedObject.put("tid", "");
