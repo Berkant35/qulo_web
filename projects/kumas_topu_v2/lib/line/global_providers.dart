@@ -1,3 +1,4 @@
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kumas_topu/line/viewmodel/current_barcode_info_manager.dart';
 import 'package:kumas_topu/line/viewmodel/current_barcode_standart.dart';
@@ -5,6 +6,7 @@ import 'package:kumas_topu/line/viewmodel/current_epc_detail.dart';
 import 'package:kumas_topu/line/viewmodel/current_inventory_manager.dart';
 import 'package:kumas_topu/line/viewmodel/current_is_shapment_manager.dart';
 import 'package:kumas_topu/line/viewmodel/current_power_value_manager.dart';
+import 'package:kumas_topu/line/viewmodel/device_info_manager.dart';
 import 'package:kumas_topu/line/viewmodel/login_state_manager.dart';
 import 'package:kumas_topu/line/viewmodel/operation_work_manager.dart';
 import 'package:kumas_topu/line/viewmodel/rfid_state_manager.dart';
@@ -19,7 +21,6 @@ import 'package:kumas_topu/line/viewmodel/write_mode_manager.dart';
 import 'package:kumas_topu/models/current_epc_detail.dart';
 import 'package:kumas_topu/models/current_inventory.dart';
 import 'package:kumas_topu/models/encode_standarts.dart';
-import 'package:kumas_topu/models/epc_detail.dart';
 
 import '../models/barcode_info.dart';
 import '../models/rfid_device.dart';
@@ -103,6 +104,11 @@ final currentPowerValueProvider =
   return CurrentPowerValueManager(15);
 });
 final currentVersionProvider =
-StateNotifierProvider<VersionManagerNotifier, Version?>((ref) {
+    StateNotifierProvider<VersionManagerNotifier, Version?>((ref) {
   return VersionManagerNotifier(null);
+});
+
+final currentDeviceInfoProvider =
+    StateNotifierProvider<DeviceInfoManagerNotifier, AndroidDeviceInfo?>((ref) {
+  return DeviceInfoManagerNotifier(null);
 });

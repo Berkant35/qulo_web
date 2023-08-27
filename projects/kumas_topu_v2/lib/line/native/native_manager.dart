@@ -66,7 +66,7 @@ class NativeManager extends NativeInterface {
         if (object is Map<String, dynamic>) {
           ref
               .read(currentBarcodeInfoProvider.notifier)
-              .changeState(BarcodeInfo.fromJson(object));
+              .changeState(BarcodeInfo.fromJson(object), ref);
         }
       } else {
         /*ref.read(scanToMatchProvider.notifier).changeState(
@@ -163,15 +163,18 @@ class NativeManager extends NativeInterface {
 
   @override
   Future<void> scanBarcode(WidgetRef ref, bool isGoToFirstPage) async {
+
     var result =
         await _methodChannel.invokeMethod(InvokeMethods.scanBarcode.name);
 
-    debugPrint('$result <-scanBarcodeButton');
+    debugPrint("scanBarcode: $result");
 
-    if (ref.read(currentBarcodeInfoProvider).barcodeInfo == null ||
-        ref.read(currentBarcodeInfoProvider).barcodeInfo!.isEmpty) {
+    if ((ref.read(currentBarcodeInfoProvider).barcodeInfo == null ||
+        ref.read(currentBarcodeInfoProvider).barcodeInfo!.isEmpty)) {
       var barcodeInfo = BarcodeInfo(barcodeInfo: result);
-      ref.read(currentBarcodeInfoProvider.notifier).changeState(barcodeInfo);
+      ref
+          .read(currentBarcodeInfoProvider.notifier)
+          .changeState(barcodeInfo, ref);
     } else {
       final updatedBarcodeInfo = ref.read(currentBarcodeInfoProvider).copyWith(
             tid: result,
@@ -179,7 +182,7 @@ class NativeManager extends NativeInterface {
 
       ref
           .read(currentBarcodeInfoProvider.notifier)
-          .changeState(updatedBarcodeInfo);
+          .changeState(updatedBarcodeInfo, ref);
     }
 
     scanBarcode(ref, false);
@@ -188,25 +191,26 @@ class NativeManager extends NativeInterface {
   Future<void> scanBarcodeButton(WidgetRef ref) async {
     var result = await _methodSupportChannel
         .invokeMethod(InvokeMethods.scanBarcodeButton.name);
+    debugPrint("scanBarcodeButton: $result");
 
-    debugPrint('$result <-scanBarcodeButtodasdan');
-
-    //var barcodeJson = json.decode(result.toString());
     if (ref.read(currentBarcodeInfoProvider).barcodeInfo == null ||
-        ref.read(currentBarcodeInfoProvider).barcodeInfo!.isEmpty) {
+        ref.read(currentBarcodeInfoProvider).barcodeInfo!.isEmpty)
+    {
       var barcodeInfo = BarcodeInfo(barcodeInfo: result);
-      ref.read(currentBarcodeInfoProvider.notifier).changeState(barcodeInfo);
+      ref
+          .read(currentBarcodeInfoProvider.notifier)
+          .changeState(barcodeInfo, ref);
     } else {
       var barcodeInfo = BarcodeInfo(
           barcodeInfo: ref.read(currentBarcodeInfoProvider).barcodeInfo,
           tid: result);
 
-      debugPrint("Yes:${barcodeInfo.tid}");
-
-      ref.read(currentBarcodeInfoProvider.notifier).changeState(barcodeInfo);
+      ref
+          .read(currentBarcodeInfoProvider.notifier)
+          .changeState(barcodeInfo, ref);
     }
 
-    scanBarcode(ref, false);
+   scanBarcode(ref, false);
   }
 
   @override
@@ -231,8 +235,12 @@ class NativeManager extends NativeInterface {
   Future<bool> barcodeModeOn(WidgetRef ref) async {
     var result =
         await _methodChannel.invokeMethod(InvokeMethods.barcodeModeOn.name);
+
+    debugPrint("Barcode Mode On: TRUE");
+
     if (result == "CONNECTED") {
       Dialogs.showSuccess("Barkod Aktif!");
+      debugPrint("Barcode Mode On: CONNECTED Scanning...");
       scanBarcode(ref, false);
       return true;
     } else {
@@ -249,8 +257,8 @@ class NativeManager extends NativeInterface {
     _eventChannel
         .receiveBroadcastStream(BroadCastStates.listenTriggerForWrite.name)
         .listen((event) {
+
       if (event == TriggerPressStatus.PRESSING.name) {
-        debugPrint("listenTriggerForWriteMode loading");
         ref.read(loginButtonStateProvider.notifier).changeState(
             LoadingStates.loading,
             path: "listenTriggerForWriteMode");
@@ -292,10 +300,12 @@ class NativeManager extends NativeInterface {
 
   Future<void> goFirstPage(
       EncodeStatus? value, WidgetRef ref, String path) async {
-    ref.read(currentBarcodeInfoProvider.notifier).changeState(BarcodeInfo());
+    ref
+        .read(currentBarcodeInfoProvider.notifier)
+        .changeState(BarcodeInfo(), ref);
     if (value != null && value.code == 200) {
       NavigationService.instance.navigateToPageClear(path: path);
-
+      debugPrint("Scan Barcode goFirstPage...");
       scanBarcode(ref, true);
     }
   }
@@ -325,7 +335,7 @@ class NativeManager extends NativeInterface {
                 .then((value) {
               ref
                   .read(currentBarcodeInfoProvider.notifier)
-                  .changeState(BarcodeInfo());
+                  .changeState(BarcodeInfo(), ref);
 
               goFirstPage(value, ref, NavigationConstants.currentQrTidInfoPage);
             });
@@ -380,6 +390,7 @@ class NativeManager extends NativeInterface {
     }
   }
 
+  //TODO ŞU ERROR TEXTLERİNİ AYRI BİR CLASS TA TOPLA
   bool showDialogFromSuccessOrWrite(result) {
     if (result == "TOO_MANY_TAG") {
       Dialogs.showFailed("Birden Fazla Etiket Tespit Edildi!");
@@ -403,7 +414,6 @@ class NativeManager extends NativeInterface {
   Future<void> listenAndSingleInventory(WidgetRef ref) async {
     try {
       _singleInventoryEventChannel.receiveBroadcastStream().listen((event) {
-        debugPrint("listenAndSingleInventory!!!!: ${event.toString()}");
         //Clear Option
         if (event.toString() == '-1') {
           if (ref.read(scanStopStateProvider) == ScanModes.scan) {

@@ -99,7 +99,7 @@ class Repository extends LocaleBase {
 
             ref
                 .read(currentBarcodeInfoProvider.notifier)
-                .changeState(currentBarcodeInfo);
+                .changeState(currentBarcodeInfo,ref);
 
             return epcResult;
           }

@@ -128,15 +128,15 @@ public class MainActivity extends FlutterActivity {
                 new EventChannel.StreamHandler() {
 
                     @Override
-                    public void onListen(Object listening, EventChannel.EventSink eventSink)
-                    {
+                    public void onListen(Object listening, EventChannel.EventSink eventSink) {
                         currentSingleInventoryEventSink = eventSink;
                         allAttributeMode.currentReadMode = ReaderModes.SINGLE_MODE;
 
                     }
 
                     @Override
-                    public void onCancel(Object listening) {}
+                    public void onCancel(Object listening) {
+                    }
 
                 }
         );
@@ -187,8 +187,7 @@ public class MainActivity extends FlutterActivity {
                         customBarcodeManager.scanBarcode(result);
                     } else {
                         if (chainwayReaderSDK.barcodeDecoder != null &&
-                                chainwayReaderSDK.getCurrentBarcodeMode() != BarcodeModes.SCANNING)
-                        {
+                                chainwayReaderSDK.getCurrentBarcodeMode() != BarcodeModes.SCANNING) {
                             chainwayReaderSDK.scanBarcode(currentResult);
                         }
                     }
@@ -216,9 +215,9 @@ public class MainActivity extends FlutterActivity {
                 String detectedTID = call.argument("tid");
 
                 if (Objects.equals(Build.BRAND, "ZEBRA")) {
-                    zebraReaderSDK.writeDataByTID(generatedEpcCustom,detectedTID);
+                    zebraReaderSDK.writeDataByTID(generatedEpcCustom, detectedTID);
                 } else {
-                    chainwayReaderSDK.writeDataByTID(generatedEpcCustom,detectedTID);
+                    chainwayReaderSDK.writeDataByTID(generatedEpcCustom, detectedTID);
                 }
                 break;
             case Constants.barcodeModeOn:
@@ -293,7 +292,7 @@ public class MainActivity extends FlutterActivity {
                 break;
             case Constants.startInventory:
                 Log.i(TAG, "configureFlutterEngine: Start Inventory...");
-                Log.i(TAG, "FlutterActions:"+allAttributeMode.rfidModes.name());
+                Log.i(TAG, "FlutterActions:" + allAttributeMode.rfidModes.name());
                 allAttributeMode.rfidModes = RFIDModes.INVENTORY;
                 if (Objects.equals(Build.BRAND.toUpperCase(Locale.ROOT), "ZEBRA")) {
                     zebraReaderSDK.performInventory();
@@ -334,7 +333,6 @@ public class MainActivity extends FlutterActivity {
                 } else {
                     chainwayReaderSDK.singleInventory();
                 }
-
 
 
                 break;
@@ -385,16 +383,38 @@ public class MainActivity extends FlutterActivity {
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (
-                allAttributeMode.currentReadMode == ReaderModes.BARCODE_MODE
-                        && (keyCode == 102 || (keyCode > 290 && keyCode < 300)) &&
-                        allAttributeMode.currentTriggerMode != TriggerModes.PRESSING) {
+
+        Log.i(TAG, "onKeyDown: TRIGGERED!" + allAttributeMode.currentReadMode.name());
+        Log.i(TAG, "onKeyDown: TRIGGERED!" + allAttributeMode.currentTriggerMode.name());
+        Log.i(TAG, "onKeyDown: TRIGGERED!" + keyCode);
+
+        allAttributeMode.currentTriggerMode = TriggerModes.STOPPED;
+        try {
+            Thread.sleep(250);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
+            allAttributeMode.currentTriggerMode = TriggerModes.IDLE;
+        }
+
+
+        return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (allAttributeMode.currentReadMode == ReaderModes.BARCODE_MODE
+                && (keyCode == 102 || (keyCode > 290 && keyCode < 300)) &&
+                allAttributeMode.currentTriggerMode != TriggerModes.PRESSING) {
 
             allAttributeMode.currentTriggerMode = TriggerModes.PRESSING;
 
+
             if (!Build.BRAND.toUpperCase(Locale.ROOT).equals("ZEBRA")) {
 
-                if (chainwayReaderSDK.barcodeDecoder != null && chainwayReaderSDK.getCurrentBarcodeMode() != BarcodeModes.SCANNING) {
+                if (chainwayReaderSDK.barcodeDecoder != null
+                        && chainwayReaderSDK.getCurrentBarcodeMode() != BarcodeModes.SCANNING) {
                     chainwayReaderSDK.scanBarcode(currentResult);
                 } else {
                     Log.e(TAG, "onKeyUp: NULL");
@@ -402,7 +422,9 @@ public class MainActivity extends FlutterActivity {
             }
 
         } else if (allAttributeMode.currentReadMode == ReaderModes.WRITE_MODE
-                && (keyCode == 102 || (keyCode > 290 && keyCode < 300)) && allAttributeMode.currentTriggerMode != TriggerModes.PRESSING) {
+                && (keyCode == 102 || (keyCode > 290 && keyCode < 300))
+                && allAttributeMode.currentTriggerMode != TriggerModes.PRESSING)
+        {
             allAttributeMode.currentTriggerMode = TriggerModes.PRESSING;
             if (currentEventSink != null) {
                 currentEventSink.success(TriggerModes.PRESSING.name());
@@ -412,27 +434,23 @@ public class MainActivity extends FlutterActivity {
             if (listenCurrentCall != null) {
                 String generatedEpc = listenCurrentCall.argument("epc");
                 Log.i(TAG, "onKeyUp(WRITE_DATA_GENERATED_EPC):" + generatedEpc);
-                if(Build.BRAND.toUpperCase(Locale.ROOT).equals("ZEBRA")){
+                if (Build.BRAND.toUpperCase(Locale.ROOT).equals("ZEBRA")) {
                     zebraReaderSDK.writeData(generatedEpc);
-                }else {
+                } else {
                     chainwayReaderSDK.writeData(generatedEpc);
                 }
             }
-        }else if(allAttributeMode.currentReadMode == ReaderModes.SINGLE_MODE
+        } else if (allAttributeMode.currentReadMode == ReaderModes.SINGLE_MODE
                 && (keyCode == 102 || (keyCode > 290 && keyCode < 300)) &&
-                allAttributeMode.currentTriggerMode != TriggerModes.PRESSING){
+                allAttributeMode.currentTriggerMode != TriggerModes.PRESSING) {
 
             allAttributeMode.currentTriggerMode = TriggerModes.PRESSING;
-            if (Build.BRAND.toUpperCase(Locale.ROOT).equals("ZEBRA"))
-            {
+            if (Build.BRAND.toUpperCase(Locale.ROOT).equals("ZEBRA")) {
                 //zebraReaderSDK.stopInventory();
             } else {
                 chainwayReaderSDK.singleInventory();
             }
-        }
-
-
-        else if (allAttributeMode.currentReadMode == ReaderModes.INVENTORY_MODE
+        } else if (allAttributeMode.currentReadMode == ReaderModes.INVENTORY_MODE
                 && (keyCode == 102 || (keyCode > 290 && keyCode < 300)) &&
                 allAttributeMode.currentTriggerMode != TriggerModes.PRESSING) {
 
@@ -453,8 +471,7 @@ public class MainActivity extends FlutterActivity {
 
                 allAttributeMode.rfidModes = RFIDModes.STOPPED_INVENTORY;
 
-            }
-            else {
+            } else {
                 Log.i(TAG, "onKeyUp: NOT INVENTORY MODE!");
                 currentInventoryEventSink.success("1");
                 if (Build.BRAND.toUpperCase(Locale.ROOT).equals("ZEBRA")) {
@@ -470,19 +487,6 @@ public class MainActivity extends FlutterActivity {
         Log.i(TAG, "onKeyUp: TRIGGERED!" + allAttributeMode.currentReadMode.name());
         Log.i(TAG, "onKeyUp: TRIGGERED!" + allAttributeMode.currentTriggerMode.name());
         Log.i(TAG, "onKeyUp: TRIGGERED!" + keyCode);
-
-
-        return super.onKeyUp(keyCode, event);
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        allAttributeMode.currentTriggerMode = TriggerModes.STOPPED;
-        if (allAttributeMode.currentReadMode == ReaderModes.BARCODE_MODE) {
-            Log.i(TAG, "onKeyDown(Barcode):" + allAttributeMode.currentTriggerMode);
-        }
-
-        allAttributeMode.currentTriggerMode = TriggerModes.IDLE;
         return super.onKeyDown(keyCode, event);
     }
 

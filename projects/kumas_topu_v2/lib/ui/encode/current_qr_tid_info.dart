@@ -50,7 +50,6 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
 
     tidQrEditingController.dispose();
     barcodeEditingController.dispose();
-
   }
 
   @override
@@ -58,48 +57,49 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
     return Scaffold(
       appBar: TitleAppBar(
         onTap: () {
+          NavigationService.instance
+              .navigateToPageClear(path: NavigationConstants.mainPage);
           var standart = ref.read(currentBarcodeStandartProvider);
           standart = null;
           ref
               .read(currentBarcodeStandartProvider.notifier)
               .changeState(standart);
 
-          ref.read(currentBarcodeInfoProvider.notifier).changeState(BarcodeInfo());
+          ref
+              .read(currentBarcodeInfoProvider.notifier)
+              .changeState(BarcodeInfo(), ref);
 
 
-
-          NavigationService.instance
-              .navigateToPageClear(path: NavigationConstants.mainPage);
         },
         label: "QR Kodlama",
         leadingWidget: IconButton(
           icon: Icon(Icons.arrow_back, size: 4.h),
           onPressed: () {
+            NavigationService.instance
+                .navigateToPageClear(path: NavigationConstants.mainPage);
             var standart = ref.read(currentBarcodeStandartProvider);
             standart = null;
             ref
                 .read(currentBarcodeStandartProvider.notifier)
                 .changeState(standart);
 
-            ref.read(currentBarcodeInfoProvider.notifier).changeState(BarcodeInfo());
+            ref
+                .read(currentBarcodeInfoProvider.notifier)
+                .changeState(BarcodeInfo(), ref);
 
 
-            NavigationService.instance
-                .navigateToPageClear(path: NavigationConstants.mainPage);
           },
         ),
       ),
       body: Consumer(
         builder: (context, customref, child) {
-
-
-
           String initialBarcodeText =
               ref.watch(currentBarcodeInfoProvider).barcodeInfo ?? "-";
           String initialTidText =
               ref.read(currentBarcodeInfoProvider).tid ?? "-";
 
-          int barcodeCursorPosition = barcodeEditingController.selection.baseOffset;
+          int barcodeCursorPosition =
+              barcodeEditingController.selection.baseOffset;
           int tidCursorPosition = tidQrEditingController.selection.baseOffset;
 
 // Eğer bir karakter silindi ise ve silinen karakterin pozisyonu 3 ise,
@@ -110,6 +110,7 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
 
           TextSelection barcodeSelection = TextSelection.fromPosition(
               TextPosition(offset: barcodeCursorPosition));
+
           barcodeEditingController.selection = barcodeSelection;
 
           TextSelection tidSelection = TextSelection.fromPosition(
@@ -164,7 +165,7 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
                                     value.data!.serialNumber.toString();
                                 ref
                                     .watch(currentBarcodeInfoProvider.notifier)
-                                    .changeState(barcodeProvider);
+                                    .changeState(barcodeProvider, ref);
                               }
                             });
                           },
@@ -181,6 +182,7 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
                 headerName: "",
                 verticalContentPadding: 0.h,
                 prefixIcon: Icons.document_scanner,
+                maxLength: 50,
                 hintText: "Barcode Numarası",
                 editingController: barcodeEditingController,
                 custValidateFunction: (value) {
@@ -194,9 +196,11 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
                   return null;
                 },
                 onChanged: (value) {
-                  ref.read(currentBarcodeInfoProvider.notifier).changeState(ref
-                      .read(currentBarcodeInfoProvider)
-                      .copyWith(barcodeInfo: value));
+                  ref.read(currentBarcodeInfoProvider.notifier).changeState(
+                      ref
+                          .read(currentBarcodeInfoProvider)
+                          .copyWith(barcodeInfo: value),
+                      ref);
                 },
               ),
               anyBarcode()
@@ -205,7 +209,7 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
                         SizedBox(
                           width: 100.w,
                           child: Text(
-                            "TID Numarası",
+                            "Data Code",
                             style: ThemeValueExtension.headline6,
                             textAlign: TextAlign.start,
                           ),
@@ -214,7 +218,7 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
                           headerName: "",
                           verticalContentPadding: 0.h,
                           prefixIcon: Icons.qr_code_scanner_rounded,
-                          hintText: "Tid Numarası",
+                          hintText: "Data Code",
                           editingController: tidQrEditingController,
                           custValidateFunction: (value) {
                             (ref.read(currentBarcodeInfoProvider).tid != "" &&
@@ -231,10 +235,12 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
                           onChanged: (value) {
                             ref
                                 .read(currentBarcodeInfoProvider.notifier)
-                                .changeState(ref
-                                    .read(currentBarcodeInfoProvider)
-                                    .copyWith(
-                                        tid: tidQrEditingController.text));
+                                .changeState(
+                                    ref
+                                        .read(currentBarcodeInfoProvider)
+                                        .copyWith(
+                                            tid: tidQrEditingController.text),
+                                    ref);
                           },
                           onChangedEnd: () {},
                         ),
@@ -279,13 +285,17 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
                           ref
                               .read(currentBarcodeInfoProvider)
                               .tid!
-                              .isNotEmpty && ref
-                  .read(currentBarcodeInfoProvider)
-                  .tid!.length == 24 && ref
-                  .read(currentBarcodeInfoProvider)
-                  .tid!.startsWith("E2") && ref
-                  .read(currentBarcodeInfoProvider)
-                  .tid!.isNotEmpty &&
+                              .isNotEmpty &&
+                          ref.read(currentBarcodeInfoProvider).tid!.length ==
+                              24 &&
+                          ref
+                              .read(currentBarcodeInfoProvider)
+                              .tid!
+                              .startsWith("E2") &&
+                          ref
+                              .read(currentBarcodeInfoProvider)
+                              .tid!
+                              .isNotEmpty &&
                           ref.read(currentBarcodeInfoProvider).barcodeInfo !=
                               null) &&
                       ref.watch(currentBarcodeInfoProvider).barcodeInfo !=
@@ -314,7 +324,7 @@ class _CurrentQrTIDInfoPageState extends ConsumerState<CurrentQrTIDInfoPage> {
 
                                 ref
                                     .read(currentBarcodeInfoProvider.notifier)
-                                    .changeState(barcodeInfo);
+                                    .changeState(barcodeInfo, ref);
 
                                 NavigationService.instance.navigateToPage(
                                     path: NavigationConstants.matchWithRFIDPage,

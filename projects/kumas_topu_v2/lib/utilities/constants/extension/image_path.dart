@@ -9,6 +9,7 @@ class ImagePath {
   static const addSvg = 'assets/images/add.svg';
   static const settingsSvg = 'assets/images/settings.svg';
   static const barcodeSvg = 'assets/images/barcode.svg';
+  static const qrCodeSvg = 'assets/images/qr-code.svg';
   static const scanSvg = 'assets/images/scan.svg';
   static const rfidSvg = 'assets/images/rfid.svg';
 

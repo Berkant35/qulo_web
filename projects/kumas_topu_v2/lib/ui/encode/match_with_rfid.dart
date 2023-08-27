@@ -89,7 +89,7 @@ class _MatchWithRFIDState extends ConsumerState<MatchWithRFID> {
                         if (value) {
                           ref
                               .read(currentBarcodeInfoProvider.notifier)
-                              .changeState(BarcodeInfo());
+                              .changeState(BarcodeInfo(),ref);
                         }
                       });
                     }

@@ -65,7 +65,7 @@ class _CurrentBarcodeInfoState extends ConsumerState<CurrentBarcodeInfo> {
                                   value.data!.serialNumber.toString();
                               ref
                                   .watch(currentBarcodeInfoProvider.notifier)
-                                  .changeState(barcodeProvider);
+                                  .changeState(barcodeProvider,ref);
                             }
                           });
                         },
@@ -100,7 +100,7 @@ class _CurrentBarcodeInfoState extends ConsumerState<CurrentBarcodeInfo> {
 
                 ref
                     .read(currentBarcodeInfoProvider.notifier)
-                    .changeState(barcodeProvider);
+                    .changeState(barcodeProvider,ref);
 
                 if (value == "") {
                   setState(() {});
@@ -176,7 +176,7 @@ class _CurrentBarcodeInfoState extends ConsumerState<CurrentBarcodeInfo> {
                                       ref
                                           .read(currentBarcodeInfoProvider
                                               .notifier)
-                                          .changeState(barcodeInfo);
+                                          .changeState(barcodeInfo,ref);
 
                                       NavigationService.instance.navigateToPage(
                                           path: NavigationConstants

@@ -107,7 +107,7 @@ public class ChainwayReaderSDK {
 
                     Log.i("barcodeInfo", barcodeEntity.getBarcodeData());
                     Log.i("barcodeType", barcodeEntity.getBarcodeName());
-                  
+
 
                     barcodeEntitiy.put("barcodeInfo", barcodeEntity.getBarcodeData());
                     barcodeEntitiy.put("barcodeType", barcodeEntity.getBarcodeName());
@@ -117,10 +117,15 @@ public class ChainwayReaderSDK {
 
 
 
+                    Log.i("currentResult","currentResult");
+
+
                     if (context.currentResult != null) {
+                        Log.i("currentResult","currentResult");
                         context.currentResult.success(barcodeEntity.getBarcodeData());
                         context.currentResult = null;
                     } else if (mainMethodChannelResult != null) {
+                        Log.i("mainMethodChannelResult","mainMethodChannelResult");
                         mainMethodChannelResult.success(barcodeEntity.getBarcodeData());
                     }
 

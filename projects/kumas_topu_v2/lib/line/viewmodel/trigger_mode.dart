@@ -21,11 +21,8 @@ class TriggerModeManager extends StateNotifier<TriggerModeStatus>{
         _changeToBarcodeStateOn(ref,value);
         break;
       case TriggerModeStatus.RFID:
-        // TODO: Handle this case.
         break;
       case TriggerModeStatus.QRBARCODE:
-
-        _changeToBarcodeStateOn(ref,value);
         break;
     }
 

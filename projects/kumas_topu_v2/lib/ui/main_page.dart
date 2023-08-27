@@ -116,24 +116,27 @@ class MainPage extends ConsumerWidget {
                             NavigationService.instance.navigateToPage(
                                 path: NavigationConstants.encodeMainPage);
                           }),
-                      PerItemOfMenu(
-                          imagePath: ImagePath.barcodeSvg,
-                          scaleHigh: 8.h,
-                          title: 'QR',
-                          onTap: () async {
+                      ref.read(currentDeviceInfoProvider)!.brand != "CHAINWAY"
+                          ? const SizedBox()
+                          : PerItemOfMenu(
+                              imagePath: ImagePath.qrCodeSvg,
+                              scaleHigh: 8.h,
+                              title: 'QR Kodlama',
+                              onTap: () async {
+                                await SystemChannels.platform
+                                    .invokeMethod<void>(
+                                  'SystemSound.play',
+                                  SystemSoundType.click.toString(),
+                                );
 
-                            await SystemChannels.platform.invokeMethod<void>(
-                              'SystemSound.play',
-                              SystemSoundType.click.toString(),
-                            );
+                                //ref
+                                //    .read(currentTriggerModeProvider.notifier)
+                                //    .changeState(TriggerModeStatus.BARCODE, ref);
 
-                            ref
-                                .read(currentTriggerModeProvider.notifier)
-                                .changeState(TriggerModeStatus.BARCODE, ref);
-
-                            NavigationService.instance.navigateToPage(
-                                path: NavigationConstants.currentQrTidInfoPage);
-                          }),
+                                NavigationService.instance.navigateToPage(
+                                    path: NavigationConstants
+                                        .currentQrTidInfoPage);
+                              }),
                       PerItemOfMenu(
                           imagePath: ImagePath.wifiTruckSvg,
                           title: 'SEVK',
@@ -206,7 +209,6 @@ class MainPage extends ConsumerWidget {
                   ),
                 ),
               ),
-
             ],
           ),
           Align(
@@ -222,7 +224,7 @@ class MainPage extends ConsumerWidget {
                         .copyWith(color: CustomColors.pinkColor),
                   ),
                   Text(
-                    "V: 1.0.4",
+                    "V: 1.0.5",
                     style: ThemeValueExtension.subtitle4,
                   )
                 ],

@@ -1,4 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kumas_topu/line/global_providers.dart';
@@ -23,6 +25,8 @@ class _LandingPageState extends ConsumerState<LandingPage> {
 
   @override
   void initState() {
+    checkDeviceModel(ref);
+
     super.initState();
     _initPackageInfo(ref);
     //ref.read(rfidStateProvider.notifier).initReader(ref);
@@ -71,11 +75,10 @@ class _LandingPageState extends ConsumerState<LandingPage> {
               .appVersion!
               .replaceAll(".", ""));
 
-
-          if (serverAppVersion != deviceVersion)
-          {
-            final downloadUrl = Uri.parse("https://www.kumastopu.com/apk/app-release.apk");
-           AwesomeDialog(
+          if (serverAppVersion != deviceVersion && !kDebugMode) {
+            final downloadUrl =
+                Uri.parse("https://www.kumastopu.com/apk/app-release.apk");
+            AwesomeDialog(
                 context: ref.context,
                 dialogType: DialogType.info,
                 dismissOnTouchOutside: false,
@@ -83,13 +86,19 @@ class _LandingPageState extends ConsumerState<LandingPage> {
                 title: "Yeni Versiyon Tespit Edildi",
                 desc: "Yeni versiyon yüklemesi için tamam'a basınız",
                 btnOkText: "Tamam",
-                btnOkOnPress: ()=>launchUrl(downloadUrl,mode: LaunchMode.externalApplication)
-            ).show();
+                btnOkOnPress: () => launchUrl(downloadUrl,
+                    mode: LaunchMode.externalApplication)).show();
           }
         } else {
           throw Exception("Null Server App Version");
         }
       });
     });
+  }
+
+  Future<void> checkDeviceModel(WidgetRef ref) async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    final androidInfo = await deviceInfo.androidInfo;
+    ref.read(currentDeviceInfoProvider.notifier).set(ref, androidInfo);
   }
 }
