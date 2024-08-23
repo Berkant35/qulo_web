@@ -1,0 +1,5 @@
+
+enum LoadingStates {
+  loaded,
+  loading}
+

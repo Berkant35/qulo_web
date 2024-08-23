@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "180673531842",
+    "firebase_url": "https://catchpad-mobile-default-rtdb.firebaseio.com",
+    "project_id": "catchpad-mobile",
+    "storage_bucket": "catchpad-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180673531842:android:ed53aa2fc153d55764505b",
+        "android_client_info": {
+          "package_name": "com.catchpad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180673531842-0ntmf74vno3r5bu0b31a3j8vc45fv1j4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.catchpad",
+            "certificate_hash": "e779c3c7077af4d769f5b161a8dd8f3402184b48"
+          }
+        },
+        {
+          "client_id": "180673531842-6cppv4lrhmhk92flbpqi315tp739nato.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.catchpad",
+            "certificate_hash": "d9f6a1c034b60e43d1bbcd9436701911cf9c2aba"
+          }
+        },
+        {
+          "client_id": "180673531842-ijaobnde316dnul86iul89trjsedi308.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUh4WNI1-iQcmVGypaRT968ugJeKw1ltE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180673531842-ijaobnde316dnul86iul89trjsedi308.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "180673531842-d5url77vfl9cjjqeg2gdced5tl66dckm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.newSoftware"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

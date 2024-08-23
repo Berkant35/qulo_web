@@ -1,0 +1,8 @@
+"NSAppleMusicUsageDescription" = "Bu izin, uygulama tarafından ihtiyaç duyulmamaktadır, ancak altta yatan bir API tarafından gereklidir. Bu iletiyi görüyorsanız, lütfen bize ulaşın.";
+"NSBluetoothAlwaysUsageDescription" = "CatchPad cihazlarını bağlamak ve etkinlikleri başlatmak için bluetooth iznine izin vermeniz gerekmektedir.";
+"NSBluetoothPeripheralUsageDescription" = "CatchPad cihazlarını bağlamak ve etkinlikleri başlatmak için bluetooth iznine izin vermeniz gerekmektedir.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "CatchPad cihazlarını bağlamak ve etkinlikleri başlatmak için konum hizmetlerine izin vermeniz gerekmektedir. (Konum, bluetooth düşük enerji bağlantı hizmetleri için kullanılır)";
+"NSLocationAlwaysUsageDescription" = "CatchPad cihazlarını bağlamak ve etkinlikleri başlatmak için konum hizmetlerine izin vermeniz gerekmektedir. (Konum, bluetooth düşük enerji bağlantı hizmetleri için kullanılır)";
+"NSLocationUsageDescription" = "Uygulama, farklı cihazlar arasında veri bulmak, bağlamak ve aktarmak için bluetooth kullanır";
+"NSLocationWhenInUseUsageDescription" = "CatchPad cihazlarını bağlamak ve etkinlikleri başlatmak için konum hizmetlerine izin vermeniz gerekmektedir. (Konum, bluetooth düşük enerji bağlantı hizmetleri için kullanılır)";
+"NSPhotoLibraryUsageDescription" = "Ödül sistemi arayüzünü ayarlamak için fotoğraf kütüphanesi iznine izin vermeniz gerekmektedir";

@@ -1,0 +1,8 @@
+"NSAppleMusicUsageDescription" = "This permission is not needed by the app, but it is required by an underlying API. If you see this dialog, contact us.";
+"NSBluetoothAlwaysUsageDescription" = "You need to allow bluetooth permission in order to connect CatchPad devices and start activities.";
+"NSBluetoothPeripheralUsageDescription" = "You need to allow bluetooth permission in order to connect CatchPad devices and start activities.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "You need to allow location services in order to connect CatchPad devices and start activities. (Location is used for bluetooth low energy connection services)";
+"NSLocationAlwaysUsageDescription" = "You need to allow location services in order to connect CatchPad devices and start activities. (Location is used for bluetooth low energy connection services)";
+"NSLocationUsageDescription" = "The app uses bluetooth to find, connect and transfer data between different devices";
+"NSLocationWhenInUseUsageDescription" = "You need to allow location services in order to connect CatchPad devices and start activities. (Location is used for bluetooth low energy connection services)";
+"NSPhotoLibraryUsageDescription" = "You need to allow photo library permission in order to setup a prize system ui";
