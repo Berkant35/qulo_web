@@ -1,0 +1,4 @@
+"NSCameraUsageDescription" = "Abbiamo bisogno di questo permesso per utilizzare le fonti di immagini sul telefono";
+"NSSpeechRecognitionUsageDescription" = "Abbiamo bisogno di questo permesso per trascrivere ciò che dici durante la riunione in testo.";
+"NSMicrophoneUsageDescription" = "Abbiamo bisogno di questo permesso per registrare la tua riunione.";
+"NSPhotoLibraryUsageDescription" = "Abbiamo bisogno di questo permesso per utilizzare le fonti di immagini sul telefono";

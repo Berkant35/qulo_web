@@ -1,0 +1,4 @@
+enum TypeCameraOrGallery {
+  camera,
+  gallery,
+}

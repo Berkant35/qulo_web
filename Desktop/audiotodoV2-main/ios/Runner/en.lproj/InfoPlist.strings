@@ -1,0 +1,4 @@
+"NSCameraUsageDescription" = "We need this permission to use image sources on the phone";
+"NSSpeechRecognitionUsageDescription" = "We need this permission to transcribe what you say in the meeting into text.";
+"NSMicrophoneUsageDescription" = "We need this permission to record your meeting.";
+"NSPhotoLibraryUsageDescription" = "We need this permission to use image sources on the phone";

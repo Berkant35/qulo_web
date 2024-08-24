@@ -1,0 +1,4 @@
+"NSCameraUsageDescription" = "Telefonunuzdaki görüntü kaynaklarını kullanmak için bu izne ihtiyacımız var";
+"NSSpeechRecognitionUsageDescription" = "Toplantıda söylediklerinizi metne dönüştürmek için bu izne ihtiyacımız var.";
+"NSMicrophoneUsageDescription" = "Toplantınızı kaydetmek için bu izne ihtiyacımız var.";
+"NSPhotoLibraryUsageDescription" = "Telefonunuzdaki görüntü kaynaklarını kullanmak için bu izne ihtiyacımız var";

@@ -1,0 +1,4 @@
+"NSCameraUsageDescription" = "Wir benötigen diese Berechtigung, um Bildquellen auf dem Telefon zu verwenden";
+"NSSpeechRecognitionUsageDescription" = "Wir benötigen diese Berechtigung, um das, was Sie im Meeting sagen, in Text umzuwandeln.";
+"NSMicrophoneUsageDescription" = "Wir benötigen diese Berechtigung, um Ihr Meeting aufzunehmen.";
+"NSPhotoLibraryUsageDescription" = "Wir benötigen diese Berechtigung, um Bildquellen auf dem Telefon zu verwenden";
