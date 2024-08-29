@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:catchpad/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -57,13 +59,15 @@ class CustomCpInfoTexts {
         color: CpColors.cpChineseBlack.withOpacity(0.2),
       ),
       child: type1 && text != null
-          ? Text(
-              text,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall!
-                  .copyWith(color: Colors.white, fontSize: 11.sp),
-            )
+          ? Center(
+            child: Text(
+                text,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .copyWith(color: Colors.white, fontSize: 11.sp),
+              ),
+          )
           : Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -99,4 +103,44 @@ class CustomCpInfoTexts {
             ),
     );
   }
+
+  static Widget shareQrPopUpText(BuildContext context) {
+    final l10n = L10n.inst(context);
+
+    return Center(
+      child: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall!
+              .copyWith(fontSize: 16.sp, color: Colors.white,fontWeight: FontWeight.bold),
+          children: [
+            TextSpan(
+              text: l10n.iga_share_performance_video,
+            ),
+            WidgetSpan(
+              child: GradientText(
+                " CatchPad",
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .copyWith(fontSize: 15.sp,fontWeight: FontWeight.bold),
+                gradientType: GradientType.linear,
+                colors: const [
+                  CpColors.cpPrimary,
+                  CpColors.cpLightGreen,
+                ],
+              ),
+            ),
+            TextSpan(
+              text: l10n.iga_share_performance_video_chance,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
 }

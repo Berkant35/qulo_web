@@ -1,4 +1,5 @@
 import 'package:catchpad/prov/emb/emb_global_providers.dart';
+import 'package:catchpad/ui/emb/iga/dialog/iga_dialogs.dart';
 import 'package:catchpad/ui/widgets/cp_logo.dart';
 import 'package:catchpad/utils/cp_colors.dart';
 import 'package:catchpad/utils/emb/iga/iga_enums.dart';

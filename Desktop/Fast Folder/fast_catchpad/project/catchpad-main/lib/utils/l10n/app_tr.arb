@@ -5,6 +5,7 @@
   "age": "Yaş",
   "weight": "Kilo",
   "height": "Boyu",
+
   "email_copied": "Mail adresiniz kopyalandı",
   "form_email": "Mail Adresi",
   "form_back_to_home": "ana sayfa",
@@ -808,6 +809,7 @@
   "iga_qr_text" : "Şimdi kaydolun, %50 İNDİRİM kazanın",
   "iga_see_leaderboard" : "Lider Tablosu",
   "iga_share_performance_video" : "Performans videonu paylaş",
+  "iga_share_performance_video_chance" : "Kazanma Şansını Yakala!",
   "iga_get_discount_code" : "CatchPad indirim\n kodu kazan!",
   "number_of_participate":"Katılan Kişi Sayısı",
   "avarage_comparison_first_part" : "Ortalamanın",

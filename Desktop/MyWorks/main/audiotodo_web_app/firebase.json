@@ -1,0 +1,20 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/privacy-and-policy/en",
+        "destination": "/privacy-and-policy/en/index.html"
+      },
+      {
+        "source": "/privacy-and-policy/tr",
+        "destination": "/privacy-and-policy/tr/index.html"
+      }
+    ]
+  }
+}

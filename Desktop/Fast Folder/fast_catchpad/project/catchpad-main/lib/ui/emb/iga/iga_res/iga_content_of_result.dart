@@ -6,16 +6,14 @@ import 'package:catchpad/prov/game_result_prov.dart';
 import 'package:catchpad/ui/game/widgets/dotted_chart_widget.dart';
 import 'package:catchpad/utils/emb/iga/iga_enums.dart';
 import 'package:catchpad/utils/util_widgets/util_information_cards.dart';
+import 'package:catchpad_flutter_lib/catchpad_flutter_lib.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../../../models/enums/firebase/collenction_enums.dart';
-import '../../../../../models/game/player/player_model.dart';
 import '../../../../../prov/game/curr_game_prov.dart';
 import '../../../../../prov/game/game_curr_round_prov.dart';
 import '../../../../../prov/game/selected_players_prov.dart';
-import '../../../../../utils/cp_colors.dart';
 import '../../../../../utils/utils.dart';
 
 class IgaContentOfResult extends ConsumerStatefulWidget {
@@ -34,7 +32,7 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
 
     final game = ref.watch(currentGameProv);
     List<PlayerResultModel> results =
-    List<PlayerResultModel>.from(result?.playerResults ?? []);
+        List<PlayerResultModel>.from(result?.playerResults ?? []);
 
     if (results.length > 1 &&
         results.any((element) => element.correctCount != null)) {
@@ -48,27 +46,35 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
     }
     PlayerResultModel? winnerPlayerModel;
 
-    if(game!.id == 's1'){
+    if (game!.id == 's1') {
       // differenct correct count
-      results.sort((a,b) => (a.correctCount ?? 0).compareTo(b.correctCount ?? 0));
-      // same correct count
+      results.sort((a, b) {
+        logger.i(a.toJson());
+        logger.i(b.toJson());
 
+        return a.correctCount != b.correctCount
+            ? (b.correctCount ?? 0).compareTo(a.correctCount ?? 0)
+            : a.averageDuration!.compareTo(b.averageDuration!);
+      });
+      // same correct count
       final winnerPlayer = results.first;
       winnerPlayerModel = winnerPlayer;
     }
-    results.sort((a, b) => b.playerId.compareTo(a.playerId));
 
+    results.sort((a, b) => b.playerId.compareTo(a.playerId));
 
     return SizedBox.expand(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
-        children: dynamicContent(game.id, results,winnerPlayerModel: winnerPlayerModel),
+        children: dynamicContent(game.id, results,
+            winnerPlayerModel: winnerPlayerModel),
       ),
     );
   }
 
-  List<Widget> dynamicContent(id, List<PlayerResultModel> results,{PlayerResultModel? winnerPlayerModel}) {
+  List<Widget> dynamicContent(id, List<PlayerResultModel> results,
+      {PlayerResultModel? winnerPlayerModel}) {
     {
       switch (id) {
         case 's16':
@@ -78,7 +84,7 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
         case '80':
           return _igaFormulaDikkatDikkatDinleYakala(results, needCounter: true);
         case 's1':
-          return _formulaYarisi(results,winnerPlayer: winnerPlayerModel);
+          return _formulaYarisi(results, winnerPlayer: winnerPlayerModel);
         case 's35':
           return bulBakalim(ref, results, needCounter: true);
         case 's4':
@@ -102,7 +108,9 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
 
     ref.read(currentIgaResultManager.notifier).createResult(ref,
         primaryScore: averageDuration?.inMilliseconds.toDouble() ?? 0.0,
-        secondaryScore: scoreCorrect?.toDouble() ?? 0,isMultipleAndSecondPlayer: true,isSinglePlayerGame: true);
+        secondaryScore: scoreCorrect?.toDouble() ?? 0,
+        isMultipleAndSecondPlayer: true,
+        isSinglePlayerGame: true);
 
     return [
       const Spacer(),
@@ -111,59 +119,55 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
         child: Center(
           child: needCounter
               ? CustomCpInformationCards.basicInformationsWithPrimaryHeaderCounters(
-              ref: ref,
-              insidePadding:
-              EdgeInsets.symmetric(vertical: 2.h, horizontal: 2.h),
-              primaryTitle: inst.iga_your_average_reaction_time,
-              primaryDescription: (averageDuration != null
-                  ? ('${averageDuration.inMilliseconds}ms')
-                  : "-") ??
-                  "-",
-              bottomFirstBoxValue: scoreCorrect.toString() ?? "-",
-              bottomFirstBoxName: inst.score_target,
-              bottomSecondBoxName: inst.worst,
-              bottomSecondBoxValue: (maxDuration != null
-                  ? ('${maxDuration.inMilliseconds}ms')
-                  : "-") ??
-                  "-",
-              bottomThirdBoxName: inst.best,
-              bottomThirdBoxValue: (minDuration != null
-                  ? ('${minDuration.inMilliseconds}ms')
-                  : "-") ??
-                  "-",
-              bottomFourthBoxName: inst.activity_result_screen_total_time,
-              bottomFourthBoxValue:
-              '${ref.read(currentGameProv)!.setup.duration!.duration.inSeconds}s',
-              upperFirstBoxName: inst.score_correct,
-              upperFirstBoxValue: scoreCorrect.toString(),
-              upperSecondBoxName: inst.score_wrong,
-              upperSecondBoxValue: scoreIncorrect.toString(),
-              upperThirdBoxName: inst.score_total,
-              upperThirdBoxValue:
-              ((scoreCorrect ?? 0) - (scoreIncorrect ?? 0)).toString(),
-              paddingHorizontalDivider: 2.w,
-              paddingVerticalDivider: 2.h)
+                  ref: ref,
+                  insidePadding:
+                      EdgeInsets.symmetric(vertical: 2.h, horizontal: 2.h),
+                  primaryTitle: inst.iga_your_average_reaction_time,
+                  primaryDescription: (averageDuration != null
+                          ? ('${averageDuration.inMilliseconds}ms')
+                          : "-") ??
+                      "-",
+                  bottomFirstBoxValue: scoreCorrect.toString() ?? "-",
+                  bottomFirstBoxName: inst.score_target,
+                  bottomSecondBoxName: inst.worst,
+                  bottomSecondBoxValue: (maxDuration != null
+                          ? ('${maxDuration.inMilliseconds}ms')
+                          : "-") ??
+                      "-",
+                  bottomThirdBoxName: inst.best,
+                  bottomThirdBoxValue: (minDuration != null
+                          ? ('${minDuration.inMilliseconds}ms')
+                          : "-") ??
+                      "-",
+                  bottomFourthBoxName: inst.activity_result_screen_total_time,
+                  bottomFourthBoxValue:
+                      '${ref.read(currentGameProv)!.setup.duration!.duration.inSeconds}s',
+                  upperFirstBoxName: inst.score_correct,
+                  upperFirstBoxValue: scoreCorrect.toString(),
+                  upperSecondBoxName: inst.score_wrong,
+                  upperSecondBoxValue: scoreIncorrect.toString(),
+                  upperThirdBoxName: inst.score_total,
+                  upperThirdBoxValue:
+                      ((scoreCorrect ?? 0) - (scoreIncorrect ?? 0)).toString(),
+                  paddingHorizontalDivider: 2.w,
+                  paddingVerticalDivider: 2.h)
               : CustomCpInformationCards.basicInformationsWithPrimaryHeader(
-            ref: ref,
-            primaryTitle: inst.iga_your_average_reaction_time,
-            primaryDescription:
-            '${averageDuration?.inMilliseconds}ms' ?? "-",
-            bottomFirstBoxValue: scoreCorrect.toString() ?? "-",
-            bottomFirstBoxName: inst.score_target,
-            bottomSecondBoxName: inst.worst,
-            bottomSecondBoxValue:
-            '${maxDuration!.inMilliseconds}ms' ?? "-",
-            bottomThirdBoxName: inst.best,
-            bottomThirdBoxValue:
-            '${minDuration!.inMilliseconds}ms' ?? "-",
-            bottomFourthBoxName: inst.activity_result_screen_total_time,
-            bottomFourthBoxValue: '${ref
-                .read(currentGameProv)!
-                .setup
-                .duration!
-                .duration
-                .inSeconds}s',
-          ),
+                  ref: ref,
+                  primaryTitle: inst.iga_your_average_reaction_time,
+                  primaryDescription:
+                      '${averageDuration?.inMilliseconds}ms' ?? "-",
+                  bottomFirstBoxValue: scoreCorrect.toString() ?? "-",
+                  bottomFirstBoxName: inst.score_target,
+                  bottomSecondBoxName: inst.worst,
+                  bottomSecondBoxValue:
+                      '${maxDuration!.inMilliseconds}ms' ?? "-",
+                  bottomThirdBoxName: inst.best,
+                  bottomThirdBoxValue:
+                      '${minDuration!.inMilliseconds}ms' ?? "-",
+                  bottomFourthBoxName: inst.activity_result_screen_total_time,
+                  bottomFourthBoxValue:
+                      '${ref.read(currentGameProv)!.setup.duration!.duration.inSeconds}s',
+                ),
         ),
       ),
       const Spacer(),
@@ -187,10 +191,10 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
   }
 
   List<Widget> bulBakalim(
-      WidgetRef ref,
-      List<PlayerResultModel> res, {
-        bool needCounter = false,
-      }) {
+    WidgetRef ref,
+    List<PlayerResultModel> res, {
+    bool needCounter = false,
+  }) {
     final model = res.first;
     final averageDuration =
         model.averageDuration ?? model.averageTeamHarmonyDuration;
@@ -199,13 +203,15 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
     final inst = L10n.inst(context);
     ref.read(currentIgaResultManager.notifier).createResult(ref,
         primaryScore: double.parse(Duration(
-            milliseconds: (averageDuration?.inMilliseconds ?? 0) *
-                (scoreCorrect ?? 0))
-            .formatSecondsMilli(context)
-            .replaceAll(" s", "")) *
-            1000 ??
+                        milliseconds: (averageDuration?.inMilliseconds ?? 0) *
+                            (scoreCorrect ?? 0))
+                    .formatSecondsMilli(context)
+                    .replaceAll(" s", "")) *
+                1000 ??
             0.0,
-        secondaryScore: scoreCorrect?.toDouble() ?? 0.0,isMultipleAndSecondPlayer: true,isSinglePlayerGame: true);
+        secondaryScore: scoreCorrect?.toDouble() ?? 0.0,
+        isMultipleAndSecondPlayer: true,
+        isSinglePlayerGame: true);
 
     return [
       Column(
@@ -215,10 +221,10 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
               ref: ref,
               title: L10n.inst(context).time_of_find_pad,
               description: Duration(
-                  milliseconds: (averageDuration?.inMilliseconds ?? 0) *
-                      (scoreCorrect ?? 0))
-                  .formatSecondsMilli(context)
-                  .toString() ??
+                          milliseconds: (averageDuration?.inMilliseconds ?? 0) *
+                              (scoreCorrect ?? 0))
+                      .formatSecondsMilli(context)
+                      .toString() ??
                   "-"),
           CustomCpInformationCards.customDivider(2.w, 3.h, customWidth: 32.w),
           CustomCpInformationCards.fourInformation(
@@ -254,7 +260,9 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
 
     ref.read(currentIgaResultManager.notifier).createResult(ref,
         primaryScore: averageDuration?.inMilliseconds.toDouble() ?? 0.0,
-        secondaryScore: scoreCorrect?.toDouble() ?? 0.0,isMultipleAndSecondPlayer: true,isSinglePlayerGame: true);
+        secondaryScore: scoreCorrect?.toDouble() ?? 0.0,
+        isMultipleAndSecondPlayer: true,
+        isSinglePlayerGame: true);
 
     return [
       Column(
@@ -277,7 +285,7 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
             bottomThirdBoxValue: '${averageDuration?.inMilliseconds}ms' ?? "-",
             bottomFourthBoxName: inst.activity_result_screen_total_time,
             bottomFourthBoxValue:
-            '${ref.read(currentGameProv)!.setup.duration!.duration.inSeconds}s',
+                '${ref.read(currentGameProv)!.setup.duration!.duration.inSeconds}s',
             upBoxWidth: 8.w,
             width: 50.w,
             dividerWidth: 36.w,
@@ -295,11 +303,8 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
   }
 
   List<Widget> _formulaYarisi(List<PlayerResultModel> res,
-      {bool needCounter = false,required PlayerResultModel? winnerPlayer}) {
-
-
+      {bool needCounter = false, required PlayerResultModel? winnerPlayer}) {
     // TODO: CREATE WINNER AND ANOTHER PLAYER COMPETITIVE RESULTS
-
 
     // final model = res.first;
     // final inst = L10n.inst(context);
@@ -315,30 +320,28 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
     //     primaryScore: averageDuration?.inMilliseconds.toDouble() ?? 0.0,
     //     secondaryScore: scoreCorrect?.toDouble() ?? 0);
 
-
-
-
     final firstPlayer = res.first;
     final firstPlayerAverageDuration =
         firstPlayer.averageDuration ?? firstPlayer.averageTeamHarmonyDuration;
     final firstPlayerScoreCorrect = firstPlayer.correctCount;
 
     final secondPlayer = res.last;
-    final secondPlayerAverageDuration = secondPlayer.averageDuration ??
-        secondPlayer.averageTeamHarmonyDuration;
+    final secondPlayerAverageDuration =
+        secondPlayer.averageDuration ?? secondPlayer.averageTeamHarmonyDuration;
     final secondPlayerScoreCorrect = secondPlayer.correctCount;
 
-
     ref.read(currentIgaResultManager.notifier).createResult(ref,
-        primaryScore: firstPlayerAverageDuration?.inMilliseconds.toDouble() ?? 0.0,
-        secondaryScore: firstPlayerScoreCorrect?.toDouble() ?? 0,isMultipleAndSecondPlayer: false);
+        primaryScore:
+            firstPlayerAverageDuration?.inMilliseconds.toDouble() ?? 0.0,
+        secondaryScore: firstPlayerScoreCorrect?.toDouble() ?? 0,
+        isMultipleAndSecondPlayer: false);
 
     //create result for second player
     ref.read(currentIgaResultManager.notifier).createResult(ref,
-        primaryScore: secondPlayerAverageDuration?.inMilliseconds.toDouble() ?? 0.0,
-        secondaryScore: secondPlayerScoreCorrect?.toDouble() ?? 0,isMultipleAndSecondPlayer: true);
-
-
+        primaryScore:
+            secondPlayerAverageDuration?.inMilliseconds.toDouble() ?? 0.0,
+        secondaryScore: secondPlayerScoreCorrect?.toDouble() ?? 0,
+        isMultipleAndSecondPlayer: true);
 
     return [
       ...res.map((perPlayerResultModel) {
@@ -373,15 +376,15 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
           child: CustomCpInformationCards.buildCompetitivePlayerResultCard(
               titleOfBottomCard: inst.iga_your_average_reaction_time,
               insidePadding:
-              const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               valueOfBottomCard: (averageDuration != null
-                  ? ('${averageDuration.inMilliseconds}ms')
-                  : "-") ??
+                      ? ('${averageDuration.inMilliseconds}ms')
+                      : "-") ??
                   "-",
               upperFirstBoxName: inst.score_target,
               upperFirstBoxValue:
-              ((scoreIncorrect ?? 0).abs() + (scoreCorrect ?? 0).abs())
-                  .toString(),
+                  ((scoreIncorrect ?? 0).abs() + (scoreCorrect ?? 0).abs())
+                      .toString(),
               maxDuration: maxDuration,
               minDuration: minDuration,
               showCrown: model.playerId == winnerPlayer?.playerId,
@@ -391,30 +394,30 @@ class _IgaContentOfResultState extends ConsumerState<IgaContentOfResult> {
               bottomSecondBoxValue: ('${minDuration!.inMilliseconds}ms') ?? "-",
               bottomThirdBoxName: inst.activity_result_screen_average,
               bottomThirdBoxValue:
-              ('${averageDuration!.inMilliseconds}ms') ?? "-",
+                  ('${averageDuration!.inMilliseconds}ms') ?? "-",
               playerColor: playerColor,
               inst: inst,
               context: context),
         );
       }).joinWidgetList((index) => SizedBox(
-        width: 10.w,
-        height: double.infinity,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Image.asset(
-              IgaAssets.iga_in_game_thunderbolt.getPath,
-              height: 40.h,
-              width: 12.w,
+            width: 10.w,
+            height: double.infinity,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset(
+                  IgaAssets.iga_in_game_thunderbolt.getPath,
+                  height: 40.h,
+                  width: 12.w,
+                ),
+                Image.asset(
+                  IgaAssets.vs.getPath,
+                  height: 18.h,
+                  width: 12.w,
+                ),
+              ],
             ),
-            Image.asset(
-              IgaAssets.vs.getPath,
-              height: 18.h,
-              width: 12.w,
-            ),
-          ],
-        ),
-      ))
+          ))
     ];
   }
 }

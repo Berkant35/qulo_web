@@ -170,7 +170,7 @@ flutter:
     - assets/lang/
     - assets/animation/lottie/
     - assets/icons/
-    #- assets/iga/
+    - assets/iga/
     - assets/images/
     - assets/images/svg/
     - assets/images/games/

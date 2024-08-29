@@ -61,7 +61,7 @@ class CurrentDeviceManagerProvider
     final listOfFuture = <Future>[];
 
     if (!ref.context.mounted) return;
-    if(ref.read(currentEmbModeManager) != 1){
+    if(ref.read(currentEmbModeManager) != 1) {
       listOfFuture.add(
         ref
             .read(currentPadErrorProvManager.notifier)
@@ -107,33 +107,47 @@ class CurrentDeviceManagerProvider
           ),
         ));
      /// TODO
-    if ((deviceModel.isCp04 || adminIdList.contains(ref.read(currentUserProv)?.uid)) &&
-        ref.read(currentEmbModeManager) == 0 && (ref.read(currentNeedOtaManager).contains(deviceModel.macId?.toUpperCase()) ||
-        deviceModel.swVersion != '9999999' && deviceModel.swVersion != "-1" &&
-            deviceModel.swVersion !=
-                ref.read(currentPadOtaConfigManager).version &&
-            !ref
-                .read(currentAllDeviceUploadingManager)
-                .values
-                .any((element) => element == LoadingStates.loading) &&
-            !queueOtaDeviceId.contains(deviceId))) {
+    // Eğer cihaz CP04 modeliyse veya kullanıcı admin ise ve EMB modu kapalı ise
 
+    logger.w(
+      "Is Cp 04: ${deviceModel.isCp04}\n"
+          "Current uid: ${adminIdList.contains(ref.read(currentUserProv)?.uid)}"
+          "Emb Mode Manager: ${ref.read(currentEmbModeManager) == 0}"
+    );
 
-      anyAskedForDevice.add(deviceId);
+    if (ref.read(currentNeedOtaManager).contains(deviceModel.macId) || (deviceModel.isCp04 || adminIdList.contains(ref.read(currentUserProv)?.uid)) &&
+        ref.read(currentEmbModeManager) == 0) {
+      logger.w("1");
+      // Eğer OTA ihtiyacı olan cihazlar listesinde varsa veya yazılım versiyonu uyumsuz ise
+      if (ref.read(currentNeedOtaManager).contains(deviceModel.macId?.toUpperCase()) ||
+          (deviceModel.swVersion != '9999999' &&
+              deviceModel.swVersion != "-1" &&
+              deviceModel.swVersion != ref.read(currentPadOtaConfigManager).version &&
+              // Şu anda herhangi bir cihaz OTA yüklüyor mu?
+              !ref.read(currentAllDeviceUploadingManager).values.any((element) => element == LoadingStates.loading) &&
+              // Bu cihaz OTA kuyruğunda değilse
+              !queueOtaDeviceId.contains(deviceId))) {
+        logger.w("2");
+        // Cihazı "asked" listesine ekleyip OTA sürecini başlatıyoruz
+        anyAskedForDevice.add(deviceId);
+        setStartLoadingAndPercentProcess(ref, deviceId);
 
-      setStartLoadingAndPercentProcess(ref, deviceId);
+        await chooseOtaStyleOldOrNewSystemOta(deviceModel, deviceId, ref, awesomeDialog);
 
-      await chooseOtaStyleOldOrNewSystemOta(
-          deviceModel, deviceId, ref, awesomeDialog);
-
-    } else if ((deviceModel.isCp04 || adminIdList.contains(ref.read(currentUserProv)?.uid)) && ref.read(currentEmbModeManager) == 0 && (ref.read(currentNeedOtaManager).contains(deviceModel.macId) ||
-        deviceModel.swVersion != ref.read(currentPadOtaConfigManager).version && deviceModel.swVersion != "-1" &&
-        ref
-                .read(currentAllDeviceUploadingManager)
-                .values
-                .any((element) => element == LoadingStates.loading))) {
-      await addQueueOTADevice(deviceId, ref, deviceModel, awesomeDialog);
+        // Eğer cihaz CP04 modeliyse veya kullanıcı admin ise ve EMB modu kapalı ise
+        // ve cihaz OTA ihtiyacı olanlar listesinde fakat şu anda yükleme yapılıyorsa
+      } else if (ref.read(currentNeedOtaManager).contains(deviceModel.macId) ||
+          (deviceModel.swVersion != ref.read(currentPadOtaConfigManager).version &&
+              deviceModel.swVersion != "-1" &&
+              ref.read(currentAllDeviceUploadingManager).values.any((element) => element == LoadingStates.loading))) {
+        logger.w("3");
+        // Cihazı OTA kuyruğuna ekliyoruz
+        await addQueueOTADevice(deviceId, ref, deviceModel, awesomeDialog);
+      }
+    }else{
+      logger.w("4");
     }
+
   }
 
   Future<void> addQueueOTADevice(String deviceId, WidgetRef ref,

@@ -832,6 +832,7 @@
   "iga_dialogue_description_before_created_user" : "Please try entering a different email address and username.",
   "iga_enter_slang_free_text":"Please refrain from slang expressions.",
   "iga_share_performance_video" : "Share your performance video",
+  "iga_share_performance_video_chance" : "Winning Seize Your Chance!",
   "iga_get_discount_code" : "Get a CatchPad discount code!",
   "iga_next":"Next",
   "iga_skip": "Skip",

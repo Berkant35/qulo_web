@@ -241,10 +241,9 @@ class UpdateOtaFileNotifier extends StateNotifier<LoadingStates> {
           .get();
 
       PadOtaConfig currentPadOtaConfig = padOtaConfig.data()!;
-      //kDebugMode
-      //           ? debugOTALink
-      //           : currentPadOtaConfig.currentVersionGithubLink ?? ""
-      final uri = Uri.parse(debugOTALink);
+      if(currentPadOtaConfig.currentVersionGithubLink == null) return;
+
+      final uri = Uri.parse(currentPadOtaConfig.currentVersionGithubLink!);
 
       var response = await http.get(uri);
 

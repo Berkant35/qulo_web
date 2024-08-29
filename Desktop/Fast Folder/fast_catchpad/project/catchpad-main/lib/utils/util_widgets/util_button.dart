@@ -364,6 +364,7 @@ class CustomCatchpadButtons {
         customBorder: buildRoundedRectangleBorder(borderRadius: borderRadius),
         child: Container(
           height: height,
+          width: width,
           padding: padding ?? EdgeInsets.symmetric(vertical: 1.h),
           decoration: ShapeDecoration(
             color: backColor ?? Colors.white.withOpacity(0.04),

@@ -22,6 +22,7 @@ enum IgaAssets {
   share,
   iga_in_game_background,
   qr_get_discount,
+  balloon_pads,
   graph,
   line_chart,
   iga_in_game_thunderbolt,

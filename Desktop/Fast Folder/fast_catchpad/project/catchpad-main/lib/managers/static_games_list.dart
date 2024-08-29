@@ -680,8 +680,8 @@ abstract class StaticGamesList {
       setup: StaticGameSetupModel(
           type: GameEndType.duration,
           scoreTypeParam1: GameScoreType.catchCount,
-          scoreTypeParam2: GameScoreType.averageDuration,
-          scoreTypeParam3: GameScoreType.totalDuration,
+          scoreTypeParam2: GameScoreType.totalDuration,
+          scoreTypeParam3: GameScoreType.averageDuration,
           scoreTypeParam4: GameScoreType.minDuration,
           scoreTypeParam5: GameScoreType.maxDuration,
           stagedPlayerModel: StagedPlayerModel(
@@ -723,11 +723,6 @@ abstract class StaticGamesList {
               .secondPlayerDiscoveredDevices
               .toSet();
 
-          logger
-              .i("firstPlayerDiscoveredSet:${firstPlayerDiscoveredSet.length}");
-          logger.i(
-              "secondPlayerDiscoveredSet:${secondPlayerDiscoveredSet.length}");
-          logger.i("easyDiscoveredDevice:${easyDiscoveredDevicesSet.length}");
 
           final firstPlayer = players.first.copyWith(
             devices:
@@ -741,8 +736,6 @@ abstract class StaticGamesList {
                         .toList(),
           );
 
-          logger.i(
-              "Second Player Discovered Devices: $secondPlayerDiscoveredSet\nEasy $easyDiscoveredDevicesSet");
 
           final secondPlayer = players.last.copyWith(
             devices:
@@ -755,7 +748,6 @@ abstract class StaticGamesList {
                         .intersection(secondPlayerDiscoveredSet)
                         .toList(),
           );
-          logger.i("After intersection: ${secondPlayer.devices.length}");
 
           players.clear();
           players.addAll([firstPlayer, secondPlayer]);
@@ -6254,6 +6246,13 @@ abstract class StaticGamesList {
           if (chosenSensor == UsedSensorsType.tap) {
             await for (final event
                 in StaticGameManager.listenToTouch(dev.id, ref: ref)) {
+
+              debugPrint("Dev: ${dev.id} -> "
+                  "${event.isValid} "
+                  "${event.responseTime}"
+                  "${event.tap.toJson()}");
+
+
               if (event.isValid && scoreCondition) {
                 scoreCondition = false;
                 // try {
@@ -6319,6 +6318,10 @@ abstract class StaticGamesList {
 
             await for (final event in strm) {
               final dis = event.distance.distance;
+              debugPrint("Dev: ${dev.id} -> "
+                  "${event.isValid} "
+                  "${event.responseTime}"
+                  "${event.distance.toJson()}");
 
               if ((event.isValid && dis < wantedDis) && newPadLed) {
                 try {

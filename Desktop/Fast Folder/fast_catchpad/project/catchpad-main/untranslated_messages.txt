@@ -282,6 +282,7 @@
     "iga_dialogue_description_before_created_user",
     "iga_enter_slang_free_text",
     "iga_share_performance_video",
+    "iga_share_performance_video_chance",
     "iga_get_discount_code",
     "iga_next",
     "iga_skip",

@@ -2,6 +2,7 @@ import 'package:catchpad/managers/static_games_list.dart';
 import 'package:catchpad/models/enums/traces/play_traces_enum.dart';
 import 'package:catchpad/prov/game/curr_game_prov.dart';
 import 'package:catchpad/prov/global_providers.dart';
+import 'package:catchpad/ui/emb/iga/dialog/iga_dialogs.dart';
 import 'package:catchpad/utils/cp_colors.dart';
 import 'package:catchpad/utils/cp_extensions.dart';
 import 'package:catchpad/utils/emb/iga/iga_enums.dart';
@@ -33,37 +34,44 @@ class IGAResult extends ConsumerStatefulWidget {
 
 class _IGAResultState extends ConsumerState<IGAResult> {
   @override
+  void initState() {
+    super.initState();
+    Future(() {
+      IgaDialogs.shareQrDialog(ref);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final inst = L10n.inst(context);
     final result = ref.watch(gameResultProv);
 
     Future(() {
-
       ref.read(currentSafeInGameToggleState.notifier).changState(false, ref);
 
       FirebaseIgaCollectionEnumsWithField.iga_locations.reference
           .doc(ref.read(currentIgaResultManager)!.igaLocationId)
           .update(
-        ref
-            .read(currentIgaResultManager.notifier)
-            .currentLocation!
-            .copyWith(
-          igaLocationGameCount: (ref
-              .read(currentIgaResultManager.notifier)
-              .currentLocation!
-              .igaLocationGameCount ??
-              0) +
-              1,
-          updatedAt: DateTime.now().toString().substring(0, 19),
-          igaLastGameInfoId: ref.read(currentGameProv)?.id,
-        )
-            .toJson(),
-      );
+            ref
+                .read(currentIgaResultManager.notifier)
+                .currentLocation!
+                .copyWith(
+                  igaLocationGameCount: (ref
+                              .read(currentIgaResultManager.notifier)
+                              .currentLocation!
+                              .igaLocationGameCount ??
+                          0) +
+                      1,
+                  updatedAt: DateTime.now().toString().substring(0, 19),
+                  igaLastGameInfoId: ref.read(currentGameProv)?.id,
+                )
+                .toJson(),
+          );
       ref.read(currentIgaResultManager.notifier).incrementCurrentLocation();
     });
 
     List<PlayerResultModel> results =
-    List<PlayerResultModel>.from(result?.playerResults ?? []);
+        List<PlayerResultModel>.from(result?.playerResults ?? []);
 
     return SizedBox(
       width: 100.w,
@@ -90,9 +98,8 @@ class _IGAResultState extends ConsumerState<IGAResult> {
     );
   }
 
-
   Widget standartOptionButtons(
-      AppLocalizations inst, GameResultModel? result) =>
+          AppLocalizations inst, GameResultModel? result) =>
       Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -119,7 +126,7 @@ class _IGAResultState extends ConsumerState<IGAResult> {
 
                       ref.read(detailGameProv.notifier).setState(
                           ref.watch(currentIgaPlayerModeManager) ==
-                              IGAPlayerModes.singlePlayer
+                                  IGAPlayerModes.singlePlayer
                               ? StaticGamesList.formula(ref)
                               : StaticGamesList.formulaYarisiSecond(ref));
 
@@ -155,19 +162,19 @@ class _IGAResultState extends ConsumerState<IGAResult> {
   double resultBorderThickness() => 0.3.w;
 
   Widget _header() => Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      const TextLogoWidget(),
-      Text(
-        ref.read(currentGameProv)!.title,
-        style: Theme.of(context)
-            .textTheme
-            .displayLarge!
-            .copyWith(fontWeight: FontWeight.w600),
-      )
-    ],
-  );
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const TextLogoWidget(),
+          Text(
+            ref.read(currentGameProv)!.title,
+            style: Theme.of(context)
+                .textTheme
+                .displayLarge!
+                .copyWith(fontWeight: FontWeight.w600),
+          )
+        ],
+      );
 
   Widget backgroundOfResult() {
     return Image.asset(

@@ -64,8 +64,6 @@ class BottomBarNotifier extends StateNotifier<BottomBarItem> {
             element.connectionState == DeviceConnectionState.connected)
         .length;
 
-
-
     final isConnectionContinue = ref.watch(connectingStateControlProv);
 
     Set<String> deadListKey = ref.read(currentDeadListManager).toSet();
@@ -75,16 +73,7 @@ class BottomBarNotifier extends StateNotifier<BottomBarItem> {
 
     final knownBatteriesCount = differenceDeviceKeys.length;
 
-    /*if (ref.watch(currentAllConnectionStates)) {
-      CustomDialogs.connectionNotCompleted(ref,
-          desc2:
-              L10n.inst(ref.context).connection_not_completed_dialogue_content_2);
-      return;
-    }*/
-    
-    
-
-    if (knownBatteriesCount != connectedCount && state.index == 1 ||
+    if ((knownBatteriesCount != connectedCount && state.index == 1) ||
         isConnectionContinue) {
       CustomDialogs.connectionNotCompleted(ref);
       return;
@@ -100,6 +89,7 @@ class BottomBarNotifier extends StateNotifier<BottomBarItem> {
     }
   }
 }
+
 
 const bottomBarItems = [
   BottomBarItem(
