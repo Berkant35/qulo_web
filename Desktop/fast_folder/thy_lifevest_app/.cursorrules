@@ -1,0 +1,810 @@
+# THY Lifevest App - Cursor AI Rules
+
+## Proje Genel Bilgileri
+Bu bir Flutter projesidir ve THY Lifevest takip uygulamasıdır.
+- Dart/Flutter kullanılmaktadır
+- Clean Architecture ve Feature-First yaklaşımı benimsenmiştir
+- BLoC/Cubit pattern ile state management yapılmaktadır
+- **Tüm UI metinleri İngilizce olmalıdır**
+
+## Kod Yazım Kuralları
+
+### Genel Kurallar
+- Tüm kod ve yorumlar Türkçe olmalıdır
+- **UI metinleri ve string literal'lar İngilizce olmalıdır**
+- Dart naming conventions'a uyulmalıdır (camelCase, PascalCase)
+- Her dosya için uygun import sıralaması: dart, flutter, package, relative
+- Null safety kurallarına uyulmalıdır
+- Extension metodları kullanılmalıdır
+
+### String Management Kuralları (Zorunlu)
+- **Tüm string değerleri app_strings.dart dosyasında tanımlanmalıdır**
+- **Hard-coded string'ler yasaktır**
+- **AppStrings sınıfından string değerleri alınmalıdır**
+- **UI metinleri, hata mesajları, label'lar app_strings.dart'ta olmalıdır**
+
+```dart
+// ❌ YANLIŞ - Hard-coded string
+Text("Bluetooth Connection")
+AppButton.filled(text: "Connect")
+
+// ✅ DOĞRU - AppStrings kullanımı
+Text(AppStrings.bluetoothConnection)
+AppButton.filled(text: AppStrings.connect)
+
+// ❌ YANLIŞ - Inline string
+showDialog(
+  context: context,
+  builder: (context) => AlertDialog(
+    title: Text("Error"),
+    content: Text("Connection failed"),
+  ),
+);
+
+// ✅ DOĞRU - AppStrings'den alınan değerler
+showDialog(
+  context: context,
+  builder: (context) => AlertDialog(
+    title: Text(AppStrings.error),
+    content: Text(AppStrings.connectionFailed),
+  ),
+);
+```
+
+### Color Management Kuralları (Zorunlu)
+- **Tüm renk değerleri AppColors sınıfından alınmalıdır**
+- **Hard-coded Colors kullanımı yasaktır**
+- **Colors.red, Colors.green gibi Material renkler kullanılmamalı**
+- **THY marka renklerine uygun AppColors kullanılmalıdır**
+
+```dart
+// ❌ YANLIŞ - Hard-coded Colors
+Container(color: Colors.red)
+Text(style: TextStyle(color: Colors.green))
+Icon(color: Colors.blue)
+
+// ✅ DOĞRU - AppColors kullanımı
+Container(color: AppColors.red200)
+Text(style: TextStyle(color: AppColors.success))
+Icon(color: AppColors.thyPrimary)
+
+// ❌ YANLIŞ - Material Colors
+Colors.grey.shade400
+Colors.green.withOpacity(0.1)
+
+// ✅ DOĞRU - AppColors with extension
+AppColors.gray400
+AppColors.success.withValues10
+```
+
+### Opacity Kullanımı (Zorunlu)
+- **withOpacity() metodu yasaktır**
+- **withValues() extension metodu kullanılmalıdır**
+- **AppColors'ta tanımlı extension'lar tercih edilmelidir**
+
+```dart
+// ❌ YANLIŞ - withOpacity kullanımı
+color: Colors.red.withOpacity(0.1)
+backgroundColor: AppColors.success.withOpacity(0.3)
+
+// ✅ DOĞRU - withValues extension kullanımı
+color: AppColors.red200.withValues10
+backgroundColor: AppColors.success.withValues30
+
+// ✅ DOĞRU - Predefined extension'lar
+AppColors.thyPrimary.withValues075  // 0.075 opacity
+AppColors.gray500.withValues15      // 0.15 opacity
+AppColors.success.withValues50      // 0.5 opacity
+```
+
+### Widget Creation Kuralları (Zorunlu)
+- **Ayrı widget oluştururken StatelessWidget veya StatefulWidget kullanılmalıdır**
+- **Function widget'lar yasaktır**
+- **Private widget'lar da StatelessWidget/StatefulWidget olmalıdır**
+- **Widget'lar const constructor ile oluşturulmalıdır**
+
+```dart
+// ❌ YANLIŞ - Function widget
+Widget _buildHeader() {
+  return Container(
+    child: Text("Header"),
+  );
+}
+
+// ❌ YANLIŞ - Method returning widget
+Widget buildContent(BuildContext context) {
+  return Column(children: [...]);
+}
+
+// ✅ DOĞRU - StatelessWidget kullanımı
+class _HeaderWidget extends StatelessWidget {
+  const _HeaderWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(AppStrings.header),
+    );
+  }
+}
+
+// ✅ DOĞRU - StatefulWidget kullanımı (state gerektiğinde)
+class _ContentWidget extends StatefulWidget {
+  const _ContentWidget({super.key});
+
+  @override
+  State<_ContentWidget> createState() => _ContentWidgetState();
+}
+
+class _ContentWidgetState extends State<_ContentWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [...]);
+  }
+}
+```
+
+### İsimlendirme Standardı
+- **Envanter/Sayım işlemleri**: Her zaman "inventory" keyword'ü kullanılmalıdır
+- **Dosya isimleri**: inventory_page.dart, inventory_cubit.dart vb.
+- **Sınıf isimleri**: InventoryPage, InventoryCubit, InventoryState vb.
+- **Navigation**: inventoryPage, inventorySettings vb.
+- **UI Metinleri**: "Inventory Operations", "Inventory Management" vb.
+- **Yorum ve değişkenler**: inventoryList, inventoryCount vb.
+
+### TextStyle Kullanım Kuralları
+- **AppTextStyles kullanımı zorunlu**: Asla custom TextStyle oluşturulmamalı
+- **Mevcut style'lar**: AppTextStyles.px14w600, AppTextStyles.px16w500 vb.
+- **Renk değişimi**: copyWith() ile renk değiştirme yapılabilir
+- **Font family**: Tüm text style'lar 'inter' font family kullanır
+
+### Dosya Organizasyonu
+- Feature-first yaklaşımı kullanılmalıdır
+- Her feature kendi klasöründe olmalıdır: view/, bloc/, model/, repository/
+- Core modülleri paylaşılan işlevsellik için kullanılmalıdır
+- UI bileşenleri ui_kit/ klasöründe organize edilmelidir
+
+### State Management
+- BLoC/Cubit pattern kullanılmalıdır
+- State sınıfları Freezed ile oluşturulmalıdır
+- Dependency injection için GetIt kullanılmalıdır
+- Event/State isimlendirmesi açık ve anlaşılır olmalıdır
+
+### UI/UX Kuralları
+- Material Design 3 prensiplerine uyulmalıdır
+- Responsive design uygulanmalıdır
+- THY marka renklerine uygun tema kullanılmalıdır
+- AppResponsiveScaffold kullanılmalıdır
+- Loading states uygun şekilde handle edilmelidir
+
+### API ve Network
+- Dio kullanılmalıdır
+- Retrofit ile type-safe API client oluşturulmalıdır
+- Error handling uygun şekilde yapılmalıdır
+- Interceptor'lar kullanılmalıdır
+
+### Code Generation
+- Freezed kullanılmalıdır immutable sınıflar için
+- JSON serialization için json_serializable kullanılmalıdır
+- Build runner ile code generation yapılmalıdır
+
+## Widget Oluşturma Kuralları
+
+### Sayfa Boyutu Sınırlaması
+- Her sayfa (page) 200 satırı geçmemeli
+- Büyük sayfalar küçük widget'lara bölünmeli
+- Karmaşık widget'lar ayrı dosyalarda tanımlanmalı
+- Widget'lar tekrar kullanılabilir olmalı
+
+### Extension Kullanımı (Zorunlu)
+- **context.gap8, context.gap16** gibi gap extension'ları kullanılmalı
+- **value.isNull, value.isNotNull** generic extension'ları kullanılmalı
+- **string.getValueOrDefault, string.isEmpty** string extension'ları kullanılmalı
+- **widget.toSliver** widget extension'ı kullanılmalı
+- **context.arguments** modal route extension'ı kullanılmalı
+- **context.isKeyboardOpen** insets extension'ı kullanılmalı
+
+### RenderFlex Overflow Hata Çözümleri
+- **Column/Row widget'larında overflow**: Flexible veya Expanded kullanın
+- **Text overflow**: maxLines ve TextOverflow.ellipsis kullanın
+- **MainAxisSize**: MainAxisSize.min kullanarak minimum alan kullanın
+- **Padding azaltma**: Container padding'lerini azaltın
+- **Widget boyutları**: İkon ve font boyutlarını responsive yapın
+
+### Widget Yapısı
+```dart
+// YANLIŞ - Custom TextStyle
+Text(
+  "Title",
+  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+)
+
+// DOĞRU - AppTextStyles kullanımı
+Text(
+  AppStrings.title,
+  style: AppTextStyles.px16w600,
+)
+
+// Renk değişimi gerekirse
+Text(
+  AppStrings.title,
+  style: AppTextStyles.px16w600.copyWith(color: AppColors.white),
+)
+
+// YANLIŞ - Overflow riski
+Column(
+  children: [
+    Text("Long text without maxLines"),
+    Icon(Icons.star, size: 48),
+  ]
+)
+
+// DOĞRU - Overflow korumalı
+Column(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Flexible(
+      child: Text(
+        AppStrings.longTextContent,
+        style: AppTextStyles.px14w500,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+      ),
+    ),
+    Icon(Icons.star, size: 24),
+  ]
+)
+
+// YANLIŞ - Function widget
+Widget _buildHeader() {
+  return Container(child: Text("Header"));
+}
+
+// DOĞRU - StatelessWidget
+class _HeaderWidget extends StatelessWidget {
+  const _HeaderWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(AppStrings.header),
+    );
+  }
+}
+```
+
+### Widget Bölme Stratejisi
+```dart
+// Ana sayfa (maksimum 200 satır)
+class ExamplePage extends StatefulWidget {
+  const ExamplePage({super.key});
+
+  @override
+  State<ExamplePage> createState() => _ExamplePageState();
+}
+
+class _ExamplePageState extends State<ExamplePage> {
+  @override
+  Widget build(BuildContext context) {
+    return AppResponsiveScaffold(
+      body: Column(
+        children: [
+          const _HeaderWidget(),
+          context.gap16,
+          const _ContentWidget(),
+          context.gap24,
+          const _FooterWidget(),
+        ],
+      ),
+    );
+  }
+}
+
+// Alt widget'lar ayrı sınıflar olarak
+class _HeaderWidget extends StatelessWidget {
+  const _HeaderWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // Header içeriği
+      child: Text(AppStrings.headerTitle),
+    );
+  }
+}
+
+class _ContentWidget extends StatelessWidget {
+  const _ContentWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // Content içeriği
+      child: Text(AppStrings.contentText),
+    );
+  }
+}
+```
+
+### Mevcut Extension Kullanım Rehberi
+```dart
+// Gap Extension'ları
+context.gap2, context.gap4, context.gap8, context.gap10
+context.gap12, context.gap16, context.gap20, context.gap24
+context.gap32, context.gap80
+context.gap2W, context.gap4W (width için)
+context.bottomPaddingGap, context.topPaddingGap
+
+// String Extension'ları
+string.getValueOrDefault
+string.isEmpty, string.isNotEmpty
+string.toInt, string.clear
+string.formatRate, string.capitalise
+
+// Generic Extension'ları
+value.isNull, value.isNotNull
+value.toNullString
+value.isEquals(other)
+
+// Widget Extension'ları
+widget.toSliver
+widget.toSliverPadding(padding: EdgeInsets.all(16))
+widget.toSliverWithPadding(padding: EdgeInsets.all(16))
+
+// Context Extension'ları
+context.arguments (route arguments)
+context.isKeyboardOpen
+context.hasErrorFormState
+```
+
+### Mevcut AppTextStyles Kullanım Rehberi
+```dart
+// Boyut ve ağırlık kombinasyonları
+AppTextStyles.px8w400    // 8px, FontWeight.w400
+AppTextStyles.px10w400   // 10px, FontWeight.w400
+AppTextStyles.px10w500   // 10px, FontWeight.w500
+AppTextStyles.px10w600   // 10px, FontWeight.w600
+AppTextStyles.px10w700   // 10px, FontWeight.w700
+AppTextStyles.px11w400   // 11px, FontWeight.w400
+AppTextStyles.px11w500   // 11px, FontWeight.w500
+AppTextStyles.px12w400   // 12px, FontWeight.w400
+AppTextStyles.px12w500   // 12px, FontWeight.w500
+AppTextStyles.px12w600   // 12px, FontWeight.w600
+AppTextStyles.px12w700   // 12px, FontWeight.w700
+AppTextStyles.px13w600   // 13px, FontWeight.w600
+AppTextStyles.px13w700   // 13px, FontWeight.w700
+AppTextStyles.px14w400   // 14px, FontWeight.w400
+AppTextStyles.px14w500   // 14px, FontWeight.w500
+AppTextStyles.px14w600   // 14px, FontWeight.w600
+AppTextStyles.px14w700   // 14px, FontWeight.w700
+AppTextStyles.px16w400   // 16px, FontWeight.w400
+AppTextStyles.px16w500   // 16px, FontWeight.w500
+AppTextStyles.px16w600   // 16px, FontWeight.w600
+AppTextStyles.px16w700   // 16px, FontWeight.w700
+AppTextStyles.px18w600   // 18px, FontWeight.w600
+AppTextStyles.px18w700   // 18px, FontWeight.w700
+AppTextStyles.px20w400   // 20px, FontWeight.w400
+AppTextStyles.px20w600   // 20px, FontWeight.w600
+AppTextStyles.px20w700   // 20px, FontWeight.w700
+AppTextStyles.px22w600   // 22px, FontWeight.w600
+AppTextStyles.px22w700   // 22px, FontWeight.w700
+AppTextStyles.px24w700   // 24px, FontWeight.w700
+
+// Validator için özel style
+AppTextStyles.validatorPx14w400 // Hata mesajları için kırmızı
+```
+
+## Önerilen Kod Yapısı
+
+### Widget Oluşturma
+```dart
+class ExamplePage extends StatefulWidget {
+  const ExamplePage({super.key});
+
+  @override
+  State<ExamplePage> createState() => _ExamplePageState();
+}
+
+class _ExamplePageState extends State<ExamplePage> {
+  @override
+  Widget build(BuildContext context) {
+    return AppResponsiveScaffold(
+      body: // Widget content
+    );
+  }
+}
+```
+
+### BLoC/Cubit Oluşturma
+```dart
+class ExampleCubit extends Cubit<ExampleState> {
+  ExampleCubit() : super(const ExampleState());
+
+  void methodName() {
+    emit(state.copyWith(status: UIStateStatus.loading));
+    // Logic here
+  }
+}
+```
+
+### State Sınıfı (Freezed)
+```dart
+@freezed
+abstract class ExampleState with _$ExampleState {
+  const factory ExampleState({
+    @Default(UIStateStatus.idle) UIStateStatus status,
+    @Default([]) List<Model> items,
+  }) = _ExampleState;
+}
+```
+
+## Yasaklanan Pratikler
+- setState kullanımı (BLoC/Cubit tercih edilmeli)
+- **Hard-coded strings (app_strings.dart kullanılmalı)**
+- **Hard-coded Colors (AppColors kullanılmalı)**
+- **Colors.red, Colors.green gibi Material Colors kullanımı**
+- **withOpacity() metodu (withValues() kullanılmalı)**
+- **Function widget'lar (StatelessWidget/StatefulWidget kullanılmalı)**
+- Magic numbers (constants kullanılmalı)
+- Inline styles (theme system kullanılmalı)
+- Direct API calls in UI (repository pattern kullanılmalı)
+- **200 satırdan uzun widget dosyaları**
+- **Extension'lar yerine manuel kodlama**
+- **SizedBox(height: X) yerine context.gapX kullanımı**
+- **Null check'ler yerine extension metodları**
+- **"counting", "sayım" yerine "inventory", "envanter" kullanımı**
+- **Türkçe UI metinleri (İngilizce kullanılmalı)**
+- **Text widget'larında maxLines/overflow kontrolü olmadan uzun metinler**
+- **Column/Row'da Flexible/Expanded kullanmadan overflow riski**
+- **Custom TextStyle oluşturma (AppTextStyles kullanılmalı)**
+
+## Hata Çözüm Rehberi
+
+### RenderFlex Overflow Hatası
+```dart
+// HATA: A RenderFlex overflowed by X pixels
+// ÇÖZÜM 1: Flexible kullanın
+Flexible(
+  child: Text(
+    AppStrings.longTextContent,
+    style: AppTextStyles.px14w500,
+    maxLines: 2,
+    overflow: TextOverflow.ellipsis,
+  ),
+)
+
+// ÇÖZÜM 2: MainAxisSize.min kullanın
+Column(
+  mainAxisSize: MainAxisSize.min,
+  children: [...],
+)
+
+// ÇÖZÜM 3: Padding'leri azaltın
+Container(
+  padding: EdgeInsets.all(12), // 20 yerine 12
+  child: [...],
+)
+
+// ÇÖZÜM 4: İkon/font boyutlarını azaltın
+Icon(Icons.star, size: 24), // 32 yerine 24
+Text(AppStrings.title, style: AppTextStyles.px14w600), // 18px yerine 14px
+```
+
+## Test Kuralları
+- Unit testler yazılmalıdır
+- Widget testleri önemli UI bileşenleri için yazılmalıdır
+- BLoC testleri her cubit/bloc için yazılmalıdır
+- Test dosyaları test/ klasöründe organize edilmelidir
+
+## Performance Kuralları
+- Cached network image kullanılmalıdır
+- ListView.builder kullanılmalıdır büyük listeler için
+- Const constructor'lar kullanılmalıdır
+- Unnecessary rebuilds önlenmelidir
+
+## Güvenlik Kuralları
+- API anahtarları environment variables'da tutulmalıdır
+- Sensitive data şifrelenmeli
+- Certificate pinning uygulanmalıdır production'da
+
+## Commit Kuralları
+- Conventional commits kullanılmalıdır
+- Türkçe commit mesajları yazılmalıdır
+- Her commit tek bir özellik/düzeltme içermelidir
+
+## Özel Notlar
+- THY marka guidelines'ına uyulmalıdır
+- Accessibility kurallarına dikkat edilmelidir
+- iOS ve Android platform farklılıkları göz önünde bulundurulmalıdır
+- Offline-first yaklaşımı benimsenmelidir
+
+## Proje Spesifik Kurallar
+
+### Navigation
+- NavigationService.instance kullanılmalıdır
+- NavigationConstants ile route isimleri tanımlanmalıdır
+- NavigationRoute sınıfında route'lar organize edilmelidir
+
+### Dependency Injection
+- GetIt service locator kullanılmalıdır
+- injection_container.dart dosyasında servisler kayıt edilmelidir
+- sl<ServiceType>() şeklinde servis çağrılmalıdır
+
+### String Management (Detaylı)
+- **app_strings.dart dosyası tek string source'u olmalıdır**
+- **Kategorize edilmiş string'ler kullanılmalıdır**
+- **Tüm error mesajları AppStrings'de tanımlanmalıdır**
+- **Button text'leri AppStrings'den alınmalıdır**
+- **Dialog title ve content'leri AppStrings'de olmalıdır**
+
+### Widget Architecture
+- **Her ayrı widget StatelessWidget veya StatefulWidget olmalıdır**
+- **Private widget'lar (_WidgetName) da Widget class'ı olmalıdır**
+- **Method returning Widget yasaktır**
+- **Const constructor'lar kullanılmalıdır**
+
+### Theme ve Styling
+- AppTheme.lightTheme kullanılmalıdır
+- AppColors sınıfından renkler kullanılmalıdır
+- AppConstants'tan sabitler kullanılmalıdır
+- Custom button'lar için AppButton kullanılmalıdır
+- **AppTextStyles sınıfından text style'lar kullanılmalıdır**
+
+### Error Handling
+- UIState ve UIStateStatus kullanılmalıdır
+- Failure sınıfı ile error handling yapılmalıdır
+- Try-catch blokları uygun şekilde kullanılmalıdır
+
+### Extensions
+- String, generic ve diğer extension'lar core/extension/ klasöründe tanımlanmalıdır
+- Null check'ler için extension metodları kullanılmalıdır
+- Type conversion'lar için extension metodları tercih edilmelidir
+
+### Responsive Design
+- ScreenSize.init() kullanılmalıdır
+- AppResponsiveScaffold ile responsive layout oluşturulmalıdır
+- Farklı ekran boyutları için uygun widget'lar kullanılmalıdır
+
+## Dokümantasyon Kuralları (Zorunlu)
+
+### Genel Dokümantasyon Standartları
+- **Her major feature için ayrı dokümantasyon dosyası oluşturulmalıdır**
+- **Dokümantasyonlar `docs/` klasöründe organize edilmelidir**
+- **Akış diagramları Mermaid ile oluşturulmalıdır**
+- **Code örnekleri eksiksiz ve çalışabilir olmalıdır**
+- **Türkçe ve İngilizce karışık kullanım: Başlıklar ve açıklamalar Türkçe, kod örnekleri İngilizce**
+
+### Dokümantasyon Dosya Yapısı
+```
+docs/
+├── BLE_FLOW_DOCUMENTATION.md      # Bluetooth akış detayları
+├── PROJECT_STRUCTURE.md           # Proje yapısı ve mimari
+├── FEATURE_DOCUMENTATION.md       # Özellik-spesifik dokümantasyon
+└── API_DOCUMENTATION.md           # API endpoint'leri ve kullanım
+```
+
+### BLE Dokümantasyon Standartları
+- **State management akışı detaylı açıklanmalıdır**
+- **Connection ve disconnection flowchart'ı bulunmalıdır**
+- **Preferences yönetimi dökümante edilmelidir**
+- **UI component'lerin state'leri açıklanmalıdır**
+- **Error handling scenarios listelenmelidir**
+- **Platform-specific (iOS/Android) notlar eklenmeli**
+
+### Proje Yapısı Dokümantasyonu
+- **Klasör hierarşisi ASCII tree formatında gösterilmelidir**
+- **Clean Architecture katmanları görselleştirilmelidir**
+- **Feature-first yaklaşımı açıklanmalıdır**
+- **Dependency injection akışı dökümante edilmelidir**
+- **Extension kullanım örnekleri verilmelidir**
+
+### Code Documentation Kuralları
+```dart
+/// Bluetooth cihaz bağlantısını yönetir
+/// 
+/// Bu cubit BLE cihazlarının taranması, bağlanması ve yönetimini sağlar.
+/// State'te hem aktif bağlı cihaz hem de son kayıtlı cihaz bilgileri tutulur.
+/// 
+/// Örnek kullanım:
+/// ```dart
+/// final cubit = sl<AppBluetoothCubit>();
+/// await cubit.connectToLocalDevice();
+/// ```
+class AppBluetoothCubit extends Cubit<AppBluetoothState> {
+  // Implementation
+}
+```
+
+### Mermaid Diagram Standartları
+```mermaid
+graph TD
+    A[Başlangıç] --> B[İşlem]
+    B --> C{Karar?}
+    C -->|Evet| D[Başarı]
+    C -->|Hayır| E[Hata]
+```
+
+### README Güncelleme Kuralları
+- **Her yeni feature eklendiğinde README güncellenmeli**
+- **Kurulum adımları güncel tutulmalı**
+- **Proje yapısı değişikliklerinde dokümantasyon senkronize edilmeli**
+- **BLE akışında değişiklik olduğunda ilgili bölüm güncellenmeli**
+
+### Dokümantasyon Review Kuralları
+- **Her PR'da ilgili dokümantasyon kontrol edilmeli**
+- **Breaking change'lerde dokümantasyon zorunlu güncellenmeli**
+- **Yeni feature'lar dokümantasyon olmadan merge edilmemeli**
+- **Deprecation'lar dökümante edilmeli**
+
+### Documentation-Driven Development
+- **Yeni feature geliştirme öncesi dokümantasyon taslağı hazırlanmalı**
+- **API değişiklikleri önce dokümantasyonda planlanmalı**
+- **Architect decisions (ADR) docs/'da saklanmalı**
+- **Team knowledge sharing için düzenli dokümantasyon review'ları yapılmalı**
+
+### BLE Communication Kuralları (Checkpoint - Working)
+- **Veri gönderme**: 20 byte chunking ile yapılmalıdır
+- **Delay mechanism**: Chunk'lar arası 25ms delay zorunlu
+- **Hex logging**: Debug için hex format kullanılmalı
+- **writeWithoutResponse**: BLE özellikleri kontrol edilmeli
+- **Response Command Mapping**: Request command + 1 = Response command kuralı (CRİTİK!)
+
+```dart
+// ✅ DOĞRU - BLE Chunking Implementation
+const int maxChunkSize = 20;
+if (data.length > maxChunkSize) {
+  for (int i = 0; i < data.length; i += maxChunkSize) {
+    final chunk = data.sublist(i, end);
+    await characteristic.write(chunk, withoutResponse: true);
+    if (end < data.length) {
+      await Future.delayed(const Duration(milliseconds: 25));
+    }
+  }
+}
+
+// ❌ YANLIŞ - Chunking olmadan direkt gönderme
+await characteristic.write(data, withoutResponse: true);
+
+// ✅ DOĞRU - Response Command Mapping (07 Haziran 2025 Checkpoint)
+switch (command) {
+  case 0xE1: // Tag buffer response (0xE0 + 1)
+    _handleTagBufferResponse(frame);
+  case 0x83: // Inventory start response (0x82 + 1)  
+    _handleInventoryStartResponse(frame);
+  case 0x8D: // Inventory stop response (0x8C + 1)
+    _handleInventoryStopResponse(frame);
+}
+
+// ❌ YANLIŞ - Yanlış response command mapping
+switch (command) {
+  case 0xE0: // YANLIŞ! Bu request code'u
+    _handleTagBufferResponse(frame);
+}
+```
+
+### Inventory System Kuralları (Working Implementation)
+- **Factory Pattern**: InventoryCubit factory olarak register edilmeli
+- **Lazy Initialization**: Initialize metodunu startInventory'de çağır
+- **Direct Cubit Access**: UI'da sl<InventoryCubit>() kullan
+- **State Synchronization**: Reader cubit'ten inventory state'ini senkronize et
+
+```dart
+// ✅ DOĞRU - Inventory Implementation Pattern
+class InventoryPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final inventoryCubit = sl<InventoryCubit>();
+    return BlocBuilder<InventoryCubit, InventoryState>(
+      bloc: inventoryCubit,
+      builder: (context, state) {
+        return AppButton.filled(
+          text: AppStrings.startInventory,
+          onTap: () => inventoryCubit.startInventory(),
+        );
+      }
+    );
+  }
+}
+
+// ✅ DOĞRU - Lazy Initialization
+Future<void> startInventory() async {
+  if (_readerStateSubscription == null) {
+    await initialize();
+  }
+  // ... rest of implementation
+}
+```
+
+### Extension Kuralları (Required)
+- **Uint8List.toHex()**: Hex conversion için kullanılmalı
+- **List.chunkedBySize()**: Chunking operations için kullanılmalı
+- **Uint8List.chunkedBySize()**: BLE data chunking için kullanılmalı
+
+```dart
+// ✅ DOĞRU - Extension Usage
+final hexData = data.toHex(); // Uint8List to hex
+final chunks = data.chunkedBySize(20); // Split data
+
+// ❌ YANLIŞ - Manual hex conversion
+final hexData = data.map((byte) => byte.toRadixString(16)).join();
+```
+
+### BLE Constants Usage (Critical)
+- **AppBleConstants**: Tüm UUID'ler constants'tan alınmalı
+- **readerControlCharUuid**: Command gönderme için
+- **readerDataCharUuid**: Data alma için
+
+```dart
+// ✅ DOĞRU
+await writeToCharacteristic(
+  AppBleConstants.readerControlCharUuid,
+  command,
+);
+
+// ❌ YANLIŞ - Hard-coded UUID
+await writeToCharacteristic(
+  "6e400002-b5a3-f393-e0a9-e50e24dcca9e",
+  command,
+);
+```
+
+### RFID Protocol Rules (Critical - 07 Haziran 2025)
+- **Response Command = Request Command + 1**: Bu kural CRİTİK ve değişmez!
+- **Pending Command System**: Expected response code ile mapping yapılmalı
+- **Frame Processing**: Protocol standardına uygun parsing
+- **Timeout Handling**: Response bekleme süreleri optimize edilmiş
+
+```dart
+// ✅ DOĞRU - RFID Protocol Command Mapping (CRITICAL!)
+const Map<int, int> RFID_COMMAND_MAPPING = {
+  0xE0: 0xE1, // Tag Buffer Request → Response
+  0x82: 0x83, // Inventory Start Request → Response  
+  0x8C: 0x8D, // Inventory Stop Request → Response
+  0x6E: 0x6F, // Filter Request → Response
+  0x72: 0x73, // Inventory Mode Request → Response
+  0x10: 0x11, // Power Set Request → Response
+  0x12: 0x13, // Power Get Request → Response
+  0xE4: 0xE5, // Buzzer Request → Response
+  0x84: 0x85, // Read Tag Request → Response
+};
+
+// ✅ DOĞRU - Response Processing
+Future<Uint8List?> _sendCommandAndGetResponse(Uint8List command) async {
+  final commandCode = command[4];
+  final expectedResponseCode = commandCode + 1; // CRİTİK KURAL!
+  
+  _pendingCommands[expectedResponseCode] = completer;
+  // Response geldiğinde expectedResponseCode ile match et
+}
+
+// ❌ YANLIŞ - Request code ile response bekleme
+_pendingCommands[commandCode] = completer; // Bu YANLIŞ!
+```
+
+```dart
+// ✅ DOĞRU - Extension Usage
+final hexData = data.toHex(); // Uint8List to hex
+final chunks = data.chunkedBySize(20); // Split data
+
+// ❌ YANLIŞ - Manual hex conversion
+final hexData = data.map((byte) => byte.toRadixString(16)).join();
+```
+
+### BLE Constants Usage (Critical)
+- **AppBleConstants**: Tüm UUID'ler constants'tan alınmalı
+- **readerControlCharUuid**: Command gönderme için
+- **readerDataCharUuid**: Data alma için
+
+```dart
+// ✅ DOĞRU
+await writeToCharacteristic(
+  AppBleConstants.readerControlCharUuid,
+  command,
+);
+
+// ❌ YANLIŞ - Hard-coded UUID
+await writeToCharacteristic(
+  "6e400002-b5a3-f393-e0a9-e50e24dcca9e",
+  command,
+);
+``` 
