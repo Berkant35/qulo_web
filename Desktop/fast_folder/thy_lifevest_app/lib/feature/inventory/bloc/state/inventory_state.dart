@@ -6,6 +6,10 @@ import 'package:thy_lifevest_app/feature/reader/bloc/state/reader_state.dart';
 
 part 'inventory_state.freezed.dart';
 
+//a55a00098d01850d0a
+//a55a00098d01850d0a
+
+
 typedef LifevestTagMap = Map<String, LifevestTagModel>;
 
 /// Inventory işlemleri için state yönetimi

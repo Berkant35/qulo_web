@@ -115,20 +115,18 @@ class InventoryCubit extends Cubit<InventoryState> {
   Future<void> stop() async {
     debugPrint("[INVENTORY] 🛑 STOP BUTTON PRESSED!");
     try {
-      // Loading state'i başlat
+      
       emit(
         state.copyWith(
           statusMessage: AppStrings.stoppingInventory,
-          failure: null, // Önceki error'ları temizle
+          failure: null,
+          isLoading: true, isInventoryRunning: false,
         ),
       );
 
-      // Reader'dan inventory'yi durdur
-      debugPrint("[INVENTORY] 🛑 Calling reader cubit stopInventory...");
-      emit(state.copyWith(isLoading: false, isInventoryRunning: false, statusMessage: AppStrings.inventoryStopped));
-
       await _readerCubit.stopInventory();
-
+      
+      emit(state.copyWith(isLoading: false, isInventoryRunning: false, statusMessage: AppStrings.inventoryStopped));
       // Status mesajını temizle
       Timer(const Duration(seconds: 1), () {
         if (!isClosed) {
@@ -271,6 +269,8 @@ class InventoryCubit extends Cubit<InventoryState> {
     }
   }
 
+  
+  
   /// Hata mesajını temizler
   void clearError() {
     emit(state.clearFailure());
@@ -339,6 +339,7 @@ class InventoryCubit extends Cubit<InventoryState> {
       debugPrint("[INVENTORY] Failed to update lifevest with user bank data: $e");
     }
   }
+  
 
   @override
   Future<void> close() {

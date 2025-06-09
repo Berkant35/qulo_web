@@ -132,7 +132,7 @@ abstract class LifevestTagModel with _$LifevestTagModel {
       case 1:
         return AppColors.warning; // 180 günden az kalmış
       case 2:
-        return AppColors.success; // 180 günden fazla
+        return AppColors.lightGreen; // 180 günden fazla
       default:
         return AppColors.gray500; // Bilinmiyor
     }

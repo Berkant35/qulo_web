@@ -53,10 +53,10 @@ Future<void> init() async {
   sl.registerLazySingleton<AppBluetoothCommunicationCubit>(() => AppBluetoothCommunicationCubit());
 
   // ✅ 7. Reader cubit'ini register et
-  sl.registerLazySingleton<ReaderCubit>(() => ReaderCubit()..initialize());
+  sl.registerLazySingleton<ReaderCubit>(() => ReaderCubit());
 
   // ✅ 8. Inventory cubit'ini factory olarak register et (dependency order için)
   sl.registerLazySingleton<InventoryCubit>(() => InventoryCubit());
   sl.registerLazySingleton<InventoryContentCubit>(() => InventoryContentCubit()..init());
-  sl.registerFactory<InventoryFindCubit>(() => InventoryFindCubit());
+  sl.registerLazySingleton<InventoryFindCubit>(() => InventoryFindCubit());
 }

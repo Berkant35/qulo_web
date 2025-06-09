@@ -26,7 +26,7 @@ class InventoryTagListTileWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       padding: const EdgeInsets.all(12),
-      decoration: AppBoxDecorations.elevatedCardDecoration.copyWith(color: _getByInfoColor(lifevestModel)),
+      decoration: AppBoxDecorations.basicCardDecoration.copyWith(color: _getByInfoColor(lifevestModel)),
       child: Row(
         children: [
           Expanded(
@@ -140,14 +140,17 @@ class _FindButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppButton.outline(
+    return AppButton.filled(
       text: AppStrings.find,
-      textStyle: AppTextStyles.px10w500.copyWith(color: AppColors.primary),
+      height: 40,
+      textStyle: AppTextStyles.px14w600.copyWith(color: AppColors.white),
       onTap: () async {
-        if (lifevestTagModel == null) {
-          return;
-        }
-        AppBottomSheet(child: const InventoryFindTag(), fitToContent: true, closedBottomModel: () {}).show();
+        if (lifevestTagModel.isNull)  return;
+        AppBottomSheet(
+          child: InventoryFindTag(lifevestTagModel: lifevestTagModel),
+          fitToContent: true,
+          closedBottomModel: () {},
+        ).show();
       },
     );
   }

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$InventoryFindState {
 
- UIStateStatus get status; InventoryFindStatus get findStatus; Failure? get failure;
+ UIStateStatus get status; InventoryFindStatus get findStatus; Failure? get failure; LifevestTagModel? get setTagModel; int get signalStrength; bool get isTargetFound; int get searchDuration;
 /// Create a copy of InventoryFindState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $InventoryFindStateCopyWith<InventoryFindState> get copyWith => _$InventoryFindS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InventoryFindState&&(identical(other.status, status) || other.status == status)&&(identical(other.findStatus, findStatus) || other.findStatus == findStatus)&&(identical(other.failure, failure) || other.failure == failure));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InventoryFindState&&(identical(other.status, status) || other.status == status)&&(identical(other.findStatus, findStatus) || other.findStatus == findStatus)&&(identical(other.failure, failure) || other.failure == failure)&&(identical(other.setTagModel, setTagModel) || other.setTagModel == setTagModel)&&(identical(other.signalStrength, signalStrength) || other.signalStrength == signalStrength)&&(identical(other.isTargetFound, isTargetFound) || other.isTargetFound == isTargetFound)&&(identical(other.searchDuration, searchDuration) || other.searchDuration == searchDuration));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,findStatus,failure);
+int get hashCode => Object.hash(runtimeType,status,findStatus,failure,setTagModel,signalStrength,isTargetFound,searchDuration);
 
 @override
 String toString() {
-  return 'InventoryFindState(status: $status, findStatus: $findStatus, failure: $failure)';
+  return 'InventoryFindState(status: $status, findStatus: $findStatus, failure: $failure, setTagModel: $setTagModel, signalStrength: $signalStrength, isTargetFound: $isTargetFound, searchDuration: $searchDuration)';
 }
 
 
@@ -46,11 +46,11 @@ abstract mixin class $InventoryFindStateCopyWith<$Res>  {
   factory $InventoryFindStateCopyWith(InventoryFindState value, $Res Function(InventoryFindState) _then) = _$InventoryFindStateCopyWithImpl;
 @useResult
 $Res call({
- UIStateStatus status, InventoryFindStatus findStatus, Failure? failure
+ UIStateStatus status, InventoryFindStatus findStatus, Failure? failure, LifevestTagModel? setTagModel, int signalStrength, bool isTargetFound, int searchDuration
 });
 
 
-
+$LifevestTagModelCopyWith<$Res>? get setTagModel;
 
 }
 /// @nodoc
@@ -63,15 +63,31 @@ class _$InventoryFindStateCopyWithImpl<$Res>
 
 /// Create a copy of InventoryFindState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? findStatus = null,Object? failure = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? findStatus = null,Object? failure = freezed,Object? setTagModel = freezed,Object? signalStrength = null,Object? isTargetFound = null,Object? searchDuration = null,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as UIStateStatus,findStatus: null == findStatus ? _self.findStatus : findStatus // ignore: cast_nullable_to_non_nullable
 as InventoryFindStatus,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
-as Failure?,
+as Failure?,setTagModel: freezed == setTagModel ? _self.setTagModel : setTagModel // ignore: cast_nullable_to_non_nullable
+as LifevestTagModel?,signalStrength: null == signalStrength ? _self.signalStrength : signalStrength // ignore: cast_nullable_to_non_nullable
+as int,isTargetFound: null == isTargetFound ? _self.isTargetFound : isTargetFound // ignore: cast_nullable_to_non_nullable
+as bool,searchDuration: null == searchDuration ? _self.searchDuration : searchDuration // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
+/// Create a copy of InventoryFindState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LifevestTagModelCopyWith<$Res>? get setTagModel {
+    if (_self.setTagModel == null) {
+    return null;
+  }
 
+  return $LifevestTagModelCopyWith<$Res>(_self.setTagModel!, (value) {
+    return _then(_self.copyWith(setTagModel: value));
+  });
+}
 }
 
 
@@ -79,12 +95,16 @@ as Failure?,
 
 
 class _InventoryFindState extends InventoryFindState {
-  const _InventoryFindState({this.status = UIStateStatus.idle, this.findStatus = InventoryFindStatus.idle, this.failure}): super._();
+  const _InventoryFindState({this.status = UIStateStatus.idle, this.findStatus = InventoryFindStatus.idle, this.failure, this.setTagModel, this.signalStrength = 0, this.isTargetFound = false, this.searchDuration = 0}): super._();
   
 
 @override@JsonKey() final  UIStateStatus status;
 @override@JsonKey() final  InventoryFindStatus findStatus;
 @override final  Failure? failure;
+@override final  LifevestTagModel? setTagModel;
+@override@JsonKey() final  int signalStrength;
+@override@JsonKey() final  bool isTargetFound;
+@override@JsonKey() final  int searchDuration;
 
 /// Create a copy of InventoryFindState
 /// with the given fields replaced by the non-null parameter values.
@@ -96,16 +116,16 @@ _$InventoryFindStateCopyWith<_InventoryFindState> get copyWith => __$InventoryFi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _InventoryFindState&&(identical(other.status, status) || other.status == status)&&(identical(other.findStatus, findStatus) || other.findStatus == findStatus)&&(identical(other.failure, failure) || other.failure == failure));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _InventoryFindState&&(identical(other.status, status) || other.status == status)&&(identical(other.findStatus, findStatus) || other.findStatus == findStatus)&&(identical(other.failure, failure) || other.failure == failure)&&(identical(other.setTagModel, setTagModel) || other.setTagModel == setTagModel)&&(identical(other.signalStrength, signalStrength) || other.signalStrength == signalStrength)&&(identical(other.isTargetFound, isTargetFound) || other.isTargetFound == isTargetFound)&&(identical(other.searchDuration, searchDuration) || other.searchDuration == searchDuration));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,findStatus,failure);
+int get hashCode => Object.hash(runtimeType,status,findStatus,failure,setTagModel,signalStrength,isTargetFound,searchDuration);
 
 @override
 String toString() {
-  return 'InventoryFindState(status: $status, findStatus: $findStatus, failure: $failure)';
+  return 'InventoryFindState(status: $status, findStatus: $findStatus, failure: $failure, setTagModel: $setTagModel, signalStrength: $signalStrength, isTargetFound: $isTargetFound, searchDuration: $searchDuration)';
 }
 
 
@@ -116,11 +136,11 @@ abstract mixin class _$InventoryFindStateCopyWith<$Res> implements $InventoryFin
   factory _$InventoryFindStateCopyWith(_InventoryFindState value, $Res Function(_InventoryFindState) _then) = __$InventoryFindStateCopyWithImpl;
 @override @useResult
 $Res call({
- UIStateStatus status, InventoryFindStatus findStatus, Failure? failure
+ UIStateStatus status, InventoryFindStatus findStatus, Failure? failure, LifevestTagModel? setTagModel, int signalStrength, bool isTargetFound, int searchDuration
 });
 
 
-
+@override $LifevestTagModelCopyWith<$Res>? get setTagModel;
 
 }
 /// @nodoc
@@ -133,16 +153,32 @@ class __$InventoryFindStateCopyWithImpl<$Res>
 
 /// Create a copy of InventoryFindState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? findStatus = null,Object? failure = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? findStatus = null,Object? failure = freezed,Object? setTagModel = freezed,Object? signalStrength = null,Object? isTargetFound = null,Object? searchDuration = null,}) {
   return _then(_InventoryFindState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as UIStateStatus,findStatus: null == findStatus ? _self.findStatus : findStatus // ignore: cast_nullable_to_non_nullable
 as InventoryFindStatus,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
-as Failure?,
+as Failure?,setTagModel: freezed == setTagModel ? _self.setTagModel : setTagModel // ignore: cast_nullable_to_non_nullable
+as LifevestTagModel?,signalStrength: null == signalStrength ? _self.signalStrength : signalStrength // ignore: cast_nullable_to_non_nullable
+as int,isTargetFound: null == isTargetFound ? _self.isTargetFound : isTargetFound // ignore: cast_nullable_to_non_nullable
+as bool,searchDuration: null == searchDuration ? _self.searchDuration : searchDuration // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 
+/// Create a copy of InventoryFindState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LifevestTagModelCopyWith<$Res>? get setTagModel {
+    if (_self.setTagModel == null) {
+    return null;
+  }
 
+  return $LifevestTagModelCopyWith<$Res>(_self.setTagModel!, (value) {
+    return _then(_self.copyWith(setTagModel: value));
+  });
+}
 }
 
 // dart format on

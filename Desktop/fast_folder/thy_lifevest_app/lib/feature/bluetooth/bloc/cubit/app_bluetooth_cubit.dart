@@ -12,6 +12,7 @@ import 'package:thy_lifevest_app/core/preferences/i_pref.dart';
 import 'package:thy_lifevest_app/core/utils/enum/ui_status.dart';
 import 'package:thy_lifevest_app/feature/bluetooth/bloc/cubit/app_bluetooth_communication_cubit.dart';
 import 'package:thy_lifevest_app/feature/bluetooth/bloc/state/app_bluetooth_state.dart';
+import 'package:thy_lifevest_app/feature/reader/bloc/cubit/reader_cubit.dart';
 
 class AppBluetoothCubit extends Cubit<AppBluetoothState> {
   AppBluetoothCubit() : super(const AppBluetoothState());
@@ -25,6 +26,10 @@ class AppBluetoothCubit extends Cubit<AppBluetoothState> {
     _connectedDeviceStateSubscription = state.connectedDevice?.connectionState
         .listen((connectionState) {
           emit(state.copyWith(bleConnectionState: connectionState));
+          if(connectionState == BluetoothConnectionState.connected) {
+            // BLE Communication'ı başlat
+            sl<ReaderCubit>().initialize();
+          }
         });
   }
 

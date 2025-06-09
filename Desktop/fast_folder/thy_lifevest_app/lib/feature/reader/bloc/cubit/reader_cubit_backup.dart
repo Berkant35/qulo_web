@@ -947,7 +947,8 @@ class ReaderCubit extends Cubit<ReaderState> {
       );
 
       if (success) {
-        debugPrint("[READER] Command sent successfully: ${_bytesToHex(command)}");
+        debugPrint("[READER] Command sent successfully: ${_bytesToHex(command)} ->  ${command[4].toRadixString(16)
+            .padLeft(2, '0').toUpperCase()}");
       }
 
       return success;

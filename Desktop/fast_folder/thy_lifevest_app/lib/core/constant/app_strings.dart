@@ -356,4 +356,14 @@ class AppStrings {
   static const String filterNearExpiry = "Near";
   static const String filterExpired = "Expired";
   static const String filterPending = "Pending";
+
+  // Find Tag UI Metinleri
+  static const String stopSearch = "Stop Search";
+  static const String clearTag = "Clear Tag";
+  static const String noTagSelected = "No tag selected";
+  static const String readyToStartSearch = "Ready to start search";
+  static const String searchingForTag = "Searching for tag...";
+  static const String targetTagFound = "Target tag found!";
+  static const String searchTimeout = "Search timeout";
+  static const String searchError = "Search error";
 }

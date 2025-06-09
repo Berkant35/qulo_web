@@ -6,7 +6,6 @@ import 'package:thy_lifevest_app/core/constant/app_ble_constants.dart';
 import 'package:thy_lifevest_app/core/constant/app_reader_constants.dart';
 import 'package:thy_lifevest_app/core/constant/app_strings.dart';
 import 'package:thy_lifevest_app/core/extension/generic_extension.dart';
-import 'package:thy_lifevest_app/core/extension/list_extension.dart';
 import 'package:thy_lifevest_app/core/init/injection_container.dart';
 import 'package:thy_lifevest_app/core/utils/enum/ui_status.dart';
 import 'package:thy_lifevest_app/feature/bluetooth/bloc/cubit/app_bluetooth_communication_cubit.dart';
@@ -18,7 +17,8 @@ class ReaderCubit extends Cubit<ReaderState> {
   ReaderCubit() : super(const ReaderState());
 
   // Dependencies
-  AppBluetoothCommunicationCubit get _communicationCubit => sl<AppBluetoothCommunicationCubit>();
+  AppBluetoothCommunicationCubit get _communicationCubit =>
+      sl<AppBluetoothCommunicationCubit>();
 
   // Timers
   Timer? _inventoryTimer;
@@ -40,19 +40,20 @@ class ReaderCubit extends Cubit<ReaderState> {
       debugPrint("[READER] Initializing reader...");
 
       // Communication state'ini dinle
-      _communicationCubit.stream.listen((commState) {
+      _communicationCubit.stream.listen((commState) async {
         final isConnected = commState.isInitialized && commState.isReaderReady;
 
         if (state.isConnected != isConnected) {
           emit(
             state.copyWith(
               isConnected: isConnected,
-              connectedDeviceAddress: commState.connectedDevice?.remoteId.toString(),
+              connectedDeviceAddress:
+                  commState.connectedDevice?.remoteId.toString(),
             ),
           );
 
           if (isConnected) {
-            _onReaderConnected();
+            await _onReaderConnected();
           } else {
             _onReaderDisconnected();
           }
@@ -195,7 +196,9 @@ class ReaderCubit extends Cubit<ReaderState> {
           _handleGenericCommandResponse(command, frame);
           break;
         default:
-          debugPrint("[READER] Unknown command response: 0x${command.toRadixString(16).padLeft(2, '0').toUpperCase()}");
+          debugPrint(
+            "[READER] Unknown command response: 0x${command.toRadixString(16).padLeft(2, '0').toUpperCase()}",
+          );
           _handleGenericCommandResponse(command, frame);
           break;
       }
@@ -217,17 +220,29 @@ class ReaderCubit extends Cubit<ReaderState> {
 
       // Frame: A5 5A [LEN_H] [LEN_L] [CMD] [DATA...] [BCC] 0D 0A
       // Response data başlangıcı: frame[5] (CMD'den sonra)
-      final responseData = frame.sublist(5, frame.length - 3); // BCC ve footer'ı çıkar
+      final responseData = frame.sublist(
+        5,
+        frame.length - 3,
+      ); // BCC ve footer'ı çıkar
 
-      debugPrint("[READER] Tag buffer response data: ${_bytesToHex(responseData)}");
+      debugPrint(
+        "[READER] Tag buffer response data: ${_bytesToHex(responseData)}",
+      );
 
       if (responseData.length >= 3) {
         final remainingTags = (responseData[0] << 8) | responseData[1];
         final reportedTagCount = responseData[2];
 
-        debugPrint("[READER] Tag buffer: $remainingTags remaining, $reportedTagCount reported");
+        debugPrint(
+          "[READER] Tag buffer: $remainingTags remaining, $reportedTagCount reported",
+        );
 
-        emit(state.copyWith(remainingTagsInBuffer: remainingTags, waitingTagBuffer: false));
+        emit(
+          state.copyWith(
+            remainingTagsInBuffer: remainingTags,
+            waitingTagBuffer: false,
+          ),
+        );
 
         if (reportedTagCount > 0 && responseData.length > 3) {
           // Tag data'sı var
@@ -237,7 +252,9 @@ class ReaderCubit extends Cubit<ReaderState> {
           debugPrint("[READER] No tag data in buffer response");
         }
       } else {
-        debugPrint("[READER] Invalid tag buffer response length: ${responseData.length}");
+        debugPrint(
+          "[READER] Invalid tag buffer response length: ${responseData.length}",
+        );
       }
     } catch (e) {
       debugPrint("[READER] Failed to handle tag buffer response: $e");
@@ -296,11 +313,21 @@ class ReaderCubit extends Cubit<ReaderState> {
         if (bankValue < ReaderInventoryBank.values.length) {
           final bank = ReaderInventoryBank.values[bankValue];
 
-          final inventoryMode = ReaderInventoryMode(bank: bank, userOffset: userOffset, userLength: userLength);
+          final inventoryMode = ReaderInventoryMode(
+            bank: bank,
+            userOffset: userOffset,
+            userLength: userLength,
+          );
 
-          emit(state.copyWith(settings: state.settings.copyWith(inventoryMode: inventoryMode)));
+          emit(
+            state.copyWith(
+              settings: state.settings.copyWith(inventoryMode: inventoryMode),
+            ),
+          );
 
-          debugPrint("[READER] Inventory mode updated: $bank, offset: $userOffset, length: $userLength");
+          debugPrint(
+            "[READER] Inventory mode updated: $bank, offset: $userOffset, length: $userLength",
+          );
         }
       }
 
@@ -359,15 +386,26 @@ class ReaderCubit extends Cubit<ReaderState> {
   /// Inventory işlemini durdurur
   Future<void> stopInventory({int sendCommandCount = 2}) async {
     try {
-      debugPrint("[READER] 🛑 STOPPING INVENTORY - Current state: ${state.isInventoryRunning}");
-
-      final command = _buildCommand(0x8C, null);
-
-      await _sendCommandAndGetResponse(command, timeout: const Duration(seconds: 1));
+      debugPrint(
+        "[READER] 🛑 STOPPING INVENTORY - Current state: ${state.isInventoryRunning}",
+      );
+      emit(state.copyWith(isInventoryRunning: false, waitingTagBuffer: false));
+      _stopInventoryTimer();
       
-      if (state.isInventoryRunning.isEquals(true)){
-        return await stopInventory();
-      }
+      final command = _buildCommand(0x8C, null);
+      
+       await _sendCommandAndGetResponse(
+        command,
+        timeout: const Duration(milliseconds: 500),
+      );
+      
+       await Future.delayed(const Duration(seconds: 5));
+      
+      await _sendCommandAndGetResponse(
+        command,
+        timeout: const Duration(milliseconds: 500),
+      );
+      
     } catch (e) {
       debugPrint("[READER] Failed to stop inventory: $e");
       // Error durumunda da state'i güncelle
@@ -375,25 +413,67 @@ class ReaderCubit extends Cubit<ReaderState> {
     }
   }
 
-  /// Find mode'unu başlatır
+  /// Find mode'unu başlatır - optimized version
   Future<void> startFindMode(String targetEpc) async {
     try {
+      debugPrint("[READER] 🎯 Starting find mode for EPC: $targetEpc");
+
       // Find filter'ını ayarla
-      await setInventoryFilter(bank: ReaderMemoryBank.epc, address: 0x20, dataHex: targetEpc);
+      final filterSuccess = await setInventoryFilter(
+        bank: ReaderMemoryBank.epc,
+        address: 0x20,
+        dataHex: targetEpc,
+      );
 
-      emit(state.copyWith(isFindMode: true, findTargetEpc: targetEpc, workState: ReaderWorkState.find));
+      if (!filterSuccess) {
+        debugPrint("[READER] ❌ Failed to set find filter");
+        emit(
+          state.setFailure(
+            AppReaderConstants.startFindFailedCode,
+            AppStrings.error,
+            'Failed to set find filter for EPC: $targetEpc',
+          ),
+        );
+        return;
+      }
 
-      // Inventory'yi yüksek tekrarla başlat
-      await startInventory(maxEmptyCount: 20);
+      emit(
+        state.copyWith(
+          isFindMode: true,
+          findTargetEpc: targetEpc,
+          workState: ReaderWorkState.find,
+          discoveredTags: [], // Find mode için temizle
+        ),
+      );
+
+      // Yüksek frekanslı inventory başlat (find mode için optimize)
+      await startInventory(maxEmptyCount: 50);
+
+      debugPrint(
+        "[READER] ✅ Find mode started successfully for EPC: $targetEpc",
+      );
     } catch (e) {
-      emit(state.setFailure(AppReaderConstants.startFindFailedCode, AppStrings.error, 'Failed to start find mode: $e'));
+      debugPrint("[READER] ❌ Find mode start failed: $e");
+      emit(
+        state.setFailure(
+          AppReaderConstants.startFindFailedCode,
+          AppStrings.error,
+          'Failed to start find mode: $e',
+        ),
+      );
     }
   }
 
   /// Find mode'unu durdurur
   Future<void> stopFindMode() async {
     await clearInventoryFilter();
-    emit(state.copyWith(isFindMode: false, findTargetEpc: null, workState: ReaderWorkState.idle));
+    emit(
+      state.copyWith(
+        isFindMode: false,
+        findTargetEpc: null,
+        workState: ReaderWorkState.idle,
+      ),
+    );
     await stopInventory();
   }
 
@@ -401,11 +481,15 @@ class ReaderCubit extends Cubit<ReaderState> {
   void _startInventoryLoop(int maxEmptyCount) {
     int emptyCount = 0;
 
-    _inventoryTimer = Timer.periodic(const Duration(milliseconds: 150), (timer) async {
+    _inventoryTimer = Timer.periodic(const Duration(milliseconds: 150), (
+      timer,
+    ) async {
       // State kontrolü - inventory durdurulduysa timer'ı iptal et ve çık
       if (!state.isInventoryRunning) {
         debugPrint("[READER] 🛑 Loop detected stop state - canceling timer");
-        debugPrint("[READER] Inventory loop stopped - isInventoryRunning: false");
+        debugPrint(
+          "[READER] Inventory loop stopped - isInventoryRunning: false",
+        );
         timer.cancel();
         _inventoryTimer?.cancel();
         _inventoryTimer = null;
@@ -449,7 +533,12 @@ class ReaderCubit extends Cubit<ReaderState> {
         final remainingTags = (data[0] << 8) | data[1];
         final reportedTagCount = data[2];
 
-        emit(state.copyWith(remainingTagsInBuffer: remainingTags, waitingTagBuffer: false));
+        emit(
+          state.copyWith(
+            remainingTagsInBuffer: remainingTags,
+            waitingTagBuffer: false,
+          ),
+        );
 
         // Tag'leri parse et
         _parseTagDataFromBuffer(data, reportedTagCount);
@@ -485,7 +574,9 @@ class ReaderCubit extends Cubit<ReaderState> {
         final tag = _parseRawTag(rawTag);
         if (tag != null) {
           newTags.add(tag);
-          debugPrint("[READER] ✅ Parsed tag ${i + 1}: EPC=${tag.epc}, RSSI=${tag.rssi}");
+          debugPrint(
+            "[READER] ✅ Parsed tag ${i + 1}: EPC=${tag.epc}, RSSI=${tag.rssi}",
+          );
         } else {
           debugPrint("[READER] ❌ Failed to parse tag ${i + 1}");
         }
@@ -495,11 +586,15 @@ class ReaderCubit extends Cubit<ReaderState> {
         final updatedTags = [...state.discoveredTags, ...newTags];
         emit(state.copyWith(discoveredTags: updatedTags));
 
-        debugPrint("[READER] 🏷️ Successfully parsed ${newTags.length} new tags. Total: ${updatedTags.length}");
+        debugPrint(
+          "[READER] 🏷️ Successfully parsed ${newTags.length} new tags. Total: ${updatedTags.length}",
+        );
 
         // Find mode için kontrol
         if (state.isFindMode && state.findTargetEpc != null) {
-          final foundTarget = newTags.any((tag) => tag.epc == state.findTargetEpc);
+          final foundTarget = newTags.any(
+            (tag) => tag.epc == state.findTargetEpc,
+          );
           if (foundTarget) {
             debugPrint("[READER] 🎯 Find mode: Target EPC found!");
             _playFindBuzzer();
@@ -551,7 +646,13 @@ class ReaderCubit extends Cubit<ReaderState> {
       }
 
       if (epc != null && epc.isNotEmpty) {
-        final tag = ReaderTag(pc: pc, epcLen: epcLen, epc: epc, rssi: rssi, readTime: DateTime.now());
+        final tag = ReaderTag(
+          pc: pc,
+          epcLen: epcLen,
+          epc: epc,
+          rssi: rssi,
+          readTime: DateTime.now(),
+        );
 
         return tag;
       } else {
@@ -575,7 +676,11 @@ class ReaderCubit extends Cubit<ReaderState> {
   // ===========================================
 
   /// Reader power ayarlarını yapar
-  Future<bool> setPower(int readPower, int writePower, {bool save = true}) async {
+  Future<bool> setPower(
+    int readPower,
+    int writePower, {
+    bool save = true,
+  }) async {
     try {
       final data = [
         save ? 0x02 : 0x00,
@@ -589,11 +694,21 @@ class ReaderCubit extends Cubit<ReaderState> {
       final command = _buildCommand(0x10, data);
       final response = await _sendCommandAndGetResponse(command);
 
-      final success = response != null && response.isNotEmpty && response[0] == 0x01;
+      final success =
+          response != null && response.isNotEmpty && response[0] == 0x01;
 
       if (success) {
-        emit(state.copyWith(settings: state.settings.copyWith(readPower: readPower, writePower: writePower)));
-        debugPrint("[READER] Power set successfully: read=$readPower, write=$writePower");
+        emit(
+          state.copyWith(
+            settings: state.settings.copyWith(
+              readPower: readPower,
+              writePower: writePower,
+            ),
+          ),
+        );
+        debugPrint(
+          "[READER] Power set successfully: read=$readPower, write=$writePower",
+        );
       }
 
       return success;
@@ -635,10 +750,15 @@ class ReaderCubit extends Cubit<ReaderState> {
       final command = _buildCommand(0xE4, data);
       final response = await _sendCommandAndGetResponse(command);
 
-      final success = response != null && response.isNotEmpty && response[0] == 0x01;
+      final success =
+          response != null && response.isNotEmpty && response[0] == 0x01;
 
       if (success) {
-        emit(state.copyWith(settings: state.settings.copyWith(buzzerEnabled: enabled)));
+        emit(
+          state.copyWith(
+            settings: state.settings.copyWith(buzzerEnabled: enabled),
+          ),
+        );
         debugPrint("[READER] Buzzer set successfully: $enabled");
       }
 
@@ -660,11 +780,21 @@ class ReaderCubit extends Cubit<ReaderState> {
         final userOffset = response[2];
         final userLength = response[3];
 
-        final inventoryMode = ReaderInventoryMode(bank: bank, userOffset: userOffset, userLength: userLength);
+        final inventoryMode = ReaderInventoryMode(
+          bank: bank,
+          userOffset: userOffset,
+          userLength: userLength,
+        );
 
-        emit(state.copyWith(settings: state.settings.copyWith(inventoryMode: inventoryMode)));
+        emit(
+          state.copyWith(
+            settings: state.settings.copyWith(inventoryMode: inventoryMode),
+          ),
+        );
 
-        debugPrint("[READER] Inventory mode: $bank, offset: $userOffset, length: $userLength");
+        debugPrint(
+          "[READER] Inventory mode: $bank, offset: $userOffset, length: $userLength",
+        );
       }
     } catch (e) {
       debugPrint("[READER] Failed to get inventory mode: $e");
@@ -682,7 +812,13 @@ class ReaderCubit extends Cubit<ReaderState> {
 
       final filterBitLength = dataHex.isNotEmpty ? dataHex.length * 4 : 0;
 
-      dataList.addAll([bank.value, address >> 8, address & 0xFF, filterBitLength >> 8, filterBitLength & 0xFF]);
+      dataList.addAll([
+        bank.value,
+        address >> 8,
+        address & 0xFF,
+        filterBitLength >> 8,
+        filterBitLength & 0xFF,
+      ]);
 
       if (dataHex.isNotEmpty) {
         dataList.addAll(_hexStringToBytes(dataHex));
@@ -691,7 +827,8 @@ class ReaderCubit extends Cubit<ReaderState> {
       final command = _buildCommand(0x6E, dataList);
       final response = await _sendCommandAndGetResponse(command);
 
-      final success = response != null && response.isNotEmpty && response[0] == 0x01;
+      final success =
+          response != null && response.isNotEmpty && response[0] == 0x01;
 
       if (success) {
         debugPrint("[READER] Inventory filter set successfully");
@@ -711,7 +848,8 @@ class ReaderCubit extends Cubit<ReaderState> {
       final command = _buildCommand(0x6E, dataList);
       final response = await _sendCommandAndGetResponse(command);
 
-      final success = response != null && response.isNotEmpty && response[0] == 0x01;
+      final success =
+          response != null && response.isNotEmpty && response[0] == 0x01;
 
       if (success) {
         debugPrint("[READER] Inventory filter cleared");
@@ -760,7 +898,13 @@ class ReaderCubit extends Cubit<ReaderState> {
       }
 
       // Bank to read
-      dataList.addAll([bank.value, address >> 8, address & 0xFF, length >> 8, length & 0xFF]);
+      dataList.addAll([
+        bank.value,
+        address >> 8,
+        address & 0xFF,
+        length >> 8,
+        length & 0xFF,
+      ]);
 
       final command = _buildCommand(0x84, dataList);
       final response = await _sendCommandAndGetResponse(command);
@@ -771,7 +915,13 @@ class ReaderCubit extends Cubit<ReaderState> {
 
       return null;
     } catch (e) {
-      emit(state.setFailure(AppReaderConstants.readFailedCode, AppStrings.error, 'Failed to read tag: $e'));
+      emit(
+        state.setFailure(
+          AppReaderConstants.readFailedCode,
+          AppStrings.error,
+          'Failed to read tag: $e',
+        ),
+      );
       return null;
     }
   }
@@ -800,7 +950,9 @@ class ReaderCubit extends Cubit<ReaderState> {
       final totalWords = (firstChunk[6] << 8) | firstChunk[7];
 
       if (totalWords <= 4) {
-        return _bruteForceUserMemorySearch(_bytesToHex(fullData.sublist(0, totalWords * 2)));
+        return _bruteForceUserMemorySearch(
+          _bytesToHex(fullData.sublist(0, totalWords * 2)),
+        );
       }
 
       // Kalan verileri oku
@@ -819,7 +971,9 @@ class ReaderCubit extends Cubit<ReaderState> {
         );
 
         if (chunk == null) {
-          debugPrint("[READER] Failed to read user memory chunk at address $readAddress");
+          debugPrint(
+            "[READER] Failed to read user memory chunk at address $readAddress",
+          );
           break;
         }
 
@@ -832,7 +986,9 @@ class ReaderCubit extends Cubit<ReaderState> {
         return null;
       }
 
-      return _bruteForceUserMemorySearch(_bytesToHex(fullData.sublist(0, totalWords * 2)));
+      return _bruteForceUserMemorySearch(
+        _bytesToHex(fullData.sublist(0, totalWords * 2)),
+      );
     } catch (e) {
       debugPrint("[READER] Failed to read full user memory: $e");
       return null;
@@ -920,7 +1076,9 @@ class ReaderCubit extends Cubit<ReaderState> {
       );
 
       if (success) {
-        debugPrint("[READER] Command sent successfully: ${_bytesToHex(command)}");
+        debugPrint(
+          "[READER] Command sent successfully: ${_bytesToHex(command)}",
+        );
       }
 
       return success;
@@ -933,7 +1091,7 @@ class ReaderCubit extends Cubit<ReaderState> {
   /// Komut gönderir ve response bekler
   Future<Uint8List?> _sendCommandAndGetResponse(
     Uint8List command, {
-    Duration timeout = const Duration(seconds: 5),
+    Duration timeout = const Duration(milliseconds: 150),
   }) async {
     try {
       final commandCode = command[4];
@@ -974,10 +1132,17 @@ class ReaderCubit extends Cubit<ReaderState> {
   // ===========================================
 
   /// User memory'den keyword ara
-  Map<String, dynamic>? _bruteForceUserMemorySearch(String hexstring, {String keyword = "MFR "}) {
+  Map<String, dynamic>? _bruteForceUserMemorySearch(
+    String hexstring, {
+    String keyword = "MFR ",
+  }) {
     try {
       // Temizle
-      hexstring = hexstring.trim().toLowerCase().replaceAll("0x", "").replaceAll(" ", "");
+      hexstring = hexstring
+          .trim()
+          .toLowerCase()
+          .replaceAll("0x", "")
+          .replaceAll(" ", "");
 
       if (hexstring.length % 2 != 0) {
         throw ArgumentError("Hex string must represent full 16-bit words");
@@ -987,7 +1152,8 @@ class ReaderCubit extends Cubit<ReaderState> {
       int attempt = 0;
 
       while (byteList.isNotEmpty) {
-        final bitstream = byteList.map((w) => w.toRadixString(2).padLeft(8, '0')).join();
+        final bitstream =
+            byteList.map((w) => w.toRadixString(2).padLeft(8, '0')).join();
         final decoded = _decode6bitAsciiFromBits(bitstream);
 
         if (decoded.contains(keyword)) {
@@ -998,7 +1164,8 @@ class ReaderCubit extends Cubit<ReaderState> {
             if (part.contains(' ')) {
               final partsList = part.split(' ');
               final k = partsList[0];
-              final v = partsList.length > 1 ? partsList.sublist(1).join(' ') : '';
+              final v =
+                  partsList.length > 1 ? partsList.sublist(1).join(' ') : '';
               if (v.isNotEmpty) {
                 fields[k] = v;
               }
@@ -1018,7 +1185,12 @@ class ReaderCubit extends Cubit<ReaderState> {
         attempt++;
       }
 
-      return {"attempts": attempt, "start_offset_word": null, "decoded_string": null, "parsed_fields": {}};
+      return {
+        "attempts": attempt,
+        "start_offset_word": null,
+        "decoded_string": null,
+        "parsed_fields": {},
+      };
     } catch (e) {
       debugPrint("[READER] User memory search failed: $e");
       return null;
@@ -1088,9 +1260,13 @@ class ReaderCubit extends Cubit<ReaderState> {
 
   /// Clear discovered tags
   void clearDiscoveredTags() {
-    debugPrint("[READER] Clearing discovered tags - current count: ${state.discoveredTags.length}");
+    debugPrint(
+      "[READER] Clearing discovered tags - current count: ${state.discoveredTags.length}",
+    );
     emit(state.copyWith(discoveredTags: []));
-    debugPrint("[READER] Discovered tags cleared - new count: ${state.discoveredTags.length}");
+    debugPrint(
+      "[READER] Discovered tags cleared - new count: ${state.discoveredTags.length}",
+    );
   }
 
   /// Set work state
@@ -1229,22 +1405,34 @@ class ReaderCubit extends Cubit<ReaderState> {
 
   /// User memory'den brute force ile veri arar (geliştirilmiş versiyon)
   /// reader.dart'tan eklenen fonksiyon
-  Map<String, dynamic>? bruteForceUserMemorySearchFromHexstring(String hexstring, {String keyword = "MFR "}) {
+  Map<String, dynamic>? bruteForceUserMemorySearchFromHexstring(
+    String hexstring, {
+    String keyword = "MFR ",
+  }) {
     try {
       // Hex string'i temizle
-      hexstring = hexstring.trim().toLowerCase().replaceAll("0x", "").replaceAll(" ", "");
+      hexstring = hexstring
+          .trim()
+          .toLowerCase()
+          .replaceAll("0x", "")
+          .replaceAll(" ", "");
 
       if (hexstring.length % 2 != 0) {
-        throw ArgumentError("Hex stringi tam 16-bit kelimeler (4 hex karakter/kelime) temsil etmelidir.");
+        throw ArgumentError(
+          "Hex stringi tam 16-bit kelimeler (4 hex karakter/kelime) temsil etmelidir.",
+        );
       }
 
       List<int> byteList = _hexStringToBytes(hexstring);
       int attempt = 0;
 
-      debugPrint("[READER] Brute force search starting for keyword: '$keyword'");
+      debugPrint(
+        "[READER] Brute force search starting for keyword: '$keyword'",
+      );
 
       while (byteList.isNotEmpty) {
-        final bitstream = byteList.map((w) => w.toRadixString(2).padLeft(8, '0')).join();
+        final bitstream =
+            byteList.map((w) => w.toRadixString(2).padLeft(8, '0')).join();
         final decoded = _decode6bitAsciiFromBits(bitstream);
 
         debugPrint("[READER] Attempt $attempt: '$decoded'");
@@ -1257,7 +1445,8 @@ class ReaderCubit extends Cubit<ReaderState> {
             if (part.contains(' ')) {
               final partsList = part.split(' ');
               final k = partsList[0];
-              final v = partsList.length > 1 ? partsList.sublist(1).join(' ') : '';
+              final v =
+                  partsList.length > 1 ? partsList.sublist(1).join(' ') : '';
               if (v.isNotEmpty) {
                 fields[k] = v;
               }
@@ -1280,7 +1469,9 @@ class ReaderCubit extends Cubit<ReaderState> {
         attempt++;
       }
 
-      debugPrint("[READER] ⚠️ Brute force search completed without finding keyword");
+      debugPrint(
+        "[READER] ⚠️ Brute force search completed without finding keyword",
+      );
       return {
         "attempts": attempt,
         "start_offset_word": null,
