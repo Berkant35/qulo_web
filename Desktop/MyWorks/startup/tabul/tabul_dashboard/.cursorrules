@@ -1,0 +1,307 @@
+# Tabul Dashboard - Cursor Rules
+
+## 🎯 Proje Genel Bakış
+
+Bu Flutter Web dashboard projesi Clean Architecture prensiplerini takip eder. Tüm kod değişiklikleri bu kurallara uygun olmalıdır.
+
+## 📁 Klasör Yapısı ve Organizasyon
+
+### Temel Yapı
+- `lib/core/` - Core functionality (tema, network, constants, DI)
+- `lib/features/` - Feature modules (her feature kendi klasöründe)
+- `lib/shared/` - Reusable components ve utilities
+
+### Feature Yapısı (Clean Architecture)
+```
+features/[feature_name]/
+├── data/
+│   ├── data_sources/     # API calls, local storage
+│   ├── models/          # Data models with fromJson/toJson
+│   └── repositories/    # Repository implementations
+├── domain/
+│   ├── entities/        # Business entities
+│   ├── repositories/    # Repository abstracts
+│   └── use_cases/       # Business logic
+└── presentation/
+    ├── cubit/          # State management
+    ├── pages/          # Screen widgets
+    └── widgets/        # Feature-specific widgets
+```
+
+## 🎨 Code Style ve Naming Conventions
+
+### Dart/Flutter Standartları
+- Flutter analysis_options.yaml kurallarını takip et
+- `dart format` ile formatting yap
+- `dart analyze` ile static analysis yap
+- Linter warnings'leri resolve et
+
+### Naming Conventions
+- **Files**: snake_case (örn: `app_button.dart`)
+- **Classes**: PascalCase (örn: `AppButton`, `ThemeCubit`)
+- **Variables/Functions**: camelCase (örn: `primaryColor`, `getUserData`)
+- **Constants**: SCREAMING_SNAKE_CASE (örn: `API_BASE_URL`)
+- **Private members**: underscore prefix (örn: `_privateMethod`)
+
+### Widget Naming
+- Page widgets: `[FeatureName]Page` (örn: `DashboardPage`)
+- Component widgets: `App[ComponentName]` (örn: `AppButton`, `AppCard`)
+- Feature widgets: `[FeatureName][WidgetName]` (örn: `DashboardHeader`)
+
+## 🏗️ Architecture Kuralları
+
+### Clean Architecture Layers
+1. **Presentation Layer**
+   - UI widgets, pages, state management (Cubit/Bloc)
+   - Business logic YAZMAYACAKSIN - sadece use case'leri çağır
+   - Dependency: domain layer
+
+2. **Domain Layer**
+   - Business entities, use cases, repository abstracts
+   - Framework'den independent olmalı
+   - Dependency: yok (pure Dart)
+
+3. **Data Layer**
+   - Repository implementations, data sources, models
+   - External dependencies (API, database, storage)
+   - Dependency: domain layer
+
+### 🚨 **CRITICAL: Navigation Architecture Rules**
+**BU KURALLARI ASLA İHLAL ETME!**
+
+1. **State-Based Navigation ONLY**
+   - Sidebar navigation için sadece `setState()` kullan
+   - `context.go()`, `context.push()`, `Navigator.push()` YASAK
+   - MainLayout içinde `_currentRoute` state'i ile content değiştir
+
+2. **Router Configuration**
+   - GoRouter'da `builder:` kullan, `pageBuilder:` YASAK
+   - Animation'lar tamamen kaldırılmalı
+   - Tek route yeterli (MainLayout handles everything)
+
+3. **Content Switching**
+   ```dart
+   // DOĞRU ✅
+   onNavigate: (route) {
+     setState(() { _currentRoute = route; });
+   }
+   
+   // YANLIŞ ❌
+   onNavigate: (route) {
+     context.go(route); // Animation yapar!
+   }
+   ```
+
+4. **Layout Structure**
+   - MainLayout = Persistent layout (sidebar + header)
+   - Content area = Dynamic based on _currentRoute
+   - Zero page transitions, sadece content değişir
+
+### State Management (BLoC/Cubit)
+- Her feature için ayrı Cubit/Bloc
+- State classes: `sealed class` kullan
+- Event classes: `sealed class` kullan (Bloc için)
+- Cubit/Bloc dosyaları: `[feature]_cubit.dart` / `[feature]_bloc.dart`
+
+### Dependency Injection
+- GetIt service locator kullan
+- Registration: `injection_container.dart`
+- Layer-based registration (external, repositories, use cases, cubits)
+- Constructor injection tercih et
+
+## 🎨 UI/UX Kuralları
+
+### Theme System
+- `AppColors` class'ından color kullan
+- `AppTypography` class'ından text style kullan
+- `AppSpacing` class'ından spacing kullan
+- `AppShadows` class'ından shadow kullan
+- Hard-coded colors/sizes kullanma
+
+### Responsive Design
+- `ResponsiveBreakpoints` class'ından breakpoint kullan
+- `context.deviceType` ile device type check et
+- Mobile-first approach
+- Layout widgets: `ResponsiveRowColumn`, `ResponsiveValue`
+
+### Component Development
+- Shared components: `shared/components/` klasöründe
+- `App` prefix ile başla (örn: `AppButton`)
+- Constructor'da required parameters net belirt
+- Default values sağla
+- Comprehensive documentation yaz
+
+## 📝 Documentation Kuralları
+
+### Code Documentation
+- Public classes ve methods için dartdoc kullan
+- Complex business logic için inline comment
+- TODO comments için format: `// TODO: [Description] - [Date] - [Author]`
+- FIXME comments için format: `// FIXME: [Description] - [Date] - [Author]`
+
+### README Update
+- Yeni feature eklerken README'yi güncelle
+- Installation ve usage instructions güncel tut
+- Screenshots ve examples ekle
+
+## 🔧 Development Workflow
+
+### File Creation
+- Yeni feature oluştururken Clean Architecture structure'ı takip et
+- Barrel export files (`index.dart`) oluştur
+- Test files için: `[file_name]_test.dart`
+
+### Code Review Checklist
+- [ ] Clean Architecture principles uygulandı mı?
+- [ ] Naming conventions doğru mu?
+- [ ] Theme system kullanıldı mı?
+- [ ] Responsive design uygulandı mı?
+- [ ] Error handling yapıldı mı?
+- [ ] Documentation yeterli mi?
+- [ ] Tests yazıldı mı?
+
+### Git Commit Messages
+```
+type(scope): description
+
+Types: feat, fix, docs, style, refactor, test, chore
+Scope: feature name veya file/module name
+```
+
+Örnekler:
+- `feat(dashboard): implement responsive dashboard layout`
+- `fix(theme): resolve dark mode color contrast issue`
+- `docs(readme): update installation instructions`
+
+## 🚨 Error Handling
+
+### Failure Classes
+- Custom failure classes kullan (`core/error/failures.dart`)
+- Network errors için: `NetworkFailure`
+- Server errors için: `ServerFailure`
+- Validation errors için: `ValidationFailure`
+
+### Error States
+- UI'da error states handle et
+- User-friendly error messages göster
+- Retry mechanisms sağla
+- Loading states implement et
+
+## 📱 Responsive Design Guidelines
+
+### Breakpoints
+```dart
+mobile: ≤600px
+tablet: 601px-1024px  
+desktop: >1024px
+```
+
+### Layout Rules
+- Mobile-first approach
+- Touch targets: minimum 44x44 logical pixels
+- Text scaling: support system font scaling
+- Horizontal scrolling yasak (vertical scrolling OK)
+
+### Navigation
+- Mobile: Bottom navigation veya drawer
+- Tablet: Sidebar navigation
+- Desktop: Persistent sidebar navigation
+
+## 🔐 Security Best Practices
+
+### API Integration
+- Environment variables kullan
+- API keys kod içinde hard-code etme
+- Token refresh mechanism implement et
+- HTTPS kullan
+
+### Input Validation
+- User inputs'ları validate et
+- Sanitize user data
+- XSS protection
+- SQL injection protection (backend)
+
+## 🧪 Testing Guidelines
+
+### Test Structure
+```
+test/
+├── unit/           # Unit tests
+├── widget/         # Widget tests  
+├── integration/    # Integration tests
+└── golden/         # Golden file tests
+```
+
+### Test Naming
+- Test files: `[feature]_test.dart`
+- Test groups: `group('[ClassName]', () {})`
+- Test cases: `test('should [expected behavior] when [condition]', () {})`
+
+### Coverage
+- Minimum %80 code coverage
+- Business logic: %100 coverage
+- UI widgets: minimum %60 coverage
+
+## 🚀 Performance Guidelines
+
+### Widget Performance
+- `const` constructors kullan
+- `ListView.builder` için lazy loading
+- Large lists için pagination
+- Image optimization (WebP, proper sizing)
+
+### State Management
+- Unnecessary rebuilds'i önle
+- `BlocBuilder` yerine `BlocSelector` kullan (specific data için)
+- State caching implement et
+
+## 📦 Dependencies
+
+### Dependency Management
+- Yeni dependency eklerken PRD'yi güncelle
+- Version pinning: major version fix, minor flexible
+- Unused dependencies temizle
+- License compatibility check et
+
+### Preferred Packages
+- State Management: `flutter_bloc`
+- Routing: `go_router`
+- DI: `get_it`
+- HTTP: `dio`
+- Storage: `shared_preferences`
+- Charts: `fl_chart`
+
+## 🎯 Feature Development Checklist
+
+Yeni feature geliştirirken:
+
+- [ ] Clean Architecture structure oluşturdun mu?
+- [ ] Domain entities ve use cases yazdın mı?
+- [ ] Repository pattern implement ettin mi?
+- [ ] Cubit/Bloc state management ekledin mi?
+- [ ] UI components responsive mi?
+- [ ] Theme system kullandın mı?
+- [ ] Error handling yaptın mı?
+- [ ] Loading states ekledin mi?
+- [ ] Navigation entegrasyonu yaptın mı?
+- [ ] Unit tests yazdın mı?
+- [ ] Widget tests yazdın mı?
+- [ ] Documentation güncelledin mi?
+
+## 🔄 Maintenance
+
+### Regular Tasks
+- Dependencies güncellemelerini kontrol et
+- Deprecated API'ları replace et
+- Performance monitoring yap
+- Security audit yap
+- Code cleanup (dead code removal)
+
+### Version Updates
+- Breaking changes için migration guide hazırla
+- Changelog güncel tut
+- Version bumping semantic versioning takip et
+
+---
+
+**Bu kurallar projenin kalitesini ve maintainability'sini sağlamak için tasarlanmıştır. Tüm developers bu kurallara uymalıdır.** 
