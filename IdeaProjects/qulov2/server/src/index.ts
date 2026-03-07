@@ -8,6 +8,8 @@ import questionRoutes from "./routes/question.routes.js";
 import diamondRoutes from "./routes/diamond.routes.js";
 import matchRoutes from "./routes/match.routes.js";
 import chatRoutes from "./routes/chat.routes.js";
+import quizRoutes from "./routes/quiz.routes.js";
+import powerRoutes from "./routes/power.routes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
@@ -29,6 +31,8 @@ app.use("/api/v1/questions", questionRoutes);
 app.use("/api/v1/diamonds", diamondRoutes);
 app.use("/api/v1/matches", matchRoutes);
 app.use("/api/v1/chat", chatRoutes);
+app.use("/api/v1/quiz", quizRoutes);
+app.use("/api/v1/powers", powerRoutes);
 
 // Error handler (must be last)
 app.use(errorHandler);
