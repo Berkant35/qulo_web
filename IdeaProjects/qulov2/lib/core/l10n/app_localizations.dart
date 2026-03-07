@@ -1,0 +1,280 @@
+import 'package:flutter/widgets.dart';
+
+class AppLocalizations {
+  final Locale locale;
+  late final Map<String, String> _strings;
+
+  AppLocalizations(this.locale) {
+    _strings = _localizedValues[locale.languageCode] ?? _localizedValues['tr']!;
+  }
+
+  static AppLocalizations of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
+  }
+
+  String get(String key) => _strings[key] ?? key;
+
+  static const _localizedValues = <String, Map<String, String>>{
+    'tr': _tr,
+    'en': _en,
+  };
+
+  static const _tr = <String, String>{
+    // General
+    'app_name': 'Qulo',
+    'ok': 'Tamam',
+    'cancel': 'İptal',
+    'save': 'Kaydet',
+    'delete': 'Sil',
+    'loading': 'Yükleniyor...',
+    'error': 'Hata',
+    'success': 'Başarılı',
+    'retry': 'Tekrar Dene',
+    'yes': 'Evet',
+    'no': 'Hayır',
+
+    // Auth
+    'welcome_back': 'Tekrar hoş geldin',
+    'login': 'Giriş Yap',
+    'register': 'Kayıt Ol',
+    'email': 'E-posta',
+    'password': 'Şifre',
+    'forgot_password': 'Şifremi unuttum?',
+    'no_account': 'Hesabın yok mu?',
+    'reset_password': 'Şifre Sıfırla',
+    'reset_password_desc': 'E-posta adresini gir, sıfırlama bağlantısı gönderelim.',
+    'send_reset_link': 'Sıfırlama Bağlantısı Gönder',
+    'reset_email_sent': 'E-posta adresin kayıtlıysa sıfırlama bağlantısı gönderildi',
+    'check_email': 'E-postanı kontrol et ve doğrula',
+    'name': 'Ad',
+    'surname': 'Soyad',
+    'age': 'Yaş',
+    'gender': 'Cinsiyet',
+    'male': 'Erkek',
+    'female': 'Kadın',
+
+    // Validation
+    'field_required': 'Bu alan zorunlu',
+    'email_required': 'E-posta zorunlu',
+    'email_invalid': 'Geçersiz e-posta',
+    'password_required': 'Şifre zorunlu',
+    'password_min': 'En az 8 karakter',
+    'age_range': '18-99 arası',
+
+    // Onboarding
+    'onboarding_title_1': "Qulo'ya Hoş Geldin",
+    'onboarding_sub_1': 'Soruları cevaplayarak eşleşme bul',
+    'onboarding_title_2': 'Sorularını Hazırla',
+    'onboarding_sub_2': 'Seninle eşleşmek isteyenler için 2-6 soru oluştur',
+    'onboarding_title_3': 'Profilini Tamamla',
+    'onboarding_sub_3': 'Fotoğraf ve bilgilerini ekleyerek öne çık',
+    'next': 'İleri',
+    'skip': 'Atla',
+    'get_started': 'Başla',
+
+    // Discover
+    'discover': 'Keşfet',
+    'no_more_profiles': 'Gösterilecek profil kalmadı',
+    'refresh': 'Yenile',
+    'questions_count': '{count} soru',
+
+    // Quiz
+    'quiz_match': 'Eşleşme!',
+    'quiz_match_desc': 'Tüm soruları doğru cevapladın!',
+    'quiz_failed': 'Başarısız',
+    'quiz_failed_desc': 'Yanlış cevap. Bir dahaki sefere!',
+
+    // Matches
+    'matches': 'Eşleşmeler',
+    'no_matches': 'Henüz eşleşme yok',
+    'start_swiping': 'Eşleşme bulmak için keşfetmeye başla!',
+
+    // Chat
+    'chat': 'Sohbet',
+    'say_hello': 'Merhaba de!',
+    'message_hint': 'Mesaj...',
+
+    // Profile
+    'profile': 'Profil',
+    'edit_profile': 'Profili Düzenle',
+    'my_questions': 'Sorularım',
+    'diamonds': 'Elmaslar',
+    'passport': 'Pasaport',
+    'complete': 'tamamlandı',
+
+    // Questions
+    'add_question': 'Yeni Soru',
+    'question': 'Soru',
+    'answer_n': 'Cevap {n}',
+    'correct_answer': 'Doğru Cevap',
+    'min_questions': 'En az {count} soru ekle',
+    'max_questions': 'En fazla 6 soru',
+
+    // Diamonds
+    'green_diamonds': 'Yeşil Elmaslar',
+    'purple_diamonds': 'Mor Elmaslar',
+    'purchase_purple': 'Mor Elmas Satın Al',
+    'history': 'Geçmiş',
+    'no_transactions': 'Henüz işlem yok',
+
+    // Passport
+    'passport_explore': 'Başka bir şehirdeki profilleri keşfet',
+    'passport_cost': 'Maliyet: {cost} mor elmas / aktivasyon',
+    'passport_active': 'Aktif: {city}',
+    'city': 'Şehir',
+    'activate_passport': 'Pasaportu Aktifleştir',
+    'deactivate': 'Deaktif Et',
+
+    // Settings
+    'settings': 'Ayarlar',
+    'language': 'Dil',
+    'logout': 'Çıkış Yap',
+    'logout_confirm': 'Çıkış yapmak istediğine emin misin?',
+    'delete_account': 'Hesabı Sil',
+    'delete_account_desc': 'Bu işlem geri alınamaz. Tüm verilerin silinecek.',
+
+    // Powers
+    'power_copy': 'Kopya',
+    'power_half': '50/50',
+    'power_skip': 'Geç',
+    'power_hint': 'İpucu',
+    'power_time': '+15sn',
+    'power_skip_all': 'Hepsini Geç',
+  };
+
+  static const _en = <String, String>{
+    // General
+    'app_name': 'Qulo',
+    'ok': 'OK',
+    'cancel': 'Cancel',
+    'save': 'Save',
+    'delete': 'Delete',
+    'loading': 'Loading...',
+    'error': 'Error',
+    'success': 'Success',
+    'retry': 'Retry',
+    'yes': 'Yes',
+    'no': 'No',
+
+    // Auth
+    'welcome_back': 'Welcome back',
+    'login': 'Login',
+    'register': 'Register',
+    'email': 'Email',
+    'password': 'Password',
+    'forgot_password': 'Forgot password?',
+    'no_account': "Don't have an account?",
+    'reset_password': 'Reset Password',
+    'reset_password_desc': 'Enter your email address and we will send you a link to reset your password.',
+    'send_reset_link': 'Send Reset Link',
+    'reset_email_sent': 'If your email exists, you will receive a reset link',
+    'check_email': 'Check your email to verify',
+    'name': 'Name',
+    'surname': 'Surname',
+    'age': 'Age',
+    'gender': 'Gender',
+    'male': 'Male',
+    'female': 'Female',
+
+    // Validation
+    'field_required': 'This field is required',
+    'email_required': 'Email is required',
+    'email_invalid': 'Invalid email',
+    'password_required': 'Password is required',
+    'password_min': 'Min 8 characters',
+    'age_range': '18-99',
+
+    // Onboarding
+    'onboarding_title_1': 'Welcome to Qulo',
+    'onboarding_sub_1': 'Find your match by answering questions',
+    'onboarding_title_2': 'Create Your Questions',
+    'onboarding_sub_2': 'Prepare 2-6 questions for people who want to match with you',
+    'onboarding_title_3': 'Complete Your Profile',
+    'onboarding_sub_3': 'Add photos and details to stand out',
+    'next': 'Next',
+    'skip': 'Skip',
+    'get_started': 'Get Started',
+
+    // Discover
+    'discover': 'Discover',
+    'no_more_profiles': 'No more profiles',
+    'refresh': 'Refresh',
+    'questions_count': '{count} questions',
+
+    // Quiz
+    'quiz_match': 'Match!',
+    'quiz_match_desc': 'You answered all questions correctly!',
+    'quiz_failed': 'Failed',
+    'quiz_failed_desc': 'Wrong answer. Better luck next time!',
+
+    // Matches
+    'matches': 'Matches',
+    'no_matches': 'No matches yet',
+    'start_swiping': 'Start swiping to find matches!',
+
+    // Chat
+    'chat': 'Chat',
+    'say_hello': 'Say hello!',
+    'message_hint': 'Message...',
+
+    // Profile
+    'profile': 'Profile',
+    'edit_profile': 'Edit Profile',
+    'my_questions': 'My Questions',
+    'diamonds': 'Diamonds',
+    'passport': 'Passport',
+    'complete': 'complete',
+
+    // Questions
+    'add_question': 'New Question',
+    'question': 'Question',
+    'answer_n': 'Answer {n}',
+    'correct_answer': 'Correct Answer',
+    'min_questions': 'Add at least {count} questions',
+    'max_questions': 'Max 6 questions',
+
+    // Diamonds
+    'green_diamonds': 'Green Diamonds',
+    'purple_diamonds': 'Purple Diamonds',
+    'purchase_purple': 'Purchase Purple Diamonds',
+    'history': 'History',
+    'no_transactions': 'No transactions yet',
+
+    // Passport
+    'passport_explore': 'Explore profiles in another city',
+    'passport_cost': 'Cost: {cost} purple diamonds / activation',
+    'passport_active': 'Active: {city}',
+    'city': 'City',
+    'activate_passport': 'Activate Passport',
+    'deactivate': 'Deactivate',
+
+    // Settings
+    'settings': 'Settings',
+    'language': 'Language',
+    'logout': 'Logout',
+    'logout_confirm': 'Are you sure you want to logout?',
+    'delete_account': 'Delete Account',
+    'delete_account_desc': 'This action is irreversible. All your data will be deleted.',
+
+    // Powers
+    'power_copy': 'Copy',
+    'power_half': '50/50',
+    'power_skip': 'Skip',
+    'power_hint': 'Hint',
+    'power_time': '+15s',
+    'power_skip_all': 'Skip All',
+  };
+}
+
+class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+  const AppLocalizationsDelegate();
+
+  @override
+  bool isSupported(Locale locale) => ['tr', 'en'].contains(locale.languageCode);
+
+  @override
+  Future<AppLocalizations> load(Locale locale) async => AppLocalizations(locale);
+
+  @override
+  bool shouldReload(AppLocalizationsDelegate old) => false;
+}
