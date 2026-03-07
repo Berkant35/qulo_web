@@ -1,5 +1,5 @@
 import { createRequire } from 'node:module';
-import { fcm } from '../config/firebase.js';
+import { getFcm } from '../config/firebase.js';
 import { supabase } from '../config/supabase.js';
 
 const require = createRequire(import.meta.url);
@@ -41,6 +41,8 @@ export class NotificationService {
       const body = interpolate(template, params);
 
       // 4. Send via FCM
+      const fcm = getFcm();
+      if (!fcm) return;
       await fcm.send({
         token: user.push_token,
         notification: { title: 'Qulo', body },

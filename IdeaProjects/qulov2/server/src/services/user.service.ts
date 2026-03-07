@@ -8,7 +8,7 @@ export class UserService {
     const { data: user, error } = await supabase
       .from("users")
       .select(
-        "id, email, name, surname, bio, age, gender, gender_pref, match_radius_km, age_pref_min, age_pref_max, city, country, locale, lat, lng, photos, profile_completion, diamonds, green_diamonds, is_online, last_seen, push_token, email_verified, created_at, updated_at",
+        "id, email, name, surname, bio, age, gender, gender_pref, match_radius_km, age_pref_min, age_pref_max, city, country, locale, lat, lng, photos, profile_completion, green_diamonds, purple_diamonds, is_online, last_seen_at, push_token, email_verified, passport_city, passport_lat, passport_lng, boost_until, like_received_count, times_shown_count, created_at",
       )
       .eq("id", userId)
       .eq("is_deleted", false)

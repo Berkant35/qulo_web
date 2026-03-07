@@ -79,7 +79,7 @@ export class AuthService {
   async login(email: string, password: string) {
     const { data: user, error } = await supabase
       .from("users")
-      .select("id, email, password_hash, email_verified, deleted_at")
+      .select("id, email, password_hash, email_verified, is_deleted")
       .eq("email", email)
       .maybeSingle();
 
@@ -87,7 +87,7 @@ export class AuthService {
       throw Errors.INVALID_CREDENTIALS();
     }
 
-    if (user.deleted_at) {
+    if (user.is_deleted) {
       throw Errors.INVALID_CREDENTIALS();
     }
 
@@ -115,7 +115,7 @@ export class AuthService {
     // Update last_seen and is_online
     await supabase
       .from("users")
-      .update({ last_seen: new Date().toISOString(), is_online: true })
+      .update({ last_seen_at: new Date().toISOString(), is_online: true })
       .eq("id", user.id);
 
     return { accessToken, refreshToken, userId: user.id };

@@ -4,11 +4,18 @@ import { env } from './env.js';
 
 const serviceAccount = JSON.parse(env.FIREBASE_SERVICE_ACCOUNT);
 
+let firebaseInitialized = false;
+
 if (serviceAccount.project_id) {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });
+  firebaseInitialized = true;
 }
 
 export const firebaseAdmin = admin;
-export const fcm: messaging.Messaging = admin.messaging();
+
+export function getFcm(): messaging.Messaging | null {
+  if (!firebaseInitialized) return null;
+  return admin.messaging();
+}

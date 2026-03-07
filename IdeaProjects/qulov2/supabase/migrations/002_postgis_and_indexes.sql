@@ -5,8 +5,8 @@
 
 -- Spatial index on user location (PostGIS geography)
 CREATE INDEX idx_users_location
-  ON users USING GIST (ST_MakePoint(lng, lat)::geography)
-  WHERE lat IS NOT NULL;
+  ON users USING GIST ((ST_MakePoint(lng, lat)::geography))
+  WHERE lat IS NOT NULL AND lng IS NOT NULL;
 
 -- Users indexes
 CREATE INDEX idx_users_gender ON users (gender);
