@@ -27,6 +27,12 @@ const envSchema = z.object({
 
   // App
   APP_URL: z.string().url().default("http://localhost:3000"),
+
+  // Admin
+  ADMIN_SESSION_SECRET: z.string().min(1),
+  ADMIN_SEED_EMAIL: z.string().email().optional(),
+  ADMIN_SEED_PASSWORD: z.string().min(8).optional(),
+  ADMIN_ALLOWED_IPS: z.string().optional(),
 });
 
 function loadEnv() {

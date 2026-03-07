@@ -1,6 +1,9 @@
 import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 import cors from "cors";
 import helmet from "helmet";
+import session from "express-session";
 import { env } from "./config/env.js";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
@@ -13,18 +16,47 @@ import powerRoutes from "./routes/power.routes.js";
 import passportRoutes from "./routes/passport.routes.js";
 import reportRoutes from "./routes/report.routes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+import adminRoutes from "./admin/admin.routes.js";
+import { adminService } from "./admin/admin.service.js";
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "admin", "views"));
 
 // Middleware
 app.use(helmet());
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 
+// Admin session middleware
+app.use(
+  session({
+    secret: env.ADMIN_SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 2 * 60 * 60 * 1000, // 2 hours
+    },
+  }),
+);
+
+// Parse URL-encoded bodies for admin forms
+app.use("/admin", express.urlencoded({ extended: false }));
+
 // Health check
 app.get("/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
+
+// Admin backoffice
+app.use("/admin", adminRoutes);
 
 // Routes
 app.use("/api/v1/auth", authRoutes);
@@ -46,6 +78,11 @@ app.listen(env.PORT, () => {
   console.log(
     `[server] Running on port ${env.PORT} in ${env.NODE_ENV} mode`,
   );
+
+  // Seed admin user
+  if (env.ADMIN_SEED_EMAIL && env.ADMIN_SEED_PASSWORD) {
+    adminService.seedAdmin(env.ADMIN_SEED_EMAIL, env.ADMIN_SEED_PASSWORD).catch(console.error);
+  }
 });
 
 export default app;
