@@ -5,6 +5,7 @@ import { env } from "./config/env.js";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import questionRoutes from "./routes/question.routes.js";
+import diamondRoutes from "./routes/diamond.routes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
@@ -23,6 +24,7 @@ app.get("/health", (_req, res) => {
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/questions", questionRoutes);
+app.use("/api/v1/diamonds", diamondRoutes);
 
 // Error handler (must be last)
 app.use(errorHandler);
