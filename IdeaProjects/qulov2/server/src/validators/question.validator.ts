@@ -1,0 +1,25 @@
+import { z } from "zod";
+
+export const createQuestionSchema = z.object({
+  order_num: z.number().int().min(1).max(6),
+  question_text: z.string().min(5).max(500),
+  correct_answer: z.number().int().min(1).max(4),
+  answer_1: z.string().min(1).max(200),
+  answer_2: z.string().min(1).max(200),
+  answer_3: z.string().min(1).max(200),
+  answer_4: z.string().min(1).max(200),
+  hint_text: z.string().max(300).optional(),
+});
+
+export const updateQuestionSchema = z.object({
+  question_text: z.string().min(5).max(500).optional(),
+  correct_answer: z.number().int().min(1).max(4).optional(),
+  answer_1: z.string().min(1).max(200).optional(),
+  answer_2: z.string().min(1).max(200).optional(),
+  answer_3: z.string().min(1).max(200).optional(),
+  answer_4: z.string().min(1).max(200).optional(),
+  hint_text: z.string().max(300).optional(),
+});
+
+export type CreateQuestionInput = z.infer<typeof createQuestionSchema>;
+export type UpdateQuestionInput = z.infer<typeof updateQuestionSchema>;

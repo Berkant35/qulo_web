@@ -3,6 +3,8 @@ import cors from "cors";
 import helmet from "helmet";
 import { env } from "./config/env.js";
 import authRoutes from "./routes/auth.routes.js";
+import userRoutes from "./routes/user.routes.js";
+import questionRoutes from "./routes/question.routes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
@@ -19,6 +21,8 @@ app.get("/health", (_req, res) => {
 
 // Routes
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/questions", questionRoutes);
 
 // Error handler (must be last)
 app.use(errorHandler);
