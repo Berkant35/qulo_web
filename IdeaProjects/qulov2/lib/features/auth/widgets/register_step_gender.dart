@@ -1,0 +1,139 @@
+import 'package:flutter/material.dart';
+import '../../../core/l10n/app_localizations.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_spacing.dart';
+import '../../../core/widgets/app_button.dart';
+
+class RegisterStepGender extends StatelessWidget {
+  final String? selectedGender;
+  final ValueChanged<String> onGenderSelected;
+  final String? errorText;
+  final VoidCallback onContinue;
+
+  const RegisterStepGender({
+    super.key,
+    this.selectedGender,
+    required this.onGenderSelected,
+    this.errorText,
+    required this.onContinue,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final theme = Theme.of(context);
+
+    return Padding(
+      padding: const EdgeInsets.all(AppSpacing.pagePadding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            l10n.get('step_gender'),
+            style: theme.textTheme.headlineMedium,
+          ),
+          const SizedBox(height: AppSpacing.xxl),
+          _GenderCard(
+            label: l10n.get('man'),
+            icon: Icons.male,
+            isSelected: selectedGender == 'male',
+            onTap: () => onGenderSelected('male'),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          _GenderCard(
+            label: l10n.get('woman'),
+            icon: Icons.female,
+            isSelected: selectedGender == 'female',
+            onTap: () => onGenderSelected('female'),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          _GenderCard(
+            label: l10n.get('other'),
+            icon: Icons.transgender,
+            isSelected: selectedGender == 'other',
+            onTap: () => onGenderSelected('other'),
+          ),
+          if (errorText != null) ...[
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              errorText!,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: AppColors.error,
+              ),
+            ),
+          ],
+          const Spacer(),
+          AppButton(
+            label: l10n.get('continue_btn'),
+            onPressed: onContinue,
+          ),
+          const SizedBox(height: AppSpacing.xl),
+        ],
+      ),
+    );
+  }
+}
+
+class _GenderCard extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const _GenderCard({
+    required this.label,
+    required this.icon,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.lg,
+        ),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? AppColors.purpleSurface
+              : Theme.of(context).colorScheme.surfaceContainerHighest,
+          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+          border: Border.all(
+            color: isSelected ? AppColors.purple : Colors.transparent,
+            width: 2,
+          ),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: isSelected ? AppColors.purple : AppColors.onSurfaceVariant,
+              size: 28,
+            ),
+            const SizedBox(width: AppSpacing.md),
+            Expanded(
+              child: Text(
+                label,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      color: isSelected
+                          ? AppColors.purple
+                          : AppColors.onSurface,
+                    ),
+              ),
+            ),
+            if (isSelected)
+              const Icon(
+                Icons.check_circle,
+                color: AppColors.purple,
+                size: 24,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
