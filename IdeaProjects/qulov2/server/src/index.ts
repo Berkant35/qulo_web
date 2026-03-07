@@ -6,6 +6,7 @@ import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import questionRoutes from "./routes/question.routes.js";
 import diamondRoutes from "./routes/diamond.routes.js";
+import matchRoutes from "./routes/match.routes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
@@ -25,6 +26,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/questions", questionRoutes);
 app.use("/api/v1/diamonds", diamondRoutes);
+app.use("/api/v1/matches", matchRoutes);
 
 // Error handler (must be last)
 app.use(errorHandler);
