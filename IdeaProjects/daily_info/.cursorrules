@@ -1,0 +1,83 @@
+# Daily Info - Project Rules
+
+## 🎯 Project Purpose
+A simple MVP application that sends daily historical notifications.
+
+## 🌐 Language Rules
+- **ALL code comments must be in English**
+- **ALL UI text must be in English**
+- **ALL documentation must be in English**
+- **Variable and function names must be in English**
+
+## 🏗️ Architecture Rules
+
+### General Principles
+- **Simplicity first**: MVVM or complex state management NOT ALLOWED
+- **setState is enough**: Use only setState for simple state management
+- **Over-engineering FORBIDDEN**: Only implement requested features
+- **Extra features FORBIDDEN**: Don't add new features unless user requests
+
+### File Structure
+```
+lib/
+├── core/
+│   ├── theme/
+│   │   ├── app_colors.dart      # Color palette
+│   │   └── app_theme.dart       # Theme definitions
+│   └── constants/
+│       └── app_constants.dart   # Constant values
+├── services/
+│   ├── notification_service.dart # Firebase Messaging
+│   ├── analytics_service.dart    # Firebase Analytics
+│   └── storage_service.dart      # SharedPreferences
+├── screens/
+│   └── home/
+│       └── home_screen.dart      # Main screen
+├── components/
+│   ├── notification_toggle.dart  # Notification switch
+│   └── app_card.dart            # Card component
+└── main.dart
+```
+
+## 🎨 Color Palette (MANDATORY)
+These colors MUST BE USED at all times:
+
+| Usage | Color | RGB |
+|-------|-------|-----|
+| Dark Blue Frame | `darkBlueFrame` | rgb(32, 56, 77) |
+| Yellow Top | `yellowTop` | rgb(243, 195, 71) |
+| Light Beige Paper | `lightBeigePaper` | rgb(234, 223, 198) |
+| Dark Text/Lines | `darkText` | rgb(41, 45, 49) |
+
+## 📦 Dependencies
+- firebase_core
+- firebase_messaging
+- firebase_analytics
+- shared_preferences
+
+## ⚠️ FORBIDDEN
+1. ❌ Adding features user didn't request
+2. ❌ Complex state management (Provider, Bloc, Riverpod, etc.)
+3. ❌ Unnecessary abstraction layers
+4. ❌ Going outside the color palette
+5. ❌ Going outside the file structure
+6. ❌ Turkish or any non-English text in code/UI
+
+## ✅ ALLOWED
+1. ✅ Simple setState usage
+2. ✅ Component-based structure
+3. ✅ Firebase Messaging integration
+4. ✅ Firebase Analytics integration
+5. ✅ SharedPreferences for simple storage
+
+## 🔔 Firebase Messaging Rules
+- Get FCM token when app opens
+- Request notification permission
+- Handle foreground/background messages
+- Store token in storage
+
+## 📊 Firebase Analytics Rules
+- Log app open events
+- Log notification toggle events
+- Log screen views
+- Track user engagement

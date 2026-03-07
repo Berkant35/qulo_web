@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabul Kart Oluşturucu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #667eea;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .results-title {
+            font-size: 24px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .download-btn {
+            background: #28a745;
+            padding: 10px 20px;
+            font-size: 14px;
+            width: auto;
+        }
+
+        .download-btn:hover {
+            background: #218838;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .tabul-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .tabul-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .card-word {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            text-transform: uppercase;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+
+        .forbidden-words {
+            list-style: none;
+        }
+
+        .forbidden-words li {
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .error {
+            background: #ff4444;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .error.active {
+            display: block;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .info-box strong {
+            color: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎲 Tabul Kart Oluşturucu</h1>
+            <p>AI destekli akıllı Tabul kartları oluşturun</p>
+        </div>
+
+        <div class="card">
+            <div class="info-box">
+                <strong>💡 Nasıl Kullanılır:</strong> Aşağıya istediğiniz temayı yazın. Örneğin: "Sadece doktorların anlayabileceği tabul kartları" veya "Yazılım geliştiriciler için tabul kartları"
+            </div>
+
+            <div class="input-group">
+                <label for="prompt">Tema veya Açıklama:</label>
+                <input 
+                    type="text" 
+                    id="prompt" 
+                    placeholder="Örn: Sadece doktorların birbirileriyle anlaşabileceği tabul kartları oluştur"
+                    value="Sadece doktorların birbirileriyle anlaşabileceği tabul kartları oluştur"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="cardCount">Kart Sayısı:</label>
+                <input 
+                    type="number" 
+                    id="cardCount" 
+                    min="1" 
+                    max="100" 
+                    value="50"
+                >
+            </div>
+
+            <button id="generateBtn" onclick="generateCards()">
+                Kartları Oluştur
+            </button>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Kartlar oluşturuluyor, lütfen bekleyin...</p>
+            </div>
+
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="card results" id="results">
+            <div class="results-header">
+                <div class="results-title" id="resultsTitle">Oluşturulan Kartlar</div>
+                <button class="download-btn" onclick="downloadJSON()">
+                    📥 JSON İndir
+                </button>
+            </div>
+            <div class="cards-grid" id="cardsContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        let generatedData = null;
+
+        async function generateCards() {
+            const prompt = document.getElementById('prompt').value;
+            const cardCount = parseInt(document.getElementById('cardCount').value);
+            const generateBtn = document.getElementById('generateBtn');
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            const results = document.getElementById('results');
+
+            // Validation
+            if (!prompt.trim()) {
+                showError('Lütfen bir tema veya açıklama girin!');
+                return;
+            }
+
+            if (cardCount < 1 || cardCount > 100) {
+                showError('Kart sayısı 1 ile 100 arasında olmalıdır!');
+                return;
+            }
+
+            // UI güncelleme
+            generateBtn.disabled = true;
+            loading.classList.add('active');
+            error.classList.remove('active');
+            results.classList.remove('active');
+
+            try {
+                const response = await fetch('/api/generate-cards', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ prompt, cardCount })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Bir hata oluştu');
+                }
+
+                // Sonuçları göster
+                generatedData = data;
+                displayCards(data);
+
+            } catch (err) {
+                showError(err.message);
+            } finally {
+                generateBtn.disabled = false;
+                loading.classList.remove('active');
+            }
+        }
+
+        function displayCards(data) {
+            const container = document.getElementById('cardsContainer');
+            const resultsTitle = document.getElementById('resultsTitle');
+            const results = document.getElementById('results');
+
+            resultsTitle.textContent = `${data.kartSayisi} Kart Oluşturuldu - ${data.tema}`;
+            
+            container.innerHTML = '';
+            
+            data.kartlar.forEach((kart, index) => {
+                const cardDiv = document.createElement('div');
+                cardDiv.className = 'tabul-card';
+                
+                const wordDiv = document.createElement('div');
+                wordDiv.className = 'card-word';
+                wordDiv.textContent = kart.kelime;
+                
+                const forbiddenList = document.createElement('ul');
+                forbiddenList.className = 'forbidden-words';
+                
+                kart.yasakliKelimeler.forEach(word => {
+                    const li = document.createElement('li');
+                    li.textContent = `❌ ${word}`;
+                    forbiddenList.appendChild(li);
+                });
+                
+                cardDiv.appendChild(wordDiv);
+                cardDiv.appendChild(forbiddenList);
+                container.appendChild(cardDiv);
+            });
+
+            results.classList.add('active');
+            results.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showError(message) {
+            const error = document.getElementById('error');
+            error.textContent = message;
+            error.classList.add('active');
+        }
+
+        function downloadJSON() {
+            if (!generatedData) return;
+
+            const dataStr = JSON.stringify(generatedData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `tabul-kartlari-${Date.now()}.json`;
+            link.click();
+            
+            URL.revokeObjectURL(url);
+        }
+
+        // Enter tuşu ile form gönderimi
+        document.getElementById('prompt').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                generateCards();
+            }
+        });
+    </script>
+</body>
+</html>

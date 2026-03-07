@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Notification color - Yellow Top from color palette -->
+    <color name="notification_color">#F3C347</color>
+</resources>
+

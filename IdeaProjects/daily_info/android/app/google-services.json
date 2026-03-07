@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "370868417196",
+    "project_id": "historicalinfo-6c9b3",
+    "storage_bucket": "historicalinfo-6c9b3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370868417196:android:6981dd0030a2eeacb92509",
+        "android_client_info": {
+          "package_name": "com.socrepho.dailyinfo.daily_info"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsbsHU_1da0NPRAMt7XExjEE3S1vrCXZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,30 @@
+name: daily_info
+description: "Daily notifications about historical events"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Firebase
+  firebase_core: ^3.8.0
+  firebase_messaging: ^15.1.5
+  firebase_analytics: ^11.3.6
+
+  # Storage
+  shared_preferences: ^2.3.3
+
+  # Icons
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
