@@ -6,7 +6,7 @@ export const registerSchema = z.object({
   name: z.string().min(1),
   surname: z.string().min(1),
   age: z.number().int().min(18).max(99),
-  gender: z.enum(["MAN", "WOMAN"]),
+  gender: z.enum(["MAN", "WOMAN", "OTHER"]),
   locale: z.enum(["tr", "en"]).default("tr"),
 });
 
