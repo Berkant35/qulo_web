@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 
 mixin FormMixin<T extends StatefulWidget> on State<T> {
   final formKey = GlobalKey<FormState>();
 
   bool validateForm() => formKey.currentState?.validate() ?? false;
 
-  String? requiredValidator(String? value, [String field = 'This field']) {
-    if (value == null || value.trim().isEmpty) return '$field is required';
+  String? requiredValidator(String? value, [String? field]) {
+    if (value == null || value.trim().isEmpty) {
+      return AppLocalizations.of(context).get('field_required');
+    }
     return null;
   }
 
   String? emailValidator(String? value) {
-    if (value == null || value.trim().isEmpty) return 'Email is required';
+    final l10n = AppLocalizations.of(context);
+    if (value == null || value.trim().isEmpty) return l10n.get('email_required');
     if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
-      return 'Invalid email';
+      return l10n.get('email_invalid');
     }
     return null;
   }
 
   String? passwordValidator(String? value) {
-    if (value == null || value.isEmpty) return 'Password is required';
-    if (value.length < 8) return 'Min 8 characters';
+    final l10n = AppLocalizations.of(context);
+    if (value == null || value.isEmpty) return l10n.get('password_required');
+    if (value.length < 8) return l10n.get('password_min');
     return null;
   }
 }
