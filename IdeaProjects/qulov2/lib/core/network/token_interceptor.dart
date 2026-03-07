@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../config/env.dart';
+import '../error/api_exception.dart';
 import '../error/error_manager.dart';
 
 class TokenInterceptor extends Interceptor {
@@ -26,8 +27,9 @@ class TokenInterceptor extends Interceptor {
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     ErrorManager.logError(err, err.stackTrace, 'API ${err.requestOptions.method} ${err.requestOptions.path}');
 
+    // For non-401 errors, parse the API error and reject immediately
     if (err.response?.statusCode != 401 || _isRefreshing) {
-      return handler.next(err);
+      return handler.next(_withApiException(err));
     }
 
     _isRefreshing = true;
@@ -56,7 +58,20 @@ class TokenInterceptor extends Interceptor {
     } catch (_) {
       _isRefreshing = false;
       await _storage.deleteAll();
-      return handler.next(err);
+      return handler.next(_withApiException(err));
     }
+  }
+
+  /// Parses API error response and wraps it as an [ApiException] inside the [DioException].
+  DioException _withApiException(DioException err) {
+    final data = err.response?.data;
+    if (data is Map<String, dynamic>) {
+      final apiException = ApiException.fromResponse(
+        data,
+        err.response?.statusCode,
+      );
+      return err.copyWith(error: apiException);
+    }
+    return err;
   }
 }
