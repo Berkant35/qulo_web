@@ -1,11 +1,15 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/error/api_exception.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/mixins/form_mixin.dart';
 import '../../../core/mixins/loading_mixin.dart';
+import '../../../core/widgets/app_text_field.dart';
+import '../../../core/widgets/app_button.dart';
 import '../../../providers/auth_provider.dart';
 import '../../../routing/route_names.dart';
 
@@ -21,6 +25,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
   final _emailCtrl = TextEditingController();
   final _passwordCtrl = TextEditingController();
   bool _obscure = true;
+  String? _loginError;
 
   @override
   void dispose() {
@@ -30,11 +35,26 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
   }
 
   Future<void> _login() => withLoading(() async {
+        setState(() => _loginError = null);
         if (!validateForm()) return;
-        await ref.read(authProvider.notifier).login(
-              email: _emailCtrl.text.trim(),
-              password: _passwordCtrl.text,
-            );
+        try {
+          await ref.read(authProvider.notifier).login(
+                email: _emailCtrl.text.trim(),
+                password: _passwordCtrl.text,
+              );
+        } on DioException catch (e) {
+          final data = e.response?.data;
+          if (data is Map<String, dynamic>) {
+            final apiEx =
+                ApiException.fromResponse(data, e.response?.statusCode);
+            setState(
+                () => _loginError = context.l10n.errorMessage(apiEx.code));
+          } else {
+            setState(() => _loginError = context.l10n.errorMessage('UNKNOWN'));
+          }
+        } catch (_) {
+          setState(() => _loginError = context.l10n.errorMessage('UNKNOWN'));
+        }
       });
 
   @override
@@ -67,55 +87,43 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                   ),
                 ),
                 const SizedBox(height: AppSpacing.xxxl),
-                TextFormField(
+                AppTextField(
                   controller: _emailCtrl,
+                  label: context.tr('email'),
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   validator: emailValidator,
-                  decoration: InputDecoration(
-                    labelText: context.tr('email'),
-                    prefixIcon: const Icon(Icons.email_outlined),
-                  ),
+                  prefixIcon: const Icon(Icons.email_outlined),
                 ),
                 const SizedBox(height: AppSpacing.lg),
-                TextFormField(
+                AppTextField(
                   controller: _passwordCtrl,
+                  label: context.tr('password'),
                   obscureText: _obscure,
                   textInputAction: TextInputAction.done,
                   validator: passwordValidator,
                   onFieldSubmitted: (_) => _login(),
-                  decoration: InputDecoration(
-                    labelText: context.tr('password'),
-                    prefixIcon: const Icon(Icons.lock_outlined),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                          _obscure ? Icons.visibility_off : Icons.visibility),
-                      onPressed: () => setState(() => _obscure = !_obscure),
-                    ),
+                  errorText: _loginError,
+                  prefixIcon: const Icon(Icons.lock_outlined),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                        _obscure ? Icons.visibility_off : Icons.visibility),
+                    onPressed: () => setState(() => _obscure = !_obscure),
                   ),
                 ),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () =>
-                        context.goNamed(RouteNames.forgotPassword),
+                        context.pushNamed(RouteNames.forgotPassword),
                     child: Text(context.tr('forgot_password')),
                   ),
                 ),
                 const SizedBox(height: AppSpacing.lg),
-                SizedBox(
-                  height: 52,
-                  child: ElevatedButton(
-                    onPressed: isLoading ? null : _login,
-                    child: isLoading
-                        ? const SizedBox(
-                            height: 20,
-                            width: 20,
-                            child:
-                                CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        : Text(context.tr('login')),
-                  ),
+                AppButton(
+                  label: context.tr('login'),
+                  isLoading: isLoading,
+                  onPressed: isLoading ? null : _login,
                 ),
                 const SizedBox(height: AppSpacing.xxl),
                 Row(
@@ -125,7 +133,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                         style: theme.textTheme.bodyMedium),
                     TextButton(
                       onPressed: () =>
-                          context.goNamed(RouteNames.register),
+                          context.pushNamed(RouteNames.register),
                       child: Text(context.tr('register')),
                     ),
                   ],
