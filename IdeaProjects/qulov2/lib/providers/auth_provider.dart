@@ -44,12 +44,16 @@ class AuthNotifier extends Notifier<AuthState> {
   }
 
   Future<void> _checkAuth() async {
-    final token = await _storage.read(key: 'access_token');
-    final userId = await _storage.read(key: 'user_id');
-    if (token != null && userId != null) {
-      ErrorManager.setUser(userId);
-      state = state.copyWith(status: AuthStatus.authenticated, userId: userId);
-    } else {
+    try {
+      final token = await _storage.read(key: 'access_token');
+      final userId = await _storage.read(key: 'user_id');
+      if (token != null && userId != null) {
+        ErrorManager.setUser(userId);
+        state = state.copyWith(status: AuthStatus.authenticated, userId: userId);
+      } else {
+        state = state.copyWith(status: AuthStatus.unauthenticated);
+      }
+    } catch (_) {
       state = state.copyWith(status: AuthStatus.unauthenticated);
     }
   }
