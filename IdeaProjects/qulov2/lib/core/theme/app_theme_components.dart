@@ -66,6 +66,12 @@ final _inputDecorationTheme = InputDecorationTheme(
     borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
     borderSide: const BorderSide(color: AppColors.error),
   ),
+  errorMaxLines: 2,
+  errorStyle: const TextStyle(
+    color: AppColors.error,
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  ),
   contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
   hintStyle: TextStyle(color: AppColors.onSurfaceVariant.withValues(alpha: 0.6)),
 );

@@ -36,5 +36,10 @@ abstract final class AppTheme {
         chipTheme: _chipTheme,
         dialogTheme: _dialogTheme,
         snackBarTheme: _snackBarTheme,
+        progressIndicatorTheme: const ProgressIndicatorThemeData(
+          color: AppColors.purple,
+          linearTrackColor: AppColors.outlineVariant,
+          linearMinHeight: 4,
+        ),
       );
 }
