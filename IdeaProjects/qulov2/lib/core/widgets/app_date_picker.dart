@@ -26,7 +26,7 @@ class AppDatePicker extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           child: InputDecorator(
             decoration: InputDecoration(
-              labelText: l10n['birthday'],
+              labelText: l10n.get('birthday'),
               errorText: errorText,
               prefixIcon: const Icon(Icons.cake_outlined),
               suffixIcon: const Icon(Icons.calendar_today_outlined),
@@ -36,7 +36,7 @@ class AppDatePicker extends StatelessWidget {
                   ? '${selectedDate!.day.toString().padLeft(2, '0')}/'
                     '${selectedDate!.month.toString().padLeft(2, '0')}/'
                     '${selectedDate!.year}'
-                  : l10n['select_date']!,
+                  : l10n.get('select_date'),
               style: selectedDate != null
                   ? theme.textTheme.bodyLarge
                   : theme.textTheme.bodyLarge?.copyWith(
