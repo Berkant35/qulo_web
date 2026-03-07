@@ -1,4 +1,5 @@
 import { supabase } from "../config/supabase.js";
+import { diamondService } from "./diamond.service.js";
 import { Errors } from "../utils/errors.js";
 import type { UpdateProfileInput, UpdateDetailsInput } from "../validators/user.validator.js";
 
@@ -227,6 +228,24 @@ export class UserService {
     await this.recalculateProfileCompletion(userId);
 
     return { photos };
+  }
+
+  async boost(userId: string) {
+    // Spend 30 green diamonds
+    await diamondService.spendGreen(userId, 30, "BOOST");
+
+    const boostUntil = new Date(Date.now() + 30 * 60 * 1000).toISOString();
+
+    const { error } = await supabase
+      .from("users")
+      .update({ boost_until: boostUntil, updated_at: new Date().toISOString() })
+      .eq("id", userId);
+
+    if (error) {
+      throw Errors.SERVER_ERROR();
+    }
+
+    return { boost_until: boostUntil };
   }
 
   private async recalculateProfileCompletion(userId: string) {

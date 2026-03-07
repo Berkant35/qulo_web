@@ -87,6 +87,15 @@ export async function deletePhotoHandler(req: Request, res: Response, next: Next
   }
 }
 
+export async function boostHandler(req: Request, res: Response, next: NextFunction) {
+  try {
+    const result = await userService.boost(req.user!.userId);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function deleteAccountHandler(req: Request, res: Response, next: NextFunction) {
   try {
     await userService.deleteAccount(req.user!.userId);

@@ -10,6 +10,8 @@ import matchRoutes from "./routes/match.routes.js";
 import chatRoutes from "./routes/chat.routes.js";
 import quizRoutes from "./routes/quiz.routes.js";
 import powerRoutes from "./routes/power.routes.js";
+import passportRoutes from "./routes/passport.routes.js";
+import reportRoutes from "./routes/report.routes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
@@ -33,6 +35,8 @@ app.use("/api/v1/matches", matchRoutes);
 app.use("/api/v1/chat", chatRoutes);
 app.use("/api/v1/quiz", quizRoutes);
 app.use("/api/v1/powers", powerRoutes);
+app.use("/api/v1/passport", passportRoutes);
+app.use("/api/v1/reports", reportRoutes);
 
 // Error handler (must be last)
 app.use(errorHandler);

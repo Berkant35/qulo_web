@@ -17,6 +17,7 @@ import {
   updatePushTokenHandler,
   uploadPhotoHandler,
   deletePhotoHandler,
+  boostHandler,
   deleteAccountHandler,
 } from "../controllers/user.controller.js";
 import { AppError } from "../utils/errors.js";
@@ -44,6 +45,7 @@ router.patch("/me/details", validate(updateDetailsSchema), updateDetailsHandler)
 router.patch("/me/location", validate(updateLocationSchema), updateLocationHandler);
 router.patch("/me/push-token", validate(updatePushTokenSchema), updatePushTokenHandler);
 router.post("/me/photos", upload.single("photo"), uploadPhotoHandler);
+router.post("/me/boost", boostHandler);
 router.delete("/me/photos/:index", deletePhotoHandler);
 router.delete("/me", deleteAccountHandler);
 
