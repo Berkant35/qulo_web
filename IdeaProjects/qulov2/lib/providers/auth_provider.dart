@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import '../core/error/error_manager.dart';
 import '../data/models/auth_model.dart';
 import 'api_provider.dart';
 
@@ -46,6 +47,7 @@ class AuthNotifier extends Notifier<AuthState> {
     final token = await _storage.read(key: 'access_token');
     final userId = await _storage.read(key: 'user_id');
     if (token != null && userId != null) {
+      ErrorManager.setUser(userId);
       state = state.copyWith(status: AuthStatus.authenticated, userId: userId);
     } else {
       state = state.copyWith(status: AuthStatus.unauthenticated);
@@ -86,6 +88,7 @@ class AuthNotifier extends Notifier<AuthState> {
       final repo = ref.read(authRepositoryProvider);
       final tokens = await repo.login(email: email, password: password);
       await _saveTokens(tokens);
+      ErrorManager.setUser(tokens.userId);
       state = state.copyWith(
         status: AuthStatus.authenticated,
         userId: tokens.userId,

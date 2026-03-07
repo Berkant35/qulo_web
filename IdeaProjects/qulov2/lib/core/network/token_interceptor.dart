@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../config/env.dart';
+import '../error/error_manager.dart';
 
 class TokenInterceptor extends Interceptor {
   final Dio _dio;
@@ -23,6 +24,8 @@ class TokenInterceptor extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
+    ErrorManager.logError(err, err.stackTrace, 'API ${err.requestOptions.method} ${err.requestOptions.path}');
+
     if (err.response?.statusCode != 401 || _isRefreshing) {
       return handler.next(err);
     }
