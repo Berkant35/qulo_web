@@ -14,6 +14,11 @@ class AppLocalizations {
 
   String get(String key) => _strings[key] ?? key;
 
+  String errorMessage(String code) {
+    final key = 'error_${code.toLowerCase()}';
+    return _strings[key] ?? _strings['error_unknown']!;
+  }
+
   static const _localizedValues = <String, Map<String, String>>{
     'tr': _tr,
     'en': _en,
@@ -140,6 +145,34 @@ class AppLocalizations {
     'power_hint': 'İpucu',
     'power_time': '+15sn',
     'power_skip_all': 'Hepsini Geç',
+
+    // Error codes
+    'error_invalid_credentials': 'Email veya şifre hatalı',
+    'error_email_already_exists': 'Bu email zaten kayıtlı',
+    'error_email_not_verified': 'Lütfen önce emailinizi doğrulayın',
+    'error_validation_error': 'Lütfen girişlerinizi kontrol edin',
+    'error_rate_limited': 'Çok fazla deneme, lütfen daha sonra tekrar deneyin',
+    'error_server_error': 'Bir hata oluştu, lütfen tekrar deneyin',
+    'error_unknown': 'Beklenmeyen bir hata oluştu',
+
+    // Register wizard
+    'step_name': 'Adın ne?',
+    'step_birthday': 'Doğum günün ne zaman?',
+    'step_gender': 'Cinsiyetin ne?',
+    'step_email': 'Hesabını oluştur',
+    'step_terms': 'Neredeyse tamam!',
+    'birthday': 'Doğum tarihi',
+    'select_date': 'Tarih seçin',
+    'must_be_18': 'En az 18 yaşında olmalısınız',
+    'man': 'Erkek',
+    'woman': 'Kadın',
+    'other': 'Diğer',
+    'continue_btn': 'Devam',
+    'accept_terms': 'Kabul ediyorum:',
+    'terms_of_service': 'Kullanım Koşulları',
+    'privacy_policy': 'Gizlilik Politikası',
+    'and_word': 've',
+    'must_accept_terms': 'Devam etmek için koşulları kabul etmelisiniz',
   };
 
   static const _en = <String, String>{
@@ -263,6 +296,34 @@ class AppLocalizations {
     'power_hint': 'Hint',
     'power_time': '+15s',
     'power_skip_all': 'Skip All',
+
+    // Error codes
+    'error_invalid_credentials': 'Email or password is incorrect',
+    'error_email_already_exists': 'This email is already registered',
+    'error_email_not_verified': 'Please verify your email first',
+    'error_validation_error': 'Please check your input',
+    'error_rate_limited': 'Too many attempts, please try again later',
+    'error_server_error': 'Something went wrong, please try again',
+    'error_unknown': 'An unexpected error occurred',
+
+    // Register wizard
+    'step_name': "What's your name?",
+    'step_birthday': "When's your birthday?",
+    'step_gender': 'How do you identify?',
+    'step_email': 'Create your account',
+    'step_terms': 'Almost there!',
+    'birthday': 'Date of birth',
+    'select_date': 'Select date',
+    'must_be_18': 'You must be at least 18 years old',
+    'man': 'Man',
+    'woman': 'Woman',
+    'other': 'Other',
+    'continue_btn': 'Continue',
+    'accept_terms': 'I accept the',
+    'terms_of_service': 'Terms of Service',
+    'privacy_policy': 'Privacy Policy',
+    'and_word': 'and',
+    'must_accept_terms': 'You must accept the terms to continue',
   };
 }
 
