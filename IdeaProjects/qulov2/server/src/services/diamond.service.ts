@@ -45,7 +45,7 @@ export class DiamondService {
     reason: string,
     referenceId?: string,
   ) {
-    // Read current balance
+    // Read current balance for early validation
     const { data: user, error: readErr } = await supabase
       .from("users")
       .select("purple_diamonds")
@@ -60,14 +60,17 @@ export class DiamondService {
       throw Errors.INSUFFICIENT_DIAMONDS(amount, user.purple_diamonds);
     }
 
-    // Decrement balance
-    const { error: updateErr } = await supabase
+    // Atomic decrement — .gte() ensures balance hasn't dropped below amount since read
+    const { data: updated, error: updateErr } = await supabase
       .from("users")
       .update({ purple_diamonds: user.purple_diamonds - amount })
-      .eq("id", userId);
+      .eq("id", userId)
+      .gte("purple_diamonds", amount)
+      .select("purple_diamonds")
+      .single();
 
-    if (updateErr) {
-      throw Errors.SERVER_ERROR();
+    if (updateErr || !updated) {
+      throw Errors.INSUFFICIENT_DIAMONDS(amount, user.purple_diamonds);
     }
 
     // Insert transaction log
@@ -85,7 +88,7 @@ export class DiamondService {
       throw Errors.SERVER_ERROR();
     }
 
-    return { purple: user.purple_diamonds - amount };
+    return { purple: updated.purple_diamonds };
   }
 
   async addPurple(
@@ -105,15 +108,16 @@ export class DiamondService {
       throw Errors.USER_NOT_FOUND();
     }
 
-    // Increment balance
-    const newBalance = user.purple_diamonds + amount;
-
-    const { error: updateErr } = await supabase
+    // Atomic increment — optimistic lock ensures no concurrent modification
+    const { data: updated, error: updateErr } = await supabase
       .from("users")
-      .update({ purple_diamonds: newBalance })
-      .eq("id", userId);
+      .update({ purple_diamonds: user.purple_diamonds + amount })
+      .eq("id", userId)
+      .eq("purple_diamonds", user.purple_diamonds)
+      .select("purple_diamonds")
+      .single();
 
-    if (updateErr) {
+    if (updateErr || !updated) {
       throw Errors.SERVER_ERROR();
     }
 
@@ -132,7 +136,7 @@ export class DiamondService {
       throw Errors.SERVER_ERROR();
     }
 
-    return { purple: newBalance };
+    return { purple: updated.purple_diamonds };
   }
 
   async earnGreen(
@@ -152,15 +156,16 @@ export class DiamondService {
       throw Errors.USER_NOT_FOUND();
     }
 
-    // Increment balance
-    const newBalance = user.green_diamonds + amount;
-
-    const { error: updateErr } = await supabase
+    // Atomic increment — optimistic lock ensures no concurrent modification
+    const { data: updated, error: updateErr } = await supabase
       .from("users")
-      .update({ green_diamonds: newBalance })
-      .eq("id", userId);
+      .update({ green_diamonds: user.green_diamonds + amount })
+      .eq("id", userId)
+      .eq("green_diamonds", user.green_diamonds)
+      .select("green_diamonds")
+      .single();
 
-    if (updateErr) {
+    if (updateErr || !updated) {
       throw Errors.SERVER_ERROR();
     }
 
@@ -179,7 +184,7 @@ export class DiamondService {
       throw Errors.SERVER_ERROR();
     }
 
-    return { green: newBalance };
+    return { green: updated.green_diamonds };
   }
 
   async spendGreen(
@@ -188,7 +193,7 @@ export class DiamondService {
     reason: string,
     referenceId?: string,
   ) {
-    // Read current balance
+    // Read current balance for early validation
     const { data: user, error: readErr } = await supabase
       .from("users")
       .select("green_diamonds")
@@ -203,16 +208,17 @@ export class DiamondService {
       throw Errors.INSUFFICIENT_DIAMONDS(amount, user.green_diamonds);
     }
 
-    // Decrement balance
-    const newBalance = user.green_diamonds - amount;
-
-    const { error: updateErr } = await supabase
+    // Atomic decrement — .gte() ensures balance hasn't dropped below amount since read
+    const { data: updated, error: updateErr } = await supabase
       .from("users")
-      .update({ green_diamonds: newBalance })
-      .eq("id", userId);
+      .update({ green_diamonds: user.green_diamonds - amount })
+      .eq("id", userId)
+      .gte("green_diamonds", amount)
+      .select("green_diamonds")
+      .single();
 
-    if (updateErr) {
-      throw Errors.SERVER_ERROR();
+    if (updateErr || !updated) {
+      throw Errors.INSUFFICIENT_DIAMONDS(amount, user.green_diamonds);
     }
 
     // Insert transaction log
@@ -230,7 +236,7 @@ export class DiamondService {
       throw Errors.SERVER_ERROR();
     }
 
-    return { green: newBalance };
+    return { green: updated.green_diamonds };
   }
 }
 
