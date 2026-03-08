@@ -12,7 +12,7 @@ import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/core/widgets/app_text_field.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
-import 'package:qulo_v2/core/services/image_picker_manager.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:qulo_v2/routing/route_names.dart';
 import 'package:qulo_v2/providers/api_provider.dart';
 import 'package:qulo_v2/providers/edit_profile_provider.dart';
@@ -151,16 +151,12 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     });
   }
 
-  Future<void> _pickFromGallery() => _pickAndUpload(
-        ref.read(imagePickerManagerProvider).pickFromGallery(),
-      );
+  Future<void> _pickFromGallery() => _pickCropAndUpload(ImageSource.gallery);
 
-  Future<void> _pickFromCamera() => _pickAndUpload(
-        ref.read(imagePickerManagerProvider).pickFromCamera(),
-      );
+  Future<void> _pickFromCamera() => _pickCropAndUpload(ImageSource.camera);
 
-  Future<void> _pickAndUpload(Future<PickedImage?> pickFuture) async {
-    final picked = await pickFuture;
+  Future<void> _pickCropAndUpload(ImageSource source) async {
+    final picked = await ref.read(imagePickerManagerProvider).pickAndCrop(context, source);
     if (picked == null) return;
 
     final result = await ref.read(userProvider.notifier).uploadPhoto(picked.bytes, picked.mimeType);
@@ -378,6 +374,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     controller: _cityController,
                     label: context.tr('city'),
                     hint: context.tr('city_hint'),
+                    textCapitalization: TextCapitalization.words,
                   ),
                 ),
                 const SizedBox(width: AppSpacing.sm),
@@ -424,12 +421,14 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
               controller: _jobController,
               label: context.tr('job'),
               hint: context.tr('job_hint'),
+              textCapitalization: TextCapitalization.words,
             ),
             const SizedBox(height: AppSpacing.itemGap),
             AppTextField(
               controller: _schoolController,
               label: context.tr('school'),
               hint: context.tr('school_hint'),
+              textCapitalization: TextCapitalization.words,
             ),
             const SizedBox(height: AppSpacing.itemGap),
             _buildDropdown(
@@ -450,18 +449,21 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
               controller: _petsController,
               label: context.tr('pets'),
               hint: context.tr('pets_hint'),
+              textCapitalization: TextCapitalization.sentences,
             ),
             const SizedBox(height: AppSpacing.itemGap),
             AppTextField(
               controller: _musicController,
               label: context.tr('music'),
               hint: context.tr('music_hint'),
+              textCapitalization: TextCapitalization.words,
             ),
             const SizedBox(height: AppSpacing.itemGap),
             AppTextField(
               controller: _personalityController,
               label: context.tr('personality'),
               hint: context.tr('personality_hint'),
+              textCapitalization: TextCapitalization.sentences,
             ),
             const SizedBox(height: AppSpacing.sectionGap),
 
@@ -501,19 +503,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
           label: context.tr('bio'),
           hint: context.tr('bio_hint'),
           maxLines: 4,
-        ),
-        const SizedBox(height: AppSpacing.xs),
-        ValueListenableBuilder<TextEditingValue>(
-          valueListenable: _bioController,
-          builder: (_, value, __) {
-            final count = value.text.length;
-            return Text(
-              '$count / 300',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: count > 300 ? AppColors.error : Theme.of(context).hintColor,
-                  ),
-            );
-          },
+          maxLength: 300,
+          textCapitalization: TextCapitalization.sentences,
         ),
       ],
     );
