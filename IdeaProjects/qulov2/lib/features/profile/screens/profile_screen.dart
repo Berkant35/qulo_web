@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
+import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/user_provider.dart';
-import '../../../providers/diamond_provider.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../routing/route_names.dart';
 
@@ -22,26 +22,23 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     super.initState();
     Future.microtask(() {
       ref.read(userProvider.notifier).fetchMe();
-      ref.read(diamondProvider.notifier).fetchBalance();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final userAsync = ref.watch(userProvider);
-    final diamonds = ref.watch(diamondProvider);
     final theme = Theme.of(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(context.tr('profile')),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () => context.goNamed(RouteNames.settings),
-          ),
-        ],
-      ),
+    return AppScaffold(
+      title: context.tr('profile'),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.settings, color: AppColors.textSecondary),
+          onPressed: () => context.goNamed(RouteNames.settings),
+        ),
+      ],
+      padding: EdgeInsets.zero,
       body: userAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Error: $e')),
@@ -52,6 +49,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             padding: const EdgeInsets.all(AppSpacing.pagePadding),
             child: Column(
               children: [
+                // Photo Card
                 ClipRRect(
                   borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
                   child: SizedBox(
@@ -60,41 +58,52 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                     child: photos.isNotEmpty
                         ? CachedNetworkImage(imageUrl: photos.first, fit: BoxFit.cover)
                         : Container(
-                            color: AppColors.purpleSurface,
-                            child: const Icon(Icons.person, size: 80),
+                            color: AppColors.surface,
+                            child: const Icon(Icons.person, size: 80, color: AppColors.textHint),
                           ),
                   ),
                 ),
                 const SizedBox(height: AppSpacing.lg),
+
+                // User Info
                 Text(
                   '${user.name ?? ''} ${user.surname ?? ''}, ${user.age ?? ''}',
                   style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 if (user.city != null) ...[
                   const SizedBox(height: AppSpacing.xs),
-                  Text(user.city!, style: theme.textTheme.bodyMedium?.copyWith(color: AppColors.onSurfaceVariant)),
+                  Text(user.city!, style: theme.textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary)),
                 ],
                 const SizedBox(height: AppSpacing.lg),
-                diamonds.when(
-                  data: (bal) => Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _DiamondChip(icon: Icons.diamond, color: AppColors.green, count: bal.green),
-                      const SizedBox(width: AppSpacing.lg),
-                      _DiamondChip(icon: Icons.diamond, color: AppColors.purple, count: bal.purple),
-                    ],
-                  ),
-                  loading: () => const SizedBox.shrink(),
-                  error: (_, __) => const SizedBox.shrink(),
+
+                // Stat Cards — 2x2 Grid
+                GridView.count(
+                  crossAxisCount: 2,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  childAspectRatio: 2.2,
+                  children: [
+                    _StatCard(icon: Icons.favorite, value: '${user.likeReceivedCount}', label: context.tr('likes'), color: AppColors.primary),
+                    _StatCard(icon: Icons.visibility, value: '${user.timesShownCount}', label: context.tr('views'), color: AppColors.secondary),
+                    _StatCard(icon: Icons.diamond, value: '${user.purpleDiamonds}', label: context.tr('purple_diamonds'), color: AppColors.primary),
+                    _StatCard(icon: Icons.diamond, value: '${user.greenDiamonds}', label: context.tr('green_diamonds'), color: AppColors.secondary),
+                  ],
                 ),
                 const SizedBox(height: AppSpacing.lg),
+
+                // Profile Completion
                 LinearProgressIndicator(
                   value: user.profileCompletion / 100,
-                  backgroundColor: AppColors.outline,
+                  backgroundColor: AppColors.border,
+                  color: AppColors.primary,
                 ),
                 const SizedBox(height: AppSpacing.xs),
                 Text('${user.profileCompletion}% ${context.tr('complete')}', style: theme.textTheme.labelSmall),
                 const SizedBox(height: AppSpacing.xl),
+
+                // Menu Items
                 _MenuItem(icon: Icons.edit, title: context.tr('edit_profile'), onTap: () => context.goNamed(RouteNames.editProfile)),
                 _MenuItem(icon: Icons.quiz, title: context.tr('my_questions'), onTap: () => context.goNamed(RouteNames.questions)),
                 _MenuItem(icon: Icons.diamond, title: context.tr('diamonds'), onTap: () => context.goNamed(RouteNames.diamonds)),
@@ -108,26 +117,37 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   }
 }
 
-class _DiamondChip extends StatelessWidget {
+class _StatCard extends StatelessWidget {
   final IconData icon;
+  final String value;
+  final String label;
   final Color color;
-  final int count;
-  const _DiamondChip({required this.icon, required this.color, required this.count});
+
+  const _StatCard({required this.icon, required this.value, required this.label, required this.color});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: color, size: 18),
-          const SizedBox(width: AppSpacing.xs),
-          Text('$count', style: Theme.of(context).textTheme.titleSmall?.copyWith(color: color, fontWeight: FontWeight.bold)),
+          Icon(icon, color: color, size: 24),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(value, style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 18)),
+                Text(label, style: const TextStyle(color: AppColors.textHint, fontSize: 11), overflow: TextOverflow.ellipsis),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -142,11 +162,18 @@ class _MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(icon, color: AppColors.purple),
-      title: Text(title),
-      trailing: const Icon(Icons.chevron_right),
-      onTap: onTap,
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: ListTile(
+        leading: Icon(icon, color: AppColors.primary),
+        title: Text(title),
+        trailing: const Icon(Icons.chevron_right, color: AppColors.textHint),
+        onTap: onTap,
+      ),
     );
   }
 }
