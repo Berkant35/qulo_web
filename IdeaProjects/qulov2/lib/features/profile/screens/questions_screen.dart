@@ -347,6 +347,26 @@ class _QuestionCard extends StatelessWidget {
                       ),
                       const SizedBox(width: AppSpacing.xs),
                     ],
+                    if (question.locale != null) ...[
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.surfaceInput,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Text(
+                          '${AppConstants.localeFlagEmojis[question.locale] ?? ''} ${question.locale!.toUpperCase()}',
+                          style: theme.textTheme.labelSmall?.copyWith(
+                            color: AppColors.textSecondary,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: AppSpacing.xs),
+                    ],
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: AppSpacing.sm,

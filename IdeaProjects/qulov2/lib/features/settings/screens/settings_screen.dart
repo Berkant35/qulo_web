@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:qulo_v2/core/navigation/navigation.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/core/constants/app_constants.dart';
+import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
+import 'package:qulo_v2/core/widgets/language_picker_sheet.dart';
 import 'package:qulo_v2/providers/auth_provider.dart';
 import 'package:qulo_v2/providers/locale_provider.dart';
 import 'package:qulo_v2/providers/theme_provider.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/providers/user_languages_provider.dart';
 import 'package:qulo_v2/providers/user_provider.dart';
+
+final _packageInfoProvider = FutureProvider<PackageInfo>(
+  (_) => PackageInfo.fromPlatform(),
+);
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -16,6 +25,7 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(localeProvider);
+    final languagesAsync = ref.watch(userLanguagesProvider);
     final theme = Theme.of(context);
 
     return AppScaffold(
@@ -46,6 +56,46 @@ class SettingsScreen extends ConsumerWidget {
                   ref.read(localeProvider.notifier).setLocale(Locale(s.first));
                 },
               ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surface,
+              borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+            ),
+            child: ListTile(
+              leading: Icon(Icons.translate, color: theme.colorScheme.onSurfaceVariant),
+              title: Text(
+                context.tr('settings_question_languages'),
+                style: TextStyle(color: theme.colorScheme.onSurface),
+              ),
+              subtitle: languagesAsync.when(
+                data: (langs) => langs.isEmpty
+                    ? Text(context.tr('settings_question_languages_none'))
+                    : Text(
+                        langs
+                            .map((l) =>
+                                '${AppConstants.localeFlagEmojis[l] ?? ''} ${context.tr('locale_$l')}')
+                            .join(', '),
+                      ),
+                loading: () => const AppLoadingWidget.small(),
+                error: (_, __) => Text(context.tr('error')),
+              ),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () async {
+                final currentLangs = languagesAsync.valueOrNull ?? [];
+                final result = await showModalBottomSheet<List<String>>(
+                  context: context,
+                  builder: (_) => LanguagePickerSheet(
+                    selectedLanguages: currentLangs,
+                    multiSelect: true,
+                  ),
+                );
+                if (result != null) {
+                  ref.read(userLanguagesProvider.notifier).save(result);
+                }
+              },
             ),
           ),
           Container(
@@ -98,6 +148,7 @@ class SettingsScreen extends ConsumerWidget {
               ),
               onTap: () async {
                 final nav = ref.read(navigationServiceProvider);
+                final authNotifier = ref.read(authProvider.notifier);
                 final confirm = await nav.showAppDialog<bool>(
                   ConfirmDialog(
                     name: 'logout',
@@ -107,7 +158,7 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                 );
                 if (confirm == true) {
-                  await ref.read(authProvider.notifier).logout();
+                  await authNotifier.logout();
                 }
               },
             ),
@@ -126,6 +177,8 @@ class SettingsScreen extends ConsumerWidget {
               ),
               onTap: () async {
                 final nav = ref.read(navigationServiceProvider);
+                final userNotifier = ref.read(userProvider.notifier);
+                final authNotifier = ref.read(authProvider.notifier);
                 final confirm = await nav.showAppDialog<bool>(
                   ConfirmDialog(
                     name: 'delete_account',
@@ -136,12 +189,26 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                 );
                 if (confirm == true) {
-                  await ref.read(userProvider.notifier).deleteAccount();
-                  await ref.read(authProvider.notifier).logout();
+                  await userNotifier.deleteAccount();
+                  await authNotifier.logout();
                 }
               },
             ),
           ),
+          const SizedBox(height: AppSpacing.xl),
+          Center(
+            child: ref.watch(_packageInfoProvider).when(
+              data: (info) => Text(
+                'v${info.version} (${info.buildNumber})',
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
+                ),
+              ),
+              loading: () => const SizedBox.shrink(),
+              error: (_, __) => const SizedBox.shrink(),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.md),
         ],
       ),
     );

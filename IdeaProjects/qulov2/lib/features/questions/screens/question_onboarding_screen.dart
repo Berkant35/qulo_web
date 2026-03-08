@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:qulo_v2/core/constants/app_constants.dart';
 import 'package:qulo_v2/core/constants/q_icons.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/core/navigation/navigation.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/features/questions/widgets/onboarding_slide.dart';
+import 'package:qulo_v2/providers/user_languages_provider.dart';
 import 'package:qulo_v2/routing/route_names.dart';
 
 class QuestionOnboardingScreen extends ConsumerStatefulWidget {
@@ -21,6 +23,18 @@ class _QuestionOnboardingScreenState
     extends ConsumerState<QuestionOnboardingScreen> {
   final _pageController = PageController();
   int _currentPage = 0;
+  late List<String> _selectedLanguages;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final appLocale = Localizations.localeOf(context).languageCode;
+    _selectedLanguages = [
+      AppConstants.supportedQuestionLocales.contains(appLocale)
+          ? appLocale
+          : 'tr',
+    ];
+  }
 
   @override
   void dispose() {
@@ -36,6 +50,7 @@ class _QuestionOnboardingScreenState
   Future<void> _onStart() async {
     await _markSeen();
     if (!mounted) return;
+    ref.read(userLanguagesProvider.notifier).save(_selectedLanguages);
     ref.read(navigationServiceProvider).go(RouteNames.questions);
   }
 
@@ -97,6 +112,8 @@ class _QuestionOnboardingScreenState
                           context.tr('onboarding_questions_slide3_desc'),
                       iconColor: AppColors.secondary,
                     ),
+                    // Slide 4: Language selection
+                    _buildLanguageSlide(theme),
                   ],
                 ),
               ),
@@ -107,7 +124,7 @@ class _QuestionOnboardingScreenState
                     const EdgeInsets.symmetric(vertical: AppSpacing.lg),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(3, (index) {
+                  children: List.generate(4, (index) {
                     final isActive = index == _currentPage;
                     return AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
@@ -134,7 +151,7 @@ class _QuestionOnboardingScreenState
                 ),
                 child: Column(
                   children: [
-                    if (_currentPage == 2)
+                    if (_currentPage == 3)
                       SizedBox(
                         width: double.infinity,
                         child: FilledButton(
@@ -174,6 +191,76 @@ class _QuestionOnboardingScreenState
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildLanguageSlide(ThemeData theme) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 120,
+            height: 120,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.primary.withValues(alpha: 0.1),
+            ),
+            child: const Center(
+              child: Text(
+                '\u{1F30D}',
+                style: TextStyle(fontSize: 56),
+              ),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.xxl),
+          Text(
+            context.tr('onboarding_questions_slide4_title'),
+            style: theme.textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: AppSpacing.lg),
+          Text(
+            context.tr('onboarding_questions_slide4_desc'),
+            style: theme.textTheme.bodyLarge?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+              height: 1.5,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: AppSpacing.xl),
+          Wrap(
+            spacing: AppSpacing.sm,
+            runSpacing: AppSpacing.sm,
+            alignment: WrapAlignment.center,
+            children: AppConstants.supportedQuestionLocales.map((locale) {
+              final isSelected = _selectedLanguages.contains(locale);
+              final flag = AppConstants.localeFlagEmojis[locale] ?? '';
+              return FilterChip(
+                label: Text('$flag ${context.tr('locale_$locale')}'),
+                selected: isSelected,
+                onSelected: (selected) {
+                  setState(() {
+                    if (selected) {
+                      _selectedLanguages.add(locale);
+                    } else if (_selectedLanguages.length > 1) {
+                      _selectedLanguages.remove(locale);
+                    }
+                  });
+                },
+                selectedColor: AppColors.primarySurface,
+                checkmarkColor: AppColors.primary,
+                side: BorderSide(
+                  color: isSelected ? AppColors.primary : AppColors.border,
+                ),
+              );
+            }).toList(),
+          ),
+        ],
       ),
     );
   }

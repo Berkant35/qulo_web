@@ -10,6 +10,7 @@ import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/core/widgets/app_text_field.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
+import 'package:qulo_v2/core/widgets/language_picker_sheet.dart';
 import 'package:qulo_v2/data/models/ai_suggestion_model.dart';
 import 'package:qulo_v2/data/models/question_model.dart';
 import 'package:qulo_v2/features/questions/widgets/question_preview_card.dart';
@@ -44,6 +45,7 @@ class _QuestionCreateScreenState extends ConsumerState<QuestionCreateScreen> {
   int _correctAnswer = 1;
   String? _selectedCategory;
   int _selectedTimeLimit = 30;
+  late String _selectedLocale;
 
   bool get _isEditMode => widget.editQuestion != null;
 
@@ -61,6 +63,7 @@ class _QuestionCreateScreenState extends ConsumerState<QuestionCreateScreen> {
       _correctAnswer = q.correctAnswer;
       _selectedCategory = q.category;
       _selectedTimeLimit = q.timeLimit;
+      _selectedLocale = q.locale ?? 'tr';
     } else if (widget.prefillSuggestion != null) {
       final s = widget.prefillSuggestion!;
       _questionTextController.text = s.questionText;
@@ -71,6 +74,21 @@ class _QuestionCreateScreenState extends ConsumerState<QuestionCreateScreen> {
       _correctAnswer = s.correctAnswer;
       _selectedCategory = s.category;
       if (s.hint != null) _hintController.text = s.hint!;
+      _selectedLocale = 'tr';
+    } else {
+      _selectedLocale = 'tr';
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Set locale from app locale if not already set from edit/prefill
+    if (!_isEditMode && widget.prefillSuggestion == null) {
+      final appLocale = Localizations.localeOf(context).languageCode;
+      if (AppConstants.supportedQuestionLocales.contains(appLocale)) {
+        _selectedLocale = appLocale;
+      }
     }
   }
 
@@ -136,6 +154,7 @@ class _QuestionCreateScreenState extends ConsumerState<QuestionCreateScreen> {
       'answer_3': _answer3Controller.text.trim(),
       'answer_4': _answer4Controller.text.trim(),
       'time_limit': _selectedTimeLimit,
+      'locale': _selectedLocale,
       if (_selectedCategory != null) 'category': _selectedCategory,
       if (_hintController.text.trim().isNotEmpty)
         'hint_text': _hintController.text.trim(),
@@ -353,6 +372,40 @@ class _QuestionCreateScreenState extends ConsumerState<QuestionCreateScreen> {
             maxLines: 3,
             textCapitalization: TextCapitalization.sentences,
             textInputAction: TextInputAction.done,
+          ),
+          const SizedBox(height: AppSpacing.xl),
+
+          // Language chip
+          Row(
+            children: [
+              Text(
+                context.tr('question_language'),
+                style: theme.textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              ActionChip(
+                avatar: Text(
+                  AppConstants.localeFlagEmojis[_selectedLocale] ?? '',
+                  style: theme.textTheme.bodyMedium,
+                ),
+                label: Text(context.tr('locale_$_selectedLocale')),
+                onPressed: () async {
+                  final result = await showModalBottomSheet<List<String>>(
+                    context: context,
+                    builder: (_) => LanguagePickerSheet(
+                      selectedLanguages: [_selectedLocale],
+                      multiSelect: false,
+                    ),
+                  );
+                  if (result != null && result.isNotEmpty) {
+                    setState(() => _selectedLocale = result.first);
+                  }
+                },
+                side: BorderSide(color: AppColors.primary),
+              ),
+            ],
           ),
           const SizedBox(height: AppSpacing.xl),
 

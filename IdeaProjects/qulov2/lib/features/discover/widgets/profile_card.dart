@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:qulo_v2/core/constants/app_constants.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
@@ -150,6 +151,28 @@ class ProfileCard extends StatelessWidget {
                 );
               },
             ),
+          ),
+        ],
+        // Language chips
+        if (info.languages.isNotEmpty) ...[
+          const SizedBox(height: AppSpacing.xs),
+          Wrap(
+            spacing: AppSpacing.xs,
+            children: info.languages.map((lang) => Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.15),
+                borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+                border: Border.all(color: Colors.white.withValues(alpha: 0.25)),
+              ),
+              child: Text(
+                '${AppConstants.localeFlagEmojis[lang] ?? ''} ${lang.toUpperCase()}',
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: Colors.white,
+                  fontSize: 10,
+                ),
+              ),
+            )).toList(),
           ),
         ],
       ],
