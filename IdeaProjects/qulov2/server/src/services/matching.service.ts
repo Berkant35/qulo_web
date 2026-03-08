@@ -4,6 +4,7 @@ import { haversineDistance } from "../utils/math.js";
 import { assertUuid } from "../utils/validation.js";
 import { scoringService } from "./scoring.service.js";
 import { subscriptionService } from "./subscription.service.js";
+import { userLanguageService } from "./user-language.service.js";
 
 const PAGE_SIZE = 10;
 
@@ -29,6 +30,7 @@ interface QuestionInfo {
   count: number;
   categories: string[];
   avg_difficulty: string;
+  languages: string[];
 }
 
 interface ProfileCard {
@@ -68,6 +70,9 @@ export class MatchingService {
 
     const { data: user, error: userError } = userResult;
     if (userError || !user) throw Errors.USER_NOT_FOUND();
+
+    // Get user's language preferences for filtering
+    const userLanguages = await userLanguageService.getUserLanguages(userId);
 
     // Determine location (passport overrides real)
     const myLat = (user.passport_lat as number | null) ?? user.lat;
@@ -162,7 +167,7 @@ export class MatchingService {
     if (candidateIds.length > 0) {
       const { data: questionStats } = await supabase
         .from('questions')
-        .select('user_id, category, stats_correct, stats_wrong')
+        .select('user_id, category, stats_correct, stats_wrong, locale')
         .in('user_id', candidateIds);
 
       for (const cId of candidateIds) {
@@ -180,20 +185,46 @@ export class MatchingService {
         }
 
         const categories = [...new Set(userQuestions.map((q: any) => q.category).filter(Boolean))] as string[];
+        const languages = [...new Set(userQuestions.map((q: any) => q.locale || 'tr'))] as string[];
 
         questionInfoMap.set(cId, {
           count: userQuestions.length,
           categories,
           avg_difficulty: difficulty,
+          languages,
         });
       }
     }
 
     // 5.5 — Filter out users with < 2 questions (not discoverable)
-    const discoverableFiltered = filtered.filter((c) => {
+    let discoverableFiltered = filtered.filter((c) => {
       const qCount = questionCountMap.get(c.id) ?? 0;
       return qCount >= 2;
     });
+
+    // 5.6 — Language filter: candidate must have 2+ questions in user's languages
+    if (userLanguages.length > 0) {
+      const langCandidateIds = discoverableFiltered.map((c) => c.id);
+      if (langCandidateIds.length > 0) {
+        const { data: candidateQuestionData } = await supabase
+          .from('questions')
+          .select('user_id, locale')
+          .in('user_id', langCandidateIds);
+
+        const questionLocalesByUser = new Map<string, string[]>();
+        for (const q of candidateQuestionData || []) {
+          const locales = questionLocalesByUser.get(q.user_id as string) || [];
+          locales.push((q.locale as string) || 'tr');
+          questionLocalesByUser.set(q.user_id as string, locales);
+        }
+
+        discoverableFiltered = discoverableFiltered.filter((c) => {
+          const qLocales = questionLocalesByUser.get(c.id) || [];
+          const matchingCount = qLocales.filter((l: string) => userLanguages.includes(l)).length;
+          return matchingCount >= 2;
+        });
+      }
+    }
 
     // 6. Score each candidate
     const now = new Date();
@@ -248,7 +279,7 @@ export class MatchingService {
       question_count: s.questionCount,
       profile_completion: s.candidate.profile_completion,
       is_boosted: isBoostActive(s.candidate.boost_until),
-      question_info: questionInfoMap.get(s.candidate.id) ?? { count: 0, categories: [], avg_difficulty: 'unranked' },
+      question_info: questionInfoMap.get(s.candidate.id) ?? { count: 0, categories: [], avg_difficulty: 'unranked', languages: [] },
     }));
 
     return { cards, page, has_more: hasMore };

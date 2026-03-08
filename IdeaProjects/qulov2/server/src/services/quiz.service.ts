@@ -4,6 +4,7 @@ import { calculatePowerCost, calculateGreenReward, shuffleArray } from "../utils
 import { diamondService } from "./diamond.service.js";
 import { NotificationService } from "./notification.service.js";
 import { pendingChangeService } from "./pending-change.service.js";
+import { userLanguageService } from "./user-language.service.js";
 import type { PowerName } from "../types/index.js";
 
 interface SessionRow {
@@ -42,14 +43,26 @@ interface PowerRow {
 export class QuizService {
   // ─── Start Session ─────────────────────────────────────────────
   async startSession(solverId: string, targetId: string) {
-    // 1. Check target has >= 2 questions
-    const { count: qCount, error: qErr } = await supabase
+    // 1. Fetch target's questions with locale
+    const { data: allQuestions, error: qErr } = await supabase
       .from("questions")
-      .select("id", { count: "exact", head: true })
-      .eq("user_id", targetId);
+      .select("id, time_limit, locale")
+      .eq("user_id", targetId)
+      .order("order_num", { ascending: true });
 
     if (qErr) throw Errors.SERVER_ERROR();
-    const totalQuestions = qCount ?? 0;
+    if (!allQuestions || allQuestions.length < 2) throw Errors.NO_QUESTIONS();
+
+    // Filter questions by solver's languages
+    const solverLanguages = await userLanguageService.getUserLanguages(solverId);
+    let filteredQuestions = allQuestions;
+    if (solverLanguages.length > 0) {
+      filteredQuestions = allQuestions.filter((q: any) =>
+        solverLanguages.includes(q.locale || 'tr')
+      );
+    }
+
+    const totalQuestions = filteredQuestions.length;
     if (totalQuestions < 2) throw Errors.NO_QUESTIONS();
 
     // 2. Check no active IN_PROGRESS session for this solver+target pair
@@ -68,13 +81,7 @@ export class QuizService {
     }
 
     // 3. Create session — dynamic expires_at based on per-question time_limits
-    const { data: questionTimeLimits } = await supabase
-      .from('questions')
-      .select('time_limit')
-      .eq('user_id', targetId)
-      .order('order_num', { ascending: true });
-
-    const totalTimeLimit = (questionTimeLimits ?? []).reduce(
+    const totalTimeLimit = filteredQuestions.reduce(
       (sum: number, q: any) => sum + (q.time_limit ?? 30), 0
     );
     // Add 10s buffer for network latency
@@ -108,17 +115,26 @@ export class QuizService {
     // Get target's questions ordered by order_num
     const { data: questions, error: qErr } = await supabase
       .from("questions")
-      .select("id, order_num, question_text, answer_1, answer_2, answer_3, answer_4, hint_text, time_limit")
+      .select("id, order_num, question_text, answer_1, answer_2, answer_3, answer_4, hint_text, time_limit, locale")
       .eq("user_id", session.target_id)
       .order("order_num", { ascending: true });
 
     if (qErr || !questions || questions.length === 0) throw Errors.SERVER_ERROR();
 
+    // Filter by solver's languages
+    const solverLanguages = await userLanguageService.getUserLanguages(solverId);
+    let filteredQuestions = questions;
+    if (solverLanguages.length > 0) {
+      filteredQuestions = questions.filter((q: any) =>
+        solverLanguages.includes(q.locale || 'tr')
+      );
+    }
+
     // Get current question (index = current_q - 1)
     const questionIndex = session.current_q - 1;
-    if (questionIndex >= questions.length) throw Errors.SERVER_ERROR();
+    if (questionIndex >= filteredQuestions.length) throw Errors.SERVER_ERROR();
 
-    const q = questions[questionIndex];
+    const q = filteredQuestions[questionIndex];
 
     // Build answers and shuffle
     const answers = [
@@ -152,13 +168,22 @@ export class QuizService {
     const session = await this.getActiveSession(sessionId, solverId);
 
     // Get current question WITH correct_answer
-    const { data: questions, error: qErr } = await supabase
+    const { data: allQuestions, error: qErr } = await supabase
       .from("questions")
-      .select("id, order_num, question_text, correct_answer, answer_1, answer_2, answer_3, answer_4, hint_text, stats_correct, stats_wrong")
+      .select("id, order_num, question_text, correct_answer, answer_1, answer_2, answer_3, answer_4, hint_text, stats_correct, stats_wrong, locale")
       .eq("user_id", session.target_id)
       .order("order_num", { ascending: true });
 
-    if (qErr || !questions || questions.length === 0) throw Errors.SERVER_ERROR();
+    if (qErr || !allQuestions || allQuestions.length === 0) throw Errors.SERVER_ERROR();
+
+    // Filter by solver's languages
+    const solverLanguages = await userLanguageService.getUserLanguages(solverId);
+    let questions = allQuestions;
+    if (solverLanguages.length > 0) {
+      questions = allQuestions.filter((q: any) =>
+        solverLanguages.includes(q.locale || 'tr')
+      );
+    }
 
     const questionIndex = session.current_q - 1;
     const currentQuestion = questions[questionIndex] as unknown as QuestionRow;
