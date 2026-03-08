@@ -48,3 +48,22 @@ abstract final class AppColors {
     colors: [Color(0xFF9C27B0), Color(0xFF7B1FA2)],
   );
 }
+
+/// Light theme colors
+abstract final class AppColorsLight {
+  // ─── Background & Surface ───
+  static const background = Color(0xFFFAFAFA);
+  static const scaffold = Color(0xFFFFFFFF);
+  static const surface = Color(0xFFF5F5F5);
+  static const surfaceElevated = Color(0xFFFFFFFF);
+  static const surfaceInput = Color(0xFFF0F0F0);
+
+  // ─── Text ───
+  static const textPrimary = Color(0xFF1A1A1A);
+  static const textSecondary = Color(0xFF666666);
+  static const textHint = Color(0xFF999999);
+
+  // ─── Border & Divider ───
+  static const border = Color(0xFFE0E0E0);
+  static const divider = Color(0xFFE0E0E0);
+}

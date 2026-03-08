@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/l10n/app_localizations.dart';
 import 'core/theme/app_theme.dart';
 import 'providers/locale_provider.dart';
+import 'providers/theme_provider.dart';
 import 'routing/app_router.dart';
 
 class QuloApp extends ConsumerWidget {
@@ -13,11 +14,14 @@ class QuloApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     final locale = ref.watch(localeProvider);
+    final themeNotifier = ref.watch(themeProvider.notifier);
 
     return MaterialApp.router(
       title: 'Qulo',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: themeNotifier.themeMode,
       locale: locale,
       supportedLocales: const [Locale('tr'), Locale('en')],
       localizationsDelegates: const [

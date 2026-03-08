@@ -6,7 +6,7 @@ final _appBarTheme = AppBarTheme(
   foregroundColor: AppColors.textPrimary,
   elevation: 0,
   centerTitle: true,
-  titleTextStyle: AppTextStyles.textTheme.titleLarge?.copyWith(
+  titleTextStyle: AppTextStyles.darkTextTheme.titleLarge?.copyWith(
     color: AppColors.textPrimary,
   ),
 );
@@ -151,5 +151,151 @@ final _snackBarTheme = SnackBarThemeData(
     fontSize: 14,
     fontWeight: FontWeight.w400,
     color: AppColors.textPrimary,
+  ),
+);
+
+// ═══════════════════════════════════════════════════════════════════════════
+// LIGHT THEME COMPONENTS
+// ═══════════════════════════════════════════════════════════════════════════
+
+// AppBar Light
+const _appBarThemeLight = AppBarTheme(
+  backgroundColor: AppColorsLight.scaffold,
+  foregroundColor: AppColorsLight.textPrimary,
+  elevation: 0,
+  centerTitle: true,
+  titleTextStyle: TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColorsLight.textPrimary,
+  ),
+);
+
+// TextField Light
+final _inputDecorationThemeLight = InputDecorationTheme(
+  filled: true,
+  fillColor: AppColorsLight.surfaceInput,
+  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+    borderSide: BorderSide.none,
+  ),
+  enabledBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+    borderSide: BorderSide.none,
+  ),
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+    borderSide: const BorderSide(color: AppColors.primary, width: 2),
+  ),
+  errorBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+    borderSide: const BorderSide(color: AppColors.error),
+  ),
+  focusedErrorBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+    borderSide: const BorderSide(color: AppColors.error, width: 2),
+  ),
+  errorMaxLines: 2,
+  hintStyle: const TextStyle(color: AppColorsLight.textHint),
+  labelStyle: const TextStyle(color: AppColorsLight.textSecondary),
+  errorStyle: const TextStyle(color: AppColors.error, fontSize: 12),
+);
+
+// Card Light
+final _cardThemeLight = CardThemeData(
+  color: AppColorsLight.surfaceElevated,
+  elevation: 0,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+    side: const BorderSide(color: AppColorsLight.border, width: 0.5),
+  ),
+  margin: EdgeInsets.zero,
+);
+
+// BottomNav Light
+const _bottomNavThemeLight = BottomNavigationBarThemeData(
+  backgroundColor: AppColorsLight.scaffold,
+  selectedItemColor: AppColors.primary,
+  unselectedItemColor: AppColorsLight.textHint,
+  type: BottomNavigationBarType.fixed,
+  elevation: 0,
+);
+
+// NavigationBar Light
+final _navigationBarThemeLight = NavigationBarThemeData(
+  backgroundColor: AppColorsLight.scaffold,
+  indicatorColor: AppColors.primarySurface,
+  elevation: 0,
+  labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+  iconTheme: WidgetStateProperty.resolveWith((states) {
+    if (states.contains(WidgetState.selected)) {
+      return const IconThemeData(color: AppColors.primary);
+    }
+    return const IconThemeData(color: AppColorsLight.textHint);
+  }),
+  labelTextStyle: WidgetStateProperty.resolveWith((states) {
+    if (states.contains(WidgetState.selected)) {
+      return const TextStyle(
+        fontFamily: 'Poppins',
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        color: AppColors.primary,
+      );
+    }
+    return const TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 12,
+      color: AppColorsLight.textHint,
+    );
+  }),
+);
+
+// Chip Light
+final _chipThemeLight = ChipThemeData(
+  backgroundColor: AppColorsLight.surface,
+  selectedColor: AppColors.primarySurface,
+  side: const BorderSide(color: AppColorsLight.border),
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+  ),
+  labelStyle: const TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 14,
+    color: AppColorsLight.textPrimary,
+  ),
+);
+
+// Dialog Light
+final _dialogThemeLight = DialogThemeData(
+  backgroundColor: AppColorsLight.surfaceElevated,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+  ),
+  titleTextStyle: const TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    color: AppColorsLight.textPrimary,
+  ),
+  contentTextStyle: const TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 14,
+    color: AppColorsLight.textSecondary,
+  ),
+);
+
+// SnackBar Light
+final _snackBarThemeLight = SnackBarThemeData(
+  backgroundColor: AppColorsLight.textPrimary,
+  contentTextStyle: const TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 14,
+    color: AppColorsLight.scaffold,
+  ),
+  behavior: SnackBarBehavior.floating,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
   ),
 );
