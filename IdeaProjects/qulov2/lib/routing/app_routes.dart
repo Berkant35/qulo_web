@@ -127,12 +127,15 @@ final _routes = <RouteBase>[
   ),
 ];
 
-class _MainShell extends StatelessWidget {
+class _MainShell extends ConsumerWidget {
   final StatefulNavigationShell shell;
   const _MainShell({required this.shell});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(userProvider).valueOrNull;
+    final showProfileBadge = (user?.questionCount ?? 0) < AppConstants.minQuestions;
+
     return Scaffold(
       body: shell,
       bottomNavigationBar: Column(
@@ -140,7 +143,7 @@ class _MainShell extends StatelessWidget {
         children: [
           Container(
             height: 1,
-            color: const Color(0xFFBB86FC).withValues(alpha: 0.3),
+            color: AppColors.primary.withValues(alpha: 0.3),
           ),
           NavigationBar(
             selectedIndex: shell.currentIndex,
@@ -157,8 +160,18 @@ class _MainShell extends StatelessWidget {
                 label: 'Matches',
               ),
               NavigationDestination(
-                icon: QIcon(QIcons.icUser, size: 24),
-                selectedIcon: QIcon(QIcons.icUserFilled, size: 24),
+                icon: Badge(
+                  isLabelVisible: showProfileBadge,
+                  smallSize: 10,
+                  backgroundColor: AppColors.error,
+                  child: QIcon(QIcons.icUser, size: 24),
+                ),
+                selectedIcon: Badge(
+                  isLabelVisible: showProfileBadge,
+                  smallSize: 10,
+                  backgroundColor: AppColors.error,
+                  child: QIcon(QIcons.icUserFilled, size: 24),
+                ),
                 label: 'Profile',
               ),
             ],
