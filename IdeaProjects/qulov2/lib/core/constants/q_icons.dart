@@ -92,4 +92,13 @@ abstract final class QIcons {
   // ─── Notifications ───
   static const icBell = 'assets/icons/ic_bell.svg';
   static const icBellFilled = 'assets/icons/ic_bell_filled.svg';
+
+  // ─── Questions ───
+  static const String icWand = 'assets/icons/ic_wand.svg';
+  static const String icSteps = 'assets/icons/ic_steps.svg';
+  static const String icChart = 'assets/icons/ic_chart.svg';
+  static const String icCrown = 'assets/icons/ic_crown.svg';
+  static const String icFire = 'assets/icons/ic_fire.svg';
+  static const String icTarget = 'assets/icons/ic_target.svg';
+  static const String icQueue = 'assets/icons/ic_queue.svg';
 }

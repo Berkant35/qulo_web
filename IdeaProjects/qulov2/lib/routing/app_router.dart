@@ -19,6 +19,12 @@ import 'package:qulo_v2/features/settings/screens/settings_screen.dart';
 import 'package:qulo_v2/features/profile/screens/edit_profile_screen.dart';
 import 'package:qulo_v2/features/diamonds/screens/subscription_comparison_screen.dart';
 import 'package:qulo_v2/features/notifications/screens/notifications_screen.dart';
+import 'package:qulo_v2/features/questions/screens/question_create_screen.dart';
+import 'package:qulo_v2/features/questions/screens/question_easy_mode_screen.dart';
+import 'package:qulo_v2/data/models/question_model.dart';
+import 'package:qulo_v2/data/models/ai_suggestion_model.dart';
+import 'package:qulo_v2/features/update/force_update_screen.dart';
+import 'package:qulo_v2/features/update/maintenance_screen.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/constants/app_constants.dart';
 import 'package:qulo_v2/providers/user_provider.dart';
@@ -51,7 +57,8 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       if (authState.status == AuthStatus.initial) return null;
 
-      if (!isAuth && !isAuthRoute) return '/auth/login';
+      final isUpdateRoute = state.matchedLocation == '/force-update' || state.matchedLocation == '/maintenance';
+      if (!isAuth && !isAuthRoute && !isUpdateRoute) return '/auth/login';
       if (isAuth && (isAuthRoute || isSplash)) return '/discover';
 
       return null;

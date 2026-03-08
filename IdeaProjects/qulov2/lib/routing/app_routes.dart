@@ -13,6 +13,18 @@ final _routes = <RouteBase>[
     ),
   ),
 
+  // Update
+  GoRoute(
+    path: '/force-update',
+    name: RouteNames.forceUpdate,
+    builder: (context, state) => const ForceUpdateScreen(),
+  ),
+  GoRoute(
+    path: '/maintenance',
+    name: RouteNames.maintenance,
+    builder: (context, state) => const MaintenanceScreen(),
+  ),
+
   // Auth
   GoRoute(
     path: '/auth/login',
@@ -99,6 +111,31 @@ final _routes = <RouteBase>[
               path: 'questions',
               name: RouteNames.questions,
               builder: (context, state) => const QuestionsScreen(),
+              routes: [
+                GoRoute(
+                  path: 'create',
+                  name: RouteNames.questionCreate,
+                  builder: (context, state) {
+                    final extra = state.extra;
+                    QuestionModel? editQuestion;
+                    if (extra is QuestionModel) {
+                      editQuestion = extra;
+                    } else if (extra is AiSuggestionModel) {
+                      // Pre-fill from AI suggestion
+                      editQuestion = null;
+                    }
+                    return QuestionCreateScreen(
+                      editQuestion: editQuestion,
+                      prefillSuggestion: extra is AiSuggestionModel ? extra : null,
+                    );
+                  },
+                ),
+                GoRoute(
+                  path: 'easy-mode',
+                  name: RouteNames.questionEasyMode,
+                  builder: (context, state) => const QuestionEasyModeScreen(),
+                ),
+              ],
             ),
             GoRoute(
               path: 'diamonds',

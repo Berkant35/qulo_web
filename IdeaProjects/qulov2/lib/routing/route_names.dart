@@ -21,4 +21,10 @@ abstract final class RouteNames {
   static const subscription = 'subscription';
   static const notifications = 'notifications';
   static const onboarding = 'onboarding';
+  static const questionCreate = 'question-create';
+  static const questionEasyMode = 'question-easy-mode';
+
+  // Update
+  static const forceUpdate = 'force-update';
+  static const maintenance = 'maintenance';
 }

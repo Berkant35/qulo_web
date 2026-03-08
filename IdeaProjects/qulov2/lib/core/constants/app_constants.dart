@@ -8,4 +8,10 @@ abstract final class AppConstants {
   static const int boostCostGreen = 30;
   static const int boostDurationMinutes = 30;
   static const int passportCostPurple = 50;
+
+  static const List<int> timePresets = [15, 30, 60, 90];
+  static const List<String> questionCategories = [
+    'personality', 'music', 'film', 'sports', 'travel',
+    'food', 'technology', 'general', 'other',
+  ];
 }
