@@ -1,5 +1,33 @@
 import 'package:equatable/equatable.dart';
 
+class SubscriptionStatusResponse {
+  final SubscriptionInfo subscription;
+  final SubscriptionLimits limits;
+
+  const SubscriptionStatusResponse({
+    required this.subscription,
+    required this.limits,
+  });
+
+  factory SubscriptionStatusResponse.fromJson(Map<String, dynamic> json) {
+    return SubscriptionStatusResponse(
+      subscription: json['subscription'] != null
+          ? SubscriptionInfo.fromJson(json['subscription'] as Map<String, dynamic>)
+          : SubscriptionInfo.free(),
+      limits: json['limits'] != null
+          ? SubscriptionLimits.fromJson(json['limits'] as Map<String, dynamic>)
+          : const SubscriptionLimits(
+              dailySwipes: 20,
+              dailyUndos: 0,
+              monthlyPurpleBonus: 0,
+              weeklyBoosts: 0,
+              canSeeWhoViewed: false,
+              hasAds: true,
+            ),
+    );
+  }
+}
+
 class SubscriptionInfo extends Equatable {
   final String? plan;
   final String? status;

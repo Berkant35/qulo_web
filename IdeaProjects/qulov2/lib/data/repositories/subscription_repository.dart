@@ -11,32 +11,7 @@ class SubscriptionRepository {
   Future<Result<SubscriptionInfo>> getStatus() async {
     try {
       final response = await _service.getStatus();
-      final subscription = response['subscription'] as Map<String, dynamic>?;
-      if (subscription != null) {
-        return Success(SubscriptionInfo.fromJson(subscription));
-      }
-      return Success(SubscriptionInfo.free());
-    } on DioException catch (e) {
-      return Failure(e.toAppFailure());
-    }
-  }
-
-  Future<Result<SubscriptionInfo>> verifyPurchase({
-    required String productId,
-    required String receipt,
-    required String platform,
-  }) async {
-    try {
-      final response = await _service.verifyPurchase({
-        'product_id': productId,
-        'receipt': receipt,
-        'platform': platform,
-      });
-      final subscription = response['subscription'] as Map<String, dynamic>?;
-      if (subscription != null) {
-        return Success(SubscriptionInfo.fromJson(subscription));
-      }
-      return Success(SubscriptionInfo.free());
+      return Success(response.subscription);
     } on DioException catch (e) {
       return Failure(e.toAppFailure());
     }
