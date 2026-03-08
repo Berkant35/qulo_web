@@ -101,4 +101,7 @@ export const Errors = {
 
   DUPLICATE_TRANSACTION: () =>
     new AppError("DUPLICATE_TRANSACTION", 409),
+
+  DAILY_LIMIT_EXCEEDED: (resource: string) =>
+    new AppError("DAILY_LIMIT_EXCEEDED", 403, `Daily ${resource} limit exceeded`, { resource }),
 } as const;

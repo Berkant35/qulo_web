@@ -2,6 +2,7 @@ import { supabase } from "../config/supabase.js";
 import { Errors } from "../utils/errors.js";
 import { haversineDistance } from "../utils/math.js";
 import { scoringService } from "./scoring.service.js";
+import { subscriptionService } from "./subscription.service.js";
 
 const PAGE_SIZE = 10;
 
@@ -260,6 +261,9 @@ export class MatchingService {
     if (swiperId === targetId) {
       throw Errors.SELF_SWIPE();
     }
+
+    // Daily swipe limit check + increment
+    await subscriptionService.incrementDailySwipes(swiperId);
 
     // If LIKE, check target has >= 2 questions
     if (action === "LIKE") {

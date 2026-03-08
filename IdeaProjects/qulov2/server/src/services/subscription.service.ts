@@ -1,5 +1,6 @@
 import { supabase } from '../config/supabase.js';
 import { diamondService } from './diamond.service.js';
+import { Errors } from '../utils/errors.js';
 import {
   SubscriptionPlan,
   SubscriptionInfo,
@@ -162,6 +163,84 @@ class SubscriptionService {
       storeTransactionId,
       expiresAt
     );
+  }
+
+  async getDailyStats(userId: string) {
+    const { data: user, error } = await supabase
+      .from('users')
+      .select('daily_swipes_used, daily_swipes_reset_at, daily_undos_used, subscription_plan, subscription_expires_at')
+      .eq('id', userId)
+      .single();
+
+    if (error || !user) throw Errors.USER_NOT_FOUND();
+
+    // Lazy reset: if reset_at is before today UTC midnight
+    const now = new Date();
+    const resetAt = user.daily_swipes_reset_at ? new Date(user.daily_swipes_reset_at) : new Date(0);
+    const todayMidnight = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+
+    let dailySwipesUsed = user.daily_swipes_used ?? 0;
+    let dailyUndosUsed = user.daily_undos_used ?? 0;
+
+    if (resetAt < todayMidnight) {
+      await supabase
+        .from('users')
+        .update({
+          daily_swipes_used: 0,
+          daily_undos_used: 0,
+          daily_swipes_reset_at: now.toISOString(),
+        })
+        .eq('id', userId);
+
+      dailySwipesUsed = 0;
+      dailyUndosUsed = 0;
+    }
+
+    const plan = user.subscription_plan as SubscriptionPlan | null;
+    const isActive = user.subscription_expires_at
+      ? new Date(user.subscription_expires_at) > now
+      : false;
+    const effectivePlan = isActive ? (plan || 'free') : 'free';
+    const limits = SUBSCRIPTION_LIMITS[effectivePlan];
+
+    const { count: questionsCreated } = await supabase
+      .from('questions')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', userId);
+
+    return {
+      dailyDiscoversUsed: dailySwipesUsed,
+      dailyDiscoversLimit: limits.dailyDiscovers === Infinity ? -1 : limits.dailyDiscovers,
+      dailyUndosUsed: dailyUndosUsed,
+      dailyUndosLimit: limits.dailyUndos === Infinity ? -1 : limits.dailyUndos,
+      questionsCreated: questionsCreated ?? 0,
+      questionsLimit: limits.maxQuestions,
+      monthlyPurpleBonus: limits.monthlyPurpleBonus,
+      passportMode: limits.passportMode,
+      hasAds: limits.hasAds,
+    };
+  }
+
+  async incrementDailySwipes(userId: string): Promise<void> {
+    const stats = await this.getDailyStats(userId);
+    if (stats.dailyDiscoversLimit !== -1 && stats.dailyDiscoversUsed >= stats.dailyDiscoversLimit) {
+      throw Errors.DAILY_LIMIT_EXCEEDED('discover');
+    }
+    await supabase
+      .from('users')
+      .update({ daily_swipes_used: stats.dailyDiscoversUsed + 1 })
+      .eq('id', userId);
+  }
+
+  async incrementDailyUndos(userId: string): Promise<void> {
+    const stats = await this.getDailyStats(userId);
+    if (stats.dailyUndosLimit !== -1 && stats.dailyUndosUsed >= stats.dailyUndosLimit) {
+      throw Errors.DAILY_LIMIT_EXCEEDED('undo');
+    }
+    await supabase
+      .from('users')
+      .update({ daily_undos_used: stats.dailyUndosUsed + 1 })
+      .eq('id', userId);
   }
 
   getLimits(plan: SubscriptionPlan | null) {
