@@ -88,4 +88,8 @@ abstract final class QIcons {
   static const icImagePlus = 'assets/icons/ic_image_plus.svg';
   static const icAgeRange = 'assets/icons/ic_age_range.svg';
   static const icGenderPref = 'assets/icons/ic_gender_pref.svg';
+
+  // ─── Notifications ───
+  static const icBell = 'assets/icons/ic_bell.svg';
+  static const icBellFilled = 'assets/icons/ic_bell_filled.svg';
 }

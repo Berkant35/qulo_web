@@ -340,6 +340,15 @@ class AppLocalizations {
     'question_nudge_celebration_title': 'Tebrikler! Artık keşfedilebilirsin!',
     'question_nudge_celebration_button': 'Keşfetmeye Başla',
     'question_nudge_menu_required': '2 soru gerekli',
+
+    // Notifications
+    'notifications': 'Bildirimler',
+    'mark_all_read': 'Tümünü Okundu Yap',
+    'no_notifications': 'Henüz bildirim yok',
+    'just_now': 'Az önce',
+    'minutes_ago': '{} dk önce',
+    'hours_ago': '{} saat önce',
+    'days_ago': '{} gün önce',
   };
 
   static const _en = <String, String>{
@@ -658,6 +667,15 @@ class AppLocalizations {
     'question_nudge_celebration_title': 'Congratulations! You\'re now discoverable!',
     'question_nudge_celebration_button': 'Start Discovering',
     'question_nudge_menu_required': '2 questions required',
+
+    // Notifications
+    'notifications': 'Notifications',
+    'mark_all_read': 'Mark All Read',
+    'no_notifications': 'No notifications yet',
+    'just_now': 'Just now',
+    'minutes_ago': '{} min ago',
+    'hours_ago': '{} hours ago',
+    'days_ago': '{} days ago',
   };
 }
 
