@@ -130,7 +130,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
               child: Text(
                 'QULO',
                 style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                      color: AppColors.textPrimary,
+                      color: Theme.of(context).colorScheme.onSurface,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 4,
                     ),

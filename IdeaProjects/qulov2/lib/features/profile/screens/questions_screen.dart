@@ -116,7 +116,7 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
             itemBuilder: (_, i) {
               final q = questions[i];
               return Card(
-                color: AppColors.surface,
+                color: theme.colorScheme.surface,
                 child: ListTile(
                   leading: CircleAvatar(
                     backgroundColor: AppColors.primarySurface,

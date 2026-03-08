@@ -58,7 +58,7 @@ class RegisterStepTerms extends StatelessWidget {
                   child: RichText(
                     text: TextSpan(
                       style: theme.textTheme.bodyMedium?.copyWith(
-                        color: AppColors.textPrimary,
+                        color: theme.colorScheme.onSurface,
                       ),
                       children: [
                         TextSpan(text: '${l10n.get('accept_terms')} '),

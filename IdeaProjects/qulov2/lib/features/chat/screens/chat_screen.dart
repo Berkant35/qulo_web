@@ -92,7 +92,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                   return Center(
                     child: Text(
                       context.tr('say_hello'),
-                      style: const TextStyle(color: AppColors.textSecondary),
+                      style: TextStyle(color: theme.colorScheme.onSurfaceVariant),
                     ),
                   );
                 }
@@ -116,7 +116,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                         ),
                         decoration: BoxDecoration(
                           gradient: isMe ? AppColors.primaryButtonGradient : null,
-                          color: isMe ? null : AppColors.surfaceInput,
+                          color: isMe ? null : theme.colorScheme.surfaceContainerHighest,
                           borderRadius: BorderRadius.only(
                             topLeft: const Radius.circular(16),
                             topRight: const Radius.circular(16),
@@ -127,7 +127,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                         child: Text(
                           msg.content,
                           style: theme.textTheme.bodyMedium?.copyWith(
-                            color: AppColors.textPrimary,
+                            color: isMe ? Colors.white : theme.colorScheme.onSurface,
                           ),
                         ),
                       ),
@@ -140,9 +140,9 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
           Container(
             padding: const EdgeInsets.all(AppSpacing.sm),
             decoration: BoxDecoration(
-              color: AppColors.surface,
-              border: const Border(
-                top: BorderSide(color: AppColors.border, width: 0.5),
+              color: theme.colorScheme.surface,
+              border: Border(
+                top: BorderSide(color: theme.colorScheme.outline, width: 0.5),
               ),
             ),
             child: SafeArea(
@@ -153,12 +153,12 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                       controller: _msgCtrl,
                       textInputAction: TextInputAction.send,
                       onSubmitted: (_) => _send(),
-                      style: const TextStyle(color: AppColors.textPrimary),
+                      style: TextStyle(color: theme.colorScheme.onSurface),
                       decoration: InputDecoration(
                         hintText: context.tr('message_hint'),
-                        hintStyle: const TextStyle(color: AppColors.textHint),
+                        hintStyle: TextStyle(color: theme.hintColor),
                         filled: true,
-                        fillColor: AppColors.surfaceInput,
+                        fillColor: theme.colorScheme.surfaceContainerHighest,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
                           borderSide: BorderSide.none,

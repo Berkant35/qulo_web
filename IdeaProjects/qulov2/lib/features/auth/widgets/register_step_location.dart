@@ -41,7 +41,7 @@ class RegisterStepLocation extends StatelessWidget {
           Text(
             l10n.get('step_location_desc'),
             style: theme.textTheme.bodyLarge?.copyWith(
-              color: AppColors.textSecondary,
+              color: theme.colorScheme.onSurfaceVariant,
             ),
           ),
           const SizedBox(height: AppSpacing.xxl),
@@ -100,7 +100,7 @@ class RegisterStepLocation extends StatelessWidget {
                 child: Text(
                   l10n.get('location_skip'),
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: AppColors.textSecondary,
+                    color: theme.colorScheme.onSurfaceVariant,
                   ),
                 ),
               ),

@@ -93,7 +93,7 @@ class _DiamondsScreenState extends ConsumerState<DiamondsScreen> {
             if (_loadingHistory)
               const Center(child: CircularProgressIndicator())
             else if (_history.isEmpty)
-              Text(context.tr('no_transactions'), style: theme.textTheme.bodyMedium?.copyWith(color: AppColors.textHint))
+              Text(context.tr('no_transactions'), style: theme.textTheme.bodyMedium?.copyWith(color: theme.hintColor))
             else
               ...(_history.map((tx) => ListTile(
                     dense: true,
@@ -126,9 +126,10 @@ class _BalanceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: borderColor),
       ),
@@ -137,8 +138,8 @@ class _BalanceCard extends StatelessWidget {
         children: [
           Icon(Icons.diamond, color: color, size: 32),
           const SizedBox(height: AppSpacing.sm),
-          Text('$count', style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: color, fontWeight: FontWeight.bold)),
-          Text(label, style: Theme.of(context).textTheme.labelMedium?.copyWith(color: AppColors.textSecondary)),
+          Text('$count', style: theme.textTheme.headlineMedium?.copyWith(color: color, fontWeight: FontWeight.bold)),
+          Text(label, style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
         ],
       ),
     );
@@ -152,11 +153,12 @@ class _PurchaseChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: theme.colorScheme.outline),
       ),
       child: InkWell(
         onTap: () {},

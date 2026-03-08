@@ -96,7 +96,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                 context.tr('welcome_back'),
                 textAlign: TextAlign.center,
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  color: AppColors.textSecondary,
+                  color: theme.colorScheme.onSurfaceVariant,
                 ),
               ),
               const SizedBox(height: AppSpacing.xxxl),

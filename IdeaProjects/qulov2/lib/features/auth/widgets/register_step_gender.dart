@@ -98,10 +98,10 @@ class _GenderCard extends StatelessWidget {
           vertical: AppSpacing.lg,
         ),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primarySurface : AppColors.surface,
+          color: isSelected ? AppColors.primarySurface : Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
           border: Border.all(
-            color: isSelected ? AppColors.primary : AppColors.border,
+            color: isSelected ? AppColors.primary : Theme.of(context).colorScheme.outline,
             width: 2,
           ),
           boxShadow: isSelected
@@ -117,7 +117,7 @@ class _GenderCard extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: isSelected ? AppColors.primary : AppColors.textSecondary,
+              color: isSelected ? AppColors.primary : Theme.of(context).colorScheme.onSurfaceVariant,
               size: 28,
             ),
             const SizedBox(width: AppSpacing.md),
@@ -127,7 +127,7 @@ class _GenderCard extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: isSelected
                           ? AppColors.primary
-                          : AppColors.textPrimary,
+                          : Theme.of(context).colorScheme.onSurface,
                     ),
               ),
             ),

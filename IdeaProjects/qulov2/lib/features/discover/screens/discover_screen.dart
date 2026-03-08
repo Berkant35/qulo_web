@@ -40,9 +40,9 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.explore_off, size: 64, color: AppColors.textHint),
+                  Icon(Icons.explore_off, size: 64, color: theme.hintColor),
                   const SizedBox(height: AppSpacing.lg),
-                  Text(context.tr('no_more_profiles'), style: theme.textTheme.titleMedium?.copyWith(color: AppColors.textSecondary)),
+                  Text(context.tr('no_more_profiles'), style: theme.textTheme.titleMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
                   const SizedBox(height: AppSpacing.sm),
                   TextButton(
                     onPressed: () => ref.read(discoverProvider.notifier).loadCards(),
@@ -90,7 +90,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                     _ActionButton(
                       icon: Icons.close,
                       iconColor: AppColors.error,
-                      backgroundColor: AppColors.surface,
+                      backgroundColor: theme.colorScheme.surface,
                       borderColor: AppColors.error,
                       onTap: () async {
                         await ref.read(discoverProvider.notifier).swipe(
@@ -102,7 +102,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                     _ActionButton(
                       icon: Icons.favorite,
                       iconColor: AppColors.secondary,
-                      backgroundColor: AppColors.surface,
+                      backgroundColor: theme.colorScheme.surface,
                       borderColor: AppColors.secondary,
                       size: 72,
                       onTap: () {

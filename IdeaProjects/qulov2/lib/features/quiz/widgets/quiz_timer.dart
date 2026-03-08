@@ -63,7 +63,7 @@ class _QuizTimerState extends State<QuizTimer> {
           child: LinearProgressIndicator(
             value: progress,
             minHeight: 6,
-            backgroundColor: AppColors.border,
+            backgroundColor: Theme.of(context).colorScheme.outline,
             valueColor: AlwaysStoppedAnimation(color),
           ),
         ),

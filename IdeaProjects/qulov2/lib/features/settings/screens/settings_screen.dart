@@ -4,6 +4,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/auth_provider.dart';
 import '../../../providers/locale_provider.dart';
+import '../../../providers/theme_provider.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../providers/user_provider.dart';
 
@@ -13,6 +14,7 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(localeProvider);
+    final theme = Theme.of(context);
 
     return AppScaffold(
       title: context.tr('settings'),
@@ -23,14 +25,14 @@ class SettingsScreen extends ConsumerWidget {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: theme.colorScheme.surface,
               borderRadius: BorderRadius.circular(12),
             ),
             child: ListTile(
-              leading: Icon(Icons.language, color: AppColors.textSecondary),
+              leading: Icon(Icons.language, color: theme.colorScheme.onSurfaceVariant),
               title: Text(
                 context.tr('language'),
-                style: const TextStyle(color: AppColors.textPrimary),
+                style: TextStyle(color: theme.colorScheme.onSurface),
               ),
               trailing: SegmentedButton<String>(
                 segments: const [
@@ -44,42 +46,61 @@ class SettingsScreen extends ConsumerWidget {
               ),
             ),
           ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surface,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: ListTile(
+              leading: Icon(Icons.brightness_6, color: theme.colorScheme.onSurfaceVariant),
+              title: Text(context.tr('theme')),
+              trailing: SegmentedButton<AppThemeMode>(
+                segments: [
+                  ButtonSegment(value: AppThemeMode.system, label: Text(context.tr('theme_system'))),
+                  ButtonSegment(value: AppThemeMode.light, label: Text(context.tr('theme_light'))),
+                  ButtonSegment(value: AppThemeMode.dark, label: Text(context.tr('theme_dark'))),
+                ],
+                selected: {ref.watch(themeProvider)},
+                onSelectionChanged: (s) {
+                  ref.read(themeProvider.notifier).setThemeMode(s.first);
+                },
+              ),
+            ),
+          ),
           const SizedBox(height: 8),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: theme.colorScheme.surface,
               borderRadius: BorderRadius.circular(12),
             ),
             child: ListTile(
-              leading: Icon(Icons.logout, color: AppColors.textSecondary),
+              leading: Icon(Icons.logout, color: theme.colorScheme.onSurfaceVariant),
               title: Text(
                 context.tr('logout'),
-                style: const TextStyle(color: AppColors.textPrimary),
+                style: TextStyle(color: theme.colorScheme.onSurface),
               ),
               onTap: () async {
                 final confirm = await showDialog<bool>(
                   context: context,
-                  builder: (_) => AlertDialog(
-                    backgroundColor: AppColors.surface,
+                  builder: (dialogContext) => AlertDialog(
                     title: Text(
                       context.tr('logout'),
-                      style: const TextStyle(color: AppColors.textPrimary),
                     ),
                     content: Text(
                       context.tr('logout_confirm'),
-                      style: const TextStyle(color: AppColors.textSecondary),
                     ),
                     actions: [
                       TextButton(
-                        onPressed: () => Navigator.pop(context, false),
+                        onPressed: () => Navigator.pop(dialogContext, false),
                         child: Text(
                           context.tr('cancel'),
-                          style: const TextStyle(color: AppColors.textSecondary),
+                          style: TextStyle(color: theme.colorScheme.onSurfaceVariant),
                         ),
                       ),
                       TextButton(
-                        onPressed: () => Navigator.pop(context, true),
+                        onPressed: () => Navigator.pop(dialogContext, true),
                         child: Text(
                           context.tr('logout'),
                           style: const TextStyle(color: AppColors.primary),
@@ -97,7 +118,7 @@ class SettingsScreen extends ConsumerWidget {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: theme.colorScheme.surface,
               borderRadius: BorderRadius.circular(12),
             ),
             child: ListTile(
@@ -109,26 +130,23 @@ class SettingsScreen extends ConsumerWidget {
               onTap: () async {
                 final confirm = await showDialog<bool>(
                   context: context,
-                  builder: (_) => AlertDialog(
-                    backgroundColor: AppColors.surface,
+                  builder: (dialogContext) => AlertDialog(
                     title: Text(
                       context.tr('delete_account'),
-                      style: const TextStyle(color: AppColors.textPrimary),
                     ),
                     content: Text(
                       context.tr('delete_account_desc'),
-                      style: const TextStyle(color: AppColors.textSecondary),
                     ),
                     actions: [
                       TextButton(
-                        onPressed: () => Navigator.pop(context, false),
+                        onPressed: () => Navigator.pop(dialogContext, false),
                         child: Text(
                           context.tr('cancel'),
-                          style: const TextStyle(color: AppColors.textSecondary),
+                          style: TextStyle(color: theme.colorScheme.onSurfaceVariant),
                         ),
                       ),
                       TextButton(
-                        onPressed: () => Navigator.pop(context, true),
+                        onPressed: () => Navigator.pop(dialogContext, true),
                         child: Text(
                           context.tr('delete'),
                           style: const TextStyle(color: AppColors.error),

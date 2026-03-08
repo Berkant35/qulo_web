@@ -44,7 +44,7 @@ class _PassportScreenState extends ConsumerState<PassportScreen> with LoadingMix
             const SizedBox(height: AppSpacing.sm),
             Text(
               '${context.tr('passport_cost')}: ${AppConstants.passportCostPurple}',
-              style: theme.textTheme.bodySmall?.copyWith(color: AppColors.textHint),
+              style: theme.textTheme.bodySmall?.copyWith(color: theme.hintColor),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.xl),

@@ -40,13 +40,13 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.favorite_border, size: 64, color: AppColors.textHint),
+                  Icon(Icons.favorite_border, size: 64, color: theme.hintColor),
                   const SizedBox(height: 16),
                   Text(context.tr('no_matches'), style: theme.textTheme.titleMedium),
                   const SizedBox(height: 8),
                   Text(
                     context.tr('start_swiping'),
-                    style: theme.textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
+                    style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
                   ),
                 ],
               ),
@@ -94,12 +94,12 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
                                   ),
                                   child: CircleAvatar(
                                     radius: 28,
-                                    backgroundColor: AppColors.surface,
+                                    backgroundColor: theme.colorScheme.surface,
                                     backgroundImage: photo != null
                                         ? CachedNetworkImageProvider(photo)
                                         : null,
                                     child: photo == null
-                                        ? const Icon(Icons.person, color: AppColors.textHint)
+                                        ? Icon(Icons.person, color: theme.hintColor)
                                         : null,
                                   ),
                                 ),
@@ -119,7 +119,7 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
                         },
                       ),
                     ),
-                    const Divider(color: AppColors.border, height: 1),
+                    Divider(color: theme.colorScheme.outline, height: 1),
                     const SizedBox(height: 8),
                   ],
                 ),
@@ -151,11 +151,12 @@ class _MatchCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final u = match.user;
     final photo = u?.photos?.isNotEmpty == true ? u!.photos!.first : null;
+    final theme = Theme.of(context);
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
       ),
       child: ListTile(
@@ -163,10 +164,10 @@ class _MatchCard extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 24,
-              backgroundColor: AppColors.surfaceElevated,
+              backgroundColor: theme.colorScheme.surfaceContainerHigh,
               backgroundImage: photo != null ? CachedNetworkImageProvider(photo) : null,
               child: photo == null
-                  ? const Icon(Icons.person, color: AppColors.textHint)
+                  ? Icon(Icons.person, color: theme.hintColor)
                   : null,
             ),
             if (u?.isOnline == true)
@@ -179,7 +180,7 @@ class _MatchCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.secondary,
                     shape: BoxShape.circle,
-                    border: Border.all(color: AppColors.surface, width: 2),
+                    border: Border.all(color: theme.colorScheme.surface, width: 2),
                   ),
                 ),
               ),
@@ -193,7 +194,7 @@ class _MatchCard extends StatelessWidget {
           u?.city ?? '',
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+          style: TextStyle(color: theme.colorScheme.onSurfaceVariant, fontSize: 13),
         ),
         trailing: u?.isOnline == true
             ? const Text(

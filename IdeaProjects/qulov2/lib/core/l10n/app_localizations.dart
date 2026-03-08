@@ -140,6 +140,10 @@ class AppLocalizations {
     // Settings
     'settings': 'Ayarlar',
     'language': 'Dil',
+    'theme': 'Tema',
+    'theme_system': 'Sistem',
+    'theme_light': 'Acik',
+    'theme_dark': 'Koyu',
     'logout': 'Çıkış Yap',
     'logout_confirm': 'Çıkış yapmak istediğine emin misin?',
     'delete_account': 'Hesabı Sil',
@@ -311,6 +315,10 @@ class AppLocalizations {
     // Settings
     'settings': 'Settings',
     'language': 'Language',
+    'theme': 'Theme',
+    'theme_system': 'System',
+    'theme_light': 'Light',
+    'theme_dark': 'Dark',
     'logout': 'Logout',
     'logout_confirm': 'Are you sure you want to logout?',
     'delete_account': 'Delete Account',

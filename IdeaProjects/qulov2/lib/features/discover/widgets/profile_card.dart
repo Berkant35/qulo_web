@@ -22,7 +22,7 @@ class ProfileCard extends StatelessWidget {
           if (photo != null)
             CachedNetworkImage(imageUrl: photo, fit: BoxFit.cover)
           else
-            Container(color: AppColors.surface, child: Icon(Icons.person, size: 80, color: AppColors.textHint)),
+            Container(color: theme.colorScheme.surface, child: Icon(Icons.person, size: 80, color: theme.hintColor)),
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(

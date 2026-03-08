@@ -1,6 +1,5 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -37,7 +36,7 @@ class AppScaffold extends StatelessWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: extendBodyBehindAppBar,
-      backgroundColor: backgroundColor ?? AppColors.scaffold,
+      backgroundColor: backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
       appBar: hasAppBar
           ? AppBar(
               title: Text(title!),

@@ -107,7 +107,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           const SizedBox(height: AppSpacing.md),
           Text(p.subtitle,
               style: theme.textTheme.bodyLarge
-                  ?.copyWith(color: AppColors.textSecondary),
+                  ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
               textAlign: TextAlign.center),
         ],
       ),
@@ -124,7 +124,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           height: 8,
           margin: const EdgeInsets.symmetric(horizontal: 4),
           decoration: BoxDecoration(
-            color: i == _page ? AppColors.primary : AppColors.textHint,
+            color: i == _page ? AppColors.primary : Theme.of(context).hintColor,
             borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
           ),
         ),

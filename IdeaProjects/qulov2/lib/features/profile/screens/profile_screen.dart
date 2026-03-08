@@ -34,7 +34,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
       title: context.tr('profile'),
       actions: [
         IconButton(
-          icon: const Icon(Icons.settings, color: AppColors.textSecondary),
+          icon: Icon(Icons.settings, color: Theme.of(context).colorScheme.onSurfaceVariant),
           onPressed: () => context.goNamed(RouteNames.settings),
         ),
       ],
@@ -58,8 +58,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                     child: photos.isNotEmpty
                         ? CachedNetworkImage(imageUrl: photos.first, fit: BoxFit.cover)
                         : Container(
-                            color: AppColors.surface,
-                            child: const Icon(Icons.person, size: 80, color: AppColors.textHint),
+                            color: theme.colorScheme.surface,
+                            child: Icon(Icons.person, size: 80, color: theme.hintColor),
                           ),
                   ),
                 ),
@@ -72,7 +72,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 ),
                 if (user.city != null) ...[
                   const SizedBox(height: AppSpacing.xs),
-                  Text(user.city!, style: theme.textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary)),
+                  Text(user.city!, style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
                 ],
                 const SizedBox(height: AppSpacing.lg),
 
@@ -96,7 +96,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 // Profile Completion
                 LinearProgressIndicator(
                   value: user.profileCompletion / 100,
-                  backgroundColor: AppColors.border,
+                  backgroundColor: theme.colorScheme.outline,
                   color: AppColors.primary,
                 ),
                 const SizedBox(height: AppSpacing.xs),
@@ -127,10 +127,11 @@ class _StatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
@@ -144,7 +145,7 @@ class _StatCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(value, style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 18)),
-                Text(label, style: const TextStyle(color: AppColors.textHint, fontSize: 11), overflow: TextOverflow.ellipsis),
+                Text(label, style: TextStyle(color: theme.hintColor, fontSize: 11), overflow: TextOverflow.ellipsis),
               ],
             ),
           ),
@@ -162,16 +163,17 @@ class _MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
       ),
       child: ListTile(
         leading: Icon(icon, color: AppColors.primary),
         title: Text(title),
-        trailing: const Icon(Icons.chevron_right, color: AppColors.textHint),
+        trailing: Icon(Icons.chevron_right, color: theme.hintColor),
         onTap: onTap,
       ),
     );
