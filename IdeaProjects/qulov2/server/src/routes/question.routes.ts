@@ -16,6 +16,7 @@ import { getPendingChangesHandler, queueChangeHandler, cancelPendingChangeHandle
 import { queueChangeSchema } from "../validators/pending-change.validator.js";
 import { aiSuggestHandler } from "../controllers/ai-suggest.controller.js";
 import { aiSuggestSchema } from "../validators/ai-suggest.validator.js";
+import { weeklyReportService } from "../services/weekly-report.service.js";
 
 const router = Router();
 
@@ -33,5 +34,15 @@ router.get("/me/pending", getPendingChangesHandler);
 router.post("/me/:order/queue-change", validate(queueChangeSchema), queueChangeHandler);
 router.delete("/me/pending/:changeId", cancelPendingChangeHandler);
 router.post("/ai-suggest", validate(aiSuggestSchema), aiSuggestHandler);
+
+// Admin: Manual weekly report trigger
+router.post("/admin/send-weekly-reports", async (req, res, next) => {
+  try {
+    const result = await weeklyReportService.sendWeeklyReports();
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+});
 
 export default router;
