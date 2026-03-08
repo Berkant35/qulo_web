@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:qulo_v2/core/network/result.dart';
 import 'package:qulo_v2/core/network/services/quiz_service.dart';
 import 'package:qulo_v2/data/models/quiz_model.dart';
+import 'package:qulo_v2/data/models/quiz_summary_model.dart';
 import 'package:qulo_v2/data/repositories/interfaces.dart';
 
 class QuizRepository implements IQuizRepository {
@@ -51,6 +52,15 @@ class QuizRepository implements IQuizRepository {
     try {
       final response = await _service.getSessionResult(sessionId);
       return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
+  }
+
+  Future<Result<QuizSummaryModel?>> getMatchQuizSummary(String matchId) async {
+    try {
+      final data = await _service.getMatchQuizSummary(matchId);
+      return Success(data);
     } on DioException catch (e) {
       return Failure(e.toAppFailure());
     }
