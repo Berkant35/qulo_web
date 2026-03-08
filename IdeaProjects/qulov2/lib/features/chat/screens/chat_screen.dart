@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/l10n/l10n.dart';
+import '../../../core/widgets/app_scaffold.dart';
 import '../../../data/models/message_model.dart';
 import '../../../providers/chat_provider.dart';
 import '../../../providers/auth_provider.dart';
@@ -75,17 +76,25 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
     final myId = ref.watch(authProvider).userId;
     final theme = Theme.of(context);
 
-    return Scaffold(
-      appBar: AppBar(title: Text(context.tr('chat'))),
+    return AppScaffold(
+      title: context.tr('chat'),
+      padding: EdgeInsets.zero,
       body: Column(
         children: [
           Expanded(
             child: chatState.when(
               loading: () => const Center(child: CircularProgressIndicator()),
-              error: (e, _) => Center(child: Text('Error: $e')),
+              error: (e, _) => Center(
+                child: Text('Error: $e', style: const TextStyle(color: AppColors.error)),
+              ),
               data: (state) {
                 if (state.messages.isEmpty) {
-                  return Center(child: Text(context.tr('say_hello')));
+                  return Center(
+                    child: Text(
+                      context.tr('say_hello'),
+                      style: const TextStyle(color: AppColors.textSecondary),
+                    ),
+                  );
                 }
                 return ListView.builder(
                   reverse: true,
@@ -99,20 +108,26 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                       child: Container(
                         margin: const EdgeInsets.only(bottom: AppSpacing.sm),
                         padding: const EdgeInsets.symmetric(
-                          horizontal: AppSpacing.md,
-                          vertical: AppSpacing.sm,
+                          horizontal: 14,
+                          vertical: 10,
                         ),
                         constraints: BoxConstraints(
                           maxWidth: MediaQuery.of(context).size.width * 0.75,
                         ),
                         decoration: BoxDecoration(
-                          color: isMe ? AppColors.purple : AppColors.surfaceVariant,
-                          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                          gradient: isMe ? AppColors.primaryButtonGradient : null,
+                          color: isMe ? null : AppColors.surfaceInput,
+                          borderRadius: BorderRadius.only(
+                            topLeft: const Radius.circular(16),
+                            topRight: const Radius.circular(16),
+                            bottomLeft: Radius.circular(isMe ? 16 : 4),
+                            bottomRight: Radius.circular(isMe ? 4 : 16),
+                          ),
                         ),
                         child: Text(
                           msg.content,
                           style: theme.textTheme.bodyMedium?.copyWith(
-                            color: isMe ? Colors.white : null,
+                            color: AppColors.textPrimary,
                           ),
                         ),
                       ),
@@ -125,8 +140,10 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
           Container(
             padding: const EdgeInsets.all(AppSpacing.sm),
             decoration: BoxDecoration(
-              color: theme.scaffoldBackgroundColor,
-              border: Border(top: BorderSide(color: AppColors.outline)),
+              color: AppColors.surface,
+              border: const Border(
+                top: BorderSide(color: AppColors.border, width: 0.5),
+              ),
             ),
             child: SafeArea(
               child: Row(
@@ -136,10 +153,23 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                       controller: _msgCtrl,
                       textInputAction: TextInputAction.send,
                       onSubmitted: (_) => _send(),
+                      style: const TextStyle(color: AppColors.textPrimary),
                       decoration: InputDecoration(
                         hintText: context.tr('message_hint'),
+                        hintStyle: const TextStyle(color: AppColors.textHint),
+                        filled: true,
+                        fillColor: AppColors.surfaceInput,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+                          borderSide: BorderSide.none,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+                          borderSide: BorderSide.none,
                         ),
                         contentPadding: const EdgeInsets.symmetric(
                           horizontal: AppSpacing.lg,
@@ -149,9 +179,15 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                     ),
                   ),
                   const SizedBox(width: AppSpacing.sm),
-                  IconButton.filled(
-                    onPressed: _send,
-                    icon: const Icon(Icons.send, size: 20),
+                  Container(
+                    decoration: const BoxDecoration(
+                      gradient: AppColors.primaryButtonGradient,
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      onPressed: _send,
+                      icon: const Icon(Icons.send, color: Colors.white, size: 20),
+                    ),
                   ),
                 ],
               ),
