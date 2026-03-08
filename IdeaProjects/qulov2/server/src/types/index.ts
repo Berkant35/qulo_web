@@ -73,16 +73,16 @@ export type RCEventType =
 
 // IAP Product mapping (store_id → purple amount)
 export const IAP_PRODUCT_MAP: Record<string, number> = {
-  qulo_purple_50: 50,
-  qulo_purple_150: 150,
-  qulo_purple_400: 400,
-  qulo_purple_1000: 1000,
-  qulo_purple_2500: 2500,
-  qulo_purple_6000: 6000,
+  qulopurple50: 50,
+  qulopurple150: 150,
+  qulopurple400: 400,
+  qulopurple1000: 1000,
+  qulopurple2500: 2500,
+  qulopurple6000: 6000,
 };
 
 // Subscription product IDs
 export const SUBSCRIPTION_PRODUCT_MAP: Record<string, SubscriptionPlan> = {
-  qulo_plus_monthly: 'plus',
-  qulo_premium_monthly: 'premium',
+  quloplusmonthly: 'plus',
+  qulopremiummonthly: 'premium',
 };

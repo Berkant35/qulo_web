@@ -1,12 +1,15 @@
 import 'dart:io';
 import 'package:purchases_flutter/purchases_flutter.dart';
+import '../config/env.dart';
 
 class RevenueCatService {
-  static const _appleApiKey = 'appl_XXXX'; // TODO: Replace with actual key
-  static const _googleApiKey = 'goog_XXXX'; // TODO: Replace with actual key
-
   static Future<void> init(String userId) async {
-    final apiKey = Platform.isIOS ? _appleApiKey : _googleApiKey;
+    final apiKey = Platform.isIOS
+        ? Env.revenueCatAppleKey
+        : Env.revenueCatGoogleKey;
+
+    if (apiKey.isEmpty) return;
+
     final config = PurchasesConfiguration(apiKey)..appUserID = userId;
     await Purchases.configure(config);
   }

@@ -46,9 +46,9 @@ ALTER TABLE iap_transactions DISABLE ROW LEVEL SECURITY;
 -- iap_products tablosunu güncelle (yeni tier'lar)
 DELETE FROM iap_products;
 INSERT INTO iap_products (store_id_ios, store_id_android, purple_amount, tier, is_active) VALUES
-  ('qulo_purple_50', 'qulo_purple_50', 50, 1, true),
-  ('qulo_purple_150', 'qulo_purple_150', 150, 2, true),
-  ('qulo_purple_400', 'qulo_purple_400', 400, 3, true),
-  ('qulo_purple_1000', 'qulo_purple_1000', 1000, 4, true),
-  ('qulo_purple_2500', 'qulo_purple_2500', 2500, 5, true),
-  ('qulo_purple_6000', 'qulo_purple_6000', 6000, 6, true);
+  ('qulopurple50', 'qulopurple50', 50, 1, true),
+  ('qulopurple150', 'qulopurple150', 150, 2, true),
+  ('qulopurple400', 'qulopurple400', 400, 3, true),
+  ('qulopurple1000', 'qulopurple1000', 1000, 4, true),
+  ('qulopurple2500', 'qulopurple2500', 2500, 5, true),
+  ('qulopurple6000', 'qulopurple6000', 6000, 6, true);
