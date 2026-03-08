@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qulo_v2/core/constants/app_constants.dart';
 import 'package:qulo_v2/core/navigation/navigation.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
@@ -8,6 +11,7 @@ import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/constants/q_icons.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/providers/match_provider.dart';
+import 'package:qulo_v2/providers/user_provider.dart';
 import 'package:qulo_v2/routing/route_names.dart';
 import 'package:qulo_v2/features/discover/widgets/profile_card.dart';
 
@@ -37,6 +41,97 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Error: $e')),
         data: (discover) {
+          // ─── Question Gate: Blur Lock ───
+          final user = ref.watch(userProvider).valueOrNull;
+          final hasMinQuestions = (user?.questionCount ?? 0) >= AppConstants.minQuestions;
+
+          if (!hasMinQuestions) {
+            final firstCard = discover.cards.isNotEmpty ? discover.cards.first : null;
+            return Padding(
+              padding: const EdgeInsets.all(AppSpacing.pagePadding),
+              child: Stack(
+                children: [
+                  // Blurred card or placeholder
+                  if (firstCard != null)
+                    Positioned.fill(
+                      child: ImageFiltered(
+                        imageFilter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                        child: ProfileCard(card: firstCard),
+                      ),
+                    )
+                  else
+                    Positioned.fill(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.surfaceContainerHigh,
+                          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                        ),
+                      ),
+                    ),
+                  // Lock overlay
+                  Positioned.fill(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.surface.withAlpha(180),
+                        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          QIcon(QIcons.icLock, size: 64, color: AppColors.primary),
+                          const SizedBox(height: AppSpacing.lg),
+                          Text(
+                            context.tr('question_nudge_discover_locked'),
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: AppSpacing.md),
+                          // Progress bar
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 48),
+                            child: Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+                                  child: LinearProgressIndicator(
+                                    value: ((user?.questionCount ?? 0) / 2).clamp(0.0, 1.0),
+                                    minHeight: 10,
+                                    backgroundColor: theme.colorScheme.surfaceContainerHigh,
+                                    valueColor: const AlwaysStoppedAnimation<Color>(AppColors.primary),
+                                  ),
+                                ),
+                                const SizedBox(height: AppSpacing.xs),
+                                Text(
+                                  context.tr('question_nudge_progress')
+                                      .replaceAll('{count}', '${user?.questionCount ?? 0}'),
+                                  style: theme.textTheme.bodySmall?.copyWith(
+                                    color: theme.colorScheme.onSurfaceVariant,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: AppSpacing.lg),
+                          FilledButton.icon(
+                            onPressed: () => ref.read(navigationServiceProvider).go(RouteNames.questions),
+                            icon: QIcon(QIcons.icPlus, color: theme.colorScheme.onPrimary, size: 18),
+                            label: Text(context.tr('question_nudge_add_button')),
+                            style: FilledButton.styleFrom(
+                              backgroundColor: AppColors.primary,
+                              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+
           if (discover.cards.isEmpty) {
             return Center(
               child: Column(
@@ -78,7 +173,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                         child: Center(
                           child: Text(
                             context.tr('solve_questions'),
-                            style: theme.textTheme.bodyLarge?.copyWith(color: Colors.white, fontWeight: FontWeight.w600),
+                            style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.onPrimary, fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),
