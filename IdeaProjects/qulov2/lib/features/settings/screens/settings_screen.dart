@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/navigation/navigation.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/auth_provider.dart';
 import '../../../providers/locale_provider.dart';
@@ -22,12 +23,12 @@ class SettingsScreen extends ConsumerWidget {
       padding: EdgeInsets.zero,
       body: ListView(
         children: [
-          const SizedBox(height: 8),
+          const SizedBox(height: AppSpacing.sm),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            margin: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
             decoration: BoxDecoration(
               color: theme.colorScheme.surface,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
             ),
             child: ListTile(
               leading: Icon(Icons.language, color: theme.colorScheme.onSurfaceVariant),
@@ -48,11 +49,11 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
+            padding: const EdgeInsets.all(AppSpacing.pagePadding),
             decoration: BoxDecoration(
               color: theme.colorScheme.surface,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,11 +61,11 @@ class SettingsScreen extends ConsumerWidget {
                 Row(
                   children: [
                     Icon(Icons.brightness_6, color: theme.colorScheme.onSurfaceVariant),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: AppSpacing.lg),
                     Text(context.tr('theme'), style: theme.textTheme.bodyLarge),
                   ],
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: AppSpacing.md),
                 SizedBox(
                   width: double.infinity,
                   child: SegmentedButton<AppThemeMode>(
@@ -82,12 +83,12 @@ class SettingsScreen extends ConsumerWidget {
               ],
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: AppSpacing.sm),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            margin: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
             decoration: BoxDecoration(
               color: theme.colorScheme.surface,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
             ),
             child: ListTile(
               leading: Icon(Icons.logout, color: theme.colorScheme.onSurfaceVariant),
@@ -112,10 +113,10 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            margin: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
             decoration: BoxDecoration(
               color: theme.colorScheme.surface,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
             ),
             child: ListTile(
               leading: const Icon(Icons.delete_forever, color: AppColors.error),
