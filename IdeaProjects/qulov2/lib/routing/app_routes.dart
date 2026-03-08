@@ -91,6 +91,11 @@ final _routes = <RouteBase>[
           builder: (context, state) => const ProfileScreen(),
           routes: [
             GoRoute(
+              path: 'edit',
+              name: RouteNames.editProfile,
+              builder: (context, state) => const EditProfileScreen(),
+            ),
+            GoRoute(
               path: 'questions',
               name: RouteNames.questions,
               builder: (context, state) => const QuestionsScreen(),
@@ -136,9 +141,21 @@ class _MainShell extends StatelessWidget {
             selectedIndex: shell.currentIndex,
             onDestinationSelected: (i) => shell.goBranch(i, initialLocation: i == shell.currentIndex),
             destinations: [
-              NavigationDestination(icon: QIcon(QIcons.icCompass, size: 24), label: 'Discover'),
-              NavigationDestination(icon: QIcon(QIcons.icHeart, size: 24), label: 'Matches'),
-              NavigationDestination(icon: QIcon(QIcons.icUser, size: 24), label: 'Profile'),
+              NavigationDestination(
+                icon: QIcon(QIcons.icCompass, size: 24),
+                selectedIcon: QIcon(QIcons.icCompassFilled, size: 24),
+                label: 'Discover',
+              ),
+              NavigationDestination(
+                icon: QIcon(QIcons.icHeart, size: 24),
+                selectedIcon: QIcon(QIcons.icHeartFilled, size: 24),
+                label: 'Matches',
+              ),
+              NavigationDestination(
+                icon: QIcon(QIcons.icUser, size: 24),
+                selectedIcon: QIcon(QIcons.icUserFilled, size: 24),
+                label: 'Profile',
+              ),
             ],
           ),
         ],

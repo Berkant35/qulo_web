@@ -16,6 +16,7 @@ import '../features/profile/screens/questions_screen.dart';
 import '../features/diamonds/screens/diamonds_screen.dart';
 import '../features/passport/screens/passport_screen.dart';
 import '../features/settings/screens/settings_screen.dart';
+import '../features/profile/screens/edit_profile_screen.dart';
 import 'route_names.dart';
 import '../core/widgets/q_icon.dart';
 import '../core/constants/q_icons.dart';
