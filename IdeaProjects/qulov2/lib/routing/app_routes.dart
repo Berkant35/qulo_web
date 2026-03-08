@@ -3,14 +3,28 @@ part of 'app_router.dart';
 final _routes = <RouteBase>[
   GoRoute(
     path: '/',
-    builder: (context, state) => const _SplashPlaceholder(),
+    pageBuilder: (context, state) => CustomTransitionPage(
+      key: state.pageKey,
+      child: const SplashScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+      transitionDuration: const Duration(milliseconds: 500),
+    ),
   ),
 
   // Auth
   GoRoute(
     path: '/auth/login',
     name: RouteNames.login,
-    builder: (context, state) => const LoginScreen(),
+    pageBuilder: (context, state) => CustomTransitionPage(
+      key: state.pageKey,
+      child: const LoginScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+      transitionDuration: const Duration(milliseconds: 500),
+    ),
     routes: [
       GoRoute(
         path: 'register',
@@ -101,17 +115,6 @@ final _routes = <RouteBase>[
   ),
 ];
 
-class _SplashPlaceholder extends StatelessWidget {
-  const _SplashPlaceholder();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: CircularProgressIndicator()),
-    );
-  }
-}
-
 class _MainShell extends StatelessWidget {
   final StatefulNavigationShell shell;
   const _MainShell({required this.shell});
@@ -120,13 +123,22 @@ class _MainShell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: shell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: shell.currentIndex,
-        onDestinationSelected: (i) => shell.goBranch(i, initialLocation: i == shell.currentIndex),
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.explore), label: 'Discover'),
-          NavigationDestination(icon: Icon(Icons.favorite), label: 'Matches'),
-          NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 1,
+            color: const Color(0xFFBB86FC).withValues(alpha: 0.3),
+          ),
+          NavigationBar(
+            selectedIndex: shell.currentIndex,
+            onDestinationSelected: (i) => shell.goBranch(i, initialLocation: i == shell.currentIndex),
+            destinations: const [
+              NavigationDestination(icon: Icon(Icons.explore), label: 'Discover'),
+              NavigationDestination(icon: Icon(Icons.favorite), label: 'Matches'),
+              NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+            ],
+          ),
         ],
       ),
     );
