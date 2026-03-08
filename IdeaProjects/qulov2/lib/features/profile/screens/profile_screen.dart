@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import '../../../core/constants/q_icons.dart';
+import '../../../core/navigation/navigation.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/app_scaffold.dart';
+import '../../../core/widgets/q_icon.dart';
 import '../../../providers/user_provider.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../routing/route_names.dart';
@@ -34,8 +36,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
       title: context.tr('profile'),
       actions: [
         IconButton(
-          icon: Icon(Icons.settings, color: Theme.of(context).colorScheme.onSurfaceVariant),
-          onPressed: () => context.goNamed(RouteNames.settings),
+          icon: QIcon(QIcons.icSettings, color: Theme.of(context).colorScheme.onSurfaceVariant, size: 24),
+          onPressed: () => ref.read(navigationServiceProvider).go(RouteNames.settings),
         ),
       ],
       padding: EdgeInsets.zero,
@@ -59,7 +61,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         ? CachedNetworkImage(imageUrl: photos.first, fit: BoxFit.cover)
                         : Container(
                             color: theme.colorScheme.surface,
-                            child: Icon(Icons.person, size: 80, color: theme.hintColor),
+                            child: QIcon(QIcons.icUser, color: theme.hintColor, size: 80),
                           ),
                   ),
                 ),
@@ -85,10 +87,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   crossAxisSpacing: 8,
                   childAspectRatio: 2.2,
                   children: [
-                    _StatCard(icon: Icons.favorite, value: '${user.likeReceivedCount}', label: context.tr('likes'), color: AppColors.primary),
-                    _StatCard(icon: Icons.visibility, value: '${user.timesShownCount}', label: context.tr('views'), color: AppColors.secondary),
-                    _StatCard(icon: Icons.diamond, value: '${user.purpleDiamonds}', label: context.tr('purple_diamonds'), color: AppColors.primary),
-                    _StatCard(icon: Icons.diamond, value: '${user.greenDiamonds}', label: context.tr('green_diamonds'), color: AppColors.secondary),
+                    _StatCard(iconPath: QIcons.icHeart, value: '${user.likeReceivedCount}', label: context.tr('likes'), color: AppColors.primary),
+                    _StatCard(iconPath: QIcons.icEye, value: '${user.timesShownCount}', label: context.tr('views'), color: AppColors.secondary),
+                    _StatCard(iconPath: QIcons.icGem, value: '${user.purpleDiamonds}', label: context.tr('purple_diamonds'), color: AppColors.primary),
+                    _StatCard(iconPath: QIcons.icGem, value: '${user.greenDiamonds}', label: context.tr('green_diamonds'), color: AppColors.secondary),
                   ],
                 ),
                 const SizedBox(height: AppSpacing.lg),
@@ -104,10 +106,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 const SizedBox(height: AppSpacing.xl),
 
                 // Menu Items
-                _MenuItem(icon: Icons.edit, title: context.tr('edit_profile'), onTap: () => context.goNamed(RouteNames.editProfile)),
-                _MenuItem(icon: Icons.quiz, title: context.tr('my_questions'), onTap: () => context.goNamed(RouteNames.questions)),
-                _MenuItem(icon: Icons.diamond, title: context.tr('diamonds'), onTap: () => context.goNamed(RouteNames.diamonds)),
-                _MenuItem(icon: Icons.flight, title: context.tr('passport'), onTap: () => context.goNamed(RouteNames.passport)),
+                _MenuItem(iconPath: QIcons.icPencil, title: context.tr('edit_profile'), onTap: () => ref.read(navigationServiceProvider).go(RouteNames.editProfile)),
+                _MenuItem(iconPath: QIcons.icHelpCircle, title: context.tr('my_questions'), onTap: () => ref.read(navigationServiceProvider).go(RouteNames.questions)),
+                _MenuItem(iconPath: QIcons.icGem, title: context.tr('diamonds'), onTap: () => ref.read(navigationServiceProvider).go(RouteNames.diamonds)),
+                _MenuItem(iconPath: QIcons.icPlane, title: context.tr('passport'), onTap: () => ref.read(navigationServiceProvider).go(RouteNames.passport)),
               ],
             ),
           );
@@ -118,12 +120,12 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
 }
 
 class _StatCard extends StatelessWidget {
-  final IconData icon;
+  final String iconPath;
   final String value;
   final String label;
   final Color color;
 
-  const _StatCard({required this.icon, required this.value, required this.label, required this.color});
+  const _StatCard({required this.iconPath, required this.value, required this.label, required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +139,7 @@ class _StatCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, color: color, size: 24),
+          QIcon(iconPath, color: color, size: 24),
           const SizedBox(width: 8),
           Expanded(
             child: Column(
@@ -156,10 +158,10 @@ class _StatCard extends StatelessWidget {
 }
 
 class _MenuItem extends StatelessWidget {
-  final IconData icon;
+  final String iconPath;
   final String title;
   final VoidCallback onTap;
-  const _MenuItem({required this.icon, required this.title, required this.onTap});
+  const _MenuItem({required this.iconPath, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -171,9 +173,9 @@ class _MenuItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: ListTile(
-        leading: Icon(icon, color: AppColors.primary),
+        leading: QIcon(iconPath, color: AppColors.primary, size: 24),
         title: Text(title),
-        trailing: Icon(Icons.chevron_right, color: theme.hintColor),
+        trailing: QIcon(QIcons.icChevronRight, color: theme.hintColor, size: 20),
         onTap: onTap,
       ),
     );
