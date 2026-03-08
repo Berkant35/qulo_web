@@ -35,6 +35,11 @@ abstract final class AppColors {
   static const border = Color(0xFF2A2A2A);
   static const divider = Color(0xFF2A2A2A);
 
+  // ─── Badge ───
+  static const Color gold = Color(0xFFFFD700);
+  static const Color silver = Color(0xFFC0C0C0);
+  static const Color bronze = Color(0xFFCD7F32);
+
   // ─── Gradients ───
   static const purpleGradient = LinearGradient(
     colors: [Color(0xFFBB86FC), Color(0xFF9C27B0)],
