@@ -52,30 +52,30 @@ BadgeInfo calculateBadgeInfo(BuildContext context, UserModel user) {
 
   if (pct >= 85) {
     level = BadgeLevel.gold;
-    name = context.tr('badge_gold');
+    name = context.tr('badge_master');
     iconPath = QIcons.icBadgeGold;
     color = AppColors.gold;
     nextLevel = null;
     percentToNext = null;
   } else if (pct >= 60) {
     level = BadgeLevel.silver;
-    name = context.tr('badge_silver');
+    name = context.tr('badge_popular');
     iconPath = QIcons.icBadgeSilver;
     color = AppColors.silver;
     nextLevel = BadgeLevel.gold;
     percentToNext = 85 - pct;
   } else if (pct >= 30) {
     level = BadgeLevel.bronze;
-    name = context.tr('badge_bronze');
+    name = context.tr('badge_rookie');
     iconPath = QIcons.icBadgeBronze;
     color = AppColors.bronze;
     nextLevel = BadgeLevel.silver;
     percentToNext = 60 - pct;
   } else {
     level = BadgeLevel.none;
-    name = context.tr('badge_none');
+    name = context.tr('badge_no_badge');
     iconPath = QIcons.icBadgeBronze;
-    color = AppColors.textHint;
+    color = Theme.of(context).hintColor;
     nextLevel = BadgeLevel.bronze;
     percentToNext = 30 - pct;
   }
@@ -130,15 +130,15 @@ class BadgeBar extends StatelessWidget {
     final pct = user.profileCompletion.clamp(0, 100);
 
     // Check claimable rewards
-    final canClaimSilver = _canClaimReward(user, 'silver', 60);
-    final canClaimGold = _canClaimReward(user, 'gold', 85);
+    final canClaimSilver = _canClaimReward(user, 'SILVER', 60);
+    final canClaimGold = _canClaimReward(user, 'GOLD', 85);
     final showClaim = canClaimGold || canClaimSilver;
-    final claimLevel = canClaimGold ? 'gold' : 'silver';
+    final claimLevel = canClaimGold ? 'GOLD' : 'SILVER';
 
     return Container(
       padding: const EdgeInsets.all(AppSpacing.cardPadding),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
         border: Border.all(
           color: info.color.withValues(alpha: 0.4),
@@ -187,7 +187,7 @@ class BadgeBar extends StatelessWidget {
             child: LinearProgressIndicator(
               value: info.progress,
               minHeight: 6,
-              backgroundColor: AppColors.surfaceInput,
+              backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
               valueColor: AlwaysStoppedAnimation<Color>(info.color),
             ),
           ),
@@ -197,8 +197,8 @@ class BadgeBar extends StatelessWidget {
             const SizedBox(height: AppSpacing.sm),
             Text(
               info.hint!,
-              style: const TextStyle(
-                color: AppColors.textSecondary,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
                 fontSize: 12,
               ),
             ),
@@ -247,7 +247,7 @@ class BadgeBar extends StatelessWidget {
                     vertical: AppSpacing.sm,
                   ),
                 ),
-                icon: const DiamondIcon.green(size: 18, showGlow: false),
+                icon: const DiamondIcon.purple(size: 18, showGlow: false),
                 label: Text(
                   context.tr('badge_claim_reward'),
                   style: const TextStyle(

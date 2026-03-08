@@ -214,6 +214,7 @@ class AppLocalizations {
     'badge_no_badge': 'Başlangıç',
     'badge_progress_hint': 'kaldı',
     'badge_reward_claimed': 'Tebrikler! Mor elmas kazandın!',
+    'badge_claim_reward': 'Ödülü Al',
     'badge_discover_warning': 'Profilini tamamla, keşfette görün!',
 
     // Profile - Hints
@@ -349,6 +350,16 @@ class AppLocalizations {
     'minutes_ago': '{} dk önce',
     'hours_ago': '{} saat önce',
     'days_ago': '{} gün önce',
+
+    // Version & Update
+    'update_required_title': 'Güncelleme Gerekli',
+    'update_required_message': 'Uygulamayı kullanmaya devam etmek için lütfen güncelleyin.',
+    'update_available_title': 'Yeni Güncelleme Mevcut',
+    'update_available_message': 'Daha iyi bir deneyim için uygulamayı güncelleyin.',
+    'update_button': 'Güncelle',
+    'update_later': 'Daha Sonra',
+    'maintenance_title': 'Bakım Çalışması',
+    'maintenance_default_message': 'Uygulama şu anda bakımdadır. Lütfen daha sonra tekrar deneyin.',
   };
 
   static const _en = <String, String>{
@@ -541,6 +552,7 @@ class AppLocalizations {
     'badge_no_badge': 'Beginner',
     'badge_progress_hint': 'left',
     'badge_reward_claimed': 'Congratulations! You earned purple diamonds!',
+    'badge_claim_reward': 'Claim Reward',
     'badge_discover_warning': 'Complete your profile to appear in discover!',
 
     // Profile - Hints
@@ -676,6 +688,16 @@ class AppLocalizations {
     'minutes_ago': '{} min ago',
     'hours_ago': '{} hours ago',
     'days_ago': '{} days ago',
+
+    // Version & Update
+    'update_required_title': 'Update Required',
+    'update_required_message': 'Please update the app to continue using it.',
+    'update_available_title': 'Update Available',
+    'update_available_message': 'Update the app for a better experience.',
+    'update_button': 'Update',
+    'update_later': 'Later',
+    'maintenance_title': 'Under Maintenance',
+    'maintenance_default_message': 'The app is currently under maintenance. Please try again later.',
   };
 }
 
