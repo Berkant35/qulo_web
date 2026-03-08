@@ -7,6 +7,8 @@ import 'package:qulo_v2/core/constants/app_constants.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/providers/question_provider.dart';
+import 'package:qulo_v2/providers/user_provider.dart';
+import 'package:qulo_v2/routing/route_names.dart';
 
 class QuestionsScreen extends ConsumerStatefulWidget {
   const QuestionsScreen({super.key});
@@ -65,7 +67,8 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
               TextButton(
                 onPressed: () async {
                   final questions = ref.read(questionProvider).valueOrNull ?? [];
-                  await ref.read(questionProvider.notifier).createQuestion({
+                  final wasBelow = questions.length < AppConstants.minQuestions;
+                  final result = await ref.read(questionProvider.notifier).createQuestion({
                     'order_num': questions.length + 1,
                     'question_text': textCtrl.text,
                     'correct_answer': correctAnswer,
@@ -75,8 +78,54 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
                     'answer_4': a4.text,
                   });
                   nav.closeOverlay();
+
+                  // Show celebration if user just reached minimum questions
+                  if (wasBelow && questions.length + 1 >= AppConstants.minQuestions) {
+                    result.when(
+                      success: (_) => _showCelebrationDialog(),
+                      failure: (_) {},
+                    );
+                  }
                 },
                 child: Text(context.tr('save')),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showCelebrationDialog() {
+    final nav = ref.read(navigationServiceProvider);
+    nav.showAppDialog(
+      CustomDialog(
+        name: 'question_celebration',
+        builder: (_) => AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: AppSpacing.md),
+              Icon(Icons.celebration, size: 64, color: AppColors.primary),
+              const SizedBox(height: AppSpacing.lg),
+              Text(
+                context.tr('question_nudge_celebration_title'),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: AppSpacing.lg),
+              SizedBox(
+                width: double.infinity,
+                child: FilledButton(
+                  onPressed: () {
+                    nav.closeOverlay();
+                    ref.read(navigationServiceProvider).go(RouteNames.discover);
+                  },
+                  style: FilledButton.styleFrom(backgroundColor: AppColors.primary),
+                  child: Text(context.tr('question_nudge_celebration_button')),
+                ),
               ),
             ],
           ),

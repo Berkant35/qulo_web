@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qulo_v2/core/network/result.dart';
 import 'package:qulo_v2/data/models/question_model.dart';
 import 'package:qulo_v2/providers/api_provider.dart';
+import 'package:qulo_v2/providers/user_provider.dart';
 
 class QuestionNotifier extends AsyncNotifier<List<QuestionModel>> {
   @override
@@ -18,7 +19,13 @@ class QuestionNotifier extends AsyncNotifier<List<QuestionModel>> {
 
   Future<Result<QuestionModel>> createQuestion(Map<String, dynamic> data) async {
     final result = await ref.read(questionRepositoryProvider).createQuestion(data);
-    result.when(success: (_) => fetchQuestions(), failure: (_) {});
+    result.when(
+      success: (_) {
+        fetchQuestions();
+        ref.read(userProvider.notifier).fetchMe();
+      },
+      failure: (_) {},
+    );
     return result;
   }
 
@@ -30,7 +37,13 @@ class QuestionNotifier extends AsyncNotifier<List<QuestionModel>> {
 
   Future<Result<void>> deleteQuestion(int orderNum) async {
     final result = await ref.read(questionRepositoryProvider).deleteQuestion(orderNum);
-    result.when(success: (_) => fetchQuestions(), failure: (_) {});
+    result.when(
+      success: (_) {
+        fetchQuestions();
+        ref.read(userProvider.notifier).fetchMe();
+      },
+      failure: (_) {},
+    );
     return result;
   }
 }
