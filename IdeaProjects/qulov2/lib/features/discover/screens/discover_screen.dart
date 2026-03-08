@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/l10n/l10n.dart';
+import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/match_provider.dart';
 import '../../../routing/route_names.dart';
 import '../widgets/profile_card.dart';
@@ -27,13 +28,9 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
     final state = ref.watch(discoverProvider);
     final theme = Theme.of(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(context.tr('discover'), style: theme.textTheme.headlineSmall?.copyWith(
-          color: AppColors.purple, fontWeight: FontWeight.bold,
-        )),
-        centerTitle: true,
-      ),
+    return AppScaffold(
+      title: context.tr('discover'),
+      padding: EdgeInsets.zero,
       body: state.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Error: $e')),
@@ -43,9 +40,9 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.explore_off, size: 64, color: AppColors.onSurfaceVariant),
+                  Icon(Icons.explore_off, size: 64, color: AppColors.textHint),
                   const SizedBox(height: AppSpacing.lg),
-                  Text(context.tr('no_more_profiles'), style: theme.textTheme.titleMedium),
+                  Text(context.tr('no_more_profiles'), style: theme.textTheme.titleMedium?.copyWith(color: AppColors.textSecondary)),
                   const SizedBox(height: AppSpacing.sm),
                   TextButton(
                     onPressed: () => ref.read(discoverProvider.notifier).loadCards(),
@@ -61,13 +58,40 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
             child: Column(
               children: [
                 Expanded(child: ProfileCard(card: card)),
-                const SizedBox(height: AppSpacing.lg),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  decoration: BoxDecoration(
+                    gradient: AppColors.primaryButtonGradient,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(12),
+                      onTap: () {
+                        context.goNamed(RouteNames.quiz, pathParameters: {'targetId': card.userId});
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        child: Center(
+                          child: Text(
+                            'Soruları Çöz',
+                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.sm),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _ActionButton(
                       icon: Icons.close,
-                      color: AppColors.error,
+                      iconColor: AppColors.error,
+                      backgroundColor: AppColors.surface,
+                      borderColor: AppColors.error,
                       onTap: () async {
                         await ref.read(discoverProvider.notifier).swipe(
                           targetId: card.userId,
@@ -77,7 +101,9 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                     ),
                     _ActionButton(
                       icon: Icons.favorite,
-                      color: AppColors.green,
+                      iconColor: AppColors.secondary,
+                      backgroundColor: AppColors.surface,
+                      borderColor: AppColors.secondary,
                       size: 72,
                       onTap: () {
                         context.goNamed(RouteNames.quiz, pathParameters: {'targetId': card.userId});
@@ -97,13 +123,17 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
 
 class _ActionButton extends StatelessWidget {
   final IconData icon;
-  final Color color;
+  final Color iconColor;
+  final Color backgroundColor;
+  final Color borderColor;
   final double size;
   final VoidCallback onTap;
 
   const _ActionButton({
     required this.icon,
-    required this.color,
+    required this.iconColor,
+    required this.backgroundColor,
+    required this.borderColor,
     this.size = 56,
     required this.onTap,
   });
@@ -117,11 +147,11 @@ class _ActionButton extends StatelessWidget {
         height: size,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Colors.white,
-          border: Border.all(color: color, width: 2),
-          boxShadow: [BoxShadow(color: color.withValues(alpha: 0.2), blurRadius: 8)],
+          color: backgroundColor,
+          border: Border.all(color: borderColor, width: 2),
+          boxShadow: [BoxShadow(color: borderColor.withValues(alpha: 0.2), blurRadius: 8)],
         ),
-        child: Icon(icon, color: color, size: size * 0.5),
+        child: Icon(icon, color: iconColor, size: size * 0.5),
       ),
     );
   }

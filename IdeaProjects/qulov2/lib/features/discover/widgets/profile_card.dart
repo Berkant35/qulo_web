@@ -22,7 +22,7 @@ class ProfileCard extends StatelessWidget {
           if (photo != null)
             CachedNetworkImage(imageUrl: photo, fit: BoxFit.cover)
           else
-            Container(color: AppColors.purpleSurface, child: const Icon(Icons.person, size: 80)),
+            Container(color: AppColors.surface, child: Icon(Icons.person, size: 80, color: AppColors.textHint)),
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -72,7 +72,7 @@ class ProfileCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
                   decoration: BoxDecoration(
-                    color: AppColors.purple.withValues(alpha: 0.8),
+                    color: AppColors.primarySurface,
                     borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
                   ),
                   child: Text(
