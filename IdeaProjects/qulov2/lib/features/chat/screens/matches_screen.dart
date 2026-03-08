@@ -64,7 +64,7 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(AppSpacing.pagePadding, AppSpacing.sm, AppSpacing.pagePadding, AppSpacing.md),
                       child: Text(
-                        'Yeni Eslesmeler',
+                        context.tr('new_matches'),
                         style: theme.textTheme.titleMedium,
                       ),
                     ),
@@ -195,7 +195,7 @@ class _MatchCard extends StatelessWidget {
           ],
         ),
         title: Text(
-          u?.name ?? 'Unknown',
+          u?.name ?? context.tr('unknown_user'),
           style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
         ),
         subtitle: Text(
@@ -206,7 +206,7 @@ class _MatchCard extends StatelessWidget {
         ),
         trailing: u?.isOnline == true
             ? Text(
-                'Online',
+                context.tr('online'),
                 style: theme.textTheme.labelSmall?.copyWith(color: AppColors.secondary),
               )
             : null,

@@ -77,7 +77,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         child: Center(
                           child: Text(
-                            'Soruları Çöz',
+                            context.tr('solve_questions'),
                             style: theme.textTheme.bodyLarge?.copyWith(color: Colors.white, fontWeight: FontWeight.w600),
                           ),
                         ),

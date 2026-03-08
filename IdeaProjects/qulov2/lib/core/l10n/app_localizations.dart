@@ -305,6 +305,8 @@ class AppLocalizations {
     'sub_premium_who_viewed': 'Kim baktı',
     'sub_premium_no_ads': 'Reklam yok',
     'sub_premium_badge': 'Premium rozeti',
+    'sub_plus_messages': 'Sınırsız mesaj',
+    'sub_premium_messages': 'Sınırsız mesaj',
 
     // Upsell
     'diamonds_empty': 'Elmasların bitti!',
@@ -322,6 +324,10 @@ class AppLocalizations {
     'freq_yes': 'Evet',
     'freq_no': 'Hayır',
     'freq_sometimes': 'Bazen',
+
+    // Discover & Matches (i18n cleanup)
+    'solve_questions': 'Soruları Çöz',
+    'unknown_user': 'Bilinmeyen',
   };
 
   static const _en = <String, String>{
@@ -605,6 +611,8 @@ class AppLocalizations {
     'sub_premium_who_viewed': 'See who viewed you',
     'sub_premium_no_ads': 'No ads',
     'sub_premium_badge': 'Premium badge',
+    'sub_plus_messages': 'Unlimited messaging',
+    'sub_premium_messages': 'Unlimited messaging',
 
     // Upsell
     'diamonds_empty': 'Out of diamonds!',
@@ -622,6 +630,10 @@ class AppLocalizations {
     'freq_yes': 'Yes',
     'freq_no': 'No',
     'freq_sometimes': 'Sometimes',
+
+    // Discover & Matches (i18n cleanup)
+    'solve_questions': 'Solve Questions',
+    'unknown_user': 'Unknown',
   };
 }
 
