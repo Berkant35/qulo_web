@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qulo_v2/core/constants/app_constants.dart';
 import 'package:qulo_v2/core/constants/q_icons.dart';
 import 'package:qulo_v2/core/navigation/navigation.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
@@ -11,6 +12,7 @@ import 'package:qulo_v2/core/widgets/app_text_field.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/core/services/image_picker_manager.dart';
+import 'package:qulo_v2/routing/route_names.dart';
 import 'package:qulo_v2/providers/api_provider.dart';
 import 'package:qulo_v2/providers/edit_profile_provider.dart';
 import 'package:qulo_v2/providers/user_provider.dart';
@@ -307,6 +309,42 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // ─── Question Nudge Banner ───
+            Builder(builder: (_) {
+              final user = ref.watch(userProvider).valueOrNull;
+              if (user == null || user.questionCount >= AppConstants.minQuestions) {
+                return const SizedBox.shrink();
+              }
+              return Padding(
+                padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(AppSpacing.cardPadding),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withAlpha(15),
+                    borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                    border: Border.all(color: AppColors.primary.withAlpha(40)),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          context.tr('question_nudge_edit_hint'),
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: Theme.of(context).colorScheme.onSurfaceVariant,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: AppSpacing.sm),
+                      TextButton(
+                        onPressed: () => ref.read(navigationServiceProvider).go(RouteNames.questions),
+                        child: Text(context.tr('question_nudge_go_questions')),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }),
             // ─── Photos Section ───
             _sectionTitle(context.tr('photos')),
             const SizedBox(height: AppSpacing.sm),
