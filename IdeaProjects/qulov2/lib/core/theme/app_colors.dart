@@ -1,44 +1,50 @@
 import 'package:flutter/material.dart';
 
 abstract final class AppColors {
-  // Primary - Purple (mor elmas)
-  static const purple = Color(0xFF9C27B0);
-  static const purpleDark = Color(0xFF7B1FA2);
-  static const purpleLight = Color(0xFFCE93D8);
-  static const purpleSurface = Color(0xFFF3E5F5);
+  // ─── Background & Surface ───
+  static const background = Color(0xFF0D0D0D);
+  static const scaffold = Color(0xFF121212);
+  static const surface = Color(0xFF1A1A1A);
+  static const surfaceElevated = Color(0xFF242424);
+  static const surfaceInput = Color(0xFF2A2A2A);
 
-  // Secondary - Green (yesil elmas)
-  static const green = Color(0xFF4CAF50);
-  static const greenDark = Color(0xFF388E3C);
-  static const greenLight = Color(0xFFA5D6A7);
-  static const greenSurface = Color(0xFFE8F5E9);
+  // ─── Primary (Mor Neon) ───
+  static const primary = Color(0xFFBB86FC);
+  static const primaryDark = Color(0xFF9C27B0);
+  static const primaryLight = Color(0xFFE1BEE7);
+  static const primarySurface = Color(0x1ABB86FC);
 
-  // Neutrals
-  static const background = Color(0xFFFAFAFA);
-  static const surface = Color(0xFFFFFFFF);
-  static const surfaceVariant = Color(0xFFF5F5F5);
-  static const onSurface = Color(0xFF1A1A1A);
-  static const onSurfaceVariant = Color(0xFF666666);
-  static const outline = Color(0xFFE0E0E0);
-  static const outlineVariant = Color(0xFFF0F0F0);
+  // ─── Secondary (Yesil Neon) ───
+  static const secondary = Color(0xFF69F0AE);
+  static const secondaryDark = Color(0xFF4CAF50);
+  static const secondaryLight = Color(0xFFB9F6CA);
+  static const secondarySurface = Color(0x1A69F0AE);
 
-  // Semantic
-  static const error = Color(0xFFE53935);
-  static const errorSurface = Color(0xFFFFEBEE);
-  static const success = Color(0xFF43A047);
-  static const errorLight = Color(0xFFFDE8E8);
-  static const warning = Color(0xFFFFA726);
-  static const info = Color(0xFF42A5F5);
+  // ─── Semantic ───
+  static const error = Color(0xFFCF6679);
+  static const success = Color(0xFF69F0AE);
+  static const warning = Color(0xFFFFB74D);
+  static const info = Color(0xFF64B5F6);
 
-  // Gradients
+  // ─── Text ───
+  static const textPrimary = Color(0xFFFFFFFF);
+  static const textSecondary = Color(0xFFB0B0B0);
+  static const textHint = Color(0xFF666666);
+
+  // ─── Border & Divider ───
+  static const border = Color(0xFF2A2A2A);
+  static const divider = Color(0xFF2A2A2A);
+
+  // ─── Gradients ───
   static const purpleGradient = LinearGradient(
-    colors: [purple, purpleDark],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
+    colors: [Color(0xFFBB86FC), Color(0xFF9C27B0)],
   );
+
   static const greenGradient = LinearGradient(
-    colors: [green, greenDark],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
+    colors: [Color(0xFF69F0AE), Color(0xFF4CAF50)],
+  );
+
+  static const primaryButtonGradient = LinearGradient(
+    colors: [Color(0xFF9C27B0), Color(0xFF7B1FA2)],
   );
 }
