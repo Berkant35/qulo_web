@@ -9,4 +9,5 @@ export 'question_repository.dart';
 export 'quiz_repository.dart';
 export 'report_repository.dart';
 export 'subscription_repository.dart';
+export 'notification_repository.dart';
 export 'user_repository.dart';

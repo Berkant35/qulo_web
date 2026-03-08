@@ -15,6 +15,7 @@ import 'package:qulo_v2/core/network/services/power_service.dart';
 import 'package:qulo_v2/core/network/services/passport_service.dart';
 import 'package:qulo_v2/core/network/services/report_service.dart';
 import 'package:qulo_v2/core/network/services/subscription_service.dart';
+import 'package:qulo_v2/core/network/services/notification_service.dart';
 import 'package:qulo_v2/data/repositories/repositories.dart';
 
 // ─── Core Services ───
@@ -70,6 +71,10 @@ final reportServiceProvider = Provider<ReportService>(
 final subscriptionServiceProvider = Provider<SubscriptionService>(
   (ref) => SubscriptionService(ref.read(networkManagerProvider).dio),
 );
+final notificationRetrofitServiceProvider =
+    Provider<NotificationRetrofitService>(
+  (ref) => NotificationRetrofitService(ref.read(networkManagerProvider).dio),
+);
 
 // ─── Repositories ───
 final authRepositoryProvider = Provider<AuthRepository>(
@@ -113,4 +118,8 @@ final reportRepositoryProvider = Provider<ReportRepository>(
 );
 final subscriptionRepositoryProvider = Provider<SubscriptionRepository>(
   (ref) => SubscriptionRepository(ref.read(subscriptionServiceProvider)),
+);
+final notificationRepositoryProvider = Provider<NotificationRepository>(
+  (ref) =>
+      NotificationRepository(ref.read(notificationRetrofitServiceProvider)),
 );
