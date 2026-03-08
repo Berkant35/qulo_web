@@ -35,6 +35,7 @@ class AppLocalizations {
     'error': 'Hata',
     'success': 'Başarılı',
     'retry': 'Tekrar Dene',
+    'rotate': 'Döndür',
     'yes': 'Evet',
     'no': 'Hayır',
 
@@ -496,6 +497,34 @@ class AppLocalizations {
     'nudge_easy_mode_button': 'Kolay Mod ile Başla',
     'nudge_quick_create_title': 'Hızlı Soru Oluştur',
     'nudge_profile_suggest': 'Profilime göre öner',
+
+    // Subscription celebration
+    'celebration_title_plus': 'Qulo Plus\'a hoş geldin!',
+    'celebration_title_premium': 'Qulo Premium\'a hoş geldin!',
+    'celebration_diamonds_plus': '+500 Mor Elmas',
+    'celebration_diamonds_premium': '+1500 Mor Elmas',
+    'celebration_diamonds_desc': 'Aylık bonusun hesabına eklendi',
+    'celebration_button': 'Harika!',
+
+    // Subscription profile
+    'sub_my_subscription': 'Aboneliğim',
+    'sub_free_upgrade': 'Ücretsiz Plan • Yükselt',
+
+    // Monthly benefits
+    'monthly_benefits_title': 'Haklarım',
+    'benefit_daily_discovers': 'Günlük Keşif',
+    'benefit_daily_undos': 'Günlük Geri Alma',
+    'benefit_question_slots': 'Soru Slotu',
+    'benefit_monthly_diamonds': 'Aylık Elmas',
+    'benefit_passport': 'Pasaport Modu',
+    'benefit_ads': 'Reklamlar',
+    'benefit_unlimited': 'Sınırsız',
+    'benefit_given': 'Verildi',
+    'benefit_active': 'Aktif',
+    'benefit_inactive': 'Kapalı',
+    'benefit_none': 'Yok',
+    'benefit_no_ads': 'Reklam Yok',
+    'benefit_has_ads': 'Reklam Var',
   };
 
   static const _en = <String, String>{
@@ -509,6 +538,7 @@ class AppLocalizations {
     'error': 'Error',
     'success': 'Success',
     'retry': 'Retry',
+    'rotate': 'Rotate',
     'yes': 'Yes',
     'no': 'No',
 
@@ -970,6 +1000,34 @@ class AppLocalizations {
     'nudge_easy_mode_button': 'Start with Easy Mode',
     'nudge_quick_create_title': 'Quick Question Create',
     'nudge_profile_suggest': 'Suggest based on my profile',
+
+    // Subscription celebration
+    'celebration_title_plus': 'Welcome to Qulo Plus!',
+    'celebration_title_premium': 'Welcome to Qulo Premium!',
+    'celebration_diamonds_plus': '+500 Purple Diamonds',
+    'celebration_diamonds_premium': '+1500 Purple Diamonds',
+    'celebration_diamonds_desc': 'Your monthly bonus has been added',
+    'celebration_button': 'Awesome!',
+
+    // Subscription profile
+    'sub_my_subscription': 'My Subscription',
+    'sub_free_upgrade': 'Free Plan • Upgrade',
+
+    // Monthly benefits
+    'monthly_benefits_title': 'My Benefits',
+    'benefit_daily_discovers': 'Daily Discovers',
+    'benefit_daily_undos': 'Daily Undos',
+    'benefit_question_slots': 'Question Slots',
+    'benefit_monthly_diamonds': 'Monthly Diamonds',
+    'benefit_passport': 'Passport Mode',
+    'benefit_ads': 'Ads',
+    'benefit_unlimited': 'Unlimited',
+    'benefit_given': 'Given',
+    'benefit_active': 'Active',
+    'benefit_inactive': 'Inactive',
+    'benefit_none': 'None',
+    'benefit_no_ads': 'No Ads',
+    'benefit_has_ads': 'Has Ads',
   };
 }
 

@@ -63,33 +63,24 @@ class ImagePickerManager {
     double maxWidth = _defaultMaxWidth,
     int imageQuality = _defaultImageQuality,
   }) async {
-    final xFile = await _picker.pickImage(
-      source: source,
-      maxWidth: maxWidth,
-      imageQuality: imageQuality,
-    );
-    if (xFile == null) return null;
-
-    final originalBytes = await xFile.readAsBytes();
+    final picked = await _pick(source, maxWidth: maxWidth, imageQuality: imageQuality);
+    if (picked == null) return null;
 
     if (!context.mounted) return null;
 
     final croppedBytes = await Navigator.of(context).push<Uint8List>(
       MaterialPageRoute(
         fullscreenDialog: true,
-        builder: (_) => CropScreen(imageBytes: originalBytes),
+        builder: (_) => CropScreen(imageBytes: picked.bytes),
       ),
     );
 
     if (croppedBytes == null) return null;
 
-    final mimeType = xFile.mimeType ?? 'image/jpeg';
-    final fileName = xFile.name;
-
     return PickedImage(
       bytes: croppedBytes,
-      mimeType: mimeType,
-      fileName: fileName,
+      mimeType: picked.mimeType,
+      fileName: picked.fileName,
     );
   }
 }

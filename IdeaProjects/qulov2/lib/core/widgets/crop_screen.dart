@@ -2,6 +2,7 @@ import 'package:crop_your_image/crop_your_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
+import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
@@ -48,7 +49,7 @@ class _CropScreenState extends State<CropScreen> {
     final decoded = img.decodeImage(bytes);
     if (decoded == null) return null;
     final rotated = img.copyRotate(decoded, angle: 90);
-    return Uint8List.fromList(img.encodePng(rotated));
+    return img.encodeJpg(rotated, quality: 90);
   }
 
   void _confirm() {
@@ -81,7 +82,7 @@ class _CropScreenState extends State<CropScreen> {
             icon: _isRotating
                 ? const AppLoadingWidget.small()
                 : const Icon(Icons.rotate_right),
-            tooltip: 'Rotate',
+            tooltip: context.tr('rotate'),
             onPressed: (_isCropping || _isRotating) ? null : _rotate,
           ),
           Padding(
@@ -91,11 +92,10 @@ class _CropScreenState extends State<CropScreen> {
               child: _isCropping
                   ? const AppLoadingWidget.small()
                   : Text(
-                      'OK',
-                      style: TextStyle(
+                      context.tr('ok'),
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         color: AppColors.primary,
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
                       ),
                     ),
             ),
