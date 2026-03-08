@@ -18,9 +18,11 @@ import reportRoutes from "./routes/report.routes.js";
 import webhookRoutes from "./routes/webhook.routes.js";
 import subscriptionRoutes from "./routes/subscription.routes.js";
 import notificationRoutes from "./routes/notification.routes.js";
+import appRoutes from "./routes/app.routes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import adminRoutes from "./admin/admin.routes.js";
 import { adminService } from "./admin/admin.service.js";
+import { ensureStorageBuckets } from "./config/supabase.js";
 
 const app = express();
 
@@ -67,6 +69,7 @@ app.get("/", (_req, res) => {
 app.use("/admin", adminRoutes);
 
 // Routes
+app.use("/api/v1/app", appRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/questions", questionRoutes);
@@ -94,6 +97,8 @@ app.listen(env.PORT, () => {
   if (env.ADMIN_SEED_EMAIL && env.ADMIN_SEED_PASSWORD) {
     adminService.seedAdmin(env.ADMIN_SEED_EMAIL, env.ADMIN_SEED_PASSWORD).catch(console.error);
   }
+
+  ensureStorageBuckets().catch(console.error);
 });
 
 export default app;
