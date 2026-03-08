@@ -66,8 +66,18 @@ export class QuizService {
       return { session_id: existing.id as string, total_questions: totalQuestions };
     }
 
-    // 3. Create session
-    const expiresAt = new Date(Date.now() + totalQuestions * 30 * 1000).toISOString();
+    // 3. Create session — dynamic expires_at based on per-question time_limits
+    const { data: questionTimeLimits } = await supabase
+      .from('questions')
+      .select('time_limit')
+      .eq('user_id', targetId)
+      .order('order_num', { ascending: true });
+
+    const totalTimeLimit = (questionTimeLimits ?? []).reduce(
+      (sum: number, q: any) => sum + (q.time_limit ?? 30), 0
+    );
+    // Add 10s buffer for network latency
+    const expiresAt = new Date(Date.now() + (totalTimeLimit + 10) * 1000).toISOString();
 
     const { data: session, error: createErr } = await supabase
       .from("quiz_sessions")
@@ -97,7 +107,7 @@ export class QuizService {
     // Get target's questions ordered by order_num
     const { data: questions, error: qErr } = await supabase
       .from("questions")
-      .select("id, order_num, question_text, answer_1, answer_2, answer_3, answer_4, hint_text")
+      .select("id, order_num, question_text, answer_1, answer_2, answer_3, answer_4, hint_text, time_limit")
       .eq("user_id", session.target_id)
       .order("order_num", { ascending: true });
 
@@ -126,7 +136,7 @@ export class QuizService {
       question_text: q.question_text as string,
       answers: shuffledAnswers,
       has_hint: q.hint_text != null && (q.hint_text as string).length > 0,
-      time_limit_seconds: 30,
+      time_limit_seconds: (q as any).time_limit ?? 30,
     };
   }
 
@@ -136,6 +146,7 @@ export class QuizService {
     solverId: string,
     selectedAnswer: number,
     powerUsed?: PowerName,
+    timeSpent?: number,
   ) {
     const session = await this.getActiveSession(sessionId, solverId);
 
@@ -183,12 +194,26 @@ export class QuizService {
       // Earn green diamonds for target
       await diamondService.earnGreen(session.target_id, greenReward, "POWER_REWARD", `${powerUsed}:${sessionId}`);
 
+      // Track green earned on the question
+      const { data: currentQData } = await supabase
+        .from('questions')
+        .select('stats_green_earned')
+        .eq('id', currentQuestion.id)
+        .single();
+
+      if (currentQData) {
+        await supabase
+          .from('questions')
+          .update({ stats_green_earned: currentQData.stats_green_earned + greenReward })
+          .eq('id', currentQuestion.id);
+      }
+
       // ─── Power effects ───
       switch (powerUsed) {
         case "SKIP": {
           // Mark correct, record answer, proceed
-          await this.recordAnswer(sessionId, currentQuestion.id, selectedAnswer, true, powerUsed);
-          await this.updateQuestionStats(currentQuestion.id, true);
+          await this.recordAnswer(sessionId, currentQuestion.id, selectedAnswer, true, powerUsed, timeSpent ?? null);
+          await this.updateQuestionStats(currentQuestion.id, true, powerUsed ?? null, timeSpent ?? null, selectedAnswer);
 
           if (session.current_q >= session.total_questions) {
             return await this.completeSession(session);
@@ -212,8 +237,8 @@ export class QuizService {
               .maybeSingle();
 
             if (!alreadyDone) {
-              await this.recordAnswer(sessionId, q.id, 0, true, powerUsed);
-              await this.updateQuestionStats(q.id, true);
+              await this.recordAnswer(sessionId, q.id, 0, true, powerUsed, null);
+              await this.updateQuestionStats(q.id, true, powerUsed ?? null, null, 0);
             }
           }
 
@@ -259,9 +284,9 @@ export class QuizService {
     const isCorrect = selectedAnswer === currentQuestion.correct_answer;
 
     // Record answer
-    await this.recordAnswer(sessionId, currentQuestion.id, selectedAnswer, isCorrect, powerUsed ?? null);
+    await this.recordAnswer(sessionId, currentQuestion.id, selectedAnswer, isCorrect, powerUsed ?? null, timeSpent ?? null);
     // Update question stats
-    await this.updateQuestionStats(currentQuestion.id, isCorrect);
+    await this.updateQuestionStats(currentQuestion.id, isCorrect, powerUsed ?? null, timeSpent ?? null, selectedAnswer);
 
     if (!isCorrect) {
       // FAILED
@@ -269,6 +294,8 @@ export class QuizService {
         .from("quiz_sessions")
         .update({ status: "FAILED", completed_at: new Date().toISOString() })
         .eq("id", sessionId);
+
+      await this.saveSessionSummary(sessionId);
 
       return { is_correct: false, session_status: "FAILED" };
     }
@@ -371,6 +398,7 @@ export class QuizService {
 
   private async completeSession(session: SessionRow) {
     await this.createMatch(session.id, session.solver_id, session.target_id);
+    await this.saveSessionSummary(session.id);
     return { is_correct: true, matched: true, session_status: "COMPLETED" };
   }
 
@@ -380,6 +408,7 @@ export class QuizService {
     selectedAnswer: number,
     isCorrect: boolean,
     powerUsed: string | null,
+    timeSpent: number | null = null,
   ) {
     const { error } = await supabase.from("quiz_answers").insert({
       session_id: sessionId,
@@ -387,28 +416,79 @@ export class QuizService {
       selected_answer: selectedAnswer,
       is_correct: isCorrect,
       power_used: powerUsed ?? null,
+      time_spent: timeSpent ?? null,
     });
 
     if (error) throw Errors.SERVER_ERROR();
   }
 
-  private async updateQuestionStats(questionId: string, isCorrect: boolean) {
-    const column = isCorrect ? "stats_correct" : "stats_wrong";
-
-    const { data: q, error: readErr } = await supabase
-      .from("questions")
-      .select(`${column}`)
-      .eq("id", questionId)
+  private async updateQuestionStats(
+    questionId: string,
+    isCorrect: boolean,
+    powerUsed: string | null,
+    timeSpent: number | null,
+    selectedAnswer: number,
+  ) {
+    const { data: question } = await supabase
+      .from('questions')
+      .select('stats_correct, stats_wrong, stats_solve_count, stats_total_time_spent, stats_copy_used, stats_half_used, stats_hint_used, stats_time_extend_used, stats_skip_used, stats_answer_1_count, stats_answer_2_count, stats_answer_3_count, stats_answer_4_count')
+      .eq('id', questionId)
       .single();
 
-    if (readErr || !q) return;
+    if (!question) return;
 
-    const currentVal = (q as Record<string, number>)[column] ?? 0;
+    const updatePayload: Record<string, number> = {
+      stats_solve_count: question.stats_solve_count + 1,
+      [isCorrect ? 'stats_correct' : 'stats_wrong']:
+        (isCorrect ? question.stats_correct : question.stats_wrong) + 1,
+    };
+
+    if (timeSpent != null) {
+      updatePayload.stats_total_time_spent = question.stats_total_time_spent + timeSpent;
+    }
+
+    if (powerUsed) {
+      const powerStatMap: Record<string, string> = {
+        COPY: 'stats_copy_used',
+        HALF: 'stats_half_used',
+        HINT: 'stats_hint_used',
+        TIME_EXTEND: 'stats_time_extend_used',
+        SKIP: 'stats_skip_used',
+        SKIP_ALL: 'stats_skip_used',
+      };
+      const field = powerStatMap[powerUsed];
+      if (field) {
+        updatePayload[field] = ((question as any)[field] ?? 0) + 1;
+      }
+    }
+
+    const answerField = `stats_answer_${selectedAnswer}_count`;
+    updatePayload[answerField] = ((question as any)[answerField] ?? 0) + 1;
 
     await supabase
-      .from("questions")
-      .update({ [column]: currentVal + 1 })
-      .eq("id", questionId);
+      .from('questions')
+      .update(updatePayload)
+      .eq('id', questionId);
+  }
+
+  private async saveSessionSummary(sessionId: string) {
+    const { data: sessionAnswers } = await supabase
+      .from('quiz_answers')
+      .select('power_used, time_spent')
+      .eq('session_id', sessionId);
+
+    const totalTime = (sessionAnswers ?? []).reduce((s: number, a: any) => s + (a.time_spent ?? 0), 0);
+    const powersUsedMap: Record<string, number> = {};
+    for (const a of sessionAnswers ?? []) {
+      if (a.power_used) {
+        powersUsedMap[a.power_used] = (powersUsedMap[a.power_used] ?? 0) + 1;
+      }
+    }
+
+    await supabase.from('quiz_sessions').update({
+      total_time_spent: totalTime,
+      powers_used: powersUsedMap,
+    }).eq('id', sessionId);
   }
 
   private async incrementCurrentQ(sessionId: string, currentQ: number) {

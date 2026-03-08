@@ -28,8 +28,8 @@ export async function answerQuestionHandler(req: Request, res: Response, next: N
   try {
     const userId = req.user!.userId;
     const sessionId = req.params.session_id as string;
-    const { selected_answer, power_used } = req.body as AnswerQuizInput;
-    const data = await quizService.answerQuestion(sessionId, userId, selected_answer, power_used);
+    const { selected_answer, power_used, time_spent } = req.body as AnswerQuizInput;
+    const data = await quizService.answerQuestion(sessionId, userId, selected_answer, power_used, time_spent);
     res.json(data);
   } catch (err) {
     next(err);

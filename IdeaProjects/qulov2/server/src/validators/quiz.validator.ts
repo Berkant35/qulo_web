@@ -9,6 +9,7 @@ export const answerQuizSchema = z.object({
   power_used: z
     .enum(["COPY", "HALF", "SKIP", "SKIP_ALL", "TIME_EXTEND", "HINT"])
     .optional(),
+  time_spent: z.number().int().min(0).max(120).optional(),
 });
 
 export type StartQuizInput = z.infer<typeof startQuizSchema>;
