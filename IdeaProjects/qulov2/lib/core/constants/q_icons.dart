@@ -1,8 +1,11 @@
 abstract final class QIcons {
   // ─── Navigation ───
   static const icCompass = 'assets/icons/ic_compass.svg';
+  static const icCompassFilled = 'assets/icons/ic_compass_filled.svg';
   static const icHeart = 'assets/icons/ic_heart.svg';
+  static const icHeartFilled = 'assets/icons/ic_heart_filled.svg';
   static const icUser = 'assets/icons/ic_user.svg';
+  static const icUserFilled = 'assets/icons/ic_user_filled.svg';
 
   // ─── Actions ───
   static const icSend = 'assets/icons/ic_send.svg';
@@ -74,4 +77,15 @@ abstract final class QIcons {
   static const icLocationTick = 'assets/icons/ic_location_tick.svg';
   static const icPhotoCamera = 'assets/icons/ic_photo_camera.svg';
   static const icTravel = 'assets/icons/ic_travel.svg';
+
+  // ─── Profile & Badge ───
+  static const icHeight = 'assets/icons/ic_height.svg';
+  static const icWeight = 'assets/icons/ic_weight.svg';
+  static const icPersonality = 'assets/icons/ic_personality.svg';
+  static const icBadgeBronze = 'assets/icons/ic_badge_bronze.svg';
+  static const icBadgeSilver = 'assets/icons/ic_badge_silver.svg';
+  static const icBadgeGold = 'assets/icons/ic_badge_gold.svg';
+  static const icImagePlus = 'assets/icons/ic_image_plus.svg';
+  static const icAgeRange = 'assets/icons/ic_age_range.svg';
+  static const icGenderPref = 'assets/icons/ic_gender_pref.svg';
 }
