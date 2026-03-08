@@ -14,6 +14,8 @@ import {
 } from "../controllers/question.controller.js";
 import { getPendingChangesHandler, queueChangeHandler, cancelPendingChangeHandler } from "../controllers/pending-change.controller.js";
 import { queueChangeSchema } from "../validators/pending-change.validator.js";
+import { aiSuggestHandler } from "../controllers/ai-suggest.controller.js";
+import { aiSuggestSchema } from "../validators/ai-suggest.validator.js";
 
 const router = Router();
 
@@ -30,5 +32,6 @@ router.get("/me/weekly-report", getWeeklyReportHandler);
 router.get("/me/pending", getPendingChangesHandler);
 router.post("/me/:order/queue-change", validate(queueChangeSchema), queueChangeHandler);
 router.delete("/me/pending/:changeId", cancelPendingChangeHandler);
+router.post("/ai-suggest", validate(aiSuggestSchema), aiSuggestHandler);
 
 export default router;
