@@ -39,7 +39,7 @@ class DiamondBalanceCard extends StatelessWidget {
           ),
           Container(
             width: 1,
-            height: 56,
+            height: AppSpacing.xxxl + AppSpacing.sm,
             color: theme.colorScheme.outline.withValues(alpha: 0.2),
           ),
           Expanded(
