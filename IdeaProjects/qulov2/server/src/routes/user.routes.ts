@@ -9,6 +9,8 @@ import {
   updateLocationSchema,
   updatePushTokenSchema,
 } from "../validators/user.validator.js";
+import { userLanguageService } from "../services/user-language.service.js";
+import { setUserLanguagesSchema } from "../validators/user-language.validator.js";
 import {
   getMeHandler,
   updateProfileHandler,
@@ -49,6 +51,28 @@ router.post("/me/photos", upload.single("photo"), uploadPhotoHandler);
 router.post("/me/boost", boostHandler);
 router.post("/me/claim-badge-reward", claimBadgeRewardHandler);
 router.delete("/me/photos/:index", deletePhotoHandler);
+
+// GET /me/languages — Get user's language preferences
+router.get("/me/languages", async (req, res, next) => {
+  try {
+    const languages = await userLanguageService.getUserLanguages(req.user!.userId);
+    res.json({ languages });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// PUT /me/languages — Set user's language preferences (full replace)
+router.put("/me/languages", validate(setUserLanguagesSchema), async (req, res, next) => {
+  try {
+    const { languages } = req.body;
+    const result = await userLanguageService.setUserLanguages(req.user!.userId, languages);
+    res.json({ languages: result });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.delete("/me", deleteAccountHandler);
 
 export default router;

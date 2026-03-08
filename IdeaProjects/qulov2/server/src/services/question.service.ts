@@ -47,6 +47,7 @@ export class QuestionService {
         hint_text: input.hint_text ?? null,
         category: input.category ?? null,
         time_limit: input.time_limit ?? 30,
+        locale: input.locale || 'tr',
       })
       .select("*")
       .single();
@@ -71,9 +72,10 @@ export class QuestionService {
     }
 
     const updateData: Record<string, unknown> = { ...input };
-    // Only include category/time_limit if explicitly provided
+    // Only include category/time_limit/locale if explicitly provided
     if (input.category !== undefined) updateData.category = input.category;
     if (input.time_limit !== undefined) updateData.time_limit = input.time_limit;
+    if (input.locale !== undefined) updateData.locale = input.locale;
 
     const { data, error } = await supabase
       .from("questions")
@@ -163,6 +165,7 @@ export class QuestionService {
         question_text: q.question_text,
         category: q.category,
         time_limit: q.time_limit,
+        locale: q.locale,
         stats: {
           correct: q.stats_correct,
           wrong: q.stats_wrong,

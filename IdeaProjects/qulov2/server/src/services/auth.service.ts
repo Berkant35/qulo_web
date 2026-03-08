@@ -1,17 +1,20 @@
 import { supabase } from "../config/supabase.js";
 import { AppError, Errors } from "../utils/errors.js";
-import { hashPassword, comparePassword, hashToken, generateToken } from "../utils/hash.js";
+import { hashPassword, comparePassword, hashToken, generateToken, normalizeEmail, getRefreshTokenExpiry } from "../utils/hash.js";
 import { signAccessToken, signRefreshToken, verifyRefreshToken } from "../utils/jwt.js";
 import { sendVerificationEmail, sendPasswordResetEmail } from "../utils/email.js";
 import type { RegisterInput, LoginInput } from "../validators/auth.validator.js";
+import { userLanguageService } from "./user-language.service.js";
 
 export class AuthService {
   async register(data: RegisterInput) {
+    const email = normalizeEmail(data.email);
+
     // Check if email already exists
     const { data: existing } = await supabase
       .from("users")
       .select("id")
-      .eq("email", data.email)
+      .eq("email", email)
       .maybeSingle();
 
     if (existing) {
@@ -25,7 +28,7 @@ export class AuthService {
     const { data: user, error } = await supabase
       .from("users")
       .insert({
-        email: data.email,
+        email,
         password_hash: passwordHash,
         name: data.name,
         surname: data.surname,
@@ -34,6 +37,7 @@ export class AuthService {
         locale: data.locale,
         verify_token: verifyTokenHash,
         email_verified: false,
+        ...(data.lat != null && data.lng != null ? { lat: data.lat, lng: data.lng } : {}),
       })
       .select("id, email")
       .single();
@@ -42,10 +46,25 @@ export class AuthService {
       throw Errors.SERVER_ERROR();
     }
 
-    // Send verification email (non-blocking — don't let email failure block registration)
-    sendVerificationEmail(data.email, verifyToken, data.locale).catch((err) => {
-      console.error("[auth] Failed to send verification email:", err);
-    });
+    // Auto-add user's locale to user_languages
+    await userLanguageService.addLanguage(user.id, (data.locale || 'tr') as import('../constants/locales.js').SupportedLocale);
+
+    // Create Supabase Auth user via signUp — triggers verification email
+    supabase.auth
+      .signUp({
+        email,
+        password: data.password,
+      })
+      .then(({ error: authErr }) => {
+        if (authErr) {
+          console.error("[auth] Supabase Auth signUp failed:", authErr.message);
+        } else {
+          console.log(`[auth] Supabase Auth verification email sent to ${data.email}`);
+        }
+      })
+      .catch((err) => {
+        console.error("[auth] Supabase Auth signUp error:", err);
+      });
 
     return { userId: user.id, email: user.email };
   }
@@ -76,7 +95,9 @@ export class AuthService {
     return { userId: user.id };
   }
 
-  async login(email: string, password: string) {
+  async login(rawEmail: string, password: string) {
+    const email = normalizeEmail(rawEmail);
+
     const { data: user, error } = await supabase
       .from("users")
       .select("id, email, password_hash, email_verified, is_deleted")
@@ -91,13 +112,34 @@ export class AuthService {
       throw Errors.INVALID_CREDENTIALS();
     }
 
-    if (!user.email_verified) {
-      throw Errors.EMAIL_NOT_VERIFIED();
-    }
-
+    // Check password first — avoid RPC call for wrong passwords
     const valid = await comparePassword(password, user.password_hash);
     if (!valid) {
       throw Errors.INVALID_CREDENTIALS();
+    }
+
+    // Sync email verification from Supabase Auth via RPC
+    if (!user.email_verified) {
+      try {
+        const { data: isVerified, error: rpcError } = await supabase.rpc(
+          "is_auth_email_verified",
+          { user_email: email },
+        );
+
+        if (!rpcError && isVerified) {
+          await supabase
+            .from("users")
+            .update({ email_verified: true })
+            .eq("id", user.id);
+          user.email_verified = true;
+        }
+      } catch (err) {
+        console.error("[auth] Failed to check Supabase Auth verification:", err);
+      }
+    }
+
+    if (!user.email_verified) {
+      throw Errors.EMAIL_NOT_VERIFIED();
     }
 
     const payload = { userId: user.id, email: user.email };
@@ -105,18 +147,18 @@ export class AuthService {
     const refreshToken = signRefreshToken(payload);
     const refreshTokenHash = hashToken(refreshToken);
 
-    // Store refresh token
-    await supabase.from("refresh_tokens").insert({
-      user_id: user.id,
-      token_hash: refreshTokenHash,
-      expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-    });
-
-    // Update last_seen and is_online
-    await supabase
-      .from("users")
-      .update({ last_seen_at: new Date().toISOString(), is_online: true })
-      .eq("id", user.id);
+    // Store refresh token + update last_seen in parallel
+    await Promise.all([
+      supabase.from("refresh_tokens").insert({
+        user_id: user.id,
+        token_hash: refreshTokenHash,
+        expires_at: getRefreshTokenExpiry(),
+      }),
+      supabase
+        .from("users")
+        .update({ last_seen_at: new Date().toISOString(), is_online: true })
+        .eq("id", user.id),
+    ]);
 
     return { accessToken, refreshToken, userId: user.id };
   }
@@ -142,21 +184,19 @@ export class AuthService {
       throw Errors.INVALID_TOKEN();
     }
 
-    // Delete old token
-    await supabase.from("refresh_tokens").delete().eq("id", storedToken.id);
-
     // Create new tokens
     const newPayload = { userId: payload.userId, email: payload.email };
     const newAccessToken = signAccessToken(newPayload);
     const newRefreshToken = signRefreshToken(newPayload);
     const newRefreshTokenHash = hashToken(newRefreshToken);
 
-    // Store new refresh token
+    // Insert new token first, then delete old — if insert fails, old token stays valid
     await supabase.from("refresh_tokens").insert({
       user_id: payload.userId,
       token_hash: newRefreshTokenHash,
-      expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+      expires_at: getRefreshTokenExpiry(),
     });
+    await supabase.from("refresh_tokens").delete().eq("id", storedToken.id);
 
     return { accessToken: newAccessToken, refreshToken: newRefreshToken };
   }
@@ -176,7 +216,9 @@ export class AuthService {
       .eq("id", userId);
   }
 
-  async forgotPassword(email: string) {
+  async forgotPassword(rawEmail: string) {
+    const email = normalizeEmail(rawEmail);
+
     const { data: user } = await supabase
       .from("users")
       .select("id, locale")
