@@ -46,6 +46,16 @@ final _routes = <RouteBase>[
     builder: (context, state) => const OnboardingScreen(),
   ),
 
+  // Quiz (root navigator — full screen over bottom nav)
+  GoRoute(
+    parentNavigatorKey: rootNavigatorKey,
+    path: '/quiz/:targetId',
+    name: RouteNames.quiz,
+    builder: (context, state) => QuizScreen(
+      targetId: state.pathParameters['targetId']!,
+    ),
+  ),
+
   // Main shell (bottom nav)
   StatefulShellRoute.indexedStack(
     builder: (context, state, shell) => _MainShell(shell: shell),
@@ -55,15 +65,7 @@ final _routes = <RouteBase>[
           path: '/discover',
           name: RouteNames.discover,
           builder: (context, state) => const DiscoverScreen(),
-          routes: [
-            GoRoute(
-              path: 'quiz/:targetId',
-              name: RouteNames.quiz,
-              builder: (context, state) => QuizScreen(
-                targetId: state.pathParameters['targetId']!,
-              ),
-            ),
-          ],
+          routes: const [],
         ),
       ]),
       StatefulShellBranch(routes: [
@@ -133,10 +135,10 @@ class _MainShell extends StatelessWidget {
           NavigationBar(
             selectedIndex: shell.currentIndex,
             onDestinationSelected: (i) => shell.goBranch(i, initialLocation: i == shell.currentIndex),
-            destinations: const [
-              NavigationDestination(icon: Icon(Icons.explore), label: 'Discover'),
-              NavigationDestination(icon: Icon(Icons.favorite), label: 'Matches'),
-              NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+            destinations: [
+              NavigationDestination(icon: QIcon(QIcons.icCompass, size: 24), label: 'Discover'),
+              NavigationDestination(icon: QIcon(QIcons.icHeart, size: 24), label: 'Matches'),
+              NavigationDestination(icon: QIcon(QIcons.icUser, size: 24), label: 'Profile'),
             ],
           ),
         ],
