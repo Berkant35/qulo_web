@@ -54,21 +54,21 @@ BadgeInfo calculateBadgeInfo(BuildContext context, UserModel user) {
     level = BadgeLevel.gold;
     name = context.tr('badge_gold');
     iconPath = QIcons.icBadgeGold;
-    color = const Color(0xFFFFD700);
+    color = AppColors.gold;
     nextLevel = null;
     percentToNext = null;
   } else if (pct >= 60) {
     level = BadgeLevel.silver;
     name = context.tr('badge_silver');
     iconPath = QIcons.icBadgeSilver;
-    color = const Color(0xFFC0C0C0);
+    color = AppColors.silver;
     nextLevel = BadgeLevel.gold;
     percentToNext = 85 - pct;
   } else if (pct >= 30) {
     level = BadgeLevel.bronze;
     name = context.tr('badge_bronze');
     iconPath = QIcons.icBadgeBronze;
-    color = const Color(0xFFCD7F32);
+    color = AppColors.bronze;
     nextLevel = BadgeLevel.silver;
     percentToNext = 60 - pct;
   } else {
