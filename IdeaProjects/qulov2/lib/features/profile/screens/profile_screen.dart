@@ -9,6 +9,7 @@ import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/core/widgets/diamond_icon.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/widgets/question_gate_banner.dart';
+import 'package:qulo_v2/providers/notification_provider.dart';
 import 'package:qulo_v2/providers/user_provider.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/routing/route_names.dart';
@@ -48,11 +49,38 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final userAsync = ref.watch(userProvider);
+    final unreadCount = ref.watch(notificationProvider.select((s) => s.unreadCount));
     final theme = Theme.of(context);
 
     return AppScaffold(
       title: context.tr('profile'),
       actions: [
+        Stack(
+          children: [
+            IconButton(
+              icon: QIcon(QIcons.icBell, color: theme.colorScheme.onSurfaceVariant, size: 24),
+              onPressed: () => ref.read(navigationServiceProvider).go(RouteNames.notifications),
+            ),
+            if (unreadCount > 0)
+              Positioned(
+                right: 8,
+                top: 8,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: const BoxDecoration(
+                    color: AppColors.error,
+                    shape: BoxShape.circle,
+                  ),
+                  constraints: const BoxConstraints(minWidth: 18, minHeight: 18),
+                  child: Text(
+                    unreadCount > 99 ? '99+' : '$unreadCount',
+                    style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+          ],
+        ),
         IconButton(
           icon: QIcon(QIcons.icSettings, color: theme.colorScheme.onSurfaceVariant, size: 24),
           onPressed: () => ref.read(navigationServiceProvider).go(RouteNames.settings),
