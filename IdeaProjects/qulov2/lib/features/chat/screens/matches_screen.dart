@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
+import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/match_provider.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../routing/route_names.dart';
+import '../../../data/models/match_model.dart';
 
 class MatchesScreen extends ConsumerStatefulWidget {
   const MatchesScreen({super.key});
@@ -27,8 +28,9 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
     final matchesAsync = ref.watch(matchListProvider);
     final theme = Theme.of(context);
 
-    return Scaffold(
-      appBar: AppBar(title: Text(context.tr('matches'))),
+    return AppScaffold(
+      title: context.tr('matches'),
+      padding: EdgeInsets.zero,
       body: matchesAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Error: $e')),
@@ -38,39 +40,171 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.favorite_border, size: 64, color: AppColors.onSurfaceVariant),
-                  const SizedBox(height: AppSpacing.lg),
+                  const Icon(Icons.favorite_border, size: 64, color: AppColors.textHint),
+                  const SizedBox(height: 16),
                   Text(context.tr('no_matches'), style: theme.textTheme.titleMedium),
-                  const SizedBox(height: AppSpacing.sm),
-                  Text(context.tr('start_swiping'), style: theme.textTheme.bodyMedium?.copyWith(color: AppColors.onSurfaceVariant)),
+                  const SizedBox(height: 8),
+                  Text(
+                    context.tr('start_swiping'),
+                    style: theme.textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
+                  ),
                 ],
               ),
             );
           }
-          return ListView.separated(
-            padding: const EdgeInsets.all(AppSpacing.pagePadding),
-            itemCount: matches.length,
-            separatorBuilder: (_, __) => const Divider(height: 1),
-            itemBuilder: (_, i) {
-              final m = matches[i];
-              final u = m.user;
-              final photo = u?.photos?.isNotEmpty == true ? u!.photos!.first : null;
-              return ListTile(
-                leading: CircleAvatar(
-                  radius: 28,
-                  backgroundImage: photo != null ? CachedNetworkImageProvider(photo) : null,
-                  child: photo == null ? const Icon(Icons.person) : null,
+
+          return CustomScrollView(
+            slivers: [
+              // ─── Top Section: New Matches Horizontal Scroll ───
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+                      child: Text(
+                        'Yeni Eslesmeler',
+                        style: theme.textTheme.titleMedium,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 90,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        itemCount: matches.length,
+                        separatorBuilder: (_, __) => const SizedBox(width: 16),
+                        itemBuilder: (context, index) {
+                          final m = matches[index];
+                          final u = m.user;
+                          final photo = u?.photos?.isNotEmpty == true ? u!.photos!.first : null;
+
+                          return GestureDetector(
+                            onTap: () => context.goNamed(
+                              RouteNames.chat,
+                              pathParameters: {'matchId': m.matchId},
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(2),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: AppColors.primary, width: 2),
+                                  ),
+                                  child: CircleAvatar(
+                                    radius: 28,
+                                    backgroundColor: AppColors.surface,
+                                    backgroundImage: photo != null
+                                        ? CachedNetworkImageProvider(photo)
+                                        : null,
+                                    child: photo == null
+                                        ? const Icon(Icons.person, color: AppColors.textHint)
+                                        : null,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                SizedBox(
+                                  width: 64,
+                                  child: Text(
+                                    u?.name ?? '?',
+                                    style: theme.textTheme.labelSmall,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const Divider(color: AppColors.border, height: 1),
+                    const SizedBox(height: 8),
+                  ],
                 ),
-                title: Text(u?.name ?? 'Unknown'),
-                subtitle: Text(u?.city ?? '', style: theme.textTheme.bodySmall),
-                trailing: u?.isOnline == true
-                    ? Container(width: 10, height: 10, decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.success))
-                    : null,
-                onTap: () => context.goNamed(RouteNames.chat, pathParameters: {'matchId': m.matchId}),
-              );
-            },
+              ),
+
+              // ─── Bottom Section: Chat List with Dark Cards ───
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final m = matches[index];
+                    return _MatchCard(match: m);
+                  },
+                  childCount: matches.length,
+                ),
+              ),
+            ],
           );
         },
+      ),
+    );
+  }
+}
+
+class _MatchCard extends StatelessWidget {
+  final MatchModel match;
+  const _MatchCard({required this.match});
+
+  @override
+  Widget build(BuildContext context) {
+    final u = match.user;
+    final photo = u?.photos?.isNotEmpty == true ? u!.photos!.first : null;
+
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: ListTile(
+        leading: Stack(
+          children: [
+            CircleAvatar(
+              radius: 24,
+              backgroundColor: AppColors.surfaceElevated,
+              backgroundImage: photo != null ? CachedNetworkImageProvider(photo) : null,
+              child: photo == null
+                  ? const Icon(Icons.person, color: AppColors.textHint)
+                  : null,
+            ),
+            if (u?.isOnline == true)
+              Positioned(
+                right: 0,
+                bottom: 0,
+                child: Container(
+                  width: 12,
+                  height: 12,
+                  decoration: BoxDecoration(
+                    color: AppColors.secondary,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: AppColors.surface, width: 2),
+                  ),
+                ),
+              ),
+          ],
+        ),
+        title: Text(
+          u?.name ?? 'Unknown',
+          style: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+        subtitle: Text(
+          u?.city ?? '',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+        ),
+        trailing: u?.isOnline == true
+            ? const Text(
+                'Online',
+                style: TextStyle(color: AppColors.secondary, fontSize: 12),
+              )
+            : null,
+        onTap: () => context.goNamed(
+          RouteNames.chat,
+          pathParameters: {'matchId': match.matchId},
+        ),
       ),
     );
   }
