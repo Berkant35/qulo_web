@@ -197,6 +197,81 @@ class AppLocalizations {
     'location_permission_denied_forever':
         'Konum izni kalıcı olarak reddedildi. Ayarlardan etkinleştirin.',
     'open_settings': 'Ayarları Aç',
+
+    // Profile - Badge
+    'badge_rookie': 'Çaylak',
+    'badge_popular': 'Popüler',
+    'badge_master': 'Profil Ustası',
+    'badge_no_badge': 'Başlangıç',
+    'badge_progress_hint': 'kaldı',
+    'badge_reward_claimed': 'Tebrikler! Mor elmas kazandın!',
+    'badge_discover_warning': 'Profilini tamamla, keşfette görün!',
+
+    // Profile - Hints
+    'hint_add_photos': '3 fotoğraf ekle → görünürlüğün %20 artar!',
+    'hint_add_bio': 'Bio ekle → daha fazla eşleşme!',
+    'hint_add_job': 'Mesleğini ekle → profilini tamamla!',
+    'hint_add_details': 'Detaylarını ekle → profil seviyeni yükselt!',
+
+    // Profile - Edit
+    'edit_photos': 'Fotoğraflar',
+    'edit_about': 'Hakkımda',
+    'edit_basic_info': 'Temel Bilgiler',
+    'edit_details': 'Detaylar',
+    'edit_preferences': 'Tercihler',
+    'save_changes': 'Değişiklikleri Kaydet',
+    'bio_hint': 'Kendinden biraz bahset...',
+    'update_location': 'Konumu Güncelle',
+    'make_primary': 'Ana Fotoğraf Yap',
+    'delete_photo': 'Fotoğrafı Sil',
+    'delete_photo_confirm': 'Bu fotoğrafı silmek istediğine emin misin?',
+    'photo_upload_error': 'Fotoğraf yüklenemedi',
+    'photo_max_reached': 'En fazla 6 fotoğraf ekleyebilirsin',
+    'changes_saved': 'Değişiklikler kaydedildi',
+    'select_photo_source': 'Fotoğraf Kaynağı',
+    'from_gallery': 'Galeriden Seç',
+    'from_camera': 'Kamera',
+
+    // Details labels
+    'height': 'Boy',
+    'weight': 'Kilo',
+    'zodiac': 'Burç',
+    'job': 'Meslek',
+    'school': 'Okul',
+    'smoking': 'Sigara',
+    'alcohol': 'Alkol',
+    'pets_label': 'Evcil Hayvan',
+    'music_type': 'Müzik Türü',
+    'personality': 'Kişilik',
+    'cm': 'cm',
+    'kg': 'kg',
+
+    // Preferences
+    'gender_preference': 'Cinsiyet Tercihi',
+    'distance_range': 'Mesafe',
+    'km': 'km',
+    'men': 'Erkek',
+    'women': 'Kadın',
+    'both': 'Herkes',
+
+    // Zodiac signs
+    'zodiac_aries': 'Koç',
+    'zodiac_taurus': 'Boğa',
+    'zodiac_gemini': 'İkizler',
+    'zodiac_cancer': 'Yengeç',
+    'zodiac_leo': 'Aslan',
+    'zodiac_virgo': 'Başak',
+    'zodiac_libra': 'Terazi',
+    'zodiac_scorpio': 'Akrep',
+    'zodiac_sagittarius': 'Yay',
+    'zodiac_capricorn': 'Oğlak',
+    'zodiac_aquarius': 'Kova',
+    'zodiac_pisces': 'Balık',
+
+    // Frequency
+    'freq_yes': 'Evet',
+    'freq_no': 'Hayır',
+    'freq_sometimes': 'Bazen',
   };
 
   static const _en = <String, String>{
@@ -372,6 +447,81 @@ class AppLocalizations {
     'location_permission_denied_forever':
         'Location permission permanently denied. Enable in settings.',
     'open_settings': 'Open Settings',
+
+    // Profile - Badge
+    'badge_rookie': 'Rookie',
+    'badge_popular': 'Popular',
+    'badge_master': 'Profile Master',
+    'badge_no_badge': 'Beginner',
+    'badge_progress_hint': 'left',
+    'badge_reward_claimed': 'Congratulations! You earned purple diamonds!',
+    'badge_discover_warning': 'Complete your profile to appear in discover!',
+
+    // Profile - Hints
+    'hint_add_photos': 'Add 3 photos → 20% more visibility!',
+    'hint_add_bio': 'Add a bio → more matches!',
+    'hint_add_job': 'Add your job → complete your profile!',
+    'hint_add_details': 'Add details → level up your profile!',
+
+    // Profile - Edit
+    'edit_photos': 'Photos',
+    'edit_about': 'About Me',
+    'edit_basic_info': 'Basic Info',
+    'edit_details': 'Details',
+    'edit_preferences': 'Preferences',
+    'save_changes': 'Save Changes',
+    'bio_hint': 'Tell a bit about yourself...',
+    'update_location': 'Update Location',
+    'make_primary': 'Make Primary Photo',
+    'delete_photo': 'Delete Photo',
+    'delete_photo_confirm': 'Are you sure you want to delete this photo?',
+    'photo_upload_error': 'Failed to upload photo',
+    'photo_max_reached': 'Maximum 6 photos allowed',
+    'changes_saved': 'Changes saved',
+    'select_photo_source': 'Photo Source',
+    'from_gallery': 'Choose from Gallery',
+    'from_camera': 'Camera',
+
+    // Details labels
+    'height': 'Height',
+    'weight': 'Weight',
+    'zodiac': 'Zodiac',
+    'job': 'Job',
+    'school': 'School',
+    'smoking': 'Smoking',
+    'alcohol': 'Alcohol',
+    'pets_label': 'Pets',
+    'music_type': 'Music Type',
+    'personality': 'Personality',
+    'cm': 'cm',
+    'kg': 'kg',
+
+    // Preferences
+    'gender_preference': 'Gender Preference',
+    'distance_range': 'Distance',
+    'km': 'km',
+    'men': 'Men',
+    'women': 'Women',
+    'both': 'Everyone',
+
+    // Zodiac signs
+    'zodiac_aries': 'Aries',
+    'zodiac_taurus': 'Taurus',
+    'zodiac_gemini': 'Gemini',
+    'zodiac_cancer': 'Cancer',
+    'zodiac_leo': 'Leo',
+    'zodiac_virgo': 'Virgo',
+    'zodiac_libra': 'Libra',
+    'zodiac_scorpio': 'Scorpio',
+    'zodiac_sagittarius': 'Sagittarius',
+    'zodiac_capricorn': 'Capricorn',
+    'zodiac_aquarius': 'Aquarius',
+    'zodiac_pisces': 'Pisces',
+
+    // Frequency
+    'freq_yes': 'Yes',
+    'freq_no': 'No',
+    'freq_sometimes': 'Sometimes',
   };
 }
 
