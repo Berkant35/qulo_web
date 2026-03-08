@@ -146,6 +146,26 @@ class AppLocalizations {
     'city': 'Şehir',
     'activate_passport': 'Pasaportu Aktifleştir',
     'deactivate': 'Deaktif Et',
+    'passport_premium_only': 'Pasaport modu Premium üyelere özeldir',
+    'passport_premium_desc': 'Premium\'a yükselerek istediğin şehirden eşleşmeleri keşfet',
+    'passport_pick_on_map': 'Haritadan Konum Seç',
+    'passport_select_location': 'Konumu seçmek için haritayı kaydır',
+    'passport_move_here': 'Buraya Taşın',
+    'passport_active_desc': 'Keşif bu konumdan yapılıyor',
+    'passport_deactivate': 'Gerçek Konumuma Dön',
+    'passport_change_city': 'Farklı bir şehre taşın',
+    'passport_explore_hint': 'Pasaport ile başka şehirleri keşfet',
+    'passport_premium_explore_hint': 'Premium ile başka şehirleri keşfet',
+    'upgrade_to_premium': 'Premium\'a Yükselt',
+
+    // Discover Empty State
+    'no_more_profiles_hint': 'Mesafe aralığını artırarak daha fazla kişi görebilirsin',
+    'match_radius': 'Eşleşme Mesafesi',
+    'search_again': 'Yeniden Ara',
+
+    // Location
+    'location_required': 'Konum izni gerekli',
+    'location_required_desc': 'Yakınındaki kişileri görebilmek için konum iznini etkinleştir',
 
     // Settings
     'settings': 'Ayarlar',
@@ -649,6 +669,26 @@ class AppLocalizations {
     'city': 'City',
     'activate_passport': 'Activate Passport',
     'deactivate': 'Deactivate',
+    'passport_premium_only': 'Passport mode is exclusive to Premium members',
+    'passport_premium_desc': 'Upgrade to Premium to discover matches from any city',
+    'passport_pick_on_map': 'Pick Location on Map',
+    'passport_select_location': 'Drag the map to select a location',
+    'passport_move_here': 'Move Here',
+    'passport_active_desc': 'Discovery is based on this location',
+    'passport_deactivate': 'Return to My Location',
+    'passport_change_city': 'Move to a different city',
+    'passport_explore_hint': 'Explore other cities with Passport',
+    'passport_premium_explore_hint': 'Explore other cities with Premium',
+    'upgrade_to_premium': 'Upgrade to Premium',
+
+    // Discover Empty State
+    'no_more_profiles_hint': 'Increase your distance range to see more people',
+    'match_radius': 'Match Distance',
+    'search_again': 'Search Again',
+
+    // Location
+    'location_required': 'Location permission required',
+    'location_required_desc': 'Enable location to see people nearby',
 
     // Settings
     'settings': 'Settings',
