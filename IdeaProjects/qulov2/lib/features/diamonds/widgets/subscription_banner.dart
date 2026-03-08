@@ -1,0 +1,150 @@
+import 'package:flutter/material.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_spacing.dart';
+import '../../../core/widgets/app_button.dart';
+import '../../../core/l10n/l10n.dart';
+import '../../../data/models/subscription_model.dart';
+
+class SubscriptionBanner extends StatelessWidget {
+  final SubscriptionInfo subscription;
+  final VoidCallback onViewPlans;
+
+  const SubscriptionBanner({
+    super.key,
+    required this.subscription,
+    required this.onViewPlans,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (subscription.isActive) {
+      return _ActivePlanBadge(subscription: subscription);
+    }
+    return _UpgradeBanner(onViewPlans: onViewPlans);
+  }
+}
+
+class _UpgradeBanner extends StatelessWidget {
+  final VoidCallback onViewPlans;
+
+  const _UpgradeBanner({required this.onViewPlans});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      decoration: BoxDecoration(
+        gradient: AppColors.purpleGradient,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+      ),
+      padding: const EdgeInsets.all(AppSpacing.xl),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            context.tr('premium_cta'),
+            style: theme.textTheme.titleMedium?.copyWith(
+              color: AppColors.textPrimary,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          Text(
+            context.tr('premium_benefits'),
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: AppColors.textPrimary.withValues(alpha: 0.85),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.lg),
+          AppButton(
+            label: context.tr('view_plans'),
+            onPressed: onViewPlans,
+            variant: AppButtonVariant.secondary,
+            fullWidth: false,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ActivePlanBadge extends StatelessWidget {
+  final SubscriptionInfo subscription;
+
+  const _ActivePlanBadge({required this.subscription});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final planName = subscription.isPremium ? 'Premium' : 'Plus';
+
+    return Container(
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        border: Border.all(
+          color: AppColors.primary.withValues(alpha: 0.5),
+        ),
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.xl,
+        vertical: AppSpacing.lg,
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.md,
+              vertical: AppSpacing.xs,
+            ),
+            decoration: BoxDecoration(
+              gradient: AppColors.purpleGradient,
+              borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
+            ),
+            child: Text(
+              planName,
+              style: theme.textTheme.labelMedium?.copyWith(
+                color: AppColors.textPrimary,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(width: AppSpacing.md),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  context.tr('active_plan'),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                if (subscription.expiresAt != null)
+                  Text(
+                    context.tr('expires_at').replaceAll(
+                          '{date}',
+                          _formatDate(subscription.expiresAt!),
+                        ),
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _formatDate(String dateStr) {
+    try {
+      final date = DateTime.parse(dateStr);
+      return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
+    } catch (_) {
+      return dateStr;
+    }
+  }
+}

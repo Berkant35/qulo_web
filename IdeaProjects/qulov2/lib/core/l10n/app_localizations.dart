@@ -125,9 +125,18 @@ class AppLocalizations {
     // Diamonds
     'green_diamonds': 'Yeşil Elmaslar',
     'purple_diamonds': 'Mor Elmaslar',
-    'purchase_purple': 'Mor Elmas Satın Al',
-    'history': 'Geçmiş',
+    'purchase_purple': 'Mor Elmas Paketleri',
+    'history': 'İşlem Geçmişi',
     'no_transactions': 'Henüz işlem yok',
+    'see_all': 'Tümü',
+    'best_value': 'En Avantajlı',
+    'premium_cta': "Qulo Premium'a geç!",
+    'premium_benefits': 'Sınırsız kaydırma, geri alma ve aylık mor elmas bonusu',
+    'view_plans': 'Planları Gör',
+    'active_plan': 'Aktif Plan',
+    'expires_at': 'Bitiş: {date}',
+    'your_balance': 'Bakiyen',
+    'failed_load_balance': 'Bakiye yüklenemedi',
 
     // Passport
     'passport_explore': 'Başka bir şehirdeki profilleri keşfet',
@@ -375,9 +384,18 @@ class AppLocalizations {
     // Diamonds
     'green_diamonds': 'Green Diamonds',
     'purple_diamonds': 'Purple Diamonds',
-    'purchase_purple': 'Purchase Purple Diamonds',
-    'history': 'History',
+    'purchase_purple': 'Purple Diamond Packages',
+    'history': 'Transaction History',
     'no_transactions': 'No transactions yet',
+    'see_all': 'See All',
+    'best_value': 'Best Value',
+    'premium_cta': 'Upgrade to Qulo Premium!',
+    'premium_benefits': 'Unlimited swipes, undos and monthly purple diamond bonus',
+    'view_plans': 'View Plans',
+    'active_plan': 'Active Plan',
+    'expires_at': 'Expires: {date}',
+    'your_balance': 'Your Balance',
+    'failed_load_balance': 'Failed to load balance',
 
     // Passport
     'passport_explore': 'Explore profiles in another city',
