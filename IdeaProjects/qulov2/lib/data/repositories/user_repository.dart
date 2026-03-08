@@ -1,58 +1,101 @@
 import 'dart:typed_data';
 import 'package:dio/dio.dart';
-import '../../core/network/api_client.dart';
-import '../../core/network/api_endpoints.dart';
+import '../../core/network/network_manager.dart';
+import '../../core/network/result.dart';
+import '../../core/network/services/user_service.dart';
 import '../models/user_model.dart';
 import '../models/user_details_model.dart';
 
 class UserRepository {
-  final ApiClient _client;
+  final UserService _service;
+  final NetworkManager _network;
 
-  UserRepository(this._client);
+  UserRepository(this._service, this._network);
 
-  Future<UserModel> getMe() async {
-    final response = await _client.dio.get(ApiEndpoints.me);
-    return UserModel.fromJson(response.data);
+  Future<Result<UserModel>> getMe() async {
+    try {
+      final response = await _service.getMe();
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<UserModel> updateProfile(Map<String, dynamic> data) async {
-    final response = await _client.dio.patch(ApiEndpoints.me, data: data);
-    return UserModel.fromJson(response.data);
+  Future<Result<UserModel>> updateProfile(Map<String, dynamic> data) async {
+    try {
+      final response = await _service.updateProfile(data);
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<UserDetailsModel> updateDetails(Map<String, dynamic> data) async {
-    final response = await _client.dio.patch(ApiEndpoints.meDetails, data: data);
-    return UserDetailsModel.fromJson(response.data);
+  Future<Result<UserDetailsModel>> updateDetails(Map<String, dynamic> data) async {
+    try {
+      final response = await _service.updateDetails(data);
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<void> updateLocation({required double lat, required double lng}) async {
-    await _client.dio.patch(ApiEndpoints.meLocation, data: {'lat': lat, 'lng': lng});
+  Future<Result<void>> updateLocation({required double lat, required double lng}) async {
+    try {
+      await _service.updateLocation({'lat': lat, 'lng': lng});
+      return const Success(null);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<void> updatePushToken(String token) async {
-    await _client.dio.patch(ApiEndpoints.mePushToken, data: {'push_token': token});
+  Future<Result<void>> updatePushToken(String token) async {
+    try {
+      await _service.updatePushToken({'push_token': token});
+      return const Success(null);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<Map<String, dynamic>> uploadPhoto(Uint8List bytes, String mimeType) async {
+  Future<Result<Map<String, dynamic>>> uploadPhoto(Uint8List bytes, String mimeType) async {
     final ext = mimeType == 'image/png' ? 'png' : 'jpg';
     final formData = FormData.fromMap({
-      'photo': MultipartFile.fromBytes(bytes, filename: 'photo.$ext', contentType: DioMediaType.parse(mimeType)),
+      'photo': MultipartFile.fromBytes(
+        bytes,
+        filename: 'photo.$ext',
+        contentType: DioMediaType.parse(mimeType),
+      ),
     });
-    final response = await _client.dio.post(ApiEndpoints.mePhotos, data: formData);
-    return response.data;
+    return _network.upload('/users/me/photos', data: formData);
   }
 
-  Future<Map<String, dynamic>> deletePhoto(int index) async {
-    final response = await _client.dio.delete('${ApiEndpoints.mePhotos}/$index');
-    return response.data;
+  Future<Result<Map<String, dynamic>>> deletePhoto(int index) async {
+    return _network.delete('/users/me/photos/$index');
   }
 
-  Future<void> deleteAccount() async {
-    await _client.dio.delete(ApiEndpoints.me);
+  Future<Result<void>> deleteAccount() async {
+    try {
+      await _service.deleteAccount();
+      return const Success(null);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<Map<String, dynamic>> boost() async {
-    final response = await _client.dio.post(ApiEndpoints.meBoost);
-    return response.data;
+  Future<Result<Map<String, dynamic>>> boost() async {
+    return _network.post('/users/me/boost');
+  }
+
+  Future<Result<Map<String, dynamic>>> claimBadgeReward(String level) async {
+    return _network.post('/users/me/claim-badge-reward', data: {'level': level});
+  }
+
+  Future<Result<UserModel>> reorderPhotos(List<String> photos) async {
+    try {
+      final response = await _service.updateProfile({'photos': photos});
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 }

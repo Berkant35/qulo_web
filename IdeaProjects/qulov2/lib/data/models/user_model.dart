@@ -56,6 +56,8 @@ class UserModel extends Equatable {
   final int timesShownCount;
   @JsonKey(name: 'created_at')
   final String? createdAt;
+  @JsonKey(name: 'badge_rewards_claimed')
+  final List<String> badgeRewardsClaimed;
   final UserDetailsModel? details;
 
   const UserModel({
@@ -90,6 +92,7 @@ class UserModel extends Equatable {
     this.likeReceivedCount = 0,
     this.timesShownCount = 0,
     this.createdAt,
+    this.badgeRewardsClaimed = const [],
     this.details,
   });
 

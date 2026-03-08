@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../core/network/result.dart';
 import '../data/models/user_model.dart';
 import 'api_provider.dart';
 
@@ -8,54 +9,74 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
 
   Future<void> fetchMe() async {
     state = const AsyncLoading();
-    state = await AsyncValue.guard(() => ref.read(userRepositoryProvider).getMe());
+    final result = await ref.read(userRepositoryProvider).getMe();
+    state = result.when(
+      success: (data) => AsyncData(data),
+      failure: (f) => AsyncError(f, StackTrace.current),
+    );
   }
 
-  Future<void> updateProfile(Map<String, dynamic> data) async {
-    final repo = ref.read(userRepositoryProvider);
-    final updated = await repo.updateProfile(data);
-    state = AsyncData(updated);
+  Future<Result<UserModel>> updateProfile(Map<String, dynamic> data) async {
+    final result = await ref.read(userRepositoryProvider).updateProfile(data);
+    result.when(
+      success: (updated) => state = AsyncData(updated),
+      failure: (_) {},
+    );
+    return result;
   }
 
-  Future<void> updateDetails(Map<String, dynamic> data) async {
-    final repo = ref.read(userRepositoryProvider);
-    await repo.updateDetails(data);
-    await fetchMe();
+  Future<Result<void>> updateDetails(Map<String, dynamic> data) async {
+    final result = await ref.read(userRepositoryProvider).updateDetails(data);
+    result.when(
+      success: (_) => fetchMe(),
+      failure: (_) {},
+    );
+    return result;
   }
 
   Future<void> updateLocation({required double lat, required double lng}) async {
-    final repo = ref.read(userRepositoryProvider);
-    await repo.updateLocation(lat: lat, lng: lng);
+    await ref.read(userRepositoryProvider).updateLocation(lat: lat, lng: lng);
   }
 
   Future<void> updatePushToken(String token) async {
-    final repo = ref.read(userRepositoryProvider);
-    await repo.updatePushToken(token);
+    await ref.read(userRepositoryProvider).updatePushToken(token);
   }
 
-  Future<Map<String, dynamic>> uploadPhoto(dynamic bytes, String mimeType) async {
-    final repo = ref.read(userRepositoryProvider);
-    final result = await repo.uploadPhoto(bytes, mimeType);
-    await fetchMe();
+  Future<Result<Map<String, dynamic>>> uploadPhoto(dynamic bytes, String mimeType) async {
+    final result = await ref.read(userRepositoryProvider).uploadPhoto(bytes, mimeType);
+    result.when(success: (_) => fetchMe(), failure: (_) {});
     return result;
   }
 
-  Future<void> deletePhoto(int index) async {
-    final repo = ref.read(userRepositoryProvider);
-    await repo.deletePhoto(index);
-    await fetchMe();
-  }
-
-  Future<Map<String, dynamic>> boost() async {
-    final repo = ref.read(userRepositoryProvider);
-    final result = await repo.boost();
-    await fetchMe();
+  Future<Result<void>> deletePhoto(int index) async {
+    final result = await ref.read(userRepositoryProvider).deletePhoto(index);
+    result.when(success: (_) => fetchMe(), failure: (_) {});
     return result;
   }
 
-  Future<void> deleteAccount() async {
-    final repo = ref.read(userRepositoryProvider);
-    await repo.deleteAccount();
+  Future<Result<Map<String, dynamic>>> boost() async {
+    final result = await ref.read(userRepositoryProvider).boost();
+    result.when(success: (_) => fetchMe(), failure: (_) {});
+    return result;
+  }
+
+  Future<Result<void>> deleteAccount() async {
+    return ref.read(userRepositoryProvider).deleteAccount();
+  }
+
+  Future<Result<Map<String, dynamic>>> claimBadgeReward(String level) async {
+    final result = await ref.read(userRepositoryProvider).claimBadgeReward(level);
+    result.when(success: (_) => fetchMe(), failure: (_) {});
+    return result;
+  }
+
+  Future<Result<UserModel>> reorderPhotos(List<String> photos) async {
+    final result = await ref.read(userRepositoryProvider).reorderPhotos(photos);
+    result.when(
+      success: (updated) => state = AsyncData(updated),
+      failure: (_) {},
+    );
+    return result;
   }
 }
 

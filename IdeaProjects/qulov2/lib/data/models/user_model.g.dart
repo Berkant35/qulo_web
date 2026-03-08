@@ -38,6 +38,11 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
   likeReceivedCount: (json['like_received_count'] as num?)?.toInt() ?? 0,
   timesShownCount: (json['times_shown_count'] as num?)?.toInt() ?? 0,
   createdAt: json['created_at'] as String?,
+  badgeRewardsClaimed:
+      (json['badge_rewards_claimed'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList() ??
+      const [],
   details: json['details'] == null
       ? null
       : UserDetailsModel.fromJson(json['details'] as Map<String, dynamic>),
@@ -75,5 +80,6 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
   'like_received_count': instance.likeReceivedCount,
   'times_shown_count': instance.timesShownCount,
   'created_at': instance.createdAt,
+  'badge_rewards_claimed': instance.badgeRewardsClaimed,
   'details': instance.details,
 };
