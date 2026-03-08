@@ -11,8 +11,10 @@ import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/constants/q_icons.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/providers/api_provider.dart';
 import 'package:qulo_v2/providers/location_provider.dart';
 import 'package:qulo_v2/providers/match_provider.dart';
+import 'package:qulo_v2/providers/passport_provider.dart';
 import 'package:qulo_v2/providers/user_provider.dart';
 import 'package:qulo_v2/routing/route_names.dart';
 import 'package:qulo_v2/features/discover/widgets/discover_empty_state.dart';
@@ -152,10 +154,85 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
       title: context.tr('discover'),
       padding: EdgeInsets.zero,
       isLoading: state is AsyncLoading,
+      actions: [
+        if (ref.watch(passportProvider).isActive)
+          Padding(
+            padding: const EdgeInsets.only(right: AppSpacing.md),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: 4),
+              decoration: BoxDecoration(
+                color: AppColors.primarySurface,
+                borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+                border: Border.all(color: AppColors.primary.withValues(alpha: 0.3)),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.flight, size: 14, color: AppColors.primary),
+                  const SizedBox(width: 4),
+                  Text(
+                    ref.watch(passportProvider).city ?? '',
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+      ],
       body: state.when(
         loading: () => const SizedBox.shrink(),
         error: (e, _) => Center(child: Text('Error: $e')),
         data: (discover) {
+          // ─── Location Permission Check ───
+          final locationState = ref.watch(locationProvider);
+          if (locationState.error == 'LOCATION_PERMISSION_DENIED' ||
+              locationState.error == 'LOCATION_PERMISSION_DENIED_FOREVER' ||
+              locationState.error == 'LOCATION_SERVICE_DISABLED') {
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(AppSpacing.pagePadding),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.location_off, size: 64, color: AppColors.textHint),
+                    const SizedBox(height: AppSpacing.lg),
+                    Text(
+                      context.tr('location_required'),
+                      style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: AppSpacing.sm),
+                    Text(
+                      context.tr('location_required_desc'),
+                      style: theme.textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: AppSpacing.xl),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 52,
+                      child: FilledButton(
+                        onPressed: () async {
+                          final manager = ref.read(locationManagerProvider);
+                          if (locationState.error == 'LOCATION_SERVICE_DISABLED') {
+                            await manager.openLocationSettings();
+                          } else {
+                            await manager.openAppSettings();
+                          }
+                        },
+                        style: FilledButton.styleFrom(backgroundColor: AppColors.primaryDark),
+                        child: Text(context.tr('enable_location')),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
+
           // ─── Question Gate: Blur Lock ───
           final user = ref.watch(userProvider).valueOrNull;
           final hasMinQuestions = (user?.questionCount ?? 0) >= AppConstants.minQuestions;
