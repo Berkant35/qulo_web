@@ -104,4 +104,10 @@ export const Errors = {
 
   DAILY_LIMIT_EXCEEDED: (resource: string) =>
     new AppError("DAILY_LIMIT_EXCEEDED", 403, `Daily ${resource} limit exceeded`, { resource }),
+
+  PASSPORT_REQUIRES_PREMIUM: () =>
+    new AppError("PASSPORT_REQUIRES_PREMIUM", 403, "Passport mode requires Premium subscription"),
+
+  PASSPORT_ALREADY_ACTIVE: () =>
+    new AppError("PASSPORT_ALREADY_ACTIVE", 409, "Passport is already active"),
 } as const;

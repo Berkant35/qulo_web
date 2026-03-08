@@ -45,15 +45,19 @@ export class UserService {
   async updateProfile(userId: string, data: UpdateProfileInput) {
     const { data: user, error } = await supabase
       .from("users")
-      .update({ ...data, updated_at: new Date().toISOString() })
+      .update(data)
       .eq("id", userId)
       .eq("is_deleted", false)
       .select(
-        "id, email, name, surname, bio, age, gender, gender_pref, match_radius_km, age_pref_min, age_pref_max, city, country, locale, lat, lng, photos, profile_completion, diamonds, green_diamonds, is_online, last_seen_at, email_verified, created_at, updated_at",
+        "id, email, name, surname, bio, age, gender, gender_pref, match_radius_km, age_pref_min, age_pref_max, city, country, locale, lat, lng, photos, profile_completion, purple_diamonds, green_diamonds, is_online, last_seen_at, email_verified, created_at",
       )
       .maybeSingle();
 
-    if (error || !user) {
+    if (error) {
+      console.error("[updateProfile] Supabase error:", error);
+      throw Errors.SERVER_ERROR();
+    }
+    if (!user) {
       throw Errors.USER_NOT_FOUND();
     }
 
@@ -115,14 +119,20 @@ export class UserService {
     return details;
   }
 
-  async updateLocation(userId: string, lat: number, lng: number) {
+  async updateLocation(userId: string, lat: number, lng: number, city?: string) {
+    const updateData: Record<string, unknown> = { lat, lng };
+    if (city) updateData.city = city;
+
     const { error } = await supabase
       .from("users")
-      .update({ lat, lng, updated_at: new Date().toISOString() })
+      .update(updateData)
       .eq("id", userId)
       .eq("is_deleted", false);
 
-    if (error) throw Errors.SERVER_ERROR();
+    if (error) {
+      console.error("[updateLocation] Supabase error:", error);
+      throw Errors.SERVER_ERROR();
+    }
 
     await this.recalculateProfileCompletion(userId);
   }
@@ -140,7 +150,7 @@ export class UserService {
   async deleteAccount(userId: string) {
     const { error } = await supabase
       .from("users")
-      .update({ is_deleted: true, is_online: false, updated_at: new Date().toISOString() })
+      .update({ is_deleted: true, is_online: false })
       .eq("id", userId);
 
     if (error) throw Errors.SERVER_ERROR();
@@ -194,7 +204,7 @@ export class UserService {
 
     const { error: updateError } = await supabase
       .from("users")
-      .update({ photos, updated_at: new Date().toISOString() })
+      .update({ photos })
       .eq("id", userId);
 
     if (updateError) throw Errors.SERVER_ERROR();
@@ -234,7 +244,7 @@ export class UserService {
 
     const { error: updateError } = await supabase
       .from("users")
-      .update({ photos, updated_at: new Date().toISOString() })
+      .update({ photos })
       .eq("id", userId);
 
     if (updateError) throw Errors.SERVER_ERROR();
@@ -252,7 +262,7 @@ export class UserService {
 
     const { error } = await supabase
       .from("users")
-      .update({ boost_until: boostUntil, updated_at: new Date().toISOString() })
+      .update({ boost_until: boostUntil })
       .eq("id", userId);
 
     if (error) {
