@@ -1,6 +1,7 @@
 import { supabase } from "../config/supabase.js";
 import { NotificationService } from "./notification.service.js";
 import { Errors } from "../utils/errors.js";
+import { assertUuid } from "../utils/validation.js";
 
 interface Match {
   id: string;
@@ -11,6 +12,9 @@ interface Match {
 
 export class ChatService {
   private async verifyMatchAccess(userId: string, matchId: string): Promise<Match> {
+    assertUuid(userId, "userId");
+    assertUuid(matchId, "matchId");
+
     const { data: match, error } = await supabase
       .from("matches")
       .select("id, user1_id, user2_id, is_active")

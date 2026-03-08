@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:qulo_v2/core/error/error_manager.dart';
+import 'package:qulo_v2/core/network/network_manager.dart';
 import 'package:qulo_v2/core/network/result.dart';
 import 'package:qulo_v2/core/services/revenuecat_service.dart';
 import 'package:qulo_v2/data/models/auth_model.dart';
@@ -48,19 +51,50 @@ class AuthNotifier extends Notifier<AuthState> {
 
   @override
   AuthState build() {
-    _checkAuth();
     return const AuthState();
   }
 
-  Future<void> _checkAuth() async {
+  Future<void> checkAuth() async {
     try {
       final token = await _storage.read(key: 'access_token');
       final userId = await _storage.read(key: 'user_id');
-      if (token != null && userId != null) {
-        ErrorManager.setUser(userId);
-        state = state.copyWith(status: AuthStatus.authenticated, userId: userId);
-      } else {
+
+      if (token == null || userId == null) {
         state = state.copyWith(status: AuthStatus.unauthenticated);
+        return;
+      }
+
+      // Check JWT expiry locally first
+      if (_isTokenExpired(token)) {
+        final refreshed = await _tryRefreshToken();
+        if (!refreshed) {
+          await _clearTokens();
+          state = state.copyWith(status: AuthStatus.unauthenticated);
+          return;
+        }
+      }
+
+      // Token not expired (or refreshed) — validate with server
+      try {
+        await ref.read(userProvider.notifier).fetchMe();
+        ErrorManager.setUser(userId);
+        try {
+          await RevenueCatService.init(userId);
+          await RevenueCatService.logIn(userId);
+        } catch (_) {
+          // RevenueCat init failure shouldn't block auto-login
+        }
+        state = state.copyWith(
+          status: AuthStatus.authenticated,
+          userId: userId,
+        );
+        // Initialize push notifications on auto-login
+        ref.read(notificationProvider.notifier).init();
+      } catch (_) {
+        if (state.status == AuthStatus.initial) {
+          await _clearTokens();
+          state = state.copyWith(status: AuthStatus.unauthenticated);
+        }
       }
     } catch (_) {
       state = state.copyWith(status: AuthStatus.unauthenticated);
@@ -143,6 +177,9 @@ class AuthNotifier extends Notifier<AuthState> {
     }
     await _clearTokens();
 
+    // Clean up notification listeners before invalidation
+    ref.read(notificationManagerProvider).dispose();
+
     // Invalidate all auth-dependent providers to prevent stale data crashes
     ref.invalidate(userProvider);
     ref.invalidate(discoverProvider);
@@ -168,6 +205,66 @@ class AuthNotifier extends Notifier<AuthState> {
       token: token,
       password: password,
     );
+  }
+
+  bool _isTokenExpired(String token) {
+    try {
+      final parts = token.split('.');
+      if (parts.length != 3) return true;
+
+      final payload = parts[1];
+      final normalized = base64Url.normalize(payload);
+      final decoded = utf8.decode(base64Url.decode(normalized));
+      final map = jsonDecode(decoded) as Map<String, dynamic>;
+
+      final exp = map['exp'] as int?;
+      if (exp == null) return true;
+
+      final expiry = DateTime.fromMillisecondsSinceEpoch(exp * 1000);
+      return DateTime.now().isAfter(expiry.subtract(const Duration(seconds: 30)));
+    } catch (_) {
+      return true;
+    }
+  }
+
+  Future<bool> _tryRefreshToken() async {
+    try {
+      final refreshToken = await _storage.read(key: 'refresh_token');
+      if (refreshToken == null) return false;
+
+      final refreshDio = NetworkManager.createRefreshDio();
+      final response = await refreshDio.post(
+        '/auth/refresh',
+        data: {'refreshToken': refreshToken},
+      );
+
+      final newAccess = response.data['accessToken'] as String;
+      final newRefresh = response.data['refreshToken'] as String;
+      await _storage.write(key: 'access_token', value: newAccess);
+      await _storage.write(key: 'refresh_token', value: newRefresh);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<void> forceLogout() async {
+    try {
+      await RevenueCatService.logOut();
+    } catch (_) {}
+
+    ref.read(notificationManagerProvider).dispose();
+
+    ref.invalidate(userProvider);
+    ref.invalidate(discoverProvider);
+    ref.invalidate(matchListProvider);
+    ref.invalidate(diamondProvider);
+    ref.invalidate(powerProvider);
+    ref.invalidate(questionProvider);
+    ref.invalidate(subscriptionProvider);
+    ref.invalidate(notificationProvider);
+
+    state = const AuthState(status: AuthStatus.unauthenticated);
   }
 
   Future<void> _saveTokens(AuthTokens tokens) async {

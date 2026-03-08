@@ -1,6 +1,7 @@
 import { supabase } from "../config/supabase.js";
 import { Errors } from "../utils/errors.js";
 import { haversineDistance } from "../utils/math.js";
+import { assertUuid } from "../utils/validation.js";
 import { scoringService } from "./scoring.service.js";
 import { subscriptionService } from "./subscription.service.js";
 
@@ -325,6 +326,8 @@ export class MatchingService {
    * Get all active matches for a user.
    */
   async getMatches(userId: string) {
+    assertUuid(userId, "userId");
+
     const { data: matches, error } = await supabase
       .from("matches")
       .select("id, user1_id, user2_id, matched_at")

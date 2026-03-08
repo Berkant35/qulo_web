@@ -1,5 +1,6 @@
 import { supabase } from "../config/supabase.js";
-import { hashPassword, comparePassword } from "../utils/hash.js";
+import { hashPassword, comparePassword, normalizeEmail } from "../utils/hash.js";
+import { sanitizeIlike } from "../utils/validation.js";
 
 class AdminService {
   async findByEmail(email: string) {
@@ -12,7 +13,7 @@ class AdminService {
   }
 
   async validateLogin(email: string, password: string) {
-    const admin = await this.findByEmail(email);
+    const admin = await this.findByEmail(normalizeEmail(email));
     if (!admin) return null;
     const valid = await comparePassword(password, admin.password_hash);
     if (!valid) return null;
@@ -25,13 +26,20 @@ class AdminService {
 
   async seedAdmin(email: string, password: string) {
     const existing = await this.findByEmail(email);
-    if (existing) return;
+    if (existing) {
+      console.log(`[admin] Seed admin already exists: ${email}`);
+      return;
+    }
     const password_hash = await hashPassword(password);
-    await supabase.from("admin_users").insert({
+    const { error } = await supabase.from("admin_users").insert({
       email,
       password_hash,
       role: "SUPER_ADMIN",
     });
+    if (error) {
+      console.error(`[admin] Seed admin failed:`, error.message);
+      return;
+    }
     console.log(`[admin] Seed admin created: ${email}`);
   }
 
@@ -89,7 +97,8 @@ class AdminService {
       .range((page - 1) * limit, page * limit - 1);
 
     if (search) {
-      query = query.or(`email.ilike.%${search}%,name.ilike.%${search}%,surname.ilike.%${search}%`);
+      const s = sanitizeIlike(search);
+      query = query.or(`email.ilike.%${s}%,name.ilike.%${s}%,surname.ilike.%${s}%`);
     }
     if (gender && gender !== "all") {
       query = query.eq("gender", gender);
@@ -138,6 +147,35 @@ class AdminService {
       .from("users")
       .update({ green_diamonds: green, purple_diamonds: purple })
       .eq("id", userId);
+  }
+
+  async setSubscription(userId: string, plan: string, durationDays: number) {
+    const expiresAt = new Date(Date.now() + durationDays * 24 * 60 * 60 * 1000).toISOString();
+    await supabase
+      .from("users")
+      .update({ subscription_plan: plan, subscription_expires_at: expiresAt })
+      .eq("id", userId);
+    await supabase.from("user_subscriptions").insert({
+      user_id: userId,
+      plan,
+      status: "active",
+      rc_customer_id: `admin_grant`,
+      store_transaction_id: `admin_${Date.now()}`,
+      started_at: new Date().toISOString(),
+      expires_at: expiresAt,
+    });
+  }
+
+  async cancelSubscription(userId: string) {
+    await supabase
+      .from("users")
+      .update({ subscription_plan: null, subscription_expires_at: null })
+      .eq("id", userId);
+    await supabase
+      .from("user_subscriptions")
+      .update({ status: "cancelled", updated_at: new Date().toISOString() })
+      .eq("user_id", userId)
+      .eq("status", "active");
   }
 
   async getReports(page: number, limit: number, status?: string) {
