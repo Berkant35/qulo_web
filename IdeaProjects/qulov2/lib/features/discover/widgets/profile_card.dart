@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/l10n/l10n.dart';
+import '../../../core/widgets/q_icon.dart';
+import '../../../core/constants/q_icons.dart';
 import '../../../data/models/discover_model.dart';
 
 class ProfileCard extends StatelessWidget {
@@ -22,7 +24,7 @@ class ProfileCard extends StatelessWidget {
           if (photo != null)
             CachedNetworkImage(imageUrl: photo, fit: BoxFit.cover)
           else
-            Container(color: theme.colorScheme.surface, child: Icon(Icons.person, size: 80, color: theme.hintColor)),
+            Container(color: theme.colorScheme.surface, child: Center(child: QIcon(QIcons.icUser, color: theme.hintColor, size: 80))),
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -52,7 +54,7 @@ class ProfileCard extends StatelessWidget {
                     ),
                     if (card.isBoosted) ...[
                       const SizedBox(width: AppSpacing.sm),
-                      Icon(Icons.bolt, color: AppColors.warning, size: 20),
+                      QIcon(QIcons.icZap, color: AppColors.warning, size: 20),
                     ],
                   ],
                 ),
@@ -60,7 +62,7 @@ class ProfileCard extends StatelessWidget {
                 if (card.city != null)
                   Row(
                     children: [
-                      const Icon(Icons.location_on, color: Colors.white70, size: 16),
+                      QIcon(QIcons.icMapPin, color: Colors.white70, size: 16),
                       const SizedBox(width: AppSpacing.xs),
                       Text(
                         '${card.city} • ${card.distanceKm.toStringAsFixed(1)} km',

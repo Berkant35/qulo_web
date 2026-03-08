@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import '../../../core/navigation/navigation.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/l10n/l10n.dart';
+import '../../../core/widgets/q_icon.dart';
+import '../../../core/constants/q_icons.dart';
 import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/match_provider.dart';
 import '../../../routing/route_names.dart';
@@ -40,7 +42,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.explore_off, size: 64, color: theme.hintColor),
+                  QIcon(QIcons.icCompassOff, size: 64, color: theme.hintColor),
                   const SizedBox(height: AppSpacing.lg),
                   Text(context.tr('no_more_profiles'), style: theme.textTheme.titleMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
                   const SizedBox(height: AppSpacing.sm),
@@ -69,7 +71,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(12),
                       onTap: () {
-                        context.goNamed(RouteNames.quiz, pathParameters: {'targetId': card.userId});
+                        ref.read(navigationServiceProvider).go(RouteNames.quiz, params: {'targetId': card.userId});
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 14),
@@ -88,7 +90,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _ActionButton(
-                      icon: Icons.close,
+                      iconPath: QIcons.icX,
                       iconColor: AppColors.error,
                       backgroundColor: theme.colorScheme.surface,
                       borderColor: AppColors.error,
@@ -100,13 +102,13 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                       },
                     ),
                     _ActionButton(
-                      icon: Icons.favorite,
+                      iconPath: QIcons.icHeart,
                       iconColor: AppColors.secondary,
                       backgroundColor: theme.colorScheme.surface,
                       borderColor: AppColors.secondary,
                       size: 72,
                       onTap: () {
-                        context.goNamed(RouteNames.quiz, pathParameters: {'targetId': card.userId});
+                        ref.read(navigationServiceProvider).go(RouteNames.quiz, params: {'targetId': card.userId});
                       },
                     ),
                   ],
@@ -122,7 +124,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
 }
 
 class _ActionButton extends StatelessWidget {
-  final IconData icon;
+  final String iconPath;
   final Color iconColor;
   final Color backgroundColor;
   final Color borderColor;
@@ -130,7 +132,7 @@ class _ActionButton extends StatelessWidget {
   final VoidCallback onTap;
 
   const _ActionButton({
-    required this.icon,
+    required this.iconPath,
     required this.iconColor,
     required this.backgroundColor,
     required this.borderColor,
@@ -151,7 +153,7 @@ class _ActionButton extends StatelessWidget {
           border: Border.all(color: borderColor, width: 2),
           boxShadow: [BoxShadow(color: borderColor.withValues(alpha: 0.2), blurRadius: 8)],
         ),
-        child: Icon(icon, color: iconColor, size: size * 0.5),
+        child: Center(child: QIcon(iconPath, color: iconColor, size: size * 0.5)),
       ),
     );
   }
