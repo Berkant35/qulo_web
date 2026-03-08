@@ -53,6 +53,8 @@ dependencies:
   intl: ^0.20.2
   equatable: ^2.0.7
   json_annotation: ^4.9.0
+  retrofit: ">=4.4.2 <4.9.0"
+  pretty_dio_logger: ^1.4.0
   flutter_native_splash: ^2.4.3
   url_launcher: ^6.3.1
 
@@ -63,6 +65,7 @@ dev_dependencies:
   build_runner: ^2.4.13
   json_serializable: ^6.9.0
   riverpod_generator: ^2.6.2
+  retrofit_generator: ^9.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -71,15 +74,19 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/logo/
     - assets/icons/
+    - assets/brand/
+    - assets/illustrations/
     - assets/lottie/
-    - assets/svgShapes/
 
   fonts:
     - family: Helvetica
       fonts:
         - asset: assets/fonts/Helvetica.ttc
-    - family: QuloIcon
-      fonts:
-        - asset: assets/fonts/QuloIcon.ttf
+
+flutter_native_splash:
+  color: "#9C27B0"
+  android: true
+  ios: true
+  android_12:
+    color: "#9C27B0"
