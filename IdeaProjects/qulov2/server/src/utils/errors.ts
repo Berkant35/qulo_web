@@ -92,4 +92,13 @@ export const Errors = {
 
   SERVER_ERROR: () =>
     new AppError("SERVER_ERROR", 500, "Internal server error"),
+
+  INVALID_WEBHOOK_AUTH: () =>
+    new AppError("INVALID_WEBHOOK_AUTH", 401),
+
+  SUBSCRIPTION_NOT_FOUND: () =>
+    new AppError("SUBSCRIPTION_NOT_FOUND", 404),
+
+  DUPLICATE_TRANSACTION: () =>
+    new AppError("DUPLICATE_TRANSACTION", 409),
 } as const;
