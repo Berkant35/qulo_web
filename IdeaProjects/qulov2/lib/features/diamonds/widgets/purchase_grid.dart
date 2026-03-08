@@ -4,28 +4,35 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/diamond_icon.dart';
 import '../../../core/l10n/l10n.dart';
 
-class PurchasePackage {
+enum DiamondTier {
+  starter(amount: 50, price: '\$0.99', iconSize: 22, glowRadius: 0),
+  popular(amount: 150, price: '\$2.49', iconSize: 26, glowRadius: 8),
+  bestValue(amount: 400, price: '\$4.99', iconSize: 30, glowRadius: 14),
+  mega(amount: 1000, price: '\$9.99', iconSize: 34, glowRadius: 20),
+  ultra(amount: 2500, price: '\$19.99', iconSize: 38, glowRadius: 26),
+  vip(amount: 6000, price: '\$39.99', iconSize: 42, glowRadius: 32);
+
   final int amount;
   final String price;
-  final int diamondCount; // How many diamond icons to show
+  final double iconSize;
+  final double glowRadius;
 
-  const PurchasePackage({
+  const DiamondTier({
     required this.amount,
     required this.price,
-    required this.diamondCount,
+    required this.iconSize,
+    required this.glowRadius,
   });
 }
 
-const kDiamondPackages = [
-  PurchasePackage(amount: 50, price: '\$0.99', diamondCount: 1),
-  PurchasePackage(amount: 150, price: '\$2.49', diamondCount: 2),
-  PurchasePackage(amount: 400, price: '\$4.99', diamondCount: 3),
-  PurchasePackage(amount: 1000, price: '\$9.99', diamondCount: 4),
-  PurchasePackage(amount: 2500, price: '\$19.99', diamondCount: 5),
-  PurchasePackage(amount: 6000, price: '\$39.99', diamondCount: 6),
-];
+class PurchasePackage {
+  final DiamondTier tier;
 
-const _bestValueIndex = 2;
+  const PurchasePackage({required this.tier});
+
+  int get amount => tier.amount;
+  String get price => tier.price;
+}
 
 class PurchaseGrid extends StatelessWidget {
   final ValueChanged<PurchasePackage>? onPurchase;
@@ -39,18 +46,18 @@ class PurchaseGrid extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        childAspectRatio: 0.75,
+        childAspectRatio: 0.78,
         crossAxisSpacing: AppSpacing.sm,
         mainAxisSpacing: AppSpacing.sm,
       ),
-      itemCount: kDiamondPackages.length,
+      itemCount: DiamondTier.values.length,
       itemBuilder: (context, index) {
-        final pkg = kDiamondPackages[index];
-        final isBestValue = index == _bestValueIndex;
+        final tier = DiamondTier.values[index];
+        final isBestValue = tier == DiamondTier.bestValue;
         return _PackageCard(
-          package: pkg,
+          tier: tier,
           isBestValue: isBestValue,
-          onTap: () => onPurchase?.call(pkg),
+          onTap: () => onPurchase?.call(PurchasePackage(tier: tier)),
         );
       },
     );
@@ -58,12 +65,12 @@ class PurchaseGrid extends StatelessWidget {
 }
 
 class _PackageCard extends StatelessWidget {
-  final PurchasePackage package;
+  final DiamondTier tier;
   final bool isBestValue;
   final VoidCallback onTap;
 
   const _PackageCard({
-    required this.package,
+    required this.tier,
     required this.isBestValue,
     required this.onTap,
   });
@@ -89,21 +96,24 @@ class _PackageCard extends StatelessWidget {
           children: [
             Center(
               child: Padding(
-                padding: const EdgeInsets.all(AppSpacing.sm),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.sm,
+                  vertical: AppSpacing.md,
+                ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _DiamondCluster(count: package.diamondCount),
+                    _GlowingDiamond(tier: tier),
                     const SizedBox(height: AppSpacing.sm),
                     Text(
-                      '${package.amount}',
+                      '${tier.amount}',
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: AppSpacing.xs),
                     Text(
-                      package.price,
+                      tier.price,
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: AppColors.primary,
                         fontWeight: FontWeight.w600,
@@ -126,7 +136,7 @@ class _PackageCard extends StatelessWidget {
                       topRight: Radius.circular(AppSpacing.radiusMd - 1),
                     ),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.xs),
+                  padding: const EdgeInsets.symmetric(vertical: 3),
                   child: Text(
                     context.tr('best_value'),
                     textAlign: TextAlign.center,
@@ -145,96 +155,38 @@ class _PackageCard extends StatelessWidget {
   }
 }
 
-/// Shows 1-6 diamond icons in a cluster layout
-class _DiamondCluster extends StatelessWidget {
-  final int count;
+/// Single diamond with increasing size and glow based on tier
+class _GlowingDiamond extends StatelessWidget {
+  final DiamondTier tier;
 
-  const _DiamondCluster({required this.count});
+  const _GlowingDiamond({required this.tier});
 
   @override
   Widget build(BuildContext context) {
-    const baseSize = 22.0;
-
-    if (count == 1) {
-      return const DiamondIcon.purple(size: 30, showGlow: false);
-    }
-
-    if (count == 2) {
-      return SizedBox(
-        height: 34,
-        width: 50,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Positioned(left: 0, child: DiamondIcon.purple(size: baseSize, showGlow: false)),
-            Positioned(right: 0, child: DiamondIcon.purple(size: baseSize, showGlow: false)),
-          ],
-        ),
-      );
-    }
-
-    if (count == 3) {
-      return SizedBox(
-        height: 40,
-        width: 54,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Positioned(top: 0, child: DiamondIcon.purple(size: baseSize, showGlow: false)),
-            Positioned(bottom: 0, left: 0, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
-            Positioned(bottom: 0, right: 0, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
-          ],
-        ),
-      );
-    }
-
-    if (count == 4) {
-      return SizedBox(
-        height: 44,
-        width: 54,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Positioned(top: 0, left: 6, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
-            Positioned(top: 0, right: 6, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
-            Positioned(bottom: 0, left: 0, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
-            Positioned(bottom: 0, right: 0, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
-          ],
-        ),
-      );
-    }
-
-    if (count == 5) {
-      return SizedBox(
-        height: 46,
-        width: 58,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Positioned(top: 0, child: DiamondIcon.purple(size: baseSize, showGlow: false)),
-            Positioned(top: 6, left: 0, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
-            Positioned(top: 6, right: 0, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
-            Positioned(bottom: 0, left: 4, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
-            Positioned(bottom: 0, right: 4, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
-          ],
-        ),
-      );
-    }
-
-    // count == 6
     return SizedBox(
-      height: 46,
-      width: 62,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Positioned(top: 0, left: 8, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
-          Positioned(top: 0, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
-          Positioned(top: 0, right: 8, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
-          Positioned(bottom: 0, left: 2, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
-          Positioned(bottom: 0, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
-          Positioned(bottom: 0, right: 2, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
-        ],
+      height: 48,
+      width: 48,
+      child: Center(
+        child: Container(
+          decoration: tier.glowRadius > 0
+              ? BoxDecoration(
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.primary.withValues(
+                        alpha: 0.15 + (tier.index * 0.07),
+                      ),
+                      blurRadius: tier.glowRadius,
+                      spreadRadius: tier.glowRadius * 0.3,
+                    ),
+                  ],
+                )
+              : null,
+          child: DiamondIcon.purple(
+            size: tier.iconSize,
+            showGlow: false,
+          ),
+        ),
       ),
     );
   }

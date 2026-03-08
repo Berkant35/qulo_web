@@ -26,12 +26,17 @@ class DiamondBalanceCard extends StatelessWidget {
           color: theme.colorScheme.outline.withValues(alpha: 0.3),
         ),
       ),
-      padding: const EdgeInsets.all(AppSpacing.xl),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.xl,
+        vertical: AppSpacing.lg,
+      ),
       child: Row(
         children: [
           Expanded(
             child: _BalanceSection(
-              icon: const DiamondIcon.purple(size: 36),
+              icon: const ClipRect(
+                child: DiamondIcon.purple(size: 32, showGlow: false),
+              ),
               count: purpleCount,
               label: context.tr('purple_diamonds'),
               color: AppColors.primary,
@@ -39,12 +44,14 @@ class DiamondBalanceCard extends StatelessWidget {
           ),
           Container(
             width: 1,
-            height: AppSpacing.xxxl + AppSpacing.sm,
+            height: 48,
             color: theme.colorScheme.outline.withValues(alpha: 0.2),
           ),
           Expanded(
             child: _BalanceSection(
-              icon: const DiamondIcon.green(size: 36),
+              icon: const ClipRect(
+                child: DiamondIcon.green(size: 32, showGlow: false),
+              ),
               count: greenCount,
               label: context.tr('green_diamonds'),
               color: AppColors.secondary,
@@ -74,17 +81,18 @@ class _BalanceSection extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        icon,
-        const SizedBox(height: AppSpacing.sm),
+        SizedBox(height: 36, width: 36, child: Center(child: icon)),
+        const SizedBox(height: AppSpacing.xs),
         Text(
           '$count',
-          style: theme.textTheme.headlineMedium?.copyWith(
+          style: theme.textTheme.headlineSmall?.copyWith(
             color: color,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: AppSpacing.xs),
+        const SizedBox(height: 2),
         Text(
           label,
           style: theme.textTheme.labelSmall?.copyWith(

@@ -16,80 +16,61 @@ class SubscriptionComparisonScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final subAsync = ref.watch(subscriptionProvider);
     final currentPlan = subAsync.valueOrNull;
+    final theme = Theme.of(context);
 
     return AppScaffold(
       title: context.tr('sub_choose_plan'),
-      actions: [
-        IconButton(
-          onPressed: () => Navigator.of(context).maybePop(),
-          icon: const QIcon(QIcons.icX, size: 20),
-        ),
-      ],
       padding: EdgeInsets.zero,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(AppSpacing.pagePadding),
         child: Column(
           children: [
-            // Free plan
-            _PlanCard(
-              planKey: null,
-              nameKey: 'sub_plan_free',
-              priceKey: 'sub_price_free',
-              features: const [
-                _FeatureItem(icon: QIcons.icCompass, key: 'sub_free_swipes'),
-                _FeatureItem(icon: QIcons.icEye, key: 'sub_free_ads'),
-              ],
-              isRecommended: false,
+            // Free plan — compact
+            _CompactPlanRow(
+              name: context.tr('sub_plan_free'),
+              price: context.tr('sub_price_free'),
               isCurrent: currentPlan?.isFree ?? true,
-              onSubscribe: null,
             ),
-            const SizedBox(height: AppSpacing.lg),
+            const SizedBox(height: AppSpacing.md),
 
             // Plus plan
             _PlanCard(
-              planKey: 'plus',
-              nameKey: 'sub_plan_plus',
-              priceKey: 'sub_price_plus',
-              features: const [
-                _FeatureItem(icon: QIcons.icCompass, key: 'sub_plus_swipes'),
-                _FeatureItem(icon: QIcons.icGem, key: 'sub_plus_diamonds'),
-                _FeatureItem(icon: QIcons.icSkipForward, key: 'sub_plus_undos'),
-                _FeatureItem(icon: QIcons.icZap, key: 'sub_plus_boost'),
-                _FeatureItem(icon: QIcons.icEye, key: 'sub_plus_no_ads'),
-                _FeatureItem(icon: QIcons.icUser, key: 'sub_plus_badge'),
+              name: context.tr('sub_plan_plus'),
+              price: context.tr('sub_price_plus'),
+              features: [
+                _Feature(QIcons.icGem, context.tr('sub_plus_diamonds')),
+                _Feature(QIcons.icEye, context.tr('sub_plus_no_ads')),
               ],
               isRecommended: false,
               isCurrent: currentPlan?.isPlus ?? false,
               onSubscribe: () => _handlePurchase(context, ref, 'plus'),
             ),
-            const SizedBox(height: AppSpacing.lg),
+            const SizedBox(height: AppSpacing.md),
 
             // Premium plan
             _PlanCard(
-              planKey: 'premium',
-              nameKey: 'sub_plan_premium',
-              priceKey: 'sub_price_premium',
-              features: const [
-                _FeatureItem(icon: QIcons.icCompass, key: 'sub_premium_swipes'),
-                _FeatureItem(icon: QIcons.icGem, key: 'sub_premium_diamonds'),
-                _FeatureItem(
-                    icon: QIcons.icSkipForward, key: 'sub_premium_undos'),
-                _FeatureItem(icon: QIcons.icZap, key: 'sub_premium_boost'),
-                _FeatureItem(icon: QIcons.icEye, key: 'sub_premium_who_viewed'),
-                _FeatureItem(icon: QIcons.icEye, key: 'sub_premium_no_ads'),
-                _FeatureItem(icon: QIcons.icUser, key: 'sub_premium_badge'),
+              name: context.tr('sub_plan_premium'),
+              price: context.tr('sub_price_premium'),
+              features: [
+                _Feature(QIcons.icGem, context.tr('sub_premium_diamonds')),
+                _Feature(QIcons.icEye, context.tr('sub_premium_no_ads')),
               ],
               isRecommended: true,
               isCurrent: currentPlan?.isPremium ?? false,
               onSubscribe: () => _handlePurchase(context, ref, 'premium'),
             ),
-            const SizedBox(height: AppSpacing.xl),
+            const SizedBox(height: AppSpacing.xxl),
 
             // Restore purchases
-            AppButton(
-              label: context.tr('sub_restore_purchases'),
-              variant: AppButtonVariant.text,
+            TextButton(
               onPressed: () => _handleRestore(context, ref),
+              child: Text(
+                context.tr('sub_restore_purchases'),
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: AppColors.textSecondary,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
             ),
             const SizedBox(height: AppSpacing.lg),
           ],
@@ -103,8 +84,6 @@ class SubscriptionComparisonScreen extends ConsumerWidget {
     WidgetRef ref,
     String plan,
   ) async {
-    // RevenueCat purchase will be triggered here
-    // For now this is a placeholder until packages are fetched
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(context.tr('sub_purchase_coming_soon'))),
     );
@@ -120,26 +99,90 @@ class SubscriptionComparisonScreen extends ConsumerWidget {
   }
 }
 
-class _FeatureItem {
+class _Feature {
   final String icon;
-  final String key;
+  final String text;
+  const _Feature(this.icon, this.text);
+}
 
-  const _FeatureItem({required this.icon, required this.key});
+class _CompactPlanRow extends StatelessWidget {
+  final String name;
+  final String price;
+  final bool isCurrent;
+
+  const _CompactPlanRow({
+    required this.name,
+    required this.price,
+    required this.isCurrent,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+        vertical: AppSpacing.md,
+      ),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+        border: Border.all(
+          color: theme.colorScheme.outline.withValues(alpha: 0.3),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            name,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          if (isCurrent)
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.xs,
+              ),
+              decoration: BoxDecoration(
+                color: AppColors.primarySurface,
+                borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
+              ),
+              child: Text(
+                context.tr('sub_current_plan'),
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
+          else
+            Text(
+              price,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: AppColors.textSecondary,
+              ),
+            ),
+        ],
+      ),
+    );
+  }
 }
 
 class _PlanCard extends StatelessWidget {
-  final String? planKey;
-  final String nameKey;
-  final String priceKey;
-  final List<_FeatureItem> features;
+  final String name;
+  final String price;
+  final List<_Feature> features;
   final bool isRecommended;
   final bool isCurrent;
   final VoidCallback? onSubscribe;
 
   const _PlanCard({
-    required this.planKey,
-    required this.nameKey,
-    required this.priceKey,
+    required this.name,
+    required this.price,
     required this.features,
     required this.isRecommended,
     required this.isCurrent,
@@ -152,7 +195,7 @@ class _PlanCard extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         border: Border.all(
           color: isRecommended ? AppColors.primary : AppColors.border,
@@ -162,7 +205,6 @@ class _PlanCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Recommended badge
           if (isRecommended)
             Container(
               padding: const EdgeInsets.symmetric(vertical: AppSpacing.xs),
@@ -182,25 +224,23 @@ class _PlanCard extends StatelessWidget {
                 ),
               ),
             ),
-
           Padding(
             padding: const EdgeInsets.all(AppSpacing.lg),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Plan name + price
+                // Name + price
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      context.tr(nameKey),
+                      name,
                       style: theme.textTheme.titleLarge?.copyWith(
-                        color: AppColors.textPrimary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      context.tr(priceKey),
+                      price,
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: isRecommended
                             ? AppColors.primary
@@ -220,7 +260,7 @@ class _PlanCard extends StatelessWidget {
                       children: [
                         QIcon(
                           f.icon,
-                          size: 18,
+                          size: 16,
                           color: isRecommended
                               ? AppColors.primary
                               : AppColors.secondary,
@@ -228,7 +268,7 @@ class _PlanCard extends StatelessWidget {
                         const SizedBox(width: AppSpacing.md),
                         Expanded(
                           child: Text(
-                            context.tr(f.key),
+                            f.text,
                             style: theme.textTheme.bodyMedium?.copyWith(
                               color: AppColors.textSecondary,
                             ),
@@ -240,12 +280,13 @@ class _PlanCard extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSpacing.md),
 
-                // Button or current plan badge
+                // Button
                 if (isCurrent)
                   Container(
                     width: double.infinity,
-                    padding:
-                        const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: AppSpacing.md,
+                    ),
                     decoration: BoxDecoration(
                       color: AppColors.primarySurface,
                       borderRadius:
