@@ -10,6 +10,7 @@ import 'package:qulo_v2/core/widgets/diamond_icon.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/widgets/question_gate_banner.dart';
 import 'package:qulo_v2/providers/notification_provider.dart';
+import 'package:qulo_v2/providers/subscription_provider.dart';
 import 'package:qulo_v2/providers/user_provider.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/routing/route_names.dart';
@@ -125,6 +126,32 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
+                // ─── Subscription Badge ───
+                Builder(builder: (context) {
+                  final subAsync = ref.watch(subscriptionProvider);
+                  final sub = subAsync.valueOrNull;
+                  if (sub == null || sub.isFree) return const SizedBox.shrink();
+                  return Padding(
+                    padding: const EdgeInsets.only(top: AppSpacing.sm),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.md,
+                        vertical: AppSpacing.xs,
+                      ),
+                      decoration: BoxDecoration(
+                        gradient: AppColors.purpleGradient,
+                        borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+                      ),
+                      child: Text(
+                        sub.isPremium ? 'Premium' : 'Plus',
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  );
+                }),
                 if (user.city != null) ...[
                   const SizedBox(height: AppSpacing.xs),
                   Row(
@@ -235,6 +262,24 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   iconWidget: const DiamondIcon.purple(size: 24),
                   title: context.tr('diamonds'),
                   onTap: () => ref.read(navigationServiceProvider).go(RouteNames.diamonds),
+                ),
+                _MenuItem(
+                  iconPath: QIcons.icCrown,
+                  title: context.tr('sub_my_subscription'),
+                  subtitle: (() {
+                    final sub = ref.watch(subscriptionProvider).valueOrNull;
+                    if (sub == null || sub.isFree) return context.tr('sub_free_upgrade');
+                    final planLabel = sub.isPremium ? 'Premium' : 'Plus';
+                    if (sub.expiresAt != null) {
+                      final date = DateTime.tryParse(sub.expiresAt!);
+                      if (date != null) {
+                        final formatted = '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
+                        return '$planLabel • $formatted';
+                      }
+                    }
+                    return planLabel;
+                  })(),
+                  onTap: () => ref.read(navigationServiceProvider).go(RouteNames.subscription),
                 ),
                 _MenuItem(
                   iconPath: QIcons.icPlane,

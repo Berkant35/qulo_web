@@ -9,6 +9,11 @@ import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/providers/subscription_provider.dart';
+import 'package:qulo_v2/providers/diamond_provider.dart';
+import 'package:qulo_v2/providers/daily_stats_provider.dart';
+import 'package:qulo_v2/routing/route_names.dart';
+import 'package:qulo_v2/core/navigation/navigation.dart';
+import 'package:qulo_v2/features/diamonds/widgets/celebration_dialog.dart';
 
 class SubscriptionComparisonScreen extends ConsumerWidget {
   const SubscriptionComparisonScreen({super.key});
@@ -39,10 +44,11 @@ class SubscriptionComparisonScreen extends ConsumerWidget {
               name: context.tr('sub_plan_plus'),
               price: context.tr('sub_price_plus'),
               features: [
-                _Feature.widget(const DiamondIcon.purple(size: 16, showGlow: false), context.tr('sub_plus_diamonds')),
-                _Feature(QIcons.icSend, context.tr('sub_plus_messages')),
+                _Feature(QIcons.icCompass, context.tr('sub_plus_discovers')),
+                _Feature(QIcons.icHelpCircle, context.tr('sub_plus_questions')),
+                _Feature.widget(const DiamondIcon.purple(size: 16), context.tr('sub_plus_diamonds')),
+                _Feature(QIcons.icSkipForward, context.tr('sub_plus_undos')),
                 _Feature(QIcons.icEyeOff, context.tr('sub_plus_no_ads')),
-                _Feature(QIcons.icCompass, context.tr('sub_plus_swipes')),
               ],
               isRecommended: false,
               isCurrent: currentPlan?.isPlus ?? false,
@@ -55,10 +61,12 @@ class SubscriptionComparisonScreen extends ConsumerWidget {
               name: context.tr('sub_plan_premium'),
               price: context.tr('sub_price_premium'),
               features: [
-                _Feature.widget(const DiamondIcon.purple(size: 16, showGlow: false), context.tr('sub_premium_diamonds')),
-                _Feature(QIcons.icSend, context.tr('sub_premium_messages')),
+                _Feature(QIcons.icCompass, context.tr('sub_premium_discovers')),
+                _Feature(QIcons.icHelpCircle, context.tr('sub_premium_questions')),
+                _Feature.widget(const DiamondIcon.purple(size: 16), context.tr('sub_premium_diamonds')),
+                _Feature(QIcons.icSkipForward, context.tr('sub_premium_undos')),
+                _Feature(QIcons.icGlobe, context.tr('sub_premium_passport')),
                 _Feature(QIcons.icEyeOff, context.tr('sub_premium_no_ads')),
-                _Feature(QIcons.icCompass, context.tr('sub_premium_swipes')),
               ],
               isRecommended: true,
               isCurrent: currentPlan?.isPremium ?? false,
@@ -89,9 +97,46 @@ class SubscriptionComparisonScreen extends ConsumerWidget {
     WidgetRef ref,
     String plan,
   ) async {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(context.tr('sub_purchase_coming_soon'))),
-    );
+    final productId = plan == 'premium' ? 'qulopremiummonthly' : 'quloplusmonthly2';
+    final success = await ref
+        .read(subscriptionProvider.notifier)
+        .purchaseByProductId(productId);
+
+    if (!context.mounted) return;
+
+    if (success) {
+      final isPremium = plan == 'premium';
+      final planName = isPremium
+          ? context.tr('sub_plan_premium')
+          : context.tr('sub_plan_plus');
+      final bonus = isPremium ? 1500 : 500;
+
+      await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (_) => CelebrationDialog(
+          planName: planName,
+          diamondBonus: bonus,
+          isPremium: isPremium,
+        ),
+      );
+
+      if (!context.mounted) return;
+
+      // Invalidate providers so diamonds screen shows fresh data
+      ref.invalidate(diamondProvider);
+      ref.invalidate(subscriptionProvider);
+      ref.invalidate(dailyStatsProvider);
+
+      // Navigate to diamonds screen
+      final nav = ref.read(navigationServiceProvider);
+      nav.pop();
+      nav.go(RouteNames.diamonds);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(context.tr('purchase_failed'))),
+      );
+    }
   }
 
   Future<void> _handleRestore(BuildContext context, WidgetRef ref) async {
@@ -205,7 +250,7 @@ class _PlanCard extends StatelessWidget {
         color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         border: Border.all(
-          color: isRecommended ? AppColors.primary : AppColors.border,
+          color: isRecommended ? AppColors.primary : theme.colorScheme.outline,
           width: isRecommended ? 2 : 1,
         ),
       ),

@@ -13,7 +13,10 @@ import 'package:qulo_v2/data/models/subscription_model.dart';
 import 'package:qulo_v2/providers/diamond_provider.dart';
 import 'package:qulo_v2/providers/subscription_provider.dart';
 import 'package:qulo_v2/routing/route_names.dart';
+import 'package:qulo_v2/core/navigation/navigation.dart';
+import 'package:qulo_v2/providers/daily_stats_provider.dart';
 import 'package:qulo_v2/features/diamonds/widgets/diamond_balance_card.dart';
+import 'package:qulo_v2/features/diamonds/widgets/monthly_benefits_card.dart';
 import 'package:qulo_v2/features/diamonds/widgets/subscription_banner.dart';
 import 'package:qulo_v2/features/diamonds/widgets/purchase_grid.dart';
 
@@ -27,12 +30,14 @@ class DiamondsScreen extends ConsumerStatefulWidget {
 class _DiamondsScreenState extends ConsumerState<DiamondsScreen> {
   List<DiamondTransaction> _history = [];
   bool _loadingHistory = false;
+  bool _purchasing = false;
 
   @override
   void initState() {
     super.initState();
     Future.microtask(() {
       ref.read(diamondProvider.notifier).fetchBalance();
+      ref.read(dailyStatsProvider.notifier).fetchStats();
       _loadHistory();
     });
   }
@@ -55,8 +60,28 @@ class _DiamondsScreenState extends ConsumerState<DiamondsScreen> {
     context.pushNamed(RouteNames.subscription);
   }
 
-  void _onPurchase(PurchasePackage package) {
-    // TODO: Trigger RevenueCat purchase flow
+  Future<void> _onPurchase(PurchasePackage package) async {
+    if (_purchasing) return;
+    setState(() => _purchasing = true);
+    try {
+      final success = await ref
+          .read(diamondProvider.notifier)
+          .purchaseByProductId(package.tier.productId);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              success
+                  ? context.tr('purchase_success')
+                  : context.tr('purchase_failed'),
+            ),
+          ),
+        );
+        if (success) _loadHistory();
+      }
+    } finally {
+      if (mounted) setState(() => _purchasing = false);
+    }
   }
 
   void _onSeeAllHistory() {
@@ -107,6 +132,29 @@ class _DiamondsScreenState extends ConsumerState<DiamondsScreen> {
               ),
             ),
 
+            // ─── Monthly Benefits ───
+            Builder(builder: (context) {
+              final statsAsync = ref.watch(dailyStatsProvider);
+              final subAsync = ref.watch(subscriptionProvider);
+              return statsAsync.when(
+                loading: () => const SizedBox.shrink(),
+                error: (_, __) => const SizedBox.shrink(),
+                data: (stats) {
+                  final isFree = subAsync.valueOrNull?.isFree ?? true;
+                  return Padding(
+                    padding: const EdgeInsets.only(top: AppSpacing.md),
+                    child: MonthlyBenefitsCard(
+                      stats: stats,
+                      isFree: isFree,
+                      onUpgrade: isFree
+                          ? () => ref.read(navigationServiceProvider).go(RouteNames.subscription)
+                          : null,
+                    ),
+                  );
+                },
+              );
+            }),
+
             const SizedBox(height: AppSpacing.sectionGap),
 
             // 3. Purchase Section Header
@@ -119,7 +167,10 @@ class _DiamondsScreenState extends ConsumerState<DiamondsScreen> {
             const SizedBox(height: AppSpacing.md),
 
             // 4. Purchase Grid
-            PurchaseGrid(onPurchase: _onPurchase),
+            PurchaseGrid(
+              onPurchase: _onPurchase,
+              isLoading: _purchasing,
+            ),
 
             const SizedBox(height: AppSpacing.sectionGap),
 
