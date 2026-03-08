@@ -231,6 +231,12 @@ class AppLocalizations {
     'edit_preferences': 'Tercihler',
     'save_changes': 'Değişiklikleri Kaydet',
     'bio_hint': 'Kendinden biraz bahset...',
+    'city_hint': 'Hangi şehirde yaşıyorsun?',
+    'job_hint': 'Ne iş yapıyorsun?',
+    'school_hint': 'Hangi okulu bitirdin?',
+    'pets_hint': 'Evcil hayvanın var mı?',
+    'music_hint': 'En sevdiğin müzik türü?',
+    'personality_hint': 'Kendini nasıl tanımlarsın?',
     'update_location': 'Konumu Güncelle',
     'make_primary': 'Ana Fotoğraf Yap',
     'delete_photo': 'Fotoğrafı Sil',
@@ -291,23 +297,23 @@ class AppLocalizations {
     'sub_restore_purchases': 'Satın Almaları Geri Yükle',
     'sub_purchase_coming_soon': 'Satın alma yakında aktif olacak',
     'sub_restore_done': 'Satın almalar geri yüklendi',
-    'sub_free_swipes': '20 swipe/gün',
+    'sub_free_discovers': '50 keşif/gün',
+    'sub_free_questions': '4 soru slotu',
     'sub_free_ads': 'Reklam var',
-    'sub_plus_swipes': '50 swipe/gün',
-    'sub_plus_diamonds': '100 mor elmas/ay',
+    'sub_plus_discovers': 'Sınırsız keşif',
+    'sub_plus_questions': '6 soru slotu',
+    'sub_plus_diamonds': '500 mor elmas/ay',
     'sub_plus_undos': '3 geri alma/gün',
-    'sub_plus_boost': 'Haftalık otomatik boost',
     'sub_plus_no_ads': 'Reklam yok',
-    'sub_plus_badge': 'Plus rozeti',
-    'sub_premium_swipes': 'Sınırsız swipe',
-    'sub_premium_diamonds': '300 mor elmas/ay',
+    'sub_premium_discovers': 'Sınırsız keşif',
+    'sub_premium_questions': '10 soru slotu',
+    'sub_premium_diamonds': '1500 mor elmas/ay',
     'sub_premium_undos': 'Sınırsız geri alma',
-    'sub_premium_boost': 'Günlük otomatik boost',
-    'sub_premium_who_viewed': 'Kim baktı',
+    'sub_premium_passport': 'Pasaport modu',
     'sub_premium_no_ads': 'Reklam yok',
-    'sub_premium_badge': 'Premium rozeti',
-    'sub_plus_messages': 'Sınırsız mesaj',
-    'sub_premium_messages': 'Sınırsız mesaj',
+
+    'purchase_success': 'Satın alma başarılı!',
+    'purchase_failed': 'Satın alma başarısız oldu',
 
     // Upsell
     'diamonds_empty': 'Elmasların bitti!',
@@ -360,6 +366,118 @@ class AppLocalizations {
     'update_later': 'Daha Sonra',
     'maintenance_title': 'Bakım Çalışması',
     'maintenance_default_message': 'Uygulama şu anda bakımdadır. Lütfen daha sonra tekrar deneyin.',
+
+    // Question Creation
+    'question_create_title': 'Soru Oluştur',
+    'question_edit_title': 'Soruyu Düzenle',
+    'question_create_easy_mode': 'Kolay Mod',
+    'question_create_advanced_mode': 'Gelişmiş Mod',
+    'question_create_step_question': 'Soruyu Yaz',
+    'question_create_step_answers': 'Şıkları Gir',
+    'question_create_step_settings': 'Ayarlar',
+    'question_create_motto': 'Seni anlatan sorular sor — cevabı Google\'da bulunmasın',
+    'question_create_motto_tip': 'İpucu: "En sevdiğim mevsim?" gibi kişisel sorular daha çok çözülür',
+    'question_create_select_category': 'Kategori Seç',
+    'question_create_select_time': 'Süre Seç',
+    'question_create_hint_label': 'İpucu (opsiyonel)',
+    'question_create_preview': 'Önizleme',
+    'question_create_save': 'Kaydet',
+    'question_create_update': 'Güncelle',
+
+    // Categories
+    'question_category_personality': 'Kişilik',
+    'question_category_music': 'Müzik',
+    'question_category_film': 'Film',
+    'question_category_sports': 'Spor',
+    'question_category_travel': 'Seyahat',
+    'question_category_food': 'Yemek',
+    'question_category_technology': 'Teknoloji',
+    'question_category_general': 'Genel',
+    'question_category_other': 'Diğer',
+
+    // Time Presets
+    'question_time_fast': 'Hızlı',
+    'question_time_fast_desc': 'Düşünme, hisset!',
+    'question_time_normal': 'Normal',
+    'question_time_normal_desc': 'Standart tempo',
+    'question_time_relaxed': 'Rahat',
+    'question_time_relaxed_desc': 'Düşünmeye zaman var',
+    'question_time_thoughtful': 'Düşündürücü',
+    'question_time_thoughtful_desc': 'Zor soru hak eder',
+
+    // AI Suggestions
+    'ai_suggest_title': 'AI Soru Önerileri',
+    'ai_suggest_category': 'Kategoriye göre öner',
+    'ai_suggest_profile': 'Profilime göre öner',
+    'ai_suggest_loading': 'Sorular hazırlanıyor...',
+    'ai_suggest_select': 'Bu Soruyu Seç',
+    'ai_suggest_empty': 'Öneri bulunamadı, tekrar deneyin',
+
+    // Analytics
+    'analytics_title': 'Soru İstatistikleri',
+    'analytics_total_solves': 'Toplam Çözülme',
+    'analytics_success_rate': 'Başarı Oranı',
+    'analytics_green_earned': 'Kazanılan Yeşil Elmas',
+    'analytics_best_question': 'En İyi Sorun',
+    'analytics_difficulty_easy': 'Kolay',
+    'analytics_difficulty_medium': 'Orta',
+    'analytics_difficulty_hard': 'Zor',
+    'analytics_difficulty_legendary': 'Efsanevi',
+    'analytics_difficulty_unranked': 'Sıralanmadı',
+    'analytics_avg_time': 'Ort. Süre',
+    'analytics_power_usage': 'Güç Kullanımı',
+    'analytics_answer_distribution': 'Cevap Dağılımı',
+    'analytics_min_solves': 'Rozet için en az 10 çözülme gerekli',
+
+    // Pending Changes
+    'pending_changes_title': 'Bekleyen İşlemler',
+    'pending_change_update': 'Düzenleme bekliyor',
+    'pending_change_delete': 'Silme bekliyor',
+    'pending_change_cancel': 'İptal Et',
+    'pending_change_applied': 'Değişiklik uygulandı',
+    'pending_change_info': 'Aktif quiz olduğu için değişiklik kuyruğa alındı',
+
+    // Quiz Result
+    'quiz_result_flawless': 'Kusursuz',
+    'quiz_result_speed_solver': 'Hızlı Çözücü',
+    'quiz_result_power_master': 'Güç Ustası',
+    'quiz_result_determined': 'Azimli',
+    'quiz_result_time_spent': 'Harcanan Süre',
+    'quiz_result_powers_used': 'Kullanılan Güçler',
+
+    // Chat Quiz Summary
+    'chat_quiz_summary': 'Quiz Özeti',
+    'chat_quiz_summary_solved': '{count} soruyu {time}sn\'de çözdü',
+
+    // Discover Card
+    'discover_questions_count': '{count} soru',
+    'discover_difficulty': 'Zorluk',
+
+    // Weekly Report
+    'weekly_report_title': 'Haftalık Rapor',
+    'weekly_report_solves': 'Bu hafta soruların {count} kez çözüldü',
+    'weekly_report_green': '{count} yeşil elmas kazandın',
+
+    // Onboarding - Questions
+    'onboarding_questions_slide1_title': 'Soru Hazırla, Eşleş!',
+    'onboarding_questions_slide1_desc': 'Qulo\'da eşleşmek için sorularını hazırla. Birisi tüm sorularını doğru cevaplarsa eşleşirsiniz!',
+    'onboarding_questions_slide2_title': 'Seni Anlatan Sorular',
+    'onboarding_questions_slide2_desc': 'Google\'da bulunamayacak, sana özel sorular sor. "Favori yemeğim nedir?" gibi kişisel sorular daha eğlenceli!',
+    'onboarding_questions_slide3_title': 'Yeşil Elmas Kazan!',
+    'onboarding_questions_slide3_desc': 'Birisi sorularını çözerken güç kullanırsa, harcadığı mor elmasın %30\'u sana yeşil elmas olarak gelir!',
+    'onboarding_questions_start': 'Hemen Başla',
+    'onboarding_questions_later': 'Sonra',
+
+    // Profile Vitrin
+    'profile_vitrin_solves': 'kez çözüldü',
+    'profile_vitrin_success': 'başarı oranı',
+    'profile_vitrin_green': 'kazanıldı',
+    'profile_vitrin_title': 'Soru İstatistiklerin',
+
+    // Mode Selection
+    'question_mode_title': 'Nasıl oluşturmak istersin?',
+    'question_mode_easy_desc': 'AI sana soru önersin, sen seç',
+    'question_mode_advanced_desc': 'Adım adım kendin oluştur',
   };
 
   static const _en = <String, String>{
@@ -569,6 +687,12 @@ class AppLocalizations {
     'edit_preferences': 'Preferences',
     'save_changes': 'Save Changes',
     'bio_hint': 'Tell a bit about yourself...',
+    'city_hint': 'Which city do you live in?',
+    'job_hint': 'What do you do?',
+    'school_hint': 'Where did you study?',
+    'pets_hint': 'Do you have any pets?',
+    'music_hint': 'Favorite music genre?',
+    'personality_hint': 'How would you describe yourself?',
     'update_location': 'Update Location',
     'make_primary': 'Make Primary Photo',
     'delete_photo': 'Delete Photo',
@@ -629,23 +753,23 @@ class AppLocalizations {
     'sub_restore_purchases': 'Restore Purchases',
     'sub_purchase_coming_soon': 'Purchase coming soon',
     'sub_restore_done': 'Purchases restored',
-    'sub_free_swipes': '20 swipes/day',
+    'sub_free_discovers': '50 discovers/day',
+    'sub_free_questions': '4 question slots',
     'sub_free_ads': 'Contains ads',
-    'sub_plus_swipes': '50 swipes/day',
-    'sub_plus_diamonds': '100 purple diamonds/mo',
+    'sub_plus_discovers': 'Unlimited discovers',
+    'sub_plus_questions': '6 question slots',
+    'sub_plus_diamonds': '500 purple diamonds/mo',
     'sub_plus_undos': '3 undos/day',
-    'sub_plus_boost': 'Weekly auto boost',
     'sub_plus_no_ads': 'No ads',
-    'sub_plus_badge': 'Plus badge',
-    'sub_premium_swipes': 'Unlimited swipes',
-    'sub_premium_diamonds': '300 purple diamonds/mo',
+    'sub_premium_discovers': 'Unlimited discovers',
+    'sub_premium_questions': '10 question slots',
+    'sub_premium_diamonds': '1500 purple diamonds/mo',
     'sub_premium_undos': 'Unlimited undos',
-    'sub_premium_boost': 'Daily auto boost',
-    'sub_premium_who_viewed': 'See who viewed you',
+    'sub_premium_passport': 'Passport mode',
     'sub_premium_no_ads': 'No ads',
-    'sub_premium_badge': 'Premium badge',
-    'sub_plus_messages': 'Unlimited messaging',
-    'sub_premium_messages': 'Unlimited messaging',
+
+    'purchase_success': 'Purchase successful!',
+    'purchase_failed': 'Purchase failed',
 
     // Upsell
     'diamonds_empty': 'Out of diamonds!',
@@ -698,6 +822,118 @@ class AppLocalizations {
     'update_later': 'Later',
     'maintenance_title': 'Under Maintenance',
     'maintenance_default_message': 'The app is currently under maintenance. Please try again later.',
+
+    // Question Creation
+    'question_create_title': 'Create Question',
+    'question_edit_title': 'Edit Question',
+    'question_create_easy_mode': 'Easy Mode',
+    'question_create_advanced_mode': 'Advanced Mode',
+    'question_create_step_question': 'Write Question',
+    'question_create_step_answers': 'Add Answers',
+    'question_create_step_settings': 'Settings',
+    'question_create_motto': 'Ask questions about yourself — not Googleable!',
+    'question_create_motto_tip': 'Tip: Personal questions like "My favorite season?" get more solves',
+    'question_create_select_category': 'Select Category',
+    'question_create_select_time': 'Select Time',
+    'question_create_hint_label': 'Hint (optional)',
+    'question_create_preview': 'Preview',
+    'question_create_save': 'Save',
+    'question_create_update': 'Update',
+
+    // Categories
+    'question_category_personality': 'Personality',
+    'question_category_music': 'Music',
+    'question_category_film': 'Film',
+    'question_category_sports': 'Sports',
+    'question_category_travel': 'Travel',
+    'question_category_food': 'Food',
+    'question_category_technology': 'Technology',
+    'question_category_general': 'General',
+    'question_category_other': 'Other',
+
+    // Time Presets
+    'question_time_fast': 'Fast',
+    'question_time_fast_desc': 'Don\'t think, feel!',
+    'question_time_normal': 'Normal',
+    'question_time_normal_desc': 'Standard pace',
+    'question_time_relaxed': 'Relaxed',
+    'question_time_relaxed_desc': 'Time to think',
+    'question_time_thoughtful': 'Thoughtful',
+    'question_time_thoughtful_desc': 'Hard questions deserve it',
+
+    // AI Suggestions
+    'ai_suggest_title': 'AI Question Suggestions',
+    'ai_suggest_category': 'Suggest by category',
+    'ai_suggest_profile': 'Suggest based on my profile',
+    'ai_suggest_loading': 'Preparing questions...',
+    'ai_suggest_select': 'Select This Question',
+    'ai_suggest_empty': 'No suggestions found, try again',
+
+    // Analytics
+    'analytics_title': 'Question Stats',
+    'analytics_total_solves': 'Total Solves',
+    'analytics_success_rate': 'Success Rate',
+    'analytics_green_earned': 'Green Diamonds Earned',
+    'analytics_best_question': 'Best Question',
+    'analytics_difficulty_easy': 'Easy',
+    'analytics_difficulty_medium': 'Medium',
+    'analytics_difficulty_hard': 'Hard',
+    'analytics_difficulty_legendary': 'Legendary',
+    'analytics_difficulty_unranked': 'Unranked',
+    'analytics_avg_time': 'Avg. Time',
+    'analytics_power_usage': 'Power Usage',
+    'analytics_answer_distribution': 'Answer Distribution',
+    'analytics_min_solves': 'At least 10 solves required for badge',
+
+    // Pending Changes
+    'pending_changes_title': 'Pending Changes',
+    'pending_change_update': 'Edit pending',
+    'pending_change_delete': 'Delete pending',
+    'pending_change_cancel': 'Cancel',
+    'pending_change_applied': 'Change applied',
+    'pending_change_info': 'Change queued due to active quiz',
+
+    // Quiz Result
+    'quiz_result_flawless': 'Flawless',
+    'quiz_result_speed_solver': 'Speed Solver',
+    'quiz_result_power_master': 'Power Master',
+    'quiz_result_determined': 'Determined',
+    'quiz_result_time_spent': 'Time Spent',
+    'quiz_result_powers_used': 'Powers Used',
+
+    // Chat Quiz Summary
+    'chat_quiz_summary': 'Quiz Summary',
+    'chat_quiz_summary_solved': 'Solved {count} questions in {time}s',
+
+    // Discover Card
+    'discover_questions_count': '{count} questions',
+    'discover_difficulty': 'Difficulty',
+
+    // Weekly Report
+    'weekly_report_title': 'Weekly Report',
+    'weekly_report_solves': 'Your questions were solved {count} times this week',
+    'weekly_report_green': 'You earned {count} green diamonds',
+
+    // Onboarding - Questions
+    'onboarding_questions_slide1_title': 'Create Questions, Match!',
+    'onboarding_questions_slide1_desc': 'Prepare your questions to match on Qulo. If someone answers all correctly, you match!',
+    'onboarding_questions_slide2_title': 'Questions About You',
+    'onboarding_questions_slide2_desc': 'Ask personal questions that can\'t be Googled. Questions like "My favorite meal?" are more fun!',
+    'onboarding_questions_slide3_title': 'Earn Green Diamonds!',
+    'onboarding_questions_slide3_desc': 'When someone uses a power on your questions, you earn 30% of their purple diamond spend as green diamonds!',
+    'onboarding_questions_start': 'Get Started',
+    'onboarding_questions_later': 'Later',
+
+    // Profile Vitrin
+    'profile_vitrin_solves': 'times solved',
+    'profile_vitrin_success': 'success rate',
+    'profile_vitrin_green': 'earned',
+    'profile_vitrin_title': 'Your Question Stats',
+
+    // Mode Selection
+    'question_mode_title': 'How would you like to create?',
+    'question_mode_easy_desc': 'AI suggests questions, you pick',
+    'question_mode_advanced_desc': 'Create step by step yourself',
   };
 }
 
