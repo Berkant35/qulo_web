@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../core/error/error_manager.dart';
+import '../core/network/result.dart';
+import '../core/services/revenuecat_service.dart';
 import '../data/models/auth_model.dart';
 import 'api_provider.dart';
 
@@ -10,26 +12,26 @@ class AuthState {
   final AuthStatus status;
   final String? userId;
   final bool isLoading;
-  final String? error;
+  final AppFailure? failure;
 
   const AuthState({
     this.status = AuthStatus.initial,
     this.userId,
     this.isLoading = false,
-    this.error,
+    this.failure,
   });
 
   AuthState copyWith({
     AuthStatus? status,
     String? userId,
     bool? isLoading,
-    String? error,
+    AppFailure? failure,
   }) {
     return AuthState(
       status: status ?? this.status,
       userId: userId ?? this.userId,
       isLoading: isLoading ?? this.isLoading,
-      error: error,
+      failure: failure,
     );
   }
 }
@@ -58,76 +60,102 @@ class AuthNotifier extends Notifier<AuthState> {
     }
   }
 
-  Future<void> register({
+  Future<Result<RegisterResponse>> register({
     required String email,
     required String password,
     required String name,
     required String surname,
     required int age,
     required String gender,
+    double? lat,
+    double? lng,
     String locale = 'tr',
   }) async {
-    state = state.copyWith(isLoading: true, error: null);
-    try {
-      final repo = ref.read(authRepositoryProvider);
-      await repo.register(
-        email: email,
-        password: password,
-        name: name,
-        surname: surname,
-        age: age,
-        gender: gender,
-        locale: locale,
-      );
-      state = state.copyWith(isLoading: false);
-    } catch (e) {
-      state = state.copyWith(isLoading: false, error: e.toString());
-      rethrow;
-    }
+    state = state.copyWith(isLoading: true, failure: null);
+    final result = await ref.read(authRepositoryProvider).register(
+      email: email,
+      password: password,
+      name: name,
+      surname: surname,
+      age: age,
+      gender: gender,
+      lat: lat,
+      lng: lng,
+      locale: locale,
+    );
+    result.when(
+      success: (_) => state = state.copyWith(isLoading: false),
+      failure: (f) => state = state.copyWith(isLoading: false, failure: f),
+    );
+    return result;
   }
 
-  Future<void> login({required String email, required String password}) async {
-    state = state.copyWith(isLoading: true, error: null);
-    try {
-      final repo = ref.read(authRepositoryProvider);
-      final tokens = await repo.login(email: email, password: password);
-      await _saveTokens(tokens);
-      ErrorManager.setUser(tokens.userId);
-      state = state.copyWith(
-        status: AuthStatus.authenticated,
-        userId: tokens.userId,
-        isLoading: false,
-      );
-    } catch (e) {
-      state = state.copyWith(isLoading: false, error: e.toString());
-      rethrow;
+  Future<Result<AuthTokens>> login({
+    required String email,
+    required String password,
+  }) async {
+    state = state.copyWith(isLoading: true, failure: null);
+    final result = await ref.read(authRepositoryProvider).login(
+      email: email,
+      password: password,
+    );
+    switch (result) {
+      case Success(:final data):
+        await _saveTokens(data);
+        ErrorManager.setUser(data.userId);
+        try {
+          await RevenueCatService.init(data.userId);
+          await RevenueCatService.logIn(data.userId);
+        } catch (_) {
+          // RevenueCat init failure shouldn't block login
+        }
+        state = state.copyWith(
+          status: AuthStatus.authenticated,
+          userId: data.userId,
+          isLoading: false,
+        );
+      case Failure(:final failure):
+        state = state.copyWith(isLoading: false, failure: failure);
     }
+    return result;
   }
 
   Future<void> logout() async {
     try {
-      final repo = ref.read(authRepositoryProvider);
       final refreshToken = await _storage.read(key: 'refresh_token');
-      await repo.logout(refreshToken: refreshToken);
-    } catch (_) {}
+      await ref.read(authRepositoryProvider).logout(refreshToken: refreshToken);
+    } catch (_) {
+      // API call may fail (expired token etc.) — still clear local state
+    }
+    try {
+      await RevenueCatService.logOut();
+    } catch (_) {
+      // RevenueCat logout failure shouldn't block logout
+    }
     await _clearTokens();
     state = const AuthState(status: AuthStatus.unauthenticated);
   }
 
-  Future<void> forgotPassword(String email) async {
-    final repo = ref.read(authRepositoryProvider);
-    await repo.forgotPassword(email);
+  Future<Result<void>> forgotPassword(String email) async {
+    return ref.read(authRepositoryProvider).forgotPassword(email);
   }
 
-  Future<void> resetPassword({required String token, required String password}) async {
-    final repo = ref.read(authRepositoryProvider);
-    await repo.resetPassword(token: token, password: password);
+  Future<Result<void>> resetPassword({
+    required String token,
+    required String password,
+  }) async {
+    return ref.read(authRepositoryProvider).resetPassword(
+      token: token,
+      password: password,
+    );
   }
 
   Future<void> _saveTokens(AuthTokens tokens) async {
-    await _storage.write(key: 'access_token', value: tokens.accessToken);
-    await _storage.write(key: 'refresh_token', value: tokens.refreshToken);
-    await _storage.write(key: 'user_id', value: tokens.userId);
+    await Future.wait([
+      _storage.write(key: 'access_token', value: tokens.accessToken),
+      _storage.write(key: 'refresh_token', value: tokens.refreshToken),
+      _storage.write(key: 'user_id', value: tokens.userId),
+    ]);
   }
 
   Future<void> _clearTokens() async {
