@@ -18,6 +18,7 @@ import 'package:qulo_v2/features/passport/screens/passport_screen.dart';
 import 'package:qulo_v2/features/settings/screens/settings_screen.dart';
 import 'package:qulo_v2/features/profile/screens/edit_profile_screen.dart';
 import 'package:qulo_v2/features/diamonds/screens/subscription_comparison_screen.dart';
+import 'package:qulo_v2/features/notifications/screens/notifications_screen.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/constants/app_constants.dart';
 import 'package:qulo_v2/providers/user_provider.dart';

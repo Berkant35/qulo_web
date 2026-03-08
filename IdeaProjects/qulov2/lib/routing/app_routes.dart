@@ -120,6 +120,11 @@ final _routes = <RouteBase>[
               name: RouteNames.settings,
               builder: (context, state) => const SettingsScreen(),
             ),
+            GoRoute(
+              path: 'notifications',
+              name: RouteNames.notifications,
+              builder: (context, state) => const NotificationsScreen(),
+            ),
           ],
         ),
       ]),
