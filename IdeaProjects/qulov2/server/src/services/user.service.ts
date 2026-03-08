@@ -25,8 +25,15 @@ export class UserService {
       .eq("user_id", userId)
       .maybeSingle();
 
+    // Fetch question count
+    const { count: questionCount } = await supabase
+      .from("questions")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", userId);
+
     return {
       ...user,
+      question_count: questionCount ?? 0,
       subscriptionPlan: user.subscription_plan || null,
       subscriptionExpiresAt: user.subscription_expires_at || null,
       dailySwipesUsed: user.daily_swipes_used || 0,
