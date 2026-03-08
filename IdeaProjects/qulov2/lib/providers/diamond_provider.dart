@@ -1,4 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
+import '../core/network/result.dart';
+import '../core/services/revenuecat_service.dart';
 import '../data/models/diamond_model.dart';
 import 'api_provider.dart';
 
@@ -10,18 +13,32 @@ class DiamondNotifier extends AsyncNotifier<DiamondBalance> {
 
   Future<void> fetchBalance() async {
     state = const AsyncLoading();
-    state = await AsyncValue.guard(() => ref.read(diamondRepositoryProvider).getBalance());
+    final result = await ref.read(diamondRepositoryProvider).getBalance();
+    state = result.when(
+      success: (data) => AsyncData(data),
+      failure: (f) => AsyncError(f, StackTrace.current),
+    );
   }
 
-  Future<DiamondHistoryResponse> fetchHistory({int page = 1}) async {
-    final repo = ref.read(diamondRepositoryProvider);
-    return repo.getHistory(page: page);
+  Future<Result<DiamondHistoryResponse>> fetchHistory({int page = 1}) async {
+    return ref.read(diamondRepositoryProvider).getHistory(page: page);
   }
 
-  Future<void> purchase(String productId) async {
-    final repo = ref.read(diamondRepositoryProvider);
-    await repo.purchase(productId);
-    await fetchBalance();
+  Future<Result<void>> purchase(String productId) async {
+    final result = await ref.read(diamondRepositoryProvider).purchase(productId);
+    result.when(success: (_) => fetchBalance(), failure: (_) {});
+    return result;
+  }
+
+  Future<bool> purchaseConsumable(Package package) async {
+    try {
+      await RevenueCatService.purchasePackage(package);
+      // Webhook will credit diamonds — just refresh balance
+      await fetchBalance();
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
 }
 
