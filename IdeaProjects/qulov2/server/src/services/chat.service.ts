@@ -78,7 +78,9 @@ export class ChatService {
     const pushType = isImage ? "new_message_image" : "new_message";
 
     // Fire-and-forget push notification
-    NotificationService.sendPush(otherUserId, pushType).catch(() => {});
+    NotificationService.sendPush(otherUserId, pushType, {}, undefined, {
+      actionUrl: `/matches/chat/${match.id}`,
+    }).catch(() => {});
 
     return message;
   }
