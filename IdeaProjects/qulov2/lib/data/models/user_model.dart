@@ -104,5 +104,11 @@ class UserModel extends Equatable {
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
   @override
-  List<Object?> get props => [id, questionCount];
+  List<Object?> get props => [
+    id, email, name, surname, bio, age, gender, genderPref,
+    matchRadiusKm, agePrefMin, agePrefMax, city, country, locale,
+    lat, lng, photos, profileCompletion, greenDiamonds, purpleDiamonds,
+    isOnline, lastSeenAt, emailVerified, passportCity, boostUntil,
+    likeReceivedCount, timesShownCount, badgeRewardsClaimed, questionCount,
+  ];
 }

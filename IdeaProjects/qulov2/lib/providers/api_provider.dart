@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qulo_v2/core/network/network_manager.dart';
 import 'package:qulo_v2/core/services/image_picker_manager.dart';
 import 'package:qulo_v2/core/services/location_manager.dart';
+import 'package:qulo_v2/core/services/notification_manager.dart';
 import 'package:qulo_v2/core/services/url_launcher_manager.dart';
 import 'package:qulo_v2/core/network/services/auth_service.dart';
 import 'package:qulo_v2/core/network/services/user_service.dart';
@@ -25,6 +26,9 @@ final locationManagerProvider = Provider<LocationManager>(
 );
 final urlLauncherManagerProvider = Provider<UrlLauncherManager>(
   (_) => UrlLauncherManager.instance,
+);
+final notificationManagerProvider = Provider<NotificationManager>(
+  (_) => NotificationManager.instance,
 );
 
 // ─── NetworkManager ───
