@@ -8,6 +8,7 @@ import {
   getCurrentQuestionHandler,
   answerQuestionHandler,
   getSessionResultHandler,
+  getMatchQuizSummaryHandler,
 } from "../controllers/quiz.controller.js";
 
 const router = Router();
@@ -16,6 +17,7 @@ const router = Router();
 router.use(authMiddleware, generalLimiter);
 
 router.post("/start", validate(startQuizSchema), startQuizHandler);
+router.get("/match/:match_id/summary", getMatchQuizSummaryHandler);
 router.get("/:session_id", getCurrentQuestionHandler);
 router.post("/:session_id/answer", validate(answerQuizSchema), answerQuestionHandler);
 router.get("/:session_id/result", getSessionResultHandler);

@@ -23,6 +23,12 @@ interface CandidateRow {
   boost_until: string | null;
 }
 
+interface QuestionInfo {
+  count: number;
+  categories: string[];
+  avg_difficulty: string;
+}
+
 interface ProfileCard {
   user_id: string;
   name: string;
@@ -34,6 +40,7 @@ interface ProfileCard {
   question_count: number;
   profile_completion: number;
   is_boosted: boolean;
+  question_info: QuestionInfo;
 }
 
 export class MatchingService {
@@ -147,6 +154,39 @@ export class MatchingService {
       }
     }
 
+    // 5.2 — Enrich candidates with question info (category + difficulty)
+    const questionInfoMap = new Map<string, QuestionInfo>();
+
+    if (candidateIds.length > 0) {
+      const { data: questionStats } = await supabase
+        .from('questions')
+        .select('user_id, category, stats_correct, stats_wrong')
+        .in('user_id', candidateIds);
+
+      for (const cId of candidateIds) {
+        const userQuestions = (questionStats ?? []).filter((q: any) => q.user_id === cId);
+        const totalAttempts = userQuestions.reduce((s: number, q: any) => s + q.stats_correct + q.stats_wrong, 0);
+        const totalCorrect = userQuestions.reduce((s: number, q: any) => s + q.stats_correct, 0);
+        const successRate = totalAttempts > 0 ? (totalCorrect / totalAttempts) * 100 : 50;
+
+        let difficulty = 'unranked';
+        if (totalAttempts >= 10) {
+          if (successRate > 70) difficulty = 'easy';
+          else if (successRate > 40) difficulty = 'medium';
+          else if (successRate > 20) difficulty = 'hard';
+          else difficulty = 'legendary';
+        }
+
+        const categories = [...new Set(userQuestions.map((q: any) => q.category).filter(Boolean))] as string[];
+
+        questionInfoMap.set(cId, {
+          count: userQuestions.length,
+          categories,
+          avg_difficulty: difficulty,
+        });
+      }
+    }
+
     // 5.5 — Filter out users with < 2 questions (not discoverable)
     const discoverableFiltered = filtered.filter((c) => {
       const qCount = questionCountMap.get(c.id) ?? 0;
@@ -206,6 +246,7 @@ export class MatchingService {
       question_count: s.questionCount,
       profile_completion: s.candidate.profile_completion,
       is_boosted: isBoostActive(s.candidate.boost_until),
+      question_info: questionInfoMap.get(s.candidate.id) ?? { count: 0, categories: [], avg_difficulty: 'unranked' },
     }));
 
     return { cards, page, has_more: hasMore };

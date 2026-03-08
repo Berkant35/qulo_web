@@ -507,6 +507,70 @@ export class QuizService {
 
     if (error) throw Errors.SERVER_ERROR();
   }
+  // ─── Match Quiz Summary (for chat card) ──────────────────────
+  async getMatchQuizSummary(matchId: string, userId: string) {
+    // Find the match
+    const { data: match } = await supabase
+      .from('matches')
+      .select('id, user1_id, user2_id')
+      .eq('id', matchId)
+      .single();
+
+    if (!match) throw Errors.SESSION_NOT_FOUND();
+
+    // Verify user is part of this match
+    if (match.user1_id !== userId && match.user2_id !== userId) {
+      throw Errors.SESSION_NOT_FOUND();
+    }
+
+    // Find COMPLETED quiz session for this match (either direction)
+    const { data: session } = await supabase
+      .from('quiz_sessions')
+      .select('id, solver_id, target_id, status, total_time_spent, powers_used, started_at, completed_at')
+      .or(
+        `and(solver_id.eq.${match.user1_id},target_id.eq.${match.user2_id}),and(solver_id.eq.${match.user2_id},target_id.eq.${match.user1_id})`
+      )
+      .eq('status', 'COMPLETED')
+      .order('completed_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (!session) return null;
+
+    // Get answers
+    const { data: answers } = await supabase
+      .from('quiz_answers')
+      .select('is_correct, power_used, time_spent')
+      .eq('session_id', session.id);
+
+    const totalCorrect = (answers ?? []).filter((a: any) => a.is_correct).length;
+    const totalQuestions = answers?.length ?? 0;
+    const totalPowers = (answers ?? []).filter((a: any) => a.power_used).length;
+
+    // Performance badge
+    let performanceBadge = 'none';
+    if (totalCorrect === totalQuestions && totalPowers === 0) {
+      performanceBadge = 'flawless';
+    } else if (session.total_time_spent && session.total_time_spent < totalQuestions * 15) {
+      performanceBadge = 'speed_solver';
+    } else if (totalPowers >= 3) {
+      performanceBadge = 'power_master';
+    } else if (totalCorrect === totalQuestions) {
+      performanceBadge = 'determined';
+    }
+
+    return {
+      session_id: session.id,
+      solver_id: session.solver_id,
+      total_questions: totalQuestions,
+      total_correct: totalCorrect,
+      total_time_spent: session.total_time_spent,
+      powers_used: session.powers_used,
+      total_powers_used: totalPowers,
+      performance_badge: performanceBadge,
+      completed_at: session.completed_at,
+    };
+  }
 }
 
 export const quizService = new QuizService();

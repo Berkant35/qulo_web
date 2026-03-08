@@ -46,3 +46,14 @@ export async function getSessionResultHandler(req: Request, res: Response, next:
     next(err);
   }
 }
+
+export async function getMatchQuizSummaryHandler(req: Request, res: Response, next: NextFunction) {
+  try {
+    const userId = req.user!.userId;
+    const match_id = req.params.match_id as string;
+    const data = await quizService.getMatchQuizSummary(match_id, userId);
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
+}
