@@ -66,6 +66,14 @@ final _routes = <RouteBase>[
     builder: (context, state) => const QuestionOnboardingScreen(),
   ),
 
+  // Map Picker (root navigator — full screen over bottom nav)
+  GoRoute(
+    parentNavigatorKey: rootNavigatorKey,
+    path: '/map-picker',
+    name: RouteNames.mapPicker,
+    builder: (context, state) => const MapPickerScreen(),
+  ),
+
   // Quiz (root navigator — full screen over bottom nav)
   GoRoute(
     parentNavigatorKey: rootNavigatorKey,

@@ -18,6 +18,7 @@ abstract final class RouteNames {
   static const quiz = 'quiz';
   static const diamonds = 'diamonds';
   static const passport = 'passport';
+  static const mapPicker = 'map-picker';
   static const subscription = 'subscription';
   static const notifications = 'notifications';
   static const onboarding = 'onboarding';
