@@ -50,7 +50,7 @@ class RegisterStepTerms extends StatelessWidget {
               Checkbox(
                 value: termsAccepted,
                 onChanged: onTermsChanged,
-                activeColor: AppColors.purple,
+                activeColor: AppColors.primary,
               ),
               Expanded(
                 child: Padding(
@@ -58,14 +58,14 @@ class RegisterStepTerms extends StatelessWidget {
                   child: RichText(
                     text: TextSpan(
                       style: theme.textTheme.bodyMedium?.copyWith(
-                        color: AppColors.onSurface,
+                        color: AppColors.textPrimary,
                       ),
                       children: [
                         TextSpan(text: '${l10n.get('accept_terms')} '),
                         TextSpan(
                           text: l10n.get('terms_of_service'),
                           style: TextStyle(
-                            color: AppColors.purple,
+                            color: AppColors.primary,
                             fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline,
                           ),
@@ -76,7 +76,7 @@ class RegisterStepTerms extends StatelessWidget {
                         TextSpan(
                           text: l10n.get('privacy_policy'),
                           style: TextStyle(
-                            color: AppColors.purple,
+                            color: AppColors.primary,
                             fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline,
                           ),

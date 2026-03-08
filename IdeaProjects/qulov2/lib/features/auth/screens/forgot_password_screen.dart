@@ -5,6 +5,9 @@ import '../../../core/l10n/l10n.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/mixins/form_mixin.dart';
 import '../../../core/mixins/loading_mixin.dart';
+import '../../../core/widgets/app_button.dart';
+import '../../../core/widgets/app_scaffold.dart';
+import '../../../core/widgets/app_text_field.dart';
 import '../../../providers/auth_provider.dart';
 
 class ForgotPasswordScreen extends ConsumerStatefulWidget {
@@ -42,11 +45,9 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(context.tr('reset_password'))),
-      body: Padding(
-        padding: const EdgeInsets.all(AppSpacing.pagePadding),
-        child: Form(
+    return AppScaffold(
+      title: context.tr('reset_password'),
+      body: Form(
           key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -57,34 +58,22 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen>
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(height: AppSpacing.xl),
-              TextFormField(
+              AppTextField(
                 controller: _emailCtrl,
+                label: context.tr('email'),
                 keyboardType: TextInputType.emailAddress,
                 validator: emailValidator,
-                decoration: InputDecoration(
-                  labelText: context.tr('email'),
-                  prefixIcon: const Icon(Icons.email_outlined),
-                ),
+                prefixIcon: const Icon(Icons.email_outlined),
               ),
               const SizedBox(height: AppSpacing.xl),
-              SizedBox(
-                height: 52,
-                child: ElevatedButton(
-                  onPressed: isLoading ? null : _send,
-                  child: isLoading
-                      ? const SizedBox(
-                          height: 20,
-                          width: 20,
-                          child:
-                              CircularProgressIndicator(strokeWidth: 2),
-                        )
-                      : Text(context.tr('send_reset_link')),
-                ),
+              AppButton(
+                label: context.tr('send_reset_link'),
+                isLoading: isLoading,
+                onPressed: isLoading ? null : _send,
               ),
             ],
           ),
         ),
-      ),
     );
   }
 }

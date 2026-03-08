@@ -36,22 +36,22 @@ class RegisterStepGender extends StatelessWidget {
           _GenderCard(
             label: l10n.get('man'),
             icon: Icons.male,
-            isSelected: selectedGender == 'male',
-            onTap: () => onGenderSelected('male'),
+            isSelected: selectedGender == 'MAN',
+            onTap: () => onGenderSelected('MAN'),
           ),
           const SizedBox(height: AppSpacing.md),
           _GenderCard(
             label: l10n.get('woman'),
             icon: Icons.female,
-            isSelected: selectedGender == 'female',
-            onTap: () => onGenderSelected('female'),
+            isSelected: selectedGender == 'WOMAN',
+            onTap: () => onGenderSelected('WOMAN'),
           ),
           const SizedBox(height: AppSpacing.md),
           _GenderCard(
             label: l10n.get('other'),
             icon: Icons.transgender,
-            isSelected: selectedGender == 'other',
-            onTap: () => onGenderSelected('other'),
+            isSelected: selectedGender == 'OTHER',
+            onTap: () => onGenderSelected('OTHER'),
           ),
           if (errorText != null) ...[
             const SizedBox(height: AppSpacing.sm),
@@ -98,20 +98,26 @@ class _GenderCard extends StatelessWidget {
           vertical: AppSpacing.lg,
         ),
         decoration: BoxDecoration(
-          color: isSelected
-              ? AppColors.purpleSurface
-              : Theme.of(context).colorScheme.surfaceContainerHighest,
+          color: isSelected ? AppColors.primarySurface : AppColors.surface,
           borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
           border: Border.all(
-            color: isSelected ? AppColors.purple : Colors.transparent,
+            color: isSelected ? AppColors.primary : AppColors.border,
             width: 2,
           ),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: AppColors.primary.withValues(alpha: 0.2),
+                    blurRadius: 12,
+                  ),
+                ]
+              : null,
         ),
         child: Row(
           children: [
             Icon(
               icon,
-              color: isSelected ? AppColors.purple : AppColors.onSurfaceVariant,
+              color: isSelected ? AppColors.primary : AppColors.textSecondary,
               size: 28,
             ),
             const SizedBox(width: AppSpacing.md),
@@ -120,15 +126,15 @@ class _GenderCard extends StatelessWidget {
                 label,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: isSelected
-                          ? AppColors.purple
-                          : AppColors.onSurface,
+                          ? AppColors.primary
+                          : AppColors.textPrimary,
                     ),
               ),
             ),
             if (isSelected)
               const Icon(
                 Icons.check_circle,
-                color: AppColors.purple,
+                color: AppColors.primary,
                 size: 24,
               ),
           ],
