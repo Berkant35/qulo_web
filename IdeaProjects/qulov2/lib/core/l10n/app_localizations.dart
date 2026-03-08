@@ -328,6 +328,18 @@ class AppLocalizations {
     // Discover & Matches (i18n cleanup)
     'solve_questions': 'Soruları Çöz',
     'unknown_user': 'Bilinmeyen',
+
+    // Question Gate & Nudge
+    'question_nudge_title': 'Keşfedilmek için sorularını ekle!',
+    'question_nudge_subtitle': 'Profilin %{percent} hazır — sadece sorular eksik!',
+    'question_nudge_progress': '{count}/2 soru',
+    'question_nudge_add_button': 'Sorularımı Ekle',
+    'question_nudge_edit_hint': 'Profilini düzenlemek harika! Eşleşmelerde görünmek için en az 2 soru eklemeyi unutma.',
+    'question_nudge_go_questions': 'Sorularıma Git',
+    'question_nudge_discover_locked': 'Sorularını ekle, keşfetmeye başla!',
+    'question_nudge_celebration_title': 'Tebrikler! Artık keşfedilebilirsin!',
+    'question_nudge_celebration_button': 'Keşfetmeye Başla',
+    'question_nudge_menu_required': '2 soru gerekli',
   };
 
   static const _en = <String, String>{
@@ -634,6 +646,18 @@ class AppLocalizations {
     // Discover & Matches (i18n cleanup)
     'solve_questions': 'Solve Questions',
     'unknown_user': 'Unknown',
+
+    // Question Gate & Nudge
+    'question_nudge_title': 'Add questions to be discovered!',
+    'question_nudge_subtitle': 'Your profile is %{percent} ready — just questions missing!',
+    'question_nudge_progress': '{count}/2 questions',
+    'question_nudge_add_button': 'Add My Questions',
+    'question_nudge_edit_hint': 'Great job editing your profile! Don\'t forget to add at least 2 questions to appear in matches.',
+    'question_nudge_go_questions': 'Go to My Questions',
+    'question_nudge_discover_locked': 'Add your questions to start discovering!',
+    'question_nudge_celebration_title': 'Congratulations! You\'re now discoverable!',
+    'question_nudge_celebration_button': 'Start Discovering',
+    'question_nudge_menu_required': '2 questions required',
   };
 }
 
