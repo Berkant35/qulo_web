@@ -5,6 +5,7 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/mixins/loading_mixin.dart';
 import '../../../core/l10n/l10n.dart';
+import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/passport_provider.dart';
 
 class PassportScreen extends ConsumerStatefulWidget {
@@ -28,14 +29,12 @@ class _PassportScreenState extends ConsumerState<PassportScreen> with LoadingMix
     final passport = ref.watch(passportProvider);
     final theme = Theme.of(context);
 
-    return Scaffold(
-      appBar: AppBar(title: Text(context.tr('passport'))),
-      body: Padding(
-        padding: const EdgeInsets.all(AppSpacing.pagePadding),
-        child: Column(
+    return AppScaffold(
+      title: context.tr('passport'),
+      body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Icon(Icons.flight, size: 64, color: AppColors.purple),
+            Icon(Icons.flight, size: 64, color: AppColors.primary),
             const SizedBox(height: AppSpacing.lg),
             Text(
               passport.isActive ? '${context.tr('passport_active')}: ${passport.city}' : context.tr('passport_explore'),
@@ -45,7 +44,7 @@ class _PassportScreenState extends ConsumerState<PassportScreen> with LoadingMix
             const SizedBox(height: AppSpacing.sm),
             Text(
               '${context.tr('passport_cost')}: ${AppConstants.passportCostPurple}',
-              style: theme.textTheme.bodySmall?.copyWith(color: AppColors.onSurfaceVariant),
+              style: theme.textTheme.bodySmall?.copyWith(color: AppColors.textHint),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.xl),
@@ -85,7 +84,6 @@ class _PassportScreenState extends ConsumerState<PassportScreen> with LoadingMix
               ),
           ],
         ),
-      ),
     );
   }
 }

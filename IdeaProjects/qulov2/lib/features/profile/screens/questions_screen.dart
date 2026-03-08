@@ -4,6 +4,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/l10n/l10n.dart';
+import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/question_provider.dart';
 
 class QuestionsScreen extends ConsumerStatefulWidget {
@@ -82,9 +83,11 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
     final questionsAsync = ref.watch(questionProvider);
     final theme = Theme.of(context);
 
-    return Scaffold(
-      appBar: AppBar(title: Text(context.tr('my_questions'))),
+    return AppScaffold(
+      title: context.tr('my_questions'),
+      padding: EdgeInsets.zero,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.primaryDark,
         onPressed: () {
           final questions = questionsAsync.valueOrNull ?? [];
           if (questions.length >= AppConstants.maxQuestions) {
@@ -98,6 +101,7 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
         child: const Icon(Icons.add),
       ),
       body: questionsAsync.when(
+
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Error: $e')),
         data: (questions) {
@@ -112,10 +116,11 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
             itemBuilder: (_, i) {
               final q = questions[i];
               return Card(
+                color: AppColors.surface,
                 child: ListTile(
                   leading: CircleAvatar(
-                    backgroundColor: AppColors.purpleSurface,
-                    child: Text('${q.orderNum}', style: TextStyle(color: AppColors.purple)),
+                    backgroundColor: AppColors.primarySurface,
+                    child: Text('${q.orderNum}', style: TextStyle(color: AppColors.primary)),
                   ),
                   title: Text(q.questionText, maxLines: 2, overflow: TextOverflow.ellipsis),
                   trailing: IconButton(

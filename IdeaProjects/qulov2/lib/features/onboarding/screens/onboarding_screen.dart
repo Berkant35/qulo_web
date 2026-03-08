@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
+import '../../../core/widgets/app_scaffold.dart';
 import '../../../routing/route_names.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -46,9 +47,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final pages = _getPages(context);
     final isLast = _page == pages.length - 1;
 
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
+    return AppScaffold(
+      padding: EdgeInsets.zero,
+      body: Column(
           children: [
             Expanded(
               child: PageView.builder(
@@ -89,7 +90,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             const SizedBox(height: AppSpacing.lg),
           ],
         ),
-      ),
     );
   }
 
@@ -99,7 +99,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(p.icon, size: 80, color: AppColors.purple),
+          Icon(p.icon, size: 80, color: AppColors.primary),
           const SizedBox(height: AppSpacing.xl),
           Text(p.title,
               style: theme.textTheme.headlineSmall,
@@ -107,7 +107,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           const SizedBox(height: AppSpacing.md),
           Text(p.subtitle,
               style: theme.textTheme.bodyLarge
-                  ?.copyWith(color: AppColors.onSurfaceVariant),
+                  ?.copyWith(color: AppColors.textSecondary),
               textAlign: TextAlign.center),
         ],
       ),
@@ -124,7 +124,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           height: 8,
           margin: const EdgeInsets.symmetric(horizontal: 4),
           decoration: BoxDecoration(
-            color: i == _page ? AppColors.purple : AppColors.outline,
+            color: i == _page ? AppColors.primary : AppColors.textHint,
             borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
           ),
         ),

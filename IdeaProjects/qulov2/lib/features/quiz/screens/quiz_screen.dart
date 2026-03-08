@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/l10n/l10n.dart';
+import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/quiz_provider.dart';
 import '../widgets/answer_button.dart';
 import '../widgets/power_bar.dart';
@@ -32,17 +33,20 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
   }
 
   Future<void> _answer(int index) async {
-    try {
-      final result = await ref.read(quizProvider.notifier).answer(index);
-      if (!mounted) return;
-      if (result.sessionStatus == 'COMPLETED') {
-        _showResult(matched: true);
-      } else if (result.sessionStatus == 'FAILED') {
-        _showResult(matched: false);
-      } else if (result.awaitingAnswer != true) {
-        ref.read(quizProvider.notifier).fetchCurrentQuestion();
-      }
-    } catch (_) {}
+    final result = await ref.read(quizProvider.notifier).answer(index);
+    if (!mounted) return;
+    result.when(
+      success: (data) {
+        if (data.sessionStatus == 'COMPLETED') {
+          _showResult(matched: true);
+        } else if (data.sessionStatus == 'FAILED') {
+          _showResult(matched: false);
+        } else if (data.awaitingAnswer != true) {
+          ref.read(quizProvider.notifier).fetchCurrentQuestion();
+        }
+      },
+      failure: (_) {},
+    );
   }
 
   void _showResult({required bool matched}) {
@@ -52,7 +56,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
       builder: (_) => AlertDialog(
         icon: Icon(
           matched ? Icons.favorite : Icons.close,
-          color: matched ? AppColors.green : AppColors.error,
+          color: matched ? AppColors.secondary : AppColors.error,
           size: 48,
         ),
         title: Text(matched ? context.tr('quiz_match') : context.tr('quiz_failed')),
@@ -78,16 +82,15 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
     final theme = Theme.of(context);
     final question = quiz.currentQuestion;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: question != null
-            ? Text('${question.questionNumber}/${question.totalQuestions}')
-            : null,
-        leading: IconButton(
-          icon: const Icon(Icons.close),
-          onPressed: () => context.pop(),
-        ),
+    return AppScaffold(
+      title: question != null
+          ? '${question.questionNumber}/${question.totalQuestions}'
+          : '',
+      leading: IconButton(
+        icon: const Icon(Icons.close),
+        onPressed: () => context.pop(),
       ),
+      padding: EdgeInsets.zero,
       body: quiz.isLoading || question == null
           ? const Center(child: CircularProgressIndicator())
           : Padding(

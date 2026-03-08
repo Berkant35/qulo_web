@@ -29,16 +29,16 @@ class AnswerButton extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             border: Border.all(
-              color: isDisabled ? AppColors.outline : AppColors.purple,
+              color: isDisabled ? AppColors.border : AppColors.primary,
               width: 1.5,
             ),
             borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-            color: isDisabled ? AppColors.surfaceVariant : null,
+            color: isDisabled ? AppColors.surfaceElevated : AppColors.surface,
           ),
           child: Text(
             text,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: isDisabled ? AppColors.onSurfaceVariant : null,
+                  color: isDisabled ? AppColors.textHint : AppColors.textPrimary,
                 ),
             textAlign: TextAlign.center,
           ),

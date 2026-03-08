@@ -30,7 +30,7 @@ class PowerBar extends ConsumerWidget {
           return Padding(
             padding: const EdgeInsets.only(right: AppSpacing.sm),
             child: ActionChip(
-              avatar: Icon(p.$2, size: 18, color: AppColors.purpleDark),
+              avatar: Icon(p.$2, size: 18, color: AppColors.primaryDark),
               label: Text(context.tr(p.$3)),
               onPressed: (isHint && !hasHint)
                   ? null

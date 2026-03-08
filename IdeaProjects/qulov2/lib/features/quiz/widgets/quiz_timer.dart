@@ -54,7 +54,7 @@ class _QuizTimerState extends State<QuizTimer> {
   @override
   Widget build(BuildContext context) {
     final progress = _remaining / widget.seconds;
-    final color = progress > 0.3 ? AppColors.green : AppColors.error;
+    final color = progress > 0.3 ? AppColors.secondary : AppColors.error;
 
     return Column(
       children: [
@@ -63,7 +63,7 @@ class _QuizTimerState extends State<QuizTimer> {
           child: LinearProgressIndicator(
             value: progress,
             minHeight: 6,
-            backgroundColor: AppColors.outline,
+            backgroundColor: AppColors.border,
             valueColor: AlwaysStoppedAnimation(color),
           ),
         ),
