@@ -35,11 +35,13 @@ class QuizRepository implements IQuizRepository {
     String sessionId, {
     required int selectedAnswer,
     String? powerUsed,
+    int? timeSpent,
   }) async {
     try {
       final response = await _service.answerQuestion(sessionId, {
         'selected_answer': selectedAnswer,
         if (powerUsed != null) 'power_used': powerUsed,
+        if (timeSpent != null) 'time_spent': timeSpent,
       });
       return Success(response);
     } on DioException catch (e) {

@@ -61,7 +61,7 @@ abstract class IDiamondRepository {
 
   Future<Result<DiamondHistoryResponse>> getHistory({int page = 1, int limit = 20});
 
-  Future<Result<void>> purchase(String iapProductId);
+  Future<Result<void>> purchase(String iapProductId, {String? transactionId});
 }
 
 // ─── Match ───
@@ -114,6 +114,7 @@ abstract class IQuizRepository {
     String sessionId, {
     required int selectedAnswer,
     String? powerUsed,
+    int? timeSpent,
   });
 
   Future<Result<QuizResultModel>> getSessionResult(String sessionId);

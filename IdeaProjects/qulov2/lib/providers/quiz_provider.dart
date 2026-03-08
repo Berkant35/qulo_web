@@ -70,13 +70,14 @@ class QuizNotifier extends Notifier<QuizState> {
     );
   }
 
-  Future<Result<QuizAnswerResponse>> answer(int selectedAnswer, {String? powerUsed}) async {
+  Future<Result<QuizAnswerResponse>> answer(int selectedAnswer, {String? powerUsed, int? timeSpent}) async {
     if (state.sessionId == null) return Failure(const UnknownFailure(message: 'No active session'));
     state = state.copyWith(isLoading: true, failure: null);
     final result = await ref.read(quizRepositoryProvider).answerQuestion(
       state.sessionId!,
       selectedAnswer: selectedAnswer,
       powerUsed: powerUsed,
+      timeSpent: timeSpent,
     );
     result.when(
       success: (data) => state = state.copyWith(lastAnswer: data, isLoading: false),

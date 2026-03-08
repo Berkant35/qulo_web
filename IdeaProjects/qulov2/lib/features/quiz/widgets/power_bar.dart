@@ -5,13 +5,18 @@ import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
-import 'package:qulo_v2/providers/quiz_provider.dart';
 
 class PowerBar extends ConsumerWidget {
   final String sessionId;
   final bool hasHint;
+  final void Function(String power)? onPowerUsed;
 
-  const PowerBar({super.key, required this.sessionId, this.hasHint = false});
+  const PowerBar({
+    super.key,
+    required this.sessionId,
+    this.hasHint = false,
+    this.onPowerUsed,
+  });
 
   static const _powers = [
     ('COPY', QIcons.icCopy, 'power_copy'),
@@ -36,7 +41,11 @@ class PowerBar extends ConsumerWidget {
               label: Text(context.tr(p.$3)),
               onPressed: (isHint && !hasHint)
                   ? null
-                  : () => ref.read(quizProvider.notifier).answer(0, powerUsed: p.$1),
+                  : () {
+                      if (onPowerUsed != null) {
+                        onPowerUsed!(p.$1);
+                      }
+                    },
             ),
           );
         }).toList(),
