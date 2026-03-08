@@ -306,6 +306,18 @@ class AppLocalizations {
     'sub_premium_no_ads': 'Reklam yok',
     'sub_premium_badge': 'Premium rozeti',
 
+    // Upsell
+    'diamonds_empty': 'Elmasların bitti!',
+    'swipe_limit_reached': 'Bugünlük swipe hakkın doldu',
+    'first_match_congrats': 'Tebrikler, ilk eşleşmen!',
+    'want_more_matches': 'Daha fazla eşleşme ister misin?',
+    'special_offer': 'Özel Teklif',
+    'limited_time': 'Sınırlı süre',
+    'upgrade_now': 'Şimdi Yükselt',
+    'get_diamonds': 'Elmas Al',
+    'maybe_later': 'Belki sonra',
+    'unlock_unlimited': 'Sınırsız erişimin kilidini aç',
+
     // Frequency
     'freq_yes': 'Evet',
     'freq_no': 'Hayır',
@@ -593,6 +605,18 @@ class AppLocalizations {
     'sub_premium_who_viewed': 'See who viewed you',
     'sub_premium_no_ads': 'No ads',
     'sub_premium_badge': 'Premium badge',
+
+    // Upsell
+    'diamonds_empty': 'Out of diamonds!',
+    'swipe_limit_reached': 'Daily swipe limit reached',
+    'first_match_congrats': 'Congrats on your first match!',
+    'want_more_matches': 'Want more matches?',
+    'special_offer': 'Special Offer',
+    'limited_time': 'Limited time',
+    'upgrade_now': 'Upgrade Now',
+    'get_diamonds': 'Get Diamonds',
+    'maybe_later': 'Maybe later',
+    'unlock_unlimited': 'Unlock unlimited access',
 
     // Frequency
     'freq_yes': 'Yes',
