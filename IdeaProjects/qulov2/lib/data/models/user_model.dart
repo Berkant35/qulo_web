@@ -58,6 +58,8 @@ class UserModel extends Equatable {
   final String? createdAt;
   @JsonKey(name: 'badge_rewards_claimed')
   final List<String> badgeRewardsClaimed;
+  @JsonKey(name: 'question_count', defaultValue: 0)
+  final int questionCount;
   final UserDetailsModel? details;
 
   const UserModel({
@@ -93,6 +95,7 @@ class UserModel extends Equatable {
     this.timesShownCount = 0,
     this.createdAt,
     this.badgeRewardsClaimed = const [],
+    this.questionCount = 0,
     this.details,
   });
 
@@ -101,5 +104,5 @@ class UserModel extends Equatable {
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [id, questionCount];
 }

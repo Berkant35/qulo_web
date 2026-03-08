@@ -43,6 +43,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
           ?.map((e) => e as String)
           .toList() ??
       const [],
+  questionCount: (json['question_count'] as num?)?.toInt() ?? 0,
   details: json['details'] == null
       ? null
       : UserDetailsModel.fromJson(json['details'] as Map<String, dynamic>),
@@ -81,5 +82,6 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
   'times_shown_count': instance.timesShownCount,
   'created_at': instance.createdAt,
   'badge_rewards_claimed': instance.badgeRewardsClaimed,
+  'question_count': instance.questionCount,
   'details': instance.details,
 };
