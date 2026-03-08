@@ -5,6 +5,13 @@ import 'package:qulo_v2/core/network/result.dart';
 import 'package:qulo_v2/core/services/revenuecat_service.dart';
 import 'package:qulo_v2/data/models/auth_model.dart';
 import 'package:qulo_v2/providers/api_provider.dart';
+import 'package:qulo_v2/providers/user_provider.dart';
+import 'package:qulo_v2/providers/match_provider.dart';
+import 'package:qulo_v2/providers/diamond_provider.dart';
+import 'package:qulo_v2/providers/power_provider.dart';
+import 'package:qulo_v2/providers/question_provider.dart';
+import 'package:qulo_v2/providers/notification_provider.dart';
+import 'package:qulo_v2/providers/subscription_provider.dart';
 
 enum AuthStatus { initial, authenticated, unauthenticated }
 
@@ -114,6 +121,8 @@ class AuthNotifier extends Notifier<AuthState> {
           userId: data.userId,
           isLoading: false,
         );
+        // Initialize push notifications after successful login
+        ref.read(notificationProvider.notifier).init();
       case Failure(:final failure):
         state = state.copyWith(isLoading: false, failure: failure);
     }
@@ -133,6 +142,17 @@ class AuthNotifier extends Notifier<AuthState> {
       // RevenueCat logout failure shouldn't block logout
     }
     await _clearTokens();
+
+    // Invalidate all auth-dependent providers to prevent stale data crashes
+    ref.invalidate(userProvider);
+    ref.invalidate(discoverProvider);
+    ref.invalidate(matchListProvider);
+    ref.invalidate(diamondProvider);
+    ref.invalidate(powerProvider);
+    ref.invalidate(questionProvider);
+    ref.invalidate(subscriptionProvider);
+    ref.invalidate(notificationProvider);
+
     state = const AuthState(status: AuthStatus.unauthenticated);
   }
 
