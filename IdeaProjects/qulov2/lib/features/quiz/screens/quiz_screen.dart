@@ -58,8 +58,8 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
         name: 'quiz_result',
         title: matched ? context.tr('quiz_match') : context.tr('quiz_failed'),
         message: matched ? context.tr('quiz_match_desc') : context.tr('quiz_failed_desc'),
-        iconWidget: Icon(
-          matched ? Icons.favorite : Icons.close,
+        iconWidget: QIcon(
+          matched ? QIcons.icHeart : QIcons.icX,
           color: matched ? AppColors.secondary : AppColors.error,
           size: 48,
         ),
@@ -81,7 +81,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
           ? '${question.questionNumber}/${question.totalQuestions}'
           : '',
       leading: IconButton(
-        icon: const Icon(Icons.close),
+        icon: QIcon(QIcons.icX, size: 24),
         onPressed: () => ref.read(navigationServiceProvider).pop(),
       ),
       padding: EdgeInsets.zero,

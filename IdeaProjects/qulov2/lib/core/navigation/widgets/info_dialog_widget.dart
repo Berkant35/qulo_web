@@ -9,9 +9,7 @@ class InfoDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      icon: dialog.icon != null
-          ? Icon(dialog.icon, color: dialog.iconColor, size: 48)
-          : null,
+      icon: dialog.iconWidget,
       title: Text(dialog.title),
       content: Text(dialog.message),
       actions: [

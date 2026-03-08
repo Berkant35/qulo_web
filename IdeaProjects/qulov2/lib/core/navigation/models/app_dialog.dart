@@ -34,16 +34,14 @@ class ConfirmDialog extends AppDialog {
 class InfoDialog extends AppDialog {
   final String title;
   final String message;
-  final IconData? icon;
-  final Color? iconColor;
+  final Widget? iconWidget;
   final String? buttonText;
 
   const InfoDialog({
     required super.name,
     required this.title,
     required this.message,
-    this.icon,
-    this.iconColor,
+    this.iconWidget,
     this.buttonText,
     super.barrierDismissible = false,
     super.useRootNavigator,
