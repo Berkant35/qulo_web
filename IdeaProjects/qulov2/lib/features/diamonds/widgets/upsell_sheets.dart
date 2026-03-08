@@ -6,6 +6,84 @@ import 'package:qulo_v2/core/widgets/app_button.dart';
 import 'package:qulo_v2/core/widgets/diamond_icon.dart';
 import 'package:qulo_v2/features/diamonds/widgets/purchase_grid.dart';
 
+// ─── Base Upsell Sheet ───
+// Shared layout for all upsell bottom sheets
+class _BaseUpsellSheet extends StatelessWidget {
+  final Widget icon;
+  final String title;
+  final String subtitle;
+  final Widget content;
+  final VoidCallback? onDismiss;
+
+  const _BaseUpsellSheet({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.content,
+    this.onDismiss,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.pagePadding,
+        AppSpacing.lg,
+        AppSpacing.pagePadding,
+        AppSpacing.xxl,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 40,
+            height: 4,
+            decoration: BoxDecoration(
+              color: theme.hintColor,
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.xl),
+          icon,
+          const SizedBox(height: AppSpacing.lg),
+          Text(
+            title,
+            style: theme.textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          Text(
+            subtitle,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: AppSpacing.xl),
+          content,
+          const SizedBox(height: AppSpacing.lg),
+          GestureDetector(
+            onTap: onDismiss ?? () => Navigator.of(context).pop(),
+            child: Padding(
+              padding: const EdgeInsets.all(AppSpacing.sm),
+              child: Text(
+                context.tr('maybe_later'),
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.hintColor,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 // ─── Premium Upsell Sheet ───
 // Used for: onboarding upsell, first match upsell
 class PremiumUpsellSheet extends StatelessWidget {
@@ -24,58 +102,18 @@ class PremiumUpsellSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        AppSpacing.pagePadding,
-        AppSpacing.lg,
-        AppSpacing.pagePadding,
-        AppSpacing.xxl,
-      ),
-      child: Column(
+    return _BaseUpsellSheet(
+      icon: const DiamondIcon.purple(size: 48),
+      title: isFirstMatch
+          ? context.tr('first_match_congrats')
+          : context.tr('premium_cta'),
+      subtitle: isFirstMatch
+          ? context.tr('want_more_matches')
+          : context.tr('unlock_unlimited'),
+      onDismiss: onDismiss,
+      content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Drag handle
-          Container(
-            width: 40,
-            height: 4,
-            decoration: BoxDecoration(
-              color: theme.hintColor,
-              borderRadius: BorderRadius.circular(2),
-            ),
-          ),
-          const SizedBox(height: AppSpacing.xl),
-
-          // Icon
-          const DiamondIcon.purple(size: 48),
-          const SizedBox(height: AppSpacing.lg),
-
-          // Title
-          Text(
-            isFirstMatch
-                ? context.tr('first_match_congrats')
-                : context.tr('premium_cta'),
-            style: theme.textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.sm),
-
-          // Subtitle
-          Text(
-            isFirstMatch
-                ? context.tr('want_more_matches')
-                : context.tr('unlock_unlimited'),
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.xl),
-
-          // Feature highlights
           _FeatureRow(
             icon: Icons.all_inclusive,
             text: context.tr('sub_premium_swipes'),
@@ -96,34 +134,17 @@ class PremiumUpsellSheet extends StatelessWidget {
             text: context.tr('sub_premium_boost'),
           ),
           const SizedBox(height: AppSpacing.xl),
-
-          // Plus button
           AppButton(
-            label: '${context.tr('sub_plan_plus')} — ${context.tr('sub_price_plus')}',
+            label:
+                '${context.tr('sub_plan_plus')} — ${context.tr('sub_price_plus')}',
             variant: AppButtonVariant.secondary,
             onPressed: onPlusTap,
           ),
           const SizedBox(height: AppSpacing.md),
-
-          // Premium button
           AppButton(
-            label: '${context.tr('sub_plan_premium')} — ${context.tr('sub_price_premium')}',
+            label:
+                '${context.tr('sub_plan_premium')} — ${context.tr('sub_price_premium')}',
             onPressed: onPremiumTap,
-          ),
-          const SizedBox(height: AppSpacing.lg),
-
-          // Maybe later
-          GestureDetector(
-            onTap: onDismiss ?? () => Navigator.of(context).pop(),
-            child: Padding(
-              padding: const EdgeInsets.all(AppSpacing.sm),
-              child: Text(
-                context.tr('maybe_later'),
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.hintColor,
-                ),
-              ),
-            ),
           ),
         ],
       ),
@@ -179,72 +200,12 @@ class ConsumableUpsellSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        AppSpacing.pagePadding,
-        AppSpacing.lg,
-        AppSpacing.pagePadding,
-        AppSpacing.xxl,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Drag handle
-          Container(
-            width: 40,
-            height: 4,
-            decoration: BoxDecoration(
-              color: theme.hintColor,
-              borderRadius: BorderRadius.circular(2),
-            ),
-          ),
-          const SizedBox(height: AppSpacing.xl),
-
-          // Icon
-          const DiamondIcon.purple(size: 48),
-          const SizedBox(height: AppSpacing.lg),
-
-          // Title
-          Text(
-            context.tr('diamonds_empty'),
-            style: theme.textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.sm),
-
-          // Subtitle
-          Text(
-            context.tr('get_diamonds'),
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.xl),
-
-          // Purchase grid
-          PurchaseGrid(onPurchase: onPurchase),
-          const SizedBox(height: AppSpacing.xl),
-
-          // Maybe later
-          GestureDetector(
-            onTap: onDismiss ?? () => Navigator.of(context).pop(),
-            child: Padding(
-              padding: const EdgeInsets.all(AppSpacing.sm),
-              child: Text(
-                context.tr('maybe_later'),
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.hintColor,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+    return _BaseUpsellSheet(
+      icon: const DiamondIcon.purple(size: 48),
+      title: context.tr('diamonds_empty'),
+      subtitle: context.tr('get_diamonds'),
+      onDismiss: onDismiss,
+      content: PurchaseGrid(onPurchase: onPurchase),
     );
   }
 }
@@ -263,86 +224,26 @@ class SwipeLimitSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        AppSpacing.pagePadding,
-        AppSpacing.lg,
-        AppSpacing.pagePadding,
-        AppSpacing.xxl,
+    return _BaseUpsellSheet(
+      icon: Container(
+        width: 64,
+        height: 64,
+        decoration: const BoxDecoration(
+          color: AppColors.primarySurface,
+          shape: BoxShape.circle,
+        ),
+        child: const Icon(
+          Icons.swipe,
+          color: AppColors.primary,
+          size: 32,
+        ),
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Drag handle
-          Container(
-            width: 40,
-            height: 4,
-            decoration: BoxDecoration(
-              color: theme.hintColor,
-              borderRadius: BorderRadius.circular(2),
-            ),
-          ),
-          const SizedBox(height: AppSpacing.xl),
-
-          // Icon
-          Container(
-            width: 64,
-            height: 64,
-            decoration: BoxDecoration(
-              color: AppColors.primarySurface,
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.swipe,
-              color: AppColors.primary,
-              size: 32,
-            ),
-          ),
-          const SizedBox(height: AppSpacing.lg),
-
-          // Title
-          Text(
-            context.tr('swipe_limit_reached'),
-            style: theme.textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.sm),
-
-          // Subtitle
-          Text(
-            context.tr('unlock_unlimited'),
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.xl),
-
-          // Upgrade button
-          AppButton(
-            label: context.tr('upgrade_now'),
-            onPressed: onUpgrade,
-          ),
-          const SizedBox(height: AppSpacing.lg),
-
-          // Maybe later
-          GestureDetector(
-            onTap: onDismiss ?? () => Navigator.of(context).pop(),
-            child: Padding(
-              padding: const EdgeInsets.all(AppSpacing.sm),
-              child: Text(
-                context.tr('maybe_later'),
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.hintColor,
-                ),
-              ),
-            ),
-          ),
-        ],
+      title: context.tr('swipe_limit_reached'),
+      subtitle: context.tr('unlock_unlimited'),
+      onDismiss: onDismiss,
+      content: AppButton(
+        label: context.tr('upgrade_now'),
+        onPressed: onUpgrade,
       ),
     );
   }
