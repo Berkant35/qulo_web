@@ -18,6 +18,7 @@ import {
   uploadPhotoHandler,
   deletePhotoHandler,
   boostHandler,
+  claimBadgeRewardHandler,
   deleteAccountHandler,
 } from "../controllers/user.controller.js";
 import { AppError } from "../utils/errors.js";
@@ -46,6 +47,7 @@ router.patch("/me/location", validate(updateLocationSchema), updateLocationHandl
 router.patch("/me/push-token", validate(updatePushTokenSchema), updatePushTokenHandler);
 router.post("/me/photos", upload.single("photo"), uploadPhotoHandler);
 router.post("/me/boost", boostHandler);
+router.post("/me/claim-badge-reward", claimBadgeRewardHandler);
 router.delete("/me/photos/:index", deletePhotoHandler);
 router.delete("/me", deleteAccountHandler);
 

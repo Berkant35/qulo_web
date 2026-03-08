@@ -12,6 +12,7 @@ export const updateProfileSchema = z.object({
   city: z.string().max(100).optional(),
   country: z.string().max(100).optional(),
   locale: z.enum(["tr", "en"]).optional(),
+  photos: z.array(z.string().url()).max(6).optional(),
 });
 
 export type UpdateProfileInput = z.infer<typeof updateProfileSchema>;

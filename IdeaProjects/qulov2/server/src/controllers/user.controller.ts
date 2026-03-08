@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
 import { userService } from "../services/user.service.js";
+import { badgeService } from "../services/badge.service.js";
 import type {
   UpdateProfileInput,
   UpdateDetailsInput,
@@ -93,6 +94,17 @@ export async function boostHandler(req: Request, res: Response, next: NextFuncti
     res.json(result);
   } catch (err) {
     next(err);
+  }
+}
+
+export async function claimBadgeRewardHandler(req: Request, res: Response, next: NextFunction) {
+  try {
+    const userId = req.user!.userId;
+    const { level } = req.body;
+    const result = await badgeService.claimReward(userId, level);
+    res.json(result);
+  } catch (error) {
+    next(error);
   }
 }
 
