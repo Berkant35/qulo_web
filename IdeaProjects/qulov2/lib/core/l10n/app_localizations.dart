@@ -98,6 +98,13 @@ class AppLocalizations {
     'chat': 'Sohbet',
     'say_hello': 'Merhaba de!',
     'message_hint': 'Mesaj...',
+    'type_message': 'Mesaj yaz...',
+
+    // Matches extras
+    'new_matches': 'Yeni Eslesmeler',
+    'solve_to_meet': 'Sorulari Coz',
+    'online': 'Cevrimici',
+    'offline': 'Cevrimdisi',
 
     // Profile
     'profile': 'Profil',
@@ -173,6 +180,19 @@ class AppLocalizations {
     'privacy_policy': 'Gizlilik Politikası',
     'and_word': 've',
     'must_accept_terms': 'Devam etmek için koşulları kabul etmelisiniz',
+
+    // Location step
+    'step_location': 'Konumunu paylaş',
+    'step_location_desc':
+        'Yakınındaki kişilerle eşleşebilmemiz için konumuna ihtiyacımız var.',
+    'enable_location': 'Konumu Etkinleştir',
+    'location_granted': 'Konum alındı',
+    'location_skip': 'Şimdilik atla',
+    'location_service_disabled': 'Konum servisleri kapalı. Lütfen ayarlardan açın.',
+    'location_permission_denied': 'Konum izni reddedildi.',
+    'location_permission_denied_forever':
+        'Konum izni kalıcı olarak reddedildi. Ayarlardan etkinleştirin.',
+    'open_settings': 'Ayarları Aç',
   };
 
   static const _en = <String, String>{
@@ -249,6 +269,13 @@ class AppLocalizations {
     'chat': 'Chat',
     'say_hello': 'Say hello!',
     'message_hint': 'Message...',
+    'type_message': 'Type a message...',
+
+    // Matches extras
+    'new_matches': 'New Matches',
+    'solve_to_meet': 'Solve Questions',
+    'online': 'Online',
+    'offline': 'Offline',
 
     // Profile
     'profile': 'Profile',
@@ -324,6 +351,19 @@ class AppLocalizations {
     'privacy_policy': 'Privacy Policy',
     'and_word': 'and',
     'must_accept_terms': 'You must accept the terms to continue',
+
+    // Location step
+    'step_location': 'Share your location',
+    'step_location_desc':
+        'We need your location to match you with people nearby.',
+    'enable_location': 'Enable Location',
+    'location_granted': 'Location acquired',
+    'location_skip': 'Skip for now',
+    'location_service_disabled': 'Location services are off. Please enable in settings.',
+    'location_permission_denied': 'Location permission denied.',
+    'location_permission_denied_forever':
+        'Location permission permanently denied. Enable in settings.',
+    'open_settings': 'Open Settings',
   };
 }
 
