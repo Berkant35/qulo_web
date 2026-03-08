@@ -5,13 +5,15 @@ import 'package:qulo_v2/core/network/result.dart';
 import 'package:qulo_v2/core/network/services/user_service.dart';
 import 'package:qulo_v2/data/models/user_model.dart';
 import 'package:qulo_v2/data/models/user_details_model.dart';
+import 'package:qulo_v2/data/repositories/interfaces.dart';
 
-class UserRepository {
+class UserRepository implements IUserRepository {
   final UserService _service;
   final NetworkManager _network;
 
   UserRepository(this._service, this._network);
 
+  @override
   Future<Result<UserModel>> getMe() async {
     try {
       final response = await _service.getMe();
@@ -21,6 +23,7 @@ class UserRepository {
     }
   }
 
+  @override
   Future<Result<UserModel>> updateProfile(Map<String, dynamic> data) async {
     try {
       final response = await _service.updateProfile(data);
@@ -30,6 +33,7 @@ class UserRepository {
     }
   }
 
+  @override
   Future<Result<UserDetailsModel>> updateDetails(Map<String, dynamic> data) async {
     try {
       final response = await _service.updateDetails(data);
@@ -39,6 +43,7 @@ class UserRepository {
     }
   }
 
+  @override
   Future<Result<void>> updateLocation({required double lat, required double lng}) async {
     try {
       await _service.updateLocation({'lat': lat, 'lng': lng});
@@ -48,6 +53,7 @@ class UserRepository {
     }
   }
 
+  @override
   Future<Result<void>> updatePushToken(String token) async {
     try {
       await _service.updatePushToken({'push_token': token});
@@ -57,6 +63,7 @@ class UserRepository {
     }
   }
 
+  @override
   Future<Result<Map<String, dynamic>>> uploadPhoto(Uint8List bytes, String mimeType) async {
     final ext = mimeType == 'image/png' ? 'png' : 'jpg';
     final formData = FormData.fromMap({
@@ -69,10 +76,12 @@ class UserRepository {
     return _network.upload('/users/me/photos', data: formData);
   }
 
+  @override
   Future<Result<Map<String, dynamic>>> deletePhoto(int index) async {
     return _network.delete('/users/me/photos/$index');
   }
 
+  @override
   Future<Result<void>> deleteAccount() async {
     try {
       await _service.deleteAccount();
@@ -82,14 +91,17 @@ class UserRepository {
     }
   }
 
+  @override
   Future<Result<Map<String, dynamic>>> boost() async {
     return _network.post('/users/me/boost');
   }
 
+  @override
   Future<Result<Map<String, dynamic>>> claimBadgeReward(String level) async {
     return _network.post('/users/me/claim-badge-reward', data: {'level': level});
   }
 
+  @override
   Future<Result<UserModel>> reorderPhotos(List<String> photos) async {
     try {
       final response = await _service.updateProfile({'photos': photos});

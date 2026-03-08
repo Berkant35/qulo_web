@@ -3,13 +3,15 @@ import 'package:qulo_v2/core/network/network_manager.dart';
 import 'package:qulo_v2/core/network/result.dart';
 import 'package:qulo_v2/core/network/services/question_service.dart';
 import 'package:qulo_v2/data/models/question_model.dart';
+import 'package:qulo_v2/data/repositories/interfaces.dart';
 
-class QuestionRepository {
+class QuestionRepository implements IQuestionRepository {
   final QuestionService _service;
   final NetworkManager _network;
 
   QuestionRepository(this._service, this._network);
 
+  @override
   Future<Result<List<QuestionModel>>> getMyQuestions() async {
     try {
       final response = await _service.getMyQuestions();
@@ -19,6 +21,7 @@ class QuestionRepository {
     }
   }
 
+  @override
   Future<Result<QuestionModel>> createQuestion(Map<String, dynamic> data) async {
     try {
       final response = await _service.createQuestion(data);
@@ -28,6 +31,7 @@ class QuestionRepository {
     }
   }
 
+  @override
   Future<Result<QuestionModel>> updateQuestion(int orderNum, Map<String, dynamic> data) async {
     try {
       final response = await _service.updateQuestion(orderNum, data);
@@ -37,6 +41,7 @@ class QuestionRepository {
     }
   }
 
+  @override
   Future<Result<void>> deleteQuestion(int orderNum) async {
     try {
       await _service.deleteQuestion(orderNum);
@@ -46,6 +51,7 @@ class QuestionRepository {
     }
   }
 
+  @override
   Future<Result<int>> getQuestionCount() async {
     return _network.get<int>(
       '/questions/count/me',

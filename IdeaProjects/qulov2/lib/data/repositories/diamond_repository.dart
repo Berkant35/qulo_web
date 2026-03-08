@@ -2,12 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:qulo_v2/core/network/result.dart';
 import 'package:qulo_v2/core/network/services/diamond_service.dart';
 import 'package:qulo_v2/data/models/diamond_model.dart';
+import 'package:qulo_v2/data/repositories/interfaces.dart';
 
-class DiamondRepository {
+class DiamondRepository implements IDiamondRepository {
   final DiamondService _service;
 
   DiamondRepository(this._service);
 
+  @override
   Future<Result<DiamondBalance>> getBalance() async {
     try {
       final response = await _service.getBalance();
@@ -17,6 +19,7 @@ class DiamondRepository {
     }
   }
 
+  @override
   Future<Result<DiamondHistoryResponse>> getHistory({int page = 1, int limit = 20}) async {
     try {
       final response = await _service.getHistory(page, limit);
@@ -26,6 +29,7 @@ class DiamondRepository {
     }
   }
 
+  @override
   Future<Result<void>> purchase(String iapProductId) async {
     try {
       await _service.purchase({'product_id': iapProductId});

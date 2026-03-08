@@ -2,13 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:qulo_v2/core/network/network_manager.dart';
 import 'package:qulo_v2/core/network/result.dart';
 import 'package:qulo_v2/core/network/services/passport_service.dart';
+import 'package:qulo_v2/data/repositories/interfaces.dart';
 
-class PassportRepository {
+class PassportRepository implements IPassportRepository {
   final PassportService _service;
   final NetworkManager _network;
 
   PassportRepository(this._service, this._network);
 
+  @override
   Future<Result<Map<String, dynamic>>> activate({
     required String city,
     required double lat,
@@ -21,6 +23,7 @@ class PassportRepository {
     });
   }
 
+  @override
   Future<Result<void>> deactivate() async {
     try {
       await _service.deactivate();

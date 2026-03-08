@@ -2,12 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:qulo_v2/core/network/result.dart';
 import 'package:qulo_v2/core/network/services/quiz_service.dart';
 import 'package:qulo_v2/data/models/quiz_model.dart';
+import 'package:qulo_v2/data/repositories/interfaces.dart';
 
-class QuizRepository {
+class QuizRepository implements IQuizRepository {
   final QuizService _service;
 
   QuizRepository(this._service);
 
+  @override
   Future<Result<QuizStartResponse>> startSession(String targetId) async {
     try {
       final response = await _service.startSession({'target_id': targetId});
@@ -17,6 +19,7 @@ class QuizRepository {
     }
   }
 
+  @override
   Future<Result<QuizQuestionModel>> getCurrentQuestion(String sessionId) async {
     try {
       final response = await _service.getCurrentQuestion(sessionId);
@@ -26,6 +29,7 @@ class QuizRepository {
     }
   }
 
+  @override
   Future<Result<QuizAnswerResponse>> answerQuestion(
     String sessionId, {
     required int selectedAnswer,
@@ -42,6 +46,7 @@ class QuizRepository {
     }
   }
 
+  @override
   Future<Result<QuizResultModel>> getSessionResult(String sessionId) async {
     try {
       final response = await _service.getSessionResult(sessionId);

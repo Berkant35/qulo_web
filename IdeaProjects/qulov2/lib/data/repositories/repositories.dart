@@ -1,3 +1,4 @@
+export 'interfaces.dart';
 export 'auth_repository.dart';
 export 'chat_repository.dart';
 export 'diamond_repository.dart';
