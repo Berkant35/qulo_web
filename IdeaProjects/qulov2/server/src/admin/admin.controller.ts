@@ -1,5 +1,6 @@
 import type { Request, Response } from "express";
 import { adminService } from "./admin.service.js";
+import { campaignService } from "../services/campaign.service.js";
 
 class AdminController {
   loginPage(req: Request, res: Response) {
@@ -120,6 +121,74 @@ class AdminController {
       const admins = await adminService.getAdmins();
       res.render("admins", { admins, session: req.session, csrfToken: req.session.csrfToken, error: e.message });
     }
+  }
+
+  // ── Campaign management ───────────────────────────────────────────
+  async campaigns(req: Request, res: Response) {
+    const page = parseInt(req.query.page as string) || 1;
+    const { campaigns, total } = await campaignService.getCampaigns(page, 20);
+    const totalPages = Math.ceil(total / 20);
+    res.render("campaigns", { campaigns, page, totalPages, total, session: req.session });
+  }
+
+  async campaignNew(req: Request, res: Response) {
+    res.render("campaign-new", { session: req.session, csrfToken: req.session.csrfToken });
+  }
+
+  async campaignCreate(req: Request, res: Response) {
+    const data = req.body;
+    const segment: Record<string, any> = {};
+    if (data.segment_gender) segment.gender = data.segment_gender;
+    if (data.segment_age_min) segment.age_min = parseInt(data.segment_age_min);
+    if (data.segment_age_max) segment.age_max = parseInt(data.segment_age_max);
+    if (data.segment_cities) segment.cities = data.segment_cities.split(',').map((c: string) => c.trim()).filter(Boolean);
+    if (data.segment_subscription) segment.subscription_plan = data.segment_subscription;
+    if (data.segment_last_active) segment.last_active_days = parseInt(data.segment_last_active);
+    if (data.segment_completion_min) segment.profile_completion_min = parseInt(data.segment_completion_min);
+    if (data.segment_completion_max) segment.profile_completion_max = parseInt(data.segment_completion_max);
+    if (data.segment_registered_after) segment.registered_after = data.segment_registered_after;
+
+    const campaign = await campaignService.createCampaign({
+      title: data.title,
+      push_title: data.push_title,
+      push_body: data.push_body,
+      image_url: data.image_url || undefined,
+      action_url: data.action_url || undefined,
+      action_label: data.action_label || undefined,
+      segment,
+      scheduled_at: data.scheduled_at || undefined,
+    }, req.session.adminId!);
+
+    res.redirect(`/admin/campaigns/${campaign.id}`);
+  }
+
+  async campaignDetail(req: Request, res: Response) {
+    const id = req.params.id as string;
+    const campaign = await campaignService.getCampaignDetail(id);
+    if (!campaign) return res.status(404).render("error", { message: "Campaign not found", session: req.session });
+    const breakdown = await campaignService.getCampaignBreakdown(id);
+    res.render("campaign-detail", { campaign, breakdown, session: req.session, csrfToken: req.session.csrfToken });
+  }
+
+  async campaignSend(req: Request, res: Response) {
+    const id = req.params.id as string;
+    try {
+      await campaignService.sendCampaign(id);
+    } catch (_err) {
+      // Ignore — redirect will show updated status
+    }
+    res.redirect(`/admin/campaigns/${id}`);
+  }
+
+  async campaignCancel(req: Request, res: Response) {
+    const id = req.params.id as string;
+    await campaignService.cancelCampaign(id);
+    res.redirect(`/admin/campaigns/${id}`);
+  }
+
+  async campaignPreviewCount(req: Request, res: Response) {
+    const count = await campaignService.previewSegmentCount(req.body);
+    res.json({ count });
   }
 
   async deleteAdminAction(req: Request, res: Response) {

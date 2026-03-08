@@ -15,7 +15,7 @@ const adminLoginLimiter = rateLimit({
 
 // Public
 router.get("/login", csrfGenerate, (req, res) => adminController.loginPage(req, res));
-router.post("/login", adminLoginLimiter, csrfGenerate, csrfValidate, (req, res) => adminController.loginPost(req, res));
+router.post("/login", adminLoginLimiter, csrfValidate, (req, res) => adminController.loginPost(req, res));
 
 // Protected
 router.use(adminAuth);
@@ -37,6 +37,14 @@ router.get("/matches", (req, res) => adminController.matches(req, res));
 router.get("/transactions", (req, res) => adminController.transactions(req, res));
 
 router.get("/quiz-stats", (req, res) => adminController.quizStats(req, res));
+
+router.get("/campaigns", (req, res) => adminController.campaigns(req, res));
+router.get("/campaigns/new", (req, res) => adminController.campaignNew(req, res));
+router.post("/campaigns", csrfValidate, (req, res) => adminController.campaignCreate(req, res));
+router.get("/campaigns/:id", (req, res) => adminController.campaignDetail(req, res));
+router.post("/campaigns/:id/send", csrfValidate, (req, res) => adminController.campaignSend(req, res));
+router.post("/campaigns/:id/cancel", csrfValidate, (req, res) => adminController.campaignCancel(req, res));
+router.post("/campaigns/preview-count", csrfValidate, (req, res) => adminController.campaignPreviewCount(req, res));
 
 router.get("/admins", superAdminOnly, (req, res) => adminController.admins(req, res));
 router.post("/admins", superAdminOnly, csrfValidate, (req, res) => adminController.createAdmin(req, res));
