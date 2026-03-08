@@ -115,7 +115,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
         return err == null;
 
       case 3:
-        // Konum step — her zaman geçerli (skip edilebilir)
         return true;
 
       case 4:
