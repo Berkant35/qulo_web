@@ -78,7 +78,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                         child: Center(
                           child: Text(
                             'Soruları Çöz',
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),
+                            style: theme.textTheme.bodyLarge?.copyWith(color: Colors.white, fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),

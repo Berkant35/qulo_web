@@ -196,18 +196,18 @@ class _MatchCard extends StatelessWidget {
         ),
         title: Text(
           u?.name ?? 'Unknown',
-          style: const TextStyle(fontWeight: FontWeight.w600),
+          style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
         ),
         subtitle: Text(
           u?.city ?? '',
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(color: theme.colorScheme.onSurfaceVariant, fontSize: 13),
+          style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
         ),
         trailing: u?.isOnline == true
-            ? const Text(
+            ? Text(
                 'Online',
-                style: TextStyle(color: AppColors.secondary, fontSize: 12),
+                style: theme.textTheme.labelSmall?.copyWith(color: AppColors.secondary),
               )
             : null,
         onTap: onTap,
