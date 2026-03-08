@@ -61,9 +61,10 @@ class QuizNotifier extends Notifier<QuizState> {
   }
 
   Future<void> fetchCurrentQuestion() async {
-    if (state.sessionId == null) return;
+    final sessionId = state.sessionId;
+    if (sessionId == null) return;
     state = state.copyWith(isLoading: true, failure: null);
-    final result = await ref.read(quizRepositoryProvider).getCurrentQuestion(state.sessionId!);
+    final result = await ref.read(quizRepositoryProvider).getCurrentQuestion(sessionId);
     result.when(
       success: (question) => state = state.copyWith(currentQuestion: question, isLoading: false),
       failure: (f) => state = state.copyWith(isLoading: false, failure: f),
@@ -71,10 +72,11 @@ class QuizNotifier extends Notifier<QuizState> {
   }
 
   Future<Result<QuizAnswerResponse>> answer(int selectedAnswer, {String? powerUsed, int? timeSpent}) async {
-    if (state.sessionId == null) return Failure(const UnknownFailure(message: 'No active session'));
+    final sessionId = state.sessionId;
+    if (sessionId == null) return Failure(const UnknownFailure(message: 'No active session'));
     state = state.copyWith(isLoading: true, failure: null);
     final result = await ref.read(quizRepositoryProvider).answerQuestion(
-      state.sessionId!,
+      sessionId,
       selectedAnswer: selectedAnswer,
       powerUsed: powerUsed,
       timeSpent: timeSpent,
@@ -87,8 +89,9 @@ class QuizNotifier extends Notifier<QuizState> {
   }
 
   Future<Result<QuizResultModel>> getResult() async {
-    if (state.sessionId == null) return Failure(const UnknownFailure(message: 'No active session'));
-    return ref.read(quizRepositoryProvider).getSessionResult(state.sessionId!);
+    final sessionId = state.sessionId;
+    if (sessionId == null) return Failure(const UnknownFailure(message: 'No active session'));
+    return ref.read(quizRepositoryProvider).getSessionResult(sessionId);
   }
 
   void reset() {
