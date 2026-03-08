@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
+import '../theme/app_colors.dart';
 
 class AppDatePicker extends StatelessWidget {
   final DateTime? selectedDate;
@@ -60,6 +61,18 @@ class AppDatePicker extends StatelessWidget {
       firstDate: minDate,
       lastDate: maxDate,
       initialDatePickerMode: DatePickerMode.year,
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            datePickerTheme: DatePickerThemeData(
+              backgroundColor: AppColors.surfaceElevated,
+              headerBackgroundColor: AppColors.primaryDark,
+              headerForegroundColor: Colors.white,
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
 
     if (picked != null) {

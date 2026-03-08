@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme/app_colors.dart';
 
 enum AppButtonVariant { primary, secondary, text }
 
@@ -42,6 +43,13 @@ class AppButton extends StatelessWidget {
     final button = switch (variant) {
       AppButtonVariant.primary => ElevatedButton(
           onPressed: isLoading ? null : onPressed,
+          style: (!isLoading && onPressed != null)
+              ? ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  elevation: 0,
+                )
+              : null,
           child: child,
         ),
       AppButtonVariant.secondary => OutlinedButton(
@@ -54,6 +62,16 @@ class AppButton extends StatelessWidget {
         ),
     };
 
-    return fullWidth ? SizedBox(width: double.infinity, child: button) : button;
+    final wrappedButton = (variant == AppButtonVariant.primary && !isLoading && onPressed != null)
+        ? Container(
+            decoration: BoxDecoration(
+              gradient: AppColors.primaryButtonGradient,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: button,
+          )
+        : button;
+
+    return fullWidth ? SizedBox(width: double.infinity, child: wrappedButton) : wrappedButton;
   }
 }
