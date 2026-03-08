@@ -490,6 +490,12 @@ class AppLocalizations {
     'question_mode_title': 'Nasıl oluşturmak istersin?',
     'question_mode_easy_desc': 'AI sana soru önersin, sen seç',
     'question_mode_advanced_desc': 'Adım adım kendin oluştur',
+
+    // Progressive Nudge
+    'nudge_easy_mode_hint': 'Kolay mod ile 30 saniyede soru hazırla!',
+    'nudge_easy_mode_button': 'Kolay Mod ile Başla',
+    'nudge_quick_create_title': 'Hızlı Soru Oluştur',
+    'nudge_profile_suggest': 'Profilime göre öner',
   };
 
   static const _en = <String, String>{
@@ -958,6 +964,12 @@ class AppLocalizations {
     'question_mode_title': 'How would you like to create?',
     'question_mode_easy_desc': 'AI suggests questions, you pick',
     'question_mode_advanced_desc': 'Create step by step yourself',
+
+    // Progressive Nudge
+    'nudge_easy_mode_hint': 'Create a question in 30 seconds with Easy Mode!',
+    'nudge_easy_mode_button': 'Start with Easy Mode',
+    'nudge_quick_create_title': 'Quick Question Create',
+    'nudge_profile_suggest': 'Suggest based on my profile',
   };
 }
 

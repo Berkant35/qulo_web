@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:qulo_v2/providers/auth_provider.dart';
 import 'package:qulo_v2/features/splash/splash_screen.dart';
 import 'package:qulo_v2/features/auth/screens/login_screen.dart';
@@ -22,6 +23,7 @@ import 'package:qulo_v2/features/notifications/screens/notifications_screen.dart
 import 'package:qulo_v2/features/questions/screens/question_create_screen.dart';
 import 'package:qulo_v2/features/questions/screens/question_easy_mode_screen.dart';
 import 'package:qulo_v2/features/questions/screens/question_analytics_screen.dart';
+import 'package:qulo_v2/features/questions/screens/question_onboarding_screen.dart';
 import 'package:qulo_v2/data/models/question_model.dart';
 import 'package:qulo_v2/data/models/ai_suggestion_model.dart';
 import 'package:qulo_v2/features/update/force_update_screen.dart';
@@ -32,6 +34,7 @@ import 'package:qulo_v2/providers/user_provider.dart';
 import 'package:qulo_v2/routing/route_names.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/constants/q_icons.dart';
+import 'package:qulo_v2/core/navigation/navigation_provider.dart';
 
 part 'app_routes.dart';
 

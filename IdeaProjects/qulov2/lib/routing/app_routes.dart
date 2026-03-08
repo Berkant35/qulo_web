@@ -58,6 +58,14 @@ final _routes = <RouteBase>[
     builder: (context, state) => const OnboardingScreen(),
   ),
 
+  // Question Onboarding (root navigator — full screen over bottom nav)
+  GoRoute(
+    parentNavigatorKey: rootNavigatorKey,
+    path: '/questions/onboarding',
+    name: RouteNames.questionOnboarding,
+    builder: (context, state) => const QuestionOnboardingScreen(),
+  ),
+
   // Quiz (root navigator — full screen over bottom nav)
   GoRoute(
     parentNavigatorKey: rootNavigatorKey,
@@ -174,17 +182,40 @@ final _routes = <RouteBase>[
   ),
 ];
 
-class _MainShell extends ConsumerWidget {
+class _MainShell extends ConsumerStatefulWidget {
   final StatefulNavigationShell shell;
   const _MainShell({required this.shell});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_MainShell> createState() => _MainShellState();
+}
+
+class _MainShellState extends ConsumerState<_MainShell> {
+  @override
+  void initState() {
+    super.initState();
+    _checkQuestionOnboarding();
+  }
+
+  Future<void> _checkQuestionOnboarding() async {
+    final prefs = await SharedPreferences.getInstance();
+    final seen = prefs.getBool('onboarding_questions_seen') ?? false;
+    if (!seen && mounted) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          ref.read(navigationServiceProvider).push(RouteNames.questionOnboarding);
+        }
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final user = ref.watch(userProvider).valueOrNull;
     final showProfileBadge = (user?.questionCount ?? 0) < AppConstants.minQuestions;
 
     return Scaffold(
-      body: shell,
+      body: widget.shell,
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -193,8 +224,8 @@ class _MainShell extends ConsumerWidget {
             color: AppColors.primary.withValues(alpha: 0.3),
           ),
           NavigationBar(
-            selectedIndex: shell.currentIndex,
-            onDestinationSelected: (i) => shell.goBranch(i, initialLocation: i == shell.currentIndex),
+            selectedIndex: widget.shell.currentIndex,
+            onDestinationSelected: (i) => widget.shell.goBranch(i, initialLocation: i == widget.shell.currentIndex),
             destinations: [
               NavigationDestination(
                 icon: QIcon(QIcons.icCompass, size: 24),

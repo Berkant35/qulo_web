@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:qulo_v2/core/constants/app_constants.dart';
 import 'package:qulo_v2/core/navigation/navigation.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
@@ -23,10 +24,113 @@ class DiscoverScreen extends ConsumerStatefulWidget {
 }
 
 class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
+  int _nudgeCount = 0;
+  bool _nudgeLoaded = false;
+
   @override
   void initState() {
     super.initState();
     Future.microtask(() => ref.read(discoverProvider.notifier).loadCards());
+    _loadAndIncrementNudge();
+  }
+
+  Future<void> _loadAndIncrementNudge() async {
+    final prefs = await SharedPreferences.getInstance();
+    final count = prefs.getInt('question_nudge_count') ?? 0;
+    final newCount = count + 1;
+    await prefs.setInt('question_nudge_count', newCount);
+    if (mounted) {
+      setState(() {
+        _nudgeCount = newCount;
+        _nudgeLoaded = true;
+      });
+    }
+  }
+
+  void _showEasyModeSheet() {
+    final theme = Theme.of(context);
+    final categories = [
+      'personality',
+      'music',
+      'film',
+      'sports',
+      'travel',
+      'food',
+      'technology',
+      'general',
+    ];
+
+    ref.read(navigationServiceProvider).showAppBottomSheet(
+      CustomBottomSheet(
+        name: 'easy_mode_nudge',
+        maxHeightFactor: 0.5,
+        builder: (ctx) => Padding(
+          padding: const EdgeInsets.all(AppSpacing.xl),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.onSurfaceVariant.withValues(alpha: 0.3),
+                    borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+                  ),
+                ),
+              ),
+              const SizedBox(height: AppSpacing.lg),
+              Text(
+                context.tr('nudge_quick_create_title'),
+                style: theme.textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.lg),
+              Wrap(
+                spacing: AppSpacing.sm,
+                runSpacing: AppSpacing.sm,
+                children: categories.map((cat) {
+                  return ActionChip(
+                    label: Text(context.tr('question_category_$cat')),
+                    onPressed: () {
+                      Navigator.of(ctx).pop();
+                      ref.read(navigationServiceProvider).push(
+                        RouteNames.questionEasyMode,
+                      );
+                    },
+                    backgroundColor: AppColors.primarySurface,
+                    side: BorderSide(
+                      color: AppColors.primary.withValues(alpha: 0.3),
+                    ),
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: AppSpacing.lg),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: () {
+                    Navigator.of(ctx).pop();
+                    ref.read(navigationServiceProvider).push(
+                      RouteNames.questionEasyMode,
+                    );
+                  },
+                  icon: QIcon(QIcons.icWand, size: 18, color: AppColors.primary),
+                  label: Text(context.tr('nudge_profile_suggest')),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: AppColors.primary,
+                    side: const BorderSide(color: AppColors.primary),
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -47,6 +151,17 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
           final hasMinQuestions = (user?.questionCount ?? 0) >= AppConstants.minQuestions;
 
           if (!hasMinQuestions) {
+            // Auto-show easy mode sheet on 3rd+ visit
+            if (_nudgeLoaded && _nudgeCount >= 3) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (mounted && !hasMinQuestions) {
+                  _showEasyModeSheet();
+                }
+              });
+              // Reset so it doesn't fire on every rebuild
+              _nudgeLoaded = false;
+            }
+
             final firstCard = discover.cards.isNotEmpty ? discover.cards.first : null;
             return Padding(
               padding: const EdgeInsets.all(AppSpacing.pagePadding),
@@ -115,15 +230,70 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                             ),
                           ),
                           const SizedBox(height: AppSpacing.lg),
-                          FilledButton.icon(
-                            onPressed: () => ref.read(navigationServiceProvider).go(RouteNames.questions),
-                            icon: QIcon(QIcons.icPlus, color: theme.colorScheme.onPrimary, size: 18),
-                            label: Text(context.tr('question_nudge_add_button')),
-                            style: FilledButton.styleFrom(
-                              backgroundColor: AppColors.primary,
-                              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+
+                          // ─── Progressive Nudge: Easy Mode hint on 2nd visit ───
+                          if (_nudgeCount >= 2) ...[
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 32),
+                              child: Container(
+                                padding: const EdgeInsets.all(AppSpacing.md),
+                                decoration: BoxDecoration(
+                                  color: AppColors.primarySurface,
+                                  borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                                  border: Border.all(
+                                    color: AppColors.primary.withValues(alpha: 0.3),
+                                  ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    QIcon(QIcons.icWand, size: 20, color: AppColors.primary),
+                                    const SizedBox(width: AppSpacing.sm),
+                                    Expanded(
+                                      child: Text(
+                                        context.tr('nudge_easy_mode_hint'),
+                                        style: theme.textTheme.bodySmall?.copyWith(
+                                          color: AppColors.primary,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
+                            const SizedBox(height: AppSpacing.md),
+                            FilledButton.icon(
+                              onPressed: () => ref.read(navigationServiceProvider).push(
+                                RouteNames.questionEasyMode,
+                              ),
+                              icon: QIcon(QIcons.icWand, color: theme.colorScheme.onPrimary, size: 18),
+                              label: Text(context.tr('nudge_easy_mode_button')),
+                              style: FilledButton.styleFrom(
+                                backgroundColor: AppColors.primary,
+                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                              ),
+                            ),
+                            const SizedBox(height: AppSpacing.sm),
+                            TextButton.icon(
+                              onPressed: () => ref.read(navigationServiceProvider).go(RouteNames.questions),
+                              icon: QIcon(QIcons.icPlus, color: theme.colorScheme.onSurfaceVariant, size: 16),
+                              label: Text(
+                                context.tr('question_nudge_add_button'),
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  color: theme.colorScheme.onSurfaceVariant,
+                                ),
+                              ),
+                            ),
+                          ] else ...[
+                            FilledButton.icon(
+                              onPressed: () => ref.read(navigationServiceProvider).go(RouteNames.questions),
+                              icon: QIcon(QIcons.icPlus, color: theme.colorScheme.onPrimary, size: 18),
+                              label: Text(context.tr('question_nudge_add_button')),
+                              style: FilledButton.styleFrom(
+                                backgroundColor: AppColors.primary,
+                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                              ),
+                            ),
+                          ],
                         ],
                       ),
                     ),

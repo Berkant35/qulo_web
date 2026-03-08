@@ -24,6 +24,7 @@ abstract final class RouteNames {
   static const questionCreate = 'question-create';
   static const questionEasyMode = 'question-easy-mode';
   static const questionAnalytics = 'question-analytics';
+  static const questionOnboarding = 'question-onboarding';
 
   // Update
   static const forceUpdate = 'force-update';
