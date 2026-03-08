@@ -19,4 +19,7 @@ abstract final class AppSpacing {
   static const double radiusLg = 16;
   static const double radiusXl = 24;
   static const double radiusFull = 999;
+
+  // Responsive
+  static const double maxContentWidth = 560;
 }
