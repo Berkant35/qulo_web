@@ -1,6 +1,7 @@
-import 'dart:typed_data';
 import 'package:crop_your_image/crop_your_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image/image.dart' as img;
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
@@ -17,17 +18,44 @@ class CropScreen extends StatefulWidget {
 class _CropScreenState extends State<CropScreen> {
   final _cropController = CropController();
   bool _isCropping = false;
-  int _rotationTurns = 0;
+  bool _isRotating = false;
+  late Uint8List _currentImageBytes;
 
-  void _rotate() {
-    setState(() {
-      _rotationTurns = (_rotationTurns + 1) % 4;
-    });
+  @override
+  void initState() {
+    super.initState();
+    _currentImageBytes = widget.imageBytes;
+  }
+
+  Future<void> _rotate() async {
+    if (_isRotating) return;
+    setState(() => _isRotating = true);
+
+    final rotated = await compute(_rotateImage90, _currentImageBytes);
+    if (rotated != null && mounted) {
+      setState(() {
+        _currentImageBytes = rotated;
+        _isRotating = false;
+      });
+      _cropController.image = rotated;
+    } else if (mounted) {
+      setState(() => _isRotating = false);
+    }
+  }
+
+  /// Rotate image bytes 90 degrees clockwise (runs in isolate via compute).
+  static Uint8List? _rotateImage90(Uint8List bytes) {
+    final decoded = img.decodeImage(bytes);
+    if (decoded == null) return null;
+    final rotated = img.copyRotate(decoded, angle: 90);
+    return Uint8List.fromList(img.encodePng(rotated));
   }
 
   void _confirm() {
     setState(() => _isCropping = true);
-    _cropController.cropCircle();
+    // Use crop() instead of cropCircle() to get a square output.
+    // withCircleUi on the Crop widget is visual-only (circle overlay guide).
+    _cropController.crop();
   }
 
   void _onCropped(Uint8List croppedBytes) {
@@ -50,9 +78,11 @@ class _CropScreenState extends State<CropScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.rotate_right),
+            icon: _isRotating
+                ? const AppLoadingWidget.small()
+                : const Icon(Icons.rotate_right),
             tooltip: 'Rotate',
-            onPressed: _isCropping ? null : _rotate,
+            onPressed: (_isCropping || _isRotating) ? null : _rotate,
           ),
           Padding(
             padding: const EdgeInsets.only(right: AppSpacing.sm),
@@ -72,20 +102,17 @@ class _CropScreenState extends State<CropScreen> {
           ),
         ],
       ),
-      body: RotatedBox(
-        quarterTurns: _rotationTurns,
-        child: Crop(
-          controller: _cropController,
-          image: widget.imageBytes,
-          aspectRatio: 1,
-          withCircleUi: true,
-          baseColor: AppColors.background,
-          maskColor: AppColors.background.withAlpha(200),
-          cornerDotBuilder: (size, edgeAlignment) => const SizedBox.shrink(),
-          onCropped: _onCropped,
-          initialSize: 0.8,
-          interactive: true,
-        ),
+      body: Crop(
+        controller: _cropController,
+        image: _currentImageBytes,
+        aspectRatio: 1,
+        withCircleUi: true,
+        baseColor: AppColors.background,
+        maskColor: AppColors.background.withAlpha(200),
+        cornerDotBuilder: (size, edgeAlignment) => const SizedBox.shrink(),
+        onCropped: _onCropped,
+        initialSize: 0.8,
+        interactive: true,
       ),
     );
   }
