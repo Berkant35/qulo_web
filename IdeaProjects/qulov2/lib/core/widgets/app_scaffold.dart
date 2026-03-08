@@ -58,10 +58,14 @@ class AppScaffold extends StatelessWidget {
                   painter: _BackgroundPainter(),
                 ),
               ),
-            if (padding != null)
-              Padding(padding: padding!, child: body)
-            else
-              body,
+            Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: AppSpacing.maxContentWidth),
+                child: padding != null
+                    ? Padding(padding: padding!, child: body)
+                    : body,
+              ),
+            ),
           ],
         ),
       ),
