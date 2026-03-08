@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qulo_v2/core/constants/app_constants.dart';
 import 'package:qulo_v2/core/constants/q_icons.dart';
 import 'package:qulo_v2/core/navigation/navigation.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
@@ -7,6 +8,7 @@ import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/core/widgets/diamond_icon.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
+import 'package:qulo_v2/core/widgets/question_gate_banner.dart';
 import 'package:qulo_v2/providers/user_provider.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/routing/route_names.dart';
@@ -73,6 +75,16 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   onSlotTap: (_) => ref.read(navigationServiceProvider).go(RouteNames.editProfile),
                 ),
                 const SizedBox(height: AppSpacing.lg),
+
+                // ─── Question Gate Banner ───
+                if (user.questionCount < AppConstants.minQuestions) ...[
+                  QuestionGateBanner(
+                    questionCount: user.questionCount,
+                    profileCompletion: user.profileCompletion,
+                    onAddQuestions: () => ref.read(navigationServiceProvider).go(RouteNames.questions),
+                  ),
+                  const SizedBox(height: AppSpacing.lg),
+                ],
 
                 // ─── Name, Age ───
                 Text(
@@ -180,6 +192,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 _MenuItem(
                   iconPath: QIcons.icHelpCircle,
                   title: context.tr('my_questions'),
+                  subtitle: user.questionCount < AppConstants.minQuestions
+                      ? context.tr('question_nudge_menu_required')
+                      : null,
+                  showBadge: user.questionCount < AppConstants.minQuestions,
                   onTap: () => ref.read(navigationServiceProvider).go(RouteNames.questions),
                 ),
                 _MenuItem(
@@ -298,12 +314,16 @@ class _MenuItem extends StatelessWidget {
   final String? iconPath;
   final Widget? iconWidget;
   final String title;
+  final String? subtitle;
+  final bool showBadge;
   final VoidCallback onTap;
 
   const _MenuItem({
     this.iconPath,
     this.iconWidget,
     required this.title,
+    this.subtitle,
+    this.showBadge = false,
     required this.onTap,
   }) : assert(iconPath != null || iconWidget != null);
 
@@ -317,8 +337,29 @@ class _MenuItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
       ),
       child: ListTile(
-        leading: iconWidget ?? QIcon(iconPath!, color: AppColors.primary, size: 24),
+        leading: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            iconWidget ?? QIcon(iconPath!, color: AppColors.primary, size: 24),
+            if (showBadge)
+              Positioned(
+                right: -4,
+                top: -4,
+                child: Container(
+                  width: 10,
+                  height: 10,
+                  decoration: const BoxDecoration(
+                    color: AppColors.error,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+          ],
+        ),
         title: Text(title),
+        subtitle: subtitle != null
+            ? Text(subtitle!, style: theme.textTheme.bodySmall?.copyWith(color: AppColors.error))
+            : null,
         trailing: QIcon(QIcons.icChevronRight, color: theme.hintColor, size: 20),
         onTap: onTap,
       ),
