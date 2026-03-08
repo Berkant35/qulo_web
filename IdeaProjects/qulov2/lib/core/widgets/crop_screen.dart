@@ -30,16 +30,9 @@ class _CropScreenState extends State<CropScreen> {
     _cropController.cropCircle();
   }
 
-  void _onCropped(CropResult result) {
-    if (!mounted) return;
-    switch (result) {
-      case CropSuccess(:final croppedImage):
-        Navigator.of(context).pop(croppedImage);
-      case CropFailure():
-        setState(() => _isCropping = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Crop failed')),
-        );
+  void _onCropped(Uint8List croppedBytes) {
+    if (mounted) {
+      Navigator.of(context).pop(croppedBytes);
     }
   }
 
