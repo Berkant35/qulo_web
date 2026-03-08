@@ -17,6 +17,7 @@ import passportRoutes from "./routes/passport.routes.js";
 import reportRoutes from "./routes/report.routes.js";
 import webhookRoutes from "./routes/webhook.routes.js";
 import subscriptionRoutes from "./routes/subscription.routes.js";
+import notificationRoutes from "./routes/notification.routes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import adminRoutes from "./admin/admin.routes.js";
 import { adminService } from "./admin/admin.service.js";
@@ -78,6 +79,7 @@ app.use("/api/v1/passport", passportRoutes);
 app.use("/api/v1/reports", reportRoutes);
 app.use("/api/v1/webhooks", webhookRoutes);
 app.use("/api/v1/subscriptions", subscriptionRoutes);
+app.use("/api/v1/notifications", notificationRoutes);
 
 // Error handler (must be last)
 app.use(errorHandler);
