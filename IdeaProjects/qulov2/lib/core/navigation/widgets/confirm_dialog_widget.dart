@@ -9,6 +9,8 @@ class ConfirmDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return AlertDialog(
       title: Text(dialog.title),
       content: Text(dialog.message),
@@ -17,7 +19,7 @@ class ConfirmDialogWidget extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(false),
           child: Text(
             dialog.cancelText ?? context.tr('cancel'),
-            style: const TextStyle(color: AppColors.textSecondary),
+            style: TextStyle(color: theme.colorScheme.onSurfaceVariant),
           ),
         ),
         TextButton(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/navigation/models/app_bottom_sheet.dart';
 
@@ -9,6 +8,8 @@ class ListBottomSheetWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return SafeArea(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -18,7 +19,7 @@ class ListBottomSheetWidget<T> extends StatelessWidget {
             width: 40,
             height: 4,
             decoration: BoxDecoration(
-              color: AppColors.textHint,
+              color: theme.hintColor,
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -30,16 +31,16 @@ class ListBottomSheetWidget<T> extends StatelessWidget {
               ),
               child: Text(
                 sheet.title!,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.textPrimary,
+                  color: theme.colorScheme.onSurface,
                 ),
               ),
             ),
           ...sheet.options.map((option) => ListTile(
                 leading: option.icon != null
-                    ? Icon(option.icon, color: AppColors.textSecondary)
+                    ? Icon(option.icon, color: theme.colorScheme.onSurfaceVariant)
                     : null,
                 title: Text(option.label),
                 onTap: () => Navigator.of(context).pop(option.value),
