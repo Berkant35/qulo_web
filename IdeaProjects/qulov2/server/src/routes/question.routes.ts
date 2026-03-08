@@ -9,6 +9,8 @@ import {
   updateQuestionHandler,
   deleteQuestionHandler,
   getQuestionCountHandler,
+  getQuestionAnalyticsHandler,
+  getWeeklyReportHandler,
 } from "../controllers/question.controller.js";
 
 const router = Router();
@@ -21,5 +23,7 @@ router.post("/me", validate(createQuestionSchema), createQuestionHandler);
 router.put("/me/:order", validate(updateQuestionSchema), updateQuestionHandler);
 router.delete("/me/:order", deleteQuestionHandler);
 router.get("/count/me", getQuestionCountHandler);
+router.get("/me/analytics", getQuestionAnalyticsHandler);
+router.get("/me/weekly-report", getWeeklyReportHandler);
 
 export default router;

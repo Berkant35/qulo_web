@@ -1,7 +1,14 @@
 import { z } from "zod";
 
+export const QUESTION_CATEGORIES = [
+  'personality', 'music', 'film', 'sports', 'travel',
+  'food', 'technology', 'general', 'other'
+] as const;
+
+export const TIME_PRESETS = [15, 30, 60, 90] as const;
+
 export const createQuestionSchema = z.object({
-  order_num: z.number().int().min(1).max(6),
+  order_num: z.number().int().min(1).max(10),
   question_text: z.string().min(5).max(500),
   correct_answer: z.number().int().min(1).max(4),
   answer_1: z.string().min(1).max(200),
@@ -9,6 +16,8 @@ export const createQuestionSchema = z.object({
   answer_3: z.string().min(1).max(200),
   answer_4: z.string().min(1).max(200),
   hint_text: z.string().max(300).optional(),
+  category: z.enum(QUESTION_CATEGORIES).optional(),
+  time_limit: z.number().int().refine(v => (TIME_PRESETS as readonly number[]).includes(v), { message: 'time_limit must be 15, 30, 60, or 90' }).optional().default(30),
 });
 
 export const updateQuestionSchema = z.object({
@@ -19,6 +28,8 @@ export const updateQuestionSchema = z.object({
   answer_3: z.string().min(1).max(200).optional(),
   answer_4: z.string().min(1).max(200).optional(),
   hint_text: z.string().max(300).optional(),
+  category: z.enum(QUESTION_CATEGORIES).optional(),
+  time_limit: z.number().int().refine(v => (TIME_PRESETS as readonly number[]).includes(v), { message: 'time_limit must be 15, 30, 60, or 90' }).optional(),
 });
 
 export type CreateQuestionInput = z.infer<typeof createQuestionSchema>;

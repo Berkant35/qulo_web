@@ -55,3 +55,23 @@ export async function getQuestionCountHandler(req: Request, res: Response, next:
     next(err);
   }
 }
+
+export async function getQuestionAnalyticsHandler(req: Request, res: Response, next: NextFunction) {
+  try {
+    const userId = req.user!.userId;
+    const data = await questionService.getQuestionAnalytics(userId);
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function getWeeklyReportHandler(req: Request, res: Response, next: NextFunction) {
+  try {
+    const userId = req.user!.userId;
+    const data = await questionService.getWeeklyReport(userId);
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
+}
