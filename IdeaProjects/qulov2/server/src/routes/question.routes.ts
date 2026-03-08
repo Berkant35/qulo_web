@@ -17,6 +17,8 @@ import { queueChangeSchema } from "../validators/pending-change.validator.js";
 import { aiSuggestHandler } from "../controllers/ai-suggest.controller.js";
 import { aiSuggestSchema } from "../validators/ai-suggest.validator.js";
 import { weeklyReportService } from "../services/weekly-report.service.js";
+import { supabase } from "../config/supabase.js";
+import { AppError } from "../utils/errors.js";
 
 const router = Router();
 
@@ -35,9 +37,20 @@ router.post("/me/:order/queue-change", validate(queueChangeSchema), queueChangeH
 router.delete("/me/pending/:changeId", cancelPendingChangeHandler);
 router.post("/ai-suggest", validate(aiSuggestSchema), aiSuggestHandler);
 
-// Admin: Manual weekly report trigger
+// Admin: Manual weekly report trigger (requires admin_users membership)
 router.post("/admin/send-weekly-reports", async (req, res, next) => {
   try {
+    // Verify the authenticated user is an admin
+    const { data: admin } = await supabase
+      .from("admin_users")
+      .select("id")
+      .eq("email", req.user!.email)
+      .single();
+
+    if (!admin) {
+      throw new AppError("FORBIDDEN", 403, "Admin access required");
+    }
+
     const result = await weeklyReportService.sendWeeklyReports();
     res.json(result);
   } catch (err) {
