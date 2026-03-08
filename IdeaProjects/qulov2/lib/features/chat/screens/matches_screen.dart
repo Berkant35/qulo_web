@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/navigation/navigation.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/match_provider.dart';
 import '../../../core/l10n/l10n.dart';
@@ -41,9 +42,9 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(Icons.favorite_border, size: 64, color: theme.hintColor),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: AppSpacing.lg),
                   Text(context.tr('no_matches'), style: theme.textTheme.titleMedium),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: AppSpacing.sm),
                   Text(
                     context.tr('start_swiping'),
                     style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
@@ -61,7 +62,7 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+                      padding: const EdgeInsets.fromLTRB(AppSpacing.pagePadding, AppSpacing.sm, AppSpacing.pagePadding, AppSpacing.md),
                       child: Text(
                         'Yeni Eslesmeler',
                         style: theme.textTheme.titleMedium,
@@ -71,9 +72,9 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
                       height: 90,
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pagePadding),
                         itemCount: matches.length,
-                        separatorBuilder: (_, __) => const SizedBox(width: 16),
+                        separatorBuilder: (_, __) => const SizedBox(width: AppSpacing.lg),
                         itemBuilder: (context, index) {
                           final m = matches[index];
                           final u = m.user;
@@ -103,7 +104,7 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
                                         : null,
                                   ),
                                 ),
-                                const SizedBox(height: 4),
+                                const SizedBox(height: AppSpacing.xs),
                                 SizedBox(
                                   width: 64,
                                   child: Text(
@@ -120,7 +121,7 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
                       ),
                     ),
                     Divider(color: theme.colorScheme.outline, height: 1),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: AppSpacing.sm),
                   ],
                 ),
               ),
@@ -161,10 +162,10 @@ class _MatchCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      margin: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
       ),
       child: ListTile(
         leading: Stack(
