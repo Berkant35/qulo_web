@@ -3,6 +3,7 @@ import { Errors } from "../utils/errors.js";
 import { calculatePowerCost, calculateGreenReward, shuffleArray } from "../utils/math.js";
 import { diamondService } from "./diamond.service.js";
 import { NotificationService } from "./notification.service.js";
+import { pendingChangeService } from "./pending-change.service.js";
 import type { PowerName } from "../types/index.js";
 
 interface SessionRow {
@@ -297,6 +298,9 @@ export class QuizService {
 
       await this.saveSessionSummary(sessionId);
 
+      // Apply any pending question changes for the target user
+      await pendingChangeService.applyPendingChanges(session.target_id);
+
       return { is_correct: false, session_status: "FAILED" };
     }
 
@@ -399,6 +403,10 @@ export class QuizService {
   private async completeSession(session: SessionRow) {
     await this.createMatch(session.id, session.solver_id, session.target_id);
     await this.saveSessionSummary(session.id);
+
+    // Apply any pending question changes for the target user
+    await pendingChangeService.applyPendingChanges(session.target_id);
+
     return { is_correct: true, matched: true, session_status: "COMPLETED" };
   }
 

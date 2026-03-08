@@ -1,6 +1,7 @@
 import { supabase } from "../config/supabase.js";
 import { AppError, Errors } from "../utils/errors.js";
 import type { CreateQuestionInput, UpdateQuestionInput } from "../validators/question.validator.js";
+import { pendingChangeService } from "./pending-change.service.js";
 
 export class QuestionService {
   async getMyQuestions(userId: string) {
@@ -62,6 +63,13 @@ export class QuestionService {
   }
 
   async updateQuestion(userId: string, orderNum: number, input: UpdateQuestionInput) {
+    // Check for active quiz
+    const hasActive = await pendingChangeService.hasActiveQuiz(userId);
+    if (hasActive) {
+      const change = await pendingChangeService.queueChange(userId, orderNum, 'UPDATE', input);
+      return { queued: true, change };
+    }
+
     const updateData: Record<string, unknown> = { ...input };
     // Only include category/time_limit if explicitly provided
     if (input.category !== undefined) updateData.category = input.category;
@@ -83,10 +91,17 @@ export class QuestionService {
       throw Errors.SESSION_NOT_FOUND();
     }
 
-    return data;
+    return { queued: false, question: data };
   }
 
   async deleteQuestion(userId: string, orderNum: number) {
+    // Check for active quiz
+    const hasActive = await pendingChangeService.hasActiveQuiz(userId);
+    if (hasActive) {
+      const change = await pendingChangeService.queueChange(userId, orderNum, 'DELETE');
+      return { queued: true, change };
+    }
+
     const { error, count } = await supabase
       .from("questions")
       .delete({ count: "exact" })
@@ -100,6 +115,8 @@ export class QuestionService {
     if (count === 0) {
       throw Errors.SESSION_NOT_FOUND();
     }
+
+    return { queued: false };
   }
 
   async getQuestionCount(userId: string) {

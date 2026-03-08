@@ -12,6 +12,8 @@ import {
   getQuestionAnalyticsHandler,
   getWeeklyReportHandler,
 } from "../controllers/question.controller.js";
+import { getPendingChangesHandler, queueChangeHandler, cancelPendingChangeHandler } from "../controllers/pending-change.controller.js";
+import { queueChangeSchema } from "../validators/pending-change.validator.js";
 
 const router = Router();
 
@@ -25,5 +27,8 @@ router.delete("/me/:order", deleteQuestionHandler);
 router.get("/count/me", getQuestionCountHandler);
 router.get("/me/analytics", getQuestionAnalyticsHandler);
 router.get("/me/weekly-report", getWeeklyReportHandler);
+router.get("/me/pending", getPendingChangesHandler);
+router.post("/me/:order/queue-change", validate(queueChangeSchema), queueChangeHandler);
+router.delete("/me/pending/:changeId", cancelPendingChangeHandler);
 
 export default router;
