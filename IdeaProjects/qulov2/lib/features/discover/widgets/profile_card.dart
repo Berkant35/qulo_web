@@ -6,6 +6,7 @@ import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/constants/q_icons.dart';
 import 'package:qulo_v2/data/models/discover_model.dart';
+import 'package:qulo_v2/features/questions/widgets/difficulty_badge.dart';
 
 class ProfileCard extends StatelessWidget {
   final ProfileCardModel card;
@@ -71,22 +72,87 @@ class ProfileCard extends StatelessWidget {
                     ],
                   ),
                 const SizedBox(height: AppSpacing.sm),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
-                  decoration: BoxDecoration(
-                    color: AppColors.primarySurface,
-                    borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
-                  ),
-                  child: Text(
-                    context.tr('questions_count').replaceAll('{count}', '${card.questionCount}'),
-                    style: theme.textTheme.labelSmall?.copyWith(color: Colors.white),
-                  ),
-                ),
+                // ─── Question Info Section ───
+                _buildQuestionInfoSection(context, theme),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildQuestionInfoSection(BuildContext context, ThemeData theme) {
+    final info = card.questionInfo;
+
+    // Fallback: just show question count chip if no question_info
+    if (info == null) {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+        decoration: BoxDecoration(
+          color: AppColors.primarySurface,
+          borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+        ),
+        child: Text(
+          context.tr('questions_count').replaceAll('{count}', '${card.questionCount}'),
+          style: theme.textTheme.labelSmall?.copyWith(color: Colors.white),
+        ),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Question count + difficulty badge row
+        Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+              decoration: BoxDecoration(
+                color: AppColors.primarySurface,
+                borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+              ),
+              child: Text(
+                context.tr('discover_questions_count').replaceAll('{count}', '${info.count}'),
+                style: theme.textTheme.labelSmall?.copyWith(color: Colors.white),
+              ),
+            ),
+            const SizedBox(width: AppSpacing.sm),
+            DifficultyBadge(difficulty: info.avgDifficulty),
+          ],
+        ),
+        // Category chips
+        if (info.categories.isNotEmpty) ...[
+          const SizedBox(height: AppSpacing.xs),
+          SizedBox(
+            height: 26,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: info.categories.length,
+              separatorBuilder: (_, __) => const SizedBox(width: AppSpacing.xs),
+              itemBuilder: (context, index) {
+                final category = info.categories[index];
+                return Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.15),
+                    borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+                    border: Border.all(color: Colors.white.withValues(alpha: 0.25)),
+                  ),
+                  child: Text(
+                    context.tr('question_category_$category'),
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: Colors.white,
+                      fontSize: 10,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ],
     );
   }
 }

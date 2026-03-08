@@ -22,6 +22,23 @@ Map<String, dynamic> _$DiscoverResponseToJson(DiscoverResponse instance) =>
       'has_more': instance.hasMore,
     };
 
+QuestionInfoModel _$QuestionInfoModelFromJson(Map<String, dynamic> json) =>
+    QuestionInfoModel(
+      count: (json['count'] as num).toInt(),
+      categories: (json['categories'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      avgDifficulty: json['avg_difficulty'] as String? ?? 'medium',
+    );
+
+Map<String, dynamic> _$QuestionInfoModelToJson(QuestionInfoModel instance) =>
+    <String, dynamic>{
+      'count': instance.count,
+      'categories': instance.categories,
+      'avg_difficulty': instance.avgDifficulty,
+    };
+
 ProfileCardModel _$ProfileCardModelFromJson(Map<String, dynamic> json) =>
     ProfileCardModel(
       userId: json['user_id'] as String,
@@ -36,6 +53,10 @@ ProfileCardModel _$ProfileCardModelFromJson(Map<String, dynamic> json) =>
       questionCount: (json['question_count'] as num).toInt(),
       profileCompletion: (json['profile_completion'] as num?)?.toInt() ?? 0,
       isBoosted: json['is_boosted'] as bool? ?? false,
+      questionInfo: json['question_info'] == null
+          ? null
+          : QuestionInfoModel.fromJson(
+              json['question_info'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ProfileCardModelToJson(ProfileCardModel instance) =>
@@ -50,6 +71,7 @@ Map<String, dynamic> _$ProfileCardModelToJson(ProfileCardModel instance) =>
       'question_count': instance.questionCount,
       'profile_completion': instance.profileCompletion,
       'is_boosted': instance.isBoosted,
+      'question_info': instance.questionInfo,
     };
 
 SwipeResponse _$SwipeResponseFromJson(Map<String, dynamic> json) =>

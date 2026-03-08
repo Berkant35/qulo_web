@@ -16,6 +16,7 @@ import 'package:qulo_v2/routing/route_names.dart';
 import 'package:qulo_v2/features/profile/widgets/photo_grid.dart';
 import 'package:qulo_v2/features/profile/widgets/badge_bar.dart';
 import 'package:qulo_v2/features/profile/widgets/detail_chips.dart';
+import 'package:qulo_v2/features/profile/widgets/question_vitrin_card.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
@@ -54,6 +55,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
 
     return AppScaffold(
       title: context.tr('profile'),
+      isLoading: userAsync is AsyncLoading,
       actions: [
         Stack(
           children: [
@@ -87,7 +89,6 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         ),
       ],
       padding: EdgeInsets.zero,
-      isLoading: userAsync is AsyncLoading,
       body: userAsync.when(
         loading: () => const SizedBox.shrink(),
         error: (e, _) => Center(child: Text('Error: $e')),
@@ -105,13 +106,16 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 ),
                 const SizedBox(height: AppSpacing.lg),
 
-                // ─── Question Gate Banner ───
+                // ─── Question Gate Banner / Vitrin ───
                 if (user.questionCount < AppConstants.minQuestions) ...[
                   QuestionGateBanner(
                     questionCount: user.questionCount,
                     profileCompletion: user.profileCompletion,
                     onAddQuestions: () => ref.read(navigationServiceProvider).go(RouteNames.questions),
                   ),
+                  const SizedBox(height: AppSpacing.lg),
+                ] else ...[
+                  const QuestionVitrinCard(),
                   const SizedBox(height: AppSpacing.lg),
                 ],
 

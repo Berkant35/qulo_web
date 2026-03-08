@@ -25,6 +25,27 @@ class DiscoverResponse extends Equatable {
 }
 
 @JsonSerializable()
+class QuestionInfoModel extends Equatable {
+  final int count;
+  final List<String> categories;
+  @JsonKey(name: 'avg_difficulty')
+  final String avgDifficulty;
+
+  const QuestionInfoModel({
+    required this.count,
+    this.categories = const [],
+    this.avgDifficulty = 'medium',
+  });
+
+  factory QuestionInfoModel.fromJson(Map<String, dynamic> json) =>
+      _$QuestionInfoModelFromJson(json);
+  Map<String, dynamic> toJson() => _$QuestionInfoModelToJson(this);
+
+  @override
+  List<Object?> get props => [count, categories, avgDifficulty];
+}
+
+@JsonSerializable()
 class ProfileCardModel extends Equatable {
   @JsonKey(name: 'user_id')
   final String userId;
@@ -41,6 +62,8 @@ class ProfileCardModel extends Equatable {
   final int profileCompletion;
   @JsonKey(name: 'is_boosted')
   final bool isBoosted;
+  @JsonKey(name: 'question_info')
+  final QuestionInfoModel? questionInfo;
 
   const ProfileCardModel({
     required this.userId,
@@ -53,6 +76,7 @@ class ProfileCardModel extends Equatable {
     required this.questionCount,
     this.profileCompletion = 0,
     this.isBoosted = false,
+    this.questionInfo,
   });
 
   factory ProfileCardModel.fromJson(Map<String, dynamic> json) =>

@@ -10,6 +10,8 @@ import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/data/models/message_model.dart';
 import 'package:qulo_v2/providers/chat_provider.dart';
 import 'package:qulo_v2/providers/auth_provider.dart';
+import 'package:qulo_v2/providers/quiz_summary_provider.dart';
+import 'package:qulo_v2/features/chat/widgets/quiz_summary_card.dart';
 
 class ChatScreen extends ConsumerStatefulWidget {
   final String matchId;
@@ -77,11 +79,25 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
     final myId = ref.watch(authProvider).userId;
     final theme = Theme.of(context);
 
+    final quizSummary = ref.watch(quizSummaryProvider(widget.matchId));
+
     return AppScaffold(
       title: context.tr('chat'),
       padding: EdgeInsets.zero,
       body: Column(
         children: [
+          // ─── Quiz Summary Card ───
+          quizSummary.when(
+            loading: () => const SizedBox.shrink(),
+            error: (_, __) => const SizedBox.shrink(),
+            data: (summary) {
+              if (summary == null) return const SizedBox.shrink();
+              return QuizSummaryCard(
+                summary: summary,
+                currentUserId: myId ?? '',
+              );
+            },
+          ),
           Expanded(
             child: chatState.when(
               loading: () => const Center(child: AppLoadingWidget.large()),
