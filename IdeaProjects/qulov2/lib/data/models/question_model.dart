@@ -58,6 +58,7 @@ class QuestionModel extends Equatable {
   final int statsAnswer4Count;
   @JsonKey(name: 'created_at')
   final String? createdAt;
+  final String? locale;
 
   const QuestionModel({
     required this.id,
@@ -71,6 +72,7 @@ class QuestionModel extends Equatable {
     required this.answer4,
     this.hintText,
     this.category,
+    this.locale,
     this.timeLimit = 30,
     this.statsCorrect = 0,
     this.statsWrong = 0,

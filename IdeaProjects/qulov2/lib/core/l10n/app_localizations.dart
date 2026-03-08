@@ -545,6 +545,32 @@ class AppLocalizations {
     'benefit_none': 'Yok',
     'benefit_no_ads': 'Reklam Yok',
     'benefit_has_ads': 'Reklam Var',
+
+    // Language system
+    'question_language': 'Soru dili',
+    'language_picker_title': 'Hangi dillerde soru \u00e7\u00f6zebilirsin?',
+    'language_picker_select_one': 'Soru dilini se\u00e7',
+    'language_picker_hint': 'En az bir dil se\u00e7ili olmal\u0131',
+    'settings_question_languages': 'Soru Dilleri',
+    'settings_question_languages_none': 'Hen\u00fcz dil se\u00e7ilmedi',
+    'onboarding_questions_slide4_title': 'Hangi Dilleri Biliyorsun?',
+    'onboarding_questions_slide4_desc': 'Sana uygun dillerdeki profilleri g\u00f6sterelim. Birden fazla se\u00e7ebilirsin!',
+    // Locale names
+    'locale_tr': 'T\u00fcrk\u00e7e',
+    'locale_en': 'English',
+    'locale_de': 'Deutsch',
+    'locale_fr': 'Fran\u00e7ais',
+    'locale_es': 'Espa\u00f1ol',
+    'locale_ar': '\u0627\u0644\u0639\u0631\u0628\u064a\u0629',
+    'locale_ru': '\u0420\u0443\u0441\u0441\u043a\u0438\u0439',
+    'locale_pt': 'Portugu\u00eas',
+    'locale_it': 'Italiano',
+    'locale_ja': '\u65e5\u672c\u8a9e',
+    'locale_ko': '\ud55c\uad6d\uc5b4',
+    'locale_zh': '\u4e2d\u6587',
+    'locale_nl': 'Nederlands',
+    'locale_pl': 'Polski',
+    'locale_sv': 'Svenska',
   };
 
   static const _en = <String, String>{
@@ -1068,6 +1094,32 @@ class AppLocalizations {
     'benefit_none': 'None',
     'benefit_no_ads': 'No Ads',
     'benefit_has_ads': 'Has Ads',
+
+    // Language system
+    'question_language': 'Question language',
+    'language_picker_title': 'Which languages can you answer questions in?',
+    'language_picker_select_one': 'Select question language',
+    'language_picker_hint': 'At least one language must be selected',
+    'settings_question_languages': 'Question Languages',
+    'settings_question_languages_none': 'No languages selected yet',
+    'onboarding_questions_slide4_title': 'Which Languages Do You Know?',
+    'onboarding_questions_slide4_desc': 'We\'ll show you profiles with questions in your languages. You can select multiple!',
+    // Locale names (native names, same in both languages)
+    'locale_tr': 'T\u00fcrk\u00e7e',
+    'locale_en': 'English',
+    'locale_de': 'Deutsch',
+    'locale_fr': 'Fran\u00e7ais',
+    'locale_es': 'Espa\u00f1ol',
+    'locale_ar': '\u0627\u0644\u0639\u0631\u0628\u064a\u0629',
+    'locale_ru': '\u0420\u0443\u0441\u0441\u043a\u0438\u0439',
+    'locale_pt': 'Portugu\u00eas',
+    'locale_it': 'Italiano',
+    'locale_ja': '\u65e5\u672c\u8a9e',
+    'locale_ko': '\ud55c\uad6d\uc5b4',
+    'locale_zh': '\u4e2d\u6587',
+    'locale_nl': 'Nederlands',
+    'locale_pl': 'Polski',
+    'locale_sv': 'Svenska',
   };
 }
 

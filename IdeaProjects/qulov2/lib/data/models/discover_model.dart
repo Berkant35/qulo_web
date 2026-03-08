@@ -30,11 +30,13 @@ class QuestionInfoModel extends Equatable {
   final List<String> categories;
   @JsonKey(name: 'avg_difficulty')
   final String avgDifficulty;
+  final List<String> languages;
 
   const QuestionInfoModel({
     required this.count,
     this.categories = const [],
     this.avgDifficulty = 'medium',
+    this.languages = const [],
   });
 
   factory QuestionInfoModel.fromJson(Map<String, dynamic> json) =>
@@ -42,7 +44,7 @@ class QuestionInfoModel extends Equatable {
   Map<String, dynamic> toJson() => _$QuestionInfoModelToJson(this);
 
   @override
-  List<Object?> get props => [count, categories, avgDifficulty];
+  List<Object?> get props => [count, categories, avgDifficulty, languages];
 }
 
 @JsonSerializable()

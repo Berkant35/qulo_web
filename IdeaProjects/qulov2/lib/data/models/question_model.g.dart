@@ -20,6 +20,7 @@ QuestionModel _$QuestionModelFromJson(
   answer4: json['answer_4'] as String,
   hintText: json['hint_text'] as String?,
   category: json['category'] as String?,
+  locale: json['locale'] as String?,
   timeLimit: (json['time_limit'] as num?)?.toInt() ?? 30,
   statsCorrect: (json['stats_correct'] as num?)?.toInt() ?? 0,
   statsWrong: (json['stats_wrong'] as num?)?.toInt() ?? 0,
@@ -67,4 +68,5 @@ Map<String, dynamic> _$QuestionModelToJson(QuestionModel instance) =>
       'stats_answer_3_count': instance.statsAnswer3Count,
       'stats_answer_4_count': instance.statsAnswer4Count,
       'created_at': instance.createdAt,
+      'locale': instance.locale,
     };

@@ -25,11 +25,17 @@ Map<String, dynamic> _$DiscoverResponseToJson(DiscoverResponse instance) =>
 QuestionInfoModel _$QuestionInfoModelFromJson(Map<String, dynamic> json) =>
     QuestionInfoModel(
       count: (json['count'] as num).toInt(),
-      categories: (json['categories'] as List<dynamic>?)
+      categories:
+          (json['categories'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
       avgDifficulty: json['avg_difficulty'] as String? ?? 'medium',
+      languages:
+          (json['languages'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$QuestionInfoModelToJson(QuestionInfoModel instance) =>
@@ -37,6 +43,7 @@ Map<String, dynamic> _$QuestionInfoModelToJson(QuestionInfoModel instance) =>
       'count': instance.count,
       'categories': instance.categories,
       'avg_difficulty': instance.avgDifficulty,
+      'languages': instance.languages,
     };
 
 ProfileCardModel _$ProfileCardModelFromJson(Map<String, dynamic> json) =>
@@ -56,7 +63,8 @@ ProfileCardModel _$ProfileCardModelFromJson(Map<String, dynamic> json) =>
       questionInfo: json['question_info'] == null
           ? null
           : QuestionInfoModel.fromJson(
-              json['question_info'] as Map<String, dynamic>),
+              json['question_info'] as Map<String, dynamic>,
+            ),
     );
 
 Map<String, dynamic> _$ProfileCardModelToJson(ProfileCardModel instance) =>

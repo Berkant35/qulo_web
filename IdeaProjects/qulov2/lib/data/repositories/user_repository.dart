@@ -112,4 +112,23 @@ class UserRepository implements IUserRepository {
       return Failure(e.toAppFailure());
     }
   }
+
+  Future<Result<List<String>>> getUserLanguages() async {
+    final result = await _network.get<Map<String, dynamic>>('/users/me/languages');
+    return result.when(
+      success: (data) => Success(List<String>.from(data['languages'] ?? [])),
+      failure: (f) => Failure(f),
+    );
+  }
+
+  Future<Result<List<String>>> setUserLanguages(List<String> languages) async {
+    final result = await _network.put<Map<String, dynamic>>(
+      '/users/me/languages',
+      data: {'languages': languages},
+    );
+    return result.when(
+      success: (data) => Success(List<String>.from(data['languages'] ?? [])),
+      failure: (f) => Failure(f),
+    );
+  }
 }
