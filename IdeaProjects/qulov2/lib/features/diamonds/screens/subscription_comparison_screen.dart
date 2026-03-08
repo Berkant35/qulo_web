@@ -4,6 +4,7 @@ import 'package:qulo_v2/core/constants/q_icons.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/widgets/app_button.dart';
+import 'package:qulo_v2/core/widgets/diamond_icon.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
@@ -38,8 +39,10 @@ class SubscriptionComparisonScreen extends ConsumerWidget {
               name: context.tr('sub_plan_plus'),
               price: context.tr('sub_price_plus'),
               features: [
-                _Feature(QIcons.icGem, context.tr('sub_plus_diamonds')),
-                _Feature(QIcons.icEye, context.tr('sub_plus_no_ads')),
+                _Feature.widget(const DiamondIcon.purple(size: 16, showGlow: false), context.tr('sub_plus_diamonds')),
+                _Feature(QIcons.icSend, context.tr('sub_plus_messages')),
+                _Feature(QIcons.icEyeOff, context.tr('sub_plus_no_ads')),
+                _Feature(QIcons.icCompass, context.tr('sub_plus_swipes')),
               ],
               isRecommended: false,
               isCurrent: currentPlan?.isPlus ?? false,
@@ -52,8 +55,10 @@ class SubscriptionComparisonScreen extends ConsumerWidget {
               name: context.tr('sub_plan_premium'),
               price: context.tr('sub_price_premium'),
               features: [
-                _Feature(QIcons.icGem, context.tr('sub_premium_diamonds')),
-                _Feature(QIcons.icEye, context.tr('sub_premium_no_ads')),
+                _Feature.widget(const DiamondIcon.purple(size: 16, showGlow: false), context.tr('sub_premium_diamonds')),
+                _Feature(QIcons.icSend, context.tr('sub_premium_messages')),
+                _Feature(QIcons.icEyeOff, context.tr('sub_premium_no_ads')),
+                _Feature(QIcons.icCompass, context.tr('sub_premium_swipes')),
               ],
               isRecommended: true,
               isCurrent: currentPlan?.isPremium ?? false,
@@ -67,7 +72,7 @@ class SubscriptionComparisonScreen extends ConsumerWidget {
               child: Text(
                 context.tr('sub_restore_purchases'),
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: AppColors.textSecondary,
+                  color: theme.colorScheme.onSurfaceVariant,
                   decoration: TextDecoration.underline,
                 ),
               ),
@@ -100,9 +105,11 @@ class SubscriptionComparisonScreen extends ConsumerWidget {
 }
 
 class _Feature {
-  final String icon;
+  final String? icon;
+  final Widget? iconWidget;
   final String text;
-  const _Feature(this.icon, this.text);
+  const _Feature(this.icon, this.text) : iconWidget = null;
+  const _Feature.widget(this.iconWidget, this.text) : icon = null;
 }
 
 class _CompactPlanRow extends StatelessWidget {
@@ -163,7 +170,7 @@ class _CompactPlanRow extends StatelessWidget {
             Text(
               price,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: AppColors.textSecondary,
+                color: theme.colorScheme.onSurfaceVariant,
               ),
             ),
         ],
@@ -219,7 +226,7 @@ class _PlanCard extends StatelessWidget {
                 context.tr('sub_recommended'),
                 textAlign: TextAlign.center,
                 style: theme.textTheme.labelMedium?.copyWith(
-                  color: AppColors.textPrimary,
+                  color: theme.colorScheme.onSurface,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -244,7 +251,7 @@ class _PlanCard extends StatelessWidget {
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: isRecommended
                             ? AppColors.primary
-                            : AppColors.textSecondary,
+                            : theme.colorScheme.onSurfaceVariant,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -258,19 +265,22 @@ class _PlanCard extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: AppSpacing.sm),
                     child: Row(
                       children: [
-                        QIcon(
-                          f.icon,
-                          size: 16,
-                          color: isRecommended
-                              ? AppColors.primary
-                              : AppColors.secondary,
-                        ),
+                        if (f.iconWidget != null)
+                          SizedBox(width: 16, height: 16, child: f.iconWidget!)
+                        else
+                          QIcon(
+                            f.icon!,
+                            size: 16,
+                            color: isRecommended
+                                ? AppColors.primary
+                                : AppColors.secondary,
+                          ),
                         const SizedBox(width: AppSpacing.md),
                         Expanded(
                           child: Text(
                             f.text,
                             style: theme.textTheme.bodyMedium?.copyWith(
-                              color: AppColors.textSecondary,
+                              color: theme.colorScheme.onSurfaceVariant,
                             ),
                           ),
                         ),

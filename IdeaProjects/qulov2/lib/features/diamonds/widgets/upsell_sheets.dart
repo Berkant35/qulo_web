@@ -41,7 +41,7 @@ class PremiumUpsellSheet extends StatelessWidget {
             width: 40,
             height: 4,
             decoration: BoxDecoration(
-              color: AppColors.textHint,
+              color: theme.hintColor,
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -69,7 +69,7 @@ class PremiumUpsellSheet extends StatelessWidget {
                 ? context.tr('want_more_matches')
                 : context.tr('unlock_unlimited'),
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: AppColors.textSecondary,
+              color: theme.colorScheme.onSurfaceVariant,
             ),
             textAlign: TextAlign.center,
           ),
@@ -120,7 +120,7 @@ class PremiumUpsellSheet extends StatelessWidget {
               child: Text(
                 context.tr('maybe_later'),
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textHint,
+                  color: theme.hintColor,
                 ),
               ),
             ),
@@ -196,7 +196,7 @@ class ConsumableUpsellSheet extends StatelessWidget {
             width: 40,
             height: 4,
             decoration: BoxDecoration(
-              color: AppColors.textHint,
+              color: theme.hintColor,
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -220,7 +220,7 @@ class ConsumableUpsellSheet extends StatelessWidget {
           Text(
             context.tr('get_diamonds'),
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: AppColors.textSecondary,
+              color: theme.colorScheme.onSurfaceVariant,
             ),
             textAlign: TextAlign.center,
           ),
@@ -238,7 +238,7 @@ class ConsumableUpsellSheet extends StatelessWidget {
               child: Text(
                 context.tr('maybe_later'),
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textHint,
+                  color: theme.hintColor,
                 ),
               ),
             ),
@@ -280,7 +280,7 @@ class SwipeLimitSheet extends StatelessWidget {
             width: 40,
             height: 4,
             decoration: BoxDecoration(
-              color: AppColors.textHint,
+              color: theme.hintColor,
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -316,7 +316,7 @@ class SwipeLimitSheet extends StatelessWidget {
           Text(
             context.tr('unlock_unlimited'),
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: AppColors.textSecondary,
+              color: theme.colorScheme.onSurfaceVariant,
             ),
             textAlign: TextAlign.center,
           ),
@@ -337,7 +337,7 @@ class SwipeLimitSheet extends StatelessWidget {
               child: Text(
                 context.tr('maybe_later'),
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textHint,
+                  color: theme.hintColor,
                 ),
               ),
             ),

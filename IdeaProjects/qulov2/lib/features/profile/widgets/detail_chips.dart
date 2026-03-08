@@ -102,17 +102,18 @@ class DetailChips extends StatelessWidget {
   Widget _buildChip(BuildContext context, ThemeData theme, _ChipData chip) {
     final isFilled = chip.filled;
 
+    final colors = theme.colorScheme;
     final bgColor =
-        isFilled ? AppColors.primarySurface : AppColors.surface;
+        isFilled ? AppColors.primarySurface : colors.surface;
     final borderColor = isFilled
-        ? AppColors.primary.withAlpha(77) // 0.3 alpha
-        : AppColors.border;
+        ? AppColors.primary.withAlpha(77)
+        : colors.outline;
     final iconColor = isFilled
         ? AppColors.primary
-        : AppColors.textHint.withAlpha(102); // 0.4 alpha
+        : colors.onSurfaceVariant.withAlpha(102);
     final textColor = isFilled
-        ? null // default text color
-        : AppColors.textHint.withAlpha(102); // 0.4 alpha
+        ? null
+        : colors.onSurfaceVariant.withAlpha(102);
 
     return Container(
       padding: const EdgeInsets.symmetric(

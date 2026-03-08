@@ -512,7 +512,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             return Text(
               '$count / 300',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: count > 300 ? AppColors.error : AppColors.textHint,
+                    color: count > 300 ? AppColors.error : Theme.of(context).hintColor,
                   ),
             );
           },
@@ -557,7 +557,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
       decoration: InputDecoration(labelText: label),
       items: items,
       onChanged: onChanged,
-      dropdownColor: AppColors.surfaceElevated,
+      dropdownColor: Theme.of(context).colorScheme.surfaceContainerHigh,
     );
   }
 
@@ -568,7 +568,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
         Text(
           context.tr('gender_preference'),
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.textSecondary,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
         ),
         const SizedBox(height: AppSpacing.sm),
@@ -598,7 +598,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
         Text(
           '${context.tr('age_range')}: ${_ageRange.start.round()} - ${_ageRange.end.round()}',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.textSecondary,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
         ),
         RangeSlider(
@@ -611,7 +611,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             _ageRange.end.round().toString(),
           ),
           activeColor: AppColors.primary,
-          inactiveColor: AppColors.surfaceElevated,
+          inactiveColor: Theme.of(context).colorScheme.surfaceContainerHigh,
           onChanged: (values) => setState(() => _ageRange = values),
         ),
       ],
@@ -625,7 +625,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
         Text(
           '${context.tr('distance')}: ${_distanceKm.round()} km',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.textSecondary,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
         ),
         Slider(
@@ -635,7 +635,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
           divisions: 39,
           label: '${_distanceKm.round()} km',
           activeColor: AppColors.primary,
-          inactiveColor: AppColors.surfaceElevated,
+          inactiveColor: Theme.of(context).colorScheme.surfaceContainerHigh,
           onChanged: (value) => setState(() => _distanceKm = value),
         ),
       ],
@@ -647,8 +647,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
       padding: const EdgeInsets.all(AppSpacing.pagePadding),
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
-        border: const Border(
-          top: BorderSide(color: AppColors.divider, width: 0.5),
+        border: Border(
+          top: BorderSide(color: Theme.of(context).dividerColor, width: 0.5),
         ),
       ),
       child: SafeArea(

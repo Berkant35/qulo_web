@@ -138,25 +138,25 @@ class _PhotoSlot extends StatelessWidget {
         height: height,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
           border: _isFilled
               ? null
               : Border.all(
-                  color: AppColors.textHint.withAlpha(100),
+                  color: Theme.of(context).hintColor.withAlpha(100),
                   width: 1.5,
                 ),
         ),
-        child: _isFilled ? _filledContent() : _emptyContent(),
+        child: _isFilled ? _filledContent() : _emptyContent(context),
       ),
     );
   }
 
-  Widget _emptyContent() {
+  Widget _emptyContent(BuildContext context) {
     return Center(
       child: QIcon(
         QIcons.icImagePlus,
-        color: AppColors.textHint,
+        color: Theme.of(context).hintColor,
         size: 28,
       ),
     );
@@ -170,7 +170,7 @@ class _PhotoSlot extends StatelessWidget {
           imageUrl: photoUrl!,
           fit: BoxFit.cover,
           placeholder: (context, url) => Container(
-            color: AppColors.surfaceElevated,
+            color: Theme.of(context).colorScheme.surfaceContainerHigh,
             child: const Center(
               child: SizedBox(
                 width: 24,
@@ -183,11 +183,11 @@ class _PhotoSlot extends StatelessWidget {
             ),
           ),
           errorWidget: (context, url, error) => Container(
-            color: AppColors.surfaceElevated,
+            color: Theme.of(context).colorScheme.surfaceContainerHigh,
             child: Center(
               child: QIcon(
                 QIcons.icUser,
-                color: AppColors.textHint,
+                color: Theme.of(context).hintColor,
                 size: 32,
               ),
             ),

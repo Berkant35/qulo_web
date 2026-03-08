@@ -44,7 +44,7 @@ class _UpgradeBanner extends StatelessWidget {
           Text(
             context.tr('premium_cta'),
             style: theme.textTheme.titleMedium?.copyWith(
-              color: AppColors.textPrimary,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -52,7 +52,7 @@ class _UpgradeBanner extends StatelessWidget {
           Text(
             context.tr('premium_benefits'),
             style: theme.textTheme.bodySmall?.copyWith(
-              color: AppColors.textPrimary.withValues(alpha: 0.85),
+              color: Colors.white.withValues(alpha: 0.85),
             ),
           ),
           const SizedBox(height: AppSpacing.lg),
@@ -120,7 +120,7 @@ class _ActivePlanBadge extends StatelessWidget {
             child: Text(
               planName,
               style: theme.textTheme.labelMedium?.copyWith(
-                color: AppColors.textPrimary,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),

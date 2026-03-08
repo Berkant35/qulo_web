@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
@@ -5,23 +6,21 @@ import 'package:qulo_v2/core/widgets/diamond_icon.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 
 enum DiamondTier {
-  starter(amount: 50, price: '\$0.99', iconSize: 22, glowRadius: 0),
-  popular(amount: 150, price: '\$2.49', iconSize: 26, glowRadius: 8),
-  bestValue(amount: 400, price: '\$4.99', iconSize: 30, glowRadius: 14),
-  mega(amount: 1000, price: '\$9.99', iconSize: 34, glowRadius: 20),
-  ultra(amount: 2500, price: '\$19.99', iconSize: 38, glowRadius: 26),
-  vip(amount: 6000, price: '\$39.99', iconSize: 42, glowRadius: 32);
+  starter(amount: 50, price: '\$0.99', diamondCount: 1),
+  popular(amount: 150, price: '\$2.49', diamondCount: 2),
+  bestValue(amount: 400, price: '\$4.99', diamondCount: 3),
+  mega(amount: 1000, price: '\$9.99', diamondCount: 4),
+  ultra(amount: 2500, price: '\$19.99', diamondCount: 5),
+  vip(amount: 6000, price: '\$39.99', diamondCount: 6);
 
   final int amount;
   final String price;
-  final double iconSize;
-  final double glowRadius;
+  final int diamondCount;
 
   const DiamondTier({
     required this.amount,
     required this.price,
-    required this.iconSize,
-    required this.glowRadius,
+    required this.diamondCount,
   });
 }
 
@@ -103,7 +102,7 @@ class _PackageCard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _GlowingDiamond(tier: tier),
+                    _DiamondPile(tier: tier),
                     const SizedBox(height: AppSpacing.sm),
                     Text(
                       '${tier.amount}',
@@ -141,7 +140,7 @@ class _PackageCard extends StatelessWidget {
                     context.tr('best_value'),
                     textAlign: TextAlign.center,
                     style: theme.textTheme.labelSmall?.copyWith(
-                      color: AppColors.textPrimary,
+                      color: theme.colorScheme.onSurface,
                       fontWeight: FontWeight.bold,
                       fontSize: 10,
                     ),
@@ -155,39 +154,99 @@ class _PackageCard extends StatelessWidget {
   }
 }
 
-/// Single diamond with increasing size and glow based on tier
-class _GlowingDiamond extends StatelessWidget {
+/// Stacked diamond pile — diamonds increase per tier, glow stays consistent
+class _DiamondPile extends StatelessWidget {
   final DiamondTier tier;
 
-  const _GlowingDiamond({required this.tier});
+  const _DiamondPile({required this.tier});
+
+  static const List<List<_DiamondOffset>> _pileLayouts = [
+    // 1 diamond (starter)
+    [_DiamondOffset(0, 0, 0)],
+    // 2 diamonds (popular)
+    [_DiamondOffset(-5, 2, -15), _DiamondOffset(5, -2, 12)],
+    // 3 diamonds (bestValue)
+    [
+      _DiamondOffset(-7, 3, -20),
+      _DiamondOffset(6, -1, 15),
+      _DiamondOffset(0, -4, -5),
+    ],
+    // 4 diamonds (mega)
+    [
+      _DiamondOffset(-8, 4, -22),
+      _DiamondOffset(7, 2, 18),
+      _DiamondOffset(-2, -4, 8),
+      _DiamondOffset(3, -2, -12),
+    ],
+    // 5 diamonds (ultra)
+    [
+      _DiamondOffset(-9, 5, -25),
+      _DiamondOffset(8, 3, 20),
+      _DiamondOffset(-3, -3, 10),
+      _DiamondOffset(4, -5, -8),
+      _DiamondOffset(0, 1, -18),
+    ],
+    // 6 diamonds (vip)
+    [
+      _DiamondOffset(-10, 5, -28),
+      _DiamondOffset(9, 4, 22),
+      _DiamondOffset(-4, -2, 12),
+      _DiamondOffset(5, -4, -10),
+      _DiamondOffset(-1, -6, 5),
+      _DiamondOffset(2, 2, -15),
+    ],
+  ];
 
   @override
   Widget build(BuildContext context) {
+    final layout = _pileLayouts[tier.index];
+    const diamondSize = 22.0;
+
     return SizedBox(
       height: 48,
       width: 48,
-      child: Center(
-        child: Container(
-          decoration: tier.glowRadius > 0
-              ? BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.primary.withValues(
-                        alpha: 0.15 + (tier.index * 0.07),
-                      ),
-                      blurRadius: tier.glowRadius,
-                      spreadRadius: tier.glowRadius * 0.3,
-                    ),
-                  ],
-                )
-              : null,
-          child: DiamondIcon.purple(
-            size: tier.iconSize,
-            showGlow: false,
+      child: Stack(
+        alignment: Alignment.center,
+        clipBehavior: Clip.none,
+        children: [
+          // Consistent purple glow behind pile
+          Container(
+            width: 36,
+            height: 36,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.primary.withValues(alpha: 0.25),
+                  blurRadius: 12,
+                  spreadRadius: 4,
+                ),
+              ],
+            ),
           ),
-        ),
+          // Stacked diamonds with offsets and rotation
+          ...layout.map(
+            (offset) => Transform.translate(
+              offset: Offset(offset.dx, offset.dy),
+              child: Transform.rotate(
+                angle: offset.rotation * math.pi / 180,
+                child: const DiamondIcon.purple(
+                  size: diamondSize,
+                  showGlow: false,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
+}
+
+class _DiamondOffset {
+  final double dx;
+  final double dy;
+  final double rotation;
+
+  const _DiamondOffset(this.dx, this.dy, this.rotation);
 }
