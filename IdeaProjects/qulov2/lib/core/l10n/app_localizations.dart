@@ -428,6 +428,13 @@ class AppLocalizations {
     'analytics_power_usage': 'Güç Kullanımı',
     'analytics_answer_distribution': 'Cevap Dağılımı',
     'analytics_min_solves': 'Rozet için en az 10 çözülme gerekli',
+    'analytics_correct': 'Doğru',
+    'analytics_wrong': 'Yanlış',
+    'analytics_question_num': 'Soru #{n}',
+    'analytics_green_question': 'Bu soru sana {n} yeşil elmas kazandırdı',
+    'analytics_no_data': 'Henüz istatistik yok',
+    'analytics_seconds': '{n}s',
+    'analytics_answer_n': 'Cevap {n}',
 
     // Pending Changes
     'pending_changes_title': 'Bekleyen İşlemler',
@@ -444,6 +451,11 @@ class AppLocalizations {
     'quiz_result_determined': 'Azimli',
     'quiz_result_time_spent': 'Harcanan Süre',
     'quiz_result_powers_used': 'Kullanılan Güçler',
+    'quiz_result_matched': 'Eşleştin!',
+    'quiz_result_not_matched': 'Bu sefer olmadı',
+    'quiz_result_correct_count': '{correct}/{total} doğru',
+    'quiz_result_start_chat': 'Sohbete Başla',
+    'quiz_result_go_back': 'Geri Dön',
 
     // Chat Quiz Summary
     'chat_quiz_summary': 'Quiz Özeti',
@@ -884,6 +896,13 @@ class AppLocalizations {
     'analytics_power_usage': 'Power Usage',
     'analytics_answer_distribution': 'Answer Distribution',
     'analytics_min_solves': 'At least 10 solves required for badge',
+    'analytics_correct': 'Correct',
+    'analytics_wrong': 'Wrong',
+    'analytics_question_num': 'Question #{n}',
+    'analytics_green_question': 'This question earned you {n} green diamonds',
+    'analytics_no_data': 'No stats yet',
+    'analytics_seconds': '{n}s',
+    'analytics_answer_n': 'Answer {n}',
 
     // Pending Changes
     'pending_changes_title': 'Pending Changes',
@@ -900,6 +919,11 @@ class AppLocalizations {
     'quiz_result_determined': 'Determined',
     'quiz_result_time_spent': 'Time Spent',
     'quiz_result_powers_used': 'Powers Used',
+    'quiz_result_matched': 'You Matched!',
+    'quiz_result_not_matched': 'Not this time',
+    'quiz_result_correct_count': '{correct}/{total} correct',
+    'quiz_result_start_chat': 'Start Chat',
+    'quiz_result_go_back': 'Go Back',
 
     // Chat Quiz Summary
     'chat_quiz_summary': 'Quiz Summary',

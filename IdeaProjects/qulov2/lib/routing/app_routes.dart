@@ -135,6 +135,11 @@ final _routes = <RouteBase>[
                   name: RouteNames.questionEasyMode,
                   builder: (context, state) => const QuestionEasyModeScreen(),
                 ),
+                GoRoute(
+                  path: 'analytics',
+                  name: RouteNames.questionAnalytics,
+                  builder: (context, state) => const QuestionAnalyticsScreen(),
+                ),
               ],
             ),
             GoRoute(

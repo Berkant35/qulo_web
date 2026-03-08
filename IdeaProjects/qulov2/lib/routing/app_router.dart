@@ -21,6 +21,7 @@ import 'package:qulo_v2/features/diamonds/screens/subscription_comparison_screen
 import 'package:qulo_v2/features/notifications/screens/notifications_screen.dart';
 import 'package:qulo_v2/features/questions/screens/question_create_screen.dart';
 import 'package:qulo_v2/features/questions/screens/question_easy_mode_screen.dart';
+import 'package:qulo_v2/features/questions/screens/question_analytics_screen.dart';
 import 'package:qulo_v2/data/models/question_model.dart';
 import 'package:qulo_v2/data/models/ai_suggestion_model.dart';
 import 'package:qulo_v2/features/update/force_update_screen.dart';
