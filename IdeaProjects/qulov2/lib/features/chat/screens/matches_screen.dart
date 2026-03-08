@@ -32,8 +32,9 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
     return AppScaffold(
       title: context.tr('matches'),
       padding: EdgeInsets.zero,
+      isLoading: matchesAsync is AsyncLoading,
       body: matchesAsync.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const SizedBox.shrink(),
         error: (e, _) => Center(child: Text('Error: $e')),
         data: (matches) {
           if (matches.isEmpty) {

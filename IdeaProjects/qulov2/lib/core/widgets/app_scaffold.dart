@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget body;
@@ -15,6 +16,7 @@ class AppScaffold extends StatelessWidget {
   final Widget? bottomNavigationBar;
   final bool extendBodyBehindAppBar;
   final Color? backgroundColor;
+  final bool isLoading;
 
   const AppScaffold({
     super.key,
@@ -29,6 +31,7 @@ class AppScaffold extends StatelessWidget {
     this.bottomNavigationBar,
     this.extendBodyBehindAppBar = false,
     this.backgroundColor,
+    this.isLoading = false,
   });
 
   @override
@@ -62,9 +65,11 @@ class AppScaffold extends StatelessWidget {
             Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: AppSpacing.maxContentWidth),
-                child: padding != null
-                    ? Padding(padding: padding!, child: body)
-                    : body,
+                child: isLoading
+                    ? const Center(child: AppLoadingWidget.large())
+                    : padding != null
+                        ? Padding(padding: padding!, child: body)
+                        : body,
               ),
             ),
           ],

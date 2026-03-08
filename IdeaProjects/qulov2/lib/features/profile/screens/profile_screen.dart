@@ -87,8 +87,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         ),
       ],
       padding: EdgeInsets.zero,
+      isLoading: userAsync is AsyncLoading,
       body: userAsync.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const SizedBox.shrink(),
         error: (e, _) => Center(child: Text('Error: $e')),
         data: (user) {
           if (user == null) return const Center(child: Text('No user data'));

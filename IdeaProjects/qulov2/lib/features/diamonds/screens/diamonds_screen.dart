@@ -5,6 +5,7 @@ import 'package:qulo_v2/core/constants/q_icons.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/data/models/diamond_model.dart';
@@ -80,7 +81,7 @@ class _DiamondsScreenState extends ConsumerState<DiamondsScreen> {
                 greenCount: bal.green,
                 purpleCount: bal.purple,
               ),
-              loading: () => const Center(child: CircularProgressIndicator()),
+              loading: () => const Center(child: AppLoadingWidget.large()),
               error: (_, __) => Center(
                 child: Text(
                   context.tr('failed_load_balance'),
@@ -149,7 +150,7 @@ class _DiamondsScreenState extends ConsumerState<DiamondsScreen> {
 
             // 6. Transaction History List (last 5)
             if (_loadingHistory)
-              const Center(child: CircularProgressIndicator())
+              const Center(child: AppLoadingWidget.large())
             else if (_history.isEmpty)
               Text(
                 context.tr('no_transactions'),

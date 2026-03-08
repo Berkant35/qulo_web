@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
 
 enum AppButtonVariant { primary, secondary, text }
 
@@ -27,7 +28,7 @@ class AppButton extends StatelessWidget {
         ? const SizedBox(
             height: 20,
             width: 20,
-            child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+            child: AppLoadingWidget.small(),
           )
         : icon != null
             ? Row(

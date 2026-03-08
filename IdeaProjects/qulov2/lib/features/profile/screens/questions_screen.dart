@@ -155,9 +155,9 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
         },
         child: const Icon(Icons.add),
       ),
+      isLoading: questionsAsync is AsyncLoading,
       body: questionsAsync.when(
-
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const SizedBox.shrink(),
         error: (e, _) => Center(child: Text('Error: $e')),
         data: (questions) {
           if (questions.isEmpty) {

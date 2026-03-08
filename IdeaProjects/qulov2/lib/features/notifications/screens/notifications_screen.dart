@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/core/navigation/navigation.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/features/notifications/widgets/notification_card.dart';
 import 'package:qulo_v2/providers/notification_provider.dart';
@@ -61,7 +62,7 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
 
   Widget _buildBody(NotificationState state, ThemeData theme) {
     if (state.isLoading && state.notifications.isEmpty) {
-      return const Center(child: CircularProgressIndicator());
+      return const Center(child: AppLoadingWidget.large());
     }
 
     if (state.notifications.isEmpty) {

@@ -37,8 +37,9 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
     return AppScaffold(
       title: context.tr('discover'),
       padding: EdgeInsets.zero,
+      isLoading: state is AsyncLoading,
       body: state.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const SizedBox.shrink(),
         error: (e, _) => Center(child: Text('Error: $e')),
         data: (discover) {
           // ─── Question Gate: Blur Lock ───

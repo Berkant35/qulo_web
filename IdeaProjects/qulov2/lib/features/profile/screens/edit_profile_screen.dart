@@ -7,6 +7,7 @@ import 'package:qulo_v2/core/navigation/navigation.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/widgets/app_button.dart';
+import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/core/widgets/app_text_field.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
@@ -536,7 +537,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             ? const SizedBox(
                 width: 20,
                 height: 20,
-                child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.primary),
+                child: AppLoadingWidget.small(),
               )
             : QIcon(QIcons.icMapPin, color: AppColors.primary, size: 20),
       ),

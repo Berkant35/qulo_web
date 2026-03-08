@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:qulo_v2/core/constants/q_icons.dart';
-import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 
@@ -172,14 +172,7 @@ class _PhotoSlot extends StatelessWidget {
           placeholder: (context, url) => Container(
             color: Theme.of(context).colorScheme.surfaceContainerHigh,
             child: const Center(
-              child: SizedBox(
-                width: 24,
-                height: 24,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  color: AppColors.primary,
-                ),
-              ),
+              child: AppLoadingWidget.small(),
             ),
           ),
           errorWidget: (context, url, error) => Container(

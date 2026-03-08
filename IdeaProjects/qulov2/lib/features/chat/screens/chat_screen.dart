@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/data/models/message_model.dart';
 import 'package:qulo_v2/providers/chat_provider.dart';
@@ -83,7 +84,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
         children: [
           Expanded(
             child: chatState.when(
-              loading: () => const Center(child: CircularProgressIndicator()),
+              loading: () => const Center(child: AppLoadingWidget.large()),
               error: (e, _) => Center(
                 child: Text('Error: $e', style: const TextStyle(color: AppColors.error)),
               ),
@@ -127,7 +128,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                         child: Text(
                           msg.content,
                           style: theme.textTheme.bodyMedium?.copyWith(
-                            color: isMe ? Colors.white : theme.colorScheme.onSurface,
+                            color: isMe ? theme.colorScheme.onPrimary : theme.colorScheme.onSurface,
                           ),
                         ),
                       ),
@@ -186,7 +187,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                     ),
                     child: IconButton(
                       onPressed: _send,
-                      icon: const Icon(Icons.send, color: Colors.white, size: 20),
+                      icon: Icon(Icons.send, color: Theme.of(context).colorScheme.onPrimary, size: 20),
                     ),
                   ),
                 ],

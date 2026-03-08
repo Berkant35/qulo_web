@@ -5,6 +5,7 @@ import 'package:qulo_v2/core/theme/app_spacing.dart';
 import 'package:qulo_v2/core/constants/app_constants.dart';
 import 'package:qulo_v2/core/mixins/loading_mixin.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/widgets/app_loading_widget.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
 import 'package:qulo_v2/providers/passport_provider.dart';
 
@@ -68,7 +69,7 @@ class _PassportScreenState extends ConsumerState<PassportScreen> with LoadingMix
                             await ref.read(passportProvider.notifier).activate(city: city, lat: 0, lng: 0);
                           }),
                   child: isLoading
-                      ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2))
+                      ? const SizedBox(height: 20, width: 20, child: AppLoadingWidget.small())
                       : Text(context.tr('activate_passport')),
                 ),
               ),

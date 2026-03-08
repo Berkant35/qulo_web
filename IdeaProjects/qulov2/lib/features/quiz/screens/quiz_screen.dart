@@ -85,8 +85,9 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
         onPressed: () => ref.read(navigationServiceProvider).pop(),
       ),
       padding: EdgeInsets.zero,
+      isLoading: quiz.isLoading || question == null,
       body: quiz.isLoading || question == null
-          ? const Center(child: CircularProgressIndicator())
+          ? const SizedBox.shrink()
           : Padding(
               padding: const EdgeInsets.all(AppSpacing.pagePadding),
               child: Column(
