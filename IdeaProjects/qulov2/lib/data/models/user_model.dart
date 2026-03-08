@@ -16,8 +16,8 @@ class UserModel extends Equatable {
   final String? gender;
   @JsonKey(name: 'gender_pref')
   final String? genderPref;
-  @JsonKey(name: 'match_radius_km')
-  final int? matchRadiusKm;
+  @JsonKey(name: 'match_radius_km', defaultValue: 50)
+  final int matchRadiusKm;
   @JsonKey(name: 'age_pref_min')
   final int? agePrefMin;
   @JsonKey(name: 'age_pref_max')
@@ -71,7 +71,7 @@ class UserModel extends Equatable {
     this.age,
     this.gender,
     this.genderPref,
-    this.matchRadiusKm,
+    this.matchRadiusKm = 50,
     this.agePrefMin,
     this.agePrefMax,
     this.city,
