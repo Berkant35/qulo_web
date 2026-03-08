@@ -28,6 +28,9 @@ const envSchema = z.object({
   // App
   APP_URL: z.string().url().default("http://localhost:3000"),
 
+  // RevenueCat
+  REVENUECAT_WEBHOOK_SECRET: z.string().default(''),
+
   // Admin
   ADMIN_SESSION_SECRET: z.string().min(1),
   ADMIN_SEED_EMAIL: z.string().email().optional(),

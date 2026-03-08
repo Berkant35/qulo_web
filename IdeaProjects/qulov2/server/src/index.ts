@@ -15,6 +15,7 @@ import quizRoutes from "./routes/quiz.routes.js";
 import powerRoutes from "./routes/power.routes.js";
 import passportRoutes from "./routes/passport.routes.js";
 import reportRoutes from "./routes/report.routes.js";
+import webhookRoutes from "./routes/webhook.routes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import adminRoutes from "./admin/admin.routes.js";
 import { adminService } from "./admin/admin.service.js";
@@ -55,6 +56,11 @@ app.get("/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
+// Email verification callback (Supabase Auth redirects here)
+app.get("/", (_req, res) => {
+  res.render("email-verified");
+});
+
 // Admin backoffice
 app.use("/admin", adminRoutes);
 
@@ -69,6 +75,7 @@ app.use("/api/v1/quiz", quizRoutes);
 app.use("/api/v1/powers", powerRoutes);
 app.use("/api/v1/passport", passportRoutes);
 app.use("/api/v1/reports", reportRoutes);
+app.use("/api/v1/webhooks", webhookRoutes);
 
 // Error handler (must be last)
 app.use(errorHandler);
