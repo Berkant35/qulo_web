@@ -15,6 +15,7 @@ import 'package:qulo_v2/providers/location_provider.dart';
 import 'package:qulo_v2/providers/match_provider.dart';
 import 'package:qulo_v2/providers/user_provider.dart';
 import 'package:qulo_v2/routing/route_names.dart';
+import 'package:qulo_v2/features/discover/widgets/discover_empty_state.dart';
 import 'package:qulo_v2/features/discover/widgets/profile_card.dart';
 
 class DiscoverScreen extends ConsumerStatefulWidget {
@@ -313,21 +314,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
           }
 
           if (discover.cards.isEmpty) {
-            return Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  QIcon(QIcons.icCompassOff, size: 64, color: theme.hintColor),
-                  const SizedBox(height: AppSpacing.lg),
-                  Text(context.tr('no_more_profiles'), style: theme.textTheme.titleMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
-                  const SizedBox(height: AppSpacing.sm),
-                  TextButton(
-                    onPressed: () => ref.read(discoverProvider.notifier).loadCards(),
-                    child: Text(context.tr('refresh')),
-                  ),
-                ],
-              ),
-            );
+            return const DiscoverEmptyState();
           }
           final card = discover.cards.first;
           return Padding(
