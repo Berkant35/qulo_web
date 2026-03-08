@@ -19,8 +19,8 @@ interface CandidateRow {
   green_diamonds: number;
   like_received_count: number;
   times_shown_count: number;
-  last_seen: string;
-  boost_active: boolean;
+  last_seen_at: string;
+  boost_until: string | null;
 }
 
 interface ProfileCard {
@@ -41,16 +41,23 @@ export class MatchingService {
    * Discover candidates for a user.
    */
   async discover(userId: string, page = 1): Promise<{ cards: ProfileCard[]; page: number; has_more: boolean }> {
-    // 1. Get current user
-    const { data: user, error: userError } = await supabase
-      .from("users")
-      .select(
-        "id, gender_pref, age_pref_min, age_pref_max, match_radius_km, lat, lng, passport_lat, passport_lng",
-      )
-      .eq("id", userId)
-      .eq("is_deleted", false)
-      .maybeSingle();
+    // 1. Get current user + already-swiped IDs in parallel
+    const [userResult, swipedResult] = await Promise.all([
+      supabase
+        .from("users")
+        .select(
+          "id, gender_pref, age_pref_min, age_pref_max, match_radius_km, lat, lng, passport_lat, passport_lng",
+        )
+        .eq("id", userId)
+        .eq("is_deleted", false)
+        .maybeSingle(),
+      supabase
+        .from("swipes")
+        .select("target_id")
+        .eq("swiper_id", userId),
+    ]);
 
+    const { data: user, error: userError } = userResult;
     if (userError || !user) throw Errors.USER_NOT_FOUND();
 
     // Determine location (passport overrides real)
@@ -63,11 +70,7 @@ export class MatchingService {
 
     const maxRadius: number = user.match_radius_km ?? 100;
 
-    // 2. Get already-swiped IDs
-    const { data: swipedRows } = await supabase
-      .from("swipes")
-      .select("target_id")
-      .eq("swiper_id", userId);
+    const { data: swipedRows } = swipedResult;
 
     const excludedIds = new Set<string>([userId]);
     if (swipedRows) {
@@ -82,13 +85,13 @@ export class MatchingService {
     let query = supabase
       .from("users")
       .select(
-        "id, name, bio, age, gender, city, lat, lng, photos, profile_completion, green_diamonds, like_received_count, times_shown_count, last_seen, boost_active",
+        "id, name, bio, age, gender, city, lat, lng, photos, profile_completion, green_diamonds, like_received_count, times_shown_count, last_seen_at, boost_until",
       )
       .eq("is_deleted", false)
       .eq("email_verified", true)
       .not("lat", "is", null)
       .not("lng", "is", null)
-      .gte("last_seen", sevenDaysAgo)
+      .gte("last_seen_at", sevenDaysAgo)
       .limit(50);
 
     // Age filter
@@ -144,14 +147,24 @@ export class MatchingService {
       }
     }
 
+    // 5.5 — Filter out users with < 2 questions (not discoverable)
+    const discoverableFiltered = filtered.filter((c) => {
+      const qCount = questionCountMap.get(c.id) ?? 0;
+      return qCount >= 2;
+    });
+
     // 6. Score each candidate
-    const scored = filtered.map((c) => {
+    const now = new Date();
+    const isBoostActive = (boostUntil: string | null): boolean =>
+      boostUntil != null && new Date(boostUntil) > now;
+
+    const scored = discoverableFiltered.map((c) => {
       const photoCount = c.photos?.length ?? 0;
       const qCount = questionCountMap.get(c.id) ?? 0;
 
       const desirability = scoringService.desirabilityScore(c.like_received_count, c.times_shown_count);
       const engagement = scoringService.engagementScore(c.green_diamonds, 0); // quizCompletionRate not available yet
-      const recency = scoringService.recencyScore(c.last_seen);
+      const recency = scoringService.recencyScore(c.last_seen_at);
       const distance = scoringService.distanceScore(c.distance_km, maxRadius);
       const profile = scoringService.profileScore(c.profile_completion, photoCount, !!c.bio);
 
@@ -161,7 +174,7 @@ export class MatchingService {
         recency,
         distance,
         profile,
-        boostActive: c.boost_active,
+        boostActive: isBoostActive(c.boost_until),
       });
 
       return { candidate: c, score, questionCount: qCount };
@@ -192,7 +205,7 @@ export class MatchingService {
       distance_km: s.candidate.distance_km,
       question_count: s.questionCount,
       profile_completion: s.candidate.profile_completion,
-      is_boosted: s.candidate.boost_active,
+      is_boosted: isBoostActive(s.candidate.boost_until),
     }));
 
     return { cards, page, has_more: hasMore };
@@ -269,10 +282,10 @@ export class MatchingService {
   async getMatches(userId: string) {
     const { data: matches, error } = await supabase
       .from("matches")
-      .select("id, user1_id, user2_id, created_at")
+      .select("id, user1_id, user2_id, matched_at")
       .or(`user1_id.eq.${userId},user2_id.eq.${userId}`)
       .eq("is_active", true)
-      .order("created_at", { ascending: false });
+      .order("matched_at", { ascending: false });
 
     if (error) {
       console.error("[matching] Get matches error:", error);
@@ -289,7 +302,7 @@ export class MatchingService {
     // Fetch basic info for other users
     const { data: others } = await supabase
       .from("users")
-      .select("id, name, age, city, photos, bio, is_online, last_seen")
+      .select("id, name, age, city, photos, bio, is_online, last_seen_at")
       .in("id", otherIds);
 
     const otherMap = new Map<string, (typeof others extends (infer U)[] | null ? U : never)>();
@@ -304,7 +317,7 @@ export class MatchingService {
       const other = otherMap.get(otherId);
       return {
         match_id: m.id,
-        matched_at: m.created_at,
+        matched_at: m.matched_at,
         user: other
           ? {
               user_id: other.id,
@@ -314,7 +327,7 @@ export class MatchingService {
               photos: other.photos,
               bio: other.bio,
               is_online: other.is_online,
-              last_seen: other.last_seen,
+              last_seen: other.last_seen_at,
             }
           : null,
       };
