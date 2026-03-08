@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { SUPPORTED_LOCALES } from '../constants/locales.js';
 
 export const QUESTION_CATEGORIES = [
   'personality', 'music', 'film', 'sports', 'travel',
@@ -18,6 +19,7 @@ export const createQuestionSchema = z.object({
   hint_text: z.string().max(300).optional(),
   category: z.enum(QUESTION_CATEGORIES).optional(),
   time_limit: z.number().int().refine(v => (TIME_PRESETS as readonly number[]).includes(v), { message: 'time_limit must be 15, 30, 60, or 90' }).optional().default(30),
+  locale: z.enum(SUPPORTED_LOCALES as unknown as [string, ...string[]]).optional(),
 });
 
 export const updateQuestionSchema = z.object({
@@ -30,6 +32,7 @@ export const updateQuestionSchema = z.object({
   hint_text: z.string().max(300).optional(),
   category: z.enum(QUESTION_CATEGORIES).optional(),
   time_limit: z.number().int().refine(v => (TIME_PRESETS as readonly number[]).includes(v), { message: 'time_limit must be 15, 30, 60, or 90' }).optional(),
+  locale: z.enum(SUPPORTED_LOCALES as unknown as [string, ...string[]]).optional(),
 });
 
 export type CreateQuestionInput = z.infer<typeof createQuestionSchema>;

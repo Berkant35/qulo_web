@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { SUPPORTED_LOCALES } from '../constants/locales.js';
 
 export const updateProfileSchema = z.object({
   name: z.string().min(1).max(50).optional(),
@@ -6,12 +7,12 @@ export const updateProfileSchema = z.object({
   bio: z.string().max(500).optional(),
   age: z.number().int().min(18).max(99).optional(),
   gender_pref: z.enum(["MAN", "WOMAN", "BOTH"]).optional(),
-  match_radius_km: z.number().int().min(1).max(500).optional(),
+  match_radius_km: z.number().int().min(5).max(200).optional(),
   age_pref_min: z.number().int().min(18).max(99).optional(),
   age_pref_max: z.number().int().min(18).max(99).optional(),
   city: z.string().max(100).optional(),
   country: z.string().max(100).optional(),
-  locale: z.enum(["tr", "en"]).optional(),
+  locale: z.enum(SUPPORTED_LOCALES as unknown as [string, ...string[]]).optional(),
   photos: z.array(z.string().url()).max(6).optional(),
 });
 
@@ -35,6 +36,7 @@ export type UpdateDetailsInput = z.infer<typeof updateDetailsSchema>;
 export const updateLocationSchema = z.object({
   lat: z.number().min(-90).max(90),
   lng: z.number().min(-180).max(180),
+  city: z.string().max(100).optional(),
 });
 
 export type UpdateLocationInput = z.infer<typeof updateLocationSchema>;
