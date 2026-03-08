@@ -5,15 +5,17 @@ import 'package:qulo_v2/providers/api_provider.dart';
 class LocationState {
   final double? lat;
   final double? lng;
+  final String? city;
   final bool isLoading;
   final String? error;
 
-  const LocationState({this.lat, this.lng, this.isLoading = false, this.error});
+  const LocationState({this.lat, this.lng, this.city, this.isLoading = false, this.error});
 
-  LocationState copyWith({double? lat, double? lng, bool? isLoading, String? error}) {
+  LocationState copyWith({double? lat, double? lng, String? city, bool? isLoading, String? error}) {
     return LocationState(
       lat: lat ?? this.lat,
       lng: lng ?? this.lng,
+      city: city ?? this.city,
       isLoading: isLoading ?? this.isLoading,
       error: error,
     );
@@ -51,9 +53,18 @@ class LocationNotifier extends Notifier<LocationState> {
 
       final result = await manager.getCurrentPosition();
 
-      state = state.copyWith(lat: result.lat, lng: result.lng, isLoading: false);
+      state = state.copyWith(
+        lat: result.lat,
+        lng: result.lng,
+        city: result.city,
+        isLoading: false,
+      );
 
-      await ref.read(userRepositoryProvider).updateLocation(lat: result.lat, lng: result.lng);
+      await ref.read(userRepositoryProvider).updateLocation(
+        lat: result.lat,
+        lng: result.lng,
+        city: result.city,
+      );
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
     }

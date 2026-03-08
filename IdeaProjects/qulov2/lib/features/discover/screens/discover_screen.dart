@@ -11,6 +11,7 @@ import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/constants/q_icons.dart';
 import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/providers/location_provider.dart';
 import 'package:qulo_v2/providers/match_provider.dart';
 import 'package:qulo_v2/providers/user_provider.dart';
 import 'package:qulo_v2/routing/route_names.dart';
@@ -30,8 +31,16 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => ref.read(discoverProvider.notifier).loadCards());
+    Future.microtask(() => _initLocationAndDiscover());
     _loadAndIncrementNudge();
+  }
+
+  Future<void> _initLocationAndDiscover() async {
+    final locationState = ref.read(locationProvider);
+    if (locationState.lat == null) {
+      await ref.read(locationProvider.notifier).getCurrentLocation();
+    }
+    ref.read(discoverProvider.notifier).loadCards();
   }
 
   Future<void> _loadAndIncrementNudge() async {

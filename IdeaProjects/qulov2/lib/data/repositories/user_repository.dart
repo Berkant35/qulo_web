@@ -44,9 +44,11 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<Result<void>> updateLocation({required double lat, required double lng}) async {
+  Future<Result<void>> updateLocation({required double lat, required double lng, String? city}) async {
     try {
-      await _service.updateLocation({'lat': lat, 'lng': lng});
+      final data = <String, dynamic>{'lat': lat, 'lng': lng};
+      if (city != null) data['city'] = city;
+      await _service.updateLocation(data);
       return const Success(null);
     } on DioException catch (e) {
       return Failure(e.toAppFailure());

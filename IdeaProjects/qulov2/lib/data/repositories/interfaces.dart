@@ -142,7 +142,7 @@ abstract class IUserRepository {
 
   Future<Result<UserDetailsModel>> updateDetails(Map<String, dynamic> data);
 
-  Future<Result<void>> updateLocation({required double lat, required double lng});
+  Future<Result<void>> updateLocation({required double lat, required double lng, String? city});
 
   Future<Result<void>> updatePushToken(String token);
 
