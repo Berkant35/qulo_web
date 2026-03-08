@@ -1,5 +1,6 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
 import 'package:qulo_v2/core/theme/app_spacing.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -84,8 +85,8 @@ class _BackgroundPainter extends CustomPainter {
         purpleCenter,
         purpleRadius,
         [
-          const Color(0xFFBB86FC).withValues(alpha: 0.06),
-          const Color(0xFFBB86FC).withValues(alpha: 0.0),
+          AppColors.primary.withValues(alpha: 0.06),
+          AppColors.primary.withValues(alpha: 0.0),
         ],
       );
     canvas.drawCircle(purpleCenter, purpleRadius, purplePaint);
@@ -98,8 +99,8 @@ class _BackgroundPainter extends CustomPainter {
         greenCenter,
         greenRadius,
         [
-          const Color(0xFF69F0AE).withValues(alpha: 0.04),
-          const Color(0xFF69F0AE).withValues(alpha: 0.0),
+          AppColors.secondary.withValues(alpha: 0.04),
+          AppColors.secondary.withValues(alpha: 0.0),
         ],
       );
     canvas.drawCircle(greenCenter, greenRadius, greenPaint);
