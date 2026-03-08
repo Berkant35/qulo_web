@@ -111,6 +111,11 @@ final _routes = <RouteBase>[
               builder: (context, state) => const PassportScreen(),
             ),
             GoRoute(
+              path: 'subscription',
+              name: RouteNames.subscription,
+              builder: (context, state) => const SubscriptionComparisonScreen(),
+            ),
+            GoRoute(
               path: 'settings',
               name: RouteNames.settings,
               builder: (context, state) => const SettingsScreen(),
