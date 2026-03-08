@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import '../../../core/navigation/navigation.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/match_provider.dart';
@@ -80,9 +80,9 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
                           final photo = u?.photos?.isNotEmpty == true ? u!.photos!.first : null;
 
                           return GestureDetector(
-                            onTap: () => context.goNamed(
+                            onTap: () => ref.read(navigationServiceProvider).go(
                               RouteNames.chat,
-                              pathParameters: {'matchId': m.matchId},
+                              params: {'matchId': m.matchId},
                             ),
                             child: Column(
                               children: [
@@ -130,7 +130,13 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
                     final m = matches[index];
-                    return _MatchCard(match: m);
+                    return _MatchCard(
+                      match: m,
+                      onTap: () => ref.read(navigationServiceProvider).go(
+                        RouteNames.chat,
+                        params: {'matchId': m.matchId},
+                      ),
+                    );
                   },
                   childCount: matches.length,
                 ),
@@ -145,7 +151,8 @@ class _MatchesScreenState extends ConsumerState<MatchesScreen> {
 
 class _MatchCard extends StatelessWidget {
   final MatchModel match;
-  const _MatchCard({required this.match});
+  final VoidCallback onTap;
+  const _MatchCard({required this.match, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -202,10 +209,7 @@ class _MatchCard extends StatelessWidget {
                 style: TextStyle(color: AppColors.secondary, fontSize: 12),
               )
             : null,
-        onTap: () => context.goNamed(
-          RouteNames.chat,
-          pathParameters: {'matchId': match.matchId},
-        ),
+        onTap: onTap,
       ),
     );
   }

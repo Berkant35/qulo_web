@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import '../../../core/navigation/navigation.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/mixins/form_mixin.dart';
@@ -39,7 +39,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen>
               content: Text(context.tr('reset_email_sent')),
             ),
           );
-          context.pop();
+          ref.read(navigationServiceProvider).pop();
         }
       });
 

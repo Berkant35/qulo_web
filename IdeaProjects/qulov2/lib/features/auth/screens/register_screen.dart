@@ -1,16 +1,19 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import '../../../core/error/api_exception.dart';
+import 'package:geolocator/geolocator.dart';
+import '../../../core/navigation/navigation.dart';
+import '../../../core/network/result.dart';
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/mixins/form_mixin.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/app_progress_bar.dart';
+import '../../../core/widgets/app_scaffold.dart';
 import '../../../providers/auth_provider.dart';
+import '../../../routing/route_names.dart';
 import '../widgets/register_step_birthday.dart';
 import '../widgets/register_step_email.dart';
 import '../widgets/register_step_gender.dart';
+import '../widgets/register_step_location.dart';
 import '../widgets/register_step_name.dart';
 import '../widgets/register_step_terms.dart';
 
@@ -23,7 +26,7 @@ class RegisterScreen extends ConsumerStatefulWidget {
 
 class _RegisterScreenState extends ConsumerState<RegisterScreen>
     with FormMixin {
-  static const _totalSteps = 5;
+  static const _totalSteps = 6;
 
   final _pageController = PageController();
   final _nameCtrl = TextEditingController();
@@ -34,6 +37,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
   int _currentStep = 0;
   DateTime? _birthday;
   String? _gender;
+  double? _lat;
+  double? _lng;
+  bool _locationGranted = false;
+  bool _isRequestingLocation = false;
   bool _termsAccepted = false;
   bool _obscurePassword = true;
   bool _isLoading = false;
@@ -45,6 +52,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
   String? _passwordError;
   String? _birthdayError;
   String? _genderError;
+  String? _locationError;
   String? _termsError;
 
   @override
@@ -106,6 +114,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
         return err == null;
 
       case 3:
+        // Konum step — her zaman geçerli (skip edilebilir)
+        return true;
+
+      case 4:
         final emailErr = emailValidator(_emailCtrl.text.trim());
         final passErr = passwordValidator(_passwordCtrl.text);
         setState(() {
@@ -114,7 +126,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
         });
         return emailErr == null && passErr == null;
 
-      case 4:
+      case 5:
         final err = !_termsAccepted
             ? l10n.get('must_accept_terms')
             : null;
@@ -137,72 +149,115 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
     return age;
   }
 
+  Future<void> _requestLocation() async {
+    final l10n = AppLocalizations.of(context);
+    setState(() {
+      _isRequestingLocation = true;
+      _locationError = null;
+    });
+
+    try {
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        setState(() {
+          _isRequestingLocation = false;
+          _locationError = l10n.get('location_service_disabled');
+        });
+        return;
+      }
+
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          setState(() {
+            _isRequestingLocation = false;
+            _locationError = l10n.get('location_permission_denied');
+          });
+          return;
+        }
+      }
+
+      if (permission == LocationPermission.deniedForever) {
+        setState(() {
+          _isRequestingLocation = false;
+          _locationError = l10n.get('location_permission_denied_forever');
+        });
+        return;
+      }
+
+      final position = await Geolocator.getCurrentPosition(
+        locationSettings: const LocationSettings(accuracy: LocationAccuracy.medium),
+      );
+
+      setState(() {
+        _lat = position.latitude;
+        _lng = position.longitude;
+        _locationGranted = true;
+        _isRequestingLocation = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isRequestingLocation = false;
+        _locationError = e.toString();
+      });
+    }
+  }
+
   Future<void> _register() async {
     if (!_validateCurrentStep()) return;
 
     setState(() => _isLoading = true);
 
-    try {
-      await ref.read(authProvider.notifier).register(
-            email: _emailCtrl.text.trim(),
-            password: _passwordCtrl.text,
-            name: _nameCtrl.text.trim(),
-            surname: _surnameCtrl.text.trim(),
-            age: _calculateAge(),
-            gender: _gender!,
-          );
+    final result = await ref.read(authProvider.notifier).register(
+          email: _emailCtrl.text.trim(),
+          password: _passwordCtrl.text,
+          name: _nameCtrl.text.trim(),
+          surname: _surnameCtrl.text.trim(),
+          age: _calculateAge(),
+          gender: _gender!,
+          lat: _lat,
+          lng: _lng,
+        );
 
-      if (!mounted) return;
+    if (!mounted) return;
+    setState(() => _isLoading = false);
 
-      final l10n = AppLocalizations.of(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(l10n.get('check_email'))),
-      );
-      context.pop();
-    } on DioException catch (e) {
-      if (!mounted) return;
-      final l10n = AppLocalizations.of(context);
-      final apiError = e.error;
-
-      if (apiError is ApiException &&
-          apiError.code == 'EMAIL_ALREADY_EXISTS') {
-        setState(() {
-          _emailError = l10n.errorMessage(apiError.code);
-        });
-        _goToStep(3);
-      } else {
-        final code =
-            apiError is ApiException ? apiError.code : 'SERVER_ERROR';
-        setState(() {
-          _termsError = l10n.errorMessage(code);
-        });
-      }
-    } catch (e) {
-      if (!mounted) return;
-      final l10n = AppLocalizations.of(context);
-      setState(() {
-        _termsError = l10n.errorMessage('UNKNOWN');
-      });
-    } finally {
-      if (mounted) {
-        setState(() => _isLoading = false);
-      }
-    }
+    final l10n = AppLocalizations.of(context);
+    result.when(
+      success: (_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(l10n.get('check_email'))),
+        );
+        ref.read(navigationServiceProvider).go(RouteNames.login);
+      },
+      failure: (f) {
+        final errorCode = switch (f) {
+          ServerFailure(:final code) => code,
+          _ => 'UNKNOWN',
+        };
+        if (errorCode == 'EMAIL_ALREADY_EXISTS') {
+          setState(() => _emailError = l10n.errorMessage(errorCode));
+          _goToStep(4);
+        } else {
+          setState(() => _termsError = l10n.errorMessage(errorCode));
+        }
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: _currentStep > 0
-            ? IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () => _goToStep(_currentStep - 1),
-              )
-            : null,
-      ),
-      body: SafeArea(
-        child: Column(
+    return AppScaffold(
+      padding: EdgeInsets.zero,
+      leading: _currentStep > 0
+          ? IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () => _goToStep(_currentStep - 1),
+            )
+          : const SizedBox.shrink(),
+      title: '',
+      body: Column(
           children: [
             AppProgressBar(
               currentStep: _currentStep + 1,
@@ -246,6 +301,14 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
                     errorText: _genderError,
                     onContinue: _nextStep,
                   ),
+                  RegisterStepLocation(
+                    locationGranted: _locationGranted,
+                    isRequesting: _isRequestingLocation,
+                    errorText: _locationError,
+                    onRequestLocation: _requestLocation,
+                    onContinue: _nextStep,
+                    onSkip: () => _goToStep(_currentStep + 1),
+                  ),
                   RegisterStepEmail(
                     emailCtrl: _emailCtrl,
                     passwordCtrl: _passwordCtrl,
@@ -276,7 +339,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
             ),
           ],
         ),
-      ),
     );
   }
 }

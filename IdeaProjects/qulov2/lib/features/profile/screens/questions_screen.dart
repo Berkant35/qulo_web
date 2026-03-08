@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/navigation/navigation.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/constants/app_constants.dart';
@@ -29,50 +30,56 @@ class _QuestionsScreenState extends ConsumerState<QuestionsScreen> {
     final a4 = TextEditingController();
     int correctAnswer = 1;
 
-    showDialog(
-      context: context,
-      builder: (_) => StatefulBuilder(
-        builder: (ctx, setDialogState) => AlertDialog(
-          title: Text(context.tr('add_question')),
-          content: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextField(controller: textCtrl, decoration: InputDecoration(labelText: context.tr('question'))),
-                const SizedBox(height: AppSpacing.sm),
-                TextField(controller: a1, decoration: InputDecoration(labelText: '${context.tr('correct_answer')} 1')),
-                TextField(controller: a2, decoration: InputDecoration(labelText: '${context.tr('correct_answer')} 2')),
-                TextField(controller: a3, decoration: InputDecoration(labelText: '${context.tr('correct_answer')} 3')),
-                TextField(controller: a4, decoration: InputDecoration(labelText: '${context.tr('correct_answer')} 4')),
-                const SizedBox(height: AppSpacing.sm),
-                DropdownButtonFormField<int>(
-                  initialValue: correctAnswer,
-                  items: List.generate(4, (i) => DropdownMenuItem(value: i + 1, child: Text('Answer ${i + 1}'))),
-                  onChanged: (v) => setDialogState(() => correctAnswer = v ?? 1),
-                  decoration: InputDecoration(labelText: context.tr('correct_answer')),
-                ),
-              ],
+    final nav = ref.read(navigationServiceProvider);
+    nav.showAppDialog(
+      CustomDialog(
+        name: 'add_question',
+        builder: (_) => StatefulBuilder(
+          builder: (ctx, setDialogState) => AlertDialog(
+            title: Text(context.tr('add_question')),
+            content: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextField(controller: textCtrl, decoration: InputDecoration(labelText: context.tr('question'))),
+                  const SizedBox(height: AppSpacing.sm),
+                  TextField(controller: a1, decoration: InputDecoration(labelText: '${context.tr('correct_answer')} 1')),
+                  TextField(controller: a2, decoration: InputDecoration(labelText: '${context.tr('correct_answer')} 2')),
+                  TextField(controller: a3, decoration: InputDecoration(labelText: '${context.tr('correct_answer')} 3')),
+                  TextField(controller: a4, decoration: InputDecoration(labelText: '${context.tr('correct_answer')} 4')),
+                  const SizedBox(height: AppSpacing.sm),
+                  DropdownButtonFormField<int>(
+                    initialValue: correctAnswer,
+                    items: List.generate(4, (i) => DropdownMenuItem(value: i + 1, child: Text('Answer ${i + 1}'))),
+                    onChanged: (v) => setDialogState(() => correctAnswer = v ?? 1),
+                    decoration: InputDecoration(labelText: context.tr('correct_answer')),
+                  ),
+                ],
+              ),
             ),
+            actions: [
+              TextButton(
+                onPressed: () => nav.closeOverlay(),
+                child: Text(context.tr('cancel')),
+              ),
+              TextButton(
+                onPressed: () async {
+                  final questions = ref.read(questionProvider).valueOrNull ?? [];
+                  await ref.read(questionProvider.notifier).createQuestion({
+                    'order_num': questions.length + 1,
+                    'question_text': textCtrl.text,
+                    'correct_answer': correctAnswer,
+                    'answer_1': a1.text,
+                    'answer_2': a2.text,
+                    'answer_3': a3.text,
+                    'answer_4': a4.text,
+                  });
+                  nav.closeOverlay();
+                },
+                child: Text(context.tr('save')),
+              ),
+            ],
           ),
-          actions: [
-            TextButton(onPressed: () => Navigator.pop(ctx), child: Text(context.tr('cancel'))),
-            TextButton(
-              onPressed: () async {
-                final questions = ref.read(questionProvider).valueOrNull ?? [];
-                await ref.read(questionProvider.notifier).createQuestion({
-                  'order_num': questions.length + 1,
-                  'question_text': textCtrl.text,
-                  'correct_answer': correctAnswer,
-                  'answer_1': a1.text,
-                  'answer_2': a2.text,
-                  'answer_3': a3.text,
-                  'answer_4': a4.text,
-                });
-                if (ctx.mounted) Navigator.pop(ctx);
-              },
-              child: Text(context.tr('save')),
-            ),
-          ],
         ),
       ),
     );

@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import '../../../core/constants/q_icons.dart';
+import '../../../core/navigation/navigation.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../core/widgets/app_scaffold.dart';
+import '../../../core/widgets/q_icon.dart';
 import '../../../providers/quiz_provider.dart';
 import '../widgets/answer_button.dart';
 import '../widgets/power_bar.dart';
@@ -49,31 +51,23 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
     );
   }
 
-  void _showResult({required bool matched}) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (_) => AlertDialog(
-        icon: Icon(
+  Future<void> _showResult({required bool matched}) async {
+    final nav = ref.read(navigationServiceProvider);
+    await nav.showAppDialog(
+      InfoDialog(
+        name: 'quiz_result',
+        title: matched ? context.tr('quiz_match') : context.tr('quiz_failed'),
+        message: matched ? context.tr('quiz_match_desc') : context.tr('quiz_failed_desc'),
+        iconWidget: Icon(
           matched ? Icons.favorite : Icons.close,
           color: matched ? AppColors.secondary : AppColors.error,
           size: 48,
         ),
-        title: Text(matched ? context.tr('quiz_match') : context.tr('quiz_failed')),
-        content: Text(matched
-            ? context.tr('quiz_match_desc')
-            : context.tr('quiz_failed_desc')),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              context.pop();
-            },
-            child: Text(context.tr('ok')),
-          ),
-        ],
       ),
     );
+    if (mounted) {
+      nav.pop();
+    }
   }
 
   @override
@@ -88,7 +82,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
           : '',
       leading: IconButton(
         icon: const Icon(Icons.close),
-        onPressed: () => context.pop(),
+        onPressed: () => ref.read(navigationServiceProvider).pop(),
       ),
       padding: EdgeInsets.zero,
       body: quiz.isLoading || question == null

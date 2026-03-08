@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
+import '../../../core/navigation/navigation.dart';
 import '../../../core/constants/app_assets.dart';
 import '../../../core/constants/app_sizes.dart';
 import '../../../core/network/result.dart';
@@ -128,7 +128,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () =>
-                      context.pushNamed(RouteNames.forgotPassword),
+                      ref.read(navigationServiceProvider).push(RouteNames.forgotPassword),
                   child: Text(context.tr('forgot_password')),
                 ),
               ),
@@ -146,7 +146,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                       style: theme.textTheme.bodyMedium),
                   TextButton(
                     onPressed: () =>
-                        context.pushNamed(RouteNames.register),
+                        ref.read(navigationServiceProvider).push(RouteNames.register),
                     child: Text(context.tr('register')),
                   ),
                 ],

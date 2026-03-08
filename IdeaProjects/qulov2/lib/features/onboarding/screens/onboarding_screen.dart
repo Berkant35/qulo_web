@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/navigation/navigation.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/app_scaffold.dart';
 import '../../../routing/route_names.dart';
 
-class OnboardingScreen extends StatefulWidget {
+class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
 
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final _controller = PageController();
   int _page = 0;
 
@@ -70,7 +71,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (isLast) {
-                      context.goNamed(RouteNames.discover);
+                      ref.read(navigationServiceProvider).go(RouteNames.discover);
                     } else {
                       _controller.nextPage(
                         duration: const Duration(milliseconds: 300),
@@ -84,7 +85,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             if (!isLast)
               TextButton(
-                onPressed: () => context.goNamed(RouteNames.discover),
+                onPressed: () => ref.read(navigationServiceProvider).go(RouteNames.discover),
                 child: Text(context.tr('skip')),
               ),
             const SizedBox(height: AppSpacing.lg),
