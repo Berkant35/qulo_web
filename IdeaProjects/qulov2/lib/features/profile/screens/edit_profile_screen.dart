@@ -12,6 +12,7 @@ import 'package:qulo_v2/core/widgets/q_icon.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
 import 'package:qulo_v2/core/services/image_picker_manager.dart';
 import 'package:qulo_v2/providers/api_provider.dart';
+import 'package:qulo_v2/providers/edit_profile_provider.dart';
 import 'package:qulo_v2/providers/user_provider.dart';
 import 'package:qulo_v2/providers/location_provider.dart';
 import 'package:qulo_v2/features/profile/widgets/photo_grid.dart';
@@ -36,23 +37,13 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   final _musicController = TextEditingController();
   final _personalityController = TextEditingController();
 
-  // ─── State ───
-  String? _selectedZodiac;
-  String? _selectedSmoking;
-  String? _selectedAlcohol;
-  String? _selectedGenderPref;
-  RangeValues _ageRange = const RangeValues(18, 50);
-  double _distanceKm = 50;
-  bool _isSaving = false;
-  List<String?> _photos = List.filled(6, null);
-
   @override
   void initState() {
     super.initState();
-    _loadUserData();
+    _loadControllers();
   }
 
-  void _loadUserData() {
+  void _loadControllers() {
     final userAsync = ref.read(userProvider);
     final user = userAsync.valueOrNull;
     if (user == null) return;
@@ -67,20 +58,6 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     _petsController.text = user.details?.pets ?? '';
     _musicController.text = user.details?.musicType ?? '';
     _personalityController.text = user.details?.personality ?? '';
-
-    _selectedZodiac = user.details?.zodiac;
-    _selectedSmoking = user.details?.smoking;
-    _selectedAlcohol = user.details?.alcohol;
-    _selectedGenderPref = user.genderPref;
-    _ageRange = RangeValues(
-      (user.agePrefMin ?? 18).toDouble(),
-      (user.agePrefMax ?? 50).toDouble(),
-    );
-    _distanceKm = (user.matchRadiusKm ?? 50).toDouble();
-
-    // Photos
-    final userPhotos = user.photos ?? [];
-    _photos = List.generate(6, (i) => i < userPhotos.length ? userPhotos[i] : null);
   }
 
   @override
@@ -101,7 +78,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   // ─── Photo Actions ───
 
   void _onPhotoSlotTap(int index) {
-    final hasPhoto = _photos[index] != null;
+    final photos = ref.read(editProfileProvider).photos;
+    final hasPhoto = photos[index] != null;
 
     if (hasPhoto) {
       _showExistingPhotoSheet(index);
@@ -186,7 +164,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
 
     if (mounted) {
       if (result.isSuccess) {
-        _refreshPhotos();
+        ref.read(editProfileProvider.notifier).refreshPhotos();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(context.tr('save_error'))),
@@ -196,14 +174,15 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   }
 
   void _makePrimary(int index) {
-    final currentPhotos = _photos.whereType<String>().toList();
+    final photos = ref.read(editProfileProvider).photos;
+    final currentPhotos = photos.whereType<String>().toList();
     if (index >= currentPhotos.length) return;
 
     final photo = currentPhotos.removeAt(index);
     currentPhotos.insert(0, photo);
 
     ref.read(userProvider.notifier).reorderPhotos(currentPhotos).then((_) {
-      _refreshPhotos();
+      ref.read(editProfileProvider.notifier).refreshPhotos();
     });
   }
 
@@ -221,18 +200,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     ).then((confirmed) {
       if (confirmed == true) {
         ref.read(userProvider.notifier).deletePhoto(index).then((_) {
-          _refreshPhotos();
+          ref.read(editProfileProvider.notifier).refreshPhotos();
         });
       }
-    });
-  }
-
-  void _refreshPhotos() {
-    final user = ref.read(userProvider).valueOrNull;
-    if (user == null) return;
-    final userPhotos = user.photos ?? [];
-    setState(() {
-      _photos = List.generate(6, (i) => i < userPhotos.length ? userPhotos[i] : null);
     });
   }
 
@@ -256,57 +226,44 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   // ─── Save ───
 
   Future<void> _save() async {
-    setState(() => _isSaving = true);
+    final epState = ref.read(editProfileProvider);
+    final notifier = ref.read(editProfileProvider.notifier);
 
-    try {
-      // Profile data
-      final profileData = <String, dynamic>{
-        'bio': _bioController.text.trim(),
-        'city': _cityController.text.trim(),
-        'gender_pref': _selectedGenderPref,
-        'age_pref_min': _ageRange.start.round(),
-        'age_pref_max': _ageRange.end.round(),
-        'match_radius_km': _distanceKm.round(),
-      };
+    final profileData = <String, dynamic>{
+      'bio': _bioController.text.trim(),
+      'city': _cityController.text.trim(),
+      'gender_pref': epState.selectedGenderPref,
+      'age_pref_min': epState.ageRange.start.round(),
+      'age_pref_max': epState.ageRange.end.round(),
+      'match_radius_km': epState.distanceKm.round(),
+    };
 
-      final profileResult = await ref.read(userProvider.notifier).updateProfile(profileData);
+    final detailsData = <String, dynamic>{
+      'height': int.tryParse(_heightController.text),
+      'weight': int.tryParse(_weightController.text),
+      'zodiac': epState.selectedZodiac,
+      'job': _jobController.text.trim(),
+      'school': _schoolController.text.trim(),
+      'smoking': epState.selectedSmoking,
+      'alcohol': epState.selectedAlcohol,
+      'pets': _petsController.text.trim(),
+      'music_type': _musicController.text.trim(),
+      'personality': _personalityController.text.trim(),
+    };
 
-      // Details data
-      final detailsData = <String, dynamic>{
-        'height': int.tryParse(_heightController.text),
-        'weight': int.tryParse(_weightController.text),
-        'zodiac': _selectedZodiac,
-        'job': _jobController.text.trim(),
-        'school': _schoolController.text.trim(),
-        'smoking': _selectedSmoking,
-        'alcohol': _selectedAlcohol,
-        'pets': _petsController.text.trim(),
-        'music_type': _musicController.text.trim(),
-        'personality': _personalityController.text.trim(),
-      };
+    final success = await notifier.saveProfile(profileData, detailsData);
 
-      // Remove null values
-      detailsData.removeWhere((_, v) => v == null);
-
-      final detailsResult = await ref.read(userProvider.notifier).updateDetails(detailsData);
-
-      if (mounted) {
-        final hasError = profileResult.isFailure || detailsResult.isFailure;
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              hasError ? context.tr('save_error') : context.tr('save_success'),
-            ),
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            success ? context.tr('save_success') : context.tr('save_error'),
           ),
-        );
+        ),
+      );
 
-        if (!hasError) {
-          ref.read(navigationServiceProvider).pop();
-        }
-      }
-    } finally {
-      if (mounted) {
-        setState(() => _isSaving = false);
+      if (success) {
+        ref.read(navigationServiceProvider).pop();
       }
     }
   }
@@ -338,11 +295,13 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final epState = ref.watch(editProfileProvider);
+
     return AppScaffold(
       title: context.tr('edit_profile'),
       showBackButton: true,
       padding: EdgeInsets.zero,
-      bottomNavigationBar: _buildStickyButton(),
+      bottomNavigationBar: _buildStickyButton(epState),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(AppSpacing.pagePadding),
         child: Column(
@@ -352,7 +311,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             _sectionTitle(context.tr('photos')),
             const SizedBox(height: AppSpacing.sm),
             PhotoGridFull(
-              photos: _photos,
+              photos: epState.photos,
               editMode: true,
               onSlotTap: _onPhotoSlotTap,
             ),
@@ -417,9 +376,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             const SizedBox(height: AppSpacing.itemGap),
             _buildDropdown(
               label: context.tr('zodiac'),
-              value: _selectedZodiac,
+              value: epState.selectedZodiac,
               items: _zodiacItems(),
-              onChanged: (v) => setState(() => _selectedZodiac = v),
+              onChanged: (v) => ref.read(editProfileProvider.notifier).setZodiac(v),
             ),
             const SizedBox(height: AppSpacing.itemGap),
             AppTextField(
@@ -436,16 +395,16 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             const SizedBox(height: AppSpacing.itemGap),
             _buildDropdown(
               label: context.tr('smoking'),
-              value: _selectedSmoking,
+              value: epState.selectedSmoking,
               items: _frequencyItems(),
-              onChanged: (v) => setState(() => _selectedSmoking = v),
+              onChanged: (v) => ref.read(editProfileProvider.notifier).setSmoking(v),
             ),
             const SizedBox(height: AppSpacing.itemGap),
             _buildDropdown(
               label: context.tr('alcohol'),
-              value: _selectedAlcohol,
+              value: epState.selectedAlcohol,
               items: _frequencyItems(),
-              onChanged: (v) => setState(() => _selectedAlcohol = v),
+              onChanged: (v) => ref.read(editProfileProvider.notifier).setAlcohol(v),
             ),
             const SizedBox(height: AppSpacing.itemGap),
             AppTextField(
@@ -470,11 +429,11 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             // ─── Preferences Section ───
             _sectionTitle(context.tr('preferences')),
             const SizedBox(height: AppSpacing.sm),
-            _buildGenderPref(),
+            _buildGenderPref(epState),
             const SizedBox(height: AppSpacing.lg),
-            _buildAgeRange(),
+            _buildAgeRange(epState),
             const SizedBox(height: AppSpacing.lg),
-            _buildDistanceSlider(),
+            _buildDistanceSlider(epState),
             const SizedBox(height: AppSpacing.sectionGap),
           ],
         ),
@@ -561,7 +520,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     );
   }
 
-  Widget _buildGenderPref() {
+  Widget _buildGenderPref(EditProfileState epState) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -578,9 +537,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             ButtonSegment(value: 'FEMALE', label: Text(context.tr('female'))),
             ButtonSegment(value: 'ALL', label: Text(context.tr('all'))),
           ],
-          selected: {_selectedGenderPref ?? 'ALL'},
+          selected: {epState.selectedGenderPref ?? 'ALL'},
           onSelectionChanged: (set) {
-            setState(() => _selectedGenderPref = set.first);
+            ref.read(editProfileProvider.notifier).setGenderPref(set.first);
           },
           style: SegmentedButton.styleFrom(
             selectedBackgroundColor: AppColors.primarySurface,
@@ -591,58 +550,58 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     );
   }
 
-  Widget _buildAgeRange() {
+  Widget _buildAgeRange(EditProfileState epState) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${context.tr('age_range')}: ${_ageRange.start.round()} - ${_ageRange.end.round()}',
+          '${context.tr('age_range')}: ${epState.ageRange.start.round()} - ${epState.ageRange.end.round()}',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
         ),
         RangeSlider(
-          values: _ageRange,
+          values: epState.ageRange,
           min: 18,
           max: 65,
           divisions: 47,
           labels: RangeLabels(
-            _ageRange.start.round().toString(),
-            _ageRange.end.round().toString(),
+            epState.ageRange.start.round().toString(),
+            epState.ageRange.end.round().toString(),
           ),
           activeColor: AppColors.primary,
           inactiveColor: Theme.of(context).colorScheme.surfaceContainerHigh,
-          onChanged: (values) => setState(() => _ageRange = values),
+          onChanged: (values) => ref.read(editProfileProvider.notifier).setAgeRange(values),
         ),
       ],
     );
   }
 
-  Widget _buildDistanceSlider() {
+  Widget _buildDistanceSlider(EditProfileState epState) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${context.tr('distance')}: ${_distanceKm.round()} km',
+          '${context.tr('distance')}: ${epState.distanceKm.round()} km',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
         ),
         Slider(
-          value: _distanceKm,
+          value: epState.distanceKm,
           min: 5,
           max: 200,
           divisions: 39,
-          label: '${_distanceKm.round()} km',
+          label: '${epState.distanceKm.round()} km',
           activeColor: AppColors.primary,
           inactiveColor: Theme.of(context).colorScheme.surfaceContainerHigh,
-          onChanged: (value) => setState(() => _distanceKm = value),
+          onChanged: (value) => ref.read(editProfileProvider.notifier).setDistanceKm(value),
         ),
       ],
     );
   }
 
-  Widget _buildStickyButton() {
+  Widget _buildStickyButton(EditProfileState epState) {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.pagePadding),
       decoration: BoxDecoration(
@@ -655,9 +614,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
         top: false,
         child: AppButton(
           label: context.tr('save'),
-          isLoading: _isSaving,
+          isLoading: epState.isSaving,
           fullWidth: true,
-          onPressed: _isSaving ? null : _save,
+          onPressed: epState.isSaving ? null : _save,
         ),
       ),
     );
