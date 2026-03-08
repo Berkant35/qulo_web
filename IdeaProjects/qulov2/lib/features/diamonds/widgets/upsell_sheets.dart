@@ -143,8 +143,8 @@ class _FeatureRow extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 32,
-          height: 32,
+          width: AppSpacing.xxl,
+          height: AppSpacing.xxl,
           decoration: BoxDecoration(
             color: AppColors.primarySurface,
             borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
