@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../../core/constants/q_icons.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
@@ -10,6 +11,7 @@ import '../../../data/models/diamond_model.dart';
 import '../../../data/models/subscription_model.dart';
 import '../../../providers/diamond_provider.dart';
 import '../../../providers/subscription_provider.dart';
+import '../../../routing/route_names.dart';
 import '../widgets/diamond_balance_card.dart';
 import '../widgets/subscription_banner.dart';
 import '../widgets/purchase_grid.dart';
@@ -49,7 +51,7 @@ class _DiamondsScreenState extends ConsumerState<DiamondsScreen> {
   }
 
   void _onViewPlans() {
-    // TODO: Navigate to subscription comparison screen
+    context.pushNamed(RouteNames.subscription);
   }
 
   void _onPurchase(PurchasePackage package) {

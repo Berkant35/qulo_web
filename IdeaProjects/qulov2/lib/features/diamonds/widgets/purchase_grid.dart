@@ -7,20 +7,24 @@ import '../../../core/l10n/l10n.dart';
 class PurchasePackage {
   final int amount;
   final String price;
+  final int diamondCount; // How many diamond icons to show
 
-  const PurchasePackage({required this.amount, required this.price});
+  const PurchasePackage({
+    required this.amount,
+    required this.price,
+    required this.diamondCount,
+  });
 }
 
 const kDiamondPackages = [
-  PurchasePackage(amount: 50, price: '\$0.99'),
-  PurchasePackage(amount: 150, price: '\$2.49'),
-  PurchasePackage(amount: 400, price: '\$4.99'),
-  PurchasePackage(amount: 1000, price: '\$9.99'),
-  PurchasePackage(amount: 2500, price: '\$19.99'),
-  PurchasePackage(amount: 6000, price: '\$39.99'),
+  PurchasePackage(amount: 50, price: '\$0.99', diamondCount: 1),
+  PurchasePackage(amount: 150, price: '\$2.49', diamondCount: 2),
+  PurchasePackage(amount: 400, price: '\$4.99', diamondCount: 3),
+  PurchasePackage(amount: 1000, price: '\$9.99', diamondCount: 4),
+  PurchasePackage(amount: 2500, price: '\$19.99', diamondCount: 5),
+  PurchasePackage(amount: 6000, price: '\$39.99', diamondCount: 6),
 ];
 
-/// Index of the "Best Value" package (0-based, tier 3 = index 2)
 const _bestValueIndex = 2;
 
 class PurchaseGrid extends StatelessWidget {
@@ -35,7 +39,7 @@ class PurchaseGrid extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        childAspectRatio: 0.85,
+        childAspectRatio: 0.75,
         crossAxisSpacing: AppSpacing.sm,
         mainAxisSpacing: AppSpacing.sm,
       ),
@@ -89,7 +93,7 @@ class _PackageCard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const DiamondIcon.purple(size: 28, showGlow: false),
+                    _DiamondCluster(count: package.diamondCount),
                     const SizedBox(height: AppSpacing.sm),
                     Text(
                       '${package.amount}',
@@ -136,6 +140,101 @@ class _PackageCard extends StatelessWidget {
               ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Shows 1-6 diamond icons in a cluster layout
+class _DiamondCluster extends StatelessWidget {
+  final int count;
+
+  const _DiamondCluster({required this.count});
+
+  @override
+  Widget build(BuildContext context) {
+    const baseSize = 22.0;
+
+    if (count == 1) {
+      return const DiamondIcon.purple(size: 30, showGlow: false);
+    }
+
+    if (count == 2) {
+      return SizedBox(
+        height: 34,
+        width: 50,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned(left: 0, child: DiamondIcon.purple(size: baseSize, showGlow: false)),
+            Positioned(right: 0, child: DiamondIcon.purple(size: baseSize, showGlow: false)),
+          ],
+        ),
+      );
+    }
+
+    if (count == 3) {
+      return SizedBox(
+        height: 40,
+        width: 54,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned(top: 0, child: DiamondIcon.purple(size: baseSize, showGlow: false)),
+            Positioned(bottom: 0, left: 0, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
+            Positioned(bottom: 0, right: 0, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
+          ],
+        ),
+      );
+    }
+
+    if (count == 4) {
+      return SizedBox(
+        height: 44,
+        width: 54,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned(top: 0, left: 6, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
+            Positioned(top: 0, right: 6, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
+            Positioned(bottom: 0, left: 0, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
+            Positioned(bottom: 0, right: 0, child: DiamondIcon.purple(size: baseSize - 2, showGlow: false)),
+          ],
+        ),
+      );
+    }
+
+    if (count == 5) {
+      return SizedBox(
+        height: 46,
+        width: 58,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned(top: 0, child: DiamondIcon.purple(size: baseSize, showGlow: false)),
+            Positioned(top: 6, left: 0, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
+            Positioned(top: 6, right: 0, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
+            Positioned(bottom: 0, left: 4, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
+            Positioned(bottom: 0, right: 4, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
+          ],
+        ),
+      );
+    }
+
+    // count == 6
+    return SizedBox(
+      height: 46,
+      width: 62,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Positioned(top: 0, left: 8, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
+          Positioned(top: 0, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
+          Positioned(top: 0, right: 8, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
+          Positioned(bottom: 0, left: 2, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
+          Positioned(bottom: 0, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
+          Positioned(bottom: 0, right: 2, child: DiamondIcon.purple(size: baseSize - 3, showGlow: false)),
+        ],
       ),
     );
   }

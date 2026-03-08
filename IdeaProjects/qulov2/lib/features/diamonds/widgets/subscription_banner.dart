@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
-import '../../../core/widgets/app_button.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../data/models/subscription_model.dart';
 
@@ -57,11 +56,27 @@ class _UpgradeBanner extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppSpacing.lg),
-          AppButton(
-            label: context.tr('view_plans'),
-            onPressed: onViewPlans,
-            variant: AppButtonVariant.secondary,
-            fullWidth: false,
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: onViewPlans,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: AppColors.primary,
+                padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                ),
+                elevation: 0,
+              ),
+              child: Text(
+                context.tr('view_plans'),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+            ),
           ),
         ],
       ),
