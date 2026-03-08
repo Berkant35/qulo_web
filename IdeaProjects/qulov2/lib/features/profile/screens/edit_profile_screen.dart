@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
-import '../../../core/constants/q_icons.dart';
-import '../../../core/navigation/navigation.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/widgets/app_button.dart';
-import '../../../core/widgets/app_scaffold.dart';
-import '../../../core/widgets/app_text_field.dart';
-import '../../../core/widgets/q_icon.dart';
-import '../../../core/l10n/l10n.dart';
-import '../../../providers/user_provider.dart';
-import '../../../providers/location_provider.dart';
-import '../widgets/photo_grid.dart';
+import 'package:qulo_v2/core/constants/q_icons.dart';
+import 'package:qulo_v2/core/navigation/navigation.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/widgets/app_button.dart';
+import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/core/widgets/app_text_field.dart';
+import 'package:qulo_v2/core/widgets/q_icon.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/services/image_picker_manager.dart';
+import 'package:qulo_v2/providers/api_provider.dart';
+import 'package:qulo_v2/providers/user_provider.dart';
+import 'package:qulo_v2/providers/location_provider.dart';
+import 'package:qulo_v2/features/profile/widgets/photo_grid.dart';
 
 class EditProfileScreen extends ConsumerStatefulWidget {
   const EditProfileScreen({super.key});
@@ -44,8 +45,6 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   double _distanceKm = 50;
   bool _isSaving = false;
   List<String?> _photos = List.filled(6, null);
-
-  final _imagePicker = ImagePicker();
 
   @override
   void initState() {
@@ -164,30 +163,36 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     ).then((result) {
       if (result == null) return;
       if (result == 'gallery') {
-        _pickImage(ImageSource.gallery);
+        _pickFromGallery();
       } else if (result == 'camera') {
-        _pickImage(ImageSource.camera);
+        _pickFromCamera();
       }
     });
   }
 
-  Future<void> _pickImage(ImageSource source) async {
-    try {
-      final xFile = await _imagePicker.pickImage(
-        source: source,
-        maxWidth: 1080,
-        imageQuality: 85,
+  Future<void> _pickFromGallery() => _pickAndUpload(
+        ref.read(imagePickerManagerProvider).pickFromGallery(),
       );
-      if (xFile == null) return;
 
-      final bytes = await xFile.readAsBytes();
-      final mimeType = xFile.mimeType ?? 'image/jpeg';
+  Future<void> _pickFromCamera() => _pickAndUpload(
+        ref.read(imagePickerManagerProvider).pickFromCamera(),
+      );
 
-      await ref.read(userProvider.notifier).uploadPhoto(bytes, mimeType);
+  Future<void> _pickAndUpload(Future<PickedImage?> pickFuture) async {
+    final picked = await pickFuture;
+    if (picked == null) return;
 
-      // Reload photos from updated user
-      _refreshPhotos();
-    } catch (_) {}
+    final result = await ref.read(userProvider.notifier).uploadPhoto(picked.bytes, picked.mimeType);
+
+    if (mounted) {
+      if (result.isSuccess) {
+        _refreshPhotos();
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(context.tr('save_error'))),
+        );
+      }
+    }
   }
 
   void _makePrimary(int index) {

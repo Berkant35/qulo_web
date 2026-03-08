@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'user_details_model.dart';
+import 'package:qulo_v2/data/models/user_details_model.dart';
 
 part 'user_model.g.dart';
 

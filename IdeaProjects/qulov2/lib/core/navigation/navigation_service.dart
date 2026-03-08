@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'navigation_event.dart';
-import 'navigation_observer.dart';
-import 'models/app_dialog.dart';
-import 'models/app_bottom_sheet.dart';
-import 'widgets/confirm_dialog_widget.dart';
-import 'widgets/info_dialog_widget.dart';
-import 'widgets/list_bottom_sheet_widget.dart';
+import 'package:qulo_v2/core/navigation/navigation_event.dart';
+import 'package:qulo_v2/core/navigation/navigation_observer.dart';
+import 'package:qulo_v2/core/navigation/models/app_dialog.dart';
+import 'package:qulo_v2/core/navigation/models/app_bottom_sheet.dart';
+import 'package:qulo_v2/core/navigation/widgets/confirm_dialog_widget.dart';
+import 'package:qulo_v2/core/navigation/widgets/info_dialog_widget.dart';
+import 'package:qulo_v2/core/navigation/widgets/list_bottom_sheet_widget.dart';
 
 class NavigationService {
   final GoRouter _router;

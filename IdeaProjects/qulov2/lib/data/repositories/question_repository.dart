@@ -1,33 +1,55 @@
-import '../../core/network/api_client.dart';
-import '../../core/network/api_endpoints.dart';
-import '../models/question_model.dart';
+import 'package:dio/dio.dart';
+import 'package:qulo_v2/core/network/network_manager.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/core/network/services/question_service.dart';
+import 'package:qulo_v2/data/models/question_model.dart';
 
 class QuestionRepository {
-  final ApiClient _client;
+  final QuestionService _service;
+  final NetworkManager _network;
 
-  QuestionRepository(this._client);
+  QuestionRepository(this._service, this._network);
 
-  Future<List<QuestionModel>> getMyQuestions() async {
-    final response = await _client.dio.get(ApiEndpoints.questions);
-    return (response.data as List).map((e) => QuestionModel.fromJson(e)).toList();
+  Future<Result<List<QuestionModel>>> getMyQuestions() async {
+    try {
+      final response = await _service.getMyQuestions();
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<QuestionModel> createQuestion(Map<String, dynamic> data) async {
-    final response = await _client.dio.post(ApiEndpoints.questions, data: data);
-    return QuestionModel.fromJson(response.data);
+  Future<Result<QuestionModel>> createQuestion(Map<String, dynamic> data) async {
+    try {
+      final response = await _service.createQuestion(data);
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<QuestionModel> updateQuestion(int orderNum, Map<String, dynamic> data) async {
-    final response = await _client.dio.patch(ApiEndpoints.questionByOrder(orderNum), data: data);
-    return QuestionModel.fromJson(response.data);
+  Future<Result<QuestionModel>> updateQuestion(int orderNum, Map<String, dynamic> data) async {
+    try {
+      final response = await _service.updateQuestion(orderNum, data);
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<void> deleteQuestion(int orderNum) async {
-    await _client.dio.delete(ApiEndpoints.questionByOrder(orderNum));
+  Future<Result<void>> deleteQuestion(int orderNum) async {
+    try {
+      await _service.deleteQuestion(orderNum);
+      return const Success(null);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<int> getQuestionCount() async {
-    final response = await _client.dio.get(ApiEndpoints.questionCount);
-    return response.data['count'] as int;
+  Future<Result<int>> getQuestionCount() async {
+    return _network.get<int>(
+      '/questions/count/me',
+      parser: (json) => (json as Map<String, dynamic>)['count'] as int,
+    );
   }
 }

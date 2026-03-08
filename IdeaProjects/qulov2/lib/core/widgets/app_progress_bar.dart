@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_spacing.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
 
 class AppProgressBar extends StatelessWidget {
   final int currentStep;

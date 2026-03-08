@@ -2,13 +2,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/l10n/l10n.dart';
-import '../../../core/widgets/app_scaffold.dart';
-import '../../../data/models/message_model.dart';
-import '../../../providers/chat_provider.dart';
-import '../../../providers/auth_provider.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/data/models/message_model.dart';
+import 'package:qulo_v2/providers/chat_provider.dart';
+import 'package:qulo_v2/providers/auth_provider.dart';
 
 class ChatScreen extends ConsumerStatefulWidget {
   final String matchId;

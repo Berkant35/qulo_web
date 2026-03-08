@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/l10n/l10n.dart';
-import '../../../core/widgets/q_icon.dart';
-import '../../../core/constants/q_icons.dart';
-import '../../../data/models/discover_model.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/widgets/q_icon.dart';
+import 'package:qulo_v2/core/constants/q_icons.dart';
+import 'package:qulo_v2/data/models/discover_model.dart';
 
 class ProfileCard extends StatelessWidget {
   final ProfileCardModel card;

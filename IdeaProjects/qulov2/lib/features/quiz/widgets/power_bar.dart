@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/constants/q_icons.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/l10n/l10n.dart';
-import '../../../core/widgets/q_icon.dart';
-import '../../../providers/quiz_provider.dart';
+import 'package:qulo_v2/core/constants/q_icons.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/widgets/q_icon.dart';
+import 'package:qulo_v2/providers/quiz_provider.dart';
 
 class PowerBar extends ConsumerWidget {
   final String sessionId;

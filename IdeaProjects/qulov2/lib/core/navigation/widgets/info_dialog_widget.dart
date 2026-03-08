@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../l10n/l10n.dart';
-import '../models/app_dialog.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/navigation/models/app_dialog.dart';
 
 class InfoDialogWidget extends StatelessWidget {
   final InfoDialog dialog;

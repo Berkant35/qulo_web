@@ -1,29 +1,40 @@
-import '../../core/network/api_client.dart';
-import '../../core/network/api_endpoints.dart';
-import '../models/message_model.dart';
+import 'package:dio/dio.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/core/network/services/chat_service.dart';
+import 'package:qulo_v2/data/models/message_model.dart';
 
 class ChatRepository {
-  final ApiClient _client;
+  final ChatService _service;
 
-  ChatRepository(this._client);
+  ChatRepository(this._service);
 
-  Future<MessagesResponse> getMessages(String matchId, {int page = 1, int limit = 30}) async {
-    final response = await _client.dio.get(
-      ApiEndpoints.chatMessages(matchId),
-      queryParameters: {'page': page, 'limit': limit},
-    );
-    return MessagesResponse.fromJson(response.data);
+  Future<Result<MessagesResponse>> getMessages(String matchId, {int page = 1, int limit = 30}) async {
+    try {
+      final response = await _service.getMessages(matchId, page, limit);
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<MessageModel> sendMessage(String matchId, {required String content, bool isImage = false}) async {
-    final response = await _client.dio.post(
-      ApiEndpoints.chatMessages(matchId),
-      data: {'content': content, 'is_image': isImage},
-    );
-    return MessageModel.fromJson(response.data);
+  Future<Result<MessageModel>> sendMessage(String matchId, {required String content, bool isImage = false}) async {
+    try {
+      final response = await _service.sendMessage(matchId, {
+        'content': content,
+        'is_image': isImage,
+      });
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<void> markAsRead(String matchId) async {
-    await _client.dio.post(ApiEndpoints.chatRead(matchId));
+  Future<Result<void>> markAsRead(String matchId) async {
+    try {
+      await _service.markAsRead(matchId);
+      return const Success(null);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 }

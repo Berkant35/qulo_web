@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../core/constants/q_icons.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/widgets/app_scaffold.dart';
-import '../../../core/widgets/q_icon.dart';
-import '../../../core/l10n/l10n.dart';
-import '../../../data/models/diamond_model.dart';
-import '../../../data/models/subscription_model.dart';
-import '../../../providers/diamond_provider.dart';
-import '../../../providers/subscription_provider.dart';
-import '../../../routing/route_names.dart';
-import '../widgets/diamond_balance_card.dart';
-import '../widgets/subscription_banner.dart';
-import '../widgets/purchase_grid.dart';
+import 'package:qulo_v2/core/constants/q_icons.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/core/widgets/q_icon.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/data/models/diamond_model.dart';
+import 'package:qulo_v2/data/models/subscription_model.dart';
+import 'package:qulo_v2/providers/diamond_provider.dart';
+import 'package:qulo_v2/providers/subscription_provider.dart';
+import 'package:qulo_v2/routing/route_names.dart';
+import 'package:qulo_v2/features/diamonds/widgets/diamond_balance_card.dart';
+import 'package:qulo_v2/features/diamonds/widgets/subscription_banner.dart';
+import 'package:qulo_v2/features/diamonds/widgets/purchase_grid.dart';
 
 class DiamondsScreen extends ConsumerStatefulWidget {
   const DiamondsScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
-import '../../l10n/l10n.dart';
-import '../models/app_dialog.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/navigation/models/app_dialog.dart';
 
 class ConfirmDialogWidget extends StatelessWidget {
   final ConfirmDialog dialog;

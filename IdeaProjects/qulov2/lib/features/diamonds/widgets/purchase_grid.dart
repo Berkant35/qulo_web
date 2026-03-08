@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/widgets/diamond_icon.dart';
-import '../../../core/l10n/l10n.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/widgets/diamond_icon.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
 
 enum DiamondTier {
   starter(amount: 50, price: '\$0.99', iconSize: 22, glowRadius: 0),

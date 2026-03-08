@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import '../navigation_observer.dart';
-import '../navigation_event.dart';
+import 'package:qulo_v2/core/navigation/navigation_observer.dart';
+import 'package:qulo_v2/core/navigation/navigation_event.dart';
 
 class LoggingObserver extends AppNavigationObserver {
   @override

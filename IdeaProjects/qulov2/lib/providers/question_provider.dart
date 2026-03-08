@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../data/models/question_model.dart';
-import 'api_provider.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/data/models/question_model.dart';
+import 'package:qulo_v2/providers/api_provider.dart';
 
 class QuestionNotifier extends AsyncNotifier<List<QuestionModel>> {
   @override
@@ -8,25 +9,29 @@ class QuestionNotifier extends AsyncNotifier<List<QuestionModel>> {
 
   Future<void> fetchQuestions() async {
     state = const AsyncLoading();
-    state = await AsyncValue.guard(() => ref.read(questionRepositoryProvider).getMyQuestions());
+    final result = await ref.read(questionRepositoryProvider).getMyQuestions();
+    state = result.when(
+      success: (data) => AsyncData(data),
+      failure: (f) => AsyncError(f, StackTrace.current),
+    );
   }
 
-  Future<void> createQuestion(Map<String, dynamic> data) async {
-    final repo = ref.read(questionRepositoryProvider);
-    await repo.createQuestion(data);
-    await fetchQuestions();
+  Future<Result<QuestionModel>> createQuestion(Map<String, dynamic> data) async {
+    final result = await ref.read(questionRepositoryProvider).createQuestion(data);
+    result.when(success: (_) => fetchQuestions(), failure: (_) {});
+    return result;
   }
 
-  Future<void> updateQuestion(int orderNum, Map<String, dynamic> data) async {
-    final repo = ref.read(questionRepositoryProvider);
-    await repo.updateQuestion(orderNum, data);
-    await fetchQuestions();
+  Future<Result<QuestionModel>> updateQuestion(int orderNum, Map<String, dynamic> data) async {
+    final result = await ref.read(questionRepositoryProvider).updateQuestion(orderNum, data);
+    result.when(success: (_) => fetchQuestions(), failure: (_) {});
+    return result;
   }
 
-  Future<void> deleteQuestion(int orderNum) async {
-    final repo = ref.read(questionRepositoryProvider);
-    await repo.deleteQuestion(orderNum);
-    await fetchQuestions();
+  Future<Result<void>> deleteQuestion(int orderNum) async {
+    final result = await ref.read(questionRepositoryProvider).deleteQuestion(orderNum);
+    result.when(success: (_) => fetchQuestions(), failure: (_) {});
+    return result;
   }
 }
 

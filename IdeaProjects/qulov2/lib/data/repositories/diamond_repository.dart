@@ -1,26 +1,37 @@
-import '../../core/network/api_client.dart';
-import '../../core/network/api_endpoints.dart';
-import '../models/diamond_model.dart';
+import 'package:dio/dio.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/core/network/services/diamond_service.dart';
+import 'package:qulo_v2/data/models/diamond_model.dart';
 
 class DiamondRepository {
-  final ApiClient _client;
+  final DiamondService _service;
 
-  DiamondRepository(this._client);
+  DiamondRepository(this._service);
 
-  Future<DiamondBalance> getBalance() async {
-    final response = await _client.dio.get(ApiEndpoints.diamondBalance);
-    return DiamondBalance.fromJson(response.data);
+  Future<Result<DiamondBalance>> getBalance() async {
+    try {
+      final response = await _service.getBalance();
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<DiamondHistoryResponse> getHistory({int page = 1, int limit = 20}) async {
-    final response = await _client.dio.get(ApiEndpoints.diamondHistory, queryParameters: {
-      'page': page,
-      'limit': limit,
-    });
-    return DiamondHistoryResponse.fromJson(response.data);
+  Future<Result<DiamondHistoryResponse>> getHistory({int page = 1, int limit = 20}) async {
+    try {
+      final response = await _service.getHistory(page, limit);
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<void> purchase(String iapProductId) async {
-    await _client.dio.post(ApiEndpoints.diamondPurchase, data: {'product_id': iapProductId});
+  Future<Result<void>> purchase(String iapProductId) async {
+    try {
+      await _service.purchase({'product_id': iapProductId});
+      return const Success(null);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 }

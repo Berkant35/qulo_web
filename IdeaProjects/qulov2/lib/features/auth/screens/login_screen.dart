@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../core/navigation/navigation.dart';
-import '../../../core/constants/app_assets.dart';
-import '../../../core/constants/app_sizes.dart';
-import '../../../core/network/result.dart';
-import '../../../core/l10n/l10n.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/mixins/form_mixin.dart';
-import '../../../core/mixins/loading_mixin.dart';
-import '../../../core/widgets/app_scaffold.dart';
-import '../../../core/widgets/app_text_field.dart';
-import '../../../core/widgets/app_button.dart';
-import '../../../providers/auth_provider.dart';
-import '../../../routing/route_names.dart';
+import 'package:qulo_v2/core/navigation/navigation.dart';
+import 'package:qulo_v2/core/constants/app_assets.dart';
+import 'package:qulo_v2/core/constants/app_sizes.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/mixins/form_mixin.dart';
+import 'package:qulo_v2/core/mixins/loading_mixin.dart';
+import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/core/widgets/app_text_field.dart';
+import 'package:qulo_v2/core/widgets/app_button.dart';
+import 'package:qulo_v2/providers/auth_provider.dart';
+import 'package:qulo_v2/routing/route_names.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});

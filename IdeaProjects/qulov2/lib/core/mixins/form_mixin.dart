@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../l10n/app_localizations.dart';
+import 'package:qulo_v2/core/l10n/app_localizations.dart';
 
 mixin FormMixin<T extends StatefulWidget> on State<T> {
   final formKey = GlobalKey<FormState>();

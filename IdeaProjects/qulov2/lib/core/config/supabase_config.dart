@@ -1,5 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'env.dart';
+import 'package:qulo_v2/core/config/env.dart';
 
 Future<void> initSupabase() async {
   await Supabase.initialize(

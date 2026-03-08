@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import '../../../core/l10n/app_localizations.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/widgets/app_button.dart';
+import 'package:qulo_v2/core/l10n/app_localizations.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/widgets/app_button.dart';
 
 class RegisterStepLocation extends StatelessWidget {
   final bool locationGranted;
@@ -12,6 +11,7 @@ class RegisterStepLocation extends StatelessWidget {
   final VoidCallback onRequestLocation;
   final VoidCallback onContinue;
   final VoidCallback onSkip;
+  final VoidCallback? onOpenSettings;
 
   const RegisterStepLocation({
     super.key,
@@ -21,6 +21,7 @@ class RegisterStepLocation extends StatelessWidget {
     required this.onRequestLocation,
     required this.onContinue,
     required this.onSkip,
+    this.onOpenSettings,
   });
 
   @override
@@ -70,12 +71,13 @@ class RegisterStepLocation extends StatelessWidget {
                 color: AppColors.error,
               ),
             ),
-            if (errorText == l10n.get('location_permission_denied_forever') ||
-                errorText == l10n.get('location_service_disabled'))
+            if (onOpenSettings != null &&
+                (errorText == l10n.get('location_permission_denied_forever') ||
+                    errorText == l10n.get('location_service_disabled')))
               Padding(
                 padding: const EdgeInsets.only(top: AppSpacing.sm),
                 child: TextButton(
-                  onPressed: () => Geolocator.openAppSettings(),
+                  onPressed: onOpenSettings,
                   child: Text(l10n.get('open_settings')),
                 ),
               ),

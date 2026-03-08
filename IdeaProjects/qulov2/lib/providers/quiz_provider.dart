@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../data/models/quiz_model.dart';
-import 'api_provider.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/data/models/quiz_model.dart';
+import 'package:qulo_v2/providers/api_provider.dart';
 
 class QuizState {
   final String? sessionId;
@@ -8,7 +9,7 @@ class QuizState {
   final QuizQuestionModel? currentQuestion;
   final QuizAnswerResponse? lastAnswer;
   final bool isLoading;
-  final String? error;
+  final AppFailure? failure;
 
   const QuizState({
     this.sessionId,
@@ -16,7 +17,7 @@ class QuizState {
     this.currentQuestion,
     this.lastAnswer,
     this.isLoading = false,
-    this.error,
+    this.failure,
   });
 
   QuizState copyWith({
@@ -25,7 +26,7 @@ class QuizState {
     QuizQuestionModel? currentQuestion,
     QuizAnswerResponse? lastAnswer,
     bool? isLoading,
-    String? error,
+    AppFailure? failure,
   }) {
     return QuizState(
       sessionId: sessionId ?? this.sessionId,
@@ -33,7 +34,7 @@ class QuizState {
       currentQuestion: currentQuestion ?? this.currentQuestion,
       lastAnswer: lastAnswer,
       isLoading: isLoading ?? this.isLoading,
-      error: error,
+      failure: failure,
     );
   }
 }
@@ -42,58 +43,51 @@ class QuizNotifier extends Notifier<QuizState> {
   @override
   QuizState build() => const QuizState();
 
-  Future<void> startSession(String targetId) async {
-    state = state.copyWith(isLoading: true, error: null);
-    try {
-      final repo = ref.read(quizRepositoryProvider);
-      final result = await repo.startSession(targetId);
-      state = state.copyWith(
-        sessionId: result.sessionId,
-        totalQuestions: result.totalQuestions,
-        isLoading: false,
-      );
-      await fetchCurrentQuestion();
-    } catch (e) {
-      state = state.copyWith(isLoading: false, error: e.toString());
-      rethrow;
+  Future<Result<QuizStartResponse>> startSession(String targetId) async {
+    state = state.copyWith(isLoading: true, failure: null);
+    final result = await ref.read(quizRepositoryProvider).startSession(targetId);
+    switch (result) {
+      case Success(:final data):
+        state = state.copyWith(
+          sessionId: data.sessionId,
+          totalQuestions: data.totalQuestions,
+          isLoading: false,
+        );
+        await fetchCurrentQuestion();
+      case Failure(:final failure):
+        state = state.copyWith(isLoading: false, failure: failure);
     }
+    return result;
   }
 
   Future<void> fetchCurrentQuestion() async {
     if (state.sessionId == null) return;
-    state = state.copyWith(isLoading: true, error: null);
-    try {
-      final repo = ref.read(quizRepositoryProvider);
-      final question = await repo.getCurrentQuestion(state.sessionId!);
-      state = state.copyWith(currentQuestion: question, isLoading: false);
-    } catch (e) {
-      state = state.copyWith(isLoading: false, error: e.toString());
-      rethrow;
-    }
+    state = state.copyWith(isLoading: true, failure: null);
+    final result = await ref.read(quizRepositoryProvider).getCurrentQuestion(state.sessionId!);
+    result.when(
+      success: (question) => state = state.copyWith(currentQuestion: question, isLoading: false),
+      failure: (f) => state = state.copyWith(isLoading: false, failure: f),
+    );
   }
 
-  Future<QuizAnswerResponse> answer(int selectedAnswer, {String? powerUsed}) async {
-    if (state.sessionId == null) throw Exception('No active session');
-    state = state.copyWith(isLoading: true, error: null);
-    try {
-      final repo = ref.read(quizRepositoryProvider);
-      final result = await repo.answerQuestion(
-        state.sessionId!,
-        selectedAnswer: selectedAnswer,
-        powerUsed: powerUsed,
-      );
-      state = state.copyWith(lastAnswer: result, isLoading: false);
-      return result;
-    } catch (e) {
-      state = state.copyWith(isLoading: false, error: e.toString());
-      rethrow;
-    }
+  Future<Result<QuizAnswerResponse>> answer(int selectedAnswer, {String? powerUsed}) async {
+    if (state.sessionId == null) return Failure(const UnknownFailure(message: 'No active session'));
+    state = state.copyWith(isLoading: true, failure: null);
+    final result = await ref.read(quizRepositoryProvider).answerQuestion(
+      state.sessionId!,
+      selectedAnswer: selectedAnswer,
+      powerUsed: powerUsed,
+    );
+    result.when(
+      success: (data) => state = state.copyWith(lastAnswer: data, isLoading: false),
+      failure: (f) => state = state.copyWith(isLoading: false, failure: f),
+    );
+    return result;
   }
 
-  Future<QuizResultModel> getResult() async {
-    if (state.sessionId == null) throw Exception('No active session');
-    final repo = ref.read(quizRepositoryProvider);
-    return repo.getSessionResult(state.sessionId!);
+  Future<Result<QuizResultModel>> getResult() async {
+    if (state.sessionId == null) return Failure(const UnknownFailure(message: 'No active session'));
+    return ref.read(quizRepositoryProvider).getSessionResult(state.sessionId!);
   }
 
   void reset() {

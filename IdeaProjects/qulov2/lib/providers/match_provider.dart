@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../data/models/discover_model.dart';
-import '../data/models/match_model.dart';
-import 'api_provider.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/data/models/discover_model.dart';
+import 'package:qulo_v2/data/models/match_model.dart';
+import 'package:qulo_v2/providers/api_provider.dart';
 
 class DiscoverNotifier extends AsyncNotifier<DiscoverState> {
   @override
@@ -9,25 +10,29 @@ class DiscoverNotifier extends AsyncNotifier<DiscoverState> {
 
   Future<void> loadCards({int page = 1}) async {
     state = const AsyncLoading();
-    state = await AsyncValue.guard(() async {
-      final repo = ref.read(matchRepositoryProvider);
-      final response = await repo.discover(page: page);
-      return DiscoverState(
+    final result = await ref.read(matchRepositoryProvider).discover(page: page);
+    state = result.when(
+      success: (response) => AsyncData(DiscoverState(
         cards: response.cards,
         page: response.page,
         hasMore: response.hasMore,
-      );
-    });
+      )),
+      failure: (f) => AsyncError(f, StackTrace.current),
+    );
   }
 
-  Future<SwipeResponse> swipe({required String targetId, required String action}) async {
-    final repo = ref.read(matchRepositoryProvider);
-    final result = await repo.swipe(targetId: targetId, action: action);
-    final current = state.valueOrNull;
-    if (current != null) {
-      final updatedCards = current.cards.where((c) => c.userId != targetId).toList();
-      state = AsyncData(current.copyWith(cards: updatedCards));
-    }
+  Future<Result<SwipeResponse>> swipe({required String targetId, required String action}) async {
+    final result = await ref.read(matchRepositoryProvider).swipe(targetId: targetId, action: action);
+    result.when(
+      success: (_) {
+        final current = state.valueOrNull;
+        if (current != null) {
+          final updatedCards = current.cards.where((c) => c.userId != targetId).toList();
+          state = AsyncData(current.copyWith(cards: updatedCards));
+        }
+      },
+      failure: (_) {},
+    );
     return result;
   }
 }
@@ -56,13 +61,17 @@ class MatchListNotifier extends AsyncNotifier<List<MatchModel>> {
 
   Future<void> fetchMatches() async {
     state = const AsyncLoading();
-    state = await AsyncValue.guard(() => ref.read(matchRepositoryProvider).getMatches());
+    final result = await ref.read(matchRepositoryProvider).getMatches();
+    state = result.when(
+      success: (data) => AsyncData(data),
+      failure: (f) => AsyncError(f, StackTrace.current),
+    );
   }
 
-  Future<void> unmatch(String matchId) async {
-    final repo = ref.read(matchRepositoryProvider);
-    await repo.unmatch(matchId);
-    await fetchMatches();
+  Future<Result<void>> unmatch(String matchId) async {
+    final result = await ref.read(matchRepositoryProvider).unmatch(matchId);
+    result.when(success: (_) => fetchMatches(), failure: (_) {});
+    return result;
   }
 }
 

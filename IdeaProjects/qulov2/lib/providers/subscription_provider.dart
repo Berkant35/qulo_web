@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
-import '../core/services/revenuecat_service.dart';
-import '../data/models/subscription_model.dart';
-import 'api_provider.dart';
+import 'package:qulo_v2/core/services/revenuecat_service.dart';
+import 'package:qulo_v2/data/models/subscription_model.dart';
+import 'package:qulo_v2/providers/api_provider.dart';
 
 class SubscriptionNotifier extends AsyncNotifier<SubscriptionInfo> {
   @override

@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
-import '../core/network/result.dart';
-import '../core/services/revenuecat_service.dart';
-import '../data/models/diamond_model.dart';
-import 'api_provider.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/core/services/revenuecat_service.dart';
+import 'package:qulo_v2/data/models/diamond_model.dart';
+import 'package:qulo_v2/providers/api_provider.dart';
 
 class DiamondNotifier extends AsyncNotifier<DiamondBalance> {
   @override

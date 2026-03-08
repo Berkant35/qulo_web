@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../core/constants/app_assets.dart';
-import '../../core/constants/app_durations.dart';
-import '../../core/constants/app_sizes.dart';
-import '../../core/theme/app_colors.dart';
-import '../../core/theme/app_spacing.dart';
-import '../../core/widgets/app_scaffold.dart';
-import '../../providers/auth_provider.dart';
+import 'package:qulo_v2/core/constants/app_assets.dart';
+import 'package:qulo_v2/core/constants/app_durations.dart';
+import 'package:qulo_v2/core/constants/app_sizes.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/providers/auth_provider.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});

@@ -1,4 +1,3 @@
-export 'api_error_model.dart';
 export 'auth_model.dart';
 export 'diamond_model.dart';
 export 'discover_model.dart';

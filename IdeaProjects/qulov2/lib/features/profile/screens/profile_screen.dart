@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/constants/q_icons.dart';
-import '../../../core/navigation/navigation.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/widgets/app_scaffold.dart';
-import '../../../core/widgets/diamond_icon.dart';
-import '../../../core/widgets/q_icon.dart';
-import '../../../providers/user_provider.dart';
-import '../../../core/l10n/l10n.dart';
-import '../../../routing/route_names.dart';
-import '../widgets/photo_grid.dart';
-import '../widgets/badge_bar.dart';
-import '../widgets/detail_chips.dart';
+import 'package:qulo_v2/core/constants/q_icons.dart';
+import 'package:qulo_v2/core/navigation/navigation.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/core/widgets/diamond_icon.dart';
+import 'package:qulo_v2/core/widgets/q_icon.dart';
+import 'package:qulo_v2/providers/user_provider.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/routing/route_names.dart';
+import 'package:qulo_v2/features/profile/widgets/photo_grid.dart';
+import 'package:qulo_v2/features/profile/widgets/badge_bar.dart';
+import 'package:qulo_v2/features/profile/widgets/detail_chips.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
@@ -135,10 +135,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 // ─── Details Card ───
                 _SectionCard(
                   title: context.tr('details'),
-                  onTap: () => ref.read(navigationServiceProvider).go(RouteNames.editDetails),
+                  onTap: () => ref.read(navigationServiceProvider).go(RouteNames.editProfile),
                   child: DetailChips(
                     user: user,
-                    onTap: () => ref.read(navigationServiceProvider).go(RouteNames.editDetails),
+                    onTap: () => ref.read(navigationServiceProvider).go(RouteNames.editProfile),
                   ),
                 ),
                 const SizedBox(height: AppSpacing.md),

@@ -1,17 +1,17 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/constants/q_icons.dart';
-import '../../../core/navigation/navigation.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/l10n/l10n.dart';
-import '../../../core/widgets/app_scaffold.dart';
-import '../../../core/widgets/q_icon.dart';
-import '../../../providers/quiz_provider.dart';
-import '../widgets/answer_button.dart';
-import '../widgets/power_bar.dart';
-import '../widgets/quiz_timer.dart';
+import 'package:qulo_v2/core/constants/q_icons.dart';
+import 'package:qulo_v2/core/navigation/navigation.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/core/widgets/q_icon.dart';
+import 'package:qulo_v2/providers/quiz_provider.dart';
+import 'package:qulo_v2/features/quiz/widgets/answer_button.dart';
+import 'package:qulo_v2/features/quiz/widgets/power_bar.dart';
+import 'package:qulo_v2/features/quiz/widgets/quiz_timer.dart';
 
 class QuizScreen extends ConsumerStatefulWidget {
   final String targetId;

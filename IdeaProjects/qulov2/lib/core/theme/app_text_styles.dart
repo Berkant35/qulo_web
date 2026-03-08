@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
 
 abstract final class AppTextStyles {
   static TextTheme get darkTextTheme => const TextTheme(

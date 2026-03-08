@@ -1,10 +1,10 @@
 import 'dart:typed_data';
 import 'package:dio/dio.dart';
-import '../../core/network/network_manager.dart';
-import '../../core/network/result.dart';
-import '../../core/network/services/user_service.dart';
-import '../models/user_model.dart';
-import '../models/user_details_model.dart';
+import 'package:qulo_v2/core/network/network_manager.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/core/network/services/user_service.dart';
+import 'package:qulo_v2/data/models/user_model.dart';
+import 'package:qulo_v2/data/models/user_details_model.dart';
 
 class UserRepository {
   final UserService _service;

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/navigation/navigation.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/l10n/l10n.dart';
-import '../../../core/widgets/q_icon.dart';
-import '../../../core/constants/q_icons.dart';
-import '../../../core/widgets/app_scaffold.dart';
-import '../../../providers/match_provider.dart';
-import '../../../routing/route_names.dart';
-import '../widgets/profile_card.dart';
+import 'package:qulo_v2/core/navigation/navigation.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/widgets/q_icon.dart';
+import 'package:qulo_v2/core/constants/q_icons.dart';
+import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/providers/match_provider.dart';
+import 'package:qulo_v2/routing/route_names.dart';
+import 'package:qulo_v2/features/discover/widgets/profile_card.dart';
 
 class DiscoverScreen extends ConsumerStatefulWidget {
   const DiscoverScreen({super.key});

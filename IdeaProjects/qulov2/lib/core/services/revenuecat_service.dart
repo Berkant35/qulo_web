@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:purchases_flutter/purchases_flutter.dart';
-import '../config/env.dart';
+import 'package:qulo_v2/core/config/env.dart';
 
 class RevenueCatService {
   static Future<void> init(String userId) async {

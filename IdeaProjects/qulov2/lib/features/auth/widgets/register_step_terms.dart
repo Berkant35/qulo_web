@@ -1,10 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../../../core/l10n/app_localizations.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/widgets/app_button.dart';
+import 'package:qulo_v2/core/l10n/app_localizations.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/widgets/app_button.dart';
 
 class RegisterStepTerms extends StatelessWidget {
   final bool termsAccepted;
@@ -12,6 +11,7 @@ class RegisterStepTerms extends StatelessWidget {
   final String? errorText;
   final bool isLoading;
   final VoidCallback onRegister;
+  final ValueChanged<String>? onOpenUrl;
 
   const RegisterStepTerms({
     super.key,
@@ -20,14 +20,8 @@ class RegisterStepTerms extends StatelessWidget {
     this.errorText,
     this.isLoading = false,
     required this.onRegister,
+    this.onOpenUrl,
   });
-
-  Future<void> _openUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +64,7 @@ class RegisterStepTerms extends StatelessWidget {
                             decoration: TextDecoration.underline,
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => _openUrl('https://qulo.app/terms'),
+                            ..onTap = () => onOpenUrl?.call('https://qulo.app/terms'),
                         ),
                         TextSpan(text: ' ${l10n.get('and_word')} '),
                         TextSpan(
@@ -81,8 +75,7 @@ class RegisterStepTerms extends StatelessWidget {
                             decoration: TextDecoration.underline,
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap =
-                                () => _openUrl('https://qulo.app/privacy'),
+                            ..onTap = () => onOpenUrl?.call('https://qulo.app/privacy'),
                         ),
                       ],
                     ),

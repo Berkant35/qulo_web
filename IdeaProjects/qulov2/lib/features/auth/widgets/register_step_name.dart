@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../core/l10n/app_localizations.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/widgets/app_button.dart';
-import '../../../core/widgets/app_text_field.dart';
+import 'package:qulo_v2/core/l10n/app_localizations.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/widgets/app_button.dart';
+import 'package:qulo_v2/core/widgets/app_text_field.dart';
 
 class RegisterStepName extends StatelessWidget {
   final TextEditingController nameCtrl;

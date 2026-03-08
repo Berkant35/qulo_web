@@ -1,4 +1,4 @@
-import 'navigation_event.dart';
+import 'package:qulo_v2/core/navigation/navigation_event.dart';
 
 abstract class AppNavigationObserver {
   void onNavigate(NavigationEvent event) {}

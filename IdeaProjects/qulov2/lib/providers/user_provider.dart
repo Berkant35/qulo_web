@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../core/network/result.dart';
-import '../data/models/user_model.dart';
-import 'api_provider.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/data/models/user_model.dart';
+import 'package:qulo_v2/providers/api_provider.dart';
 
 class UserNotifier extends AsyncNotifier<UserModel?> {
   @override
@@ -44,13 +44,13 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
 
   Future<Result<Map<String, dynamic>>> uploadPhoto(dynamic bytes, String mimeType) async {
     final result = await ref.read(userRepositoryProvider).uploadPhoto(bytes, mimeType);
-    result.when(success: (_) => fetchMe(), failure: (_) {});
+    if (result.isSuccess) await fetchMe();
     return result;
   }
 
   Future<Result<void>> deletePhoto(int index) async {
     final result = await ref.read(userRepositoryProvider).deletePhoto(index);
-    result.when(success: (_) => fetchMe(), failure: (_) {});
+    if (result.isSuccess) await fetchMe();
     return result;
   }
 

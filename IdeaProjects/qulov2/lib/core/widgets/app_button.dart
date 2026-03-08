@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
 
 enum AppButtonVariant { primary, secondary, text }
 

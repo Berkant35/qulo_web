@@ -1,32 +1,50 @@
-import '../../core/network/api_client.dart';
-import '../../core/network/api_endpoints.dart';
-import '../models/discover_model.dart';
-import '../models/match_model.dart';
+import 'package:dio/dio.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/core/network/services/match_service.dart';
+import 'package:qulo_v2/data/models/discover_model.dart';
+import 'package:qulo_v2/data/models/match_model.dart';
 
 class MatchRepository {
-  final ApiClient _client;
+  final MatchService _service;
 
-  MatchRepository(this._client);
+  MatchRepository(this._service);
 
-  Future<DiscoverResponse> discover({int page = 1}) async {
-    final response = await _client.dio.get(ApiEndpoints.discover, queryParameters: {'page': page});
-    return DiscoverResponse.fromJson(response.data);
+  Future<Result<DiscoverResponse>> discover({int page = 1}) async {
+    try {
+      final response = await _service.discover(page);
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<SwipeResponse> swipe({required String targetId, required String action}) async {
-    final response = await _client.dio.post(ApiEndpoints.swipe, data: {
-      'target_id': targetId,
-      'action': action,
-    });
-    return SwipeResponse.fromJson(response.data);
+  Future<Result<SwipeResponse>> swipe({required String targetId, required String action}) async {
+    try {
+      final response = await _service.swipe({
+        'target_id': targetId,
+        'action': action,
+      });
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<List<MatchModel>> getMatches() async {
-    final response = await _client.dio.get(ApiEndpoints.matchList);
-    return (response.data as List).map((e) => MatchModel.fromJson(e)).toList();
+  Future<Result<List<MatchModel>>> getMatches() async {
+    try {
+      final response = await _service.getMatches();
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<void> unmatch(String matchId) async {
-    await _client.dio.delete(ApiEndpoints.unmatch(matchId));
+  Future<Result<void>> unmatch(String matchId) async {
+    try {
+      await _service.unmatch(matchId);
+      return const Success(null);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 }

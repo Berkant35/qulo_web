@@ -1,32 +1,53 @@
-import '../../core/network/api_client.dart';
-import '../../core/network/api_endpoints.dart';
-import '../models/quiz_model.dart';
+import 'package:dio/dio.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/core/network/services/quiz_service.dart';
+import 'package:qulo_v2/data/models/quiz_model.dart';
 
 class QuizRepository {
-  final ApiClient _client;
+  final QuizService _service;
 
-  QuizRepository(this._client);
+  QuizRepository(this._service);
 
-  Future<QuizStartResponse> startSession(String targetId) async {
-    final response = await _client.dio.post(ApiEndpoints.quizStart, data: {'target_id': targetId});
-    return QuizStartResponse.fromJson(response.data);
+  Future<Result<QuizStartResponse>> startSession(String targetId) async {
+    try {
+      final response = await _service.startSession({'target_id': targetId});
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<QuizQuestionModel> getCurrentQuestion(String sessionId) async {
-    final response = await _client.dio.get(ApiEndpoints.quizSession(sessionId));
-    return QuizQuestionModel.fromJson(response.data);
+  Future<Result<QuizQuestionModel>> getCurrentQuestion(String sessionId) async {
+    try {
+      final response = await _service.getCurrentQuestion(sessionId);
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<QuizAnswerResponse> answerQuestion(String sessionId, {required int selectedAnswer, String? powerUsed}) async {
-    final response = await _client.dio.post(ApiEndpoints.quizAnswer(sessionId), data: {
-      'selected_answer': selectedAnswer,
-      if (powerUsed != null) 'power_used': powerUsed,
-    });
-    return QuizAnswerResponse.fromJson(response.data);
+  Future<Result<QuizAnswerResponse>> answerQuestion(
+    String sessionId, {
+    required int selectedAnswer,
+    String? powerUsed,
+  }) async {
+    try {
+      final response = await _service.answerQuestion(sessionId, {
+        'selected_answer': selectedAnswer,
+        if (powerUsed != null) 'power_used': powerUsed,
+      });
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 
-  Future<QuizResultModel> getSessionResult(String sessionId) async {
-    final response = await _client.dio.get(ApiEndpoints.quizResult(sessionId));
-    return QuizResultModel.fromJson(response.data);
+  Future<Result<QuizResultModel>> getSessionResult(String sessionId) async {
+    try {
+      final response = await _service.getSessionResult(sessionId);
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 }

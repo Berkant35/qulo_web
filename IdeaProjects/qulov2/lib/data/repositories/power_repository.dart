@@ -1,14 +1,19 @@
-import '../../core/network/api_client.dart';
-import '../../core/network/api_endpoints.dart';
-import '../models/power_model.dart';
+import 'package:dio/dio.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/core/network/services/power_service.dart';
+import 'package:qulo_v2/data/models/power_model.dart';
 
 class PowerRepository {
-  final ApiClient _client;
+  final PowerService _service;
 
-  PowerRepository(this._client);
+  PowerRepository(this._service);
 
-  Future<List<PowerModel>> getPowers() async {
-    final response = await _client.dio.get(ApiEndpoints.powers);
-    return (response.data as List).map((e) => PowerModel.fromJson(e)).toList();
+  Future<Result<List<PowerModel>>> getPowers() async {
+    try {
+      final response = await _service.getPowers();
+      return Success(response);
+    } on DioException catch (e) {
+      return Failure(e.toAppFailure());
+    }
   }
 }

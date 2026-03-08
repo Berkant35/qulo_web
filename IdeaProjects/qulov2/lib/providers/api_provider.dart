@@ -1,17 +1,31 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../core/network/network_manager.dart';
-import '../core/network/services/auth_service.dart';
-import '../core/network/services/user_service.dart';
-import '../core/network/services/question_service.dart';
-import '../core/network/services/match_service.dart';
-import '../core/network/services/quiz_service.dart';
-import '../core/network/services/chat_service.dart';
-import '../core/network/services/diamond_service.dart';
-import '../core/network/services/power_service.dart';
-import '../core/network/services/passport_service.dart';
-import '../core/network/services/report_service.dart';
-import '../core/network/services/subscription_service.dart';
-import '../data/repositories/repositories.dart';
+import 'package:qulo_v2/core/network/network_manager.dart';
+import 'package:qulo_v2/core/services/image_picker_manager.dart';
+import 'package:qulo_v2/core/services/location_manager.dart';
+import 'package:qulo_v2/core/services/url_launcher_manager.dart';
+import 'package:qulo_v2/core/network/services/auth_service.dart';
+import 'package:qulo_v2/core/network/services/user_service.dart';
+import 'package:qulo_v2/core/network/services/question_service.dart';
+import 'package:qulo_v2/core/network/services/match_service.dart';
+import 'package:qulo_v2/core/network/services/quiz_service.dart';
+import 'package:qulo_v2/core/network/services/chat_service.dart';
+import 'package:qulo_v2/core/network/services/diamond_service.dart';
+import 'package:qulo_v2/core/network/services/power_service.dart';
+import 'package:qulo_v2/core/network/services/passport_service.dart';
+import 'package:qulo_v2/core/network/services/report_service.dart';
+import 'package:qulo_v2/core/network/services/subscription_service.dart';
+import 'package:qulo_v2/data/repositories/repositories.dart';
+
+// ─── Core Services ───
+final imagePickerManagerProvider = Provider<ImagePickerManager>(
+  (_) => ImagePickerManager.instance,
+);
+final locationManagerProvider = Provider<LocationManager>(
+  (_) => LocationManager.instance,
+);
+final urlLauncherManagerProvider = Provider<UrlLauncherManager>(
+  (_) => UrlLauncherManager.instance,
+);
 
 // ─── NetworkManager ───
 final networkManagerProvider = Provider<NetworkManager>(

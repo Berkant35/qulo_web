@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:geolocator/geolocator.dart';
-import '../../../core/navigation/navigation.dart';
-import '../../../core/network/result.dart';
-import '../../../core/l10n/app_localizations.dart';
-import '../../../core/mixins/form_mixin.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/widgets/app_progress_bar.dart';
-import '../../../core/widgets/app_scaffold.dart';
-import '../../../providers/auth_provider.dart';
-import '../../../routing/route_names.dart';
-import '../widgets/register_step_birthday.dart';
-import '../widgets/register_step_email.dart';
-import '../widgets/register_step_gender.dart';
-import '../widgets/register_step_location.dart';
-import '../widgets/register_step_name.dart';
-import '../widgets/register_step_terms.dart';
+import 'package:qulo_v2/core/navigation/navigation.dart';
+import 'package:qulo_v2/core/network/result.dart';
+import 'package:qulo_v2/core/l10n/app_localizations.dart';
+import 'package:qulo_v2/core/mixins/form_mixin.dart';
+import 'package:qulo_v2/core/services/location_manager.dart';
+import 'package:qulo_v2/providers/api_provider.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/widgets/app_progress_bar.dart';
+import 'package:qulo_v2/core/widgets/app_scaffold.dart';
+import 'package:qulo_v2/providers/auth_provider.dart';
+import 'package:qulo_v2/routing/route_names.dart';
+import 'package:qulo_v2/features/auth/widgets/register_step_birthday.dart';
+import 'package:qulo_v2/features/auth/widgets/register_step_email.dart';
+import 'package:qulo_v2/features/auth/widgets/register_step_gender.dart';
+import 'package:qulo_v2/features/auth/widgets/register_step_location.dart';
+import 'package:qulo_v2/features/auth/widgets/register_step_name.dart';
+import 'package:qulo_v2/features/auth/widgets/register_step_terms.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
   const RegisterScreen({super.key});
@@ -157,7 +158,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
     });
 
     try {
-      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      final manager = ref.read(locationManagerProvider);
+
+      final serviceEnabled = await manager.isServiceEnabled();
       if (!serviceEnabled) {
         setState(() {
           _isRequestingLocation = false;
@@ -166,10 +169,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
         return;
       }
 
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
+      var permission = await manager.checkPermission();
+      if (permission == LocationPermissionStatus.denied) {
+        permission = await manager.requestPermission();
+        if (permission == LocationPermissionStatus.denied) {
           setState(() {
             _isRequestingLocation = false;
             _locationError = l10n.get('location_permission_denied');
@@ -178,7 +181,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
         }
       }
 
-      if (permission == LocationPermission.deniedForever) {
+      if (permission == LocationPermissionStatus.deniedForever) {
         setState(() {
           _isRequestingLocation = false;
           _locationError = l10n.get('location_permission_denied_forever');
@@ -186,13 +189,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
         return;
       }
 
-      final position = await Geolocator.getCurrentPosition(
-        locationSettings: const LocationSettings(accuracy: LocationAccuracy.medium),
-      );
+      final result = await manager.getCurrentPosition();
 
       setState(() {
-        _lat = position.latitude;
-        _lng = position.longitude;
+        _lat = result.lat;
+        _lng = result.lng;
         _locationGranted = true;
         _isRequestingLocation = false;
       });
@@ -246,16 +247,29 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
     );
   }
 
+  void _handleBack() {
+    if (_currentStep > 0) {
+      _goToStep(_currentStep - 1);
+    } else {
+      ref.read(navigationServiceProvider).pop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
+    return PopScope(
+      canPop: _currentStep == 0,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) {
+          _handleBack();
+        }
+      },
+      child: AppScaffold(
       padding: EdgeInsets.zero,
-      leading: _currentStep > 0
-          ? IconButton(
+      leading: IconButton(
               icon: const Icon(Icons.arrow_back),
-              onPressed: () => _goToStep(_currentStep - 1),
-            )
-          : const SizedBox.shrink(),
+              onPressed: _handleBack,
+            ),
       title: '',
       body: Column(
           children: [
@@ -308,6 +322,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
                     onRequestLocation: _requestLocation,
                     onContinue: _nextStep,
                     onSkip: () => _goToStep(_currentStep + 1),
+                    onOpenSettings: () => ref.read(locationManagerProvider).openAppSettings(),
                   ),
                   RegisterStepEmail(
                     emailCtrl: _emailCtrl,
@@ -333,12 +348,14 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
                     errorText: _termsError,
                     isLoading: _isLoading,
                     onRegister: _register,
+                    onOpenUrl: (url) => ref.read(urlLauncherManagerProvider).launch(url),
                   ),
                 ],
               ),
             ),
           ],
         ),
+      ),
     );
   }
 }

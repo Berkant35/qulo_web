@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_spacing.dart';
-import '../models/app_bottom_sheet.dart';
+import 'package:qulo_v2/core/theme/app_colors.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
+import 'package:qulo_v2/core/navigation/models/app_bottom_sheet.dart';
 
 class ListBottomSheetWidget<T> extends StatelessWidget {
   final ListBottomSheet<T> sheet;

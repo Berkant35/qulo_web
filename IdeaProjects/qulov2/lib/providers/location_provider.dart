@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:geolocator/geolocator.dart';
-import 'api_provider.dart';
+import 'package:qulo_v2/core/services/location_manager.dart';
+import 'package:qulo_v2/providers/api_provider.dart';
 
 class LocationState {
   final double? lat;
@@ -27,34 +27,33 @@ class LocationNotifier extends Notifier<LocationState> {
   Future<void> getCurrentLocation() async {
     state = state.copyWith(isLoading: true, error: null);
     try {
-      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      final manager = ref.read(locationManagerProvider);
+
+      final serviceEnabled = await manager.isServiceEnabled();
       if (!serviceEnabled) {
         state = state.copyWith(isLoading: false, error: 'LOCATION_SERVICE_DISABLED');
         return;
       }
 
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
+      var permission = await manager.checkPermission();
+      if (permission == LocationPermissionStatus.denied) {
+        permission = await manager.requestPermission();
+        if (permission == LocationPermissionStatus.denied) {
           state = state.copyWith(isLoading: false, error: 'LOCATION_PERMISSION_DENIED');
           return;
         }
       }
 
-      if (permission == LocationPermission.deniedForever) {
+      if (permission == LocationPermissionStatus.deniedForever) {
         state = state.copyWith(isLoading: false, error: 'LOCATION_PERMISSION_DENIED_FOREVER');
         return;
       }
 
-      final position = await Geolocator.getCurrentPosition(
-        locationSettings: const LocationSettings(accuracy: LocationAccuracy.medium),
-      );
+      final result = await manager.getCurrentPosition();
 
-      state = state.copyWith(lat: position.latitude, lng: position.longitude, isLoading: false);
+      state = state.copyWith(lat: result.lat, lng: result.lng, isLoading: false);
 
-      final repo = ref.read(userRepositoryProvider);
-      await repo.updateLocation(lat: position.latitude, lng: position.longitude);
+      await ref.read(userRepositoryProvider).updateLocation(lat: result.lat, lng: result.lng);
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
     }

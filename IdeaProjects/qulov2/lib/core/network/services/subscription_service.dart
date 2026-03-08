@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import '../../../data/models/subscription_model.dart';
+import 'package:qulo_v2/data/models/subscription_model.dart';
 
 part 'subscription_service.g.dart';
 

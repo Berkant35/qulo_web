@@ -1,6 +1,6 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import '../theme/app_spacing.dart';
+import 'package:qulo_v2/core/theme/app_spacing.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget body;
