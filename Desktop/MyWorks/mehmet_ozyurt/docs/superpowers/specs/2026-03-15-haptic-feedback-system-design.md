@@ -9,7 +9,7 @@
 ## 1. Amaç
 
 Uygulamadaki buton etkileşimlerinde kullanıcıya hafif titreşim geri
-bildirimi sağlamak. Mevcut durumda ~15 dosyada dağınık
+bildirimi sağlamak. Mevcut durumda ~11 dosyada dağınık
 `HapticFeedback.*` çağrıları var. Bu tasarım:
 
 - Merkezi bir manager ile tüm haptic çağrıları tek noktadan yönetir
@@ -60,10 +60,13 @@ Sorumluluklar:
 - `HapticSettingsCubit` state'ini kontrol eder; kapalıysa
   early return yapar
 - Her çağrıyı `MyLog.d` ile loglar (debug modda)
-- Singleton olarak GetIt'e register edilir
+- `registerLazySingleton` ile GetIt'e register edilir
 
 Metotlar:
-- `void trigger(HapticType type)` — ana metot
+- `void trigger(HapticType type)` — ana metot.
+  İlk kontrol: `if (type == HapticType.none) return;`
+  İkinci kontrol: `if (!cubit.state) return;` (kapalıysa)
+  Sonra ilgili HapticFeedback metodunu çağırır.
 - `void tap()` — kısayol: `trigger(HapticType.tap)`
 - `void selection()` — kısayol: `trigger(HapticType.selection)`
 - `void success()` — kısayol: `trigger(HapticType.success)`
@@ -77,13 +80,13 @@ State okuma:
 
 ### 3.3 HapticSettingsCubit (HydratedBloc)
 
-**Dosya:** `lib/core/bloc/haptic_settings_cubit.dart`
+**Dosya:** `lib/core/bloc/cubit/haptic_settings_cubit.dart`
 
 - `HydratedCubit<bool>` extend eder
 - Varsayılan state: `true` (haptic açık)
 - `toggle()` metodu: `emit(!state)`
 - `fromJson` / `toJson`: `bool` serialize
-- GetIt'e singleton olarak register edilir
+- GetIt'e `registerLazySingleton` ile register edilir
 - HapticFeedbackManager'dan önce register edilmeli
   (bağımlılık sırası)
 
@@ -93,35 +96,43 @@ State okuma:
 
 Değişiklikler:
 - `hapticType` parametresi eklenir (varsayılan: `HapticType.tap`)
-- `onTap` callback'i sarmalanır: önce haptic trigger, sonra
-  orijinal callback
-- Factory constructor'lara göre varsayılan haptic tipi:
+- `onPressed` callback'i `build()` içinde sarmalanır: önce
+  haptic trigger, sonra orijinal callback. `const`
+  constructor uyumluluğu korunur — haptic çağrısı
+  constructor'da değil `build()` metodunda gerçekleşir.
+- Static metotlara göre varsayılan haptic tipi:
 
-| Factory | Varsayılan HapticType |
-|---------|----------------------|
+| Static Metot | Varsayılan HapticType |
+|-------------|----------------------|
 | `primaryFilled()` | `tap` |
 | `secondaryFilled()` | `tap` |
 | `outline()` | `tap` |
 | `textOnly()` | `tap` |
 | `iconOnly()` | `tap` |
+| `small()` | `tap` |
+| `medium()` | `tap` |
+| `large()` | `tap` |
+| `floating()` | `tap` |
+| `custom()` | `tap` |
 | `error()` | `error` |
 | `success()` | `success` |
 | `startGame()` | `success` |
 | `joinGame()` | `success` |
+| `createRoom()` | `success` |
 | `ready()` | `success` |
-| Diğer tüm factory'ler | `tap` |
+| `playNow()` | `success` |
 
 Widget seviyesinde override:
 ```dart
 AppButton.primaryFilled(
   hapticType: HapticType.none, // bu butonda haptic yok
-  onTap: () => ...,
+  onPressed: () => ...,
 )
 ```
 
 ### 3.5 Ayarlar Toggle
 
-**Dosya:** Settings menüsünde mevcut ayarlar listesine eklenir.
+**Dosya:** `lib/core/shared/sheets/settings_menu_sheet.dart`
 
 - Lokalizasyon anahtarı: `S.current.haptic_feedback`
 - Toggle widget: `Switch` veya mevcut settings tile pattern
@@ -144,7 +155,7 @@ Her ikisi de `registerLazySingleton` ile register edilir.
 
 ## 5. Mevcut Kodun Temizliği
 
-~15 dosyada doğrudan `HapticFeedback.*` çağrısı var. Bunlar:
+~11 dosyada doğrudan `HapticFeedback.*` çağrısı var. Bunlar:
 - `import 'package:flutter/services.dart'` kaldırılır
   (başka kullanım yoksa)
 - `HapticFeedback.lightImpact()` →
@@ -175,8 +186,8 @@ için, bu dosyalarda tekrar eden çağrılar silinir.
 
 ## 7. Etki Alanı
 
-- **Değişen dosyalar:** ~20 dosya (manager, cubit, AppButton,
-  settings, locator, ~15 temizlik)
+- **Değişen dosyalar:** ~16 dosya (manager, cubit, AppButton,
+  settings, locator, ~11 temizlik)
 - **Yeni dosyalar:** 3 (haptic_type.dart,
   haptic_feedback_manager.dart, haptic_settings_cubit.dart)
 - **Paket bağımlılığı:** Yok — Flutter native
