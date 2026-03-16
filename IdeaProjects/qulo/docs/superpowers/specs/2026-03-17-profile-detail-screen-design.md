@@ -197,11 +197,11 @@ enum ProfileDetailContext {
 
 ```dart
 // AsyncNotifier.family pattern — retry, refresh, invalidation desteği
-final profileDetailProvider = AsyncNotifierProvider.family<ProfileDetailNotifier, PublicProfileModel, String>(
+final profileDetailProvider = AsyncNotifierProvider.autoDispose.family<ProfileDetailNotifier, PublicProfileModel, String>(
   ProfileDetailNotifier.new,
 );
 
-class ProfileDetailNotifier extends FamilyAsyncNotifier<PublicProfileModel, String> {
+class ProfileDetailNotifier extends AutoDisposeFamilyAsyncNotifier<PublicProfileModel, String> {
   @override
   Future<PublicProfileModel> build(String userId) => _fetch(userId);
 
@@ -287,12 +287,12 @@ Bu feature block işlevselliği gerektiriyor. Aşağıdakiler oluşturulmalı:
 1. Target user'ı DB'den çek (users + user_details join)
 2. Deleted/banned kontrolü → 404
 3. Distance hesapla (requester location vs target location, PostGIS)
-4. Match kontrolü → match varsa `is_online` ve `last_seen_at` dahil et
+4. Match kontrolü → match varsa `is_online` ve `last_seen` dahil et
 5. Question info çek (count, categories, avg_difficulty, languages)
 6. `weight` hariç tut
 7. Response oluştur ve döndür
 
-**Route:** `user.routes.ts` → `router.get('/:id/profile', auth, userController.getPublicProfile)`
+**Route:** `user.routes.ts` → `router.get('/:id/profile', auth, generalLimiter, userController.getPublicProfile)`
 
 ### Flutter API Client
 
