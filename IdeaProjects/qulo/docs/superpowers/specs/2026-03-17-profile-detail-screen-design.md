@@ -35,7 +35,7 @@ Discover response'u şişirmemek için ayrı bir endpoint. Sadece profil açıld
   "distance_km": 3.5,
   "relationship_goal": "SERIOUS",
   "is_online": false,
-  "last_seen_at": "2026-03-17T10:30:00Z",
+  "last_seen": "2026-03-17T10:30:00Z",
   "profile_completion": 80,
   "is_boosted": true,
   "details": {
@@ -61,9 +61,13 @@ Discover response'u şişirmemek için ayrı bir endpoint. Sadece profil açıld
 **Kurallar:**
 - Auth gerekli (JWT Bearer token)
 - Deleted/banned kullanıcılar için 404
-- `is_online` ve `last_seen_at` sadece match olan kullanıcılar için döner (privacy), diğerleri için null
-- `distance_km` server-side hesaplanır (requester'ın konumu / passport konumu kullanılır)
+- Blocked kullanıcılar için 404 (block tablosu kontrolü)
+- `is_online` ve `last_seen` sadece match olan kullanıcılar için döner (privacy), diğerleri için null
+- `distance_km` server-side hesaplanır — kullanıcının aktif passport'u varsa passport konumu, yoksa gerçek konumu kullanılır
 - `weight` response'a dahil edilmez (privacy — sadece kendi profilinde görünür)
+- Rate limit: `generalLimiter` ile korunur (scraping önlemi)
+
+**Not:** Response'daki `last_seen` alanı mevcut `MatchUserModel`'deki isimlendirmeyle tutarlıdır.
 
 ## Ekran Layout
 
@@ -86,7 +90,7 @@ Fotoğrafın hemen altında, padding ile:
 - **İsim + Yaş:** `"Sarah, 26"` — bold, büyük font
 - **Konum + Mesafe:** `"Beyoglu • 3.5 km"` — secondary color, icon ile
 - **Relationship Goal:** Badge/chip — SERIOUS (kırmızı kalp), FRIENDSHIP (yeşil el), NOT_SURE (sarı soru işareti)
-- **Online durumu:** Sadece match olan kullanıcılarda — yeşil dot "Online" veya "Son görülme: 2 saat önce"
+- **Online durumu:** Sadece match olan kullanıcılarda — yeşil dot "Online" veya "Son görülme: 2 saat önce" (`last_seen` field)
 - **Boost indicator:** Zap ikonu, boosted ise göster
 
 ### 3. Bio / Hakkında
@@ -145,6 +149,8 @@ Action butonlarının üstünde, küçük text button:
 - "Bildir veya Engelle" — tıklayınca bottom sheet açılır
 - Seçenekler: Report (sebep seçimi) / Block
 
+**Not:** Block backend'i (tablo, migration, endpoint) bu feature'ın prerequisite'idir. Bkz. "Backend Önkoşulları" bölümü.
+
 ## Navigation
 
 ### Route Tanımı
@@ -155,6 +161,12 @@ Name: RouteNames.profileDetail
 Extra params: ProfileDetailArgs (context, preloaded data)
 ```
 
+### Flutter Routing Değişiklikleri
+
+1. `route_names.dart` → `profileDetail` eklenmeli
+2. GoRouter config → `/profile-detail/:userId` route tanımı eklenmeli (top-level route, bottom nav'ın üstünde açılır)
+3. `NavigationService` üzerinden navigate edilmeli
+
 ### ProfileDetailArgs Model
 
 ```dart
@@ -162,10 +174,11 @@ class ProfileDetailArgs {
   final ProfileDetailContext context; // discover, match, chat, quizResult
   final String userId;
   final String? matchId;          // match/chat context için
-  final String? firstPhotoUrl;    // hero animation placeholder
   final ProfileCardModel? preloadedCard; // discover'dan geliyorsa
 }
 ```
+
+**Not:** Hero animation bu scope'ta yok, gelecekte eklenebilir.
 
 ### Context Enum
 
@@ -183,10 +196,24 @@ enum ProfileDetailContext {
 ### Provider
 
 ```dart
-// Profile detail verisi
-final profileDetailProvider = FutureProvider.family<PublicProfileModel, String>((ref, userId) async {
-  return ref.read(userRepositoryProvider).getPublicProfile(userId);
-});
+// AsyncNotifier.family pattern — retry, refresh, invalidation desteği
+final profileDetailProvider = AsyncNotifierProvider.family<ProfileDetailNotifier, PublicProfileModel, String>(
+  ProfileDetailNotifier.new,
+);
+
+class ProfileDetailNotifier extends FamilyAsyncNotifier<PublicProfileModel, String> {
+  @override
+  Future<PublicProfileModel> build(String userId) => _fetch(userId);
+
+  Future<PublicProfileModel> _fetch(String userId) {
+    return ref.read(userRepositoryProvider).getPublicProfile(userId);
+  }
+
+  Future<void> refresh() async {
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => _fetch(arg));
+  }
+}
 ```
 
 ### Veri Akışı
@@ -195,12 +222,12 @@ final profileDetailProvider = FutureProvider.family<PublicProfileModel, String>(
 2. `preloadedCard` varsa (discover'dan) → hemen temel bilgileri göster
 3. `profileDetailProvider` ile detayları çek → detaylar yüklenir
 4. Loading state: Fotoğraf + temel bilgiler görünür, detaylar shimmer/skeleton
-5. Error state: Retry butonu
+5. Error state: Retry butonu (`refresh()` çağırır)
 
 ### Caching
 
-- Provider `autoDispose` değil — aynı kullanıcının profili tekrar açılırsa cache'ten gelir
-- Discover'da swipe edilip geri alınan kullanıcı için cache invalidate edilmez
+- Provider `autoDispose` ile kullanılır — ekran kapandığında state temizlenir
+- Preloaded card verisi sayesinde tekrar açılışta da hızlı deneyim sağlanır
 
 ## Dosya Yapısı
 
@@ -216,11 +243,36 @@ lib/features/profile_detail/
 │   ├── profile_question_info.dart       # Soru bilgisi (discover'dan re-use)
 │   ├── profile_action_bar.dart          # Sticky bottom action butonları
 │   └── profile_report_button.dart       # Report/block
+├── mixins/
+│   └── profile_detail_screen_mixin.dart # Action callbacks, analytics events
 ├── models/
 │   └── profile_detail_args.dart         # Navigation args + context enum
 └── providers/
-    └── profile_detail_provider.dart     # API çağrısı + state
+    └── profile_detail_provider.dart     # AsyncNotifier + state
+
+lib/data/models/
+└── public_profile_model.dart            # Server response model (mevcut modellerin yanında)
 ```
+
+**Not:** `PublicProfileModel` mevcut model pattern'ine uygun olarak `lib/data/models/` altına yerleşir. `profile_detail_args.dart` ise UI-only navigation modeli olduğu için feature klasöründe kalır.
+
+## Backend Önkoşulları
+
+### Block Sistemi (yeni)
+
+Bu feature block işlevselliği gerektiriyor. Aşağıdakiler oluşturulmalı:
+
+1. **Migration:** `blocks` tablosu — `blocker_id`, `blocked_id`, `created_at` (unique constraint: blocker+blocked)
+2. **Endpoint:** `POST /blocks` — kullanıcı engelle
+3. **Endpoint:** `DELETE /blocks/:userId` — engeli kaldır
+4. **Entegrasyon:** Discover query'sine block filtresi ekle (blocked kullanıcılar gösterilmez)
+5. **Entegrasyon:** `GET /users/:id/profile` endpoint'inde block kontrolü (404 döndür)
+
+### Yeni Endpoint: `GET /users/:id/profile`
+
+`user.routes.ts`'e yeni route. Mevcut `/me/*` route'ları ile çakışmaz çünkü `:id` parametresi UUID formatında, `me` string'i UUID değil.
+
+**Route:** `router.get('/:id/profile', auth, generalLimiter, userController.getPublicProfile)`
 
 ## Backend Değişiklikleri
 
@@ -257,10 +309,20 @@ Server response'una karşılık gelen Flutter model. `ProfileCardModel`'den fark
 ## Privacy Kuralları
 
 - `weight` hiçbir zaman başkalarına gösterilmez
-- `is_online` ve `last_seen_at` sadece match olan kullanıcılara gösterilir
+- `is_online` ve `last_seen` sadece match olan kullanıcılara gösterilir
 - `email`, `surname`, `password_hash` gibi hassas alanlar response'a dahil edilmez
 - `phone`, `push_token` gibi cihaz bilgileri dahil edilmez
 - Blocked kullanıcıların profili görüntülenemez → 404
+
+## Analytics
+
+Screen mixin içinde aşağıdaki event'ler tetiklenir:
+
+| Event | Parametreler | Açıklama |
+|-------|-------------|----------|
+| `profile_viewed` | `userId`, `context` | Profil ekranı açıldığında |
+| `profile_action_tapped` | `action` (solve/reject/message/report/block), `userId` | Action butonuna tıklanınca |
+| `profile_photo_navigated` | `photoIndex`, `totalPhotos`, `userId` | Fotoğraf değiştirilince |
 
 ## Edge Cases
 
