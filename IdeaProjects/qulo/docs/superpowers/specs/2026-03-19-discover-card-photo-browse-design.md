@@ -69,10 +69,14 @@ Mevcut dosyalar değiştirilecek, yeni dosya oluşturulmayacak:
 
 ### Teknik Detaylar
 
-- **Tap pozisyon hesabı:** `onTapUp` → `details.localPosition.dx` kullanılacak (widget genişliğinin yarısına göre karşılaştır). `globalPosition` kullanılmayacak çünkü kart `Transform` ve `Padding` içinde — global koordinatlar yanlış sonuç verir.
-- **Kart değişimi:** `ProfileCard`'a `ValueKey(card.userId)` verilecek — swipe sonrası yeni kart geldiğinde `PageController` state'i sıfırlanır, eski fotoğraf indexi yeni karta taşınmaz.
-- **Progress bar pozisyonu:** Kartın üst kenarından `AppSpacing.sm` mesafe (SafeArea padding kullanılmayacak, kart zaten page padding içinde).
-- **Navigasyon sonrası state:** Profil detaya gidip geri dönüldüğünde fotoğraf indexi korunur (Flutter'ın varsayılan StatefulWidget davranışı).
+- **Tap mekanizması:** `Listener` widget kullanılır (`GestureDetector` DEĞİL). Sebebi: Dıştaki `GestureDetector(onHorizontalDragUpdate)` (discover swipe) Flutter gesture arena'sında `GestureDetector(onTapUp)` ile çakışır ve tap'leri yutar. `Listener` gesture arena'ya katılmaz, pointer event'leri doğrudan alır.
+- **Tap/swipe ayrımı:** `Listener.onPointerDown` ile başlangıç pozisyonu kaydedilir, `onPointerUp`'ta hareket mesafesi hesaplanır. 20px'den az hareket → tap (fotoğraf geçişi), fazla → swipe (ignore, discover swipe devam eder).
+- **Tap pozisyon hesabı:** `LayoutBuilder(constraints.maxWidth / 2)` kullanılır. `context.size` kullanılamaz çünkü PageView itemBuilder context'i sliver element'tir ve `.size` erişimi exception fırlatır.
+- **Gradient overlay:** `IgnorePointer` ile sarılır — gradient Container Stack'te PageView'ın üstündedir ve `IgnorePointer` olmazsa hit test'i engeller.
+- **Info bölümü:** `GestureDetector(behavior: HitTestBehavior.opaque)` ile sarılır. `.opaque` info alanındaki tap'lerin alttaki fotoğraf Listener'a propagate olmasını engeller. `.translucent` kullanılmamalı çünkü aynı tap hem info hem fotoğraf geçişini tetikler.
+- **Kart değişimi:** `ProfileCard`'a `ValueKey(card.userId)` verilir — swipe sonrası yeni kart geldiğinde `PageController` state'i sıfırlanır.
+- **Progress bar pozisyonu:** Kartın üst kenarından `AppSpacing.sm` mesafe.
+- **Navigasyon sonrası state:** Profil detaya gidip geri dönüldüğünde fotoğraf indexi korunur.
 
 ### Edge Case'ler
 
@@ -80,4 +84,14 @@ Mevcut dosyalar değiştirilecek, yeni dosya oluşturulmayacak:
 - **Tek fotoğraf:** Bar gizli, tap geçişi devre dışı — şu anki davranış korunur
 - **6+ fotoğraf:** Bar margin'i daralır (1px), `ProfilePhotoGallery`'deki pattern
 - **Fotoğraf yüklenirken:** `CachedNetworkImage` placeholder gösterir (mevcut davranış)
-- **Drag sırasında tap:** `_isProcessing` guard fotoğraf tap'lerini de engelleyecek (callback üzerinden)
+- **Drag sırasında tap:** `_isProcessing` guard + `isInteractionEnabled` flag fotoğraf tap'lerini engeller
+
+### Implementasyon Sırasında Karşılaşılan Sorunlar
+
+| Sorun | Sebep | Çözüm |
+|-------|-------|-------|
+| Fotoğraf tap'i çalışmıyor | Dıştaki `GestureDetector(onHorizontalDrag)` gesture arena'da tap'i yutuyor | `GestureDetector(onTapUp)` → `Listener(onPointerUp)` |
+| Swipe sırasında da fotoğraf değişiyor | `Listener` her pointer up'ta ateşleniyor | `onPointerDown` pozisyon kaydet, `onPointerUp`'ta mesafe kontrolü (>20px → ignore) |
+| `context.size` exception | PageView itemBuilder context'i sliver element | `LayoutBuilder(constraints.maxWidth)` |
+| Gradient overlay tap'i engelliyor | Stack'te PageView üstünde duruyor | `IgnorePointer` ile sar |
+| Info tap'i hem profil hem fotoğraf tetikliyor | `HitTestBehavior.translucent` her iki katmana propagate ediyor | `.translucent` → `.opaque` |
