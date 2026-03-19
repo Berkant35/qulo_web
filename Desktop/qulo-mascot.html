@@ -292,16 +292,258 @@
       crossfadeRemaining = CROSSFADE_DURATION;
       currentAnim = name;
       animTime = 0;
+      if (name === 'heart') applyHeart._lastSpawnIndex = -1;
     }
 
     const animDurations = { idle: 2, wave: 1.5, heart: 2, walk: 1, point: 1.5 };
     const loopAnims = new Set(['idle', 'walk']);
 
-    // Placeholder animate loop — will be replaced in Task 2
+    // === PROCEDURAL ANIMATIONS ===
+    function applyIdle(t) {
+      body.position.y = DEFAULT_BODY_Y + Math.sin(t * Math.PI) * 0.03;
+    }
+
+    function applyWave(t) {
+      body.position.y = DEFAULT_BODY_Y + Math.sin(t * Math.PI * 1.33) * 0.02;
+      const phase = t / 1.5;
+      if (phase < 0.2) {
+        const p = phase / 0.2;
+        rightArmPivot.rotation.z = THREE.MathUtils.lerp(0, -2.5, p);
+        body.rotation.x = THREE.MathUtils.lerp(0, 0.15, p);
+      } else if (phase < 0.87) {
+        const osc = Math.sin((phase - 0.2) / 0.67 * Math.PI * 3);
+        rightArmPivot.rotation.z = -2.5 + osc * 0.3;
+        body.rotation.x = 0.15;
+      } else {
+        const p = (phase - 0.87) / 0.13;
+        rightArmPivot.rotation.z = THREE.MathUtils.lerp(-2.5, 0, p);
+        body.rotation.x = THREE.MathUtils.lerp(0.15, 0, p);
+      }
+    }
+
+    function applyHeart(t) {
+      const phase = t / 2.0;
+      let heartSpawnPhase = false;
+
+      if (phase < 0.3) {
+        const p = phase / 0.3;
+        leftArmPivot.rotation.z = THREE.MathUtils.lerp(0, 1.2, p);
+        leftArmPivot.rotation.x = THREE.MathUtils.lerp(0, -0.5, p);
+        rightArmPivot.rotation.z = THREE.MathUtils.lerp(0, -1.2, p);
+        rightArmPivot.rotation.x = THREE.MathUtils.lerp(0, -0.5, p);
+      } else if (phase < 0.5) {
+        const p = (phase - 0.3) / 0.2;
+        leftArmPivot.rotation.z = THREE.MathUtils.lerp(1.2, 0.5, p);
+        rightArmPivot.rotation.z = THREE.MathUtils.lerp(-1.2, -0.5, p);
+        leftArmPivot.rotation.x = THREE.MathUtils.lerp(-0.5, 0, p);
+        rightArmPivot.rotation.x = THREE.MathUtils.lerp(-0.5, 0, p);
+        heartSpawnPhase = true;
+      } else if (phase < 0.7) {
+        leftArmPivot.rotation.z = 0.5;
+        rightArmPivot.rotation.z = -0.5;
+        heartSpawnPhase = true;
+      } else {
+        const p = (phase - 0.7) / 0.3;
+        leftArmPivot.rotation.z = THREE.MathUtils.lerp(0.5, 0, p);
+        rightArmPivot.rotation.z = THREE.MathUtils.lerp(-0.5, 0, p);
+      }
+
+      // Time-based heart spawning
+      if (heartSpawnPhase) {
+        const spawnInterval = 0.15;
+        const heartPhaseStart = 0.3 * 2.0;
+        const timeSinceSpawnPhase = t - heartPhaseStart;
+        const spawnIndex = Math.floor(timeSinceSpawnPhase / spawnInterval);
+        if (spawnIndex >= 0 && spawnIndex !== applyHeart._lastSpawnIndex) {
+          applyHeart._lastSpawnIndex = spawnIndex;
+          spawnHeart();
+        }
+      }
+
+      // Heart eyes
+      if (phase > 0.25 && phase < 0.75) {
+        const eyePhase = phase < 0.35 ? (phase - 0.25) / 0.1 : phase > 0.65 ? 1 - (phase - 0.65) / 0.1 : 1;
+        leftEye.scale.set(1 + eyePhase * 0.3, 1 - eyePhase * 0.2, 1);
+        rightEye.scale.set(1 + eyePhase * 0.3, 1 - eyePhase * 0.2, 1);
+        leftPupil.material = eyePhase > 0.5 ? heartPupilMat : pupilMat;
+        rightPupil.material = eyePhase > 0.5 ? heartPupilMat : pupilMat;
+      } else {
+        leftPupil.material = pupilMat;
+        rightPupil.material = pupilMat;
+      }
+
+      body.position.y = DEFAULT_BODY_Y + Math.sin(t * Math.PI) * 0.02;
+    }
+    applyHeart._lastSpawnIndex = -1;
+
+    function applyWalk(t) {
+      const cycle = t / 1.0;
+      const angle = cycle * Math.PI * 2;
+      const legSwing = Math.sin(angle) * 0.5;
+      const armSwing = Math.sin(angle) * 0.4;
+      const bodySway = Math.sin(angle) * 0.03;
+      const bodyBob = Math.abs(Math.sin(angle)) * 0.04;
+
+      leftLegPivot.rotation.x = legSwing;
+      rightLegPivot.rotation.x = -legSwing;
+      leftArmPivot.rotation.x = -armSwing;
+      rightArmPivot.rotation.x = armSwing;
+      body.position.x = bodySway;
+      body.position.y = DEFAULT_BODY_Y + bodyBob;
+      body.rotation.z = -bodySway * 2;
+    }
+
+    function applyPoint(t) {
+      body.position.y = DEFAULT_BODY_Y + Math.sin(t * Math.PI * 1.33) * 0.02;
+      const phase = t / 1.5;
+      if (phase < 0.3) {
+        const p = phase / 0.3;
+        rightArmPivot.rotation.z = THREE.MathUtils.lerp(0, -1.5, p);
+        rightArmPivot.rotation.x = THREE.MathUtils.lerp(0, -0.3, p);
+        head.rotation.y = THREE.MathUtils.lerp(0, -0.3, p);
+        body.rotation.z = THREE.MathUtils.lerp(0, -0.1, p);
+      } else if (phase < 0.7) {
+        const bounce = Math.sin((phase - 0.3) / 0.4 * Math.PI * 2) * 0.05;
+        rightArmPivot.rotation.z = -1.5 + bounce;
+        rightArmPivot.rotation.x = -0.3;
+        head.rotation.y = -0.3;
+        body.rotation.z = -0.1;
+      } else {
+        const p = (phase - 0.7) / 0.3;
+        rightArmPivot.rotation.z = THREE.MathUtils.lerp(-1.5, 0, p);
+        rightArmPivot.rotation.x = THREE.MathUtils.lerp(-0.3, 0, p);
+        head.rotation.y = THREE.MathUtils.lerp(-0.3, 0, p);
+        body.rotation.z = THREE.MathUtils.lerp(-0.1, 0, p);
+      }
+    }
+
+    const animFunctions = { idle: applyIdle, wave: applyWave, heart: applyHeart, walk: applyWalk, point: applyPoint };
+
+    function applyAnimationWeighted(name, t, weight) {
+      const fn = animFunctions[name];
+      if (fn) fn(t);
+    }
+
+    // === HEART PARTICLES ===
+    const hearts = [];
+
+    function createHeart(size) {
+      const shape = new THREE.Shape();
+      shape.moveTo(0, size * 0.3);
+      shape.bezierCurveTo(0, size, -size, size, -size, size * 0.3);
+      shape.bezierCurveTo(-size, 0, 0, -size * 0.2, 0, -size * 0.7);
+      shape.bezierCurveTo(0, -size * 0.2, size, 0, size, size * 0.3);
+      shape.bezierCurveTo(size, size, 0, size, 0, size * 0.3);
+      const geo = new THREE.ExtrudeGeometry(shape, { depth: 0.05, bevelEnabled: true, bevelSize: 0.02, bevelThickness: 0.02 });
+      const mat = new THREE.MeshStandardMaterial({ color: 0xff4757, transparent: true });
+      return new THREE.Mesh(geo, mat);
+    }
+
+    function spawnHeart() {
+      const heart = createHeart(0.1);
+      heart.position.set(0, 1.5, 0.3);
+      heart.userData = { velocity: new THREE.Vector3((Math.random() - 0.5) * 0.5, 1.5 + Math.random(), 0.3), life: 1.0 };
+      scene.add(heart);
+      hearts.push(heart);
+    }
+
+    function updateHearts(delta) {
+      for (let i = hearts.length - 1; i >= 0; i--) {
+        const h = hearts[i];
+        h.userData.life -= delta * 0.8;
+        h.position.add(h.userData.velocity.clone().multiplyScalar(delta));
+        h.userData.velocity.y -= delta * 0.5;
+        h.rotation.z += delta * 2;
+        h.scale.setScalar(Math.max(0, h.userData.life));
+        h.material.opacity = h.userData.life;
+        if (h.userData.life <= 0) { scene.remove(h); h.geometry.dispose(); hearts.splice(i, 1); }
+      }
+    }
+
+    // === ALWAYS-ON EFFECTS ===
+    let blinkTimer = 0;
+    const BLINK_INTERVAL = 3.5;
+    const BLINK_DURATION = 0.15;
+
+    function applyAlwaysOnEffects(elapsed, delta) {
+      antenna.rotation.z = Math.sin(elapsed * 1.5) * 0.1;
+      antenna.rotation.x = Math.cos(elapsed * 1.2) * 0.05;
+
+      blinkTimer += delta;
+      if (blinkTimer > BLINK_INTERVAL) {
+        const blinkPhase = blinkTimer - BLINK_INTERVAL;
+        if (blinkPhase < BLINK_DURATION) {
+          const t = blinkPhase / BLINK_DURATION;
+          const scaleY = t < 0.5 ? 1 - t * 2 * 0.9 : 0.1 + (t - 0.5) * 2 * 0.9;
+          leftEye.scale.y = scaleY;
+          rightEye.scale.y = scaleY;
+        } else {
+          leftEye.scale.y = 1;
+          rightEye.scale.y = 1;
+          blinkTimer = 0;
+        }
+      }
+    }
+
+    // === MAIN ANIMATE LOOP ===
     const clock = new THREE.Clock();
+
     function animate() {
       requestAnimationFrame(animate);
       const delta = clock.getDelta();
+      const elapsed = clock.getElapsedTime();
+      animTime += delta;
+
+      resetPose();
+
+      const duration = animDurations[currentAnim] || 2;
+      let t = loopAnims.has(currentAnim) ? animTime % duration : Math.min(animTime, duration);
+
+      if (!loopAnims.has(currentAnim) && animTime >= duration) {
+        prevAnim = currentAnim;
+        prevAnimTime = t;
+        crossfadeRemaining = CROSSFADE_DURATION;
+        currentAnim = 'idle';
+        animTime = 0;
+        t = 0;
+        setActiveButton('idle');
+      }
+
+      if (crossfadeRemaining > 0) {
+        crossfadeRemaining -= delta;
+        const blend = Math.max(0, crossfadeRemaining / CROSSFADE_DURATION);
+        const prevDuration = animDurations[prevAnim] || 2;
+        const prevT = loopAnims.has(prevAnim) ? prevAnimTime % prevDuration : Math.min(prevAnimTime, prevDuration);
+        applyAnimationWeighted(prevAnim, prevT, blend);
+        const prevPose = {
+          bodyY: body.position.y, bodyX: body.position.x,
+          bodyRotX: body.rotation.x, bodyRotZ: body.rotation.z,
+          headRotY: head.rotation.y,
+          laRX: leftArmPivot.rotation.x, laRZ: leftArmPivot.rotation.z,
+          raRX: rightArmPivot.rotation.x, raRZ: rightArmPivot.rotation.z,
+          llRX: leftLegPivot.rotation.x, rlRX: rightLegPivot.rotation.x,
+        };
+        resetPose();
+        applyAnimationWeighted(currentAnim, t, 1);
+        const w = 1 - blend;
+        body.position.y = THREE.MathUtils.lerp(prevPose.bodyY, body.position.y, w);
+        body.position.x = THREE.MathUtils.lerp(prevPose.bodyX, body.position.x, w);
+        body.rotation.x = THREE.MathUtils.lerp(prevPose.bodyRotX, body.rotation.x, w);
+        body.rotation.z = THREE.MathUtils.lerp(prevPose.bodyRotZ, body.rotation.z, w);
+        head.rotation.y = THREE.MathUtils.lerp(prevPose.headRotY, head.rotation.y, w);
+        leftArmPivot.rotation.x = THREE.MathUtils.lerp(prevPose.laRX, leftArmPivot.rotation.x, w);
+        leftArmPivot.rotation.z = THREE.MathUtils.lerp(prevPose.laRZ, leftArmPivot.rotation.z, w);
+        rightArmPivot.rotation.x = THREE.MathUtils.lerp(prevPose.raRX, rightArmPivot.rotation.x, w);
+        rightArmPivot.rotation.z = THREE.MathUtils.lerp(prevPose.raRZ, rightArmPivot.rotation.z, w);
+        leftLegPivot.rotation.x = THREE.MathUtils.lerp(prevPose.llRX, leftLegPivot.rotation.x, w);
+        rightLegPivot.rotation.x = THREE.MathUtils.lerp(prevPose.rlRX, rightLegPivot.rotation.x, w);
+        prevAnimTime += delta;
+      } else {
+        applyAnimationWeighted(currentAnim, t, 1);
+      }
+
+      applyAlwaysOnEffects(elapsed, delta);
+      updateHearts(delta);
       controls.update();
       renderer.render(scene, camera);
     }
