@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qulo Mascot — 3D Prototype</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { overflow: hidden; background: #1a1a2e; font-family: 'Segoe UI', sans-serif; }
+    #canvas-container { width: 100vw; height: 100vh; }
+    canvas { display: block; }
+    #controls {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 10px; z-index: 10;
+    }
+    #controls button {
+      padding: 10px 18px; border: 2px solid rgba(155, 89, 182, 0.6);
+      border-radius: 12px; background: rgba(26, 26, 46, 0.85); color: #fff;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      backdrop-filter: blur(8px); transition: all 0.2s;
+    }
+    #controls button:hover { background: rgba(155, 89, 182, 0.3); border-color: #9b59b6; }
+    #controls button.active {
+      background: rgba(155, 89, 182, 0.5); border-color: #9b59b6;
+      box-shadow: 0 0 12px rgba(155, 89, 182, 0.4);
+    }
+    #camera-reset {
+      position: fixed; top: 16px; right: 16px; padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;
+      background: rgba(26, 26, 46, 0.7); color: #aaa; font-size: 12px;
+      cursor: pointer; z-index: 10;
+    }
+    #camera-reset:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+    #title {
+      position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.6); font-size: 16px; font-weight: 300;
+      letter-spacing: 2px; z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+  <div id="title">QULO MASCOT</div>
+  <div id="controls">
+    <button data-anim="idle" class="active">Idle</button>
+    <button data-anim="wave">Wave</button>
+    <button data-anim="heart">Heart</button>
+    <button data-anim="walk">Walk</button>
+    <button data-anim="point">Point</button>
+  </div>
+  <button id="camera-reset">Reset Camera</button>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    // === SCENE SETUP ===
+    const scene = new THREE.Scene();
+
+    // Gradient background
+    const bgCanvas = document.createElement('canvas');
+    bgCanvas.width = 2; bgCanvas.height = 512;
+    const bgCtx = bgCanvas.getContext('2d');
+    const bgGrad = bgCtx.createLinearGradient(0, 0, 0, 512);
+    bgGrad.addColorStop(0, '#1a1a2e'); bgGrad.addColorStop(1, '#16213e');
+    bgCtx.fillStyle = bgGrad; bgCtx.fillRect(0, 0, 2, 512);
+    scene.background = new THREE.CanvasTexture(bgCanvas);
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 1.5, 5);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.target.set(0, 1, 0);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.update();
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(3, 5, 4);
+    dirLight.castShadow = true;
+    dirLight.shadow.mapSize.set(1024, 1024);
+    scene.add(dirLight);
+
+    // Ground
+    const groundGeo = new THREE.CircleGeometry(3, 64);
+    const groundMat = new THREE.MeshStandardMaterial({ color: 0x16213e, roughness: 0.8 });
+    const ground = new THREE.Mesh(groundGeo, groundMat);
+    ground.rotation.x = -Math.PI / 2;
+    ground.receiveShadow = true;
+    scene.add(ground);
+
+    // === COLOR PALETTE ===
+    const COLORS = {
+      body: 0x9b59b6, bodyDark: 0x7d3c98,
+      white: 0xffffff, black: 0x1a1a1a,
+      blush: 0xff9ff3, mouth: 0xe74c3c,
+    };
+
+    // === CHARACTER ===
+    const character = new THREE.Group();
+    character.position.y = 0.01;
+    scene.add(character);
+
+    // Shadow under character
+    const shadowGeo = new THREE.CircleGeometry(0.4, 32);
+    const shadowMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.2 });
+    const shadowRing = new THREE.Mesh(shadowGeo, shadowMat);
+    shadowRing.rotation.x = -Math.PI / 2; shadowRing.position.y = 0.005;
+    character.add(shadowRing);
+
+    // Body
+    const bodyGeo = new THREE.SphereGeometry(0.5, 32, 32);
+    const bodyMat = new THREE.MeshStandardMaterial({ color: COLORS.body, roughness: 0.4 });
+    const body = new THREE.Mesh(bodyGeo, bodyMat);
+    body.position.y = 1.0; body.castShadow = true;
+    character.add(body);
+
+    // Head
+    const headGeo = new THREE.SphereGeometry(0.38, 32, 32);
+    const headMat = new THREE.MeshStandardMaterial({ color: COLORS.body, roughness: 0.4 });
+    const head = new THREE.Mesh(headGeo, headMat);
+    head.position.y = 0.55; head.castShadow = true;
+    body.add(head);
+
+    // Eyes
+    const eyeWhiteGeo = new THREE.SphereGeometry(0.1, 16, 16);
+    const eyeWhiteMat = new THREE.MeshStandardMaterial({ color: COLORS.white });
+    const pupilGeo = new THREE.SphereGeometry(0.06, 16, 16);
+    const pupilMat = new THREE.MeshStandardMaterial({ color: COLORS.black });
+    const heartPupilMat = new THREE.MeshStandardMaterial({ color: 0xff4757 });
+
+    const leftEye = new THREE.Group();
+    const leftEyeWhite = new THREE.Mesh(eyeWhiteGeo, eyeWhiteMat);
+    const leftPupil = new THREE.Mesh(pupilGeo, pupilMat);
+    leftPupil.position.z = 0.06;
+    leftEye.add(leftEyeWhite, leftPupil);
+    leftEye.position.set(-0.13, 0.05, 0.32);
+    head.add(leftEye);
+
+    const rightEye = new THREE.Group();
+    const rightEyeWhite = new THREE.Mesh(eyeWhiteGeo.clone(), eyeWhiteMat);
+    const rightPupil = new THREE.Mesh(pupilGeo.clone(), pupilMat);
+    rightPupil.position.z = 0.06;
+    rightEye.add(rightEyeWhite, rightPupil);
+    rightEye.position.set(0.13, 0.05, 0.32);
+    head.add(rightEye);
+
+    // Ears
+    const earGeo = new THREE.SphereGeometry(0.1, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+    const earMat = new THREE.MeshStandardMaterial({ color: COLORS.body });
+    const leftEar = new THREE.Mesh(earGeo, earMat);
+    leftEar.position.set(-0.28, 0.25, 0); leftEar.rotation.z = 0.3;
+    head.add(leftEar);
+    const rightEar = new THREE.Mesh(earGeo.clone(), earMat);
+    rightEar.position.set(0.28, 0.25, 0); rightEar.rotation.z = -0.3;
+    head.add(rightEar);
+
+    // Mouth
+    const mouthGeo = new THREE.SphereGeometry(0.04, 16, 16);
+    const mouthMat = new THREE.MeshStandardMaterial({ color: COLORS.mouth });
+    const mouth = new THREE.Mesh(mouthGeo, mouthMat);
+    mouth.position.set(0, -0.12, 0.34); mouth.scale.set(1.5, 0.8, 0.5);
+    head.add(mouth);
+
+    // Blush
+    const blushGeo = new THREE.SphereGeometry(0.05, 16, 16);
+    const blushMat = new THREE.MeshStandardMaterial({ color: COLORS.blush, transparent: true, opacity: 0.5 });
+    const leftBlush = new THREE.Mesh(blushGeo, blushMat);
+    leftBlush.position.set(-0.22, -0.05, 0.28); leftBlush.scale.set(1.3, 0.8, 0.3);
+    head.add(leftBlush);
+    const rightBlush = new THREE.Mesh(blushGeo.clone(), blushMat);
+    rightBlush.position.set(0.22, -0.05, 0.28); rightBlush.scale.set(1.3, 0.8, 0.3);
+    head.add(rightBlush);
+
+    // Antenna (question mark curl)
+    const antennaCurvePoints = [];
+    for (let i = 0; i <= 20; i++) {
+      const t = i / 20;
+      antennaCurvePoints.push(new THREE.Vector3(
+        Math.sin(t * Math.PI * 1.5) * 0.12 * (1 - t * 0.3),
+        t * 0.4,
+        Math.cos(t * Math.PI * 1.5) * 0.08 * (1 - t * 0.3)
+      ));
+    }
+    const antennaCurve = new THREE.CatmullRomCurve3(antennaCurvePoints);
+    const antennaGeo = new THREE.TubeGeometry(antennaCurve, 20, 0.03, 8, false);
+    const antennaMat = new THREE.MeshStandardMaterial({ color: COLORS.bodyDark });
+    const antenna = new THREE.Mesh(antennaGeo, antennaMat);
+    antenna.position.y = 0.35; antenna.castShadow = true;
+    head.add(antenna);
+    const tipGeo = new THREE.SphereGeometry(0.05, 16, 16);
+    const tip = new THREE.Mesh(tipGeo, antennaMat);
+    tip.position.copy(antennaCurvePoints[antennaCurvePoints.length - 1]);
+    tip.position.y += 0.35;
+    head.add(tip);
+
+    // === LIMBS ===
+    const limbMat = new THREE.MeshStandardMaterial({ color: COLORS.body, roughness: 0.4 });
+    const limbDarkMat = new THREE.MeshStandardMaterial({ color: COLORS.bodyDark, roughness: 0.4 });
+    const armGeo = new THREE.CylinderGeometry(0.05, 0.04, 0.3, 16);
+    const handGeo = new THREE.SphereGeometry(0.06, 16, 16);
+
+    // Left arm
+    const leftArmPivot = new THREE.Group();
+    leftArmPivot.position.set(-0.45, 0.1, 0);
+    body.add(leftArmPivot);
+    const leftArm = new THREE.Mesh(armGeo, limbMat);
+    leftArm.position.y = -0.15; leftArm.castShadow = true;
+    leftArmPivot.add(leftArm);
+    const leftHand = new THREE.Mesh(handGeo, limbDarkMat);
+    leftHand.position.y = -0.3; leftHand.castShadow = true;
+    leftArmPivot.add(leftHand);
+
+    // Right arm
+    const rightArmPivot = new THREE.Group();
+    rightArmPivot.position.set(0.45, 0.1, 0);
+    body.add(rightArmPivot);
+    const rightArm = new THREE.Mesh(armGeo.clone(), limbMat);
+    rightArm.position.y = -0.15; rightArm.castShadow = true;
+    rightArmPivot.add(rightArm);
+    const rightHand = new THREE.Mesh(handGeo.clone(), limbDarkMat);
+    rightHand.position.y = -0.3; rightHand.castShadow = true;
+    rightArmPivot.add(rightHand);
+
+    // Left leg
+    const legGeo = new THREE.CylinderGeometry(0.06, 0.05, 0.3, 16);
+    const footGeo = new THREE.SphereGeometry(0.07, 16, 16);
+    const leftLegPivot = new THREE.Group();
+    leftLegPivot.position.set(-0.18, -0.4, 0);
+    body.add(leftLegPivot);
+    const leftLeg = new THREE.Mesh(legGeo, limbMat);
+    leftLeg.position.y = -0.15; leftLeg.castShadow = true;
+    leftLegPivot.add(leftLeg);
+    const leftFoot = new THREE.Mesh(footGeo, limbDarkMat);
+    leftFoot.position.y = -0.32; leftFoot.castShadow = true;
+    leftLegPivot.add(leftFoot);
+
+    // Right leg
+    const rightLegPivot = new THREE.Group();
+    rightLegPivot.position.set(0.18, -0.4, 0);
+    body.add(rightLegPivot);
+    const rightLeg = new THREE.Mesh(legGeo.clone(), limbMat);
+    rightLeg.position.y = -0.15; rightLeg.castShadow = true;
+    rightLegPivot.add(rightLeg);
+    const rightFoot = new THREE.Mesh(footGeo.clone(), limbDarkMat);
+    rightFoot.position.y = -0.32; rightFoot.castShadow = true;
+    rightLegPivot.add(rightFoot);
+
+    // === ANIMATION STATE ===
+    let currentAnim = 'idle';
+    let animTime = 0;
+    let prevAnim = null;
+    let prevAnimTime = 0;
+    let crossfadeRemaining = 0;
+    const CROSSFADE_DURATION = 0.3;
+    const DEFAULT_BODY_Y = 1.0;
+
+    function resetPose() {
+      body.position.set(0, DEFAULT_BODY_Y, 0);
+      body.rotation.set(0, 0, 0);
+      head.rotation.set(0, 0, 0);
+      leftArmPivot.rotation.set(0, 0, 0);
+      rightArmPivot.rotation.set(0, 0, 0);
+      leftLegPivot.rotation.set(0, 0, 0);
+      rightLegPivot.rotation.set(0, 0, 0);
+      leftEye.scale.set(1, 1, 1);
+      rightEye.scale.set(1, 1, 1);
+    }
+
+    function switchAnimation(name) {
+      if (currentAnim === name && crossfadeRemaining <= 0) return;
+      prevAnim = currentAnim;
+      prevAnimTime = animTime;
+      crossfadeRemaining = CROSSFADE_DURATION;
+      currentAnim = name;
+      animTime = 0;
+    }
+
+    const animDurations = { idle: 2, wave: 1.5, heart: 2, walk: 1, point: 1.5 };
+    const loopAnims = new Set(['idle', 'walk']);
+
+    // Placeholder animate loop — will be replaced in Task 2
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const delta = clock.getDelta();
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    // === UI CONTROLS ===
+    const buttons = document.querySelectorAll('#controls button');
+    function setActiveButton(animName) {
+      buttons.forEach(b => b.classList.toggle('active', b.dataset.anim === animName));
+    }
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        switchAnimation(btn.dataset.anim);
+        setActiveButton(btn.dataset.anim);
+      });
+    });
+    document.getElementById('camera-reset').addEventListener('click', () => {
+      camera.position.set(0, 1.5, 5);
+      controls.target.set(0, 1, 0);
+      controls.update();
+    });
+
+    // Resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Start
+    animate();
+  </script>
+</body>
+</html>
