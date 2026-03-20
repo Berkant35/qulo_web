@@ -108,7 +108,8 @@ COMMIT;
       "75": 30,
       "100": 50
     },
-    "referralPurple": 25
+    "referralPurple": 25,
+    "maxCompletedReferrals": 10
   },
   "timing": {
     "questionTimeSeconds": 30,
