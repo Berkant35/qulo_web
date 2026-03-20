@@ -72,7 +72,11 @@ final chatQuestionProvider =
     error: (e, st) => AsyncValue.error(e, st),
     data: (_) {
       final updated = ref.read(chatQuestionCacheProvider);
-      return AsyncValue.data(updated[questionId]);
+      final question = updated[questionId];
+      // Fetch tamamlandi ama cache henuz yazilmamis olabilir (1 frame gecikme)
+      // null donmek yerine loading goster — cache yazilinca rebuild tetiklenir
+      if (question == null) return const AsyncValue.loading();
+      return AsyncValue.data(question);
     },
   );
 });
@@ -97,6 +101,7 @@ callback: (payload) {
       debugPrint('[Realtime] Question parse failed: $e');
       // Parse basarisiz -> API'den taze veri cek
       ref.read(chatRepositoryProvider).getQuestion(questionId).then((result) {
+        if (_disposed) return; // mixin dispose edildiyse cache'e yazma
         result.whenSuccess((question) {
           ref.read(chatQuestionCacheProvider.notifier).update((state) {
             final copy = Map<String, ChatQuestionModel>.from(state);
@@ -132,6 +137,11 @@ ALTER TABLE chat_questions REPLICA IDENTITY FULL;
 ```
 
 Bu olmadan Supabase sadece degisen kolonlari + PK gonderir, `fromJson` eksik alanlarla patlar.
+
+## Bilinen Etkilesimler
+
+- **`ChatNotifier.updateChatLock()`**: Bu metod `chatQuestionCacheProvider`'dan okuyarak chat input kilidini belirliyor. Yeni akista cache realtime'dan aninda guncellenecegi icin `updateChatLock` da dogru zamanda tetiklenir — davranis degismiyor.
+- **Global cache scope:** `chatQuestionCacheProvider` global bir `StateProvider`. `initMixin` her chat giriste cache'i temizliyor (`state = {}`). Navigation stack'te birden fazla chat ekrani aciksa, ikinci chat'e giris birinci chat'in cache'ini siler. Bu mevcut davranis — yeni bir sorun degil, bilinen limitasyon.
 
 ## Edge Cases
 
