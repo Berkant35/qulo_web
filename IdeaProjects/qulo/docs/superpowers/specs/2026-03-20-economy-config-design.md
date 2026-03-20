@@ -1,7 +1,7 @@
 # Economy Config System — Design Spec
 
 **Tarih:** 2026-03-20
-**Durum:** Draft
+**Durum:** Reviewed
 **Kapsam:** Hardcoded ekonomi sabitlerini sunucu tarafına taşıma + admin panel + versiyon geçmişi + economy watchdog skill
 
 ---
@@ -33,13 +33,23 @@ CREATE TABLE economy_config_versions (
   version INT NOT NULL,
   config JSONB NOT NULL,
   is_active BOOLEAN DEFAULT false,
-  changed_by UUID REFERENCES admin_users(id),
+  changed_by UUID REFERENCES admin_users(id) ON DELETE SET NULL,  -- nullable for seed row
   change_reason TEXT NOT NULL,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
 CREATE UNIQUE INDEX idx_active_economy_config
   ON economy_config_versions(is_active) WHERE is_active = true;
+```
+
+**Versiyon aktivasyonu transaction gerektirir:**
+
+```sql
+BEGIN;
+  UPDATE economy_config_versions SET is_active = false WHERE is_active = true;
+  INSERT INTO economy_config_versions (version, config, is_active, changed_by, change_reason)
+  VALUES ($1, $2, true, $3, $4);
+COMMIT;
 ```
 
 ### Config JSON Yapısı
@@ -65,21 +75,30 @@ CREATE UNIQUE INDEX idx_active_economy_config
       "maxQuestions": 4,
       "dailyUndos": 0,
       "monthlyPurpleBonus": 0,
-      "chatQuestionDaily": 2
+      "chatQuestionDaily": 2,
+      "chatQuestionUnmatchRisk": 1,
+      "passportMode": false,
+      "hasAds": true
     },
     "plus": {
       "dailyDiscovers": 999999,
       "maxQuestions": 6,
       "dailyUndos": 3,
       "monthlyPurpleBonus": 500,
-      "chatQuestionDaily": 5
+      "chatQuestionDaily": 5,
+      "chatQuestionUnmatchRisk": 2,
+      "passportMode": false,
+      "hasAds": false
     },
     "premium": {
       "dailyDiscovers": 999999,
       "maxQuestions": 10,
       "dailyUndos": 999999,
       "monthlyPurpleBonus": 1500,
-      "chatQuestionDaily": 999999
+      "chatQuestionDaily": 999999,
+      "chatQuestionUnmatchRisk": 999999,
+      "passportMode": true,
+      "hasAds": false
     }
   },
   "rewards": {
@@ -124,25 +143,36 @@ Auth gerektirmez. Aktif config'i (is_active=true) döner.
 ```typescript
 class EconomyConfigService {
   private cachedConfig: EconomyConfig | null = null;
+  private cacheExpiry: number = 0;
+  private readonly CACHE_TTL_MS = 5 * 60 * 1000; // 5 dakika TTL
 
   async getActiveConfig(): Promise<EconomyConfig>
   async createVersion(config, changedBy, reason): Promise<EconomyConfigVersion>
   async getHistory(limit): Promise<EconomyConfigVersion[]>
   async getVersion(version): Promise<EconomyConfigVersion>
   async compareVersions(v1, v2): Promise<ConfigDiff>
+  validateConfig(config: EconomyConfig): ValidationResult  // Zod schema ile doğrulama
   invalidateCache(): void
 }
 ```
 
-Tüm mevcut servisler (`exchange.service.ts`, `quiz.service.ts`, `diamond.service.ts`, `daily-stats.service.ts`) hardcoded sabitleri bırakıp `EconomyConfigService.getActiveConfig()` kullanacak.
+**Cache stratejisi:** In-memory cache + 5dk TTL. Admin kaydettiğinde anında invalidate. TTL sayesinde tek instance'da bile stale config max 5dk yaşar. Railway tek instance olduğundan Realtime gerekmiyor.
 
-### Kaldırılacak Hardcoded Sabitler (types/index.ts)
+**Config doğrulama:** Zod schema ile hem admin POST'ta hem de seed'de doğrulanır. Watchdog skill'deki sınır değerleriyle aynı kaynaktan beslenir.
 
+Tüm mevcut servisler (`exchange.service.ts`, `quiz.service.ts`, `diamond.service.ts`, `daily-stats.service.ts`, `chat-question.service.ts`) hardcoded sabitleri bırakıp `EconomyConfigService.getActiveConfig()` kullanacak.
+
+### Kaldırılacak Hardcoded Sabitler
+
+**types/index.ts:**
 - `GREEN_TO_PURPLE_RATIO`
 - `GREEN_DIAMOND_REWARD_RATIO`
 - `QUESTION_COUNT_MULTIPLIERS`
 - `SUBSCRIPTION_LIMITS`
 - `CHAT_QUESTION_LIMITS`
+
+**utils/math.ts:**
+- `calculatePowerCost()` ve `calculateGreenReward()` fonksiyonları config parametresi alacak şekilde güncellenir (import yerine parametre injection)
 
 ---
 
@@ -213,6 +243,7 @@ Arka planda: API başarısız olduysa retry mekanizması.
 | `quiz_screen_mixin.dart` | Fallback cost 20 | Economy config core |
 | `convert_section.dart` | Fallback ratio 3 | Economy config core |
 | `paywall_bottom_sheet.dart` | Bonus 500/1500 | `subscriptionLimits[tier].monthlyPurpleBonus` |
+| `subscription_model.dart` | `SubscriptionInfo` computed getters (dailyDiscoverLimit, maxQuestions vb.) | Economy config'den, çift kaynak ortadan kalkar |
 | Localization dosyaları | "25 mor elmas" hardcoded text | Dinamik string interpolation |
 
 ---
@@ -264,25 +295,46 @@ Sınır tanımları:
 | `boostDurationMinutes` | 5 | 120 |
 | `monthlyPurpleBonus` (plus) | 100 | 2000 |
 | `monthlyPurpleBonus` (premium) | 500 | 5000 |
+| `chatQuestionDaily` (free) | 1 | 10 |
+| `chatQuestionUnmatchRisk` (free) | 1 | 5 |
+| `questionCountMultipliers` (her değer) | 0.1 | 3.0 |
 
 Sınır dışı değer tespit edilirse uyarı mesajı gösterilir.
 
 ---
 
-## 6. Migration Stratejisi
+## 6. Rollout Stratejisi
 
-1. Yeni migration: `economy_config_versions` tablosu oluştur
-2. Mevcut hardcoded değerleri version=1 olarak seed et
-3. Server'da `EconomyConfigService` oluştur
-4. Mevcut servisleri tek tek migrate et (hardcoded → service)
-5. Flutter'da provider oluştur, splash'a ekle
-6. Flutter'daki hardcoded değerleri tek tek kaldır
-7. Admin panel sayfalarını ekle
-8. Economy watchdog skill'i yaz
+### Fazlar
+
+**Faz 1 — Server tarafı (eski client'lar etkilenmez):**
+1. Migration: `economy_config_versions` tablosu + v1 seed (mevcut değerlerle)
+2. `EconomyConfigService` + Zod validasyon şeması
+3. `GET /api/v1/app/economy` endpoint
+4. Mevcut servisleri migrate et (hardcoded → service)
+5. Admin panel sayfaları
+
+**Faz 2 — Flutter tarafı:**
+6. `EconomyConfigModel` + provider + splash entegrasyonu
+7. Hardcoded değerleri tek tek kaldır (fallback = v1 değerleri)
+8. `SubscriptionInfo` computed getter'ları temizle
+
+**Faz 3 — Watchdog:**
+9. Economy skill yazılır
+10. Hook'lar settings.json'a eklenir
+
+### Geriye Uyumluluk
+
+- Faz 1 tamamlanana kadar server her iki kaynaktan da okuyabilir (config yoksa mevcut sabitler)
+- Faz 2'de Flutter fallback değerleri v1 config ile birebir aynı olmalı — bu garanti eder ki cache boşken davranış değişmez
+- Eski app versiyonları economy endpoint'i çağırmaz, server kendi config'ini kullanır — çift taraflı tutarlılık sağlanır
 
 ## 7. Kapsam Dışı
 
 - IAP ürün fiyatları (store yönetiyor)
+- IAP product-to-amount mapping'leri (store ID'leri statik, değiştiğinde yeni ürün gerekir)
 - A/B test / segment bazlı config
 - Zamanlanmış config aktivasyonu
 - Power fiyatları (zaten `powers` tablosunda, ayrı yönetiliyor)
+- `CHAT_QUESTION_POWERS_2` / `CHAT_QUESTION_POWERS_4` (power set tanımları, fiyat değil — gameplay mekaniği)
+- `IAP_PRODUCT_MAP` / `SUBSCRIPTION_PRODUCT_MAP` (store ürün ID→miktar eşleşmesi, store tarafından yönetiliyor)
