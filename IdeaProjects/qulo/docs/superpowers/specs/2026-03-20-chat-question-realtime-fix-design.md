@@ -50,13 +50,16 @@ final _chatQuestionFetchProvider =
 
   final repo = ref.read(chatRepositoryProvider);
   final result = await repo.getQuestion(questionId);
-  result.whenSuccess((question) {
-    ref.read(chatQuestionCacheProvider.notifier).update((state) {
-      final copy = Map<String, ChatQuestionModel>.from(state);
-      copy[questionId] = question;
-      return copy;
-    });
-  });
+  result.when(
+    success: (question) {
+      ref.read(chatQuestionCacheProvider.notifier).update((state) {
+        final copy = Map<String, ChatQuestionModel>.from(state);
+        copy[questionId] = question;
+        return copy;
+      });
+    },
+    failure: (_) {},
+  );
 });
 
 // Widget'in watch ettigi provider — cache-reactive
@@ -102,13 +105,16 @@ callback: (payload) {
       // Parse basarisiz -> API'den taze veri cek
       ref.read(chatRepositoryProvider).getQuestion(questionId).then((result) {
         if (_disposed) return; // mixin dispose edildiyse cache'e yazma
-        result.whenSuccess((question) {
-          ref.read(chatQuestionCacheProvider.notifier).update((state) {
-            final copy = Map<String, ChatQuestionModel>.from(state);
-            copy[questionId] = question;
-            return copy;
-          });
-        });
+        result.when(
+          success: (question) {
+            ref.read(chatQuestionCacheProvider.notifier).update((state) {
+              final copy = Map<String, ChatQuestionModel>.from(state);
+              copy[questionId] = question;
+              return copy;
+            });
+          },
+          failure: (_) {},
+        );
       });
     }
     // ref.invalidate KALDIRILDI
