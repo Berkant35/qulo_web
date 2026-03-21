@@ -1,4 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
+import { GridOverlay } from "@/components/shared/GridOverlay";
+import { Navbar } from "@/components/shared/Navbar";
+import { Hero } from "@/components/hero/Hero";
 
 export default async function Home({
   params,
@@ -9,8 +12,10 @@ export default async function Home({
   setRequestLocale(locale);
 
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-qulo-purple">Qulo</h1>
+    <main className="min-h-screen bg-qulo-bg relative">
+      <GridOverlay />
+      <Navbar />
+      <Hero />
     </main>
   );
 }
