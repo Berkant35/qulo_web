@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "Qulo — Sorularla Tanış",
+    "description": "Soru hazırla, paylaş, doğru cevaplayan kişiyle eşleş. AI destekli yeni nesil tanışma uygulaması."
+  },
+  "nav": { "download": "İndir" },
+  "hero": {
+    "label": "Yeni nesil tanışma",
+    "title1": "Sorularla",
+    "title2": "Tanış.",
+    "description": "Soru hazırla, paylaş, doğru cevaplayan kişiyle eşleş. Gerçek bağlantılar kur.",
+    "realConnections": "Gerçek bağlantılar"
+  },
+  "howItWorks": {
+    "label": "Süreç",
+    "title1": "Nasıl",
+    "title2": "Çalışır?",
+    "step1Title": "Soru Hazırla",
+    "step1Desc": "2-10 soru oluştur, kişiliğini yansıt",
+    "step1Detail": "Her soru seni tanıtan bir pencere.",
+    "step2Title": "Keşfet & Çöz",
+    "step2Desc": "Diğer kullanıcıların sorularını cevapla",
+    "step2Detail": "Discover ekranında soruları keşfet, cevapla, puan topla.",
+    "step3Title": "Eşleş",
+    "step3Desc": "Doğru cevaplayan kişiyle bağlan",
+    "step3Detail": "Match! Sohbete başla, gerçek bağlantını kur."
+  },
+  "features": {
+    "label": "Özellikler",
+    "title1": "Neden",
+    "title2": "Qulo?",
+    "diamonds": { "title": "Elmas Sistemi", "subtitle": "Kazan & Harca", "desc": "Soruların çözüldükçe yeşil elmas kazan. Mor elmaslarla güçlerini artır." },
+    "gamification": { "title": "Gamification", "subtitle": "Rozetler & Seviyeler", "desc": "İlerledikçe rozetler kazan, seviye atla. Profilini zenginleştir." },
+    "powers": { "title": "Özel Güçler", "subtitle": "Boost, Filtreler & Daha Fazlası", "desc": "30dk Boost ile görünürlüğünü artır, gelişmiş filtrelerle arama yap, sınırsız keşfet." },
+    "ai": { "title": "AI Soru Oluşturma", "subtitle": "Yapay Zeka Destekli", "desc": "Yapay zeka ile ilgi çekici sorular oluştur. Kişiliğini en iyi yansıtan soruları bul." },
+    "premium": { "title": "Premium", "subtitle": "Tüm Güçlere Erişim", "desc": "Reklamsız deneyim, tüm özel güçler ve sınırsız eşleşme." }
+  },
+  "appPreview": { "label": "Uygulama", "title1": "Uygulamayı", "title2": "Keşfet" },
+  "testimonials": { "label": "Kullanıcılar", "title1": "Başarı", "title2": "Hikayeleri" },
+  "cta": { "title": "Hemen Başla.", "desc": "Sorularınla tanış, gerçek bağlantılar kur.", "button": "Uygulamayı İndir" },
+  "footer": { "legal": "Legal", "privacy": "Gizlilik Politikası", "terms": "Kullanım Koşulları", "social": "Sosyal", "copyright": "© 2026 Qulo. Tüm hakları saklıdır." },
+  "invite": { "title": "Qulo'ya Davet Edildin!", "desc": "Uygulamayı indir ve davet kodunu kullan.", "redirecting": "Yönlendiriliyorsun...", "downloadPrompt": "Telefonundan indir", "code": "Davet kodu" },
+  "notFound": { "title": "Sayfa Bulunamadı", "desc": "Aradığın sayfa mevcut değil.", "back": "Ana Sayfaya Dön" },
+  "privacyPolicy": { "title": "Gizlilik Politikası", "lastUpdated": "Son güncelleme: 21 Mart 2026", "content": "Gizlilik politikası içeriği buraya eklenecektir." },
+  "termsOfService": { "title": "Kullanım Koşulları", "lastUpdated": "Son güncelleme: 21 Mart 2026", "content": "Kullanım koşulları içeriği buraya eklenecektir." }
+}

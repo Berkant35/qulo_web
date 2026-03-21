@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "Qulo — Meet Through Questions",
+    "description": "Create questions, share them, match with the person who answers correctly. AI-powered next-gen dating app."
+  },
+  "nav": { "download": "Download" },
+  "hero": {
+    "label": "Next-gen dating",
+    "title1": "Meet Through",
+    "title2": "Questions.",
+    "description": "Create questions, share them, match with the person who answers correctly. Build real connections.",
+    "realConnections": "Real connections"
+  },
+  "howItWorks": {
+    "label": "Process",
+    "title1": "How It",
+    "title2": "Works?",
+    "step1Title": "Create Questions",
+    "step1Desc": "Create 2-10 questions, reflect your personality",
+    "step1Detail": "Each question is a window that introduces you.",
+    "step2Title": "Discover & Solve",
+    "step2Desc": "Answer other users' questions",
+    "step2Detail": "Discover questions, answer them, collect points.",
+    "step3Title": "Match",
+    "step3Desc": "Connect with the person who answers correctly",
+    "step3Detail": "Match! Start chatting, build your real connection."
+  },
+  "features": {
+    "label": "Features",
+    "title1": "Why",
+    "title2": "Qulo?",
+    "diamonds": { "title": "Diamond System", "subtitle": "Earn & Spend", "desc": "Earn green diamonds as your questions get solved. Use purple diamonds to boost your powers." },
+    "gamification": { "title": "Gamification", "subtitle": "Badges & Levels", "desc": "Earn badges as you progress, level up. Enrich your profile." },
+    "powers": { "title": "Special Powers", "subtitle": "Boost, Filters & More", "desc": "Increase your visibility with 30min Boost, search with advanced filters, explore unlimited." },
+    "ai": { "title": "AI Question Creation", "subtitle": "AI-Powered", "desc": "Create engaging questions with AI. Find the questions that best reflect your personality." },
+    "premium": { "title": "Premium", "subtitle": "Access All Powers", "desc": "Ad-free experience, all special powers and unlimited matching." }
+  },
+  "appPreview": { "label": "App", "title1": "Explore the", "title2": "App" },
+  "testimonials": { "label": "Users", "title1": "Success", "title2": "Stories" },
+  "cta": { "title": "Get Started.", "desc": "Meet through your questions, build real connections.", "button": "Download the App" },
+  "footer": { "legal": "Legal", "privacy": "Privacy Policy", "terms": "Terms of Service", "social": "Social", "copyright": "© 2026 Qulo. All rights reserved." },
+  "invite": { "title": "You're Invited to Qulo!", "desc": "Download the app and use your invite code.", "redirecting": "Redirecting...", "downloadPrompt": "Download on your phone", "code": "Invite code" },
+  "notFound": { "title": "Page Not Found", "desc": "The page you're looking for doesn't exist.", "back": "Back to Home" },
+  "privacyPolicy": { "title": "Privacy Policy", "lastUpdated": "Last updated: March 21, 2026", "content": "Privacy policy content will be added here." },
+  "termsOfService": { "title": "Terms of Service", "lastUpdated": "Last updated: March 21, 2026", "content": "Terms of service content will be added here." }
+}
