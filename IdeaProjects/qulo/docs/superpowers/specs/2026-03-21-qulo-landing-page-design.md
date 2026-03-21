@@ -24,7 +24,8 @@ Qulo dating uygulaması için quloapp.com adresinde yayınlanacak tanıtım web 
 | Tailwind CSS | Styling, Qulo tema renkleriyle konfigüre |
 | Framer Motion | Kart animasyonları, scroll-triggered reveal, layout transitions |
 | GSAP + ScrollTrigger | 3D perspektif, parallax, advanced scroll animasyonları |
-| next-intl | i18n (TR/EN) |
+| next-intl | i18n (TR/EN) — static rendering mode (middleware kullanmadan) |
+| next-sitemap | Otomatik sitemap ve robots.txt üretimi |
 | Netlify | Hosting, DNS, `_redirects` |
 
 ## Visual Identity
@@ -39,7 +40,7 @@ Uygulamadaki mevcut tema web'e taşınacak:
 | Text Primary | `#FFFFFF` |
 | Text Secondary | `#888888` |
 | Text Muted | `#555555` |
-| Font | Helvetica (uygulamayla aynı TTF) |
+| Font | Inter (Helvetica alternatifi, ücretsiz, Google Fonts) — uygulama Helvetica kullanıyor ama web lisanslama sorunu nedeniyle Inter tercih edilecek |
 | Error | `#CF6679` |
 | Success | `#69F0AE` |
 | Warning | `#FFB74D` |
@@ -60,7 +61,7 @@ Uygulamadaki mevcut tema web'e taşınacak:
 ```
 qulo/web/
 ├── public/
-│   ├── fonts/Helvetica.ttf
+│   ├── fonts/                       # Inter font (next/font ile otomatik optimize)
 │   ├── images/                      # OG image, favicon, app screenshots
 │   ├── .well-known/
 │   │   ├── apple-app-site-association  # AASA (universal links)
@@ -73,7 +74,7 @@ qulo/web/
 │   │   │   ├── page.tsx             # Landing page
 │   │   │   ├── privacy-policy/page.tsx
 │   │   │   ├── terms/page.tsx
-│   │   │   └── invite/[code]/page.tsx  # Deep link handler
+│   │   │   └── invite/page.tsx          # Deep link handler (client-side code parsing)
 │   │   ├── layout.tsx               # Root layout
 │   │   └── globals.css
 │   ├── components/
@@ -206,6 +207,11 @@ Grid layout, her feature glassmorphism kart:
 
 ### `/invite/:code` Route
 
+**Static export uyumu:** Dynamic `[code]` segmenti static export'ta `generateStaticParams` gerektirir ve invite kodları sınırsızdır. Bu nedenle:
+- Route: `app/[locale]/invite/page.tsx` (statik sayfa)
+- Netlify rewrite: `/invite/*` → `/invite/` (SPA fallback)
+- Invite kodu client-side'da URL'den parse edilir (`window.location.pathname`)
+
 ```
 Kullanıcı quloapp.com/invite/ABC123'e tıklıyor
   │
@@ -213,6 +219,8 @@ Kullanıcı quloapp.com/invite/ABC123'e tıklıyor
   │   └─ Uygulama doğrudan açılır (iOS AASA / Android AssetLinks)
   │
   └─ Web sayfası açılırsa (uygulama yüklü değil)
+      ├─ Netlify rewrite → /invite/ statik sayfasına
+      ├─ Client-side: URL'den code parse et
       ├─ User Agent ile platform algıla
       ├─ iOS → App Store'a yönlendir (3sn sonra otomatik)
       ├─ Android → Play Store'a yönlendir (3sn sonra otomatik)
@@ -261,23 +269,25 @@ Mevcut Railway server'dan quloapp.com'a taşınacak:
 
 ### `/privacy-policy`
 
-- MDX içerik, i18n destekli (TR/EN)
+- Plain JSX içerik, i18n destekli (TR/EN) — dictionary'den uzun metin key'leri olarak
 - Minimal dark tasarım, okunabilir tipografi
-- Son güncelleme tarihi otomatik gösterilecek
-- İçerik statik olarak `dictionaries/` altında tutulacak
+- Son güncelleme tarihi statik olarak sayfada belirtilecek
 
 ### `/terms`
 
-- Aynı yapı, Terms of Service içeriği
+- Aynı yapı, Terms of Service içeriği (plain JSX + dictionary key'leri)
 - TR/EN çevirileri
 
 ## i18n Strategy
 
 - **next-intl** ile route-based i18n: `/tr/`, `/en/`
+- **Static rendering mode** — middleware kullanılmaz (`output: 'export'` ile uyumsuz)
+- `[locale]` segmenti için `generateStaticParams`: `[{locale:'tr'},{locale:'en'}]` döner
 - Default locale: `tr`
 - Çeviri dosyaları: `src/lib/i18n/dictionaries/tr.json`, `en.json`
-- Legal içerikler de aynı dictionary yapısında (uzun metin olarak)
+- Legal içerikler de aynı dictionary yapısında (uzun metin key'leri olarak, MDX değil plain JSX)
 - Navbar'da dil değiştirici (TR/EN toggle)
+- Root `/` → `/tr/` redirect (netlify.toml ile)
 
 ## SEO Strategy
 
@@ -295,6 +305,11 @@ Mevcut Railway server'dan quloapp.com'a taşınacak:
 - **FID:** < 100ms
 - Animasyonlar `will-change` ve GPU-accelerated transform/opacity ile optimize
 - GSAP/Framer Motion lazy load (above-the-fold'da sadece CSS animasyonları)
+- **Animasyon yükleme stratejisi:**
+  - Hero section: Sadece CSS keyframe animasyonları (sıfır JS dependency)
+  - Below-the-fold: Framer Motion `useInView` ile lazy trigger
+  - GSAP ScrollTrigger: Sadece App Preview bölümünde (3D telefon), dynamic import ile
+  - Particle/blob efektleri: CSS-only, GPU-accelerated (transform + opacity)
 
 ## Deployment
 
@@ -310,16 +325,54 @@ Mevcut Railway server'dan quloapp.com'a taşınacak:
   command = "npm run build"
   publish = "out/"
 
+# Root → default locale redirect
 [[redirects]]
-  from = "/.well-known/apple-app-site-association"
-  to = "/.well-known/apple-app-site-association"
-  status = 200
-  force = true
+  from = "/"
+  to = "/tr/"
+  status = 302
 
+# Deep link SPA fallback — tüm /invite/* isteklerini statik sayfaya yönlendir
+[[redirects]]
+  from = "/invite/*"
+  to = "/tr/invite/index.html"
+  status = 200
+
+# Locale-aware invite fallback
+[[redirects]]
+  from = "/:locale/invite/*"
+  to = "/:locale/invite/index.html"
+  status = 200
+
+# AASA ve AssetLinks — public/ altından doğrudan serve edilir, redirect gerekmez
 [[headers]]
-  for = "/.well-known/*"
+  for = "/.well-known/apple-app-site-association"
   [headers.values]
     Content-Type = "application/json"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/.well-known/assetlinks.json"
+  [headers.values]
+    Content-Type = "application/json"
+    Access-Control-Allow-Origin = "*"
+```
+
+### Custom 404 Page
+
+`src/app/not-found.tsx` — Qulo dark temasıyla uyumlu 404 sayfası. Landing page'e "Ana Sayfa'ya Dön" butonu ile yönlendirme.
+
+### Store Link Placeholder Stratejisi
+
+Store linkleri hazır olana kadar:
+- `links.ts` içinde `APP_STORE_URL` ve `PLAY_STORE_URL` sabitleri tanımlanır
+- Henüz yayınlanmamışsa `#` olarak bırakılır, buton `disabled` state gösterir
+- Store'a çıkınca URL güncellenir
+
+### ANDROID_SHA256_FINGERPRINT
+
+`assetlinks.json` statik dosyadır, build-time env substitution yoktur. SHA-256 fingerprint alındığında doğrudan dosyaya hardcode edilmelidir:
+```bash
+keytool -list -v -keystore <keystore-path> | grep SHA256
 ```
 
 ## Future Scope (Backlog)
