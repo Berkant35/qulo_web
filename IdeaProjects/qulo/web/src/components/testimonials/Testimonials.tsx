@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 const TESTIMONIALS = [
-  { avatar: "👩", name: "Selin K.", quote: "Sorular sayesinde gerçekten uyumlu biriyle tanıştım. Yüzeysel değil, derinlemesine bağlantı." },
-  { avatar: "👨", name: "Mehmet A.", quote: "AI soru oluşturma özelliği harika. Kendimi en iyi anlatan soruları bulmama yardım etti." },
-  { avatar: "👩‍🦱", name: "Ayşe M.", quote: "Elmas sistemi çok eğlenceli. Sorularım çözüldükçe kazanmak motive edici." },
-  { avatar: "🧑", name: "Emre T.", quote: "Match olmak gerçekten anlamlı çünkü o kişi beni anlamış demek oluyor." },
-  { avatar: "👩‍🦰", name: "Zeynep B.", quote: "Premium almadan önce denedim, zaten etkileyiciydi. Şimdi çok daha iyi." },
+  { initials: "SK", name: "Selin K.", quote: "Sorular sayesinde gerçekten uyumlu biriyle tanıştım. Yüzeysel değil, derinlemesine bağlantı." },
+  { initials: "MA", name: "Mehmet A.", quote: "AI soru oluşturma özelliği harika. Kendimi en iyi anlatan soruları bulmama yardım etti." },
+  { initials: "AY", name: "Ayşe M.", quote: "Elmas sistemi çok eğlenceli. Sorularım çözüldükçe kazanmak motive edici." },
+  { initials: "ET", name: "Emre T.", quote: "Match olmak gerçekten anlamlı çünkü o kişi beni anlamış demek oluyor." },
+  { initials: "ZB", name: "Zeynep B.", quote: "Premium almadan önce denedim, zaten etkileyiciydi. Şimdi çok daha iyi." },
 ];
 
 const ALL = [...TESTIMONIALS, ...TESTIMONIALS]; // duplicate for seamless loop
@@ -77,10 +77,10 @@ export function Testimonials() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-xl flex-shrink-0"
-                    style={{ background: "rgba(187,134,252,0.1)", border: "1px solid rgba(187,134,252,0.2)" }}
+                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold"
+                    style={{ background: "rgba(187,134,252,0.15)", border: "1px solid rgba(187,134,252,0.3)", color: "#BB86FC" }}
                   >
-                    {item.avatar}
+                    {item.initials}
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-white">{item.name}</p>

@@ -31,11 +31,11 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      {/* Morphing blob 1 */}
+      {/* Morphing blob 1 — warm rose/purple tint for romance */}
       <div
-        className="absolute top-20 -left-32 w-96 h-96 pointer-events-none animate-morph-blob z-0 opacity-[0.08]"
+        className="absolute top-20 -left-32 w-96 h-96 pointer-events-none animate-morph-blob z-0 opacity-[0.09]"
         style={{
-          background: "radial-gradient(circle, rgba(187,134,252,0.6) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(220,120,200,0.5) 0%, rgba(187,134,252,0.4) 50%, transparent 70%)",
           filter: "blur(40px)",
         }}
         aria-hidden="true"

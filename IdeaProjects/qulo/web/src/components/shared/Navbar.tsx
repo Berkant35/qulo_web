@@ -22,14 +22,16 @@ export function Navbar() {
           {/* Logo */}
           <a
             href="/"
-            className="text-xl font-bold tracking-tight"
-            style={{
-              animation: "glitchText 6s ease-in-out infinite",
-              textShadow: "0 0 40px rgba(187,134,252,0.6)",
-              color: "#BB86FC",
-            }}
+            className="flex items-center"
+            style={{ filter: "drop-shadow(0 0 12px rgba(187,134,252,0.5))" }}
           >
-            Qulo
+            <img
+              src="/brand/qulo_splash.svg"
+              alt="Qulo"
+              height={32}
+              width={80}
+              style={{ objectFit: "contain" }}
+            />
           </a>
 
           {/* Right side */}

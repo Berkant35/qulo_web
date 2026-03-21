@@ -63,17 +63,25 @@ export function DownloadCTA() {
           <div className="flex items-center gap-6">
             <a
               href={APP_STORE_URL}
-              className="text-xs text-qulo-text-muted hover:text-qulo-purple transition-colors"
+              className="flex items-center gap-1.5 text-xs text-qulo-text-muted hover:text-qulo-purple transition-colors"
             >
-              🍎 App Store
+              <img src="/icons/ic_lock.svg" alt="" width={12} height={12} style={{ opacity: 0.6 }} />
+              App Store
             </a>
             <span className="text-white/10 text-xs">|</span>
             <a
               href={PLAY_STORE_URL}
-              className="text-xs text-qulo-text-muted hover:text-qulo-green transition-colors"
+              className="flex items-center gap-1.5 text-xs text-qulo-text-muted hover:text-qulo-green transition-colors"
             >
-              🤖 Google Play
+              <img src="/icons/ic_zap.svg" alt="" width={12} height={12} style={{ opacity: 0.6 }} />
+              Google Play
             </a>
+          </div>
+          {/* Decorative diamonds */}
+          <div className="flex items-center gap-3 mt-2 opacity-30">
+            <img src="/brand/green_diamond.svg" alt="" width={16} height={16} />
+            <img src="/brand/purple_diamond.svg" alt="" width={16} height={16} />
+            <img src="/brand/green_diamond.svg" alt="" width={16} height={16} />
           </div>
         </motion.div>
       </div>

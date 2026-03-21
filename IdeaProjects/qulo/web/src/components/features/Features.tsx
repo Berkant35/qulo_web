@@ -5,11 +5,11 @@ import { useTranslations } from "next-intl";
 import { FeatureCard } from "./FeatureCard";
 
 const CARDS = [
-  { key: "diamonds", icon: "💎", accentColor: "purple" as const },
-  { key: "gamification", icon: "🏆", accentColor: "green" as const },
-  { key: "powers", icon: "⚡", accentColor: "purple" as const },
-  { key: "ai", icon: "🤖", accentColor: "green" as const },
-  { key: "premium", icon: "🔒", accentColor: "purple" as const },
+  { key: "diamonds", iconSrc: "/brand/purple_diamond.svg", accentColor: "purple" as const },
+  { key: "gamification", iconSrc: "/icons/ic_badge_gold.svg", accentColor: "green" as const },
+  { key: "powers", iconSrc: "/icons/ic_zap.svg", accentColor: "purple" as const },
+  { key: "ai", iconSrc: "/icons/ic_wand.svg", accentColor: "green" as const },
+  { key: "premium", iconSrc: "/icons/ic_crown.svg", accentColor: "purple" as const },
 ] as const;
 
 export function Features() {
@@ -58,10 +58,10 @@ export function Features() {
 
         {/* Grid */}
         <div className="grid gap-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))" }}>
-          {CARDS.map(({ key, icon, accentColor }, i) => (
+          {CARDS.map(({ key, iconSrc, accentColor }, i) => (
             <FeatureCard
               key={key}
-              icon={icon}
+              iconSrc={iconSrc}
               label={t(`${key}.subtitle` as Parameters<typeof t>[0])}
               title={t(`${key}.title` as Parameters<typeof t>[0])}
               subtitle={t(`${key}.subtitle` as Parameters<typeof t>[0])}

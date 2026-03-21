@@ -5,7 +5,7 @@ import { GlassCard } from "@/components/shared/GlassCard";
 
 interface StepCardProps {
   stepNumber: number;
-  icon: string;
+  iconSrc: string;
   title: string;
   description: string;
   detail: string;
@@ -19,7 +19,7 @@ const COLORS = {
   green: { hex: "#69F0AE", glow: "rgba(105,240,174,0.3)", dimGlow: "rgba(105,240,174,0.08)" },
 };
 
-export function StepCard({ stepNumber, icon, title, description, detail, accentColor, children, delay = 0 }: StepCardProps) {
+export function StepCard({ stepNumber, iconSrc, title, description, detail, accentColor, children, delay = 0 }: StepCardProps) {
   const color = COLORS[accentColor];
 
   return (
@@ -55,7 +55,13 @@ export function StepCard({ stepNumber, icon, title, description, detail, accentC
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xl">{icon}</span>
+              <img
+                src={iconSrc}
+                alt={title}
+                width={20}
+                height={20}
+                style={{ filter: `drop-shadow(0 0 6px ${color.glow})` }}
+              />
               <h3 className="text-lg font-bold text-white">{title}</h3>
             </div>
             <p className="text-sm text-qulo-text-secondary">{description}</p>

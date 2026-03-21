@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 interface FeatureCardProps {
-  icon: string;
+  iconSrc: string;
   label: string;
   title: string;
   subtitle: string;
@@ -17,7 +17,7 @@ const COLORS = {
   green: { hex: "#69F0AE", glow: "rgba(105,240,174,0.25)", dimGlow: "rgba(105,240,174,0.06)" },
 };
 
-export function FeatureCard({ icon, label, title, subtitle, description, accentColor, delay = 0 }: FeatureCardProps) {
+export function FeatureCard({ iconSrc, label, title, subtitle, description, accentColor, delay = 0 }: FeatureCardProps) {
   const color = COLORS[accentColor];
 
   return (
@@ -53,7 +53,15 @@ export function FeatureCard({ icon, label, title, subtitle, description, accentC
       </div>
 
       {/* Icon */}
-      <div className="text-3xl mb-4">{icon}</div>
+      <div className="mb-4">
+        <img
+          src={iconSrc}
+          alt={title}
+          width={32}
+          height={32}
+          style={{ filter: `drop-shadow(0 0 8px ${color.glow})` }}
+        />
+      </div>
 
       {/* Title & subtitle */}
       <h3 className="text-base font-bold text-white mb-0.5">{title}</h3>

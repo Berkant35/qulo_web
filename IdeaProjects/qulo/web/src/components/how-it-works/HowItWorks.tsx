@@ -10,7 +10,10 @@ function MiniQuestionPreview() {
       className="rounded-xl p-3 mt-2"
       style={{ background: "rgba(187,134,252,0.06)", border: "1px solid rgba(187,134,252,0.15)" }}
     >
-      <p className="text-xs text-white/70 mb-2">💬 Hangi film seni en çok etkiler?</p>
+      <div className="flex items-center gap-1.5 mb-2">
+        <img src="/icons/ic_chats.svg" alt="question" width={12} height={12} style={{ opacity: 0.7 }} />
+        <p className="text-xs text-white/70">Hangi film seni en çok etkiler?</p>
+      </div>
       <div className="flex gap-2 flex-wrap">
         {["Interstellar", "The Matrix", "Inception"].map((opt) => (
           <span
@@ -28,26 +31,34 @@ function MiniQuestionPreview() {
 
 function MatchAnimation() {
   return (
-    <div className="flex items-center justify-center gap-4 mt-2 py-2">
-      <div
-        className="w-10 h-10 rounded-full flex items-center justify-center text-lg"
-        style={{ background: "rgba(105,240,174,0.12)", border: "1px solid rgba(105,240,174,0.2)" }}
-      >
-        👤
+    <div className="flex flex-col items-center gap-2 mt-2 py-2">
+      <div className="flex items-center gap-4">
+        <div
+          className="w-10 h-10 rounded-full flex items-center justify-center"
+          style={{ background: "rgba(105,240,174,0.12)", border: "1px solid rgba(105,240,174,0.2)" }}
+        >
+          <img src="/icons/ic_user.svg" alt="user" width={20} height={20} style={{ opacity: 0.7 }} />
+        </div>
+        <motion.div
+          animate={{ scale: [1, 1.25, 1] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <img
+            src="/icons/ic_heart_filled.svg"
+            alt="match"
+            width={28}
+            height={28}
+            style={{ filter: "drop-shadow(0 0 8px rgba(105,240,174,0.6))" }}
+          />
+        </motion.div>
+        <div
+          className="w-10 h-10 rounded-full flex items-center justify-center"
+          style={{ background: "rgba(105,240,174,0.12)", border: "1px solid rgba(105,240,174,0.2)" }}
+        >
+          <img src="/icons/ic_user.svg" alt="user" width={20} height={20} style={{ opacity: 0.7 }} />
+        </div>
       </div>
-      <motion.div
-        animate={{ scale: [1, 1.25, 1] }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        className="text-2xl"
-      >
-        💚
-      </motion.div>
-      <div
-        className="w-10 h-10 rounded-full flex items-center justify-center text-lg"
-        style={{ background: "rgba(105,240,174,0.12)", border: "1px solid rgba(105,240,174,0.2)" }}
-      >
-        👤
-      </div>
+      <p className="text-xs text-qulo-text-secondary italic">Gerçek bağlantılar burada başlar</p>
     </div>
   );
 }
@@ -108,7 +119,7 @@ export function HowItWorks() {
           <div className="pl-16 space-y-8">
             <StepCard
               stepNumber={1}
-              icon="✏️"
+              iconSrc="/icons/ic_pencil.svg"
               title={t("step1Title")}
               description={t("step1Desc")}
               detail={t("step1Detail")}
@@ -120,7 +131,7 @@ export function HowItWorks() {
 
             <StepCard
               stepNumber={2}
-              icon="🔍"
+              iconSrc="/icons/ic_compass_filled.svg"
               title={t("step2Title")}
               description={t("step2Desc")}
               detail={t("step2Detail")}
@@ -130,7 +141,7 @@ export function HowItWorks() {
 
             <StepCard
               stepNumber={3}
-              icon="💚"
+              iconSrc="/icons/ic_heart_filled.svg"
               title={t("step3Title")}
               description={t("step3Desc")}
               detail={t("step3Detail")}
