@@ -2,6 +2,13 @@ import { setRequestLocale } from "next-intl/server";
 import { GridOverlay } from "@/components/shared/GridOverlay";
 import { Navbar } from "@/components/shared/Navbar";
 import { Hero } from "@/components/hero/Hero";
+import { SectionDivider } from "@/components/shared/SectionDivider";
+import { HowItWorks } from "@/components/how-it-works/HowItWorks";
+import { Features } from "@/components/features/Features";
+import { AppPreview } from "@/components/app-preview/AppPreview";
+import { Testimonials } from "@/components/testimonials/Testimonials";
+import { DownloadCTA } from "@/components/download-cta/DownloadCTA";
+import { Footer } from "@/components/footer/Footer";
 
 export default async function Home({
   params,
@@ -16,6 +23,17 @@ export default async function Home({
       <GridOverlay />
       <Navbar />
       <Hero />
+      <SectionDivider />
+      <HowItWorks />
+      <SectionDivider />
+      <Features />
+      <SectionDivider />
+      <AppPreview />
+      <SectionDivider />
+      <Testimonials />
+      <SectionDivider />
+      <DownloadCTA />
+      <Footer />
     </main>
   );
 }

@@ -37,3 +37,7 @@
   96% { text-shadow: -2px 0 #69F0AE, 2px 0 #BB86FC; }
   97% { text-shadow: 2px 0 #69F0AE, -2px 0 #BB86FC; }
 }
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
