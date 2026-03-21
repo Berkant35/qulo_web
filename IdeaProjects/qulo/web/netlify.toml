@@ -1,0 +1,31 @@
+[build]
+  base = "web/"
+  command = "npm run build"
+  publish = "out/"
+
+[[redirects]]
+  from = "/"
+  to = "/tr/"
+  status = 302
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/tr/invite/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/:locale/invite/*"
+  to = "/:locale/invite/index.html"
+  status = 200
+
+[[headers]]
+  for = "/.well-known/apple-app-site-association"
+  [headers.values]
+    Content-Type = "application/json"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/.well-known/assetlinks.json"
+  [headers.values]
+    Content-Type = "application/json"
+    Access-Control-Allow-Origin = "*"
