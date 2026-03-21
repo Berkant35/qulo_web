@@ -6,7 +6,7 @@ import { SectionDivider } from "@/components/shared/SectionDivider";
 import { HowItWorks } from "@/components/how-it-works/HowItWorks";
 import { Features } from "@/components/features/Features";
 import { AppPreview } from "@/components/app-preview/AppPreview";
-import { Testimonials } from "@/components/testimonials/Testimonials";
+import { WhyDifferent } from "@/components/why-different/WhyDifferent";
 import { DownloadCTA } from "@/components/download-cta/DownloadCTA";
 import { Footer } from "@/components/footer/Footer";
 
@@ -30,7 +30,7 @@ export default async function Home({
       <SectionDivider />
       <AppPreview />
       <SectionDivider />
-      <Testimonials />
+      <WhyDifferent />
       <SectionDivider />
       <DownloadCTA />
       <Footer />

@@ -1,4 +1,10 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 export function CardStack() {
+  const t = useTranslations("hero");
+
   return (
     <div className="relative w-full max-w-sm mx-auto" style={{ height: "420px" }}>
       {/* Pulse rings behind cards */}
@@ -54,19 +60,19 @@ export function CardStack() {
           }}
         >
           <p className="text-xs text-qulo-text-secondary uppercase tracking-widest mb-2">Soru</p>
-          <p className="text-white font-semibold text-base mb-4">Seni en iyi anlatan şarkı?</p>
+          <p className="text-white font-semibold text-base mb-4">{t("card2Question")}</p>
           <div className="grid grid-cols-2 gap-2">
             <div
               className="rounded-xl px-3 py-2 text-center text-xs text-white/70"
               style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}
             >
-              Romantik
+              {t("card2Option1")}
             </div>
             <div
               className="rounded-xl px-3 py-2 text-center text-xs text-white/70"
               style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}
             >
-              Melankolik
+              {t("card2Option2")}
             </div>
           </div>
         </div>
@@ -97,9 +103,9 @@ export function CardStack() {
               <div className="w-2 h-2 rounded-full bg-qulo-purple animate-pulse" />
               <p className="text-xs text-qulo-purple uppercase tracking-widest font-medium">Soru</p>
             </div>
-            <p className="text-white font-bold text-lg mb-4 leading-snug">İlk buluşmada nereye gitmek istersin?</p>
+            <p className="text-white font-bold text-lg mb-4 leading-snug">{t("card1Question")}</p>
             <div className="space-y-2 mb-4">
-              {["Sahilde yürüyüş", "Gizli bir kafe", "Yıldızların altında"].map((option, i) => (
+              {[t("card1Option1"), t("card1Option2"), t("card1Option3")].map((option, i) => (
                 <div
                   key={i}
                   className="rounded-xl px-4 py-2.5 text-sm text-white/80 transition-all"
@@ -119,7 +125,7 @@ export function CardStack() {
                 boxShadow: "0 4px 20px rgba(187,134,252,0.3)",
               }}
             >
-              Cevapla →
+              {t("card1Button")} →
             </button>
           </div>
         </div>

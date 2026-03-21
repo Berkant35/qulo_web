@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { StepCard } from "./StepCard";
 
 function MiniQuestionPreview() {
+  const t = useTranslations("howItWorks");
   return (
     <div
       className="rounded-xl p-3 mt-2"
@@ -12,10 +13,10 @@ function MiniQuestionPreview() {
     >
       <div className="flex items-center gap-1.5 mb-2">
         <img src="/icons/ic_chats.svg" alt="question" width={12} height={12} style={{ opacity: 0.7 }} />
-        <p className="text-xs text-white/70">Hangi film seni en çok etkiler?</p>
+        <p className="text-xs text-white/70">{t("previewQuestion")}</p>
       </div>
       <div className="flex gap-2 flex-wrap">
-        {["Interstellar", "The Matrix", "Inception"].map((opt) => (
+        {[t("previewOption1"), t("previewOption2"), t("previewOption3")].map((opt) => (
           <span
             key={opt}
             className="text-[10px] px-2 py-0.5 rounded-full"
@@ -30,6 +31,7 @@ function MiniQuestionPreview() {
 }
 
 function MatchAnimation() {
+  const t = useTranslations("howItWorks");
   return (
     <div className="flex flex-col items-center gap-2 mt-2 py-2">
       <div className="flex items-center gap-4">
@@ -58,7 +60,7 @@ function MatchAnimation() {
           <img src="/icons/ic_user.svg" alt="user" width={20} height={20} style={{ opacity: 0.7 }} />
         </div>
       </div>
-      <p className="text-xs text-qulo-text-secondary italic">Gerçek bağlantılar burada başlar</p>
+      <p className="text-xs text-qulo-text-secondary italic">{t("matchSubtitle")}</p>
     </div>
   );
 }
