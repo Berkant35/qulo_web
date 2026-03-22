@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { width: 1080px; height: 1080px; }
+  .headline { font-size: 80px; font-weight: 900; line-height: 1.05; color: #fff; }
+  .headline .accent { color: var(--red); text-shadow: 0 0 40px rgba(232,99,122,0.6); }
+  .sub { font-size: 22px; font-weight: 600; color: var(--lavender); letter-spacing: 4px; text-transform: uppercase; }
+  .pill {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 24px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .pill-red { background: var(--red); }
+  .pill-blue { background: var(--blue); }
+  .pill-lav { background: var(--lavender); }
+  .pill-cream { background: var(--cream); color: #1a1f3d; }
+  .pill-dark { background: #1a1f3d; border: 2px solid rgba(255,255,255,0.2); }
+  .pill-green { background: #2a9d5c; }
+  .pills-scatter { position: absolute; z-index: 4; }
+  .pills-scatter .pill { position: absolute; }
+  .hero-cards { filter: drop-shadow(0 20px 50px rgba(0,0,0,0.45)); }
+  .card-front { filter: drop-shadow(0 12px 30px rgba(0,0,0,0.35)); }
+  .logo-badge { display: flex; align-items: center; gap: 14px; }
+  .logo-badge img { height: 52px; }
+  .logo-only-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; z-index: 5; position: relative; }
+</style>
+</head>
+<body>
+
+<!-- Ad 1: EN — Create Any Deck with AI -->
+<div class="ad bg-dark" data-ad-id="1">
+  <div class="sh" style="top:-20px; left:-30px; width:150px; --op:0.18;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:40px; right:60px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:300px; left:30px; width:35px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:200px; left:80px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:80px; right:200px; width:100px; --op:0.12; transform:rotate(20deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:120px; left:60px; width:500px; z-index:5;">
+    <p class="sub" style="margin-bottom:16px;">POWERED BY AI</p>
+    <h1 class="headline">Create<br>Any Deck<br>with <span class="accent">AI</span></h1>
+  </div>
+  <div style="position:absolute; top:50%; right:20px; transform:translateY(-50%); z-index:5;">
+    <img src="../../assets/images/png/img_three_tabul_color.png" class="hero-cards" style="height:500px;">
+  </div>
+  <div class="pills-scatter" style="bottom:60px; left:60px; width:500px; height:120px;">
+    <span class="pill pill-red" style="left:0; top:0; transform:rotate(-3deg);">Movies</span>
+    <span class="pill pill-lav" style="left:160px; top:10px; transform:rotate(2deg);">Science</span>
+    <span class="pill pill-cream" style="left:310px; top:0; transform:rotate(-1deg);">Yoga</span>
+    <span class="pill pill-blue" style="left:60px; top:60px; transform:rotate(1deg);">History</span>
+    <span class="pill pill-green" style="left:230px; top:65px; transform:rotate(-2deg);">Sports</span>
+  </div>
+</div>
+
+<!-- Ad 2: TR — Istedigin Konuda Deste Yarat -->
+<div class="ad bg-blue" data-ad-id="2">
+  <div class="sh" style="top:20px; right:40px; width:130px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:120px; left:30px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:400px; right:60px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:300px; right:100px; width:110px; --op:0.1; transform:rotate(-15deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <h1 class="headline" style="font-size:72px;">İstediğin Konuda<br><span class="accent">Deste Yarat</span></h1>
+  </div>
+  <div style="position:absolute; top:380px; left:50%; transform:translateX(-50%); z-index:5; display:flex; gap:14px; flex-wrap:wrap; justify-content:center; width:700px;">
+    <span class="pill pill-red" style="transform:rotate(-2deg);">Sinema</span>
+    <span class="pill pill-lav" style="transform:rotate(1deg);">Bilim</span>
+    <span class="pill pill-cream" style="transform:rotate(-1deg);">Yemek</span>
+    <span class="pill pill-green" style="transform:rotate(2deg);">Spor</span>
+    <span class="pill pill-dark" style="transform:rotate(-1deg);">Tarih</span>
+    <span class="pill pill-blue" style="transform:rotate(1deg); background:#E8637A33; border:2px solid var(--red);">Müzik</span>
+  </div>
+  <div style="position:absolute; bottom:40px; left:50%; transform:translateX(-50%); z-index:5;">
+    <img src="../../assets/images/png/img_three_tabul_color.png" class="hero-cards" style="height:440px;">
+  </div>
+</div>
+
+<!-- Ad 3: DE — Dein Thema, Dein Spiel -->
+<div class="ad bg-dark-reverse" data-ad-id="3">
+  <div class="sh" style="top:60px; right:80px; width:120px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; left:40px; width:26px; --op:0.22;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:500px; left:60px; width:32px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:250px; right:30px; width:20px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:5; text-align:center; width:900px;">
+    <h1 class="headline" style="font-size:88px; margin-bottom:30px;">Dein Thema,<br><span class="accent">Dein Spiel</span></h1>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <span class="pill pill-red" style="transform:rotate(-2deg);">Filme</span>
+      <span class="pill pill-lav" style="transform:rotate(1deg);">Wissenschaft</span>
+      <span class="pill pill-cream" style="transform:rotate(-1deg);">Reisen</span>
+      <span class="pill pill-green" style="transform:rotate(2deg);">Sport</span>
+      <span class="pill pill-dark" style="transform:rotate(-1deg);">Musik</span>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:-30px; right:60px; z-index:3; opacity:0.25;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" class="card-front" style="height:350px; transform:rotate(12deg);">
+  </div>
+</div>
+
+<!-- Ad 4: ES — Barajas Infinitas con IA -->
+<div class="ad bg-dark" data-ad-id="4">
+  <div class="sh" style="top:-10px; right:-20px; width:140px; --op:0.16; transform:rotate(30deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; left:50px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:400px; left:30px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:300px; right:40px; width:100px; --op:0.1;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:0; left:0; width:55%; height:100%; display:flex; flex-direction:column; justify-content:center; padding:60px; z-index:5;">
+    <h1 class="headline" style="font-size:68px; margin-bottom:30px;">Barajas<br>Infinitas<br>con <span class="accent">IA!</span></h1>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <span class="pill pill-red" style="font-size:16px; padding:8px 18px;">Peliculas</span>
+      <span class="pill pill-lav" style="font-size:16px; padding:8px 18px;">Ciencia</span>
+      <span class="pill pill-green" style="font-size:16px; padding:8px 18px;">Viajes</span>
+    </div>
+  </div>
+  <div style="position:absolute; top:50%; right:30px; transform:translateY(-50%); z-index:5;">
+    <img src="../../assets/images/png/img_three_tabul_color.png" class="hero-cards" style="height:480px;">
+  </div>
+</div>
+
+<!-- Ad 5: FR — Creez vos decks avec l'IA -->
+<div class="ad bg-blue" data-ad-id="5">
+  <div class="sh" style="top:40px; left:80px; width:110px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; right:60px; width:28px; --op:0.22;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:600px; right:100px; width:32px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:400px; left:40px; width:20px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-center" style="height:44px;">
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:5; text-align:center; width:900px;">
+    <h1 class="headline" style="font-size:76px; margin-bottom:30px;">Creez vos decks<br>avec <span class="accent">l'IA</span></h1>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:40px;">
+      <span class="pill pill-red">Films</span>
+      <span class="pill pill-cream">Cuisine</span>
+      <span class="pill pill-lav">Musique</span>
+      <span class="pill pill-green">Voyages</span>
+      <span class="pill pill-dark">Art</span>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:-40px; left:50%; transform:translateX(-50%) rotate(-5deg); z-index:3; opacity:0.3;">
+    <img src="../../assets/images/png/img_three_tabul_color.png" style="height:380px;">
+  </div>
+</div>
+
+<!-- Ad 6: IT — Non limitarti a carte fisse -->
+<div class="ad bg-dark-reverse" data-ad-id="6">
+  <div class="sh" style="top:30px; right:50px; width:120px; --op:0.14;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; left:80px; width:26px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:250px; left:40px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:200px; right:30px; width:90px; --op:0.1; transform:rotate(10deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:60px; z-index:5; text-align:center;">
+    <h1 class="headline" style="font-size:64px; margin-bottom:24px;">Non limitarti<br>a <span class="accent">carte fisse</span></h1>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:40px;">
+      <span class="pill pill-red">Cinema</span>
+      <span class="pill pill-lav">Scienza</span>
+      <span class="pill pill-cream">Cucina</span>
+      <span class="pill pill-green">Sport</span>
+    </div>
+    <img src="../../assets/images/png/img_three_tabul_color.png" class="hero-cards" style="height:360px;">
+  </div>
+</div>
+
+<!-- Ad 7: PT — Diversao com Amigos -->
+<div class="ad bg-dark" data-ad-id="7">
+  <div class="sh" style="top:-10px; left:-20px; width:130px; --op:0.16;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; right:80px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:300px; right:40px; width:34px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:400px; left:60px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <h1 class="headline" style="font-size:82px; margin-bottom:20px;"><span class="accent">Diversao</span><br>com Amigos</h1>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <span class="pill pill-red">Filmes</span>
+      <span class="pill pill-lav">Musica</span>
+      <span class="pill pill-cream">Viagem</span>
+      <span class="pill pill-green">Esportes</span>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <img src="../../assets/images/png/img_three_tabul_color.png" class="hero-cards" style="height:460px;">
+  </div>
+</div>
+
+<!-- Ad 8: Global — Logo Only -->
+<div class="ad bg-dark" data-ad-id="8">
+  <div class="sh" style="top:60px; left:60px; width:140px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; right:80px; width:120px; --op:0.12; transform:rotate(-20deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:200px; right:100px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:250px; left:100px; width:36px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:400px; left:150px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="logo-only-wrap">
+    <img src="../../assets/images/png/app_icon.png" style="width:200px; height:200px; border-radius:40px; box-shadow:0 20px 60px rgba(0,0,0,0.5); margin-bottom:40px;">
+    <img src="../../assets/images/png/img_logo.png" style="height:56px; margin-bottom:50px;">
+    <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; max-width:700px;">
+      <span class="pill pill-red" style="transform:rotate(-2deg);">Movies</span>
+      <span class="pill pill-lav" style="transform:rotate(1deg);">Science</span>
+      <span class="pill pill-cream" style="transform:rotate(-1deg);">Yoga</span>
+      <span class="pill pill-green" style="transform:rotate(2deg);">Travel</span>
+      <span class="pill pill-dark" style="transform:rotate(-1deg);">Music</span>
+      <span class="pill pill-blue" style="transform:rotate(1deg);">Cyberpunk</span>
+      <span class="pill pill-red" style="transform:rotate(-2deg); opacity:0.7;">History</span>
+      <span class="pill pill-lav" style="transform:rotate(1deg); opacity:0.7;">Food</span>
+      <span class="pill pill-green" style="transform:rotate(-1deg); opacity:0.7;">Art</span>
+      <span class="pill pill-cream" style="transform:rotate(2deg); opacity:0.7;">Sports</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const hash = window.location.hash;
+  const m = hash.match(/ad=(\d+)/);
+  if (m) {
+    const id = parseInt(m[1]);
+    document.querySelectorAll('.ad').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.adId) === id);
+    });
+  }
+</script>
+</body>
+</html>
