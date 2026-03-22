@@ -69,13 +69,19 @@ export function HowItWorks() {
   const t = useTranslations("howItWorks");
 
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
-      {/* Background glow */}
+    <section className="relative py-24 px-6 overflow-hidden" style={{ background: "rgba(255,255,255,0.01)" }}>
+      {/* Background glow — stronger */}
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse, rgba(187,134,252,0.04) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(187,134,252,0.09) 0%, transparent 70%)",
         }}
+        aria-hidden="true"
+      />
+      {/* Top ambient glow behind title */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
+        style={{ background: "radial-gradient(ellipse, rgba(187,134,252,0.08) 0%, transparent 70%)" }}
         aria-hidden="true"
       />
 
@@ -89,7 +95,7 @@ export function HowItWorks() {
           className="flex items-center justify-center gap-2 mb-6"
         >
           <div className="w-6 h-[1px] bg-qulo-purple opacity-60" />
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-qulo-purple">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-qulo-purple-light">
             {t("label")}
           </span>
           <div className="w-6 h-[1px] bg-qulo-purple opacity-60" />
@@ -111,10 +117,14 @@ export function HowItWorks() {
 
         {/* Timeline */}
         <div className="relative">
-          {/* Vertical gradient line */}
+          {/* Vertical gradient line — more visible */}
           <div
             className="absolute left-5 top-0 bottom-0 w-[2px] rounded-full"
-            style={{ background: "linear-gradient(180deg, #BB86FC 0%, #69F0AE 100%)" }}
+            style={{
+              background: "linear-gradient(180deg, #BB86FC 0%, #69F0AE 70%, transparent 100%)",
+              boxShadow: "0 0 8px rgba(187,134,252,0.4)",
+              opacity: 0.8,
+            }}
             aria-hidden="true"
           />
 

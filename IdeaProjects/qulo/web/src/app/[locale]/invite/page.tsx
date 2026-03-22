@@ -28,7 +28,7 @@ export default function InvitePage() {
         : platform === "android"
           ? PLAY_STORE_URL
           : null;
-    if (storeUrl && storeUrl !== "#") {
+    if (storeUrl) {
       const timer = setTimeout(() => {
         window.location.href = storeUrl;
       }, 3000);
@@ -82,10 +82,10 @@ export default function InvitePage() {
       )}
 
       <div className="flex gap-4 flex-wrap justify-center">
-        <NeonButton href={APP_STORE_URL} disabled={APP_STORE_URL === "#"}>
+        <NeonButton href={APP_STORE_URL} disabled={false}>
           App Store
         </NeonButton>
-        <NeonButton href={PLAY_STORE_URL} disabled={PLAY_STORE_URL === "#"}>
+        <NeonButton href={PLAY_STORE_URL} disabled={false}>
           Google Play
         </NeonButton>
       </div>

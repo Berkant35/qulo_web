@@ -22,9 +22,9 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      {/* Scanline overlay */}
+      {/* Scanline overlay — more subtle */}
       <div
-        className="absolute left-0 right-0 h-[2px] pointer-events-none animate-scanline z-0 opacity-[0.04]"
+        className="absolute left-0 right-0 h-[2px] pointer-events-none animate-scanline z-0 opacity-[0.025]"
         style={{
           background: "linear-gradient(90deg, transparent, rgba(187,134,252,0.8), transparent)",
         }}
@@ -33,9 +33,9 @@ export function Hero() {
 
       {/* Morphing blob 1 — warm rose/purple tint for romance */}
       <div
-        className="absolute top-20 -left-32 w-96 h-96 pointer-events-none animate-morph-blob z-0 opacity-[0.09]"
+        className="absolute top-20 -left-32 w-[500px] h-[500px] pointer-events-none animate-morph-blob z-0 opacity-[0.12]"
         style={{
-          background: "radial-gradient(circle, rgba(220,120,200,0.5) 0%, rgba(187,134,252,0.4) 50%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(220,120,200,0.6) 0%, rgba(187,134,252,0.5) 50%, transparent 70%)",
           filter: "blur(40px)",
         }}
         aria-hidden="true"
@@ -43,9 +43,9 @@ export function Hero() {
 
       {/* Morphing blob 2 */}
       <div
-        className="absolute bottom-10 -right-32 w-80 h-80 pointer-events-none animate-morph-blob z-0 opacity-[0.06]"
+        className="absolute bottom-10 -right-32 w-[420px] h-[420px] pointer-events-none animate-morph-blob z-0 opacity-[0.09]"
         style={{
-          background: "radial-gradient(circle, rgba(105,240,174,0.6) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(105,240,174,0.7) 0%, transparent 70%)",
           filter: "blur(40px)",
           animationDelay: "-5s",
         }}

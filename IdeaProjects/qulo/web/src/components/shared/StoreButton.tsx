@@ -33,7 +33,7 @@ function PlayIcon() {
 }
 
 export function StoreButton({ platform, href }: StoreButtonProps) {
-  const isDisabled = href === "#";
+  const isDisabled = !href || href === "#";
   const isIos = platform === "ios";
 
   const content = (

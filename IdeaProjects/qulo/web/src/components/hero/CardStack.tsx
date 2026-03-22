@@ -19,17 +19,17 @@ export function CardStack() {
         aria-hidden="true"
       />
 
-      {/* Back card — z-10, opacity-25 */}
+      {/* Back card — z-10, opacity-30 */}
       <div
         className="absolute left-6 right-0 top-10 z-10 animate-float-slow"
-        style={{ opacity: 0.25 }}
+        style={{ opacity: 0.30 }}
         aria-hidden="true"
       >
         <div
           className="rounded-2xl p-5"
           style={{
-            background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(255,255,255,0.06)",
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.1)",
             backdropFilter: "blur(12px)",
           }}
         >
@@ -44,19 +44,19 @@ export function CardStack() {
         </div>
       </div>
 
-      {/* Middle card — z-20, opacity-55 */}
+      {/* Middle card — z-20, opacity-65 */}
       <div
         className="absolute left-4 right-4 top-20 z-20 animate-float-slow"
-        style={{ opacity: 0.55, animationDelay: "-2s" }}
+        style={{ opacity: 0.65, animationDelay: "-2s" }}
         aria-hidden="true"
       >
         <div
           className="rounded-2xl p-5"
           style={{
-            background: "rgba(105,240,174,0.04)",
-            border: "1px solid rgba(105,240,174,0.2)",
+            background: "rgba(105,240,174,0.05)",
+            border: "1px solid rgba(105,240,174,0.25)",
             backdropFilter: "blur(16px)",
-            boxShadow: "0 0 30px rgba(105,240,174,0.05)",
+            boxShadow: "0 0 30px rgba(105,240,174,0.08)",
           }}
         >
           <p className="text-xs text-qulo-text-secondary uppercase tracking-widest mb-2">Soru</p>

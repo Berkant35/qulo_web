@@ -37,7 +37,7 @@ export function Navbar() {
           {/* Right side */}
           <div className="flex items-center gap-4">
             <LanguageSwitcher />
-            <NeonButton href={APP_STORE_URL !== "#" ? APP_STORE_URL : undefined}>
+            <NeonButton href={APP_STORE_URL}>
               {t("download")}
             </NeonButton>
           </div>

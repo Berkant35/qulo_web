@@ -34,54 +34,67 @@ function DiffCard({
       transition={{ duration: 0.5, delay }}
       className="rounded-2xl overflow-hidden"
       style={{
-        background: "rgba(255,255,255,0.03)",
+        background: "rgba(255,255,255,0.04)",
         backdropFilter: "blur(16px)",
-        border: "1px solid rgba(187,134,252,0.12)",
+        border: "1px solid rgba(187,134,252,0.15)",
+        boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
       }}
     >
       <div className="grid grid-cols-2">
-        {/* Others side */}
+        {/* Others side — subtle red/gray tint */}
         <div
-          className="p-5"
-          style={{ borderRight: "1px solid rgba(255,255,255,0.06)" }}
+          className="p-5 relative overflow-hidden"
+          style={{
+            background: "rgba(255,80,80,0.03)",
+            borderRight: "1px solid rgba(255,255,255,0.08)",
+          }}
         >
-          <div className="flex items-center gap-2 mb-3">
+          {/* Dim red tint overlay */}
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at top left, rgba(255,80,80,0.05) 0%, transparent 70%)" }} aria-hidden="true" />
+
+          <div className="flex items-center gap-2 mb-3 relative">
             <div
               className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
+              style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}
             >
               <img
                 src={`/icons/${othersIcon}`}
                 alt={othersLabel}
                 width={14}
                 height={14}
-                style={{ opacity: 0.4 }}
+                style={{ opacity: 0.35 }}
               />
             </div>
             <span
               className="text-[10px] font-semibold uppercase tracking-widest"
-              style={{ color: "rgba(255,255,255,0.3)" }}
+              style={{ color: "rgba(255,255,255,0.35)" }}
             >
               {othersLabel}
             </span>
           </div>
-          <p className="text-sm font-semibold mb-1" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <p className="text-sm font-semibold mb-1.5 relative" style={{ color: "rgba(255,255,255,0.4)" }}>
             {othersTitle}
           </p>
-          <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.2)" }}>
+          <p className="text-xs leading-relaxed relative" style={{ color: "rgba(255,255,255,0.25)" }}>
             {othersDesc}
           </p>
         </div>
 
-        {/* Qulo side */}
-        <div className="p-5">
-          <div className="flex items-center gap-2 mb-3">
+        {/* Qulo side — stronger purple/green tint */}
+        <div
+          className="p-5 relative overflow-hidden"
+          style={{ background: "rgba(187,134,252,0.05)" }}
+        >
+          {/* Purple ambient at top right */}
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at top right, rgba(187,134,252,0.12) 0%, transparent 70%)" }} aria-hidden="true" />
+
+          <div className="flex items-center gap-2 mb-3 relative">
             <div
               className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
               style={{
-                background: "rgba(187,134,252,0.15)",
-                border: "1px solid rgba(187,134,252,0.3)",
-                boxShadow: "0 0 10px rgba(187,134,252,0.15)",
+                background: "rgba(187,134,252,0.18)",
+                border: "1px solid rgba(187,134,252,0.4)",
+                boxShadow: "0 0 12px rgba(187,134,252,0.2)",
               }}
             >
               <img
@@ -89,7 +102,7 @@ function DiffCard({
                 alt={quloLabel}
                 width={14}
                 height={14}
-                style={{ filter: "drop-shadow(0 0 4px rgba(187,134,252,0.6))" }}
+                style={{ filter: "drop-shadow(0 0 4px rgba(187,134,252,0.7))" }}
               />
             </div>
             <span
@@ -99,8 +112,8 @@ function DiffCard({
               {quloLabel}
             </span>
           </div>
-          <p className="text-sm font-semibold mb-1 text-white">{quloTitle}</p>
-          <p className="text-xs leading-relaxed" style={{ color: "rgba(105,240,174,0.8)" }}>
+          <p className="text-sm font-semibold mb-1.5 text-white relative">{quloTitle}</p>
+          <p className="text-xs leading-relaxed relative" style={{ color: "rgba(105,240,174,0.85)" }}>
             {quloDesc}
           </p>
         </div>
@@ -120,14 +133,20 @@ export function WhyDifferent() {
   const t = useTranslations("whyDifferent");
 
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
-      {/* Background glow */}
+    <section className="relative py-24 px-6 overflow-hidden" style={{ background: "rgba(13,13,13,0.6)" }}>
+      {/* Background glow — stronger */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(187,134,252,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(187,134,252,0.07) 0%, transparent 70%)",
         }}
+        aria-hidden="true"
+      />
+      {/* Top ambient glow behind title */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
+        style={{ background: "radial-gradient(ellipse, rgba(187,134,252,0.08) 0%, transparent 70%)" }}
         aria-hidden="true"
       />
 
@@ -141,7 +160,7 @@ export function WhyDifferent() {
           className="flex items-center justify-center gap-2 mb-6"
         >
           <div className="w-6 h-[1px] bg-qulo-purple opacity-60" />
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-qulo-purple">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-qulo-purple-light">
             {t("label")}
           </span>
           <div className="w-6 h-[1px] bg-qulo-purple opacity-60" />
@@ -160,6 +179,12 @@ export function WhyDifferent() {
             {t("title2")}
           </span>
         </motion.h2>
+
+        {/* Column headers */}
+        <div className="grid grid-cols-2 gap-x-4 mb-3 max-w-sm mx-auto sm:hidden">
+          <p className="text-[10px] uppercase tracking-widest text-center" style={{ color: "rgba(255,255,255,0.25)" }}>{t("others")}</p>
+          <p className="text-[10px] uppercase tracking-widest text-center" style={{ color: "#BB86FC" }}>{t("qulo")}</p>
+        </div>
 
         {/* 2x2 grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

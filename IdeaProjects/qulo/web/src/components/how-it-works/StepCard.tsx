@@ -15,8 +15,8 @@ interface StepCardProps {
 }
 
 const COLORS = {
-  purple: { hex: "#BB86FC", glow: "rgba(187,134,252,0.3)", dimGlow: "rgba(187,134,252,0.08)" },
-  green: { hex: "#69F0AE", glow: "rgba(105,240,174,0.3)", dimGlow: "rgba(105,240,174,0.08)" },
+  purple: { hex: "#BB86FC", glow: "rgba(187,134,252,0.4)", dimGlow: "rgba(187,134,252,0.14)" },
+  green: { hex: "#69F0AE", glow: "rgba(105,240,174,0.4)", dimGlow: "rgba(105,240,174,0.14)" },
 };
 
 export function StepCard({ stepNumber, iconSrc, title, description, detail, accentColor, children, delay = 0 }: StepCardProps) {
@@ -35,8 +35,14 @@ export function StepCard({ stepNumber, iconSrc, title, description, detail, acce
       >
         {/* Ambient glow corner */}
         <div
-          className="absolute -top-8 -right-8 w-32 h-32 rounded-full pointer-events-none"
+          className="absolute -top-8 -right-8 w-48 h-48 rounded-full pointer-events-none"
           style={{ background: `radial-gradient(circle, ${color.dimGlow} 0%, transparent 70%)` }}
+          aria-hidden="true"
+        />
+        {/* Left accent border */}
+        <div
+          className="absolute left-0 top-4 bottom-4 w-[2px] rounded-full"
+          style={{ background: `linear-gradient(180deg, ${color.hex}88 0%, transparent 100%)` }}
           aria-hidden="true"
         />
 
@@ -45,10 +51,10 @@ export function StepCard({ stepNumber, iconSrc, title, description, detail, acce
           <div
             className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-black"
             style={{
-              background: `${color.hex}18`,
-              border: `1px solid ${color.hex}44`,
+              background: `${color.hex}22`,
+              border: `1px solid ${color.hex}66`,
               color: color.hex,
-              boxShadow: `0 0 12px ${color.glow}`,
+              boxShadow: `0 0 16px ${color.glow}, 0 0 4px ${color.hex}44`,
             }}
           >
             {stepNumber}
@@ -64,11 +70,11 @@ export function StepCard({ stepNumber, iconSrc, title, description, detail, acce
               />
               <h3 className="text-lg font-bold text-white">{title}</h3>
             </div>
-            <p className="text-sm text-qulo-text-secondary">{description}</p>
+            <p className="text-sm text-gray-400">{description}</p>
           </div>
         </div>
 
-        <p className="text-xs text-qulo-text-muted mb-4">{detail}</p>
+        <p className="text-xs text-gray-500 mb-4">{detail}</p>
 
         {children && <div className="mt-4">{children}</div>}
       </GlassCard>

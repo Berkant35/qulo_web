@@ -24,22 +24,33 @@ export function Footer() {
       />
 
       <div
-        className="py-10 px-6"
-        style={{ background: "rgba(5,5,8,0.95)" }}
+        className="py-16 px-6"
+        style={{ background: "rgba(5,5,8,0.97)" }}
       >
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
           {/* Left: logo + copyright */}
           <div>
-            <p
-              className="text-xl font-bold mb-1 tracking-tight"
-              style={{
-                color: "#BB86FC",
-                textShadow: "0 0 30px rgba(187,134,252,0.4)",
-              }}
-            >
-              Qulo
-            </p>
-            <p className="text-xs text-qulo-text-muted">{t("copyright")}</p>
+            <div className="flex items-center gap-2 mb-2">
+              <img src="/brand/purple_diamond.svg" alt="Qulo" width={20} height={20} style={{ filter: "drop-shadow(0 0 8px rgba(187,134,252,0.6))" }} />
+              <p
+                className="text-xl font-bold tracking-tight"
+                style={{
+                  color: "#BB86FC",
+                  textShadow: "0 0 30px rgba(187,134,252,0.5)",
+                }}
+              >
+                Qulo
+              </p>
+            </div>
+            <p className="text-xs text-gray-600">{t("copyright")}</p>
+            {/* Made with heart */}
+            <div className="flex items-center gap-1 mt-2">
+              <p className="text-[10px] text-gray-700">Made with</p>
+              <svg width="10" height="9" viewBox="0 0 10 9" fill="none" style={{ flexShrink: 0 }}>
+                <path d="M5 8L0.9 3.7C0.3 3.1 0.3 2.1 0.9 1.5C1.5 0.9 2.5 0.9 3.1 1.5L5 3.4L6.9 1.5C7.5 0.9 8.5 0.9 9.1 1.5C9.7 2.1 9.7 3.1 9.1 3.7L5 8Z" fill="rgba(187,134,252,0.5)" />
+              </svg>
+              <p className="text-[10px] text-gray-700">in Istanbul</p>
+            </div>
           </div>
 
           {/* Right columns */}
@@ -100,7 +111,7 @@ export function Footer() {
 
             {/* Language switcher */}
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-qulo-text-muted mb-3">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-600 mb-3">
                 Language
               </p>
               <LanguageSwitcher />

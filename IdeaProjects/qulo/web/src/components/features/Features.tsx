@@ -16,13 +16,19 @@ export function Features() {
   const t = useTranslations("features");
 
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
+    <section className="relative py-24 px-6 overflow-hidden" style={{ background: "rgba(13,13,13,0.6)" }}>
       {/* Subtle mesh */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 70% 50% at 50% 60%, rgba(105,240,174,0.03) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 70% 50% at 50% 60%, rgba(105,240,174,0.06) 0%, transparent 70%)",
         }}
+        aria-hidden="true"
+      />
+      {/* Top ambient glow behind title */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
+        style={{ background: "radial-gradient(ellipse, rgba(105,240,174,0.08) 0%, transparent 70%)" }}
         aria-hidden="true"
       />
 
@@ -36,7 +42,7 @@ export function Features() {
           className="flex items-center justify-center gap-2 mb-6"
         >
           <div className="w-6 h-[1px] bg-qulo-green opacity-60" />
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-qulo-green">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-qulo-green-light">
             {t("label")}
           </span>
           <div className="w-6 h-[1px] bg-qulo-green opacity-60" />
