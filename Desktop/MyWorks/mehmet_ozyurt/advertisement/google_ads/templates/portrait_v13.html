@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { width: 1080px; height: 1350px; }
+  .headline { font-size: 72px; font-weight: 900; line-height: 1.05; color: #fff; }
+  .headline .accent { color: var(--red); text-shadow: 0 0 40px rgba(232,99,122,0.6); }
+  .sub { font-size: 20px; font-weight: 600; color: var(--lavender); letter-spacing: 3px; text-transform: uppercase; }
+  .hero-cards { filter: drop-shadow(0 20px 50px rgba(0,0,0,0.45)); }
+  .card-front { filter: drop-shadow(0 12px 30px rgba(0,0,0,0.35)); }
+
+  .topic-pill {
+    position: absolute;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 30px;
+    padding: 10px 22px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    z-index: 6;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .topic-pill.red { background: rgba(232,99,122,0.25); border-color: rgba(232,99,122,0.4); }
+  .topic-pill.blue { background: rgba(45,53,97,0.4); border-color: rgba(129,136,201,0.4); }
+  .topic-pill.cream { background: rgba(252,193,162,0.2); border-color: rgba(252,193,162,0.35); color: var(--cream); }
+
+  .phone-mock {
+    position: absolute;
+    background: #111;
+    border-radius: 28px;
+    border: 3px solid #444;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px #555;
+  }
+  .phone-mock img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .word-card {
+    position: absolute;
+    background: #F5F0EB;
+    border-radius: 16px;
+    padding: 18px 14px;
+    width: 180px;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+    z-index: 6;
+  }
+  .word-card .wc-word { font-size: 22px; font-weight: 800; color: #2D3561; margin-bottom: 6px; letter-spacing: 1px; }
+  .word-card .wc-forbidden { font-size: 12px; color: #999; font-weight: 600; line-height: 1.6; }
+  .word-card .wc-line { width: 50px; height: 2px; background: var(--red); margin: 6px auto 8px; border-radius: 2px; }
+
+  .logo-only-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; z-index: 5; position: relative; }
+</style>
+</head>
+<body>
+
+<!-- Ad 9: EN — Ready for Party Chaos? -->
+<div class="ad bg-dark" data-ad-id="9">
+  <div class="sh" style="top:-10px; left:-20px; width:150px; --op:0.18;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; right:60px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:400px; left:30px; width:35px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:300px; left:80px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:110px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <p class="sub" style="margin-bottom:14px;">PARTY GAME</p>
+    <h1 class="headline" style="font-size:78px;">Ready for<br><span class="accent">Party Chaos?</span></h1>
+  </div>
+  <!-- Three-card back tilted dramatically as backdrop -->
+  <div style="position:absolute; top:380px; left:-60px; z-index:3; transform:rotate(14deg); opacity:0.45;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:480px;">
+  </div>
+  <!-- Phone mockup at center, opposing angle -->
+  <div class="phone-mock" style="top:420px; left:50%; transform:translateX(-50%) rotate(-10deg); width:300px; height:520px; z-index:7;">
+    <img src="../../assets/images/png/6_01.jpg">
+  </div>
+  <!-- Topic pills scattered -->
+  <div class="topic-pill red" style="bottom:160px; left:50px; transform:rotate(8deg);">Cinema</div>
+  <div class="topic-pill blue" style="bottom:100px; left:220px; transform:rotate(-5deg);">Sports</div>
+  <div class="topic-pill cream" style="bottom:60px; right:80px; transform:rotate(10deg);">Science</div>
+  <div class="topic-pill" style="bottom:120px; right:60px; transform:rotate(-7deg);">Travel</div>
+  <div class="topic-pill red" style="bottom:40px; left:60px; transform:rotate(3deg);">Music</div>
+</div>
+
+<!-- Ad 10: TR — Sabit Deste Devri Bitti -->
+<div class="ad bg-blue" data-ad-id="10">
+  <div class="sh" style="top:20px; right:40px; width:130px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:150px; left:30px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:500px; right:60px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:400px; right:100px; width:110px; --op:0.1; transform:rotate(-15deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <h1 class="headline" style="font-size:72px;">Sabit Deste<br><span class="accent">Devri Bitti</span></h1>
+  </div>
+  <!-- Old card front with X, tilted -->
+  <div style="position:absolute; top:340px; left:40px; z-index:3; opacity:0.4; transform:rotate(-12deg);">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:300px;">
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:80px; color:#E8637A; font-weight:900; text-shadow:0 4px 12px rgba(0,0,0,0.5);">X</div>
+  </div>
+  <!-- Phone with new AI content, tilted opposite -->
+  <div class="phone-mock" style="top:360px; right:40px; width:280px; height:490px; transform:rotate(-10deg); z-index:7;">
+    <img src="../../assets/images/png/6_04.png">
+  </div>
+  <!-- Three-card back at bottom tilted -->
+  <div style="position:absolute; bottom:-40px; left:50%; transform:translateX(-50%) rotate(8deg); z-index:4; opacity:0.5;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:340px;">
+  </div>
+  <!-- Topic pills -->
+  <div class="topic-pill red" style="bottom:100px; left:50px; transform:rotate(-6deg);">Müzik</div>
+  <div class="topic-pill blue" style="bottom:50px; left:200px; transform:rotate(5deg);">Robot</div>
+  <div class="topic-pill cream" style="bottom:40px; right:80px; transform:rotate(-8deg);">Uzay</div>
+</div>
+
+<!-- Ad 11: Global — Logo Only -->
+<div class="ad bg-dark" data-ad-id="11">
+  <div class="sh" style="top:40px; left:60px; width:140px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; right:80px; width:120px; --op:0.12; transform:rotate(-20deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:300px; right:100px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <!-- Center: app icon + logo -->
+  <div style="position:absolute; top:38%; left:50%; transform:translate(-50%,-50%); z-index:8; text-align:center;">
+    <img src="../../assets/images/png/app_icon.png" style="width:200px; height:200px; border-radius:44px; box-shadow:0 20px 60px rgba(0,0,0,0.5); margin-bottom:30px; display:block;">
+    <img src="../../assets/images/png/img_logo.png" style="height:56px;">
+  </div>
+  <!-- Three-card back tilted top-right -->
+  <div style="position:absolute; top:-40px; right:-60px; z-index:3; transform:rotate(-15deg); opacity:0.3;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:400px;">
+  </div>
+  <!-- Card front tilted bottom-left -->
+  <div style="position:absolute; bottom:-30px; left:-40px; z-index:3; transform:rotate(12deg); opacity:0.25;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:350px;">
+  </div>
+  <!-- Three-card back tilted bottom-right -->
+  <div style="position:absolute; bottom:-20px; right:-40px; z-index:3; transform:rotate(10deg); opacity:0.25;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:360px;">
+  </div>
+  <!-- Topic pills all around at dramatic angles -->
+  <div class="topic-pill red" style="top:60px; right:80px; transform:rotate(-14deg);">Coffee</div>
+  <div class="topic-pill blue" style="top:120px; left:60px; transform:rotate(11deg);">Yoga</div>
+  <div class="topic-pill cream" style="top:50%; left:40px; transform:translateY(-50%) rotate(-6deg);">Cinema</div>
+  <div class="topic-pill" style="top:50%; right:40px; transform:translateY(-50%) rotate(8deg);">Safari</div>
+  <div class="topic-pill red" style="bottom:200px; left:100px; transform:rotate(7deg);">Pizza</div>
+  <div class="topic-pill blue" style="bottom:140px; right:100px; transform:rotate(-10deg);">Robot</div>
+  <div class="topic-pill cream" style="bottom:80px; left:50%; transform:translateX(-50%) rotate(4deg);">Sunset</div>
+</div>
+
+<!-- Ad 12: EN — Unlimited AI Decks -->
+<div class="ad bg-dark-reverse" data-ad-id="12">
+  <div class="sh" style="top:30px; right:50px; width:120px; --op:0.14;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:120px; left:60px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:600px; left:40px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <p class="sub" style="margin-bottom:12px;">AI-POWERED</p>
+    <h1 class="headline" style="font-size:80px;">Unlimited<br><span class="accent">AI Decks</span></h1>
+  </div>
+  <!-- Two phones at opposing dramatic angles -->
+  <div class="phone-mock" style="top:400px; left:30px; width:260px; height:460px; transform:rotate(12deg); z-index:7;">
+    <img src="../../assets/images/png/6_02.png">
+  </div>
+  <div class="phone-mock" style="top:420px; right:30px; width:260px; height:460px; transform:rotate(-10deg); z-index:7;">
+    <img src="../../assets/images/png/6_05.png">
+  </div>
+  <!-- Three-card back tilted behind phones -->
+  <div style="position:absolute; top:460px; left:50%; transform:translateX(-50%) rotate(6deg); z-index:3; opacity:0.35;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:440px;">
+  </div>
+  <!-- Topic pills scattered between phones -->
+  <div class="topic-pill red" style="top:380px; left:50%; transform:translateX(-50%) rotate(-5deg);">Space</div>
+  <div class="topic-pill blue" style="bottom:100px; left:50%; transform:translateX(-50%) rotate(7deg);">Concert</div>
+  <div class="topic-pill cream" style="bottom:50px; left:50%; transform:translateX(-50%) rotate(-3deg);">Travel</div>
+</div>
+
+<!-- Ad 13: Global — Logo Only (branded cards at angles) -->
+<div class="ad bg-blue" data-ad-id="13">
+  <div class="sh" style="top:40px; right:60px; width:130px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; left:50px; width:26px; --op:0.22;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:500px; left:80px; width:34px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <!-- Logo center -->
+  <div style="position:absolute; top:35%; left:50%; transform:translate(-50%,-50%); z-index:8; text-align:center;">
+    <img src="../../assets/images/png/app_icon.png" style="width:180px; height:180px; border-radius:40px; box-shadow:0 20px 60px rgba(0,0,0,0.5); margin-bottom:30px; display:block;">
+    <img src="../../assets/images/png/img_logo.png" style="height:52px;">
+  </div>
+  <!-- Three-card back tilted dramatically below -->
+  <div style="position:absolute; bottom:40px; left:50%; transform:translateX(-50%) rotate(-12deg); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:480px;">
+  </div>
+  <!-- Card front at opposing angle -->
+  <div style="position:absolute; bottom:180px; right:40px; z-index:5; transform:rotate(15deg); opacity:0.7;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" class="card-front" style="height:240px;">
+  </div>
+  <!-- Topic pills -->
+  <div class="topic-pill red" style="top:60px; left:40px; transform:rotate(-10deg);">Travel</div>
+  <div class="topic-pill blue" style="top:80px; right:40px; transform:rotate(12deg);">Dragon</div>
+  <div class="topic-pill cream" style="top:50%; left:30px; transform:translateY(-50%) rotate(6deg);">Pirate</div>
+  <div class="topic-pill" style="top:50%; right:30px; transform:translateY(-50%) rotate(-8deg);">Volcano</div>
+</div>
+
+<!-- Ad 14: EN — No More Memorizing -->
+<div class="ad bg-dark" data-ad-id="14">
+  <div class="sh" style="top:-10px; right:-20px; width:140px; --op:0.16; transform:rotate(30deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; left:50px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:500px; left:30px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:400px; right:40px; width:100px; --op:0.1;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <h1 class="headline" style="font-size:78px;">No More<br><span class="accent">Memorizing</span></h1>
+    <p class="sub" style="margin-top:16px;">FRESH CARDS EVERY TIME</p>
+  </div>
+  <!-- Three-card back tilted as large backdrop -->
+  <div style="position:absolute; top:360px; left:-40px; z-index:3; transform:rotate(15deg); opacity:0.3;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:420px;">
+  </div>
+  <!-- Phone mockup with screenshot, dramatic angle -->
+  <div class="phone-mock" style="top:420px; left:50%; transform:translateX(-40%) rotate(-12deg); width:300px; height:520px; z-index:7;">
+    <img src="../../assets/images/png/6_03.png">
+  </div>
+  <!-- Card front tilted behind phone -->
+  <div style="position:absolute; top:440px; right:30px; z-index:2; opacity:0.3; transform:rotate(14deg);">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:300px;">
+  </div>
+  <!-- Word cards at bottom -->
+  <div class="word-card" style="bottom:80px; left:30px; transform:rotate(-10deg); width:190px;">
+    <div class="wc-word">VOLCANO</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Lava<br>Eruption<br>Mountain<br>Ash<br>Magma</div>
+  </div>
+  <div class="word-card" style="bottom:40px; right:40px; transform:rotate(8deg); width:190px;">
+    <div class="wc-word">PENGUIN</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Ice<br>Antarctica<br>Bird<br>Waddle<br>Tuxedo</div>
+  </div>
+</div>
+
+<script>
+  const hash = window.location.hash;
+  const m = hash.match(/ad=(\d+)/);
+  if (m) {
+    const id = parseInt(m[1]);
+    document.querySelectorAll('.ad').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.adId) === id);
+    });
+  }
+</script>
+</body>
+</html>

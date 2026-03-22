@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { width: 1200px; height: 628px; }
+  .headline { font-size: 56px; font-weight: 900; line-height: 1.08; color: #fff; }
+  .headline .accent { color: var(--red); text-shadow: 0 0 40px rgba(232,99,122,0.6); }
+  .sub { font-size: 16px; font-weight: 600; color: var(--lavender); letter-spacing: 3px; text-transform: uppercase; }
+  .hero-cards { filter: drop-shadow(0 16px 40px rgba(0,0,0,0.45)); }
+  .card-front { filter: drop-shadow(0 10px 24px rgba(0,0,0,0.35)); }
+
+  .topic-pill {
+    position: absolute;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 24px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    z-index: 6;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .topic-pill.red { background: rgba(232,99,122,0.25); border-color: rgba(232,99,122,0.4); }
+  .topic-pill.blue { background: rgba(45,53,97,0.4); border-color: rgba(129,136,201,0.4); }
+  .topic-pill.cream { background: rgba(252,193,162,0.2); border-color: rgba(252,193,162,0.35); color: var(--cream); }
+
+  .phone-mock {
+    position: absolute;
+    background: #111;
+    border-radius: 22px;
+    border: 3px solid #444;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 0 0 1px #555;
+  }
+  .phone-mock img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .word-card {
+    position: absolute;
+    background: #F5F0EB;
+    border-radius: 14px;
+    padding: 14px 12px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.25);
+    z-index: 6;
+  }
+  .word-card .wc-word { font-size: 18px; font-weight: 800; color: #2D3561; margin-bottom: 4px; letter-spacing: 1px; }
+  .word-card .wc-forbidden { font-size: 10px; color: #999; font-weight: 600; line-height: 1.5; }
+  .word-card .wc-line { width: 40px; height: 2px; background: var(--red); margin: 4px auto 6px; border-radius: 2px; }
+
+  .logo-only-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; z-index: 5; position: relative; }
+</style>
+</head>
+<body>
+
+<!-- Ad 15: TR — Sinirsiz Eglence Basladi -->
+<div class="ad bg-dark" data-ad-id="15">
+  <div class="sh" style="top:-10px; left:-20px; width:130px; --op:0.18;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:30px; right:40px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:200px; left:20px; width:28px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:36px;">
+  <!-- Left: headline -->
+  <div style="position:absolute; top:50%; left:50px; transform:translateY(-50%); z-index:5; width:380px;">
+    <h1 class="headline" style="font-size:52px;">Sınırsız<br><span class="accent">Eğlence</span><br>Başladı</h1>
+  </div>
+  <!-- Center: phone at angle -->
+  <div class="phone-mock" style="top:50%; left:440px; transform:translateY(-50%) rotate(-10deg); width:180px; height:320px; z-index:7;">
+    <img src="../../assets/images/png/6_01.jpg">
+  </div>
+  <!-- Right: three-card back tilted dramatically -->
+  <div style="position:absolute; top:50%; right:-40px; transform:translateY(-50%) rotate(12deg); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:380px;">
+  </div>
+  <!-- Topic pills -->
+  <div class="topic-pill red" style="bottom:40px; left:440px; transform:rotate(6deg);">Sinema</div>
+  <div class="topic-pill blue" style="top:40px; left:480px; transform:rotate(-5deg);">Kahve</div>
+</div>
+
+<!-- Ad 16: EN — Challenge Your Friends -->
+<div class="ad bg-blue" data-ad-id="16">
+  <div class="sh" style="top:10px; right:40px; width:120px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:40px; left:40px; width:26px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:300px; left:200px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:36px;">
+  <!-- Left: headline -->
+  <div style="position:absolute; top:50%; left:50px; transform:translateY(-50%); z-index:5; width:360px;">
+    <h1 class="headline" style="font-size:54px;">Challenge<br>Your <span class="accent">Friends</span></h1>
+  </div>
+  <!-- Three-card back tilted as dramatic backdrop -->
+  <div style="position:absolute; top:-40px; right:100px; z-index:3; transform:rotate(-14deg); opacity:0.4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:400px;">
+  </div>
+  <!-- Phone at angle right side -->
+  <div class="phone-mock" style="top:50%; right:60px; transform:translateY(-50%) rotate(10deg); width:200px; height:350px; z-index:7;">
+    <img src="../../assets/images/png/6_03.png">
+  </div>
+  <!-- Word card middle -->
+  <div class="word-card" style="top:50px; left:420px; transform:rotate(-8deg); width:150px;">
+    <div class="wc-word">YOGA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Stretch<br>Pose<br>Breath<br>Mat<br>Zen</div>
+  </div>
+  <div class="word-card" style="bottom:40px; left:440px; transform:rotate(5deg); width:150px;">
+    <div class="wc-word">PIRATE</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Ship<br>Treasure<br>Sword<br>Ocean<br>Parrot</div>
+  </div>
+</div>
+
+<!-- Ad 17: Global — Logo Only -->
+<div class="ad bg-dark" data-ad-id="17">
+  <div class="sh" style="top:20px; left:40px; width:120px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:30px; right:60px; width:100px; --op:0.12; transform:rotate(-15deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:150px; right:80px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <!-- Center: app icon + logo -->
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:8; text-align:center; display:flex; align-items:center; gap:24px;">
+    <img src="../../assets/images/png/app_icon.png" style="width:120px; height:120px; border-radius:28px; box-shadow:0 16px 40px rgba(0,0,0,0.5);">
+    <img src="../../assets/images/png/img_logo.png" style="height:48px;">
+  </div>
+  <!-- Three-card back tilted left -->
+  <div style="position:absolute; top:-30px; left:-40px; z-index:3; transform:rotate(14deg); opacity:0.3;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:340px;">
+  </div>
+  <!-- Card front tilted right -->
+  <div style="position:absolute; bottom:-30px; right:-20px; z-index:3; transform:rotate(-12deg); opacity:0.25;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:280px;">
+  </div>
+  <!-- Topic pills at dramatic angles -->
+  <div class="topic-pill red" style="top:30px; right:100px; transform:rotate(-12deg);">Coffee</div>
+  <div class="topic-pill blue" style="bottom:30px; left:100px; transform:rotate(8deg);">Pizza</div>
+  <div class="topic-pill cream" style="top:50%; left:80px; transform:translateY(-50%) rotate(-6deg);">Robot</div>
+  <div class="topic-pill" style="top:50%; right:80px; transform:translateY(-50%) rotate(10deg);">Safari</div>
+</div>
+
+<!-- Ad 18: EN — The Ultimate Word Game -->
+<div class="ad bg-dark-reverse" data-ad-id="18">
+  <div class="sh" style="top:10px; left:30px; width:110px; --op:0.16;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:20px; left:200px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:250px; right:100px; width:30px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:36px;">
+  <!-- Left: headline -->
+  <div style="position:absolute; top:50%; left:50px; transform:translateY(-50%); z-index:5; width:350px;">
+    <p class="sub" style="margin-bottom:10px;">AI-POWERED</p>
+    <h1 class="headline" style="font-size:50px;">The Ultimate<br><span class="accent">Word Game</span></h1>
+  </div>
+  <!-- Center: phone at dramatic angle -->
+  <div class="phone-mock" style="top:50%; left:400px; transform:translateY(-50%) rotate(-12deg); width:180px; height:320px; z-index:7;">
+    <img src="../../assets/images/png/6_04.png">
+  </div>
+  <!-- Three-card back tilted behind right -->
+  <div style="position:absolute; top:50%; right:-50px; transform:translateY(-50%) rotate(14deg); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:380px;">
+  </div>
+  <!-- Topic pills -->
+  <div class="topic-pill red" style="top:30px; left:420px; transform:rotate(7deg);">Safari</div>
+  <div class="topic-pill blue" style="bottom:30px; left:380px; transform:rotate(-5deg);">Ninja</div>
+  <div class="topic-pill cream" style="top:50%; left:600px; transform:translateY(-50%) rotate(9deg);">Sunset</div>
+</div>
+
+<!-- Ad 19: Global — Logo Only -->
+<div class="ad bg-blue" data-ad-id="19">
+  <div class="sh" style="top:20px; left:40px; width:110px; --op:0.14;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:30px; right:40px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:200px; left:300px; width:28px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <!-- Center: logo + app icon -->
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:8; text-align:center;">
+    <div style="display:flex; align-items:center; gap:24px; justify-content:center;">
+      <img src="../../assets/images/png/app_icon.png" style="width:100px; height:100px; border-radius:24px; box-shadow:0 12px 36px rgba(0,0,0,0.5);">
+      <img src="../../assets/images/png/img_logo.png" style="height:44px;">
+    </div>
+  </div>
+  <!-- Three-card back tilted left -->
+  <div style="position:absolute; top:-40px; left:-50px; z-index:3; transform:rotate(15deg); opacity:0.35;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:360px;">
+  </div>
+  <!-- Card front tilted right -->
+  <div style="position:absolute; bottom:-30px; right:-30px; z-index:3; transform:rotate(-13deg); opacity:0.3;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:300px;">
+  </div>
+  <!-- Topic pills scattered -->
+  <div class="topic-pill red" style="top:20px; left:50%; transform:translateX(-50%) rotate(-6deg);">Space</div>
+  <div class="topic-pill blue" style="bottom:20px; left:50%; transform:translateX(-50%) rotate(8deg);">Pirate</div>
+  <div class="topic-pill cream" style="top:50%; left:50px; transform:translateY(-50%) rotate(10deg);">Dragon</div>
+  <div class="topic-pill" style="top:50%; right:50px; transform:translateY(-50%) rotate(-8deg);">Cinema</div>
+</div>
+
+<!-- Ad 20: Global — Logo Only (dynamic frame) -->
+<div class="ad bg-dark" data-ad-id="20">
+  <div class="sh" style="top:10px; right:30px; width:100px; --op:0.14;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:20px; left:30px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:250px; left:100px; width:20px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <!-- Center: logo -->
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:8; text-align:center; display:flex; align-items:center; gap:28px;">
+    <img src="../../assets/images/png/app_icon.png" style="width:110px; height:110px; border-radius:26px; box-shadow:0 16px 40px rgba(0,0,0,0.5);">
+    <img src="../../assets/images/png/img_logo.png" style="height:48px; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5));">
+  </div>
+  <!-- Three-card back tilted top-left dramatically -->
+  <div style="position:absolute; top:-50px; left:-30px; z-index:3; transform:rotate(14deg); opacity:0.3;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:340px;">
+  </div>
+  <!-- Three-card back tilted bottom-right -->
+  <div style="position:absolute; bottom:-40px; right:-30px; z-index:3; transform:rotate(-12deg); opacity:0.25;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:320px;">
+  </div>
+  <!-- Topic pills at extreme angles -->
+  <div class="topic-pill red" style="top:20px; left:50%; transform:translateX(-50%) rotate(-10deg);">Yoga</div>
+  <div class="topic-pill blue" style="bottom:20px; left:50%; transform:translateX(-50%) rotate(7deg);">Coffee</div>
+  <div class="topic-pill cream" style="top:50%; left:40px; transform:translateY(-50%) rotate(12deg);">Volcano</div>
+  <div class="topic-pill" style="top:50%; right:40px; transform:translateY(-50%) rotate(-9deg);">Safari</div>
+  <div class="topic-pill red" style="top:30px; right:260px; transform:rotate(6deg);">Travel</div>
+</div>
+
+<script>
+  const hash = window.location.hash;
+  const m = hash.match(/ad=(\d+)/);
+  if (m) {
+    const id = parseInt(m[1]);
+    document.querySelectorAll('.ad').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.adId) === id);
+    });
+  }
+</script>
+</body>
+</html>
