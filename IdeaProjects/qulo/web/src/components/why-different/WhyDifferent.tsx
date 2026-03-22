@@ -28,7 +28,7 @@ function DiffCard({
 }: DiffCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0.85, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
@@ -153,7 +153,7 @@ export function WhyDifferent() {
       <div className="relative z-10 max-w-4xl mx-auto">
         {/* Section label */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0.85, y: -6 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
@@ -168,7 +168,7 @@ export function WhyDifferent() {
 
         {/* Title */}
         <motion.h2
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0.85, y: -6 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}

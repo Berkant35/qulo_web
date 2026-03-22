@@ -56,7 +56,7 @@ export function AppPreview() {
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Label */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0.85, y: -6 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
@@ -71,7 +71,7 @@ export function AppPreview() {
 
         {/* Title */}
         <motion.h2
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0.85, y: -6 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
@@ -85,7 +85,7 @@ export function AppPreview() {
 
         {/* Phone */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0.85, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}

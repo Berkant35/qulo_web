@@ -88,7 +88,7 @@ export function HowItWorks() {
       <div className="relative z-10 max-w-2xl mx-auto">
         {/* Section label */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0.85, y: -6 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
@@ -103,7 +103,7 @@ export function HowItWorks() {
 
         {/* Title */}
         <motion.h2
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0.85, y: -6 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
