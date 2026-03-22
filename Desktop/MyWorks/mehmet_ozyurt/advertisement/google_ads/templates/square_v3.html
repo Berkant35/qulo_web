@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { width: 1080px; height: 1080px; }
+  .topic-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin: 4px;
+    letter-spacing: 1px;
+  }
+  .badge-movies { background: #E8637A; }
+  .badge-science { background: #005462; }
+  .badge-yoga { background: #8188C9; }
+  .badge-history { background: #FCC1A2; color: #1a1f3d; }
+  .badge-food { background: #4CAF50; }
+  .badge-travel { background: #2D3561; border: 1.5px solid rgba(255,255,255,0.3); }
+  .phone-tilt-left {
+    transform: perspective(800px) rotateY(8deg) rotateZ(-3deg);
+  }
+  .phone-tilt-right {
+    transform: perspective(800px) rotateY(-8deg) rotateZ(3deg);
+  }
+  .phone-tilt-center {
+    transform: perspective(800px) rotateY(0deg) rotateZ(0deg);
+  }
+  .dual-phone-row {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .screenshot-grid .phone-frame {
+    width: 240px;
+    height: 480px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Ad 1: EN — Create Any Deck with AI — Two phones + text -->
+<div class="ad bg-dark" data-ad-id="1">
+  <div class="sh" style="top:-20px; left:-25px; width:140px; --op:0.18;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; right:40px; width:25px; --op:0.2;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:200px; left:80px; width:30px; --op:0.18;">
+    <svg viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:200px; left:20px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:80px; right:200px; width:90px; --op:0.12;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:48px;">
+  <!-- Text left -->
+  <div style="position:absolute; top:0; left:0; width:45%; height:100%; display:flex; flex-direction:column; justify-content:center; padding:50px 40px 50px 50px; z-index:5;">
+    <p style="font-size:16px; font-weight:700; color:var(--lavender); margin-bottom:12px; letter-spacing:3px;">POWERED BY AI</p>
+    <h1 style="font-size:56px; font-weight:900; line-height:1.15;">Create Any<br>Deck with <span class="text-red text-glow">AI</span></h1>
+    <div style="margin-top:24px;">
+      <span class="topic-badge badge-movies">Movies</span>
+      <span class="topic-badge badge-science">Science</span>
+      <span class="topic-badge badge-yoga">Yoga</span>
+      <span class="topic-badge badge-food">Food</span>
+    </div>
+  </div>
+  <!-- Two phones right -->
+  <div style="position:absolute; top:50%; right:20px; transform:translateY(-50%); z-index:5; display:flex; gap:20px; align-items:center;">
+    <div class="phone-frame phone-tilt-left" style="width:220px; height:440px;">
+      <img src="../../assets/images/advertising/6_02.png">
+    </div>
+    <div class="phone-frame phone-tilt-right" style="width:220px; height:440px;">
+      <img src="../../assets/images/advertising/6_03.png">
+    </div>
+  </div>
+</div>
+
+<!-- Ad 2: TR — Istedigin Konuda Deste Yarat — Big phone center -->
+<div class="ad bg-blue" data-ad-id="2">
+  <div class="sh" style="top:30px; right:60px; width:120px; --op:0.18;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:200px; left:40px; width:28px; --op:0.22;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:160px; right:80px; width:35px; --op:0.18;">
+    <svg viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:300px; right:30px; width:20px; --op:0.2;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:400px; left:80px; width:100px; --op:0.12;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:40px;">
+  <div style="position:absolute; top:50px; left:0; width:100%; text-align:center; z-index:5; padding:0 40px;">
+    <h1 style="font-size:52px; font-weight:900; line-height:1.2;">İstediğin Konuda<br><span class="text-red text-glow">Deste Yarat</span></h1>
+  </div>
+  <!-- Single big phone showing AI creation -->
+  <div class="phone-frame" style="position:absolute; bottom:-100px; left:50%; transform:translateX(-50%); width:400px; height:800px; z-index:5;">
+    <img src="../../assets/images/advertising/6_02.png">
+  </div>
+  <!-- Floating topic badges -->
+  <div style="position:absolute; top:230px; left:40px; z-index:6;">
+    <span class="topic-badge badge-movies">Film</span>
+  </div>
+  <div style="position:absolute; top:260px; right:50px; z-index:6;">
+    <span class="topic-badge badge-science">Bilim</span>
+  </div>
+  <div style="position:absolute; top:320px; left:60px; z-index:6;">
+    <span class="topic-badge badge-food">Yemek</span>
+  </div>
+  <div style="position:absolute; top:300px; right:30px; z-index:6;">
+    <span class="topic-badge badge-travel">Tarih</span>
+  </div>
+</div>
+
+<!-- Ad 3: DE — Dein Thema, Dein Spiel — Phone + cards -->
+<div class="ad bg-dark" data-ad-id="3">
+  <div class="sh" style="top:40px; right:80px; width:110px; --op:0.2;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; left:50px; width:80px; --op:0.17;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:180px; left:30px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:150px; right:60px; width:32px; --op:0.18;">
+    <svg viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:350px; right:30px; width:20px; --op:0.22;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-center" style="height:40px;">
+  <div style="position:absolute; top:110px; left:0; width:100%; text-align:center; z-index:8;">
+    <h1 style="font-size:56px; font-weight:900; line-height:1.2;">Dein Thema,<br><span class="text-red text-glow">Dein Spiel</span></h1>
+  </div>
+  <!-- Phone showing gameplay + floating cards -->
+  <div style="position:absolute; bottom:-60px; left:50%; transform:translateX(-50%); z-index:5;">
+    <div class="phone-frame" style="width:340px; height:680px;">
+      <img src="../../assets/images/advertising/6_01.jpg">
+    </div>
+  </div>
+  <img src="../../assets/images/png/img_three_tabul_color.png" style="position:absolute; bottom:120px; left:30px; height:240px; filter:drop-shadow(0 10px 30px rgba(0,0,0,0.5)); transform:rotate(-10deg); z-index:6; opacity:0.9;">
+  <img src="../../assets/images/png/img_tabul_card_front.png" style="position:absolute; bottom:180px; right:40px; height:200px; filter:drop-shadow(0 10px 30px rgba(0,0,0,0.5)); transform:rotate(12deg); z-index:6; opacity:0.85;">
+</div>
+
+<!-- Ad 4: ES — Barajas Infinitas con IA — Phone left + text right -->
+<div class="ad bg-dark" data-ad-id="4">
+  <div class="sh" style="top:50px; right:30px; width:130px; --op:0.18;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:40px; left:80px; width:100px; --op:0.15;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:400px; right:20px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:100px; left:300px; width:28px; --op:0.18;">
+    <svg viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:300px; right:300px; width:20px; --op:0.22;">
+    <svg viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:40px;">
+  <!-- Phone left showing AI screen -->
+  <div style="position:absolute; top:50%; left:40px; transform:translateY(-50%) rotate(-3deg); z-index:5;">
+    <div class="phone-frame" style="width:300px; height:600px;">
+      <img src="../../assets/images/advertising/6_05.png">
+    </div>
+  </div>
+  <!-- Text right -->
+  <div style="position:absolute; top:0; right:0; width:52%; height:100%; display:flex; flex-direction:column; justify-content:center; padding:50px; z-index:5;">
+    <h1 style="font-size:52px; font-weight:900; line-height:1.2;">&#161;Barajas<br>Infinitas<br>con <span class="text-red text-glow">IA!</span></h1>
+    <div style="margin-top:20px;">
+      <span class="topic-badge badge-movies">Cine</span>
+      <span class="topic-badge badge-science">Ciencia</span>
+      <span class="topic-badge badge-yoga">Yoga</span>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 5: FR — Creez vos decks avec l'IA — Dual phones -->
+<div class="ad bg-dark-reverse" data-ad-id="5">
+  <div class="sh" style="top:-10px; left:100px; width:140px; --op:0.2;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; right:50px; width:120px; --op:0.15;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:300px; left:40px; width:26px; --op:0.2;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:80px; right:120px; width:35px; --op:0.22;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:250px; left:150px; width:30px; --op:0.18;">
+    <svg viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-center" style="height:40px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:8;">
+    <h1 style="font-size:52px; font-weight:900; line-height:1.2;">Cr&#233;ez vos decks<br>avec <span class="text-red text-glow">l'IA</span></h1>
+  </div>
+  <!-- Two tilted phones at bottom -->
+  <div style="position:absolute; bottom:-80px; left:50%; transform:translateX(-50%); z-index:5; display:flex; gap:30px; align-items:flex-end;">
+    <div class="phone-frame phone-tilt-left" style="width:260px; height:520px;">
+      <img src="../../assets/images/advertising/6_02.png">
+    </div>
+    <div class="phone-frame phone-tilt-right" style="width:260px; height:520px;">
+      <img src="../../assets/images/advertising/6_05.png">
+    </div>
+  </div>
+</div>
+
+<!-- Ad 6: IT — Non limitarti a carte fisse — Phone + cards fan -->
+<div class="ad bg-blue" data-ad-id="6">
+  <div class="sh" style="top:60px; right:40px; width:110px; --op:0.18;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; left:60px; width:95px; --op:0.16;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:300px; left:40px; width:26px; --op:0.2;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:300px; right:250px; width:30px; --op:0.18;">
+    <svg viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:150px; left:300px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:40px;">
+  <div style="position:absolute; top:0; left:0; width:48%; height:100%; display:flex; flex-direction:column; justify-content:center; padding:50px; z-index:5;">
+    <h1 style="font-size:48px; font-weight:900; line-height:1.2;">Non limitarti<br>a carte <span class="text-red text-glow">fisse</span></h1>
+    <p style="font-size:18px; color:rgba(255,255,255,0.6); margin-top:16px; font-weight:600;">L'IA crea mazzi unici</p>
+  </div>
+  <!-- Phone right showing gameplay -->
+  <div style="position:absolute; top:50%; right:30px; transform:translateY(-50%) rotate(2deg); z-index:5;">
+    <div class="phone-frame" style="width:300px; height:600px;">
+      <img src="../../assets/images/advertising/6_04.png">
+    </div>
+  </div>
+  <!-- Floating cards behind phone -->
+  <img src="../../assets/images/png/img_three_tabul_color.png" style="position:absolute; top:50%; right:180px; transform:translateY(-50%) rotate(-15deg); height:300px; filter:drop-shadow(0 10px 30px rgba(0,0,0,0.4)); z-index:3; opacity:0.5;">
+</div>
+
+<!-- Ad 7: PT — Diversao com Amigos — Multiple phones party feel -->
+<div class="ad bg-dark" data-ad-id="7">
+  <div class="sh" style="top:20px; right:100px; width:120px; --op:0.2;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:200px; left:30px; width:85px; --op:0.17;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:250px; right:50px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:180px; left:80px; width:34px; --op:0.18;">
+    <svg viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:350px; right:200px; width:22px; --op:0.22;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-center" style="height:40px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:8;">
+    <h1 style="font-size:58px; font-weight:900; line-height:1.2;">Divers&#227;o com<br><span class="text-red text-glow">Amigos</span></h1>
+  </div>
+  <!-- Three phones in a row at bottom -->
+  <div style="position:absolute; bottom:-60px; left:50%; transform:translateX(-50%); z-index:5; display:flex; gap:16px; align-items:flex-end;">
+    <div class="phone-frame phone-tilt-left" style="width:200px; height:400px;">
+      <img src="../../assets/images/advertising/6_03.png">
+    </div>
+    <div class="phone-frame" style="width:220px; height:440px;">
+      <img src="../../assets/images/advertising/6_01.jpg">
+    </div>
+    <div class="phone-frame phone-tilt-right" style="width:200px; height:400px;">
+      <img src="../../assets/images/advertising/6_04.png">
+    </div>
+  </div>
+</div>
+
+<!-- Ad 8: Global — Logo only — Phone with main screen -->
+<div class="ad bg-dark-reverse" data-ad-id="8">
+  <div class="sh" style="top:80px; left:100px; width:24px; --op:0.18;">
+    <svg viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:120px; right:150px; width:20px; --op:0.2;">
+    <svg viewBox="0 0 25 27" fill="none"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:300px; right:80px; width:22px; --op:0.15;">
+    <svg viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:200px; left:200px; width:100px; --op:0.1;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:300px; left:60px; width:80px; --op:0.12;">
+    <svg viewBox="0 0 109 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <!-- Centered phone showing main screen -->
+  <div class="phone-frame" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:340px; height:680px; z-index:5;">
+    <img src="../../assets/images/advertising/6_01.jpg">
+  </div>
+  <!-- Logo below phone -->
+  <img src="../../assets/images/png/img_logo.png" style="position:absolute; bottom:60px; left:50%; transform:translateX(-50%); height:44px; z-index:6;">
+  <!-- Subtle glow behind phone -->
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:600px; background:radial-gradient(circle, rgba(232,99,122,0.12) 0%, rgba(129,136,201,0.08) 40%, transparent 70%); z-index:2;"></div>
+  <p style="position:absolute; top:60px; left:50%; transform:translateX(-50%); font-size:20px; font-weight:700; color:rgba(255,255,255,0.4); letter-spacing:4px; z-index:5;">AI WORD GAME</p>
+</div>
+
+<script>
+  const id = parseInt(location.hash.replace('#ad=','')) || 1;
+  document.querySelectorAll('.ad').forEach(el => {
+    el.classList.toggle('active', parseInt(el.dataset.adId) === id);
+  });
+</script>
+</body>
+</html>
