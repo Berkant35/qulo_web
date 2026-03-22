@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { width: 1080px; height: 1350px; }
+  .headline { font-size: 72px; font-weight: 900; line-height: 1.05; color: #fff; }
+  .headline .accent { color: var(--red); text-shadow: 0 0 40px rgba(232,99,122,0.6); }
+  .sub { font-size: 20px; font-weight: 600; color: var(--lavender); letter-spacing: 3px; text-transform: uppercase; }
+  .hero-cards { filter: drop-shadow(0 20px 50px rgba(0,0,0,0.45)); }
+  .card-front { filter: drop-shadow(0 12px 30px rgba(0,0,0,0.35)); }
+
+  .word-card {
+    position: absolute;
+    background: #F5F0EB;
+    border-radius: 16px;
+    padding: 18px 14px;
+    width: 180px;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+    z-index: 6;
+  }
+  .word-card .wc-word {
+    font-size: 22px;
+    font-weight: 800;
+    color: #2D3561;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .word-card .wc-forbidden {
+    font-size: 12px;
+    color: #999;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .word-card .wc-line {
+    width: 50px;
+    height: 2px;
+    background: var(--red);
+    margin: 6px auto 8px;
+    border-radius: 2px;
+  }
+
+  .topic-pill {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin: 5px;
+    letter-spacing: 0.5px;
+  }
+  .topic-pill.accent-pill {
+    background: rgba(232,99,122,0.2);
+    border-color: rgba(232,99,122,0.4);
+    color: var(--red);
+  }
+
+  .logo-only-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; z-index: 5; position: relative; }
+</style>
+</head>
+<body>
+
+<!-- Ad 9: EN — Ready for Party Chaos? -->
+<div class="ad bg-dark" data-ad-id="9">
+  <div class="sh" style="top:-10px; left:-20px; width:150px; --op:0.18;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; right:60px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:400px; left:30px; width:35px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:300px; left:80px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:110px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <p class="sub" style="margin-bottom:14px;">PARTY GAME</p>
+    <h1 class="headline" style="font-size:78px;">Ready for<br><span class="accent">Party Chaos?</span></h1>
+  </div>
+  <!-- Big three-card back fan -->
+  <div style="position:absolute; top:380px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:480px;">
+  </div>
+  <!-- Word cards scattered bottom -->
+  <div class="word-card" style="bottom:80px; left:40px; transform:rotate(-8deg); width:190px;">
+    <div class="wc-word">CINEMA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Film<br>Movie<br>Actor<br>Screen<br>Popcorn</div>
+  </div>
+  <div class="word-card" style="bottom:40px; left:50%; transform:translateX(-50%) rotate(2deg); width:190px;">
+    <div class="wc-word">PIZZA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Cheese<br>Dough<br>Oven<br>Slice<br>Pepperoni</div>
+  </div>
+  <div class="word-card" style="bottom:80px; right:40px; transform:rotate(7deg); width:190px;">
+    <div class="wc-word">SUNSET</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Sun<br>Evening<br>Sky<br>Orange<br>Horizon</div>
+  </div>
+</div>
+
+<!-- Ad 10: TR — Sabit Deste Devri Bitti -->
+<div class="ad bg-blue" data-ad-id="10">
+  <div class="sh" style="top:20px; right:40px; width:130px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:150px; left:30px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:500px; right:60px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:400px; right:100px; width:110px; --op:0.1; transform:rotate(-15deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <h1 class="headline" style="font-size:72px;">Sabit Deste<br><span class="accent">Devri Bitti</span></h1>
+  </div>
+  <!-- Split layout: old card vs new AI cards -->
+  <div style="position:absolute; top:340px; left:60px; z-index:3; opacity:0.4;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:300px; transform:rotate(-8deg);">
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:80px; color:#E8637A; font-weight:900; text-shadow:0 4px 12px rgba(0,0,0,0.5);">X</div>
+  </div>
+  <div style="position:absolute; top:320px; right:40px; z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:380px;">
+  </div>
+  <!-- Word cards bottom -->
+  <div class="word-card" style="bottom:100px; left:60px; transform:rotate(-6deg); width:200px;">
+    <div class="wc-word">MÜZİK</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Nota<br>Şarkı<br>Enstrüman<br>Melodi<br>Ritim</div>
+  </div>
+  <div class="word-card" style="bottom:60px; right:60px; transform:rotate(5deg); width:200px;">
+    <div class="wc-word">ROBOT</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Makine<br>Metal<br>Yapay Zeka<br>Program<br>Otomat</div>
+  </div>
+</div>
+
+<!-- Ad 11: Global — Logo Only (glassmorphism card around app icon) -->
+<div class="ad bg-dark-reverse" data-ad-id="11">
+  <div class="sh" style="top:40px; left:60px; width:140px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; right:80px; width:120px; --op:0.12; transform:rotate(-20deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:300px; right:100px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:700px; left:40px; width:32px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <!-- Glassmorphism card center -->
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:8; text-align:center;">
+    <div class="glass" style="padding:60px 50px; display:flex; flex-direction:column; align-items:center;">
+      <img src="../../assets/images/png/app_icon.png" style="width:180px; height:180px; border-radius:40px; box-shadow:0 20px 60px rgba(0,0,0,0.5); margin-bottom:28px;">
+      <img src="../../assets/images/png/img_logo.png" style="height:52px; margin-bottom:16px;">
+      <p style="font-size:18px; font-weight:600; color:var(--lavender); letter-spacing:2px;">POWERED BY AI</p>
+    </div>
+  </div>
+  <!-- Three-card back fan top-right -->
+  <div style="position:absolute; top:30px; right:-50px; z-index:3; opacity:0.3; transform:rotate(12deg);">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:380px;">
+  </div>
+  <!-- Three-card back fan bottom-left -->
+  <div style="position:absolute; bottom:30px; left:-50px; z-index:3; opacity:0.25; transform:rotate(-10deg);">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:360px;">
+  </div>
+  <!-- Decorative card front -->
+  <div style="position:absolute; top:80px; left:40px; z-index:2; opacity:0.15;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:220px; transform:rotate(-18deg);">
+  </div>
+</div>
+
+<!-- Ad 12: EN — Unlimited AI Decks -->
+<div class="ad bg-dark-reverse" data-ad-id="12">
+  <div class="sh" style="top:30px; right:50px; width:120px; --op:0.14;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:120px; left:60px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:600px; left:40px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <p class="sub" style="margin-bottom:12px;">AI-POWERED</p>
+    <h1 class="headline" style="font-size:80px;">Unlimited<br><span class="accent">AI Decks</span></h1>
+  </div>
+  <!-- Cascading cards -->
+  <div style="position:absolute; top:380px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:440px;">
+  </div>
+  <!-- Decorative card fronts peeking behind -->
+  <div style="position:absolute; top:400px; left:30px; z-index:2; opacity:0.2;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:280px; transform:rotate(-15deg);">
+  </div>
+  <div style="position:absolute; top:420px; right:20px; z-index:2; opacity:0.2;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:260px; transform:rotate(12deg);">
+  </div>
+  <!-- Word cards at bottom -->
+  <div class="word-card" style="bottom:60px; left:50px; transform:rotate(-5deg); width:200px;">
+    <div class="wc-word">SPACE</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Star<br>Planet<br>Rocket<br>NASA<br>Galaxy</div>
+  </div>
+  <div class="word-card" style="bottom:40px; right:50px; transform:rotate(6deg); width:200px;">
+    <div class="wc-word">CONCERT</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Music<br>Stage<br>Band<br>Ticket<br>Crowd</div>
+  </div>
+</div>
+
+<!-- Ad 13: Global — Logo Only (app icon + card front at angle + topic pills) -->
+<div class="ad bg-blue" data-ad-id="13">
+  <div class="sh" style="top:40px; right:60px; width:130px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; left:50px; width:26px; --op:0.22;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:500px; left:80px; width:34px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <!-- App icon center-top -->
+  <div style="position:absolute; top:200px; left:50%; transform:translateX(-50%); z-index:8; text-align:center;">
+    <img src="../../assets/images/png/app_icon.png" style="width:180px; height:180px; border-radius:40px; box-shadow:0 20px 60px rgba(0,0,0,0.5); margin-bottom:28px; display:block;">
+    <img src="../../assets/images/png/img_logo.png" style="height:52px;">
+  </div>
+  <!-- Card front at angle behind icon -->
+  <div style="position:absolute; top:160px; right:120px; z-index:3; opacity:0.35; transform:rotate(15deg);">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:320px;">
+  </div>
+  <div style="position:absolute; top:180px; left:100px; z-index:3; opacity:0.3; transform:rotate(-12deg);">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:300px;">
+  </div>
+  <!-- Three-card back fan below -->
+  <div style="position:absolute; bottom:100px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:420px;">
+  </div>
+  <!-- Topic pills -->
+  <div style="position:absolute; bottom:40px; left:50%; transform:translateX(-50%); z-index:7; text-align:center; width:700px;">
+    <span class="topic-pill">Yoga</span>
+    <span class="topic-pill accent-pill">Cinema</span>
+    <span class="topic-pill">Robots</span>
+    <span class="topic-pill accent-pill">Space</span>
+    <span class="topic-pill">Pirates</span>
+  </div>
+</div>
+
+<!-- Ad 14: EN — No More Memorizing -->
+<div class="ad bg-dark" data-ad-id="14">
+  <div class="sh" style="top:-10px; right:-20px; width:140px; --op:0.16; transform:rotate(30deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; left:50px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:500px; left:30px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:400px; right:40px; width:100px; --op:0.1;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <h1 class="headline" style="font-size:78px;">No More<br><span class="accent">Memorizing</span></h1>
+    <p class="sub" style="margin-top:16px;">FRESH CARDS EVERY TIME</p>
+  </div>
+  <!-- Three-card back fan with crossed-out effect -->
+  <div style="position:absolute; top:400px; left:80px; z-index:3; opacity:0.35;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:280px; transform:rotate(-5deg);">
+    <div style="position:absolute; top:40%; left:50%; transform:translate(-50%,-50%) rotate(-15deg); font-size:120px; color:#E8637A; font-weight:900; text-shadow:0 4px 20px rgba(0,0,0,0.5); line-height:1;">X</div>
+  </div>
+  <!-- New: fresh word cards cascade -->
+  <div style="position:absolute; top:380px; right:20px; z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:400px;">
+  </div>
+  <!-- Word cards bottom -->
+  <div class="word-card" style="bottom:100px; left:40px; transform:rotate(-7deg); width:200px;">
+    <div class="wc-word">VOLCANO</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Lava<br>Eruption<br>Mountain<br>Ash<br>Magma</div>
+  </div>
+  <div class="word-card" style="bottom:50px; left:320px; transform:rotate(3deg); width:200px;">
+    <div class="wc-word">PENGUIN</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Ice<br>Antarctica<br>Bird<br>Waddle<br>Tuxedo</div>
+  </div>
+  <div class="word-card" style="bottom:100px; right:30px; transform:rotate(8deg); width:180px;">
+    <div class="wc-word">NINJA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Stealth<br>Japan<br>Sword<br>Shadow<br>Warrior</div>
+  </div>
+</div>
+
+<script>
+  const hash = window.location.hash;
+  const m = hash.match(/ad=(\d+)/);
+  if (m) {
+    const id = parseInt(m[1]);
+    document.querySelectorAll('.ad').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.adId) === id);
+    });
+  }
+</script>
+</body>
+</html>
