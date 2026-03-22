@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { width: 1080px; height: 1350px; }
+  .headline { font-size: 72px; font-weight: 900; line-height: 1.05; color: #fff; }
+  .headline .accent { color: var(--red); text-shadow: 0 0 40px rgba(232,99,122,0.6); }
+  .sub { font-size: 20px; font-weight: 600; color: var(--lavender); letter-spacing: 3px; text-transform: uppercase; }
+  .hero-cards { filter: drop-shadow(0 20px 50px rgba(0,0,0,0.45)); }
+
+  .phone {
+    position: absolute;
+    background: #000;
+    border-radius: 36px;
+    border: 4px solid #444;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 2px #555;
+  }
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100px; height: 24px;
+    background: #000;
+    border-radius: 0 0 14px 14px;
+    z-index: 10;
+  }
+  .phone img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .logo-only-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; z-index: 5; position: relative; }
+</style>
+</head>
+<body>
+
+<!-- Ad 9: EN — Ready for Party Chaos? -->
+<div class="ad bg-dark" data-ad-id="9">
+  <div class="sh" style="top:-10px; left:-20px; width:150px; --op:0.18;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; right:60px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:400px; left:30px; width:35px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:300px; left:80px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:110px; left:0; width:100%; text-align:center; z-index:7; padding:0 60px;">
+    <p class="sub" style="margin-bottom:14px;">PARTY GAME</p>
+    <h1 class="headline" style="font-size:74px;">Ready for<br><span class="accent">Party Chaos?</span></h1>
+  </div>
+  <!-- Three phones fanned -->
+  <div class="phone" style="top:400px; left:40px; width:230px; height:460px; z-index:5; transform:rotate(-8deg);">
+    <img src="../../assets/images/png/6_02.png">
+  </div>
+  <div class="phone" style="top:370px; left:50%; transform:translateX(-50%); width:260px; height:520px; z-index:6;">
+    <img src="../../assets/images/png/6_03.png">
+  </div>
+  <div class="phone" style="top:400px; right:40px; width:230px; height:460px; z-index:5; transform:rotate(8deg);">
+    <img src="../../assets/images/png/6_05.png">
+  </div>
+  <!-- Hero cards bottom -->
+  <div style="position:absolute; bottom:-40px; left:50%; transform:translateX(-50%); z-index:4; opacity:0.3;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:320px;">
+  </div>
+</div>
+
+<!-- Ad 10: TR — Sabit Deste Devri Bitti -->
+<div class="ad bg-blue" data-ad-id="10">
+  <div class="sh" style="top:20px; right:40px; width:130px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:150px; left:30px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:500px; right:60px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:400px; right:100px; width:110px; --op:0.1; transform:rotate(-15deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:7; padding:0 60px;">
+    <h1 class="headline" style="font-size:70px;">Sabit Deste<br><span class="accent">Devri Bitti</span></h1>
+  </div>
+  <!-- Old card with X vs phone showing new AI -->
+  <div style="position:absolute; top:340px; left:60px; z-index:4;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:340px; transform:rotate(-8deg); opacity:0.45; filter:drop-shadow(0 12px 30px rgba(0,0,0,0.35));">
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:100px; color:#E8637A; font-weight:900; text-shadow:0 4px 12px rgba(0,0,0,0.5);">X</div>
+  </div>
+  <!-- Phone showing AI-generated content -->
+  <div class="phone" style="top:320px; right:60px; width:300px; height:600px; z-index:6; transform:rotate(3deg);">
+    <img src="../../assets/images/png/6_01.jpg">
+  </div>
+  <!-- Hero cards bottom -->
+  <div style="position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); z-index:3; opacity:0.25;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:280px;">
+  </div>
+</div>
+
+<!-- Ad 11: Global — Logo Only -->
+<div class="ad bg-dark" data-ad-id="11">
+  <div class="sh" style="top:40px; left:60px; width:140px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; right:80px; width:120px; --op:0.12; transform:rotate(-20deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:300px; right:100px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <!-- Center: app icon + logo -->
+  <div style="position:absolute; top:38%; left:50%; transform:translate(-50%,-50%); z-index:8; text-align:center;">
+    <img src="../../assets/images/png/app_icon.png" style="width:200px; height:200px; border-radius:44px; box-shadow:0 20px 60px rgba(0,0,0,0.5); margin-bottom:30px; display:block;">
+    <img src="../../assets/images/png/img_logo.png" style="height:56px;">
+  </div>
+  <!-- Phones scattered around -->
+  <div class="phone" style="top:30px; left:30px; width:200px; height:400px; z-index:3; transform:rotate(-10deg); opacity:0.6;">
+    <img src="../../assets/images/png/6_01.jpg">
+  </div>
+  <div class="phone" style="top:40px; right:30px; width:200px; height:400px; z-index:3; transform:rotate(8deg); opacity:0.6;">
+    <img src="../../assets/images/png/6_04.png">
+  </div>
+  <div class="phone" style="bottom:60px; left:80px; width:220px; height:440px; z-index:3; transform:rotate(6deg); opacity:0.55;">
+    <img src="../../assets/images/png/6_02.png">
+  </div>
+  <div class="phone" style="bottom:40px; right:80px; width:220px; height:440px; z-index:3; transform:rotate(-8deg); opacity:0.55;">
+    <img src="../../assets/images/png/6_05.png">
+  </div>
+  <!-- Hero cards behind everything -->
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; opacity:0.15;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:500px;">
+  </div>
+</div>
+
+<!-- Ad 12: EN — Unlimited AI Decks -->
+<div class="ad bg-dark-reverse" data-ad-id="12">
+  <div class="sh" style="top:30px; right:50px; width:120px; --op:0.14;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:120px; left:60px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:600px; left:40px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:7; padding:0 60px;">
+    <p class="sub" style="margin-bottom:12px;">AI-POWERED</p>
+    <h1 class="headline" style="font-size:78px;">Unlimited<br><span class="accent">AI Decks</span></h1>
+  </div>
+  <!-- Big phone center -->
+  <div class="phone" style="top:360px; left:50%; transform:translateX(-50%); width:300px; height:600px; z-index:6;">
+    <img src="../../assets/images/png/6_03.png">
+  </div>
+  <!-- Hero cards behind phone -->
+  <div style="position:absolute; top:400px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:450px;">
+  </div>
+  <!-- Decorative card fronts peeking -->
+  <div style="position:absolute; top:500px; left:30px; z-index:3; opacity:0.2;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:260px; transform:rotate(-15deg);">
+  </div>
+  <div style="position:absolute; top:520px; right:20px; z-index:3; opacity:0.2;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:240px; transform:rotate(12deg);">
+  </div>
+</div>
+
+<!-- Ad 13: Global — Logo Only -->
+<div class="ad bg-blue" data-ad-id="13">
+  <div class="sh" style="top:40px; right:60px; width:130px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; left:50px; width:26px; --op:0.22;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:500px; left:80px; width:34px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <!-- Logo center top -->
+  <div style="position:absolute; top:28%; left:50%; transform:translate(-50%,-50%); z-index:8; text-align:center;">
+    <img src="../../assets/images/png/app_icon.png" style="width:180px; height:180px; border-radius:40px; box-shadow:0 20px 60px rgba(0,0,0,0.5); margin-bottom:30px; display:block;">
+    <img src="../../assets/images/png/img_logo.png" style="height:52px;">
+  </div>
+  <!-- Three phones in row below -->
+  <div class="phone" style="bottom:40px; left:40px; width:210px; height:420px; z-index:5; transform:rotate(-6deg);">
+    <img src="../../assets/images/png/6_01.jpg">
+  </div>
+  <div class="phone" style="bottom:60px; left:50%; transform:translateX(-50%); width:230px; height:460px; z-index:6;">
+    <img src="../../assets/images/png/6_02.png">
+  </div>
+  <div class="phone" style="bottom:40px; right:40px; width:210px; height:420px; z-index:5; transform:rotate(6deg);">
+    <img src="../../assets/images/png/6_04.png">
+  </div>
+  <!-- Hero cards behind phones -->
+  <div style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); z-index:3; opacity:0.2;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:400px;">
+  </div>
+</div>
+
+<!-- Ad 14: EN — No More Memorizing -->
+<div class="ad bg-dark" data-ad-id="14">
+  <div class="sh" style="top:-10px; right:-20px; width:140px; --op:0.16; transform:rotate(30deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; left:50px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="top:500px; left:30px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="bottom:400px; right:40px; width:100px; --op:0.1;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:7; padding:0 60px;">
+    <h1 class="headline" style="font-size:76px;">No More<br><span class="accent">Memorizing</span></h1>
+    <p class="sub" style="margin-top:16px;">FRESH CARDS EVERY TIME</p>
+  </div>
+  <!-- Old cards crossed out left -->
+  <div style="position:absolute; top:400px; left:60px; z-index:4; opacity:0.35;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:300px; transform:rotate(-5deg);">
+    <div style="position:absolute; top:40%; left:50%; transform:translate(-50%,-50%) rotate(-15deg); font-size:120px; color:#E8637A; font-weight:900; text-shadow:0 4px 20px rgba(0,0,0,0.5); line-height:1;">X</div>
+  </div>
+  <!-- Phone showing fresh AI content right -->
+  <div class="phone" style="top:400px; right:40px; width:300px; height:600px; z-index:6; transform:rotate(4deg);">
+    <img src="../../assets/images/png/6_05.png">
+  </div>
+  <!-- Second phone peeking bottom-left -->
+  <div class="phone" style="bottom:40px; left:40px; width:220px; height:440px; z-index:5; transform:rotate(-6deg); opacity:0.7;">
+    <img src="../../assets/images/png/6_01.jpg">
+  </div>
+</div>
+
+<script>
+  const hash = window.location.hash;
+  const m = hash.match(/ad=(\d+)/);
+  if (m) {
+    const id = parseInt(m[1]);
+    document.querySelectorAll('.ad').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.adId) === id);
+    });
+  }
+</script>
+</body>
+</html>
