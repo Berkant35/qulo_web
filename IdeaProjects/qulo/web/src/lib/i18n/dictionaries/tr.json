@@ -73,6 +73,12 @@
     "diff4QuloTitle": "AI destekli eşleşme",
     "diff4QuloDesc": "AI ile kişiselleştirilmiş soru önerileri"
   },
+  "stats": {
+    "questions": "Soru Oluşturuldu",
+    "matches": "Eşleşme",
+    "users": "Kullanıcı",
+    "rating": "App Store"
+  },
   "cta": { "title": "Hemen Başla.", "desc": "Sorularınla tanış, gerçek bağlantılar kur.", "button": "Uygulamayı İndir" },
   "footer": { "legal": "Legal", "privacy": "Gizlilik Politikası", "terms": "Kullanım Koşulları", "social": "Sosyal", "copyright": "© 2026 Qulo. Tüm hakları saklıdır." },
   "invite": { "title": "Qulo'ya Davet Edildin!", "desc": "Uygulamayı indir ve davet kodunu kullan.", "redirecting": "Yönlendiriliyorsun...", "downloadPrompt": "Telefonundan indir", "code": "Davet kodu" },
