@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "Qulo",
   description: "AI-powered dating app",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

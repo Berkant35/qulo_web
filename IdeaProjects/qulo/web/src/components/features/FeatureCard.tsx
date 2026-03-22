@@ -6,7 +6,7 @@ interface FeatureCardProps {
   iconSrc: string;
   label: string;
   title: string;
-  subtitle: string;
+  subtitle?: string; // kept for API compatibility, not rendered
   description: string;
   accentColor: "purple" | "green";
   delay?: number;
@@ -17,7 +17,7 @@ const COLORS = {
   green: { hex: "#69F0AE", glow: "rgba(105,240,174,0.35)", dimGlow: "rgba(105,240,174,0.12)" },
 };
 
-export function FeatureCard({ iconSrc, label, title, subtitle, description, accentColor, delay = 0 }: FeatureCardProps) {
+export function FeatureCard({ iconSrc, label, title, description, accentColor, delay = 0 }: FeatureCardProps) {
   const color = COLORS[accentColor];
 
   return (
@@ -77,9 +77,8 @@ export function FeatureCard({ iconSrc, label, title, subtitle, description, acce
         />
       </div>
 
-      {/* Title & subtitle */}
-      <h3 className="text-base font-bold text-white mb-1">{title}</h3>
-      <p className="text-xs font-medium mb-3" style={{ color: color.hex }}>{subtitle}</p>
+      {/* Title */}
+      <h3 className="text-base font-bold text-white mb-3">{title}</h3>
 
       {/* Description */}
       <p className="text-sm text-gray-400 leading-relaxed">{description}</p>
