@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+body { width: 1200px; height: 628px; }
+
+/* ── V5 Minimal Elegance — Landscape ── */
+.v5 {
+  align-items: center;
+  justify-content: center;
+  width: 1200px;
+  height: 628px;
+  position: relative;
+  overflow: hidden;
+}
+.v5.active {
+  display: flex !important;
+}
+
+/* Backgrounds */
+.v5.bg-minimal-dark {
+  background: linear-gradient(165deg, #151933 0%, #1e2347 40%, #1a1f3d 100%);
+}
+.v5.bg-minimal-deep {
+  background: linear-gradient(180deg, #111428 0%, #1a1f3d 60%, #212754 100%);
+}
+.v5.bg-minimal-warm {
+  background: linear-gradient(170deg, #1a1f3d 0%, #23284a 50%, #1e2245 100%);
+}
+
+/* Ambient shapes */
+.v5 .ambient {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+.v5 .ambient-1 {
+  width: 400px; height: 400px;
+  background: rgba(232, 99, 122, 0.08);
+  top: -120px; right: -80px;
+}
+.v5 .ambient-2 {
+  width: 350px; height: 350px;
+  background: rgba(129, 136, 201, 0.07);
+  bottom: -100px; left: -60px;
+}
+.v5 .ambient-3 {
+  width: 300px; height: 300px;
+  background: rgba(232, 99, 122, 0.06);
+  bottom: -80px; right: 200px;
+}
+
+/* Content */
+.v5 .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 50px 80px;
+}
+
+/* Accent line */
+.v5 .accent-line {
+  width: 50px;
+  height: 1.5px;
+  background: rgba(232, 99, 122, 0.5);
+  margin: 20px 0;
+}
+.v5 .accent-line-center {
+  width: 50px;
+  height: 1.5px;
+  background: rgba(232, 99, 122, 0.5);
+  margin: 16px auto;
+}
+
+/* Typography */
+.v5 .headline {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+.v5 .headline .accent {
+  color: var(--red);
+}
+.v5 .headline-center {
+  text-align: center;
+}
+
+.v5 .subline {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Hero image */
+.v5 .hero-img {
+  max-height: 380px;
+  max-width: 420px;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 40px rgba(0,0,0,0.4));
+}
+
+/* Phone mockup */
+.v5 .phone-container {
+  width: 220px;
+  height: 340px;
+  border-radius: 28px;
+  border: 3px solid rgba(255,255,255,0.12);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  position: relative;
+  background: #000;
+  flex-shrink: 0;
+}
+.v5 .phone-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 80px; height: 20px;
+  background: #000;
+  border-radius: 0 0 12px 12px;
+  z-index: 5;
+}
+.v5 .phone-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Logo */
+.v5 .logo-right {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+.v5 .logo-right img {
+  height: 40px;
+  opacity: 0.7;
+}
+.v5 .logo-bottom {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+.v5 .logo-bottom img {
+  height: 38px;
+  opacity: 0.7;
+}
+.v5 .logo-inline img {
+  height: 36px;
+  opacity: 0.6;
+}
+
+/* Massive icon for logo-only */
+.v5 .massive-icon {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 60px rgba(232, 99, 122, 0.12));
+}
+.v5 .massive-icon-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,99,122,0.08) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+/* Store badges minimal */
+.v5 .store-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+.v5 .store-badge-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 10px 18px;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+.v5 .store-badge-mini img { width: 22px; height: 22px; }
+
+/* ── Layout helpers ── */
+.v5 .split-h {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+}
+.v5 .text-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.v5 .visual-side {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Topic pills */
+.v5 .topic-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.v5 .topic-pill {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 8px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+}
+
+/* Frame crop */
+.v5 .frame-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+/* ── Ad-specific ── */
+#ad15 .content { gap: 0; }
+#ad16 .content { gap: 0; }
+#ad18 .content { gap: 0; }
+</style>
+</head>
+<body>
+
+<!-- Ad 15: TR — "Sinirsiz Eglence Basladi" -->
+<div class="ad v5 bg-minimal-dark" data-ad-id="15" id="ad15">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="content">
+    <div class="split-h">
+      <div class="text-side">
+        <div class="subline" style="font-size:16px;">Yapay Zeka Destekli</div>
+        <div class="headline" style="margin-top:12px;">Sınırsız<br><span class="accent">Eğlence</span><br>Başladı</div>
+        <div class="accent-line"></div>
+        <div class="topic-row">
+          <div class="topic-pill">Spor</div>
+          <div class="topic-pill">Tarih</div>
+          <div class="topic-pill">Bilim</div>
+        </div>
+      </div>
+      <div class="visual-side">
+        <div class="phone-container" style="width:240px;height:370px;">
+          <img src="../../assets/images/advertising/6_05.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 16: EN — "Challenge Your Friends" -->
+<div class="ad v5 bg-minimal-deep" data-ad-id="16" id="ad16">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-3"></div>
+  <div class="content">
+    <div class="split-h">
+      <div class="text-side">
+        <div class="headline">Challenge<br>Your <span class="accent">Friends</span></div>
+        <div class="accent-line"></div>
+        <div class="subline" style="font-size:18px;">AI Word Game</div>
+      </div>
+      <div class="visual-side">
+        <img class="hero-img" src="../../assets/images/png/img_three_tabul_color.png" alt="" style="max-width:380px;max-height:320px;">
+      </div>
+    </div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 17: Global — Logo + Cards minimal -->
+<div class="ad v5 bg-minimal-warm" data-ad-id="17" id="ad17">
+  <div class="ambient ambient-1" style="opacity:0.06;"></div>
+  <div class="ambient ambient-2" style="opacity:0.05;"></div>
+  <div class="content" style="flex-direction:column;gap:32px;">
+    <img class="hero-img" src="../../assets/images/png/img_three_tabul_color.png" alt="" style="max-width:400px;max-height:280px;">
+    <div class="accent-line-center"></div>
+    <div class="logo-inline"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+  </div>
+</div>
+
+<!-- Ad 18: EN — "The Ultimate Word Game" -->
+<div class="ad v5 bg-minimal-dark" data-ad-id="18" id="ad18">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="content">
+    <div class="split-h">
+      <div class="text-side">
+        <div class="subline" style="font-size:16px;">AI-Powered</div>
+        <div class="headline" style="margin-top:12px;">The Ultimate<br><span class="accent">Word</span> Game</div>
+        <div class="accent-line"></div>
+        <div class="store-row">
+          <div class="store-badge-mini">
+            <img src="../../assets/images/svg/ic_apple.svg" alt="">
+            App Store
+          </div>
+          <div class="store-badge-mini">
+            <img src="../../assets/images/svg/ic_google.svg" alt="">
+            Google Play
+          </div>
+        </div>
+      </div>
+      <div class="visual-side">
+        <div class="phone-container" style="width:220px;height:340px;">
+          <img src="../../assets/images/advertising/6_01.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 19: Global — Logo Only landscape -->
+<div class="ad v5 bg-minimal-deep" data-ad-id="19" id="ad19">
+  <div class="ambient ambient-1" style="opacity:0.06;"></div>
+  <div class="ambient ambient-2" style="opacity:0.05;"></div>
+  <div class="content" style="flex-direction:column;gap:24px;">
+    <div class="massive-icon-glow"></div>
+    <img class="massive-icon" src="../../assets/images/png/app_icon.png" alt="">
+  </div>
+</div>
+
+<!-- Ad 20: Global — Frame crop + logo -->
+<div class="ad v5 bg-minimal-warm" data-ad-id="20" id="ad20">
+  <img class="frame-bg" src="../../temp5/frames/frame_00700.png" alt="">
+  <div class="ambient ambient-1" style="opacity:0.1;"></div>
+  <div class="content" style="flex-direction:column;gap:24px;">
+    <img class="massive-icon" src="../../assets/images/png/app_icon.png" alt="" style="width:200px;height:200px;">
+    <div class="accent-line-center"></div>
+    <div class="logo-inline"><img src="../../assets/images/png/img_logo.png" alt="" style="height:42px;opacity:0.8;"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const hash = window.location.hash;
+  const match = hash.match(/ad=(\d+)/);
+  if (!match) return;
+  const id = parseInt(match[1]);
+  document.querySelectorAll('.ad').forEach(el => {
+    const adId = parseInt(el.getAttribute('data-ad-id'));
+    if (adId === id) {
+      el.classList.add('active');
+    }
+  });
+})();
+</script>
+</body>
+</html>

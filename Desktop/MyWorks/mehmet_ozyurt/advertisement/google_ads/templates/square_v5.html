@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+body { width: 1080px; height: 1080px; }
+
+/* ── V5 Minimal Elegance ── */
+.v5 {
+  align-items: center;
+  justify-content: center;
+  width: 1080px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+}
+.v5.active {
+  display: flex !important;
+}
+
+/* Backgrounds */
+.v5.bg-minimal-dark {
+  background: linear-gradient(165deg, #151933 0%, #1e2347 40%, #1a1f3d 100%);
+}
+.v5.bg-minimal-deep {
+  background: linear-gradient(180deg, #111428 0%, #1a1f3d 60%, #212754 100%);
+}
+.v5.bg-minimal-warm {
+  background: linear-gradient(170deg, #1a1f3d 0%, #23284a 50%, #1e2245 100%);
+}
+
+/* Subtle ambient shapes */
+.v5 .ambient {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.v5 .ambient-1 {
+  width: 500px; height: 500px;
+  background: rgba(232, 99, 122, 0.08);
+  top: -150px; right: -100px;
+}
+.v5 .ambient-2 {
+  width: 400px; height: 400px;
+  background: rgba(129, 136, 201, 0.07);
+  bottom: -120px; left: -80px;
+}
+.v5 .ambient-3 {
+  width: 300px; height: 300px;
+  background: rgba(232, 99, 122, 0.06);
+  bottom: -50px; right: -50px;
+}
+
+/* Content wrapper */
+.v5 .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 80px;
+}
+
+/* Thin accent line */
+.v5 .accent-line {
+  width: 60px;
+  height: 1.5px;
+  background: rgba(232, 99, 122, 0.5);
+  margin: 24px auto;
+}
+
+/* Typography */
+.v5 .headline {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: #fff;
+  text-align: center;
+  max-width: 800px;
+}
+.v5 .headline .accent {
+  color: var(--red);
+}
+
+.v5 .subline {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 26px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 16px;
+}
+
+/* Hero image */
+.v5 .hero-img {
+  max-width: 480px;
+  max-height: 400px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.4));
+}
+.v5 .hero-img-large {
+  max-width: 560px;
+  max-height: 460px;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 60px rgba(0,0,0,0.5));
+}
+
+/* Logo */
+.v5 .logo-bottom {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+.v5 .logo-bottom img {
+  height: 44px;
+  opacity: 0.7;
+}
+
+/* Logo-only massive icon */
+.v5 .massive-icon {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 80px rgba(232, 99, 122, 0.15));
+}
+.v5 .massive-icon-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,99,122,0.1) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+/* Frosted topic pills */
+.v5 .topic-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+.v5 .topic-pill {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 12px 28px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.5px;
+}
+
+/* Phone mockup */
+.v5 .phone-container {
+  width: 280px;
+  height: 380px;
+  border-radius: 32px;
+  border: 3px solid rgba(255,255,255,0.12);
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  position: relative;
+  background: #000;
+}
+.v5 .phone-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100px; height: 24px;
+  background: #000;
+  border-radius: 0 0 14px 14px;
+  z-index: 5;
+}
+.v5 .phone-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Store badges */
+.v5 .store-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+/* ── Ad-specific layouts ── */
+
+/* Ad 1: EN — cards hero + headline */
+#ad1 .content {
+  justify-content: center;
+  gap: 40px;
+}
+
+/* Ad 2: TR — phone + headline */
+#ad2 .content {
+  justify-content: center;
+  gap: 36px;
+}
+
+/* Ad 3: DE — centered text with topic pills */
+#ad3 .content {
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Ad 4: ES — phone left, text right split */
+#ad4 .content {
+  flex-direction: row;
+  padding: 60px 80px;
+  gap: 60px;
+}
+#ad4 .text-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#ad4 .text-side .headline {
+  text-align: left;
+  font-size: 56px;
+}
+#ad4 .text-side .accent-line {
+  margin: 20px 0;
+}
+
+/* Ad 5: FR — elegant centered text only */
+#ad5 .content {
+  justify-content: center;
+  gap: 24px;
+}
+#ad5 .headline {
+  font-size: 58px;
+}
+
+/* Ad 6: IT — card front + text */
+#ad6 .content {
+  justify-content: center;
+  gap: 36px;
+}
+
+/* Ad 7: PT — cards hero bottom */
+#ad7 .content {
+  justify-content: center;
+  gap: 36px;
+}
+
+/* Ad 8: Global logo only */
+#ad8 .content {
+  justify-content: center;
+}
+</style>
+</head>
+<body>
+
+<!-- Ad 1: EN — "Create Any Deck with AI" -->
+<div class="ad v5 bg-minimal-dark" data-ad-id="1" id="ad1">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="content">
+    <div class="headline">Create Any Deck<br>with <span class="accent">AI</span></div>
+    <div class="accent-line"></div>
+    <img class="hero-img" src="../../assets/images/png/img_three_tabul_color.png" alt="">
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 2: TR — "Istedigin Konuda Deste Yarat" -->
+<div class="ad v5 bg-minimal-deep" data-ad-id="2" id="ad2">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-3"></div>
+  <div class="content">
+    <div class="headline">İstediğin Konuda<br><span class="accent">Deste</span> Yarat</div>
+    <div class="accent-line"></div>
+    <div class="phone-container">
+      <img src="../../assets/images/advertising/6_02.png" alt="">
+    </div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 3: DE — "Dein Thema, Dein Spiel" -->
+<div class="ad v5 bg-minimal-warm" data-ad-id="3" id="ad3">
+  <div class="ambient ambient-2"></div>
+  <div class="ambient ambient-1"></div>
+  <div class="content">
+    <div class="subline">Powered by AI</div>
+    <div class="headline">Dein Thema,<br>Dein <span class="accent">Spiel</span></div>
+    <div class="accent-line"></div>
+    <div class="topic-row">
+      <div class="topic-pill">Sport</div>
+      <div class="topic-pill">Filme</div>
+      <div class="topic-pill">Musik</div>
+      <div class="topic-pill">Wissenschaft</div>
+    </div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 4: ES — "Barajas Infinitas con IA" -->
+<div class="ad v5 bg-minimal-dark" data-ad-id="4" id="ad4">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="content">
+    <div class="phone-container">
+      <img src="../../assets/images/advertising/6_01.jpg" alt="">
+    </div>
+    <div class="text-side">
+      <div class="headline">¡Barajas Infinitas<br>con <span class="accent">IA</span>!</div>
+      <div class="accent-line"></div>
+      <div class="subline" style="letter-spacing:2px;font-size:20px;">Descarga Gratis</div>
+    </div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 5: FR — "Creez vos decks avec l'IA" -->
+<div class="ad v5 bg-minimal-deep" data-ad-id="5" id="ad5">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-3"></div>
+  <div class="content">
+    <img class="hero-img" src="../../assets/images/png/img_three_tabul_color.png" alt="" style="max-width:420px;max-height:340px;">
+    <div class="accent-line" style="margin:28px auto;"></div>
+    <div class="headline">Créez vos decks<br>avec <span class="accent">l'IA</span></div>
+    <div class="topic-row" style="margin-top:24px;">
+      <div class="topic-pill">Cinéma</div>
+      <div class="topic-pill">Sport</div>
+      <div class="topic-pill">Science</div>
+    </div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 6: IT — "Non limitarti a carte fisse" -->
+<div class="ad v5 bg-minimal-warm" data-ad-id="6" id="ad6">
+  <div class="ambient ambient-2"></div>
+  <div class="ambient ambient-1"></div>
+  <div class="content">
+    <div class="headline" style="font-size:54px;">Non limitarti<br>a carte <span class="accent">fisse</span></div>
+    <div class="accent-line"></div>
+    <div class="phone-container" style="width:260px;height:360px;">
+      <img src="../../assets/images/advertising/6_04.png" alt="">
+    </div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 7: PT — "Diversao com Amigos" -->
+<div class="ad v5 bg-minimal-dark" data-ad-id="7" id="ad7">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="content">
+    <div class="headline">Diversão com<br><span class="accent">Amigos</span></div>
+    <div class="accent-line"></div>
+    <img class="hero-img" src="../../assets/images/png/img_three_tabul_color.png" alt="" style="max-width:500px;">
+    <div class="subline" style="margin-top:20px;font-size:20px;">AI-Powered Word Game</div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 8: Global — Logo Only -->
+<div class="ad v5 bg-minimal-deep" data-ad-id="8" id="ad8">
+  <div class="ambient ambient-1" style="opacity:0.06;"></div>
+  <div class="ambient ambient-2" style="opacity:0.05;"></div>
+  <div class="content">
+    <div class="massive-icon-glow"></div>
+    <img class="massive-icon" src="../../assets/images/png/app_icon.png" alt="">
+  </div>
+</div>
+
+<script>
+(function() {
+  const hash = window.location.hash;
+  const match = hash.match(/ad=(\d+)/);
+  if (!match) return;
+  const id = parseInt(match[1]);
+  document.querySelectorAll('.ad').forEach(el => {
+    const adId = parseInt(el.getAttribute('data-ad-id'));
+    if (adId === id) {
+      el.classList.add('active');
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+body { width: 1080px; height: 1350px; }
+
+/* ── V5 Minimal Elegance — Portrait ── */
+.v5 {
+  align-items: center;
+  justify-content: center;
+  width: 1080px;
+  height: 1350px;
+  position: relative;
+  overflow: hidden;
+}
+.v5.active {
+  display: flex !important;
+}
+
+/* Backgrounds */
+.v5.bg-minimal-dark {
+  background: linear-gradient(165deg, #151933 0%, #1e2347 40%, #1a1f3d 100%);
+}
+.v5.bg-minimal-deep {
+  background: linear-gradient(180deg, #111428 0%, #1a1f3d 60%, #212754 100%);
+}
+.v5.bg-minimal-warm {
+  background: linear-gradient(170deg, #1a1f3d 0%, #23284a 50%, #1e2245 100%);
+}
+
+/* Ambient shapes */
+.v5 .ambient {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.v5 .ambient-1 {
+  width: 500px; height: 500px;
+  background: rgba(232, 99, 122, 0.08);
+  top: -150px; right: -100px;
+}
+.v5 .ambient-2 {
+  width: 400px; height: 400px;
+  background: rgba(129, 136, 201, 0.07);
+  bottom: -120px; left: -80px;
+}
+.v5 .ambient-3 {
+  width: 350px; height: 350px;
+  background: rgba(232, 99, 122, 0.06);
+  top: 40%; left: -100px;
+}
+
+/* Content */
+.v5 .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 90px 80px;
+}
+
+/* Accent line */
+.v5 .accent-line {
+  width: 60px;
+  height: 1.5px;
+  background: rgba(232, 99, 122, 0.5);
+  margin: 28px auto;
+}
+
+/* Typography */
+.v5 .headline {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 68px;
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+  color: #fff;
+  text-align: center;
+  max-width: 860px;
+}
+.v5 .headline .accent {
+  color: var(--red);
+}
+
+.v5 .subline {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Hero image */
+.v5 .hero-img {
+  max-width: 520px;
+  max-height: 440px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.4));
+}
+
+/* Phone mockup */
+.v5 .phone-container {
+  width: 320px;
+  height: 500px;
+  border-radius: 36px;
+  border: 3px solid rgba(255,255,255,0.12);
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  position: relative;
+  background: #000;
+}
+.v5 .phone-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 110px; height: 26px;
+  background: #000;
+  border-radius: 0 0 14px 14px;
+  z-index: 5;
+}
+.v5 .phone-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Logo */
+.v5 .logo-bottom {
+  position: absolute;
+  bottom: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+.v5 .logo-bottom img {
+  height: 44px;
+  opacity: 0.7;
+}
+
+/* Massive icon for logo-only */
+.v5 .massive-icon {
+  width: 450px;
+  height: 450px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 80px rgba(232, 99, 122, 0.15));
+}
+.v5 .massive-icon-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,99,122,0.1) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+/* Topic pills */
+.v5 .topic-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.v5 .topic-pill {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 12px 28px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+}
+
+/* Old vs New comparison */
+.v5 .comparison {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-top: 20px;
+}
+.v5 .comparison-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.v5 .comparison-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.v5 .comparison-label.old { color: rgba(255,255,255,0.35); }
+.v5 .comparison-label.new { color: var(--red); }
+.v5 .comparison-divider {
+  width: 1.5px;
+  height: 300px;
+  background: rgba(255,255,255,0.1);
+}
+.v5 .comparison-img {
+  max-width: 280px;
+  max-height: 280px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.3));
+}
+.v5 .comparison-side.faded .comparison-img {
+  opacity: 0.4;
+  filter: grayscale(0.6) drop-shadow(0 12px 30px rgba(0,0,0,0.2));
+}
+
+/* ── Ad-specific ── */
+#ad9 .content { gap: 40px; }
+#ad10 .content { gap: 32px; }
+#ad11 .content { justify-content: center; }
+#ad12 .content { gap: 36px; }
+#ad13 .content { justify-content: center; }
+#ad14 .content { gap: 30px; }
+</style>
+</head>
+<body>
+
+<!-- Ad 9: EN — "Ready for Party Chaos?" -->
+<div class="ad v5 bg-minimal-dark" data-ad-id="9" id="ad9">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="content">
+    <div class="headline">Ready for<br><span class="accent">Party</span> Chaos?</div>
+    <div class="accent-line"></div>
+    <div class="phone-container">
+      <img src="../../assets/images/advertising/6_03.png" alt="">
+    </div>
+    <div class="subline" style="margin-top:16px;">Download Free</div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 10: TR — "Sabit Deste Devri Bitti" -->
+<div class="ad v5 bg-minimal-deep" data-ad-id="10" id="ad10">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-3"></div>
+  <div class="content">
+    <div class="headline">Sabit Deste<br>Devri <span class="accent">Bitti</span></div>
+    <div class="accent-line"></div>
+    <img class="hero-img" src="../../assets/images/png/img_three_tabul_color.png" alt="" style="max-width:480px;">
+    <div class="topic-row">
+      <div class="topic-pill">Spor</div>
+      <div class="topic-pill">Tarih</div>
+      <div class="topic-pill">Bilim</div>
+      <div class="topic-pill">Sinema</div>
+    </div>
+    <div class="subline" style="margin-top:20px;font-size:20px;">Yapay Zeka ile Sonsuz Deste</div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 11: Global — Logo Only Portrait -->
+<div class="ad v5 bg-minimal-warm" data-ad-id="11" id="ad11">
+  <div class="ambient ambient-1" style="opacity:0.06;"></div>
+  <div class="ambient ambient-2" style="opacity:0.05;"></div>
+  <div class="content">
+    <div class="massive-icon-glow"></div>
+    <img class="massive-icon" src="../../assets/images/png/app_icon.png" alt="">
+  </div>
+</div>
+
+<!-- Ad 12: EN — "Unlimited AI Decks" -->
+<div class="ad v5 bg-minimal-dark" data-ad-id="12" id="ad12">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="content">
+    <div class="subline">AI-Powered</div>
+    <div class="headline"><span class="accent">Unlimited</span><br>AI Decks</div>
+    <div class="accent-line"></div>
+    <img class="hero-img" src="../../assets/images/png/img_three_tabul_color.png" alt="" style="max-width:500px;max-height:400px;">
+    <div class="topic-row" style="margin-top:24px;">
+      <div class="topic-pill">Movies</div>
+      <div class="topic-pill">Sports</div>
+      <div class="topic-pill">Science</div>
+      <div class="topic-pill">Music</div>
+      <div class="topic-pill">History</div>
+    </div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<!-- Ad 13: Global — Logo Only with screenshot bg -->
+<div class="ad v5 bg-minimal-deep" data-ad-id="13" id="ad13">
+  <div class="ambient ambient-1" style="opacity:0.05;"></div>
+  <div class="ambient ambient-3" style="opacity:0.04;"></div>
+  <div class="content">
+    <div class="massive-icon-glow"></div>
+    <img class="massive-icon" src="../../assets/images/png/app_icon.png" alt="" style="width:480px;height:480px;">
+    <div style="margin-top:40px;">
+      <img src="../../assets/images/png/img_logo.png" alt="" style="height:50px;opacity:0.6;">
+    </div>
+  </div>
+</div>
+
+<!-- Ad 14: EN — "No More Memorizing" (old vs new) -->
+<div class="ad v5 bg-minimal-warm" data-ad-id="14" id="ad14">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="content">
+    <div class="headline">No More<br><span class="accent">Memorizing</span></div>
+    <div class="accent-line"></div>
+    <div class="comparison">
+      <div class="comparison-side faded">
+        <img class="comparison-img" src="../../assets/images/png/img_three_tabul_back.png" alt="">
+        <div class="comparison-label old">Same Old Cards</div>
+      </div>
+      <div class="comparison-divider"></div>
+      <div class="comparison-side">
+        <img class="comparison-img" src="../../assets/images/png/img_three_tabul_color.png" alt="" style="max-width:280px;">
+        <div class="comparison-label new">AI Generated</div>
+      </div>
+    </div>
+    <div class="subline" style="margin-top:28px;font-size:20px;">Fresh Decks Every Time</div>
+  </div>
+  <div class="logo-bottom"><img src="../../assets/images/png/img_logo.png" alt=""></div>
+</div>
+
+<script>
+(function() {
+  const hash = window.location.hash;
+  const match = hash.match(/ad=(\d+)/);
+  if (!match) return;
+  const id = parseInt(match[1]);
+  document.querySelectorAll('.ad').forEach(el => {
+    const adId = parseInt(el.getAttribute('data-ad-id'));
+    if (adId === id) {
+      el.classList.add('active');
+    }
+  });
+})();
+</script>
+</body>
+</html>
