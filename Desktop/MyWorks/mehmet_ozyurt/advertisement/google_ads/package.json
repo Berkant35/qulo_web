@@ -1,0 +1,13 @@
+{
+  "name": "tabul-google-ads",
+  "version": "1.0.0",
+  "description": "TabuL Google Ads visual generator",
+  "type": "module",
+  "scripts": {
+    "capture": "node capture.mjs",
+    "capture:single": "node capture.mjs --id"
+  },
+  "dependencies": {
+    "puppeteer-core": "^24.39.1"
+  }
+}

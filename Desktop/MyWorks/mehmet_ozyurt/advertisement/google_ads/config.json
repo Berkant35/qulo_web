@@ -1,0 +1,296 @@
+{
+  "base_asset_path": "../assets",
+  "output_dir": "output",
+  "ads": [
+    {
+      "id": 1,
+      "template": "square",
+      "width": 1080,
+      "height": 1080,
+      "lang": "en",
+      "text": "Create Any Deck with AI",
+      "layout": "text-left-asset-right",
+      "assets": {
+        "primary": "images/png/img_three_tabul_color.png"
+      },
+      "logo": true,
+      "output_name": "01_square_en"
+    },
+    {
+      "id": 2,
+      "template": "square",
+      "width": 1080,
+      "height": 1080,
+      "lang": "tr",
+      "text": "İstediğin Konuda Deste Yarat",
+      "layout": "text-top-asset-bottom",
+      "assets": {
+        "primary": "images/advertising/6_02.png"
+      },
+      "logo": true,
+      "output_name": "02_square_tr"
+    },
+    {
+      "id": 3,
+      "template": "square",
+      "width": 1080,
+      "height": 1080,
+      "lang": "de",
+      "text": "Dein Thema, Dein Spiel",
+      "layout": "center-text-floating",
+      "assets": {
+        "primary": "images/png/img_tabul_card_front.png"
+      },
+      "logo": true,
+      "output_name": "03_square_de"
+    },
+    {
+      "id": 4,
+      "template": "square",
+      "width": 1080,
+      "height": 1080,
+      "lang": "es",
+      "text": "¡Barajas Infinitas con IA!",
+      "layout": "text-left-screenshot-right",
+      "assets": {
+        "primary": "images/advertising/6_01.jpg"
+      },
+      "logo": true,
+      "output_name": "04_square_es"
+    },
+    {
+      "id": 5,
+      "template": "square",
+      "width": 1080,
+      "height": 1080,
+      "lang": "fr",
+      "text": "Créez vos decks avec l'IA",
+      "layout": "center-glow",
+      "assets": {},
+      "logo": true,
+      "output_name": "05_square_fr"
+    },
+    {
+      "id": 6,
+      "template": "square",
+      "width": 1080,
+      "height": 1080,
+      "lang": "it",
+      "text": "Non limitarti a carte fisse",
+      "layout": "text-left-screenshot-right",
+      "assets": {
+        "primary": "images/advertising/6_04.png"
+      },
+      "logo": true,
+      "output_name": "06_square_it"
+    },
+    {
+      "id": 7,
+      "template": "square",
+      "width": 1080,
+      "height": 1080,
+      "lang": "pt",
+      "text": "Diversão com Amigos",
+      "layout": "text-top-asset-bottom",
+      "assets": {
+        "primary": "images/png/img_three_gold_back.png"
+      },
+      "logo": true,
+      "output_name": "07_square_pt"
+    },
+    {
+      "id": 8,
+      "template": "square",
+      "width": 1080,
+      "height": 1080,
+      "lang": "global",
+      "text": "",
+      "layout": "glassmorphism-icon",
+      "assets": {
+        "primary": "images/png/app_icon.png"
+      },
+      "logo": false,
+      "output_name": "08_square_global"
+    },
+    {
+      "id": 9,
+      "template": "portrait",
+      "width": 1080,
+      "height": 1350,
+      "lang": "en",
+      "text": "Ready for Party Chaos?",
+      "layout": "text-top-asset-bottom",
+      "assets": {
+        "primary": "images/advertising/6_03.png"
+      },
+      "logo": true,
+      "output_name": "09_portrait_en"
+    },
+    {
+      "id": 10,
+      "template": "portrait",
+      "width": 1080,
+      "height": 1350,
+      "lang": "tr",
+      "text": "Sabit Deste Devri Bitti",
+      "layout": "split-vertical",
+      "assets": {
+        "primary": "images/png/img_tabul_card_front.png",
+        "secondary": "images/png/Red_TabuLCard.png"
+      },
+      "logo": true,
+      "output_name": "10_portrait_tr"
+    },
+    {
+      "id": 11,
+      "template": "portrait",
+      "width": 1080,
+      "height": 1350,
+      "lang": "global",
+      "text": "",
+      "layout": "blur-bg-logo-center",
+      "assets": {
+        "primary": "images/advertising/6_01.jpg"
+      },
+      "logo": true,
+      "output_name": "11_portrait_global"
+    },
+    {
+      "id": 12,
+      "template": "portrait",
+      "width": 1080,
+      "height": 1350,
+      "lang": "en",
+      "text": "Unlimited AI Decks",
+      "layout": "floating-folders",
+      "assets": {
+        "primary": "images/png/img_tabul_folder_back_bronze.png",
+        "secondary": "images/png/img_tabul_folder_back_silver.png",
+        "tertiary": "images/png/img_tabul_folder_gold.png"
+      },
+      "logo": true,
+      "output_name": "12_portrait_en"
+    },
+    {
+      "id": 13,
+      "template": "portrait",
+      "width": 1080,
+      "height": 1350,
+      "lang": "global",
+      "text": "",
+      "layout": "screenshot-logo-overlay",
+      "assets": {
+        "primary": "images/advertising/6_02.png"
+      },
+      "logo": true,
+      "output_name": "13_portrait_global"
+    },
+    {
+      "id": 14,
+      "template": "portrait",
+      "width": 1080,
+      "height": 1350,
+      "lang": "en",
+      "text": "No More Memorizing",
+      "layout": "old-vs-new",
+      "assets": {
+        "primary": "images/png/img_three_tabul_back.png",
+        "secondary": "images/advertising/6_03.png"
+      },
+      "logo": true,
+      "output_name": "14_portrait_en"
+    },
+    {
+      "id": 15,
+      "template": "landscape",
+      "width": 1200,
+      "height": 628,
+      "lang": "tr",
+      "text": "Sınırsız Eğlence Başladı",
+      "layout": "text-left-wide-screenshot",
+      "assets": {
+        "primary": "images/advertising/6_05.png"
+      },
+      "logo": true,
+      "output_name": "15_landscape_tr"
+    },
+    {
+      "id": 16,
+      "template": "landscape",
+      "width": 1200,
+      "height": 628,
+      "lang": "en",
+      "text": "Challenge Your Friends",
+      "layout": "folder-banner",
+      "assets": {
+        "primary": "images/png/img_tabul_folder_back_bronze.png",
+        "secondary": "images/png/img_tabul_folder_back_silver.png",
+        "tertiary": "images/png/img_tabul_folder_gold.png"
+      },
+      "logo": true,
+      "output_name": "16_landscape_en"
+    },
+    {
+      "id": 17,
+      "template": "landscape",
+      "width": 1200,
+      "height": 628,
+      "lang": "global",
+      "text": "",
+      "layout": "minimal-logo-asset",
+      "assets": {
+        "primary": "images/png/img_three_tabul_color.png"
+      },
+      "logo": true,
+      "output_name": "17_landscape_global"
+    },
+    {
+      "id": 18,
+      "template": "landscape",
+      "width": 1200,
+      "height": 628,
+      "lang": "en",
+      "text": "The Ultimate Word Game",
+      "layout": "collage",
+      "assets": {
+        "primary": "images/advertising/6_01.jpg",
+        "secondary": "images/advertising/6_02.png",
+        "extras": [
+          "images/advertising/6_03.png",
+          "images/advertising/6_04.png",
+          "images/advertising/6_05.png"
+        ]
+      },
+      "logo": true,
+      "output_name": "18_landscape_en"
+    },
+    {
+      "id": 19,
+      "template": "landscape",
+      "width": 1200,
+      "height": 628,
+      "lang": "global",
+      "text": "",
+      "layout": "store-cta",
+      "assets": {
+        "primary": "images/png/app_icon.png"
+      },
+      "logo": true,
+      "output_name": "19_landscape_global"
+    },
+    {
+      "id": 20,
+      "template": "landscape",
+      "width": 1200,
+      "height": 628,
+      "lang": "global",
+      "text": "",
+      "layout": "frame-crop-logo",
+      "assets": {
+        "primary": "../../temp5/frames/frame_00700.png"
+      },
+      "logo": true,
+      "output_name": "20_landscape_global"
+    }
+  ]
+}
