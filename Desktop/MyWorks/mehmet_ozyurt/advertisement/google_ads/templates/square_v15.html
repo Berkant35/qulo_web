@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { width: 1080px; height: 1080px; }
+  .headline { font-size: 72px; font-weight: 900; line-height: 1.05; color: #fff; }
+  .headline .accent { color: var(--red); text-shadow: 0 0 40px rgba(232,99,122,0.6); }
+  .sub { font-size: 20px; font-weight: 600; color: var(--lavender); letter-spacing: 3px; text-transform: uppercase; }
+  .hero-cards { filter: drop-shadow(0 20px 50px rgba(0,0,0,0.45)); }
+  .card-front { filter: drop-shadow(0 12px 30px rgba(0,0,0,0.35)); }
+
+  .bg-vibrant1 { background: linear-gradient(135deg, #2D3561 0%, #8188C9 50%, #E8637A 100%); }
+  .bg-vibrant2 { background: linear-gradient(180deg, #2D3561 0%, #E8637A 100%); }
+  .bg-vibrant3 { background: linear-gradient(135deg, #E8637A 0%, #8188C9 50%, #2D3561 100%); }
+  .bg-vibrant4 { background: linear-gradient(160deg, #1a1f3d 0%, #3a4080 40%, #E8637A 100%); }
+
+  .topic-grid {
+    display: grid;
+    gap: 12px;
+    z-index: 6;
+  }
+  .topic-grid.g2x5 { grid-template-columns: repeat(2, 1fr); }
+  .topic-grid.g3x3 { grid-template-columns: repeat(3, 1fr); }
+  .topic-grid.g5x2 { grid-template-columns: repeat(5, 1fr); }
+
+  .topic-pill {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+  .topic-pill .tp-emoji { font-size: 28px; display: block; margin-bottom: 6px; }
+
+  .logo-badge { display: flex; align-items: center; gap: 14px; }
+  .logo-badge img { height: 52px; }
+  .logo-only-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; z-index: 5; position: relative; }
+</style>
+</head>
+<body>
+
+<!-- Ad 1: EN — Create Any Topic with AI -->
+<div class="ad bg-vibrant1" data-ad-id="1">
+  <div class="sh" style="top:-20px; left:-30px; width:150px; --op:0.18;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:40px; right:60px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:300px; left:30px; width:35px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <!-- Radial glow -->
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 20% 30%, rgba(232,99,122,0.3), transparent 60%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <!-- Headline -->
+  <div style="position:absolute; top:80px; left:60px; width:460px; z-index:5;">
+    <p class="sub" style="margin-bottom:14px;">POWERED BY AI</p>
+    <h1 class="headline" style="font-size:64px;">Create<br>Any Topic<br>with <span class="accent">AI</span></h1>
+  </div>
+  <!-- Card cascade -->
+  <div style="position:absolute; top:40px; right:-40px; z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:460px;">
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:50px; left:50px; right:50px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Cinema</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Space</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>Football</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>Music</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127796;</span>Safari</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Cooking</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Travel</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Art</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 2: TR — Istedigin Konuda AI Deste -->
+<div class="ad bg-vibrant2" data-ad-id="2">
+  <div class="sh" style="top:20px; right:40px; width:130px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:120px; left:30px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <div class="sh" style="top:500px; right:60px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 80% 20%, rgba(129,136,201,0.35), transparent 55%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:80px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <h1 class="headline" style="font-size:66px;">&#304;stedi&#287;in Konuda<br><span class="accent">AI Deste</span></h1>
+  </div>
+  <!-- Cards center -->
+  <div style="position:absolute; top:280px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:360px;">
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:40px; left:40px; right:40px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Sinema</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Uzay</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>Futbol</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>M&uuml;zik</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Yemek</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Seyahat</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Sanat</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128218;</span>Tarih</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 3: DE — Dein Thema, Dein Deck -->
+<div class="ad bg-vibrant3" data-ad-id="3">
+  <div class="sh" style="top:60px; right:80px; width:120px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; left:40px; width:26px; --op:0.22;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:500px; left:60px; width:32px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08), transparent 60%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:80px; left:50%; transform:translateX(-50%); z-index:5; text-align:center; width:900px;">
+    <h1 class="headline" style="font-size:76px;">Dein Thema,<br><span class="accent">Dein Deck</span></h1>
+  </div>
+  <!-- Card center -->
+  <div style="position:absolute; top:300px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:380px;">
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:40px; left:40px; right:40px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Kino</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Weltraum</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>Fu&szlig;ball</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>Musik</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Roboter</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Kochen</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Reisen</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Kunst</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128218;</span>Geschichte</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 4: ES — Temas Infinitos con IA -->
+<div class="ad bg-vibrant4" data-ad-id="4">
+  <div class="sh" style="top:-10px; right:-20px; width:140px; --op:0.16; transform:rotate(30deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; left:50px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <div class="sh" style="top:400px; left:30px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 20% 80%, rgba(232,99,122,0.3), transparent 55%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:0; left:0; width:50%; height:100%; display:flex; flex-direction:column; justify-content:center; padding:60px; z-index:5;">
+    <h1 class="headline" style="font-size:60px;">Temas<br>Infinitos<br>con <span class="accent">IA!</span></h1>
+  </div>
+  <!-- Right: card cascade -->
+  <div style="position:absolute; top:30px; right:-40px; z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:440px;">
+  </div>
+  <!-- Topic grid bottom right -->
+  <div style="position:absolute; bottom:40px; left:40px; right:40px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Cine</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Espacio</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>F&uacute;tbol</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>M&uacute;sica</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Cocina</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Viaje</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Arte</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128218;</span>Historia</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 5: FR — Creez vos decks avec l'IA -->
+<div class="ad bg-vibrant1" data-ad-id="5">
+  <div class="sh" style="top:40px; left:80px; width:110px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; right:60px; width:28px; --op:0.22;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:600px; right:100px; width:32px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 70% 40%, rgba(232,99,122,0.25), transparent 50%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-center" style="height:44px;">
+  <div style="position:absolute; top:110px; left:50%; transform:translateX(-50%); z-index:5; text-align:center; width:900px;">
+    <h1 class="headline" style="font-size:66px;">Cr&eacute;ez vos decks<br>avec <span class="accent">l'IA</span></h1>
+  </div>
+  <!-- Card front center -->
+  <div style="position:absolute; top:300px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" class="card-front" style="height:340px;">
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:40px; left:40px; right:40px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Cin&eacute;ma</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Espace</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>Foot</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>Musique</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Cuisine</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Voyage</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Art</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128218;</span>Histoire</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 6: IT — Temi Infiniti con IA -->
+<div class="ad bg-vibrant2" data-ad-id="6">
+  <div class="sh" style="top:30px; right:50px; width:120px; --op:0.14;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; left:80px; width:26px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <div class="sh" style="top:250px; left:40px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 30% 60%, rgba(129,136,201,0.3), transparent 55%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:80px; left:50%; transform:translateX(-50%); z-index:5; text-align:center; width:900px;">
+    <h1 class="headline" style="font-size:64px;">Temi Infiniti<br>con <span class="accent">IA</span></h1>
+  </div>
+  <!-- Card center -->
+  <div style="position:absolute; top:290px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:380px;">
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:40px; left:40px; right:40px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Cinema</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Spazio</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>Calcio</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>Musica</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Cucina</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Viaggio</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Arte</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128218;</span>Storia</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 7: PT — Diversao sem Limites -->
+<div class="ad bg-vibrant3" data-ad-id="7">
+  <div class="sh" style="top:-10px; left:-20px; width:130px; --op:0.16;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; right:80px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:300px; right:40px; width:34px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 60% 30%, rgba(252,193,162,0.2), transparent 50%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:80px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <h1 class="headline" style="font-size:72px;"><span class="accent">Divers&atilde;o</span><br>sem Limites</h1>
+  </div>
+  <!-- Cards -->
+  <div style="position:absolute; top:290px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:380px;">
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:40px; left:40px; right:40px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Cinema</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Espa&ccedil;o</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>Futebol</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>M&uacute;sica</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Rob&ocirc;</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Cozinha</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Viagem</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Arte</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128218;</span>Hist&oacute;ria</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 8: Global — Logo + App Icon + Topic Grid -->
+<div class="ad bg-vibrant1" data-ad-id="8">
+  <div class="sh" style="top:60px; left:60px; width:140px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; right:80px; width:120px; --op:0.12; transform:rotate(-20deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:200px; right:100px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 50% 30%, rgba(232,99,122,0.25), transparent 50%); z-index:1;"></div>
+  <!-- App icon + logo center -->
+  <div style="position:absolute; top:120px; left:50%; transform:translateX(-50%); z-index:8; text-align:center;">
+    <img src="../../assets/images/png/app_icon.png" style="width:180px; height:180px; border-radius:40px; box-shadow:0 20px 60px rgba(0,0,0,0.5); margin-bottom:24px; display:block;">
+    <img src="../../assets/images/png/img_logo.png" style="height:52px;">
+  </div>
+  <!-- Topic grid below -->
+  <div style="position:absolute; bottom:60px; left:60px; right:60px; z-index:6;">
+    <div class="topic-grid g3x3" style="gap:14px;">
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#127909;</span>Cinema</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#128640;</span>Space</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#9917;</span>Football</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#127911;</span>Music</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#127860;</span>Cooking</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#9992;</span>Travel</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#127912;</span>Art</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const hash = window.location.hash;
+  const m = hash.match(/ad=(\d+)/);
+  if (m) {
+    const id = parseInt(m[1]);
+    document.querySelectorAll('.ad').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.adId) === id);
+    });
+  }
+</script>
+</body>
+</html>

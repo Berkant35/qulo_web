@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { width: 1080px; height: 1350px; }
+  .headline { font-size: 72px; font-weight: 900; line-height: 1.05; color: #fff; }
+  .headline .accent { color: var(--red); text-shadow: 0 0 40px rgba(232,99,122,0.6); }
+  .sub { font-size: 20px; font-weight: 600; color: var(--lavender); letter-spacing: 3px; text-transform: uppercase; }
+  .hero-cards { filter: drop-shadow(0 20px 50px rgba(0,0,0,0.45)); }
+  .card-front { filter: drop-shadow(0 12px 30px rgba(0,0,0,0.35)); }
+
+  .bg-vibrant1 { background: linear-gradient(135deg, #2D3561 0%, #8188C9 50%, #E8637A 100%); }
+  .bg-vibrant2 { background: linear-gradient(180deg, #2D3561 0%, #E8637A 100%); }
+  .bg-vibrant3 { background: linear-gradient(135deg, #E8637A 0%, #8188C9 50%, #2D3561 100%); }
+  .bg-vibrant4 { background: linear-gradient(160deg, #1a1f3d 0%, #3a4080 40%, #E8637A 100%); }
+
+  .topic-grid {
+    display: grid;
+    gap: 12px;
+    z-index: 6;
+  }
+  .topic-grid.g2x5 { grid-template-columns: repeat(2, 1fr); }
+  .topic-grid.g3x3 { grid-template-columns: repeat(3, 1fr); }
+  .topic-grid.g5x2 { grid-template-columns: repeat(5, 1fr); }
+
+  .topic-pill {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+  .topic-pill .tp-emoji { font-size: 28px; display: block; margin-bottom: 6px; }
+
+  .logo-only-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; z-index: 5; position: relative; }
+</style>
+</head>
+<body>
+
+<!-- Ad 9: EN — Ready for Party Chaos? -->
+<div class="ad bg-vibrant1" data-ad-id="9">
+  <div class="sh" style="top:-10px; left:-20px; width:150px; --op:0.18;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; right:60px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:400px; left:30px; width:35px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <div class="sh" style="bottom:400px; left:80px; width:22px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 20% 30%, rgba(232,99,122,0.3), transparent 60%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:110px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <p class="sub" style="margin-bottom:14px;">PARTY GAME</p>
+    <h1 class="headline" style="font-size:78px;">Ready for<br><span class="accent">Party Chaos?</span></h1>
+  </div>
+  <!-- Big three-card back fan -->
+  <div style="position:absolute; top:400px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:480px;">
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:50px; left:40px; right:40px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Cinema</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Space</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>Football</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>Music</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127796;</span>Safari</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Cooking</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Travel</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Art</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 10: TR — Sinirlar Kaldirildi -->
+<div class="ad bg-vibrant2" data-ad-id="10">
+  <div class="sh" style="top:30px; right:50px; width:130px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:120px; left:40px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <div class="sh" style="top:500px; left:60px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 80% 20%, rgba(129,136,201,0.35), transparent 55%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <p class="sub" style="margin-bottom:14px;">AI KART OYUNU</p>
+    <h1 class="headline" style="font-size:72px;">S&#305;n&#305;rlar<br><span class="accent">Kald&#305;r&#305;ld&#305;!</span></h1>
+  </div>
+  <!-- Screenshot -->
+  <div style="position:absolute; top:380px; left:50%; transform:translateX(-50%); z-index:4;">
+    <div class="phone-frame" style="width:340px; height:520px;">
+      <img src="../../assets/images/advertising/6_01.jpg">
+    </div>
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:40px; left:40px; right:40px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Sinema</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Uzay</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>Futbol</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>M&uuml;zik</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Yemek</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Seyahat</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Sanat</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128218;</span>Tarih</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 11: Global — Screenshot + Card Fan -->
+<div class="ad bg-vibrant3" data-ad-id="11">
+  <div class="sh" style="top:20px; left:40px; width:140px; --op:0.16;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; right:50px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:600px; right:80px; width:32px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 50% 40%, rgba(255,255,255,0.06), transparent 50%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-center" style="height:44px;">
+  <div style="position:absolute; top:110px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <h1 class="headline" style="font-size:72px;">AI Word<br><span class="accent">Party Game</span></h1>
+  </div>
+  <!-- Card fan center -->
+  <div style="position:absolute; top:340px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:500px;">
+  </div>
+  <!-- Single card front floating -->
+  <div style="position:absolute; top:460px; left:60px; z-index:5; transform:rotate(-12deg);">
+    <img src="../../assets/images/png/img_tabul_card_front.png" class="card-front" style="height:280px;">
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:40px; left:40px; right:40px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Cinema</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Space</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>Football</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>Music</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127796;</span>Safari</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Cooking</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Travel</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Art</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 12: EN — 500+ Topics, One App -->
+<div class="ad bg-vibrant4" data-ad-id="12">
+  <div class="sh" style="top:40px; right:60px; width:120px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; left:40px; width:26px; --op:0.22;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div class="sh" style="top:700px; left:50px; width:30px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 30% 20%, rgba(232,99,122,0.3), transparent 55%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <h1 class="headline" style="font-size:78px;">500+ Topics<br><span class="accent">One App</span></h1>
+  </div>
+  <!-- Screenshot -->
+  <div style="position:absolute; top:360px; left:50%; transform:translateX(-50%); z-index:4;">
+    <div class="phone-frame" style="width:340px; height:520px;">
+      <img src="../../assets/images/advertising/6_03.png">
+    </div>
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:40px; left:40px; right:40px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Cinema</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Space</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>Football</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>Music</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127796;</span>Safari</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Cooking</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Travel</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Art</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 13: Global — Logo + Grid (portrait) -->
+<div class="ad bg-vibrant2" data-ad-id="13">
+  <div class="sh" style="top:50px; left:50px; width:140px; --op:0.15;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; right:70px; width:110px; --op:0.12; transform:rotate(-15deg);">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="top:300px; right:40px; width:30px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#005462"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 50% 20%, rgba(232,99,122,0.3), transparent 50%); z-index:1;"></div>
+  <!-- App icon + logo -->
+  <div style="position:absolute; top:100px; left:50%; transform:translateX(-50%); z-index:8; text-align:center;">
+    <img src="../../assets/images/png/app_icon.png" style="width:200px; height:200px; border-radius:44px; box-shadow:0 20px 60px rgba(0,0,0,0.5); margin-bottom:24px; display:block;">
+    <img src="../../assets/images/png/img_logo.png" style="height:56px;">
+    <p style="font-size:24px; font-weight:700; color:rgba(255,255,255,0.8); margin-top:16px; letter-spacing:2px;">AI WORD GAME</p>
+  </div>
+  <!-- Card fan -->
+  <div style="position:absolute; top:480px; left:50%; transform:translateX(-50%); z-index:4;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:400px;">
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:50px; left:50px; right:50px; z-index:6;">
+    <div class="topic-grid g3x3" style="gap:14px;">
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#127909;</span>Cinema</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#128640;</span>Space</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#9917;</span>Football</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#127911;</span>Music</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#127860;</span>Cooking</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#9992;</span>Travel</div>
+      <div class="topic-pill" style="padding:18px 12px;"><span class="tp-emoji">&#127912;</span>Art</div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad 14: EN — Your Topic, Your Rules -->
+<div class="ad bg-vibrant1" data-ad-id="14">
+  <div class="sh" style="top:40px; right:80px; width:120px; --op:0.16;">
+    <svg viewBox="0 0 109 64"><path d="M95.012 59.7584L11.5127 49.2584C5.84602 49.0917 2.01131 42.7584 4.01198 36.2584C6.01266 29.7584 14.8194 0.457381 54.0113 3.75837C102.475 7.84029 106.012 43.2584 104.512 49.2584C104.512 55.7584 99.8119 60.9584 95.012 59.7584Z" fill="#FCC1A2" stroke="#FCC1A2" stroke-width="7"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; left:60px; width:28px; --op:0.22;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <div class="sh" style="top:650px; right:50px; width:34px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 70% 50%, rgba(232,99,122,0.25), transparent 55%); z-index:1;"></div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <p class="sub" style="margin-bottom:14px;">POWERED BY AI</p>
+    <h1 class="headline" style="font-size:76px;">Your Topic<br><span class="accent">Your Rules</span></h1>
+  </div>
+  <!-- Screenshot -->
+  <div style="position:absolute; top:380px; left:50%; transform:translateX(-50%); z-index:4;">
+    <div class="phone-frame" style="width:340px; height:520px;">
+      <img src="../../assets/images/advertising/6_02.png">
+    </div>
+  </div>
+  <!-- Topic grid bottom -->
+  <div style="position:absolute; bottom:40px; left:40px; right:40px; z-index:6;">
+    <div class="topic-grid g5x2" style="gap:10px;">
+      <div class="topic-pill"><span class="tp-emoji">&#127909;</span>Cinema</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127829;</span>Pizza</div>
+      <div class="topic-pill"><span class="tp-emoji">&#128640;</span>Space</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9917;</span>Football</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127911;</span>Music</div>
+      <div class="topic-pill"><span class="tp-emoji">&#129302;</span>Robot</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127796;</span>Safari</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127860;</span>Cooking</div>
+      <div class="topic-pill"><span class="tp-emoji">&#9992;</span>Travel</div>
+      <div class="topic-pill"><span class="tp-emoji">&#127912;</span>Art</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const hash = window.location.hash;
+  const m = hash.match(/ad=(\d+)/);
+  if (m) {
+    const id = parseInt(m[1]);
+    document.querySelectorAll('.ad').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.adId) === id);
+    });
+  }
+</script>
+</body>
+</html>
