@@ -287,7 +287,7 @@
       "text": "",
       "layout": "frame-crop-logo",
       "assets": {
-        "primary": "../../temp5/frames/frame_00700.png"
+        "primary": "../temp5/frames/frame_00700.png"
       },
       "logo": true,
       "output_name": "20_landscape_global"
