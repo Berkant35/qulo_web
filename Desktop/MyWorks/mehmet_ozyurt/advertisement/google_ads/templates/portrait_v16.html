@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { width: 1080px; height: 1350px; }
+  .headline { font-size: 72px; font-weight: 900; line-height: 1.05; color: #fff; }
+  .headline .accent { color: var(--red); text-shadow: 0 0 40px rgba(232,99,122,0.6); }
+  .sub { font-size: 20px; font-weight: 600; color: var(--lavender); letter-spacing: 3px; text-transform: uppercase; }
+  .hero-cards { filter: drop-shadow(0 20px 50px rgba(0,0,0,0.45)); }
+  .card-front { filter: drop-shadow(0 12px 30px rgba(0,0,0,0.35)); }
+
+  .word-card {
+    position: absolute;
+    background: #F5F0EB;
+    border-radius: 16px;
+    padding: 18px 14px;
+    width: 180px;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+    z-index: 6;
+  }
+  .word-card .wc-word {
+    font-size: 22px;
+    font-weight: 800;
+    color: #2D3561;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .word-card .wc-forbidden {
+    font-size: 12px;
+    color: #999;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .word-card .wc-line {
+    width: 50px;
+    height: 2px;
+    background: var(--red);
+    margin: 6px auto 8px;
+    border-radius: 2px;
+  }
+
+  .logo-only-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; z-index: 5; position: relative; }
+
+  /* V16: Split layouts - portrait uses top/bottom splits */
+  .split-dark-top {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 60%);
+    background: linear-gradient(180deg, #1a1f3d 0%, #141730 100%);
+    z-index: 2;
+  }
+  .split-accent-bottom-red {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(0 60%, 100% 45%, 100% 100%, 0 100%);
+    background: linear-gradient(180deg, #E8637A 0%, #d44f66 100%);
+    z-index: 2;
+  }
+  .split-accent-bottom-lav {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(0 60%, 100% 45%, 100% 100%, 0 100%);
+    background: linear-gradient(180deg, #8188C9 0%, #6970b0 100%);
+    z-index: 2;
+  }
+  .split-h-line {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(0 59%, 100% 44%, 100% 46%, 0 61%);
+    background: rgba(255,255,255,0.06);
+    z-index: 3;
+  }
+  /* Diagonal split for variety */
+  .split-dark-diag {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(0 0, 72% 0, 52% 100%, 0 100%);
+    background: linear-gradient(180deg, #1a1f3d 0%, #141730 100%);
+    z-index: 2;
+  }
+  .split-accent-diag-red {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(72% 0, 100% 0, 100% 100%, 52% 100%);
+    background: linear-gradient(180deg, #E8637A 0%, #d44f66 100%);
+    z-index: 2;
+  }
+  .split-accent-diag-lav {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(72% 0, 100% 0, 100% 100%, 52% 100%);
+    background: linear-gradient(180deg, #8188C9 0%, #6970b0 100%);
+    z-index: 2;
+  }
+  .split-diag-line {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(71% 0, 73% 0, 53% 100%, 51% 100%);
+    background: rgba(255,255,255,0.06);
+    z-index: 3;
+  }
+</style>
+</head>
+<body>
+
+<!-- Ad 9: EN — Ready for Party Chaos? -->
+<div class="ad" data-ad-id="9" style="background:#141730;">
+  <div class="split-dark-top"></div>
+  <div class="split-accent-bottom-red"></div>
+  <div class="split-h-line"></div>
+  <div class="sh" style="top:40px; right:60px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#8188C9"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; left:40px; width:22px; --op:0.25;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="top:300px; left:30px; width:26px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <!-- Headline on dark top -->
+  <div style="position:absolute; top:110px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <p class="sub" style="margin-bottom:14px;">PARTY GAME</p>
+    <h1 class="headline" style="font-size:78px;">Ready for<br><span class="accent">Party Chaos?</span></h1>
+  </div>
+  <!-- Hero cards at the horizontal split intersection -->
+  <div style="position:absolute; top:440px; left:50%; transform:translateX(-50%); z-index:7;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:500px;">
+  </div>
+  <!-- Word cards on accent bottom -->
+  <div class="word-card" style="bottom:60px; left:40px; transform:rotate(-6deg); width:200px;">
+    <div class="wc-word">CINEMA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Film<br>Movie<br>Actor<br>Screen<br>Popcorn</div>
+  </div>
+  <div class="word-card" style="bottom:30px; left:50%; transform:translateX(-50%) rotate(2deg); width:200px;">
+    <div class="wc-word">PIZZA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Cheese<br>Dough<br>Oven<br>Slice<br>Pepperoni</div>
+  </div>
+  <div class="word-card" style="bottom:60px; right:40px; transform:rotate(7deg); width:200px;">
+    <div class="wc-word">SUNSET</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Sun<br>Evening<br>Sky<br>Orange<br>Horizon</div>
+  </div>
+</div>
+
+<!-- Ad 10: TR — Sabit Deste Devri Bitti -->
+<div class="ad" data-ad-id="10" style="background:#141730;">
+  <div class="split-dark-diag"></div>
+  <div class="split-accent-diag-lav"></div>
+  <div class="split-diag-line"></div>
+  <div class="sh" style="top:30px; right:80px; width:24px; --op:0.3;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="bottom:120px; left:40px; width:26px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#FCC1A2"/></svg>
+  </div>
+  <div class="sh" style="top:600px; left:60px; width:22px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:130px; left:60px; width:440px; z-index:5;">
+    <h1 class="headline" style="font-size:70px;">Sabit Deste<br><span class="accent">Devri Bitti</span></h1>
+    <p class="sub" style="margin-top:16px;">YAPAY ZEKA İLE ÜRET</p>
+  </div>
+  <!-- Old card with X on dark side -->
+  <div style="position:absolute; top:460px; left:50px; z-index:4; opacity:0.4;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:300px; transform:rotate(-8deg);">
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:100px; color:#E8637A; font-weight:900; text-shadow:0 4px 12px rgba(0,0,0,0.5);">X</div>
+  </div>
+  <!-- New cards crossing the split -->
+  <div style="position:absolute; top:400px; right:-20px; z-index:7;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:480px; transform:rotate(-2deg);">
+  </div>
+  <!-- Word cards bottom -->
+  <div class="word-card" style="bottom:80px; left:60px; transform:rotate(-5deg); width:200px;">
+    <div class="wc-word">MÜZİK</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Nota<br>Şarkı<br>Enstrüman<br>Melodi<br>Ritim</div>
+  </div>
+  <div class="word-card" style="bottom:40px; right:60px; transform:rotate(5deg); width:200px;">
+    <div class="wc-word">ROBOT</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Makine<br>Metal<br>Yapay Zeka<br>Program<br>Otomat</div>
+  </div>
+</div>
+
+<!-- Ad 11: Global — Logo Only -->
+<div class="ad" data-ad-id="11" style="background:#141730;">
+  <div class="split-dark-top"></div>
+  <div class="split-accent-bottom-lav"></div>
+  <div class="split-h-line"></div>
+  <div class="sh" style="top:60px; right:60px; width:26px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; left:60px; width:22px; --op:0.25;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="top:400px; left:40px; width:28px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <!-- App icon + logo at the split boundary -->
+  <div style="position:absolute; top:48%; left:50%; transform:translate(-50%,-50%); z-index:10; text-align:center;">
+    <img src="../../assets/images/png/app_icon.png" style="width:220px; height:220px; border-radius:48px; box-shadow:0 24px 70px rgba(0,0,0,0.6), 0 0 0 4px rgba(255,255,255,0.1); margin-bottom:36px; display:block;">
+    <img src="../../assets/images/png/img_logo.png" style="height:60px; filter:drop-shadow(0 4px 16px rgba(0,0,0,0.5));">
+  </div>
+  <!-- Decorative cards on dark top -->
+  <div style="position:absolute; top:40px; left:30px; z-index:4; opacity:0.2;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:220px; transform:rotate(-10deg);">
+  </div>
+  <div style="position:absolute; top:50px; right:30px; z-index:4; opacity:0.2;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:200px; transform:rotate(12deg);">
+  </div>
+  <!-- Three card back on accent bottom -->
+  <div style="position:absolute; bottom:40px; left:50%; transform:translateX(-50%); z-index:4; opacity:0.3;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:360px;">
+  </div>
+</div>
+
+<!-- Ad 12: EN — Unlimited AI Decks -->
+<div class="ad" data-ad-id="12" style="background:#141730;">
+  <div class="split-dark-diag"></div>
+  <div class="split-accent-diag-red"></div>
+  <div class="split-diag-line"></div>
+  <div class="sh" style="top:40px; right:60px; width:26px; --op:0.28;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; left:50px; width:24px; --op:0.18;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#FCC1A2"/></svg>
+  </div>
+  <div class="sh" style="top:500px; left:40px; width:30px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#8188C9"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:120px; left:60px; width:440px; z-index:5;">
+    <p class="sub" style="margin-bottom:12px;">AI-POWERED</p>
+    <h1 class="headline" style="font-size:80px;">Unlimited<br><span class="accent">AI Decks</span></h1>
+  </div>
+  <!-- Hero cards crossing the diagonal split -->
+  <div style="position:absolute; top:400px; left:50%; transform:translateX(-30%); z-index:7;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:500px; transform:rotate(-3deg);">
+  </div>
+  <!-- Decorative card fronts -->
+  <div style="position:absolute; top:440px; left:20px; z-index:4; opacity:0.18;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:280px; transform:rotate(-12deg);">
+  </div>
+  <!-- Word cards bottom -->
+  <div class="word-card" style="bottom:60px; left:40px; transform:rotate(-5deg); width:210px;">
+    <div class="wc-word">SPACE</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Star<br>Planet<br>Rocket<br>NASA<br>Galaxy</div>
+  </div>
+  <div class="word-card" style="bottom:40px; right:40px; transform:rotate(6deg); width:210px;">
+    <div class="wc-word">CONCERT</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Music<br>Stage<br>Band<br>Ticket<br>Crowd</div>
+  </div>
+</div>
+
+<!-- Ad 13: Global — Logo Only -->
+<div class="ad" data-ad-id="13" style="background:#141730;">
+  <div class="split-dark-diag"></div>
+  <div class="split-accent-diag-lav"></div>
+  <div class="split-diag-line"></div>
+  <div class="sh" style="top:50px; right:70px; width:28px; --op:0.25;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; left:50px; width:24px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#FCC1A2"/></svg>
+  </div>
+  <div class="sh" style="top:600px; left:60px; width:26px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <!-- App icon at the diagonal split boundary -->
+  <div style="position:absolute; top:45%; left:55%; transform:translate(-50%,-50%); z-index:10; text-align:center;">
+    <img src="../../assets/images/png/app_icon.png" style="width:200px; height:200px; border-radius:44px; box-shadow:0 24px 70px rgba(0,0,0,0.6), 0 0 0 4px rgba(255,255,255,0.1); margin-bottom:32px; display:block;">
+    <img src="../../assets/images/png/img_logo.png" style="height:56px; filter:drop-shadow(0 4px 16px rgba(0,0,0,0.5));">
+  </div>
+  <!-- Three card back on dark side top-left -->
+  <div style="position:absolute; top:40px; left:20px; z-index:4; opacity:0.25;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:380px; transform:rotate(-5deg);">
+  </div>
+  <!-- Card fronts on accent side -->
+  <div style="position:absolute; bottom:60px; right:30px; z-index:4; opacity:0.2;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:260px; transform:rotate(8deg);">
+  </div>
+  <div style="position:absolute; bottom:100px; right:280px; z-index:4; opacity:0.15;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:220px; transform:rotate(-6deg);">
+  </div>
+</div>
+
+<!-- Ad 14: EN — No More Memorizing -->
+<div class="ad" data-ad-id="14" style="background:#141730;">
+  <div class="split-dark-top"></div>
+  <div class="split-accent-bottom-red"></div>
+  <div class="split-h-line"></div>
+  <div class="sh" style="top:30px; right:40px; width:26px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#8188C9"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; right:60px; width:20px; --op:0.28;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="top:350px; left:30px; width:24px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:100px; left:0; width:100%; text-align:center; z-index:5; padding:0 60px;">
+    <h1 class="headline" style="font-size:78px;">No More<br><span class="accent">Memorizing</span></h1>
+    <p class="sub" style="margin-top:16px;">FRESH CARDS EVERY TIME</p>
+  </div>
+  <!-- Old cards with X on dark top -->
+  <div style="position:absolute; top:400px; left:60px; z-index:4; opacity:0.35;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:280px; transform:rotate(-5deg);">
+    <div style="position:absolute; top:40%; left:50%; transform:translate(-50%,-50%) rotate(-15deg); font-size:120px; color:#E8637A; font-weight:900; text-shadow:0 4px 20px rgba(0,0,0,0.5); line-height:1;">X</div>
+  </div>
+  <!-- Fresh cards at the split -->
+  <div style="position:absolute; top:420px; right:-10px; z-index:7;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:460px; transform:rotate(-2deg);">
+  </div>
+  <!-- Word cards on accent bottom -->
+  <div class="word-card" style="bottom:80px; left:40px; transform:rotate(-7deg); width:200px;">
+    <div class="wc-word">VOLCANO</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Lava<br>Eruption<br>Mountain<br>Ash<br>Magma</div>
+  </div>
+  <div class="word-card" style="bottom:40px; left:320px; transform:rotate(3deg); width:200px;">
+    <div class="wc-word">PENGUIN</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Ice<br>Antarctica<br>Bird<br>Waddle<br>Tuxedo</div>
+  </div>
+  <div class="word-card" style="bottom:80px; right:30px; transform:rotate(8deg); width:180px;">
+    <div class="wc-word">NINJA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Stealth<br>Japan<br>Sword<br>Shadow<br>Warrior</div>
+  </div>
+</div>
+
+<script>
+  const hash = window.location.hash;
+  const m = hash.match(/ad=(\d+)/);
+  if (m) {
+    const id = parseInt(m[1]);
+    document.querySelectorAll('.ad').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.adId) === id);
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { width: 1080px; height: 1080px; }
+  .headline { font-size: 72px; font-weight: 900; line-height: 1.05; color: #fff; }
+  .headline .accent { color: var(--red); text-shadow: 0 0 40px rgba(232,99,122,0.6); }
+  .sub { font-size: 20px; font-weight: 600; color: var(--lavender); letter-spacing: 3px; text-transform: uppercase; }
+  .hero-cards { filter: drop-shadow(0 20px 50px rgba(0,0,0,0.45)); }
+  .card-front { filter: drop-shadow(0 12px 30px rgba(0,0,0,0.35)); }
+
+  .word-card {
+    position: absolute;
+    background: #F5F0EB;
+    border-radius: 16px;
+    padding: 18px 14px;
+    width: 180px;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+    z-index: 6;
+  }
+  .word-card .wc-word {
+    font-size: 22px;
+    font-weight: 800;
+    color: #2D3561;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .word-card .wc-forbidden {
+    font-size: 12px;
+    color: #999;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .word-card .wc-line {
+    width: 50px;
+    height: 2px;
+    background: var(--red);
+    margin: 6px auto 8px;
+    border-radius: 2px;
+  }
+
+  .logo-badge { display: flex; align-items: center; gap: 14px; }
+  .logo-badge img { height: 52px; }
+  .logo-only-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; z-index: 5; position: relative; }
+
+  /* V16: Split layout system */
+  .split-dark {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(0 0, 75% 0, 55% 100%, 0 100%);
+    background: linear-gradient(180deg, #1a1f3d 0%, #141730 100%);
+    z-index: 2;
+  }
+  .split-accent-red {
+    position: absolute; top: 0; right: 0; width: 100%; height: 100%;
+    clip-path: polygon(75% 0, 100% 0, 100% 100%, 55% 100%);
+    background: linear-gradient(180deg, #E8637A 0%, #d44f66 100%);
+    z-index: 2;
+  }
+  .split-accent-lavender {
+    position: absolute; top: 0; right: 0; width: 100%; height: 100%;
+    clip-path: polygon(75% 0, 100% 0, 100% 100%, 55% 100%);
+    background: linear-gradient(180deg, #8188C9 0%, #6970b0 100%);
+    z-index: 2;
+  }
+  .split-line {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(74% 0, 76% 0, 56% 100%, 54% 100%);
+    background: rgba(255,255,255,0.06);
+    z-index: 3;
+  }
+  .split-dark-right {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(45% 0, 100% 0, 100% 100%, 25% 100%);
+    background: linear-gradient(180deg, #1a1f3d 0%, #141730 100%);
+    z-index: 2;
+  }
+  .split-accent-left {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(0 0, 45% 0, 25% 100%, 0 100%);
+    background: linear-gradient(180deg, #E8637A 0%, #d44f66 100%);
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+
+<!-- Ad 1: EN — Create Any Deck with AI -->
+<div class="ad" data-ad-id="1" style="background:#141730;">
+  <div class="split-dark"></div>
+  <div class="split-accent-red"></div>
+  <div class="split-line"></div>
+  <div class="sh" style="top:60px; left:40px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#8188C9"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; left:100px; width:22px; --op:0.15;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#FCC1A2"/></svg>
+  </div>
+  <div class="sh" style="top:400px; right:80px; width:30px; --op:0.25;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#fff"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <!-- Dark side: headline -->
+  <div style="position:absolute; top:140px; left:60px; width:440px; z-index:5;">
+    <p class="sub" style="margin-bottom:14px;">POWERED BY AI</p>
+    <h1 class="headline" style="font-size:68px;">Create<br>Any Deck<br>with <span class="accent">AI</span></h1>
+  </div>
+  <!-- Hero cards at split intersection -->
+  <div style="position:absolute; top:120px; left:420px; z-index:7;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:500px; transform:rotate(-3deg);">
+  </div>
+  <!-- Word cards on dark side bottom -->
+  <div class="word-card" style="bottom:80px; left:50px; transform:rotate(-6deg);">
+    <div class="wc-word">CINEMA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Film<br>Movie<br>Actor<br>Screen<br>Popcorn</div>
+  </div>
+  <div class="word-card" style="bottom:100px; left:280px; transform:rotate(4deg); width:170px;">
+    <div class="wc-word">YOGA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Stretch<br>Pose<br>Breath<br>Mat<br>Zen</div>
+  </div>
+</div>
+
+<!-- Ad 2: TR — Istedigin Konuda Deste Yarat -->
+<div class="ad" data-ad-id="2" style="background:#141730;">
+  <div class="split-dark"></div>
+  <div class="split-accent-lavender"></div>
+  <div class="split-line"></div>
+  <div class="sh" style="top:30px; right:80px; width:24px; --op:0.3;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="bottom:120px; left:40px; width:26px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#FCC1A2"/></svg>
+  </div>
+  <div class="sh" style="top:500px; left:80px; width:20px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:130px; left:60px; width:420px; z-index:5;">
+    <h1 class="headline" style="font-size:62px;">İstediğin<br>Konuda<br><span class="accent">Deste Yarat</span></h1>
+  </div>
+  <!-- Hero cards crossing the split -->
+  <div style="position:absolute; top:100px; left:400px; z-index:7;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:480px; transform:rotate(-2deg);">
+  </div>
+  <!-- Word cards -->
+  <div class="word-card" style="bottom:80px; left:50px; transform:rotate(-5deg); width:180px;">
+    <div class="wc-word">PİZZA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Peynir<br>Hamur<br>Fırın<br>Dilim<br>İtalya</div>
+  </div>
+  <div class="word-card" style="bottom:120px; left:280px; transform:rotate(3deg); width:170px;">
+    <div class="wc-word">UZAY</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Gezegen<br>Yıldız<br>Roket<br>NASA<br>Galaksi</div>
+  </div>
+</div>
+
+<!-- Ad 3: DE — Dein Thema, Dein Spiel -->
+<div class="ad" data-ad-id="3" style="background:#141730;">
+  <div class="split-accent-left"></div>
+  <div class="split-dark-right"></div>
+  <div class="sh" style="top:80px; left:60px; width:22px; --op:0.3;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; right:60px; width:28px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <div class="sh" style="top:500px; right:80px; width:24px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" style="position:absolute; top:40px; right:40px; height:44px; z-index:10;">
+  <!-- Headline on dark right side -->
+  <div style="position:absolute; top:140px; right:60px; width:420px; z-index:5; text-align:right;">
+    <h1 class="headline" style="font-size:72px;">Dein Thema,<br><span class="accent">Dein Spiel</span></h1>
+  </div>
+  <!-- Hero cards at intersection -->
+  <div style="position:absolute; top:100px; left:200px; z-index:7;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:480px; transform:rotate(2deg);">
+  </div>
+  <!-- Word cards bottom -->
+  <div class="word-card" style="bottom:100px; right:60px; transform:rotate(5deg); width:180px;">
+    <div class="wc-word">KAFFEE</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Bohne<br>Morgen<br>Tasse<br>Koffein<br>Espresso</div>
+  </div>
+  <div class="word-card" style="bottom:60px; right:300px; transform:rotate(-4deg); width:170px;">
+    <div class="wc-word">SUNSET</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Sonne<br>Abend<br>Himmel<br>Orange<br>Horizont</div>
+  </div>
+</div>
+
+<!-- Ad 4: ES — Barajas Infinitas con IA -->
+<div class="ad" data-ad-id="4" style="background:#141730;">
+  <div class="split-dark"></div>
+  <div class="split-accent-red"></div>
+  <div class="split-line"></div>
+  <div class="sh" style="top:40px; left:60px; width:30px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#8188C9"/></svg>
+  </div>
+  <div class="sh" style="bottom:60px; right:100px; width:24px; --op:0.25;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="top:600px; left:100px; width:20px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:140px; left:60px; width:420px; z-index:5;">
+    <h1 class="headline" style="font-size:64px;">Barajas<br>Infinitas<br>con <span class="accent">IA!</span></h1>
+  </div>
+  <!-- Hero cards crossing split -->
+  <div style="position:absolute; top:80px; left:380px; z-index:7;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:500px; transform:rotate(-4deg);">
+  </div>
+  <!-- Word cards -->
+  <div class="word-card" style="bottom:80px; left:60px; transform:rotate(-5deg); width:175px;">
+    <div class="wc-word">PLAYA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Arena<br>Mar<br>Sol<br>Ola<br>Toalla</div>
+  </div>
+  <div class="word-card" style="bottom:120px; left:290px; transform:rotate(3deg); width:165px;">
+    <div class="wc-word">PIZZA</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Queso<br>Masa<br>Horno<br>Trozo<br>Italia</div>
+  </div>
+</div>
+
+<!-- Ad 5: FR — Creez vos decks avec l'IA -->
+<div class="ad" data-ad-id="5" style="background:#141730;">
+  <div class="split-dark"></div>
+  <div class="split-accent-lavender"></div>
+  <div class="split-line"></div>
+  <div class="sh" style="top:50px; right:60px; width:26px; --op:0.28;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; left:60px; width:22px; --op:0.18;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#FCC1A2"/></svg>
+  </div>
+  <div class="sh" style="top:450px; left:40px; width:30px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#E8637A"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:130px; left:60px; width:440px; z-index:5;">
+    <h1 class="headline" style="font-size:62px;">Cr&eacute;ez vos<br>decks avec<br><span class="accent">l'IA</span></h1>
+  </div>
+  <!-- Hero cards at split -->
+  <div style="position:absolute; top:100px; left:400px; z-index:7;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:480px; transform:rotate(-3deg);">
+  </div>
+  <!-- Word cards -->
+  <div class="word-card" style="bottom:80px; left:50px; transform:rotate(-6deg); width:180px;">
+    <div class="wc-word">PARIS</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Tour<br>France<br>Seine<br>Amour<br>Lumi&egrave;re</div>
+  </div>
+  <div class="word-card" style="bottom:110px; left:280px; transform:rotate(4deg); width:170px;">
+    <div class="wc-word">SUSHI</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Riz<br>Poisson<br>Japon<br>Baguette<br>Wasabi</div>
+  </div>
+</div>
+
+<!-- Ad 6: IT — Non limitarti a carte fisse -->
+<div class="ad" data-ad-id="6" style="background:#141730;">
+  <div class="split-accent-left"></div>
+  <div class="split-dark-right"></div>
+  <div class="sh" style="top:60px; left:40px; width:24px; --op:0.3;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="bottom:80px; right:80px; width:26px; --op:0.2;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#8188C9"/></svg>
+  </div>
+  <div class="sh" style="top:550px; right:60px; width:22px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" style="position:absolute; top:40px; right:40px; height:44px; z-index:10;">
+  <div style="position:absolute; top:120px; right:50px; width:440px; z-index:5; text-align:right;">
+    <h1 class="headline" style="font-size:58px;">Non limitarti<br>a <span class="accent">carte fisse</span></h1>
+    <p class="sub" style="margin-top:12px;">GENERA CON AI</p>
+  </div>
+  <!-- Hero cards at intersection -->
+  <div style="position:absolute; top:120px; left:180px; z-index:7;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:470px; transform:rotate(3deg);">
+  </div>
+  <!-- Word cards -->
+  <div class="word-card" style="bottom:80px; right:50px; transform:rotate(5deg); width:180px;">
+    <div class="wc-word">GELATO</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Freddo<br>Crema<br>Cono<br>Estate<br>Dolce</div>
+  </div>
+  <div class="word-card" style="bottom:110px; right:290px; transform:rotate(-4deg); width:175px;">
+    <div class="wc-word">CALCIO</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Palla<br>Gol<br>Stadio<br>Squadra<br>Arbitro</div>
+  </div>
+</div>
+
+<!-- Ad 7: PT — Diversao com Amigos -->
+<div class="ad" data-ad-id="7" style="background:#141730;">
+  <div class="split-dark"></div>
+  <div class="split-accent-red"></div>
+  <div class="split-line"></div>
+  <div class="sh" style="top:50px; left:50px; width:26px; --op:0.2;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#8188C9"/></svg>
+  </div>
+  <div class="sh" style="bottom:70px; right:70px; width:20px; --op:0.28;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="top:400px; left:60px; width:28px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <img src="../../assets/images/png/img_logo.png" class="logo-top-left" style="height:44px;">
+  <div style="position:absolute; top:130px; left:60px; width:400px; z-index:5;">
+    <h1 class="headline" style="font-size:72px;"><span class="accent">Divers&atilde;o</span><br>com<br>Amigos</h1>
+  </div>
+  <!-- Hero cards at split -->
+  <div style="position:absolute; top:80px; left:400px; z-index:7;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" class="hero-cards" style="height:500px; transform:rotate(-3deg);">
+  </div>
+  <!-- Word cards -->
+  <div class="word-card" style="bottom:80px; left:60px; transform:rotate(-7deg); width:175px;">
+    <div class="wc-word">CARNAVAL</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Festa<br>Samba<br>M&aacute;scara<br>Alegria<br>Desfile</div>
+  </div>
+  <div class="word-card" style="bottom:120px; left:290px; transform:rotate(4deg); width:165px;">
+    <div class="wc-word">FUTEBOL</div>
+    <div class="wc-line"></div>
+    <div class="wc-forbidden">Bola<br>Gol<br>Campo<br>Time<br>Juiz</div>
+  </div>
+</div>
+
+<!-- Ad 8: Global — Logo Only (Split with icon at boundary) -->
+<div class="ad" data-ad-id="8" style="background:#141730;">
+  <div class="split-dark"></div>
+  <div class="split-accent-red"></div>
+  <div class="split-line"></div>
+  <div class="sh" style="top:80px; left:80px; width:30px; --op:0.18;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#8188C9"/></svg>
+  </div>
+  <div class="sh" style="bottom:100px; right:100px; width:22px; --op:0.25;">
+    <svg viewBox="0 0 25 27"><path d="M0 0L24.98 9.43L4.23 26.37L0 0Z" fill="#fff"/></svg>
+  </div>
+  <div class="sh" style="top:300px; left:40px; width:24px; --op:0.15;">
+    <svg viewBox="0 0 41 41"><circle cx="20.5" cy="20.5" r="20.5" fill="#FCC1A2"/></svg>
+  </div>
+  <!-- App icon at split boundary -->
+  <div style="position:absolute; top:50%; left:58%; transform:translate(-50%,-50%); z-index:10; text-align:center;">
+    <img src="../../assets/images/png/app_icon.png" style="width:200px; height:200px; border-radius:44px; box-shadow:0 24px 70px rgba(0,0,0,0.6), 0 0 0 4px rgba(255,255,255,0.1); margin-bottom:30px; display:block;">
+    <img src="../../assets/images/png/img_logo.png" style="height:56px; filter:drop-shadow(0 4px 16px rgba(0,0,0,0.5));">
+  </div>
+  <!-- Decorative card front on dark side -->
+  <div style="position:absolute; top:60px; left:40px; z-index:4; opacity:0.2;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:220px; transform:rotate(-12deg);">
+  </div>
+  <div style="position:absolute; bottom:40px; left:60px; z-index:4; opacity:0.15;">
+    <img src="../../assets/images/png/img_tabul_card_front.png" style="height:200px; transform:rotate(8deg);">
+  </div>
+  <!-- Three card back on accent side -->
+  <div style="position:absolute; bottom:60px; right:-30px; z-index:4; opacity:0.25;">
+    <img src="../../assets/images/png/img_three_tabul_back.png" style="height:340px; transform:rotate(5deg);">
+  </div>
+</div>
+
+<script>
+  const hash = window.location.hash;
+  const m = hash.match(/ad=(\d+)/);
+  if (m) {
+    const id = parseInt(m[1]);
+    document.querySelectorAll('.ad').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.adId) === id);
+    });
+  }
+</script>
+</body>
+</html>
