@@ -1,0 +1,58 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Navbar } from "@/components/shared/Navbar";
+import { rtlLocales } from "@/lib/i18n/config";
+
+const sections = [
+  { title: "introTitle", body: "intro" },
+  { title: "dataCollectionTitle", body: "dataCollection" },
+  { title: "dataNotCollectedTitle", body: "dataNotCollected" },
+  { title: "usageTitle", body: "usage" },
+  { title: "sharingTitle", body: "sharing" },
+  { title: "retentionTitle", body: "retention" },
+  { title: "securityTitle", body: "security" },
+  { title: "rightsTitle", body: "rights" },
+  { title: "deletionTitle", body: "deletion" },
+  { title: "childrenTitle", body: "children" },
+  { title: "locationTitle", body: "location" },
+  { title: "cookiesTitle", body: "cookies" },
+  { title: "changesTitle", body: "changes" },
+  { title: "kvkkTitle", body: "kvkk" },
+  { title: "kvkkRightsTitle", body: "kvkkRights" },
+  { title: "contactTitle", body: "contact" },
+] as const;
+
+export default async function PrivacyPolicyPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("privacyPolicy");
+
+  return (
+    <main className="min-h-screen bg-qulo-bg text-white">
+      <Navbar />
+      <div className="pt-24 pb-20 px-6" dir={rtlLocales.includes(locale) ? "rtl" : "ltr"}>
+        <div className="max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold text-qulo-purple mb-3">
+            {t("title")}
+          </h1>
+          <p className="text-qulo-text-muted text-sm mb-10">
+            {t("lastUpdated")}
+          </p>
+          {sections.map(({ title, body }) => (
+            <section key={title} className="mb-8">
+              <h2 className="text-xl font-semibold text-white mb-3">
+                {t(title)}
+              </h2>
+              <div className="text-qulo-text-secondary leading-relaxed text-base whitespace-pre-line">
+                {t(body)}
+              </div>
+            </section>
+          ))}
+        </div>
+      </div>
+    </main>
+  );
+}
