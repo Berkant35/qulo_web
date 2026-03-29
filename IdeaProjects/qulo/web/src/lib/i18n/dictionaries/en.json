@@ -153,5 +153,45 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. Contact",
     "contactInfo": "If you have questions about these Terms of Service, please contact us:\n\nDeveloper: Berkant Çalıkuşu\nEmail: info@socrepho.com\nAddress: Istanbul/Beyoglu, Turkey\nWebsite: quloapp.com"
+  },
+  "help": {
+    "title": "Help Center",
+    "subtitle": "Frequently asked questions and support",
+    "categories": {
+      "account": "Account & Login",
+      "matching": "Matching & Questions",
+      "diamonds": "Diamonds & Premium",
+      "security": "Safety & Privacy",
+      "technical": "Technical Issues"
+    },
+    "faq": {
+      "account_reset_password_q": "How do I reset my password?",
+      "account_reset_password_a": "On the login screen, tap 'Forgot Password'. A reset link will be sent to your email address.",
+      "account_delete_q": "How do I delete my account?",
+      "account_delete_a": "Go to Settings > Delete Account to permanently delete your account. This action cannot be undone.",
+      "account_banned_q": "My account was suspended, what should I do?",
+      "account_banned_a": "Your account may have been suspended for violating community guidelines. For more information, email support@quloapp.com.",
+      "matching_how_q": "How does matching work?",
+      "matching_how_a": "Create questions and let other users solve them. Correct answers lead to a match.",
+      "matching_questions_q": "How do I create a question?",
+      "matching_questions_a": "Tap the '+' button on the main screen. Add 2 to 10 questions, enter 4 options for each, and mark the correct answer.",
+      "diamonds_what_q": "What are diamonds used for?",
+      "diamonds_what_a": "Green diamonds are used to activate powers, while purple diamonds unlock special features.",
+      "diamonds_buy_q": "How do I buy diamonds?",
+      "diamonds_buy_a": "Tap the diamond icon on the profile screen to purchase purple diamond packages.",
+      "security_block_q": "How do I block someone?",
+      "security_block_a": "Use the three-dot menu on the user's profile or chat screen and select 'Block'.",
+      "security_report_q": "How do I report someone?",
+      "security_report_a": "Use the three-dot menu on the user's profile or chat screen and select 'Report'.",
+      "security_data_q": "Is my data safe?",
+      "security_data_a": "All your data is stored encrypted. You can review our privacy policy from the settings screen.",
+      "technical_connection_q": "I'm experiencing connection issues",
+      "technical_connection_a": "Check your internet connection. If the problem persists, close and reopen the app.",
+      "technical_notification_q": "I'm not receiving notifications",
+      "technical_notification_a": "Check your phone settings to make sure notifications are enabled for Qulo."
+    },
+    "still_need_help": "Still need help?",
+    "still_need_help_desc": "You can create a support request from the app or send us an email.",
+    "contact_email": "support@quloapp.com"
   }
 }
