@@ -18,23 +18,54 @@
   to = "/:locale/invite/index.html"
   status = 200
 
-# Legal & help pages — static export needs explicit rewrites
+# Supported locales (tr, en) — direct rewrite
+[[redirects]]
+  from = "/tr/help"
+  to = "/tr/help/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/help"
+  to = "/en/help/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tr/terms"
+  to = "/tr/terms/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/terms"
+  to = "/en/terms/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tr/privacy-policy"
+  to = "/tr/privacy-policy/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/privacy-policy"
+  to = "/en/privacy-policy/index.html"
+  status = 200
+
+# Unsupported locales → fallback to English
 [[redirects]]
   from = "/:locale/help"
-  to = "/:locale/help/index.html"
+  to = "/en/help/index.html"
   status = 200
 
 [[redirects]]
   from = "/:locale/terms"
-  to = "/:locale/terms/index.html"
+  to = "/en/terms/index.html"
   status = 200
 
 [[redirects]]
   from = "/:locale/privacy-policy"
-  to = "/:locale/privacy-policy/index.html"
+  to = "/en/privacy-policy/index.html"
   status = 200
 
-# Bare paths without locale → default locale
+# Bare paths without locale → default (Turkish)
 [[redirects]]
   from = "/help"
   to = "/tr/help/index.html"
