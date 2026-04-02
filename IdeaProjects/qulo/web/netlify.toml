@@ -18,6 +18,38 @@
   to = "/:locale/invite/index.html"
   status = 200
 
+# Legal & help pages — static export needs explicit rewrites
+[[redirects]]
+  from = "/:locale/help"
+  to = "/:locale/help/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/:locale/terms"
+  to = "/:locale/terms/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/:locale/privacy-policy"
+  to = "/:locale/privacy-policy/index.html"
+  status = 200
+
+# Bare paths without locale → default locale
+[[redirects]]
+  from = "/help"
+  to = "/tr/help/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/tr/terms/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/tr/privacy-policy/index.html"
+  status = 200
+
 [[headers]]
   for = "/.well-known/apple-app-site-association"
   [headers.values]
