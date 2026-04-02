@@ -1,10 +1,11 @@
 [build]
+  base = "web/"
   command = "npm run build"
   publish = "out/"
 
 [[redirects]]
   from = "/"
-  to = "/en/"
+  to = "/tr/"
   status = 302
 
 [[redirects]]
@@ -17,15 +18,68 @@
   to = "/:locale/invite/index.html"
   status = 200
 
+# Supported locales (tr, en) — direct rewrite
 [[redirects]]
-  from = "/privacy"
-  to = "/en/privacy-policy/"
-  status = 302
+  from = "/tr/help"
+  to = "/tr/help/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/help"
+  to = "/en/help/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tr/terms"
+  to = "/tr/terms/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/terms"
+  to = "/en/terms/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tr/privacy-policy"
+  to = "/tr/privacy-policy/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/privacy-policy"
+  to = "/en/privacy-policy/index.html"
+  status = 200
+
+# Unsupported locales → fallback to English
+[[redirects]]
+  from = "/:locale/help"
+  to = "/en/help/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/:locale/terms"
+  to = "/en/terms/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/:locale/privacy-policy"
+  to = "/en/privacy-policy/index.html"
+  status = 200
+
+# Bare paths without locale → default (Turkish)
+[[redirects]]
+  from = "/help"
+  to = "/tr/help/index.html"
+  status = 200
 
 [[redirects]]
   from = "/terms"
-  to = "/en/terms/"
-  status = 302
+  to = "/tr/terms/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/tr/privacy-policy/index.html"
+  status = 200
 
 [[headers]]
   for = "/.well-known/apple-app-site-association"

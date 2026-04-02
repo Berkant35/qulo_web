@@ -5,10 +5,9 @@ import { useTranslations } from "next-intl";
 import { FeatureCard } from "./FeatureCard";
 
 const CARDS = [
-  { key: "diamonds", iconSrc: "/icons/ic_gem.svg", accentColor: "green" as const },
+  { key: "diamonds", iconSrc: "/brand/purple_diamond.svg", accentColor: "purple" as const },
+  { key: "gamification", iconSrc: "/icons/ic_badge_gold.svg", accentColor: "green" as const },
   { key: "powers", iconSrc: "/icons/ic_zap.svg", accentColor: "purple" as const },
-  { key: "chatQuestions", iconSrc: "/icons/ic_chats.svg", accentColor: "green" as const },
-  { key: "gamification", iconSrc: "/icons/ic_badge_gold.svg", accentColor: "purple" as const },
   { key: "ai", iconSrc: "/icons/ic_wand.svg", accentColor: "green" as const },
   { key: "premium", iconSrc: "/icons/ic_crown.svg", accentColor: "purple" as const },
 ] as const;

@@ -115,7 +115,7 @@ export function DownloadCTA() {
               href={APP_STORE_URL}
               className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-qulo-purple transition-colors"
             >
-              <img src="/icons/ic_lock.svg" alt="" width={12} height={12} style={{ opacity: 0.5 }} />
+              <img src="/icons/ic_lock.svg" alt="" aria-hidden="true" width={12} height={12} style={{ opacity: 0.5 }} />
               App Store
             </a>
             <span className="text-white/10 text-xs">|</span>
@@ -123,7 +123,7 @@ export function DownloadCTA() {
               href={PLAY_STORE_URL}
               className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-qulo-green transition-colors"
             >
-              <img src="/icons/ic_zap.svg" alt="" width={12} height={12} style={{ opacity: 0.5 }} />
+              <img src="/icons/ic_zap.svg" alt="" aria-hidden="true" width={12} height={12} style={{ opacity: 0.5 }} />
               Google Play
             </a>
           </div>

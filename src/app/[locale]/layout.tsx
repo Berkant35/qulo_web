@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import { locales } from "@/lib/i18n/config";
+import { locales, type Locale } from "@/lib/i18n/config";
 import { SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 
 export function generateStaticParams() {
@@ -14,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const seo = (SEO as Record<string, { title: string; description: string }>)[locale] || SEO.en;
+  const seo = SEO[locale as Locale] || SEO.tr;
   return {
     title: seo.title,
     description: seo.description,

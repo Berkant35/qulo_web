@@ -4,10 +4,7 @@
     "target": {
       "namespace": "android_app",
       "package_name": "com.wordpress.calikusuberkant.qulo",
-      "sha256_cert_fingerprints": [
-        "F4:49:81:0F:8E:DA:35:37:EC:7A:2A:EA:D2:AB:18:AC:D6:EF:4D:BD:96:58:53:FC:D7:E3:EC:53:72:55:EF:AC",
-        "77:E0:77:FD:6C:A6:98:0B:08:65:43:55:EA:99:11:0C:17:91:C6:79:5A:CF:82:4C:26:93:D9:4D:DD:23:35:AC"
-      ]
+      "sha256_cert_fingerprints": ["TODO:ADD_YOUR_SHA256_FINGERPRINT"]
     }
   }
 ]

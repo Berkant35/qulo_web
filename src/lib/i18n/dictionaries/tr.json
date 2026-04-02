@@ -153,5 +153,45 @@
     "dataProtection": "Kişisel verileriniz, hizmet altyapımız gereği yurt dışında bulunan sunucularda (Supabase, Firebase, RevenueCat) işlenebilmektedir. Bu aktarım, KVKK madde 9 kapsamında açık rızanıza dayanmaktadır.\n\nVerilerinizin güvenliği için endüstri standardı şifreleme yöntemleri kullanılmaktadır.",
     "contactTitle": "15. İletişim",
     "contactInfo": "Bu Kullanım Koşulları hakkında sorularınız varsa bizimle iletişime geçin:\n\nGeliştirici: Berkant Çalıkuşu\nE-posta: info@socrepho.com\nAdres: İstanbul/Beyoğlu, Türkiye\nWeb sitesi: quloapp.com"
+  },
+  "help": {
+    "title": "Yardım Merkezi",
+    "subtitle": "Sık sorulan sorular ve destek",
+    "categories": {
+      "account": "Hesap & Giriş",
+      "matching": "Eşleşme & Sorular",
+      "diamonds": "Elmas & Premium",
+      "security": "Güvenlik & Gizlilik",
+      "technical": "Teknik Sorunlar"
+    },
+    "faq": {
+      "account_reset_password_q": "Şifremi nasıl sıfırlarım?",
+      "account_reset_password_a": "Giriş ekranında 'Şifremi Unuttum' butonuna tıklayın. Email adresinize bir sıfırlama bağlantısı gönderilecektir.",
+      "account_delete_q": "Hesabımı nasıl silebilirim?",
+      "account_delete_a": "Ayarlar > Hesabı Sil bölümünden hesabınızı kalıcı olarak silebilirsiniz. Bu işlem geri alınamaz.",
+      "account_banned_q": "Hesabım askıya alındı, ne yapmalıyım?",
+      "account_banned_a": "Hesabınız topluluk kurallarını ihlal ettiği için askıya alınmış olabilir. Detaylı bilgi için support@quloapp.com adresine yazın.",
+      "matching_how_q": "Eşleşme nasıl çalışır?",
+      "matching_how_a": "Sorular oluşturun, diğer kullanıcılar sorularınızı çözsün. Doğru cevaplar eşleşme sağlar.",
+      "matching_questions_q": "Soru nasıl oluşturulur?",
+      "matching_questions_a": "Ana ekrandan '+' butonuna tıklayın. 2 ile 10 arasında soru ekleyin, her soruya 4 seçenek girin ve doğru cevabı işaretleyin.",
+      "diamonds_what_q": "Elmaslar ne işe yarar?",
+      "diamonds_what_a": "Yeşil elmaslar güçleri kullanmak için, mor elmaslar özel özellikleri açmak için kullanılır.",
+      "diamonds_buy_q": "Elmas nasıl satın alınır?",
+      "diamonds_buy_a": "Profil ekranındaki elmas simgesine tıklayarak mor elmas paketlerini satın alabilirsiniz.",
+      "security_block_q": "Birini nasıl engellerim?",
+      "security_block_a": "Kullanıcının profilinde veya sohbet ekranında üç nokta menüsünden 'Engelle' seçeneğini kullanın.",
+      "security_report_q": "Birini nasıl bildiririm?",
+      "security_report_a": "Kullanıcının profilinde veya sohbet ekranında üç nokta menüsünden 'Bildir' seçeneğini kullanın.",
+      "security_data_q": "Verilerim güvende mi?",
+      "security_data_a": "Tüm verileriniz şifreli olarak saklanır. Gizlilik politikamızı incelemek için ayarlar ekranından erişebilirsiniz.",
+      "technical_connection_q": "Bağlantı sorunu yaşıyorum",
+      "technical_connection_a": "İnternet bağlantınızı kontrol edin. Sorun devam ederse uygulamayı kapatıp tekrar açın.",
+      "technical_notification_q": "Bildirimler gelmiyor",
+      "technical_notification_a": "Telefon ayarlarından Qulo için bildirimlerin açık olduğunu kontrol edin."
+    },
+    "still_need_help": "Sorunun hâlâ çözülmedi mi?",
+    "still_need_help_desc": "Uygulamadan destek talebi oluşturabilir veya bize email gönderebilirsiniz.",
+    "contact_email": "support@quloapp.com"
   }
 }

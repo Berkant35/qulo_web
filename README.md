@@ -1,93 +1,36 @@
-# Qulo Web
-
-Marketing website and legal pages for the **Qulo** dating app — meet through questions.
-
-**Live:** [quloapp.com](https://quloapp.com)
-
-## Tech Stack
-
-- **Framework:** Next.js 14 (App Router, Static Export)
-- **Language:** TypeScript 5
-- **Styling:** Tailwind CSS 3.4
-- **Animation:** Framer Motion, GSAP, Lottie
-- **i18n:** next-intl (16 languages)
-- **Deployment:** Netlify
-
-## Supported Languages
-
-| Code | Language | Scope |
-|------|----------|-------|
-| `en` | English | Full site |
-| `tr` | Turkish | Full site |
-| `de` `fr` `es` `ar` `ru` `pt` `it` `ja` `ko` `zh` `nl` `pl` `sv` `hi` | 14 languages | Legal pages |
-
-Arabic (`ar`) includes RTL layout support.
-
-## Project Structure
-
-```
-src/
-├── app/
-│   ├── [locale]/
-│   │   ├── page.tsx            # Home (EN/TR)
-│   │   ├── privacy-policy/     # Privacy Policy (16 langs)
-│   │   ├── terms/              # Terms of Service (16 langs)
-│   │   └── invite/             # Deep link redirect
-│   ├── layout.tsx              # Root layout
-│   └── page.tsx                # / → /en/ redirect
-├── components/
-│   ├── shared/                 # Navbar, Icon, GlassCard
-│   ├── hero/                   # Hero section
-│   ├── features/               # Feature cards
-│   ├── how-it-works/           # Steps timeline
-│   ├── app-preview/            # Phone mockup + GSAP
-│   ├── why-different/          # Comparison cards
-│   ├── download-cta/           # CTA section
-│   └── footer/                 # Footer
-├── lib/
-│   ├── i18n/
-│   │   ├── config.ts           # 16 locales + RTL config
-│   │   └── dictionaries/       # JSON language files
-│   ├── constants/              # Metadata, links
-│   └── utils/                  # cn(), detectPlatform()
-└── i18n/
-    └── request.ts              # next-intl with EN fallback
-```
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
+First, run the development server:
+
 ```bash
-npm install
-npm run dev          # http://localhost:3000
-npm run build        # Static export → out/
-npm run lint         # ESLint
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Requires Node.js >= 20.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Legal Pages
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Privacy Policy and Terms of Service available in 16 languages:
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- **GDPR** compliant (EU General Data Protection Regulation)
-- **KVKK** compliant (Turkish Data Protection Law No. 6698)
-- Section-based rendering with RTL support for Arabic
+## Learn More
 
-Content stored in `src/lib/i18n/dictionaries/*.json`.
+To learn more about Next.js, take a look at the following resources:
 
-## Deep Links
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-| Path | Purpose |
-|------|---------|
-| `/.well-known/apple-app-site-association` | iOS Universal Links |
-| `/.well-known/assetlinks.json` | Android App Links |
-| `/invite/:code` | Referral redirect |
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deployment
+## Deploy on Vercel
 
-Static site deployed to **Netlify** via `netlify.toml`.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Key redirects:
-- `/` → `/en/`
-- `/privacy` → `/en/privacy-policy/`
-- `/terms` → `/en/terms/`
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
