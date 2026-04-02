@@ -1,7 +1,7 @@
 export const SITE_URL = "https://quloapp.com";
 export const SITE_NAME = "Qulo";
 
-export const SEO = {
+export const SEO: Record<string, { title: string; description: string }> = {
   tr: {
     title: "Qulo — Sorularla Tanış | AI Dating Uygulaması",
     description:
@@ -12,4 +12,4 @@ export const SEO = {
     description:
       "Create questions, share them, match with the person who answers correctly. AI-powered next-gen dating app.",
   },
-} as const;
+};
