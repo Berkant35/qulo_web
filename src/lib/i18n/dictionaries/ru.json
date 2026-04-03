@@ -199,5 +199,18 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. Контакты",
     "contactInfo": "Если у вас есть вопросы по настоящим Условиям использования, свяжитесь с нами:\n\nРазработчик: Berkant Çalıkuşu\nЭлектронная почта: info@socrepho.com\nАдрес: Istanbul/Beyoglu, Turkey\nВеб-сайт: quloapp.com"
+  },
+  "resetPassword": {
+    "title": "Сброс пароля",
+    "newPassword": "Новый пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "submit": "Сбросить пароль",
+    "success": "Ваш пароль успешно изменён!",
+    "successDesc": "Теперь вы можете войти с новым паролем.",
+    "error": "Эта ссылка недействительна или срок её действия истёк.",
+    "errorDesc": "Пожалуйста, запросите новый сброс пароля через приложение.",
+    "backToApp": "Открыть приложение",
+    "passwordMinLength": "Пароль должен содержать не менее 8 символов",
+    "passwordMismatch": "Пароли не совпадают"
   }
 }

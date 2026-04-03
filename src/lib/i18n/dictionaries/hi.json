@@ -199,5 +199,18 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. संपर्क",
     "contactInfo": "यदि इन सेवा की शर्तों के बारे में आपके कोई प्रश्न हैं, तो कृपया हमसे संपर्क करें:\n\nडेवलपर: Berkant Çalıkuşu\nईमेल: info@socrepho.com\nपता: Istanbul/Beyoglu, Turkey\nवेबसाइट: quloapp.com"
+  },
+  "resetPassword": {
+    "title": "अपना पासवर्ड रीसेट करें",
+    "newPassword": "नया पासवर्ड",
+    "confirmPassword": "पासवर्ड की पुष्टि करें",
+    "submit": "पासवर्ड रीसेट करें",
+    "success": "आपका पासवर्ड सफलतापूर्वक बदल दिया गया है!",
+    "successDesc": "अब आप अपने नए पासवर्ड से साइन इन कर सकते हैं।",
+    "error": "यह लिंक अमान्य है या समाप्त हो गया है।",
+    "errorDesc": "कृपया ऐप से नए पासवर्ड रीसेट का अनुरोध करें।",
+    "backToApp": "ऐप खोलें",
+    "passwordMinLength": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए",
+    "passwordMismatch": "पासवर्ड मेल नहीं खाते"
   }
 }

@@ -193,5 +193,18 @@
     "still_need_help": "Still need help?",
     "still_need_help_desc": "You can create a support request from the app or send us an email.",
     "contact_email": "support@quloapp.com"
+  },
+  "resetPassword": {
+    "title": "Reset Your Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "submit": "Reset Password",
+    "success": "Your password has been changed successfully!",
+    "successDesc": "You can now sign in with your new password.",
+    "error": "This link is invalid or has expired.",
+    "errorDesc": "Please request a new password reset from the app.",
+    "backToApp": "Open App",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "passwordMismatch": "Passwords do not match"
   }
 }

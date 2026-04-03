@@ -247,5 +247,18 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. 联系我们",
     "contactInfo": "如果您对本服务条款有任何疑问，请联系我们：\n\n开发者：Berkant Çalıkuşu\n电子邮件：info@socrepho.com\n地址：Istanbul/Beyoglu, Turkey\n网站：quloapp.com"
+  },
+  "resetPassword": {
+    "title": "重置您的密码",
+    "newPassword": "新密码",
+    "confirmPassword": "确认密码",
+    "submit": "重置密码",
+    "success": "您的密码已成功更改！",
+    "successDesc": "您现在可以使用新密码登录。",
+    "error": "此链接无效或已过期。",
+    "errorDesc": "请从应用程序请求新的密码重置。",
+    "backToApp": "打开应用",
+    "passwordMinLength": "密码必须至少8个字符",
+    "passwordMismatch": "密码不匹配"
   }
 }

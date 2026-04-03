@@ -64,7 +64,29 @@
   to = "/en/privacy-policy/index.html"
   status = 200
 
+# Supported locales (tr, en) — direct rewrite
+[[redirects]]
+  from = "/tr/reset-password"
+  to = "/tr/reset-password/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/reset-password"
+  to = "/en/reset-password/index.html"
+  status = 200
+
+# Unsupported locales → fallback to English
+[[redirects]]
+  from = "/:locale/reset-password"
+  to = "/:locale/reset-password/index.html"
+  status = 200
+
 # Bare paths without locale → default (Turkish)
+[[redirects]]
+  from = "/reset-password"
+  to = "/tr/reset-password/index.html"
+  status = 200
+
 [[redirects]]
   from = "/help"
   to = "/tr/help/index.html"

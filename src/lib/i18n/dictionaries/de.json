@@ -199,5 +199,18 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. Kontakt",
     "contactInfo": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns:\n\nEntwickler: Berkant Çalıkuşu\nE-Mail: info@socrepho.com\nAdresse: Istanbul/Beyoglu, Turkey\nWebsite: quloapp.com"
+  },
+  "resetPassword": {
+    "title": "Passwort zurücksetzen",
+    "newPassword": "Neues Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "submit": "Passwort zurücksetzen",
+    "success": "Ihr Passwort wurde erfolgreich geändert!",
+    "successDesc": "Sie können sich jetzt mit Ihrem neuen Passwort anmelden.",
+    "error": "Dieser Link ist ungültig oder abgelaufen.",
+    "errorDesc": "Bitte fordern Sie über die App eine neue Passwortzurücksetzung an.",
+    "backToApp": "App öffnen",
+    "passwordMinLength": "Das Passwort muss mindestens 8 Zeichen lang sein",
+    "passwordMismatch": "Passwörter stimmen nicht überein"
   }
 }
