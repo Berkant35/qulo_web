@@ -7,6 +7,7 @@ import 'package:qulo_v2/core/constants/app_assets.dart';
 import 'package:qulo_v2/core/constants/app_constants.dart';
 import 'package:qulo_v2/core/constants/app_sizes.dart';
 import 'package:qulo_v2/core/l10n/l10n.dart';
+import 'package:qulo_v2/core/navigation/models/app_bottom_sheet.dart';
 import 'package:qulo_v2/core/widgets/language_picker_sheet.dart';
 import 'package:qulo_v2/core/mixins/form_mixin.dart';
 import 'package:qulo_v2/core/mixins/loading_mixin.dart';
@@ -50,14 +51,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
 
   Future<void> _showLanguagePicker() async {
     final currentLocale = ref.read(localeProvider).languageCode;
-    final result = await showModalBottomSheet<List<String>>(
-      context: context,
-      builder: (_) => LanguagePickerSheet(
-        selectedLanguages: [currentLocale],
-        multiSelect: false,
-      ),
-    );
-    if (result != null && result.isNotEmpty && mounted) {
+    final result = await ref
+        .read(navigationServiceProvider)
+        .showAppBottomSheet<List<String>>(
+          CustomBottomSheet(
+            name: 'language_picker',
+            builder: (_) => LanguagePickerSheet(
+              selectedLanguages: [currentLocale],
+              multiSelect: false,
+            ),
+          ),
+        );
+    if (result != null && result.isNotEmpty) {
       ref.read(localeProvider.notifier).setLocale(Locale(result.first));
     }
   }
