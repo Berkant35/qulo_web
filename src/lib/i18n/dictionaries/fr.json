@@ -3,7 +3,9 @@
     "title": "Qulo — Rencontrez par les Questions",
     "description": "Créez des questions, partagez-les, trouvez votre match avec la personne qui répond correctement. Application de rencontre nouvelle génération propulsée par l'IA."
   },
-  "nav": { "download": "Télécharger" },
+  "nav": {
+    "download": "Télécharger"
+  },
   "hero": {
     "label": "Rencontres nouvelle génération",
     "title1": "Rencontrez par les",
@@ -42,15 +44,47 @@
     "label": "Fonctionnalités",
     "title1": "Pourquoi",
     "title2": "Qulo ?",
-    "diamonds": { "title": "Économie de diamants", "subtitle": "Gagnez & Dépensez", "desc": "Gagnez des diamants verts lorsque vos questions sont résolues. Plus de questions, plus de gains. Atteignez des jalons pour débloquer des récompenses bonus." },
-    "powers": { "title": "Pouvoirs du quiz", "subtitle": "6 pouvoirs", "desc": "Oracle, Moitié, Passer, Extension de temps, Indice et Tout passer. Utilisez des pouvoirs stratégiques en résolvant des questions." },
-    "chatQuestions": { "title": "Questions dans le chat", "subtitle": "Quiz dans le chat", "desc": "Envoyez des questions à vos matchs. Verrouillez le chat jusqu'à la résolution, révélez des photos aux bonnes réponses. Gardez les conversations passionnantes." },
-    "gamification": { "title": "Gamification", "subtitle": "Badges & Niveaux", "desc": "Gagnez des badges en progressant, montez de niveau avec les jalons. Enrichissez votre profil." },
-    "ai": { "title": "Création de questions par IA", "subtitle": "Propulsé par l'IA", "desc": "Créez des questions engageantes avec l'IA. Trouvez les questions qui reflètent le mieux votre personnalité." },
-    "premium": { "title": "Plans Premium", "subtitle": "Plus & Premium", "desc": "Expérience sans publicité, découvertes illimitées, mode Passport, bonus mensuel de diamants et plus de questions." }
+    "diamonds": {
+      "title": "Économie de diamants",
+      "subtitle": "Gagnez & Dépensez",
+      "desc": "Gagnez des diamants verts lorsque vos questions sont résolues. Plus de questions, plus de gains. Atteignez des jalons pour débloquer des récompenses bonus."
+    },
+    "powers": {
+      "title": "Pouvoirs du quiz",
+      "subtitle": "6 pouvoirs",
+      "desc": "Oracle, Moitié, Passer, Extension de temps, Indice et Tout passer. Utilisez des pouvoirs stratégiques en résolvant des questions."
+    },
+    "chatQuestions": {
+      "title": "Questions dans le chat",
+      "subtitle": "Quiz dans le chat",
+      "desc": "Envoyez des questions à vos matchs. Verrouillez le chat jusqu'à la résolution, révélez des photos aux bonnes réponses. Gardez les conversations passionnantes."
+    },
+    "gamification": {
+      "title": "Gamification",
+      "subtitle": "Badges & Niveaux",
+      "desc": "Gagnez des badges en progressant, montez de niveau avec les jalons. Enrichissez votre profil."
+    },
+    "ai": {
+      "title": "Création de questions par IA",
+      "subtitle": "Propulsé par l'IA",
+      "desc": "Créez des questions engageantes avec l'IA. Trouvez les questions qui reflètent le mieux votre personnalité."
+    },
+    "premium": {
+      "title": "Plans Premium",
+      "subtitle": "Plus & Premium",
+      "desc": "Expérience sans publicité, découvertes illimitées, mode Passport, bonus mensuel de diamants et plus de questions."
+    }
   },
-  "appPreview": { "label": "App", "title1": "Explorez l'", "title2": "App" },
-  "testimonials": { "label": "Utilisateurs", "title1": "Histoires de", "title2": "réussite" },
+  "appPreview": {
+    "label": "App",
+    "title1": "Explorez l'",
+    "title2": "App"
+  },
+  "testimonials": {
+    "label": "Utilisateurs",
+    "title1": "Histoires de",
+    "title2": "réussite"
+  },
   "whyDifferent": {
     "label": "Différence",
     "title1": "Qu'est-ce qui nous rend",
@@ -80,9 +114,23 @@
     "users": "Utilisateurs",
     "rating": "App Store"
   },
-  "cta": { "title": "Commencez.", "desc": "Rencontrez à travers vos questions, construisez de vraies connexions.", "button": "Télécharger l'App" },
-  "invite": { "title": "Vous êtes invité sur Qulo !", "desc": "Téléchargez l'app et utilisez votre code d'invitation.", "redirecting": "Redirection...", "downloadPrompt": "Téléchargez sur votre téléphone", "code": "Code d'invitation" },
-  "notFound": { "title": "Page non trouvée", "desc": "La page que vous recherchez n'existe pas.", "back": "Retour à l'accueil" },
+  "cta": {
+    "title": "Commencez.",
+    "desc": "Rencontrez à travers vos questions, construisez de vraies connexions.",
+    "button": "Télécharger l'App"
+  },
+  "invite": {
+    "title": "Vous êtes invité sur Qulo !",
+    "desc": "Téléchargez l'app et utilisez votre code d'invitation.",
+    "redirecting": "Redirection...",
+    "downloadPrompt": "Téléchargez sur votre téléphone",
+    "code": "Code d'invitation"
+  },
+  "notFound": {
+    "title": "Page non trouvée",
+    "desc": "La page que vous recherchez n'existe pas.",
+    "back": "Retour à l'accueil"
+  },
   "help": {
     "title": "Centre d'aide",
     "subtitle": "Questions fréquentes et support",
@@ -212,5 +260,14 @@
     "backToApp": "Ouvrir l'application",
     "passwordMinLength": "Le mot de passe doit comporter au moins 8 caractères",
     "passwordMismatch": "Les mots de passe ne correspondent pas"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

@@ -3,7 +3,9 @@
     "title": "Qulo — 質問で出会う",
     "description": "質問を作成し、シェアして、正解した人とマッチング。AI搭載の次世代マッチングアプリ。"
   },
-  "nav": { "download": "ダウンロード" },
+  "nav": {
+    "download": "ダウンロード"
+  },
   "hero": {
     "label": "次世代マッチング",
     "title1": "質問で",
@@ -42,15 +44,47 @@
     "label": "機能",
     "title1": "なぜ",
     "title2": "Qulo？",
-    "diamonds": { "title": "ダイヤモンドエコノミー", "subtitle": "稼いで使おう", "desc": "質問が解かれるとグリーンダイヤモンドを獲得。質問が多いほど稼げる。マイルストーンを達成してボーナス報酬をアンロック。" },
-    "powers": { "title": "クイズパワー", "subtitle": "6つのパワー", "desc": "Oracle、Half、Skip、Time Extend、Hint、Skip All。質問を解く際に戦略的パワーを使おう。" },
-    "chatQuestions": { "title": "チャット質問", "subtitle": "チャット内クイズ", "desc": "マッチに質問を送ろう。解くまでチャットをロック、正解で写真を公開。会話を盛り上げよう。" },
-    "gamification": { "title": "ゲーミフィケーション", "subtitle": "バッジとレベル", "desc": "進むほどバッジを獲得、マイルストーンでレベルアップ。プロフィールを豊かにしよう。" },
-    "ai": { "title": "AI質問作成", "subtitle": "AI搭載", "desc": "AIで魅力的な質問を作成。あなたの個性を最もよく反映する質問を見つけよう。" },
-    "premium": { "title": "プレミアムプラン", "subtitle": "Plus & Premium", "desc": "広告なし、無制限のディスカバー、パスポートモード、月次ダイヤモンドボーナス、より多くの質問。" }
+    "diamonds": {
+      "title": "ダイヤモンドエコノミー",
+      "subtitle": "稼いで使おう",
+      "desc": "質問が解かれるとグリーンダイヤモンドを獲得。質問が多いほど稼げる。マイルストーンを達成してボーナス報酬をアンロック。"
+    },
+    "powers": {
+      "title": "クイズパワー",
+      "subtitle": "6つのパワー",
+      "desc": "Oracle、Half、Skip、Time Extend、Hint、Skip All。質問を解く際に戦略的パワーを使おう。"
+    },
+    "chatQuestions": {
+      "title": "チャット質問",
+      "subtitle": "チャット内クイズ",
+      "desc": "マッチに質問を送ろう。解くまでチャットをロック、正解で写真を公開。会話を盛り上げよう。"
+    },
+    "gamification": {
+      "title": "ゲーミフィケーション",
+      "subtitle": "バッジとレベル",
+      "desc": "進むほどバッジを獲得、マイルストーンでレベルアップ。プロフィールを豊かにしよう。"
+    },
+    "ai": {
+      "title": "AI質問作成",
+      "subtitle": "AI搭載",
+      "desc": "AIで魅力的な質問を作成。あなたの個性を最もよく反映する質問を見つけよう。"
+    },
+    "premium": {
+      "title": "プレミアムプラン",
+      "subtitle": "Plus & Premium",
+      "desc": "広告なし、無制限のディスカバー、パスポートモード、月次ダイヤモンドボーナス、より多くの質問。"
+    }
   },
-  "appPreview": { "label": "アプリ", "title1": "アプリを", "title2": "探索" },
-  "testimonials": { "label": "ユーザー", "title1": "成功", "title2": "ストーリー" },
+  "appPreview": {
+    "label": "アプリ",
+    "title1": "アプリを",
+    "title2": "探索"
+  },
+  "testimonials": {
+    "label": "ユーザー",
+    "title1": "成功",
+    "title2": "ストーリー"
+  },
   "whyDifferent": {
     "label": "違い",
     "title1": "何が私たちを",
@@ -80,9 +114,23 @@
     "users": "ユーザー",
     "rating": "App Store"
   },
-  "cta": { "title": "始めよう。", "desc": "質問で出会い、本物のつながりを築こう。", "button": "アプリをダウンロード" },
-  "invite": { "title": "Quloに招待されました！", "desc": "アプリをダウンロードして招待コードを使おう。", "redirecting": "リダイレクト中...", "downloadPrompt": "スマホでダウンロード", "code": "招待コード" },
-  "notFound": { "title": "ページが見つかりません", "desc": "お探しのページは存在しません。", "back": "ホームに戻る" },
+  "cta": {
+    "title": "始めよう。",
+    "desc": "質問で出会い、本物のつながりを築こう。",
+    "button": "アプリをダウンロード"
+  },
+  "invite": {
+    "title": "Quloに招待されました！",
+    "desc": "アプリをダウンロードして招待コードを使おう。",
+    "redirecting": "リダイレクト中...",
+    "downloadPrompt": "スマホでダウンロード",
+    "code": "招待コード"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "desc": "お探しのページは存在しません。",
+    "back": "ホームに戻る"
+  },
   "help": {
     "title": "ヘルプセンター",
     "subtitle": "よくある質問とサポート",
@@ -212,5 +260,14 @@
     "backToApp": "アプリを開く",
     "passwordMinLength": "パスワードは8文字以上である必要があります",
     "passwordMismatch": "パスワードが一致しません"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

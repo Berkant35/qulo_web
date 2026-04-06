@@ -206,5 +206,14 @@
     "backToApp": "Uygulamayı Aç",
     "passwordMinLength": "Şifre en az 8 karakter olmalıdır",
     "passwordMismatch": "Şifreler eşleşmiyor"
+  },
+  "emailVerified": {
+    "successTitle": "E-posta Doğrulandı!",
+    "successDesc": "Hesabın başarıyla aktifleştirildi. Uygulamaya dönebilirsin.",
+    "expiredTitle": "Bağlantı Süresi Dolmuş",
+    "expiredDesc": "Bu doğrulama bağlantısının süresi dolmuş. Lütfen uygulamadan yeni bir bağlantı talep et.",
+    "errorTitle": "Geçersiz Bağlantı",
+    "errorDesc": "Bu doğrulama bağlantısı geçersiz.",
+    "openApp": "Uygulamayı Aç"
   }
 }

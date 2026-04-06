@@ -3,7 +3,9 @@
     "title": "Qulo — Incontra attraverso le Domande",
     "description": "Crea domande, condividile, trova il tuo match con la persona che risponde correttamente. App di incontri di nuova generazione con IA."
   },
-  "nav": { "download": "Scarica" },
+  "nav": {
+    "download": "Scarica"
+  },
   "hero": {
     "label": "Incontri di nuova generazione",
     "title1": "Incontra attraverso le",
@@ -42,15 +44,47 @@
     "label": "Funzionalità",
     "title1": "Perché",
     "title2": "Qulo?",
-    "diamonds": { "title": "Economia dei diamanti", "subtitle": "Guadagna e spendi", "desc": "Guadagna diamanti verdi quando le tue domande vengono risolte. Più domande, più guadagni. Raggiungi traguardi per sbloccare ricompense bonus." },
-    "powers": { "title": "Poteri del quiz", "subtitle": "6 poteri", "desc": "Oracolo, Metà, Salta, Estensione Tempo, Suggerimento e Salta Tutto. Usa poteri strategici mentre risolvi le domande." },
-    "chatQuestions": { "title": "Domande in chat", "subtitle": "Quiz in chat", "desc": "Invia domande ai tuoi match. Blocca la chat fino alla risoluzione, rivela foto con risposte corrette. Mantieni le conversazioni emozionanti." },
-    "gamification": { "title": "Gamification", "subtitle": "Badge e livelli", "desc": "Guadagna badge man mano che avanzi, sali di livello con i traguardi. Arricchisci il tuo profilo." },
-    "ai": { "title": "Creazione domande con IA", "subtitle": "Alimentato dall'IA", "desc": "Crea domande coinvolgenti con l'IA. Trova le domande che riflettono meglio la tua personalità." },
-    "premium": { "title": "Piani Premium", "subtitle": "Plus e Premium", "desc": "Esperienza senza pubblicità, scoperte illimitate, modalità Passport, bonus mensile di diamanti e più domande." }
+    "diamonds": {
+      "title": "Economia dei diamanti",
+      "subtitle": "Guadagna e spendi",
+      "desc": "Guadagna diamanti verdi quando le tue domande vengono risolte. Più domande, più guadagni. Raggiungi traguardi per sbloccare ricompense bonus."
+    },
+    "powers": {
+      "title": "Poteri del quiz",
+      "subtitle": "6 poteri",
+      "desc": "Oracolo, Metà, Salta, Estensione Tempo, Suggerimento e Salta Tutto. Usa poteri strategici mentre risolvi le domande."
+    },
+    "chatQuestions": {
+      "title": "Domande in chat",
+      "subtitle": "Quiz in chat",
+      "desc": "Invia domande ai tuoi match. Blocca la chat fino alla risoluzione, rivela foto con risposte corrette. Mantieni le conversazioni emozionanti."
+    },
+    "gamification": {
+      "title": "Gamification",
+      "subtitle": "Badge e livelli",
+      "desc": "Guadagna badge man mano che avanzi, sali di livello con i traguardi. Arricchisci il tuo profilo."
+    },
+    "ai": {
+      "title": "Creazione domande con IA",
+      "subtitle": "Alimentato dall'IA",
+      "desc": "Crea domande coinvolgenti con l'IA. Trova le domande che riflettono meglio la tua personalità."
+    },
+    "premium": {
+      "title": "Piani Premium",
+      "subtitle": "Plus e Premium",
+      "desc": "Esperienza senza pubblicità, scoperte illimitate, modalità Passport, bonus mensile di diamanti e più domande."
+    }
   },
-  "appPreview": { "label": "App", "title1": "Esplora l'", "title2": "App" },
-  "testimonials": { "label": "Utenti", "title1": "Storie di", "title2": "successo" },
+  "appPreview": {
+    "label": "App",
+    "title1": "Esplora l'",
+    "title2": "App"
+  },
+  "testimonials": {
+    "label": "Utenti",
+    "title1": "Storie di",
+    "title2": "successo"
+  },
   "whyDifferent": {
     "label": "Differenza",
     "title1": "Cosa ci rende",
@@ -80,9 +114,23 @@
     "users": "Utenti",
     "rating": "App Store"
   },
-  "cta": { "title": "Inizia ora.", "desc": "Incontra attraverso le tue domande, costruisci connessioni reali.", "button": "Scarica l'App" },
-  "invite": { "title": "Sei invitato su Qulo!", "desc": "Scarica l'app e usa il tuo codice di invito.", "redirecting": "Reindirizzamento...", "downloadPrompt": "Scarica sul tuo telefono", "code": "Codice di invito" },
-  "notFound": { "title": "Pagina non trovata", "desc": "La pagina che stai cercando non esiste.", "back": "Torna alla home" },
+  "cta": {
+    "title": "Inizia ora.",
+    "desc": "Incontra attraverso le tue domande, costruisci connessioni reali.",
+    "button": "Scarica l'App"
+  },
+  "invite": {
+    "title": "Sei invitato su Qulo!",
+    "desc": "Scarica l'app e usa il tuo codice di invito.",
+    "redirecting": "Reindirizzamento...",
+    "downloadPrompt": "Scarica sul tuo telefono",
+    "code": "Codice di invito"
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "desc": "La pagina che stai cercando non esiste.",
+    "back": "Torna alla home"
+  },
   "help": {
     "title": "Centro assistenza",
     "subtitle": "Domande frequenti e supporto",
@@ -212,5 +260,14 @@
     "backToApp": "Apri l'app",
     "passwordMinLength": "La password deve essere di almeno 8 caratteri",
     "passwordMismatch": "Le password non corrispondono"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

@@ -3,7 +3,9 @@
     "title": "Qulo — Conheça através de Perguntas",
     "description": "Crie perguntas, compartilhe-as, faça match com a pessoa que responder corretamente. App de encontros de nova geração com IA."
   },
-  "nav": { "download": "Baixar" },
+  "nav": {
+    "download": "Baixar"
+  },
   "hero": {
     "label": "Encontros de nova geração",
     "title1": "Conheça através de",
@@ -42,15 +44,47 @@
     "label": "Recursos",
     "title1": "Por que",
     "title2": "Qulo?",
-    "diamonds": { "title": "Economia de diamantes", "subtitle": "Ganhe e gaste", "desc": "Ganhe diamantes verdes quando suas perguntas forem resolvidas. Mais perguntas, mais ganhos. Alcance marcos para desbloquear recompensas bônus." },
-    "powers": { "title": "Poderes do quiz", "subtitle": "6 poderes", "desc": "Oráculo, Metade, Pular, Extensão de Tempo, Dica e Pular Tudo. Use poderes estratégicos ao resolver perguntas." },
-    "chatQuestions": { "title": "Perguntas no chat", "subtitle": "Quizzes no chat", "desc": "Envie perguntas para seus matches. Bloqueie o chat até resolver, revele fotos com respostas corretas. Mantenha as conversas empolgantes." },
-    "gamification": { "title": "Gamificação", "subtitle": "Insígnias & Níveis", "desc": "Ganhe insígnias conforme avança, suba de nível com marcos. Enriqueça seu perfil." },
-    "ai": { "title": "Criação de perguntas com IA", "subtitle": "Potencializado por IA", "desc": "Crie perguntas envolventes com IA. Encontre as perguntas que melhor refletem sua personalidade." },
-    "premium": { "title": "Planos Premium", "subtitle": "Plus e Premium", "desc": "Experiência sem anúncios, descobertas ilimitadas, modo Passport, bônus mensal de diamantes e mais perguntas." }
+    "diamonds": {
+      "title": "Economia de diamantes",
+      "subtitle": "Ganhe e gaste",
+      "desc": "Ganhe diamantes verdes quando suas perguntas forem resolvidas. Mais perguntas, mais ganhos. Alcance marcos para desbloquear recompensas bônus."
+    },
+    "powers": {
+      "title": "Poderes do quiz",
+      "subtitle": "6 poderes",
+      "desc": "Oráculo, Metade, Pular, Extensão de Tempo, Dica e Pular Tudo. Use poderes estratégicos ao resolver perguntas."
+    },
+    "chatQuestions": {
+      "title": "Perguntas no chat",
+      "subtitle": "Quizzes no chat",
+      "desc": "Envie perguntas para seus matches. Bloqueie o chat até resolver, revele fotos com respostas corretas. Mantenha as conversas empolgantes."
+    },
+    "gamification": {
+      "title": "Gamificação",
+      "subtitle": "Insígnias & Níveis",
+      "desc": "Ganhe insígnias conforme avança, suba de nível com marcos. Enriqueça seu perfil."
+    },
+    "ai": {
+      "title": "Criação de perguntas com IA",
+      "subtitle": "Potencializado por IA",
+      "desc": "Crie perguntas envolventes com IA. Encontre as perguntas que melhor refletem sua personalidade."
+    },
+    "premium": {
+      "title": "Planos Premium",
+      "subtitle": "Plus e Premium",
+      "desc": "Experiência sem anúncios, descobertas ilimitadas, modo Passport, bônus mensal de diamantes e mais perguntas."
+    }
   },
-  "appPreview": { "label": "App", "title1": "Explore o", "title2": "App" },
-  "testimonials": { "label": "Usuários", "title1": "Histórias de", "title2": "sucesso" },
+  "appPreview": {
+    "label": "App",
+    "title1": "Explore o",
+    "title2": "App"
+  },
+  "testimonials": {
+    "label": "Usuários",
+    "title1": "Histórias de",
+    "title2": "sucesso"
+  },
   "whyDifferent": {
     "label": "Diferença",
     "title1": "O que nos torna",
@@ -80,9 +114,23 @@
     "users": "Usuários",
     "rating": "App Store"
   },
-  "cta": { "title": "Comece agora.", "desc": "Conheça através das suas perguntas, construa conexões reais.", "button": "Baixar o App" },
-  "invite": { "title": "Você foi convidado para o Qulo!", "desc": "Baixe o app e use seu código de convite.", "redirecting": "Redirecionando...", "downloadPrompt": "Baixe no seu celular", "code": "Código de convite" },
-  "notFound": { "title": "Página não encontrada", "desc": "A página que você procura não existe.", "back": "Voltar para o início" },
+  "cta": {
+    "title": "Comece agora.",
+    "desc": "Conheça através das suas perguntas, construa conexões reais.",
+    "button": "Baixar o App"
+  },
+  "invite": {
+    "title": "Você foi convidado para o Qulo!",
+    "desc": "Baixe o app e use seu código de convite.",
+    "redirecting": "Redirecionando...",
+    "downloadPrompt": "Baixe no seu celular",
+    "code": "Código de convite"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "desc": "A página que você procura não existe.",
+    "back": "Voltar para o início"
+  },
   "help": {
     "title": "Central de Ajuda",
     "subtitle": "Perguntas frequentes e suporte",
@@ -212,5 +260,14 @@
     "backToApp": "Abrir aplicativo",
     "passwordMinLength": "A senha deve ter pelo menos 8 caracteres",
     "passwordMismatch": "As senhas não correspondem"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

@@ -3,7 +3,9 @@
     "title": "Qulo — Ontmoet via Vragen",
     "description": "Maak vragen, deel ze en match met de persoon die het juiste antwoord geeft. AI-aangedreven next-gen dating-app."
   },
-  "nav": { "download": "Downloaden" },
+  "nav": {
+    "download": "Downloaden"
+  },
   "hero": {
     "label": "Next-gen dating",
     "title1": "Ontmoet via",
@@ -42,15 +44,47 @@
     "label": "Functies",
     "title1": "Waarom",
     "title2": "Qulo?",
-    "diamonds": { "title": "Diamanteconomie", "subtitle": "Verdien & Besteed", "desc": "Verdien groene diamanten wanneer je vragen worden opgelost. Meer vragen, meer verdiensten. Bereik mijlpalen om bonusbeloningen vrij te spelen." },
-    "powers": { "title": "Quizkrachten", "subtitle": "6 krachten", "desc": "Oracle, Half, Skip, Time Extend, Hint en Skip All. Gebruik strategische krachten bij het oplossen van vragen." },
-    "chatQuestions": { "title": "Chatvragen", "subtitle": "Quizzen in chat", "desc": "Stuur vragen naar je matches. Vergrendel de chat tot het is opgelost, onthul foto's bij juiste antwoorden. Houd gesprekken spannend." },
-    "gamification": { "title": "Gamification", "subtitle": "Badges & Niveaus", "desc": "Verdien badges naarmate je vordert, level up met mijlpalen. Verrijk je profiel." },
-    "ai": { "title": "AI-vraagcreatie", "subtitle": "AI-aangedreven", "desc": "Maak boeiende vragen met AI. Vind de vragen die jouw persoonlijkheid het best weerspiegelen." },
-    "premium": { "title": "Premiumplannen", "subtitle": "Plus & Premium", "desc": "Advertentievrije ervaring, onbeperkt ontdekken, Paspoortmodus, maandelijkse diamantbonus en meer vragen." }
+    "diamonds": {
+      "title": "Diamanteconomie",
+      "subtitle": "Verdien & Besteed",
+      "desc": "Verdien groene diamanten wanneer je vragen worden opgelost. Meer vragen, meer verdiensten. Bereik mijlpalen om bonusbeloningen vrij te spelen."
+    },
+    "powers": {
+      "title": "Quizkrachten",
+      "subtitle": "6 krachten",
+      "desc": "Oracle, Half, Skip, Time Extend, Hint en Skip All. Gebruik strategische krachten bij het oplossen van vragen."
+    },
+    "chatQuestions": {
+      "title": "Chatvragen",
+      "subtitle": "Quizzen in chat",
+      "desc": "Stuur vragen naar je matches. Vergrendel de chat tot het is opgelost, onthul foto's bij juiste antwoorden. Houd gesprekken spannend."
+    },
+    "gamification": {
+      "title": "Gamification",
+      "subtitle": "Badges & Niveaus",
+      "desc": "Verdien badges naarmate je vordert, level up met mijlpalen. Verrijk je profiel."
+    },
+    "ai": {
+      "title": "AI-vraagcreatie",
+      "subtitle": "AI-aangedreven",
+      "desc": "Maak boeiende vragen met AI. Vind de vragen die jouw persoonlijkheid het best weerspiegelen."
+    },
+    "premium": {
+      "title": "Premiumplannen",
+      "subtitle": "Plus & Premium",
+      "desc": "Advertentievrije ervaring, onbeperkt ontdekken, Paspoortmodus, maandelijkse diamantbonus en meer vragen."
+    }
   },
-  "appPreview": { "label": "App", "title1": "Verken de", "title2": "App" },
-  "testimonials": { "label": "Gebruikers", "title1": "Succes-", "title2": "verhalen" },
+  "appPreview": {
+    "label": "App",
+    "title1": "Verken de",
+    "title2": "App"
+  },
+  "testimonials": {
+    "label": "Gebruikers",
+    "title1": "Succes-",
+    "title2": "verhalen"
+  },
   "whyDifferent": {
     "label": "Verschil",
     "title1": "Wat maakt ons",
@@ -80,9 +114,23 @@
     "users": "Gebruikers",
     "rating": "App Store"
   },
-  "cta": { "title": "Begin nu.", "desc": "Ontmoet via je vragen, bouw echte verbindingen op.", "button": "Download de App" },
-  "invite": { "title": "Je bent uitgenodigd voor Qulo!", "desc": "Download de app en gebruik je uitnodigingscode.", "redirecting": "Doorsturen...", "downloadPrompt": "Download op je telefoon", "code": "Uitnodigingscode" },
-  "notFound": { "title": "Pagina niet gevonden", "desc": "De pagina die je zoekt bestaat niet.", "back": "Terug naar home" },
+  "cta": {
+    "title": "Begin nu.",
+    "desc": "Ontmoet via je vragen, bouw echte verbindingen op.",
+    "button": "Download de App"
+  },
+  "invite": {
+    "title": "Je bent uitgenodigd voor Qulo!",
+    "desc": "Download de app en gebruik je uitnodigingscode.",
+    "redirecting": "Doorsturen...",
+    "downloadPrompt": "Download op je telefoon",
+    "code": "Uitnodigingscode"
+  },
+  "notFound": {
+    "title": "Pagina niet gevonden",
+    "desc": "De pagina die je zoekt bestaat niet.",
+    "back": "Terug naar home"
+  },
   "help": {
     "title": "Helpcentrum",
     "subtitle": "Veelgestelde vragen en ondersteuning",
@@ -212,5 +260,14 @@
     "backToApp": "App openen",
     "passwordMinLength": "Wachtwoord moet minimaal 8 tekens bevatten",
     "passwordMismatch": "Wachtwoorden komen niet overeen"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

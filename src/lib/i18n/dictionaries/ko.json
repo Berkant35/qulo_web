@@ -3,7 +3,9 @@
     "title": "Qulo — 질문으로 만나다",
     "description": "질문을 만들고, 공유하고, 정답을 맞힌 사람과 매칭하세요. AI 기반 차세대 데이팅 앱."
   },
-  "nav": { "download": "다운로드" },
+  "nav": {
+    "download": "다운로드"
+  },
   "hero": {
     "label": "차세대 데이팅",
     "title1": "질문으로",
@@ -42,15 +44,47 @@
     "label": "기능",
     "title1": "왜",
     "title2": "Qulo?",
-    "diamonds": { "title": "다이아몬드 경제", "subtitle": "벌고 쓰세요", "desc": "질문이 풀리면 그린 다이아몬드를 획득하세요. 더 많은 질문, 더 많은 수익. 마일스톤을 달성하여 보너스 보상을 잠금 해제하세요." },
-    "powers": { "title": "퀴즈 파워", "subtitle": "6가지 파워", "desc": "Oracle, Half, Skip, Time Extend, Hint, Skip All. 질문을 풀 때 전략적 파워를 사용하세요." },
-    "chatQuestions": { "title": "채팅 질문", "subtitle": "채팅 내 퀴즈", "desc": "매칭에게 질문을 보내세요. 풀 때까지 채팅 잠금, 정답 시 사진 공개. 대화를 흥미롭게 유지하세요." },
-    "gamification": { "title": "게이미피케이션", "subtitle": "배지 & 레벨", "desc": "진행하면서 배지를 획득하고, 마일스톤으로 레벨업하세요. 프로필을 풍부하게 하세요." },
-    "ai": { "title": "AI 질문 생성", "subtitle": "AI 기반", "desc": "AI로 매력적인 질문을 만드세요. 당신의 성격을 가장 잘 반영하는 질문을 찾으세요." },
-    "premium": { "title": "프리미엄 플랜", "subtitle": "Plus & Premium", "desc": "광고 없는 경험, 무제한 디스커버, 패스포트 모드, 월별 다이아몬드 보너스, 더 많은 질문." }
+    "diamonds": {
+      "title": "다이아몬드 경제",
+      "subtitle": "벌고 쓰세요",
+      "desc": "질문이 풀리면 그린 다이아몬드를 획득하세요. 더 많은 질문, 더 많은 수익. 마일스톤을 달성하여 보너스 보상을 잠금 해제하세요."
+    },
+    "powers": {
+      "title": "퀴즈 파워",
+      "subtitle": "6가지 파워",
+      "desc": "Oracle, Half, Skip, Time Extend, Hint, Skip All. 질문을 풀 때 전략적 파워를 사용하세요."
+    },
+    "chatQuestions": {
+      "title": "채팅 질문",
+      "subtitle": "채팅 내 퀴즈",
+      "desc": "매칭에게 질문을 보내세요. 풀 때까지 채팅 잠금, 정답 시 사진 공개. 대화를 흥미롭게 유지하세요."
+    },
+    "gamification": {
+      "title": "게이미피케이션",
+      "subtitle": "배지 & 레벨",
+      "desc": "진행하면서 배지를 획득하고, 마일스톤으로 레벨업하세요. 프로필을 풍부하게 하세요."
+    },
+    "ai": {
+      "title": "AI 질문 생성",
+      "subtitle": "AI 기반",
+      "desc": "AI로 매력적인 질문을 만드세요. 당신의 성격을 가장 잘 반영하는 질문을 찾으세요."
+    },
+    "premium": {
+      "title": "프리미엄 플랜",
+      "subtitle": "Plus & Premium",
+      "desc": "광고 없는 경험, 무제한 디스커버, 패스포트 모드, 월별 다이아몬드 보너스, 더 많은 질문."
+    }
   },
-  "appPreview": { "label": "앱", "title1": "앱을", "title2": "탐색하세요" },
-  "testimonials": { "label": "사용자", "title1": "성공", "title2": "스토리" },
+  "appPreview": {
+    "label": "앱",
+    "title1": "앱을",
+    "title2": "탐색하세요"
+  },
+  "testimonials": {
+    "label": "사용자",
+    "title1": "성공",
+    "title2": "스토리"
+  },
   "whyDifferent": {
     "label": "차이점",
     "title1": "무엇이 우리를",
@@ -80,9 +114,23 @@
     "users": "사용자",
     "rating": "App Store"
   },
-  "cta": { "title": "시작하세요.", "desc": "질문으로 만나고, 진정한 인연을 만드세요.", "button": "앱 다운로드" },
-  "invite": { "title": "Qulo에 초대되었습니다!", "desc": "앱을 다운로드하고 초대 코드를 사용하세요.", "redirecting": "리디렉션 중...", "downloadPrompt": "휴대폰에서 다운로드", "code": "초대 코드" },
-  "notFound": { "title": "페이지를 찾을 수 없습니다", "desc": "찾고 있는 페이지가 존재하지 않습니다.", "back": "홈으로 돌아가기" },
+  "cta": {
+    "title": "시작하세요.",
+    "desc": "질문으로 만나고, 진정한 인연을 만드세요.",
+    "button": "앱 다운로드"
+  },
+  "invite": {
+    "title": "Qulo에 초대되었습니다!",
+    "desc": "앱을 다운로드하고 초대 코드를 사용하세요.",
+    "redirecting": "리디렉션 중...",
+    "downloadPrompt": "휴대폰에서 다운로드",
+    "code": "초대 코드"
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "desc": "찾고 있는 페이지가 존재하지 않습니다.",
+    "back": "홈으로 돌아가기"
+  },
   "help": {
     "title": "도움말 센터",
     "subtitle": "자주 묻는 질문과 지원",
@@ -212,5 +260,14 @@
     "backToApp": "앱 열기",
     "passwordMinLength": "비밀번호는 최소 8자 이상이어야 합니다",
     "passwordMismatch": "비밀번호가 일치하지 않습니다"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

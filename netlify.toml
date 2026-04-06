@@ -81,6 +81,23 @@
   to = "/:locale/reset-password/index.html"
   status = 200
 
+# Supported locales (tr, en) — direct rewrite for email-verified
+[[redirects]]
+  from = "/tr/email-verified"
+  to = "/tr/email-verified/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/email-verified"
+  to = "/en/email-verified/index.html"
+  status = 200
+
+# Unsupported locales → fallback to English for email-verified
+[[redirects]]
+  from = "/:locale/email-verified"
+  to = "/:locale/email-verified/index.html"
+  status = 200
+
 # Bare paths without locale → default (Turkish)
 [[redirects]]
   from = "/reset-password"
@@ -100,6 +117,11 @@
 [[redirects]]
   from = "/privacy-policy"
   to = "/tr/privacy-policy/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/email-verified"
+  to = "/tr/email-verified/index.html"
   status = 200
 
 [[headers]]

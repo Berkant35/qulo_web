@@ -3,7 +3,9 @@
     "title": "Qulo — Möts genom frågor",
     "description": "Skapa frågor, dela dem, matcha med personen som svarar rätt. AI-driven nästa generations dejtingapp."
   },
-  "nav": { "download": "Ladda ner" },
+  "nav": {
+    "download": "Ladda ner"
+  },
   "hero": {
     "label": "Nästa generationens dejting",
     "title1": "Möts genom",
@@ -42,15 +44,47 @@
     "label": "Funktioner",
     "title1": "Varför",
     "title2": "Qulo?",
-    "diamonds": { "title": "Diamantekonomi", "subtitle": "Tjäna & Spendera", "desc": "Tjäna gröna diamanter när dina frågor löses. Fler frågor, mer intäkter. Nå milstolpar för att låsa upp bonusbelöningar." },
-    "powers": { "title": "Quizkrafter", "subtitle": "6 krafter", "desc": "Oracle, Half, Skip, Time Extend, Hint och Skip All. Använd strategiska krafter när du löser frågor." },
-    "chatQuestions": { "title": "Chattfrågor", "subtitle": "Quizzar i chatten", "desc": "Skicka frågor till dina matchningar. Lås chatten tills den är löst, avslöja foton vid rätt svar. Håll samtalen spännande." },
-    "gamification": { "title": "Gamification", "subtitle": "Märken & Nivåer", "desc": "Tjäna märken när du avancerar, gå upp i nivå med milstolpar. Berika din profil." },
-    "ai": { "title": "AI-frågeskapande", "subtitle": "AI-driven", "desc": "Skapa engagerande frågor med AI. Hitta frågorna som bäst speglar din personlighet." },
-    "premium": { "title": "Premiumplaner", "subtitle": "Plus & Premium", "desc": "Annonsfri upplevelse, obegränsad utforskning, Passportläge, månatlig diamantbonus och fler frågor." }
+    "diamonds": {
+      "title": "Diamantekonomi",
+      "subtitle": "Tjäna & Spendera",
+      "desc": "Tjäna gröna diamanter när dina frågor löses. Fler frågor, mer intäkter. Nå milstolpar för att låsa upp bonusbelöningar."
+    },
+    "powers": {
+      "title": "Quizkrafter",
+      "subtitle": "6 krafter",
+      "desc": "Oracle, Half, Skip, Time Extend, Hint och Skip All. Använd strategiska krafter när du löser frågor."
+    },
+    "chatQuestions": {
+      "title": "Chattfrågor",
+      "subtitle": "Quizzar i chatten",
+      "desc": "Skicka frågor till dina matchningar. Lås chatten tills den är löst, avslöja foton vid rätt svar. Håll samtalen spännande."
+    },
+    "gamification": {
+      "title": "Gamification",
+      "subtitle": "Märken & Nivåer",
+      "desc": "Tjäna märken när du avancerar, gå upp i nivå med milstolpar. Berika din profil."
+    },
+    "ai": {
+      "title": "AI-frågeskapande",
+      "subtitle": "AI-driven",
+      "desc": "Skapa engagerande frågor med AI. Hitta frågorna som bäst speglar din personlighet."
+    },
+    "premium": {
+      "title": "Premiumplaner",
+      "subtitle": "Plus & Premium",
+      "desc": "Annonsfri upplevelse, obegränsad utforskning, Passportläge, månatlig diamantbonus och fler frågor."
+    }
   },
-  "appPreview": { "label": "App", "title1": "Utforska", "title2": "Appen" },
-  "testimonials": { "label": "Användare", "title1": "Framgångs-", "title2": "historier" },
+  "appPreview": {
+    "label": "App",
+    "title1": "Utforska",
+    "title2": "Appen"
+  },
+  "testimonials": {
+    "label": "Användare",
+    "title1": "Framgångs-",
+    "title2": "historier"
+  },
   "whyDifferent": {
     "label": "Skillnad",
     "title1": "Vad gör oss",
@@ -80,9 +114,23 @@
     "users": "Användare",
     "rating": "App Store"
   },
-  "cta": { "title": "Kom igång.", "desc": "Möts genom dina frågor, bygg riktiga kontakter.", "button": "Ladda ner appen" },
-  "invite": { "title": "Du är inbjuden till Qulo!", "desc": "Ladda ner appen och använd din inbjudningskod.", "redirecting": "Omdirigerar...", "downloadPrompt": "Ladda ner på din telefon", "code": "Inbjudningskod" },
-  "notFound": { "title": "Sidan hittades inte", "desc": "Sidan du letar efter finns inte.", "back": "Tillbaka till startsidan" },
+  "cta": {
+    "title": "Kom igång.",
+    "desc": "Möts genom dina frågor, bygg riktiga kontakter.",
+    "button": "Ladda ner appen"
+  },
+  "invite": {
+    "title": "Du är inbjuden till Qulo!",
+    "desc": "Ladda ner appen och använd din inbjudningskod.",
+    "redirecting": "Omdirigerar...",
+    "downloadPrompt": "Ladda ner på din telefon",
+    "code": "Inbjudningskod"
+  },
+  "notFound": {
+    "title": "Sidan hittades inte",
+    "desc": "Sidan du letar efter finns inte.",
+    "back": "Tillbaka till startsidan"
+  },
   "help": {
     "title": "Hjälpcenter",
     "subtitle": "Vanliga frågor och support",
@@ -212,5 +260,14 @@
     "backToApp": "Öppna appen",
     "passwordMinLength": "Lösenordet måste vara minst 8 tecken",
     "passwordMismatch": "Lösenorden matchar inte"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }
