@@ -6,6 +6,171 @@
   "nav": {
     "download": "Baixar"
   },
+  "hero": {
+    "label": "Encontros de nova geração",
+    "title1": "Conheça através de",
+    "title2": "Perguntas.",
+    "description": "Crie perguntas, compartilhe-as, faça match com a pessoa que responder corretamente. Construa conexões reais.",
+    "realConnections": "Conexões reais",
+    "card1Question": "Onde você iria no primeiro encontro?",
+    "card1Option1": "Passeio na praia",
+    "card1Option2": "Um café escondido",
+    "card1Option3": "Sob as estrelas",
+    "card1Button": "Responder",
+    "card2Question": "A música que melhor te descreve?",
+    "card2Option1": "Romântica",
+    "card2Option2": "Melancólica"
+  },
+  "howItWorks": {
+    "label": "Processo",
+    "title1": "Como",
+    "title2": "funciona?",
+    "step1Title": "Crie perguntas",
+    "step1Desc": "Crie de 2 a 10 perguntas que reflitam sua personalidade",
+    "step1Detail": "Cada pergunta é uma janela que apresenta você.",
+    "step2Title": "Descubra e resolva",
+    "step2Desc": "Responda às perguntas de outros usuários",
+    "step2Detail": "Descubra perguntas, responda, acumule pontos.",
+    "step3Title": "Match",
+    "step3Desc": "Conecte-se com a pessoa que responder corretamente",
+    "step3Detail": "Match! Comece a conversar, construa sua conexão real.",
+    "previewQuestion": "Primeira coisa que você faz no domingo de manhã?",
+    "previewOption1": "Café",
+    "previewOption2": "Corrida",
+    "previewOption3": "Dormir",
+    "matchSubtitle": "Conexões reais começam aqui"
+  },
+  "features": {
+    "label": "Recursos",
+    "title1": "Por que",
+    "title2": "Qulo?",
+    "diamonds": {
+      "title": "Economia de diamantes",
+      "subtitle": "Ganhe e gaste",
+      "desc": "Ganhe diamantes verdes quando suas perguntas forem resolvidas. Mais perguntas, mais ganhos. Alcance marcos para desbloquear recompensas bônus."
+    },
+    "powers": {
+      "title": "Poderes do quiz",
+      "subtitle": "6 poderes",
+      "desc": "Oráculo, Metade, Pular, Extensão de Tempo, Dica e Pular Tudo. Use poderes estratégicos ao resolver perguntas."
+    },
+    "chatQuestions": {
+      "title": "Perguntas no chat",
+      "subtitle": "Quizzes no chat",
+      "desc": "Envie perguntas para seus matches. Bloqueie o chat até resolver, revele fotos com respostas corretas. Mantenha as conversas empolgantes."
+    },
+    "gamification": {
+      "title": "Gamificação",
+      "subtitle": "Insígnias & Níveis",
+      "desc": "Ganhe insígnias conforme avança, suba de nível com marcos. Enriqueça seu perfil."
+    },
+    "ai": {
+      "title": "Criação de perguntas com IA",
+      "subtitle": "Potencializado por IA",
+      "desc": "Crie perguntas envolventes com IA. Encontre as perguntas que melhor refletem sua personalidade."
+    },
+    "premium": {
+      "title": "Planos Premium",
+      "subtitle": "Plus e Premium",
+      "desc": "Experiência sem anúncios, descobertas ilimitadas, modo Passport, bônus mensal de diamantes e mais perguntas."
+    }
+  },
+  "appPreview": {
+    "label": "App",
+    "title1": "Explore o",
+    "title2": "App"
+  },
+  "testimonials": {
+    "label": "Usuários",
+    "title1": "Histórias de",
+    "title2": "sucesso"
+  },
+  "whyDifferent": {
+    "label": "Diferença",
+    "title1": "O que nos torna",
+    "title2": "diferentes?",
+    "others": "Outros",
+    "qulo": "Qulo",
+    "diff1OthersTitle": "Deslize superficial",
+    "diff1OthersDesc": "Deslize para a esquerda ou direita baseado em fotos",
+    "diff1QuloTitle": "Descoberta significativa",
+    "diff1QuloDesc": "Conheça a personalidade através de perguntas, depois faça match",
+    "diff2OthersTitle": "Matches intermináveis",
+    "diff2OthersDesc": "Centenas de matches, zero conversas",
+    "diff2QuloTitle": "Conexão significativa",
+    "diff2QuloDesc": "Conexões reais através de respostas corretas",
+    "diff3OthersTitle": "Perfis monótonos",
+    "diff3OthersDesc": "Mesma bio, mesmas fotos",
+    "diff3QuloTitle": "Experiência gamificada",
+    "diff3QuloDesc": "Diamantes, insígnias, níveis e poderes especiais",
+    "diff4OthersTitle": "Deixar ao acaso",
+    "diff4OthersDesc": "O que o algoritmo mostrar",
+    "diff4QuloTitle": "Matching com IA",
+    "diff4QuloDesc": "Sugestões de perguntas personalizadas por IA"
+  },
+  "stats": {
+    "questions": "Perguntas criadas",
+    "matches": "Matches",
+    "users": "Usuários",
+    "rating": "App Store"
+  },
+  "cta": {
+    "title": "Comece agora.",
+    "desc": "Conheça através das suas perguntas, construa conexões reais.",
+    "button": "Baixar o App"
+  },
+  "invite": {
+    "title": "Você foi convidado para o Qulo!",
+    "desc": "Baixe o app e use seu código de convite.",
+    "redirecting": "Redirecionando...",
+    "downloadPrompt": "Baixe no seu celular",
+    "code": "Código de convite"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "desc": "A página que você procura não existe.",
+    "back": "Voltar para o início"
+  },
+  "help": {
+    "title": "Central de Ajuda",
+    "subtitle": "Perguntas frequentes e suporte",
+    "categories": {
+      "account": "Conta e Login",
+      "matching": "Matching e Perguntas",
+      "diamonds": "Diamantes e Premium",
+      "security": "Segurança e Privacidade",
+      "technical": "Problemas técnicos"
+    },
+    "faq": {
+      "account_reset_password_q": "Como redefinir minha senha?",
+      "account_reset_password_a": "Na tela de login, toque em 'Esqueci minha senha'. Um link de redefinição será enviado para seu e-mail.",
+      "account_delete_q": "Como excluir minha conta?",
+      "account_delete_a": "Vá em Configurações > Excluir conta para excluir permanentemente sua conta. Esta ação não pode ser desfeita.",
+      "account_banned_q": "Minha conta foi suspensa, o que devo fazer?",
+      "account_banned_a": "Sua conta pode ter sido suspensa por violar as diretrizes da comunidade. Para mais informações, envie um e-mail para support@quloapp.com.",
+      "matching_how_q": "Como funciona o matching?",
+      "matching_how_a": "Crie perguntas e deixe outros usuários resolverem. Respostas corretas levam a um match.",
+      "matching_questions_q": "Como criar uma pergunta?",
+      "matching_questions_a": "Toque no botão '+' na tela principal. Adicione de 2 a 10 perguntas, insira 4 opções para cada uma e marque a resposta correta.",
+      "diamonds_what_q": "Para que servem os diamantes?",
+      "diamonds_what_a": "Diamantes verdes são usados para ativar poderes, enquanto diamantes roxos desbloqueiam recursos especiais.",
+      "diamonds_buy_q": "Como comprar diamantes?",
+      "diamonds_buy_a": "Toque no ícone de diamante na tela de perfil para comprar pacotes de diamantes roxos.",
+      "security_block_q": "Como bloquear alguém?",
+      "security_block_a": "Use o menu de três pontos no perfil do usuário ou na tela de chat e selecione 'Bloquear'.",
+      "security_report_q": "Como denunciar alguém?",
+      "security_report_a": "Use o menu de três pontos no perfil do usuário ou na tela de chat e selecione 'Denunciar'.",
+      "security_data_q": "Meus dados estão seguros?",
+      "security_data_a": "Todos os seus dados são armazenados de forma criptografada. Você pode revisar nossa política de privacidade na tela de configurações.",
+      "technical_connection_q": "Estou tendo problemas de conexão",
+      "technical_connection_a": "Verifique sua conexão com a internet. Se o problema persistir, feche e reabra o app.",
+      "technical_notification_q": "Não estou recebendo notificações",
+      "technical_notification_a": "Verifique as configurações do seu celular para garantir que as notificações estejam ativadas para o Qulo."
+    },
+    "still_need_help": "Ainda precisa de ajuda?",
+    "still_need_help_desc": "Você pode criar uma solicitação de suporte pelo app ou nos enviar um e-mail.",
+    "contact_email": "support@quloapp.com"
+  },
   "footer": {
     "legal": "Legal",
     "privacy": "Política de Privacidade",
@@ -82,5 +247,27 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. Contato",
     "contactInfo": "Se você tiver dúvidas sobre estes Termos de Serviço, entre em contato conosco:\n\nDesenvolvedor: Berkant Çalıkuşu\nE-mail: info@socrepho.com\nEndereço: Istanbul/Beyoglu, Turkey\nSite: quloapp.com"
+  },
+  "resetPassword": {
+    "title": "Redefinir sua senha",
+    "newPassword": "Nova senha",
+    "confirmPassword": "Confirmar senha",
+    "submit": "Redefinir senha",
+    "success": "Sua senha foi alterada com sucesso!",
+    "successDesc": "Agora você pode entrar com sua nova senha.",
+    "error": "Este link é inválido ou expirou.",
+    "errorDesc": "Por favor, solicite uma nova redefinição de senha pelo aplicativo.",
+    "backToApp": "Abrir aplicativo",
+    "passwordMinLength": "A senha deve ter pelo menos 8 caracteres",
+    "passwordMismatch": "As senhas não correspondem"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

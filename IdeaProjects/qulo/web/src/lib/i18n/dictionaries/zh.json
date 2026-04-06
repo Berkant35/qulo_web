@@ -6,6 +6,171 @@
   "nav": {
     "download": "下载"
   },
+  "hero": {
+    "label": "新一代交友",
+    "title1": "通过问题",
+    "title2": "相识。",
+    "description": "创建问题，分享它们，与答对的人配对。建立真实的连接。",
+    "realConnections": "真实的连接",
+    "card1Question": "第一次约会你想去哪里？",
+    "card1Option1": "海边散步",
+    "card1Option2": "隐秘的咖啡馆",
+    "card1Option3": "星空下",
+    "card1Button": "回答",
+    "card2Question": "最能描述你的歌曲？",
+    "card2Option1": "浪漫的",
+    "card2Option2": "忧郁的"
+  },
+  "howItWorks": {
+    "label": "流程",
+    "title1": "如何",
+    "title2": "运作？",
+    "step1Title": "创建问题",
+    "step1Desc": "创建2-10个反映你个性的问题",
+    "step1Detail": "每个问题都是一扇介绍你的窗户。",
+    "step2Title": "发现并解答",
+    "step2Desc": "回答其他用户的问题",
+    "step2Detail": "发现问题，回答它们，收集积分。",
+    "step3Title": "配对",
+    "step3Desc": "与答对的人建立联系",
+    "step3Detail": "配对成功！开始聊天，建立你的真实连接。",
+    "previewQuestion": "周日早上第一件事做什么？",
+    "previewOption1": "咖啡",
+    "previewOption2": "跑步",
+    "previewOption3": "睡觉",
+    "matchSubtitle": "真实的连接从这里开始"
+  },
+  "features": {
+    "label": "功能",
+    "title1": "为什么选择",
+    "title2": "Qulo？",
+    "diamonds": {
+      "title": "钻石经济",
+      "subtitle": "赚取和消费",
+      "desc": "当你的问题被解答时获得绿色钻石。更多问题，更多收益。达到里程碑解锁奖励。"
+    },
+    "powers": {
+      "title": "答题技能",
+      "subtitle": "6种技能",
+      "desc": "Oracle、Half、Skip、Time Extend、Hint和Skip All。解答问题时使用策略技能。"
+    },
+    "chatQuestions": {
+      "title": "聊天问题",
+      "subtitle": "聊天内测验",
+      "desc": "向你的配对发送问题。锁定聊天直到解答，答对时展示照片。让对话保持趣味。"
+    },
+    "gamification": {
+      "title": "游戏化",
+      "subtitle": "徽章和等级",
+      "desc": "随着进步获得徽章，通过里程碑升级。丰富你的个人资料。"
+    },
+    "ai": {
+      "title": "AI创建问题",
+      "subtitle": "AI驱动",
+      "desc": "用AI创建引人入胜的问题。找到最能反映你个性的问题。"
+    },
+    "premium": {
+      "title": "高级计划",
+      "subtitle": "Plus和Premium",
+      "desc": "无广告体验，无限发现，护照模式，每月钻石奖励和更多问题。"
+    }
+  },
+  "appPreview": {
+    "label": "应用",
+    "title1": "探索",
+    "title2": "应用"
+  },
+  "testimonials": {
+    "label": "用户",
+    "title1": "成功",
+    "title2": "故事"
+  },
+  "whyDifferent": {
+    "label": "区别",
+    "title1": "是什么让我们",
+    "title2": "与众不同？",
+    "others": "其他应用",
+    "qulo": "Qulo",
+    "diff1OthersTitle": "肤浅的滑动",
+    "diff1OthersDesc": "根据照片左右滑动",
+    "diff1QuloTitle": "有意义的发现",
+    "diff1QuloDesc": "通过问题了解个性，然后配对",
+    "diff2OthersTitle": "无尽的配对",
+    "diff2OthersDesc": "数百个配对，零对话",
+    "diff2QuloTitle": "有意义的连接",
+    "diff2QuloDesc": "通过正确答案建立真实连接",
+    "diff3OthersTitle": "单调的个人资料",
+    "diff3OthersDesc": "同样的简介，同样的照片",
+    "diff3QuloTitle": "游戏化体验",
+    "diff3QuloDesc": "钻石、徽章、等级和特殊技能",
+    "diff4OthersTitle": "听天由命",
+    "diff4OthersDesc": "算法展示什么就看什么",
+    "diff4QuloTitle": "AI智能配对",
+    "diff4QuloDesc": "AI个性化问题推荐"
+  },
+  "stats": {
+    "questions": "已创建问题",
+    "matches": "配对",
+    "users": "用户",
+    "rating": "App Store"
+  },
+  "cta": {
+    "title": "开始吧。",
+    "desc": "通过你的问题相识，建立真实的连接。",
+    "button": "下载应用"
+  },
+  "invite": {
+    "title": "你被邀请加入Qulo！",
+    "desc": "下载应用并使用你的邀请码。",
+    "redirecting": "正在跳转...",
+    "downloadPrompt": "在手机上下载",
+    "code": "邀请码"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "desc": "你要找的页面不存在。",
+    "back": "返回首页"
+  },
+  "help": {
+    "title": "帮助中心",
+    "subtitle": "常见问题和支持",
+    "categories": {
+      "account": "账户和登录",
+      "matching": "配对和问题",
+      "diamonds": "钻石和高级版",
+      "security": "安全和隐私",
+      "technical": "技术问题"
+    },
+    "faq": {
+      "account_reset_password_q": "如何重置密码？",
+      "account_reset_password_a": "在登录界面，点击「忘记密码」。重置链接将发送到你的电子邮箱。",
+      "account_delete_q": "如何删除账户？",
+      "account_delete_a": "前往设置 > 删除账户，永久删除你的账户。此操作无法撤销。",
+      "account_banned_q": "我的账户被暂停了，该怎么办？",
+      "account_banned_a": "你的账户可能因违反社区准则而被暂停。如需更多信息，请发邮件至support@quloapp.com。",
+      "matching_how_q": "配对是如何运作的？",
+      "matching_how_a": "创建问题，让其他用户来解答。正确答案将带来配对。",
+      "matching_questions_q": "如何创建问题？",
+      "matching_questions_a": "在主界面点击「+」按钮。添加2到10个问题，为每个问题输入4个选项，并标记正确答案。",
+      "diamonds_what_q": "钻石有什么用？",
+      "diamonds_what_a": "绿色钻石用于激活技能，紫色钻石解锁特殊功能。",
+      "diamonds_buy_q": "如何购买钻石？",
+      "diamonds_buy_a": "在个人资料界面点击钻石图标，购买紫色钻石套餐。",
+      "security_block_q": "如何拉黑某人？",
+      "security_block_a": "在用户的个人资料或聊天界面使用三点菜单，选择「拉黑」。",
+      "security_report_q": "如何举报某人？",
+      "security_report_a": "在用户的个人资料或聊天界面使用三点菜单，选择「举报」。",
+      "security_data_q": "我的数据安全吗？",
+      "security_data_a": "你的所有数据都经过加密存储。你可以在设置界面查看我们的隐私政策。",
+      "technical_connection_q": "我遇到了连接问题",
+      "technical_connection_a": "检查你的网络连接。如果问题持续，请关闭并重新打开应用。",
+      "technical_notification_q": "我没有收到通知",
+      "technical_notification_a": "检查手机设置，确保Qulo的通知已启用。"
+    },
+    "still_need_help": "仍然需要帮助？",
+    "still_need_help_desc": "你可以从应用中创建支持请求或给我们发送电子邮件。",
+    "contact_email": "support@quloapp.com"
+  },
   "footer": {
     "legal": "法律信息",
     "privacy": "隐私政策",
@@ -17,7 +182,7 @@
     "title": "隐私政策",
     "lastUpdated": "最后更新：2026年3月22日",
     "introTitle": "简介",
-    "intro": "欢迎使用Qulo（以下简称“应用”、“我们”）。Qulo是一款基于问答的交友应用程序，由居住在土耳其伊斯坦布尔的独立开发者Berkant Çalıkuşu开发。\n\n本隐私政策说明了我们在您使用Qulo时如何收集、使用、存储和保护您的个人数据。我们致力于根据《通用数据保护条例》（GDPR）、《土耳其个人数据保护法》（KVKK，第6698号法律）及其他适用的数据保护法律来保护您的隐私。\n\n通过创建账户或使用Qulo，您承认已阅读并理解本隐私政策。",
+    "intro": "欢迎使用Qulo（以下简称「应用」、「我们」）。Qulo是一款基于问答的交友应用程序，由居住在土耳其伊斯坦布尔的独立开发者Berkant Çalıkuşu开发。\n\n本隐私政策说明了我们在您使用Qulo时如何收集、使用、存储和保护您的个人数据。我们致力于根据《通用数据保护条例》（GDPR）、《土耳其个人数据保护法》（KVKK，第6698号法律）及其他适用的数据保护法律来保护您的隐私。\n\n通过创建账户或使用Qulo，您承认已阅读并理解本隐私政策。",
     "dataCollectionTitle": "我们收集的信息",
     "dataCollection": "我们收集以下类别的个人数据：\n\n• 账户信息：电子邮件地址、密码（经bcrypt哈希处理——我们绝不存储明文密码）、出生日期（用于验证18岁以上资格）、显示名称和性别。\n\n• 个人资料数据：个人资料照片、个人简介、您创建的问题（每位用户2-10个问题）以及您对其他用户问题的回答。\n\n• 位置数据：使用发现功能时的GPS坐标（用于显示附近用户）和护照模式（仅限Premium，用于浏览其他地区的用户）。位置信息仅在应用使用期间且仅在您明确许可的情况下收集。\n\n• 使用和分析数据：Firebase Analytics收集匿名化的应用使用数据（浏览的页面、使用的功能、会话时长），保留期为14个月。Firebase Crashlytics收集崩溃报告和设备诊断信息，保留期为90天。\n\n• 交易数据：通过RevenueCat在Apple App Store或Google Play处理的应用内购买记录。我们不收集或存储支付卡信息。\n\n• 聊天数据：匹配用户之间交换的消息，包括聊天问题及其答案。\n\n• 钻石和活动数据：绿色钻石收入、紫色钻石购买、技能使用（Oracle、Half、Skip、Time Extend、Hint、Skip All）、徽章、等级和游戏统计数据。",
     "dataNotCollectedTitle": "我们不收集的信息",
@@ -82,5 +247,27 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. 联系我们",
     "contactInfo": "如果您对本服务条款有任何疑问，请联系我们：\n\n开发者：Berkant Çalıkuşu\n电子邮件：info@socrepho.com\n地址：Istanbul/Beyoglu, Turkey\n网站：quloapp.com"
+  },
+  "resetPassword": {
+    "title": "重置您的密码",
+    "newPassword": "新密码",
+    "confirmPassword": "确认密码",
+    "submit": "重置密码",
+    "success": "您的密码已成功更改！",
+    "successDesc": "您现在可以使用新密码登录。",
+    "error": "此链接无效或已过期。",
+    "errorDesc": "请从应用程序请求新的密码重置。",
+    "backToApp": "打开应用",
+    "passwordMinLength": "密码必须至少8个字符",
+    "passwordMismatch": "密码不匹配"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

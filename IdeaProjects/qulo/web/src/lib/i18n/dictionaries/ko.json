@@ -6,6 +6,171 @@
   "nav": {
     "download": "다운로드"
   },
+  "hero": {
+    "label": "차세대 데이팅",
+    "title1": "질문으로",
+    "title2": "만나다.",
+    "description": "질문을 만들고, 공유하고, 정답을 맞힌 사람과 매칭하세요. 진정한 인연을 만드세요.",
+    "realConnections": "진정한 인연",
+    "card1Question": "첫 데이트에서 어디로 가고 싶나요?",
+    "card1Option1": "해변 산책",
+    "card1Option2": "숨겨진 카페",
+    "card1Option3": "별빛 아래",
+    "card1Button": "답하기",
+    "card2Question": "나를 가장 잘 설명하는 노래는?",
+    "card2Option1": "로맨틱",
+    "card2Option2": "멜랑콜리"
+  },
+  "howItWorks": {
+    "label": "과정",
+    "title1": "어떻게",
+    "title2": "작동하나요?",
+    "step1Title": "질문 만들기",
+    "step1Desc": "당신의 성격을 반영하는 2~10개의 질문을 만드세요",
+    "step1Detail": "각 질문은 당신을 소개하는 창문입니다.",
+    "step2Title": "발견하고 풀기",
+    "step2Desc": "다른 사용자의 질문에 답하세요",
+    "step2Detail": "질문을 발견하고, 답하고, 포인트를 모으세요.",
+    "step3Title": "매칭",
+    "step3Desc": "정답을 맞힌 사람과 연결되세요",
+    "step3Detail": "매칭! 채팅을 시작하고, 진정한 인연을 만드세요.",
+    "previewQuestion": "일요일 아침에 제일 먼저 하는 일은?",
+    "previewOption1": "커피",
+    "previewOption2": "달리기",
+    "previewOption3": "수면",
+    "matchSubtitle": "진정한 인연은 여기서 시작됩니다"
+  },
+  "features": {
+    "label": "기능",
+    "title1": "왜",
+    "title2": "Qulo?",
+    "diamonds": {
+      "title": "다이아몬드 경제",
+      "subtitle": "벌고 쓰세요",
+      "desc": "질문이 풀리면 그린 다이아몬드를 획득하세요. 더 많은 질문, 더 많은 수익. 마일스톤을 달성하여 보너스 보상을 잠금 해제하세요."
+    },
+    "powers": {
+      "title": "퀴즈 파워",
+      "subtitle": "6가지 파워",
+      "desc": "Oracle, Half, Skip, Time Extend, Hint, Skip All. 질문을 풀 때 전략적 파워를 사용하세요."
+    },
+    "chatQuestions": {
+      "title": "채팅 질문",
+      "subtitle": "채팅 내 퀴즈",
+      "desc": "매칭에게 질문을 보내세요. 풀 때까지 채팅 잠금, 정답 시 사진 공개. 대화를 흥미롭게 유지하세요."
+    },
+    "gamification": {
+      "title": "게이미피케이션",
+      "subtitle": "배지 & 레벨",
+      "desc": "진행하면서 배지를 획득하고, 마일스톤으로 레벨업하세요. 프로필을 풍부하게 하세요."
+    },
+    "ai": {
+      "title": "AI 질문 생성",
+      "subtitle": "AI 기반",
+      "desc": "AI로 매력적인 질문을 만드세요. 당신의 성격을 가장 잘 반영하는 질문을 찾으세요."
+    },
+    "premium": {
+      "title": "프리미엄 플랜",
+      "subtitle": "Plus & Premium",
+      "desc": "광고 없는 경험, 무제한 디스커버, 패스포트 모드, 월별 다이아몬드 보너스, 더 많은 질문."
+    }
+  },
+  "appPreview": {
+    "label": "앱",
+    "title1": "앱을",
+    "title2": "탐색하세요"
+  },
+  "testimonials": {
+    "label": "사용자",
+    "title1": "성공",
+    "title2": "스토리"
+  },
+  "whyDifferent": {
+    "label": "차이점",
+    "title1": "무엇이 우리를",
+    "title2": "다르게 하나요?",
+    "others": "다른 앱",
+    "qulo": "Qulo",
+    "diff1OthersTitle": "피상적 스와이프",
+    "diff1OthersDesc": "사진을 보고 왼쪽 또는 오른쪽으로 스와이프",
+    "diff1QuloTitle": "의미 있는 발견",
+    "diff1QuloDesc": "질문으로 성격을 알아간 뒤 매칭",
+    "diff2OthersTitle": "끝없는 매칭",
+    "diff2OthersDesc": "수백 개의 매칭, 대화는 제로",
+    "diff2QuloTitle": "의미 있는 연결",
+    "diff2QuloDesc": "정답을 통한 진정한 연결",
+    "diff3OthersTitle": "단조로운 프로필",
+    "diff3OthersDesc": "같은 소개, 같은 사진",
+    "diff3QuloTitle": "게이미피케이션 경험",
+    "diff3QuloDesc": "다이아몬드, 배지, 레벨, 특별한 파워",
+    "diff4OthersTitle": "운에 맡기기",
+    "diff4OthersDesc": "알고리즘이 보여주는 것",
+    "diff4QuloTitle": "AI 기반 매칭",
+    "diff4QuloDesc": "AI 맞춤 질문 추천"
+  },
+  "stats": {
+    "questions": "생성된 질문",
+    "matches": "매칭",
+    "users": "사용자",
+    "rating": "App Store"
+  },
+  "cta": {
+    "title": "시작하세요.",
+    "desc": "질문으로 만나고, 진정한 인연을 만드세요.",
+    "button": "앱 다운로드"
+  },
+  "invite": {
+    "title": "Qulo에 초대되었습니다!",
+    "desc": "앱을 다운로드하고 초대 코드를 사용하세요.",
+    "redirecting": "리디렉션 중...",
+    "downloadPrompt": "휴대폰에서 다운로드",
+    "code": "초대 코드"
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "desc": "찾고 있는 페이지가 존재하지 않습니다.",
+    "back": "홈으로 돌아가기"
+  },
+  "help": {
+    "title": "도움말 센터",
+    "subtitle": "자주 묻는 질문과 지원",
+    "categories": {
+      "account": "계정 & 로그인",
+      "matching": "매칭 & 질문",
+      "diamonds": "다이아몬드 & 프리미엄",
+      "security": "안전 & 개인정보",
+      "technical": "기술적 문제"
+    },
+    "faq": {
+      "account_reset_password_q": "비밀번호는 어떻게 재설정하나요?",
+      "account_reset_password_a": "로그인 화면에서 '비밀번호 찾기'를 탭하세요. 재설정 링크가 이메일로 전송됩니다.",
+      "account_delete_q": "계정을 삭제하려면 어떻게 하나요?",
+      "account_delete_a": "설정 > 계정 삭제로 이동하여 계정을 영구적으로 삭제하세요. 이 작업은 취소할 수 없습니다.",
+      "account_banned_q": "계정이 정지되었습니다. 어떻게 해야 하나요?",
+      "account_banned_a": "커뮤니티 가이드라인 위반으로 계정이 정지되었을 수 있습니다. 자세한 내용은 support@quloapp.com으로 이메일하세요.",
+      "matching_how_q": "매칭은 어떻게 작동하나요?",
+      "matching_how_a": "질문을 만들고 다른 사용자가 풀도록 하세요. 정답은 매칭으로 이어집니다.",
+      "matching_questions_q": "질문은 어떻게 만드나요?",
+      "matching_questions_a": "메인 화면에서 '+' 버튼을 탭하세요. 2~10개의 질문을 추가하고, 각각 4개의 선택지를 입력하고, 정답을 표시하세요.",
+      "diamonds_what_q": "다이아몬드는 어디에 사용하나요?",
+      "diamonds_what_a": "그린 다이아몬드는 파워 활성화에, 퍼플 다이아몬드는 특별 기능 잠금 해제에 사용됩니다.",
+      "diamonds_buy_q": "다이아몬드를 어떻게 구매하나요?",
+      "diamonds_buy_a": "프로필 화면에서 다이아몬드 아이콘을 탭하여 퍼플 다이아몬드 패키지를 구매하세요.",
+      "security_block_q": "누군가를 차단하려면 어떻게 하나요?",
+      "security_block_a": "사용자의 프로필 또는 채팅 화면에서 점 세 개 메뉴를 사용하고 '차단'을 선택하세요.",
+      "security_report_q": "누군가를 신고하려면 어떻게 하나요?",
+      "security_report_a": "사용자의 프로필 또는 채팅 화면에서 점 세 개 메뉴를 사용하고 '신고'를 선택하세요.",
+      "security_data_q": "내 데이터는 안전한가요?",
+      "security_data_a": "모든 데이터는 암호화되어 저장됩니다. 설정 화면에서 개인정보 처리방침을 확인할 수 있습니다.",
+      "technical_connection_q": "연결 문제가 있습니다",
+      "technical_connection_a": "인터넷 연결을 확인하세요. 문제가 지속되면 앱을 닫고 다시 여세요.",
+      "technical_notification_q": "알림이 오지 않습니다",
+      "technical_notification_a": "휴대폰 설정에서 Qulo의 알림이 활성화되어 있는지 확인하세요."
+    },
+    "still_need_help": "아직 도움이 필요하신가요?",
+    "still_need_help_desc": "앱에서 지원 요청을 생성하거나 이메일을 보내주세요.",
+    "contact_email": "support@quloapp.com"
+  },
   "footer": {
     "legal": "법적 고지",
     "privacy": "개인정보 처리방침",
@@ -82,5 +247,27 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. 연락처",
     "contactInfo": "본 이용약관에 대한 질문이 있으시면 다음으로 연락해 주십시오:\n\n개발자: Berkant Çalıkuşu\n이메일: info@socrepho.com\n주소: Istanbul/Beyoglu, Turkey\n웹사이트: quloapp.com"
+  },
+  "resetPassword": {
+    "title": "비밀번호 재설정",
+    "newPassword": "새 비밀번호",
+    "confirmPassword": "비밀번호 확인",
+    "submit": "비밀번호 재설정",
+    "success": "비밀번호가 성공적으로 변경되었습니다!",
+    "successDesc": "이제 새 비밀번호로 로그인할 수 있습니다.",
+    "error": "이 링크는 유효하지 않거나 만료되었습니다.",
+    "errorDesc": "앱에서 새 비밀번호 재설정을 요청해 주세요.",
+    "backToApp": "앱 열기",
+    "passwordMinLength": "비밀번호는 최소 8자 이상이어야 합니다",
+    "passwordMismatch": "비밀번호가 일치하지 않습니다"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

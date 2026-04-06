@@ -6,6 +6,171 @@
   "nav": {
     "download": "ダウンロード"
   },
+  "hero": {
+    "label": "次世代マッチング",
+    "title1": "質問で",
+    "title2": "出会う。",
+    "description": "質問を作成し、シェアして、正解した人とマッチング。本物のつながりを築こう。",
+    "realConnections": "本物のつながり",
+    "card1Question": "初デートでどこに行きたい？",
+    "card1Option1": "ビーチを散歩",
+    "card1Option2": "隠れ家カフェ",
+    "card1Option3": "星空の下で",
+    "card1Button": "答える",
+    "card2Question": "あなたを最もよく表す曲は？",
+    "card2Option1": "ロマンチック",
+    "card2Option2": "メランコリック"
+  },
+  "howItWorks": {
+    "label": "仕組み",
+    "title1": "どうやって",
+    "title2": "使うの？",
+    "step1Title": "質問を作成",
+    "step1Desc": "あなたの個性を反映する2〜10個の質問を作成",
+    "step1Detail": "各質問はあなたを紹介する窓口です。",
+    "step2Title": "発見して解く",
+    "step2Desc": "他のユーザーの質問に答えよう",
+    "step2Detail": "質問を発見し、答えて、ポイントを集めよう。",
+    "step3Title": "マッチ",
+    "step3Desc": "正解した人とつながろう",
+    "step3Detail": "マッチ！チャットを始めて、本物のつながりを築こう。",
+    "previewQuestion": "日曜日の朝、最初にすることは？",
+    "previewOption1": "コーヒー",
+    "previewOption2": "ランニング",
+    "previewOption3": "睡眠",
+    "matchSubtitle": "本物のつながりはここから始まる"
+  },
+  "features": {
+    "label": "機能",
+    "title1": "なぜ",
+    "title2": "Qulo？",
+    "diamonds": {
+      "title": "ダイヤモンドエコノミー",
+      "subtitle": "稼いで使おう",
+      "desc": "質問が解かれるとグリーンダイヤモンドを獲得。質問が多いほど稼げる。マイルストーンを達成してボーナス報酬をアンロック。"
+    },
+    "powers": {
+      "title": "クイズパワー",
+      "subtitle": "6つのパワー",
+      "desc": "Oracle、Half、Skip、Time Extend、Hint、Skip All。質問を解く際に戦略的パワーを使おう。"
+    },
+    "chatQuestions": {
+      "title": "チャット質問",
+      "subtitle": "チャット内クイズ",
+      "desc": "マッチに質問を送ろう。解くまでチャットをロック、正解で写真を公開。会話を盛り上げよう。"
+    },
+    "gamification": {
+      "title": "ゲーミフィケーション",
+      "subtitle": "バッジとレベル",
+      "desc": "進むほどバッジを獲得、マイルストーンでレベルアップ。プロフィールを豊かにしよう。"
+    },
+    "ai": {
+      "title": "AI質問作成",
+      "subtitle": "AI搭載",
+      "desc": "AIで魅力的な質問を作成。あなたの個性を最もよく反映する質問を見つけよう。"
+    },
+    "premium": {
+      "title": "プレミアムプラン",
+      "subtitle": "Plus & Premium",
+      "desc": "広告なし、無制限のディスカバー、パスポートモード、月次ダイヤモンドボーナス、より多くの質問。"
+    }
+  },
+  "appPreview": {
+    "label": "アプリ",
+    "title1": "アプリを",
+    "title2": "探索"
+  },
+  "testimonials": {
+    "label": "ユーザー",
+    "title1": "成功",
+    "title2": "ストーリー"
+  },
+  "whyDifferent": {
+    "label": "違い",
+    "title1": "何が私たちを",
+    "title2": "違うの？",
+    "others": "他のアプリ",
+    "qulo": "Qulo",
+    "diff1OthersTitle": "浅いスワイプ",
+    "diff1OthersDesc": "写真を見て左右にスワイプ",
+    "diff1QuloTitle": "意味のある発見",
+    "diff1QuloDesc": "質問を通じて人柄を知り、マッチング",
+    "diff2OthersTitle": "終わりのないマッチング",
+    "diff2OthersDesc": "何百ものマッチ、会話はゼロ",
+    "diff2QuloTitle": "意味のあるつながり",
+    "diff2QuloDesc": "正しい答えを通じた本物のつながり",
+    "diff3OthersTitle": "単調なプロフィール",
+    "diff3OthersDesc": "同じ自己紹介、同じ写真",
+    "diff3QuloTitle": "ゲーム感覚の体験",
+    "diff3QuloDesc": "ダイヤモンド、バッジ、レベル、特別なパワー",
+    "diff4OthersTitle": "運任せ",
+    "diff4OthersDesc": "アルゴリズムが表示するもの",
+    "diff4QuloTitle": "AI搭載マッチング",
+    "diff4QuloDesc": "AIによるパーソナライズされた質問提案"
+  },
+  "stats": {
+    "questions": "作成された質問",
+    "matches": "マッチ",
+    "users": "ユーザー",
+    "rating": "App Store"
+  },
+  "cta": {
+    "title": "始めよう。",
+    "desc": "質問で出会い、本物のつながりを築こう。",
+    "button": "アプリをダウンロード"
+  },
+  "invite": {
+    "title": "Quloに招待されました！",
+    "desc": "アプリをダウンロードして招待コードを使おう。",
+    "redirecting": "リダイレクト中...",
+    "downloadPrompt": "スマホでダウンロード",
+    "code": "招待コード"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "desc": "お探しのページは存在しません。",
+    "back": "ホームに戻る"
+  },
+  "help": {
+    "title": "ヘルプセンター",
+    "subtitle": "よくある質問とサポート",
+    "categories": {
+      "account": "アカウントとログイン",
+      "matching": "マッチングと質問",
+      "diamonds": "ダイヤモンドとプレミアム",
+      "security": "安全とプライバシー",
+      "technical": "技術的な問題"
+    },
+    "faq": {
+      "account_reset_password_q": "パスワードをリセットするには？",
+      "account_reset_password_a": "ログイン画面で「パスワードを忘れた」をタップしてください。リセットリンクがメールアドレスに送信されます。",
+      "account_delete_q": "アカウントを削除するには？",
+      "account_delete_a": "設定 > アカウント削除でアカウントを完全に削除できます。この操作は取り消せません。",
+      "account_banned_q": "アカウントが停止されました。どうすればいいですか？",
+      "account_banned_a": "コミュニティガイドライン違反によりアカウントが停止された可能性があります。詳細はsupport@quloapp.comにメールしてください。",
+      "matching_how_q": "マッチングの仕組みは？",
+      "matching_how_a": "質問を作成し、他のユーザーに解いてもらいましょう。正解するとマッチになります。",
+      "matching_questions_q": "質問の作り方は？",
+      "matching_questions_a": "メイン画面の「+」ボタンをタップ。2〜10個の質問を追加し、各質問に4つの選択肢を入力して正解をマークしてください。",
+      "diamonds_what_q": "ダイヤモンドの使い道は？",
+      "diamonds_what_a": "グリーンダイヤモンドはパワーの発動に、パープルダイヤモンドは特別な機能のアンロックに使用します。",
+      "diamonds_buy_q": "ダイヤモンドの購入方法は？",
+      "diamonds_buy_a": "プロフィール画面のダイヤモンドアイコンをタップして、パープルダイヤモンドパッケージを購入できます。",
+      "security_block_q": "ユーザーをブロックするには？",
+      "security_block_a": "ユーザーのプロフィールまたはチャット画面の三点メニューから「ブロック」を選択してください。",
+      "security_report_q": "ユーザーを報告するには？",
+      "security_report_a": "ユーザーのプロフィールまたはチャット画面の三点メニューから「報告」を選択してください。",
+      "security_data_q": "データは安全ですか？",
+      "security_data_a": "すべてのデータは暗号化して保存されています。設定画面からプライバシーポリシーをご確認いただけます。",
+      "technical_connection_q": "接続の問題があります",
+      "technical_connection_a": "インターネット接続を確認してください。問題が続く場合は、アプリを閉じて再度開いてください。",
+      "technical_notification_q": "通知が届きません",
+      "technical_notification_a": "スマホの設定で、Quloの通知が有効になっていることを確認してください。"
+    },
+    "still_need_help": "まだ助けが必要ですか？",
+    "still_need_help_desc": "アプリからサポートリクエストを作成するか、メールをお送りください。",
+    "contact_email": "support@quloapp.com"
+  },
   "footer": {
     "legal": "法的情報",
     "privacy": "プライバシーポリシー",
@@ -82,5 +247,27 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. お問い合わせ",
     "contactInfo": "本利用規約に関するご質問は、以下までご連絡ください：\n\n開発者：Berkant Çalıkuşu\nメール：info@socrepho.com\n住所：Istanbul/Beyoglu, Turkey\nウェブサイト：quloapp.com"
+  },
+  "resetPassword": {
+    "title": "パスワードをリセット",
+    "newPassword": "新しいパスワード",
+    "confirmPassword": "パスワードを確認",
+    "submit": "パスワードをリセット",
+    "success": "パスワードが正常に変更されました！",
+    "successDesc": "新しいパスワードでサインインできます。",
+    "error": "このリンクは無効または期限切れです。",
+    "errorDesc": "アプリから新しいパスワードリセットをリクエストしてください。",
+    "backToApp": "アプリを開く",
+    "passwordMinLength": "パスワードは8文字以上である必要があります",
+    "passwordMismatch": "パスワードが一致しません"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

@@ -193,5 +193,27 @@
     "still_need_help": "Sorunun hâlâ çözülmedi mi?",
     "still_need_help_desc": "Uygulamadan destek talebi oluşturabilir veya bize email gönderebilirsiniz.",
     "contact_email": "support@quloapp.com"
+  },
+  "resetPassword": {
+    "title": "Şifrenizi Sıfırlayın",
+    "newPassword": "Yeni Şifre",
+    "confirmPassword": "Şifreyi Onayla",
+    "submit": "Şifreyi Sıfırla",
+    "success": "Şifreniz başarıyla değiştirildi!",
+    "successDesc": "Artık yeni şifrenizle giriş yapabilirsiniz.",
+    "error": "Bu bağlantı geçersiz veya süresi dolmuş.",
+    "errorDesc": "Lütfen uygulamadan yeni bir şifre sıfırlama talebinde bulunun.",
+    "backToApp": "Uygulamayı Aç",
+    "passwordMinLength": "Şifre en az 8 karakter olmalıdır",
+    "passwordMismatch": "Şifreler eşleşmiyor"
+  },
+  "emailVerified": {
+    "successTitle": "E-posta Doğrulandı!",
+    "successDesc": "Hesabın başarıyla aktifleştirildi. Uygulamaya dönebilirsin.",
+    "expiredTitle": "Bağlantı Süresi Dolmuş",
+    "expiredDesc": "Bu doğrulama bağlantısının süresi dolmuş. Lütfen uygulamadan yeni bir bağlantı talep et.",
+    "errorTitle": "Geçersiz Bağlantı",
+    "errorDesc": "Bu doğrulama bağlantısı geçersiz.",
+    "openApp": "Uygulamayı Aç"
   }
 }

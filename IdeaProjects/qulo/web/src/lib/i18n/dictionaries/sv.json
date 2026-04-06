@@ -6,6 +6,171 @@
   "nav": {
     "download": "Ladda ner"
   },
+  "hero": {
+    "label": "Nästa generationens dejting",
+    "title1": "Möts genom",
+    "title2": "Frågor.",
+    "description": "Skapa frågor, dela dem, matcha med personen som svarar rätt. Bygg riktiga kontakter.",
+    "realConnections": "Riktiga kontakter",
+    "card1Question": "Vart skulle du gå på en första dejt?",
+    "card1Option1": "Promenad på stranden",
+    "card1Option2": "Ett gömt kafé",
+    "card1Option3": "Under stjärnorna",
+    "card1Button": "Svara",
+    "card2Question": "Låten som bäst beskriver dig?",
+    "card2Option1": "Romantisk",
+    "card2Option2": "Melankolisk"
+  },
+  "howItWorks": {
+    "label": "Process",
+    "title1": "Hur",
+    "title2": "fungerar det?",
+    "step1Title": "Skapa frågor",
+    "step1Desc": "Skapa 2-10 frågor som speglar din personlighet",
+    "step1Detail": "Varje fråga är ett fönster som presenterar dig.",
+    "step2Title": "Utforska & Lös",
+    "step2Desc": "Svara på andra användares frågor",
+    "step2Detail": "Upptäck frågor, svara på dem, samla poäng.",
+    "step3Title": "Match",
+    "step3Desc": "Anslut med personen som svarar rätt",
+    "step3Detail": "Match! Börja chatta, bygg din riktiga kontakt.",
+    "previewQuestion": "Första du gör på söndagsmorgonen?",
+    "previewOption1": "Kaffe",
+    "previewOption2": "Löpning",
+    "previewOption3": "Sova",
+    "matchSubtitle": "Riktiga kontakter börjar här"
+  },
+  "features": {
+    "label": "Funktioner",
+    "title1": "Varför",
+    "title2": "Qulo?",
+    "diamonds": {
+      "title": "Diamantekonomi",
+      "subtitle": "Tjäna & Spendera",
+      "desc": "Tjäna gröna diamanter när dina frågor löses. Fler frågor, mer intäkter. Nå milstolpar för att låsa upp bonusbelöningar."
+    },
+    "powers": {
+      "title": "Quizkrafter",
+      "subtitle": "6 krafter",
+      "desc": "Oracle, Half, Skip, Time Extend, Hint och Skip All. Använd strategiska krafter när du löser frågor."
+    },
+    "chatQuestions": {
+      "title": "Chattfrågor",
+      "subtitle": "Quizzar i chatten",
+      "desc": "Skicka frågor till dina matchningar. Lås chatten tills den är löst, avslöja foton vid rätt svar. Håll samtalen spännande."
+    },
+    "gamification": {
+      "title": "Gamification",
+      "subtitle": "Märken & Nivåer",
+      "desc": "Tjäna märken när du avancerar, gå upp i nivå med milstolpar. Berika din profil."
+    },
+    "ai": {
+      "title": "AI-frågeskapande",
+      "subtitle": "AI-driven",
+      "desc": "Skapa engagerande frågor med AI. Hitta frågorna som bäst speglar din personlighet."
+    },
+    "premium": {
+      "title": "Premiumplaner",
+      "subtitle": "Plus & Premium",
+      "desc": "Annonsfri upplevelse, obegränsad utforskning, Passportläge, månatlig diamantbonus och fler frågor."
+    }
+  },
+  "appPreview": {
+    "label": "App",
+    "title1": "Utforska",
+    "title2": "Appen"
+  },
+  "testimonials": {
+    "label": "Användare",
+    "title1": "Framgångs-",
+    "title2": "historier"
+  },
+  "whyDifferent": {
+    "label": "Skillnad",
+    "title1": "Vad gör oss",
+    "title2": "annorlunda?",
+    "others": "Andra",
+    "qulo": "Qulo",
+    "diff1OthersTitle": "Ytlig svepning",
+    "diff1OthersDesc": "Svep åt vänster eller höger baserat på foton",
+    "diff1QuloTitle": "Meningsfull upptäckt",
+    "diff1QuloDesc": "Lär känna personligheten genom frågor, sedan matcha",
+    "diff2OthersTitle": "Oändlig matchning",
+    "diff2OthersDesc": "Hundratals matchningar, noll samtal",
+    "diff2QuloTitle": "Meningsfull koppling",
+    "diff2QuloDesc": "Riktiga kontakter genom rätt svar",
+    "diff3OthersTitle": "Monotona profiler",
+    "diff3OthersDesc": "Samma bio, samma foton",
+    "diff3QuloTitle": "Gamifierad upplevelse",
+    "diff3QuloDesc": "Diamanter, märken, nivåer och speciella krafter",
+    "diff4OthersTitle": "Lämna åt slumpen",
+    "diff4OthersDesc": "Vad algoritmen visar",
+    "diff4QuloTitle": "AI-driven matchning",
+    "diff4QuloDesc": "AI-personaliserade frågeförslag"
+  },
+  "stats": {
+    "questions": "Skapade frågor",
+    "matches": "Matchningar",
+    "users": "Användare",
+    "rating": "App Store"
+  },
+  "cta": {
+    "title": "Kom igång.",
+    "desc": "Möts genom dina frågor, bygg riktiga kontakter.",
+    "button": "Ladda ner appen"
+  },
+  "invite": {
+    "title": "Du är inbjuden till Qulo!",
+    "desc": "Ladda ner appen och använd din inbjudningskod.",
+    "redirecting": "Omdirigerar...",
+    "downloadPrompt": "Ladda ner på din telefon",
+    "code": "Inbjudningskod"
+  },
+  "notFound": {
+    "title": "Sidan hittades inte",
+    "desc": "Sidan du letar efter finns inte.",
+    "back": "Tillbaka till startsidan"
+  },
+  "help": {
+    "title": "Hjälpcenter",
+    "subtitle": "Vanliga frågor och support",
+    "categories": {
+      "account": "Konto & Inloggning",
+      "matching": "Matchning & Frågor",
+      "diamonds": "Diamanter & Premium",
+      "security": "Säkerhet & Integritet",
+      "technical": "Tekniska problem"
+    },
+    "faq": {
+      "account_reset_password_q": "Hur återställer jag mitt lösenord?",
+      "account_reset_password_a": "På inloggningsskärmen, tryck på 'Glömt lösenord'. En återställningslänk skickas till din e-postadress.",
+      "account_delete_q": "Hur tar jag bort mitt konto?",
+      "account_delete_a": "Gå till Inställningar > Ta bort konto för att permanent ta bort ditt konto. Denna åtgärd kan inte ångras.",
+      "account_banned_q": "Mitt konto har stängts av, vad ska jag göra?",
+      "account_banned_a": "Ditt konto kan ha stängts av för brott mot communityreglerna. För mer information, mejla support@quloapp.com.",
+      "matching_how_q": "Hur fungerar matchning?",
+      "matching_how_a": "Skapa frågor och låt andra användare lösa dem. Rätta svar leder till en match.",
+      "matching_questions_q": "Hur skapar jag en fråga?",
+      "matching_questions_a": "Tryck på '+'-knappen på huvudskärmen. Lägg till 2 till 10 frågor, ange 4 alternativ för varje och markera det rätta svaret.",
+      "diamonds_what_q": "Vad används diamanter till?",
+      "diamonds_what_a": "Gröna diamanter används för att aktivera krafter, medan lila diamanter låser upp specialfunktioner.",
+      "diamonds_buy_q": "Hur köper jag diamanter?",
+      "diamonds_buy_a": "Tryck på diamantikonen på profilskärmen för att köpa lila diamantpaket.",
+      "security_block_q": "Hur blockerar jag någon?",
+      "security_block_a": "Använd trepunktsmenyn på användarens profil eller chattskärmen och välj 'Blockera'.",
+      "security_report_q": "Hur rapporterar jag någon?",
+      "security_report_a": "Använd trepunktsmenyn på användarens profil eller chattskärmen och välj 'Rapportera'.",
+      "security_data_q": "Är mina data säkra?",
+      "security_data_a": "All din data lagras krypterad. Du kan granska vår integritetspolicy från inställningsskärmen.",
+      "technical_connection_q": "Jag har anslutningsproblem",
+      "technical_connection_a": "Kontrollera din internetanslutning. Om problemet kvarstår, stäng och öppna appen igen.",
+      "technical_notification_q": "Jag får inga aviseringar",
+      "technical_notification_a": "Kontrollera telefonens inställningar för att se till att aviseringar är aktiverade för Qulo."
+    },
+    "still_need_help": "Behöver du fortfarande hjälp?",
+    "still_need_help_desc": "Du kan skapa en supportförfrågan från appen eller skicka oss ett e-postmeddelande.",
+    "contact_email": "support@quloapp.com"
+  },
   "footer": {
     "legal": "Juridiskt",
     "privacy": "Integritetspolicy",
@@ -82,5 +247,27 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. Kontakt",
     "contactInfo": "Om du har frågor om dessa Användarvillkor, vänligen kontakta oss:\n\nUtvecklare: Berkant Çalıkuşu\nE-post: info@socrepho.com\nAdress: Istanbul/Beyoglu, Turkey\nWebbplats: quloapp.com"
+  },
+  "resetPassword": {
+    "title": "Återställ ditt lösenord",
+    "newPassword": "Nytt lösenord",
+    "confirmPassword": "Bekräfta lösenord",
+    "submit": "Återställ lösenord",
+    "success": "Ditt lösenord har ändrats framgångsrikt!",
+    "successDesc": "Du kan nu logga in med ditt nya lösenord.",
+    "error": "Den här länken är ogiltig eller har gått ut.",
+    "errorDesc": "Begär en ny lösenordsåterställning från appen.",
+    "backToApp": "Öppna appen",
+    "passwordMinLength": "Lösenordet måste vara minst 8 tecken",
+    "passwordMismatch": "Lösenorden matchar inte"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

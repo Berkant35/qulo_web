@@ -6,6 +6,171 @@
   "nav": {
     "download": "تحميل"
   },
+  "hero": {
+    "label": "مواعدة الجيل الجديد",
+    "title1": "تعرّف من خلال",
+    "title2": "الأسئلة.",
+    "description": "أنشئ أسئلة، شاركها، وتطابق مع الشخص الذي يجيب بشكل صحيح. ابنِ علاقات حقيقية.",
+    "realConnections": "علاقات حقيقية",
+    "card1Question": "أين ستذهب في أول موعد؟",
+    "card1Option1": "المشي على الشاطئ",
+    "card1Option2": "مقهى مخفي",
+    "card1Option3": "تحت النجوم",
+    "card1Button": "أجب",
+    "card2Question": "الأغنية التي تصفك أفضل وصف؟",
+    "card2Option1": "رومانسية",
+    "card2Option2": "حزينة"
+  },
+  "howItWorks": {
+    "label": "العملية",
+    "title1": "كيف",
+    "title2": "يعمل؟",
+    "step1Title": "أنشئ أسئلة",
+    "step1Desc": "أنشئ من 2 إلى 10 أسئلة تعكس شخصيتك",
+    "step1Detail": "كل سؤال هو نافذة تقدمك.",
+    "step2Title": "اكتشف وحلّ",
+    "step2Desc": "أجب على أسئلة المستخدمين الآخرين",
+    "step2Detail": "اكتشف الأسئلة، أجب عنها، واجمع النقاط.",
+    "step3Title": "تطابق",
+    "step3Desc": "تواصل مع الشخص الذي يجيب بشكل صحيح",
+    "step3Detail": "تطابق! ابدأ المحادثة وابنِ علاقتك الحقيقية.",
+    "previewQuestion": "أول شيء تفعله صباح الأحد؟",
+    "previewOption1": "قهوة",
+    "previewOption2": "جري",
+    "previewOption3": "نوم",
+    "matchSubtitle": "تبدأ العلاقات الحقيقية من هنا"
+  },
+  "features": {
+    "label": "الميزات",
+    "title1": "لماذا",
+    "title2": "Qulo؟",
+    "diamonds": {
+      "title": "اقتصاد الماس",
+      "subtitle": "اكسب وأنفق",
+      "desc": "اكسب الماس الأخضر عندما يتم حل أسئلتك. المزيد من الأسئلة، المزيد من الأرباح. حقق إنجازات لفتح مكافآت إضافية."
+    },
+    "powers": {
+      "title": "قوى الاختبار",
+      "subtitle": "6 قوى",
+      "desc": "أوراكل، النصف، تخطي، تمديد الوقت، تلميح وتخطي الكل. استخدم القوى الاستراتيجية أثناء حل الأسئلة."
+    },
+    "chatQuestions": {
+      "title": "أسئلة الدردشة",
+      "subtitle": "اختبارات في الدردشة",
+      "desc": "أرسل أسئلة إلى من تطابقت معهم. اقفل الدردشة حتى يتم الحل، واكشف الصور عند الإجابة الصحيحة. اجعل المحادثات مثيرة."
+    },
+    "gamification": {
+      "title": "التلعيب",
+      "subtitle": "شارات ومستويات",
+      "desc": "اكسب شارات مع تقدمك، وارتقِ بالمستويات مع الإنجازات. أثرِ ملفك الشخصي."
+    },
+    "ai": {
+      "title": "إنشاء أسئلة بالذكاء الاصطناعي",
+      "subtitle": "مدعوم بالذكاء الاصطناعي",
+      "desc": "أنشئ أسئلة جذابة بمساعدة الذكاء الاصطناعي. اعثر على الأسئلة التي تعكس شخصيتك بشكل أفضل."
+    },
+    "premium": {
+      "title": "خطط مميزة",
+      "subtitle": "بلس وبريميوم",
+      "desc": "تجربة بدون إعلانات، اكتشافات غير محدودة، وضع Passport، مكافأة ماس شهرية والمزيد من الأسئلة."
+    }
+  },
+  "appPreview": {
+    "label": "التطبيق",
+    "title1": "استكشف",
+    "title2": "التطبيق"
+  },
+  "testimonials": {
+    "label": "المستخدمون",
+    "title1": "قصص",
+    "title2": "النجاح"
+  },
+  "whyDifferent": {
+    "label": "الفرق",
+    "title1": "ما الذي يجعلنا",
+    "title2": "مختلفين؟",
+    "others": "الآخرون",
+    "qulo": "Qulo",
+    "diff1OthersTitle": "تمرير سطحي",
+    "diff1OthersDesc": "امسح يميناً أو يساراً بناءً على الصور",
+    "diff1QuloTitle": "اكتشاف ذو معنى",
+    "diff1QuloDesc": "تعرّف على الشخصية من خلال الأسئلة، ثم تطابق",
+    "diff2OthersTitle": "تطابقات لا نهاية لها",
+    "diff2OthersDesc": "مئات التطابقات، صفر محادثات",
+    "diff2QuloTitle": "تواصل حقيقي",
+    "diff2QuloDesc": "علاقات حقيقية من خلال الإجابات الصحيحة",
+    "diff3OthersTitle": "ملفات شخصية رتيبة",
+    "diff3OthersDesc": "نفس السيرة الذاتية، نفس الصور",
+    "diff3QuloTitle": "تجربة تفاعلية",
+    "diff3QuloDesc": "ماس، شارات، مستويات وقوى خاصة",
+    "diff4OthersTitle": "اتركها للصدفة",
+    "diff4OthersDesc": "ما يعرضه الخوارزمية",
+    "diff4QuloTitle": "تطابق بالذكاء الاصطناعي",
+    "diff4QuloDesc": "اقتراحات أسئلة مخصصة بالذكاء الاصطناعي"
+  },
+  "stats": {
+    "questions": "أسئلة تم إنشاؤها",
+    "matches": "تطابقات",
+    "users": "مستخدمون",
+    "rating": "App Store"
+  },
+  "cta": {
+    "title": "ابدأ الآن.",
+    "desc": "تعرّف من خلال أسئلتك، وابنِ علاقات حقيقية.",
+    "button": "حمّل التطبيق"
+  },
+  "invite": {
+    "title": "أنت مدعو إلى Qulo!",
+    "desc": "حمّل التطبيق واستخدم رمز الدعوة الخاص بك.",
+    "redirecting": "جارٍ إعادة التوجيه...",
+    "downloadPrompt": "حمّل على هاتفك",
+    "code": "رمز الدعوة"
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "desc": "الصفحة التي تبحث عنها غير موجودة.",
+    "back": "العودة إلى الرئيسية"
+  },
+  "help": {
+    "title": "مركز المساعدة",
+    "subtitle": "الأسئلة الشائعة والدعم",
+    "categories": {
+      "account": "الحساب وتسجيل الدخول",
+      "matching": "التطابق والأسئلة",
+      "diamonds": "الماس والاشتراك المميز",
+      "security": "الأمان والخصوصية",
+      "technical": "مشاكل تقنية"
+    },
+    "faq": {
+      "account_reset_password_q": "كيف أعيد تعيين كلمة المرور؟",
+      "account_reset_password_a": "في شاشة تسجيل الدخول، انقر على 'نسيت كلمة المرور'. سيتم إرسال رابط إعادة التعيين إلى بريدك الإلكتروني.",
+      "account_delete_q": "كيف أحذف حسابي؟",
+      "account_delete_a": "اذهب إلى الإعدادات > حذف الحساب لحذف حسابك نهائياً. لا يمكن التراجع عن هذا الإجراء.",
+      "account_banned_q": "تم تعليق حسابي، ماذا أفعل؟",
+      "account_banned_a": "ربما تم تعليق حسابك بسبب مخالفة إرشادات المجتمع. لمزيد من المعلومات، راسل support@quloapp.com.",
+      "matching_how_q": "كيف يعمل التطابق؟",
+      "matching_how_a": "أنشئ أسئلة ودع المستخدمين الآخرين يحلونها. الإجابات الصحيحة تؤدي إلى التطابق.",
+      "matching_questions_q": "كيف أنشئ سؤالاً؟",
+      "matching_questions_a": "انقر على زر '+' في الشاشة الرئيسية. أضف من 2 إلى 10 أسئلة، أدخل 4 خيارات لكل سؤال، وحدد الإجابة الصحيحة.",
+      "diamonds_what_q": "ما هي استخدامات الماس؟",
+      "diamonds_what_a": "يُستخدم الماس الأخضر لتفعيل القوى، بينما يفتح الماس البنفسجي ميزات خاصة.",
+      "diamonds_buy_q": "كيف أشتري الماس؟",
+      "diamonds_buy_a": "انقر على أيقونة الماس في شاشة الملف الشخصي لشراء حزم الماس البنفسجي.",
+      "security_block_q": "كيف أحظر شخصاً ما؟",
+      "security_block_a": "استخدم قائمة النقاط الثلاث على ملف المستخدم أو شاشة الدردشة واختر 'حظر'.",
+      "security_report_q": "كيف أبلّغ عن شخص ما؟",
+      "security_report_a": "استخدم قائمة النقاط الثلاث على ملف المستخدم أو شاشة الدردشة واختر 'إبلاغ'.",
+      "security_data_q": "هل بياناتي آمنة؟",
+      "security_data_a": "جميع بياناتك مخزنة بشكل مشفر. يمكنك مراجعة سياسة الخصوصية من شاشة الإعدادات.",
+      "technical_connection_q": "أواجه مشاكل في الاتصال",
+      "technical_connection_a": "تحقق من اتصالك بالإنترنت. إذا استمرت المشكلة، أغلق التطبيق وأعد فتحه.",
+      "technical_notification_q": "لا أتلقى إشعارات",
+      "technical_notification_a": "تحقق من إعدادات هاتفك للتأكد من تمكين الإشعارات لـ Qulo."
+    },
+    "still_need_help": "هل ما زلت بحاجة إلى مساعدة؟",
+    "still_need_help_desc": "يمكنك إنشاء طلب دعم من التطبيق أو إرسال بريد إلكتروني إلينا.",
+    "contact_email": "support@quloapp.com"
+  },
   "footer": {
     "legal": "قانوني",
     "privacy": "سياسة الخصوصية",
@@ -82,5 +247,27 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. الاتصال",
     "contactInfo": "إذا كانت لديك أسئلة حول شروط الخدمة هذه، يرجى الاتصال بنا:\n\nالمطور: Berkant Çalıkuşu\nالبريد الإلكتروني: info@socrepho.com\nالعنوان: Istanbul/Beyoglu, Turkey\nالموقع الإلكتروني: quloapp.com"
+  },
+  "resetPassword": {
+    "title": "إعادة تعيين كلمة المرور",
+    "newPassword": "كلمة المرور الجديدة",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "submit": "إعادة تعيين كلمة المرور",
+    "success": "تم تغيير كلمة مرورك بنجاح!",
+    "successDesc": "يمكنك الآن تسجيل الدخول بكلمة مرورك الجديدة.",
+    "error": "هذا الرابط غير صالح أو انتهت صلاحيته.",
+    "errorDesc": "يرجى طلب إعادة تعيين كلمة مرور جديدة من التطبيق.",
+    "backToApp": "فتح التطبيق",
+    "passwordMinLength": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+    "passwordMismatch": "كلمتا المرور غير متطابقتين"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }

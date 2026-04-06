@@ -6,6 +6,171 @@
   "nav": {
     "download": "डाउनलोड करें"
   },
+  "hero": {
+    "label": "अगली पीढ़ी की डेटिंग",
+    "title1": "सवालों से",
+    "title2": "मिलिए।",
+    "description": "सवाल बनाएं, शेयर करें, सही जवाब देने वाले से मैच करें। सच्चे कनेक्शन बनाएं।",
+    "realConnections": "सच्चे कनेक्शन",
+    "card1Question": "पहली डेट पर कहाँ जाएंगे?",
+    "card1Option1": "समुद्र तट पर सैर",
+    "card1Option2": "एक छिपा हुआ कैफ़े",
+    "card1Option3": "तारों के नीचे",
+    "card1Button": "जवाब दें",
+    "card2Question": "वो गाना जो आपको सबसे अच्छा बताता है?",
+    "card2Option1": "रोमांटिक",
+    "card2Option2": "उदास"
+  },
+  "howItWorks": {
+    "label": "प्रक्रिया",
+    "title1": "यह कैसे",
+    "title2": "काम करता है?",
+    "step1Title": "सवाल बनाएं",
+    "step1Desc": "2-10 सवाल बनाएं जो आपकी शख्सियत दर्शाएं",
+    "step1Detail": "हर सवाल एक खिड़की है जो आपसे मिलवाती है।",
+    "step2Title": "खोजें और हल करें",
+    "step2Desc": "दूसरे यूज़र्स के सवालों के जवाब दें",
+    "step2Detail": "सवाल खोजें, जवाब दें, पॉइंट्स इकट्ठा करें।",
+    "step3Title": "मैच",
+    "step3Desc": "सही जवाब देने वाले से जुड़ें",
+    "step3Detail": "मैच! चैट शुरू करें, अपना सच्चा कनेक्शन बनाएं।",
+    "previewQuestion": "रविवार की सुबह सबसे पहले क्या करते हैं?",
+    "previewOption1": "कॉफ़ी",
+    "previewOption2": "दौड़ना",
+    "previewOption3": "सोना",
+    "matchSubtitle": "सच्चे कनेक्शन यहाँ से शुरू होते हैं"
+  },
+  "features": {
+    "label": "विशेषताएं",
+    "title1": "Qulo",
+    "title2": "क्यों?",
+    "diamonds": {
+      "title": "हीरा अर्थव्यवस्था",
+      "subtitle": "कमाएं और खर्च करें",
+      "desc": "जब आपके सवाल हल हों तो हरे हीरे कमाएं। ज़्यादा सवाल, ज़्यादा कमाई। माइलस्टोन हासिल करें और बोनस रिवॉर्ड अनलॉक करें।"
+    },
+    "powers": {
+      "title": "क्विज़ पावर",
+      "subtitle": "6 पावर",
+      "desc": "Oracle, Half, Skip, Time Extend, Hint और Skip All। सवाल हल करते समय रणनीतिक पावर का उपयोग करें।"
+    },
+    "chatQuestions": {
+      "title": "चैट सवाल",
+      "subtitle": "चैट में क्विज़",
+      "desc": "अपने मैच को सवाल भेजें। हल होने तक चैट लॉक करें, सही जवाब पर फ़ोटो दिखाएं। बातचीत को रोमांचक बनाएं।"
+    },
+    "gamification": {
+      "title": "गेमिफिकेशन",
+      "subtitle": "बैज और लेवल",
+      "desc": "आगे बढ़ते हुए बैज कमाएं, माइलस्टोन के साथ लेवल अप करें। अपनी प्रोफ़ाइल समृद्ध करें।"
+    },
+    "ai": {
+      "title": "AI सवाल निर्माण",
+      "subtitle": "AI-संचालित",
+      "desc": "AI की मदद से आकर्षक सवाल बनाएं। वे सवाल खोजें जो आपकी शख्सियत को सबसे अच्छा दर्शाएं।"
+    },
+    "premium": {
+      "title": "प्रीमियम प्लान",
+      "subtitle": "Plus और Premium",
+      "desc": "विज्ञापन-मुक्त अनुभव, असीमित डिस्कवर, पासपोर्ट मोड, मासिक हीरा बोनस और अधिक सवाल।"
+    }
+  },
+  "appPreview": {
+    "label": "ऐप",
+    "title1": "ऐप",
+    "title2": "एक्सप्लोर करें"
+  },
+  "testimonials": {
+    "label": "यूज़र्स",
+    "title1": "सफलता की",
+    "title2": "कहानियां"
+  },
+  "whyDifferent": {
+    "label": "अंतर",
+    "title1": "हमें क्या बनाता है",
+    "title2": "अलग?",
+    "others": "अन्य",
+    "qulo": "Qulo",
+    "diff1OthersTitle": "सतही स्वाइपिंग",
+    "diff1OthersDesc": "फ़ोटो के आधार पर बाएं या दाएं स्वाइप करें",
+    "diff1QuloTitle": "सार्थक खोज",
+    "diff1QuloDesc": "सवालों के ज़रिए शख्सियत जानें, फिर मैच करें",
+    "diff2OthersTitle": "अंतहीन मैचिंग",
+    "diff2OthersDesc": "सैकड़ों मैच, शून्य बातचीत",
+    "diff2QuloTitle": "सार्थक कनेक्शन",
+    "diff2QuloDesc": "सही जवाबों के ज़रिए सच्चे कनेक्शन",
+    "diff3OthersTitle": "नीरस प्रोफ़ाइल",
+    "diff3OthersDesc": "वही बायो, वही फ़ोटो",
+    "diff3QuloTitle": "गेमिफाइड अनुभव",
+    "diff3QuloDesc": "हीरे, बैज, लेवल और विशेष पावर",
+    "diff4OthersTitle": "किस्मत पर छोड़ दें",
+    "diff4OthersDesc": "जो एल्गोरिदम दिखाए",
+    "diff4QuloTitle": "AI-संचालित मैचिंग",
+    "diff4QuloDesc": "AI-व्यक्तिगत सवाल सुझाव"
+  },
+  "stats": {
+    "questions": "बनाए गए सवाल",
+    "matches": "मैच",
+    "users": "यूज़र्स",
+    "rating": "App Store"
+  },
+  "cta": {
+    "title": "शुरू करें।",
+    "desc": "अपने सवालों से मिलें, सच्चे कनेक्शन बनाएं।",
+    "button": "ऐप डाउनलोड करें"
+  },
+  "invite": {
+    "title": "आप Qulo में आमंत्रित हैं!",
+    "desc": "ऐप डाउनलोड करें और अपना आमंत्रण कोड उपयोग करें।",
+    "redirecting": "रीडायरेक्ट हो रहा है...",
+    "downloadPrompt": "अपने फ़ोन पर डाउनलोड करें",
+    "code": "आमंत्रण कोड"
+  },
+  "notFound": {
+    "title": "पेज नहीं मिला",
+    "desc": "आप जो पेज ढूंढ रहे हैं वह मौजूद नहीं है।",
+    "back": "होम पर वापस जाएं"
+  },
+  "help": {
+    "title": "सहायता केंद्र",
+    "subtitle": "अक्सर पूछे जाने वाले सवाल और सहायता",
+    "categories": {
+      "account": "खाता और लॉगिन",
+      "matching": "मैचिंग और सवाल",
+      "diamonds": "हीरे और प्रीमियम",
+      "security": "सुरक्षा और गोपनीयता",
+      "technical": "तकनीकी समस्याएं"
+    },
+    "faq": {
+      "account_reset_password_q": "मैं अपना पासवर्ड कैसे रीसेट करूं?",
+      "account_reset_password_a": "लॉगिन स्क्रीन पर 'पासवर्ड भूल गए' पर टैप करें। आपके ईमेल पर एक रीसेट लिंक भेजा जाएगा।",
+      "account_delete_q": "मैं अपना खाता कैसे हटाऊं?",
+      "account_delete_a": "सेटिंग्स > खाता हटाएं पर जाकर अपना खाता स्थायी रूप से हटाएं। यह क्रिया पूर्ववत नहीं की जा सकती।",
+      "account_banned_q": "मेरा खाता निलंबित कर दिया गया, मैं क्या करूं?",
+      "account_banned_a": "समुदाय दिशानिर्देशों के उल्लंघन के कारण आपका खाता निलंबित किया गया हो सकता है। अधिक जानकारी के लिए support@quloapp.com पर ईमेल करें।",
+      "matching_how_q": "मैचिंग कैसे काम करती है?",
+      "matching_how_a": "सवाल बनाएं और दूसरे यूज़र्स को उन्हें हल करने दें। सही जवाब मैच की ओर ले जाते हैं।",
+      "matching_questions_q": "मैं सवाल कैसे बनाऊं?",
+      "matching_questions_a": "मुख्य स्क्रीन पर '+' बटन पर टैप करें। 2 से 10 सवाल जोड़ें, प्रत्येक के लिए 4 विकल्प दर्ज करें, और सही जवाब चिह्नित करें।",
+      "diamonds_what_q": "हीरों का उपयोग किस लिए होता है?",
+      "diamonds_what_a": "हरे हीरे पावर सक्रिय करने के लिए उपयोग होते हैं, जबकि बैंगनी हीरे विशेष सुविधाएं अनलॉक करते हैं।",
+      "diamonds_buy_q": "मैं हीरे कैसे खरीदूं?",
+      "diamonds_buy_a": "प्रोफ़ाइल स्क्रीन पर हीरे के आइकन पर टैप करके बैंगनी हीरे के पैकेज खरीदें।",
+      "security_block_q": "मैं किसी को कैसे ब्लॉक करूं?",
+      "security_block_a": "यूज़र की प्रोफ़ाइल या चैट स्क्रीन पर तीन-डॉट मेनू का उपयोग करें और 'ब्लॉक' चुनें।",
+      "security_report_q": "मैं किसी की रिपोर्ट कैसे करूं?",
+      "security_report_a": "यूज़र की प्रोफ़ाइल या चैट स्क्रीन पर तीन-डॉट मेनू का उपयोग करें और 'रिपोर्ट' चुनें।",
+      "security_data_q": "क्या मेरा डेटा सुरक्षित है?",
+      "security_data_a": "आपका सारा डेटा एन्क्रिप्टेड रूप में संग्रहित है। आप सेटिंग्स स्क्रीन से हमारी गोपनीयता नीति की समीक्षा कर सकते हैं।",
+      "technical_connection_q": "मुझे कनेक्शन समस्या हो रही है",
+      "technical_connection_a": "अपना इंटरनेट कनेक्शन जांचें। यदि समस्या बनी रहती है, तो ऐप बंद करके फिर से खोलें।",
+      "technical_notification_q": "मुझे सूचनाएं नहीं मिल रही हैं",
+      "technical_notification_a": "अपने फ़ोन की सेटिंग्स जांचें और सुनिश्चित करें कि Qulo के लिए सूचनाएं सक्षम हैं।"
+    },
+    "still_need_help": "अभी भी मदद चाहिए?",
+    "still_need_help_desc": "आप ऐप से सपोर्ट रिक्वेस्ट बना सकते हैं या हमें ईमेल भेज सकते हैं।",
+    "contact_email": "support@quloapp.com"
+  },
   "footer": {
     "legal": "कानूनी",
     "privacy": "गोपनीयता नीति",
@@ -82,5 +247,27 @@
     "dataProtection": "Your personal data may be processed on servers located outside of Turkey (Supabase, Firebase, RevenueCat) as required by our service infrastructure. This transfer is based on your explicit consent under KVKK Article 9.\n\nIndustry-standard encryption methods are used to ensure the security of your data.",
     "contactTitle": "15. संपर्क",
     "contactInfo": "यदि इन सेवा की शर्तों के बारे में आपके कोई प्रश्न हैं, तो कृपया हमसे संपर्क करें:\n\nडेवलपर: Berkant Çalıkuşu\nईमेल: info@socrepho.com\nपता: Istanbul/Beyoglu, Turkey\nवेबसाइट: quloapp.com"
+  },
+  "resetPassword": {
+    "title": "अपना पासवर्ड रीसेट करें",
+    "newPassword": "नया पासवर्ड",
+    "confirmPassword": "पासवर्ड की पुष्टि करें",
+    "submit": "पासवर्ड रीसेट करें",
+    "success": "आपका पासवर्ड सफलतापूर्वक बदल दिया गया है!",
+    "successDesc": "अब आप अपने नए पासवर्ड से साइन इन कर सकते हैं।",
+    "error": "यह लिंक अमान्य है या समाप्त हो गया है।",
+    "errorDesc": "कृपया ऐप से नए पासवर्ड रीसेट का अनुरोध करें।",
+    "backToApp": "ऐप खोलें",
+    "passwordMinLength": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए",
+    "passwordMismatch": "पासवर्ड मेल नहीं खाते"
+  },
+  "emailVerified": {
+    "successTitle": "Email Verified!",
+    "successDesc": "Your account has been successfully activated. You can return to the app.",
+    "expiredTitle": "Link Expired",
+    "expiredDesc": "This verification link has expired. Please request a new one from the app.",
+    "errorTitle": "Invalid Link",
+    "errorDesc": "This verification link is invalid.",
+    "openApp": "Open App"
   }
 }
