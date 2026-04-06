@@ -76,19 +76,35 @@ function scanSkills() {
       var filePath = path.join(dir, entry);
       var stat = fs.statSync(filePath);
 
-      if (stat.isDirectory() || !entry.endsWith('.md')) continue;
+      var skillFile = null;
 
-      var content = fs.readFileSync(filePath, 'utf-8');
+      if (stat.isDirectory()) {
+        // dizin/SKILL.md formatı (Claude Code standart yapısı)
+        var skillMd = path.join(filePath, 'SKILL.md');
+        if (fs.existsSync(skillMd)) {
+          skillFile = skillMd;
+        }
+        // businessCaseSkills altındaki flat .md dosyaları
+        // (bu dizin zaten ayrıca taranıyor, burada atla)
+      } else if (entry.endsWith('.md')) {
+        // flat .md dosyası (businessCaseSkills formatı)
+        skillFile = filePath;
+      }
+
+      if (!skillFile) continue;
+
+      var content = fs.readFileSync(skillFile, 'utf-8');
       var meta = parseFrontmatter(content);
       if (!meta.name) continue;
 
+      var fileStat = fs.statSync(skillFile);
       skills.push({
         name: meta.name,
         description: meta.description,
         triggers: meta.triggers,
-        category: categorizeSkill(filePath, meta.name),
-        file: path.relative(PROJECT_ROOT, filePath),
-        lastModified: stat.mtime.toISOString(),
+        category: categorizeSkill(skillFile, meta.name),
+        file: path.relative(PROJECT_ROOT, skillFile),
+        lastModified: fileStat.mtime.toISOString(),
       });
     }
   }
