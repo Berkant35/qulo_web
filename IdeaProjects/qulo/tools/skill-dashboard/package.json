@@ -1,0 +1,13 @@
+{
+  "name": "qulo-skill-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Qulo Claude Code skill dashboard — visualize and run skills",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
