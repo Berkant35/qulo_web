@@ -13,28 +13,41 @@ const BUSINESS_SKILLS_DIR = path.join(SKILLS_DIR, 'businessCaseSkills');
 app.use(express.json());
 
 function parseFrontmatter(content) {
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  var match = content.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return { name: '', description: '', triggers: '' };
 
-  const raw = match[1];
-  const result = { name: '', description: '', triggers: '' };
+  var raw = match[1];
+  var result = { name: '', description: '', triggers: '' };
 
-  const nameMatch = raw.match(/^name:\s*(.+)$/m);
+  var nameMatch = raw.match(/^name:\s*(.+)$/m);
   if (nameMatch) result.name = nameMatch[1].trim();
 
-  const descMatch = raw.match(/description:\s*\|?\s*\n?([\s\S]*?)(?=\n\w|\n---)/);
-  if (descMatch) {
-    result.description = descMatch[1]
-      .split('\n')
-      .map(function(line) { return line.trim(); })
-      .filter(Boolean)
-      .join(' ');
-  } else {
-    const singleDesc = raw.match(/^description:\s*(.+)$/m);
-    if (singleDesc) result.description = singleDesc[1].trim();
+  // description: tek satir veya multiline (| ile)
+  var descIdx = raw.indexOf('description:');
+  if (descIdx !== -1) {
+    var afterDesc = raw.substring(descIdx + 'description:'.length);
+    var firstLine = afterDesc.split('\n')[0].trim();
+
+    if (firstLine === '|' || firstLine === '>') {
+      // Multiline: indented satirlari topla
+      var lines = afterDesc.split('\n').slice(1);
+      var descLines = [];
+      for (var i = 0; i < lines.length; i++) {
+        // Indent ile baslayan satirlar description'a ait
+        if (lines[i].match(/^\s{2,}/) || lines[i].trim() === '') {
+          if (lines[i].trim()) descLines.push(lines[i].trim());
+        } else {
+          break;
+        }
+      }
+      result.description = descLines.join(' ');
+    } else if (firstLine) {
+      // Tek satir description
+      result.description = firstLine;
+    }
   }
 
-  const triggerMatch = result.description.match(/[Tt]etikleyiciler?:\s*(.+)/);
+  var triggerMatch = result.description.match(/[Tt]etikleyiciler?:\s*(.+)/);
   if (triggerMatch) result.triggers = triggerMatch[1].trim();
 
   return result;
