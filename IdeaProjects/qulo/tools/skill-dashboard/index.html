@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qulo Skill Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+      background: #0d1117; color: #c9d1d9; min-height: 100vh;
+    }
+    .header {
+      background: #161b22; border-bottom: 1px solid #30363d;
+      padding: 16px 32px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .header h1 { font-size: 20px; font-weight: 600; color: #f0f6fc; }
+    .header h1 span { color: #7c3aed; }
+    .header .status { font-size: 13px; color: #8b949e; }
+    .header .status .dot {
+      display: inline-block; width: 8px; height: 8px;
+      border-radius: 50%; background: #3fb950; margin-right: 6px;
+    }
+    .layout {
+      display: grid; grid-template-columns: 280px 1fr;
+      min-height: calc(100vh - 57px);
+    }
+    .sidebar {
+      background: #161b22; border-right: 1px solid #30363d; padding: 24px 20px;
+    }
+    .sidebar h2 {
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 1px; color: #8b949e; margin-bottom: 20px;
+    }
+    .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .flow-node {
+      width: 100%; padding: 12px 16px; border-radius: 8px;
+      text-align: center; font-size: 14px; font-weight: 500;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .flow-node:hover { transform: scale(1.02); }
+    .flow-node.lifecycle { background: #1a1f35; border: 1px solid #7c3aed; color: #a78bfa; }
+    .flow-node.session {
+      background: #0d1117; border: 1px dashed #30363d; color: #8b949e;
+      font-size: 12px; cursor: default;
+    }
+    .flow-node.session:hover { transform: none; }
+    .flow-node.business {
+      background: #1a2332; border: 1px solid #1f6feb; color: #58a6ff; cursor: default;
+    }
+    .flow-node.business:hover { transform: none; }
+    .flow-arrow {
+      width: 2px; height: 20px; background: #30363d; position: relative;
+    }
+    .flow-arrow::after {
+      content: ''; position: absolute; bottom: -4px; left: -3px;
+      border-left: 4px solid transparent; border-right: 4px solid transparent;
+      border-top: 6px solid #30363d;
+    }
+    .how-it-works {
+      margin-top: 32px; padding-top: 20px; border-top: 1px solid #30363d;
+    }
+    .how-it-works h2 {
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 1px; color: #8b949e; margin-bottom: 16px;
+    }
+    .how-step {
+      display: flex; gap: 10px; margin-bottom: 12px;
+      font-size: 12px; color: #8b949e; line-height: 1.5;
+    }
+    .how-step .num {
+      flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+      background: #21262d; border: 1px solid #30363d;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: #c9d1d9; font-weight: 600;
+    }
+    .main { padding: 24px 32px; overflow-y: auto; }
+    .category { margin-bottom: 32px; }
+    .category-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .category-badge {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+      padding: 3px 10px; border-radius: 12px; font-weight: 600;
+    }
+    .category-badge.lifecycle { background: #7c3aed22; color: #a78bfa; }
+    .category-badge.businessCase { background: #1f6feb22; color: #58a6ff; }
+    .category-badge.review { background: #3fb95022; color: #3fb950; }
+    .category-badge.deploy { background: #d2992222; color: #e3b341; }
+    .category-badge.other { background: #8b949e22; color: #8b949e; }
+    .category-count { font-size: 12px; color: #484f58; }
+    .cards {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px;
+    }
+    .card {
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 8px; padding: 16px; transition: border-color 0.2s;
+    }
+    .card:hover { border-color: #484f58; }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .card-name {
+      font-size: 15px; font-weight: 600; color: #f0f6fc;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+    .card-name::before { content: '/'; color: #484f58; }
+    .card-desc {
+      font-size: 13px; color: #8b949e; line-height: 1.5; margin-bottom: 12px;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .card-triggers { font-size: 11px; color: #484f58; margin-bottom: 12px; }
+    .card-triggers span {
+      background: #21262d; padding: 2px 6px; border-radius: 4px;
+      margin-right: 4px; display: inline-block; margin-bottom: 4px;
+    }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; }
+    .card-file { font-size: 11px; color: #484f58; font-family: monospace; }
+    .btn-run {
+      background: #21262d; border: 1px solid #30363d; color: #c9d1d9;
+      padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 500;
+      cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 6px;
+    }
+    .btn-run:hover { background: #30363d; border-color: #484f58; }
+    .btn-run.running { background: #1f6feb22; border-color: #1f6feb; color: #58a6ff; cursor: wait; }
+    .btn-run.done { background: #3fb95022; border-color: #3fb950; color: #3fb950; }
+    .btn-run.error { background: #f8514922; border-color: #f85149; color: #f85149; }
+    .spinner {
+      width: 12px; height: 12px;
+      border: 2px solid #58a6ff44; border-top-color: #58a6ff;
+      border-radius: 50%; animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading { text-align: center; padding: 60px; color: #8b949e; }
+    .loading .spinner { width: 24px; height: 24px; margin: 0 auto 16px; }
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1><span>Q</span> Skill Dashboard</h1>
+  <div class="status" id="headerStatus">
+    <span class="dot"></span> Yukleniyor...
+  </div>
+</div>
+<div class="layout">
+  <div class="sidebar">
+    <h2>Session Lifecycle</h2>
+    <div class="flow">
+      <div class="flow-node lifecycle" onclick="runSkill('readyToQulo')">/readyToQulo</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node session">Gelistirme Session'i</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node business">businessCaseSkills</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node session">Gelistirme Session'i</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node lifecycle" onclick="runSkill('closeToQulo')">/closeToQulo</div>
+    </div>
+    <div class="how-it-works">
+      <h2>Nasil Calisir</h2>
+      <div class="how-step">
+        <div class="num">1</div>
+        <div>Session basinda <b>/readyToQulo</b> calistir — proje taranir, context yuklenir</div>
+      </div>
+      <div class="how-step">
+        <div class="num">2</div>
+        <div>Normal gelistirme yap — ilgili businessCaseSkills otomatik tetiklenir</div>
+      </div>
+      <div class="how-step">
+        <div class="num">3</div>
+        <div>Session sonunda <b>/closeToQulo</b> calistir — ozet, memory onerisi, yeni skill tespiti</div>
+      </div>
+      <div class="how-step">
+        <div class="num">4</div>
+        <div>Dashboard'dan istedigin skill'i manuel calistir veya durumunu gor</div>
+      </div>
+    </div>
+  </div>
+  <div class="main" id="mainContent">
+    <div class="loading">
+      <div class="spinner"></div>
+      Skill'ler taraniyor...
+    </div>
+  </div>
+</div>
+<script>
+var CATEGORY_LABELS = {
+  lifecycle: 'Lifecycle',
+  businessCase: 'Business Case',
+  review: 'Review',
+  deploy: 'Deploy',
+  other: 'Diger',
+};
+var CATEGORY_ORDER = ['lifecycle', 'businessCase', 'review', 'deploy', 'other'];
+var allSkills = [];
+
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+async function loadSkills() {
+  try {
+    var res = await fetch('/api/skills');
+    var data = await res.json();
+    allSkills = data.skills;
+    renderSkills(allSkills);
+    updateHeaderStatus(allSkills.length);
+  } catch (err) {
+    showError(err.message);
+  }
+}
+
+function updateHeaderStatus(count) {
+  var el = document.getElementById('headerStatus');
+  el.textContent = '';
+  var dot = document.createElement('span');
+  dot.className = 'dot';
+  el.appendChild(dot);
+  el.appendChild(document.createTextNode(' ' + count + ' skill aktif'));
+}
+
+function showError(msg) {
+  var el = document.getElementById('mainContent');
+  el.textContent = '';
+  var div = document.createElement('div');
+  div.className = 'loading';
+  div.style.color = '#f85149';
+  div.textContent = 'Baglanamadi: ' + msg;
+  el.appendChild(div);
+}
+
+function renderSkills(skills) {
+  var grouped = {};
+  for (var i = 0; i < skills.length; i++) {
+    var s = skills[i];
+    if (!grouped[s.category]) grouped[s.category] = [];
+    grouped[s.category].push(s);
+  }
+  var container = document.getElementById('mainContent');
+  container.textContent = '';
+
+  for (var c = 0; c < CATEGORY_ORDER.length; c++) {
+    var cat = CATEGORY_ORDER[c];
+    var items = grouped[cat];
+    if (!items || items.length === 0) continue;
+
+    var section = document.createElement('div');
+    section.className = 'category';
+
+    var header = document.createElement('div');
+    header.className = 'category-header';
+
+    var badge = document.createElement('span');
+    badge.className = 'category-badge ' + cat;
+    badge.textContent = CATEGORY_LABELS[cat];
+    header.appendChild(badge);
+
+    var count = document.createElement('span');
+    count.className = 'category-count';
+    count.textContent = items.length + ' skill';
+    header.appendChild(count);
+
+    section.appendChild(header);
+
+    var cardsDiv = document.createElement('div');
+    cardsDiv.className = 'cards';
+
+    for (var k = 0; k < items.length; k++) {
+      cardsDiv.appendChild(buildCard(items[k]));
+    }
+
+    section.appendChild(cardsDiv);
+    container.appendChild(section);
+  }
+}
+
+function buildCard(skill) {
+  var card = document.createElement('div');
+  card.className = 'card';
+  card.id = 'card-' + skill.name;
+
+  var top = document.createElement('div');
+  top.className = 'card-top';
+  var nameDiv = document.createElement('div');
+  nameDiv.className = 'card-name';
+  nameDiv.textContent = skill.name;
+  top.appendChild(nameDiv);
+  card.appendChild(top);
+
+  var desc = document.createElement('div');
+  desc.className = 'card-desc';
+  desc.textContent = skill.description;
+  card.appendChild(desc);
+
+  if (skill.triggers) {
+    var triggersDiv = document.createElement('div');
+    triggersDiv.className = 'card-triggers';
+    var parts = skill.triggers.split(',');
+    for (var i = 0; i < parts.length; i++) {
+      var sp = document.createElement('span');
+      sp.textContent = parts[i].trim();
+      triggersDiv.appendChild(sp);
+    }
+    card.appendChild(triggersDiv);
+  }
+
+  var footer = document.createElement('div');
+  footer.className = 'card-footer';
+
+  var fileDiv = document.createElement('div');
+  fileDiv.className = 'card-file';
+  fileDiv.textContent = skill.file;
+  footer.appendChild(fileDiv);
+
+  var btn = document.createElement('button');
+  btn.className = 'btn-run';
+  btn.id = 'btn-' + skill.name;
+  btn.innerHTML = '&#9654; Calistir';
+  btn.addEventListener('click', (function(n) {
+    return function() { runSkill(n); };
+  })(skill.name));
+  footer.appendChild(btn);
+
+  card.appendChild(footer);
+  return card;
+}
+
+async function runSkill(name) {
+  var btn = document.getElementById('btn-' + name);
+  if (!btn || btn.classList.contains('running')) return;
+
+  btn.textContent = '';
+  var spinner = document.createElement('div');
+  spinner.className = 'spinner';
+  btn.appendChild(spinner);
+  btn.appendChild(document.createTextNode(' Calisiyor...'));
+  btn.classList.add('running');
+
+  try {
+    var res = await fetch('/api/run-skill', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ skillName: name }),
+    });
+    var data = await res.json();
+    if (res.ok) {
+      btn.textContent = '\u23F3 Basladi (PID: ' + data.pid + ')';
+      pollStatus(name, btn);
+    } else {
+      btn.textContent = '\u2717 ' + (data.error || 'Hata');
+      btn.classList.remove('running');
+      btn.classList.add('error');
+      setTimeout(function() { resetBtn(btn); }, 4000);
+    }
+  } catch (err) {
+    btn.textContent = '\u2717 Hata';
+    btn.classList.remove('running');
+    btn.classList.add('error');
+    setTimeout(function() { resetBtn(btn); }, 4000);
+  }
+}
+
+function pollStatus(name, btn) {
+  var interval = setInterval(async function() {
+    try {
+      var res = await fetch('/api/status');
+      var data = await res.json();
+      if (!data.running[name]) {
+        clearInterval(interval);
+        btn.textContent = '\u2713 Tamamlandi';
+        btn.classList.remove('running');
+        btn.classList.add('done');
+        setTimeout(function() { resetBtn(btn); }, 5000);
+      }
+    } catch (e) {
+      clearInterval(interval);
+      resetBtn(btn);
+    }
+  }, 2000);
+}
+
+function resetBtn(btn) {
+  btn.innerHTML = '&#9654; Calistir';
+  btn.className = 'btn-run';
+}
+
+loadSkills();
+</script>
+</body>
+</html>
