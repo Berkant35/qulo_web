@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabul — Kategori Yönetimi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #1a1a2e;
+      --surface:  #16213e;
+      --surface2: #0f3460;
+      --accent:   #e94560;
+      --accent-h: #c73652;
+      --text:     #e2e8f0;
+      --text-dim: #94a3b8;
+      --border:   #2d3748;
+      --success:  #22c55e;
+      --warning:  #f59e0b;
+      --danger:   #ef4444;
+      --radius:   8px;
+      --radius-lg: 12px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Auth Screen ── */
+    #auth-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .auth-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .auth-logo {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .auth-logo h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+    }
+
+    .auth-logo p {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group select option {
+      background: var(--surface);
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s, opacity 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover:not(:disabled) { background: var(--accent-h); }
+
+    .btn-secondary { background: var(--surface2); color: var(--text); }
+    .btn-secondary:hover:not(:disabled) { background: #1a4a7a; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover:not(:disabled) { background: var(--surface2); color: var(--text); }
+
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-danger:hover:not(:disabled) { background: #dc2626; }
+
+    .btn-icon {
+      background: transparent;
+      color: var(--text-dim);
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-icon:hover { background: var(--surface2); color: var(--text); }
+    .btn-icon.danger:hover { background: rgba(239,68,68,0.15); color: var(--danger); }
+
+    .btn-full { width: 100%; justify-content: center; padding: 11px 14px; font-size: 14px; }
+
+    /* ── Alerts ── */
+    .alert {
+      display: none;
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      margin-top: 14px;
+    }
+    .alert.show { display: block; }
+    .alert-error { background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
+    .alert-success { background: rgba(34,197,94,0.12); color: #86efac; border: 1px solid rgba(34,197,94,0.25); }
+
+    /* ── Main App ── */
+    #app-screen { display: none; flex-direction: column; min-height: 100vh; }
+
+    .topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      flex: 1;
+    }
+
+    .topbar-subtitle {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ── Tree ── */
+    .tree-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .tree-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tree-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tree-count {
+      font-size: 12px;
+      color: var(--text-dim);
+      background: var(--surface2);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .tree-body {
+      padding: 8px 0;
+    }
+
+    .tree-empty {
+      padding: 48px 24px;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+
+    /* Tree node */
+    .tree-node {
+      user-select: none;
+    }
+
+    .node-row {
+      display: flex;
+      align-items: center;
+      padding: 7px 16px;
+      gap: 6px;
+      border-radius: 6px;
+      margin: 1px 8px;
+      transition: background 0.1s;
+    }
+
+    .node-row:hover { background: rgba(255,255,255,0.04); }
+    .node-row:hover .node-actions { opacity: 1; }
+
+    .node-toggle {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-dim);
+      font-size: 10px;
+      flex-shrink: 0;
+      transition: transform 0.15s;
+    }
+
+    .node-toggle.open { transform: rotate(90deg); }
+    .node-toggle.leaf { visibility: hidden; }
+
+    .node-name {
+      font-size: 14px;
+      font-weight: 500;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 1px 7px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .badge-trend { background: rgba(233,69,96,0.2); color: #fb7185; }
+    .badge-inactive { background: rgba(148,163,184,0.15); color: #94a3b8; }
+    .badge-count { background: var(--surface2); color: var(--text-dim); }
+
+    .node-actions {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      opacity: 0;
+      transition: opacity 0.1s;
+      flex-shrink: 0;
+    }
+
+    /* ── Modal ── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.show { display: flex; }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+
+    .modal-close:hover { color: var(--text); }
+
+    .modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+    }
+
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ── Locale tabs ── */
+    .locale-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .locale-tab {
+      padding: 5px 12px;
+      border-radius: var(--radius);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-dim);
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .locale-tab:hover { background: var(--surface2); color: var(--text); }
+    .locale-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .locale-tab.has-data { border-color: var(--success); color: var(--success); }
+    .locale-tab.active.has-data { background: var(--success); border-color: var(--success); color: #fff; }
+
+    .locale-panel { display: none; }
+    .locale-panel.active { display: block; }
+
+    /* ── Checkbox ── */
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+    }
+
+    .checkbox-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .checkbox-row label {
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    /* ── Confirm dialog ── */
+    .confirm-modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+    }
+
+    .confirm-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .confirm-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .confirm-body {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .confirm-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* ── Loading spinner ── */
+    .spinner {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Toast ── */
+    #toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast {
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 500;
+      max-width: 320px;
+      animation: slideIn 0.2s ease;
+      pointer-events: auto;
+    }
+
+    .toast-success { background: #166534; color: #bbf7d0; border: 1px solid #16a34a; }
+    .toast-error   { background: #7f1d1d; color: #fecaca; border: 1px solid #dc2626; }
+    .toast-info    { background: #1e1b4b; color: #c7d2fe; border: 1px solid #4f46e5; }
+
+    @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeOut { to { opacity: 0; transform: translateX(20px); } }
+
+    /* ── Two-col row ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .two-col .form-group { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ AUTH SCREEN ═══════════ -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <h1>Tabul Admin</h1>
+      <p>Kategori yönetim paneli</p>
+    </div>
+    <div class="form-group">
+      <label for="login-email">E-posta</label>
+      <input type="email" id="login-email" placeholder="admin@ornek.com" autocomplete="email">
+    </div>
+    <div class="form-group">
+      <label for="login-password">Şifre</label>
+      <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="btn btn-primary btn-full" id="login-btn" onclick="handleLogin()">Giriş Yap</button>
+    <div class="alert alert-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- ═══════════ APP SCREEN ═══════════ -->
+<div id="app-screen">
+  <div class="topbar">
+    <span class="topbar-title">Kategoriler</span>
+    <span class="topbar-subtitle" id="admin-email"></span>
+    <button class="btn btn-primary" onclick="openCreateModal(null)">+ Yeni Kategori</button>
+    <button class="btn btn-ghost" onclick="handleLogout()">Çıkış</button>
+  </div>
+
+  <div class="main-content">
+    <div class="tree-container">
+      <div class="tree-header">
+        <div class="tree-header-left">
+          <span style="font-size:14px;font-weight:600;">Kategori Ağacı</span>
+          <span class="tree-count" id="tree-count">0 kategori</span>
+        </div>
+        <button class="btn btn-ghost" onclick="loadCategories()" style="padding:6px 12px;font-size:12px;">&#8635; Yenile</button>
+      </div>
+      <div class="tree-body" id="tree-body">
+        <div class="tree-empty">Yükleniyor...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CREATE/EDIT MODAL ═══════════ -->
+<div class="modal-backdrop" id="edit-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-title">Kategori</span>
+      <button class="modal-close" onclick="closeEditModal()">&#215;</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="modal-parent">Üst Kategori</label>
+        <select id="modal-parent">
+          <option value="">— Kök kategori —</option>
+        </select>
+      </div>
+
+      <div class="two-col">
+        <div class="form-group">
+          <label for="modal-sort-order">Sıra</label>
+          <input type="number" id="modal-sort-order" min="0" value="0">
+        </div>
+        <div class="checkbox-row" style="margin-top:20px;">
+          <input type="checkbox" id="modal-trending">
+          <label for="modal-trending">Trend</label>
+          <input type="checkbox" id="modal-active" checked style="margin-left:16px;">
+          <label for="modal-active">Aktif</label>
+        </div>
+      </div>
+
+      <div class="locale-tabs" id="locale-tabs"></div>
+      <div id="locale-panels"></div>
+
+      <div class="alert alert-error" id="modal-error"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeEditModal()">İptal</button>
+      <button class="btn btn-primary" id="modal-save-btn" onclick="saveCategory()">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CONFIRM MODAL ═══════════ -->
+<div class="modal-backdrop" id="confirm-modal">
+  <div class="confirm-modal">
+    <div class="confirm-icon">&#9888;&#65039;</div>
+    <div class="confirm-title">Kategoriyi Sil</div>
+    <div class="confirm-body" id="confirm-body"></div>
+    <div class="confirm-actions">
+      <button class="btn btn-ghost" onclick="closeConfirmModal()">İptal</button>
+      <button class="btn btn-danger" id="confirm-ok-btn">Sil</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ TOAST ═══════════ -->
+<div id="toast-container"></div>
+
+<script>
+  // ── Constants ──
+  var LOCALES = ['tr','en','de','es','fr','it','pt','ru','ar','ja','zh','ko'];
+  var LOCALE_LABELS = {
+    tr:'TR', en:'EN', de:'DE', es:'ES', fr:'FR',
+    it:'IT', pt:'PT', ru:'RU', ar:'AR', ja:'JA', zh:'ZH', ko:'KO'
+  };
+
+  // ── State ──
+  var token = localStorage.getItem('admin_token') || null;
+  var categories = []; // flat list from API
+  var editingId = null; // null = create, string = update
+  var collapsedNodes = {};
+
+  // ── Init ──
+  (function init() {
+    if (token) {
+      showApp();
+      loadCategories();
+    }
+    buildLocaleTabs();
+
+    document.getElementById('login-password').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleLogin();
+    });
+  })();
+
+  // ── Auth ──
+  function handleLogin() {
+    var email = document.getElementById('login-email').value.trim();
+    var password = document.getElementById('login-password').value;
+    var btn = document.getElementById('login-btn');
+    var errorEl = document.getElementById('login-error');
+
+    errorEl.classList.remove('show');
+
+    if (!email || !password) {
+      setAlert(errorEl, 'E-posta ve şifre gereklidir.');
+      return;
+    }
+
+    btn.disabled = true;
+    setLoginBtnLoading(btn, true);
+
+    apiFetch('/api/admin/login', {
+      method: 'POST',
+      body: JSON.stringify({ email: email, password: password }),
+      useToken: false,
+    }).then(function(res) {
+      token = res.data.token;
+      localStorage.setItem('admin_token', token);
+      localStorage.setItem('admin_email', email);
+      showApp();
+      loadCategories();
+    }).catch(function(err) {
+      setAlert(errorEl, err.message || 'Giriş başarısız.');
+    }).finally(function() {
+      btn.disabled = false;
+      setLoginBtnLoading(btn, false);
+    });
+  }
+
+  function setLoginBtnLoading(btn, loading) {
+    while (btn.firstChild) btn.removeChild(btn.firstChild);
+    if (loading) {
+      var sp = document.createElement('span');
+      sp.className = 'spinner';
+      btn.appendChild(sp);
+      btn.appendChild(document.createTextNode(' Giriş yapılıyor...'));
+    } else {
+      btn.appendChild(document.createTextNode('Giriş Yap'));
+    }
+  }
+
+  function handleLogout() {
+    token = null;
+    localStorage.removeItem('admin_token');
+    localStorage.removeItem('admin_email');
+    document.getElementById('auth-screen').style.display = 'flex';
+    document.getElementById('app-screen').style.display = 'none';
+    document.getElementById('login-email').value = '';
+    document.getElementById('login-password').value = '';
+    document.getElementById('login-error').classList.remove('show');
+  }
+
+  function showApp() {
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('app-screen').style.display = 'flex';
+    var email = localStorage.getItem('admin_email') || '';
+    document.getElementById('admin-email').textContent = email;
+  }
+
+  // ── API Helper ──
+  function apiFetch(path, opts) {
+    opts = opts || {};
+    var method = opts.method || 'GET';
+    var body = opts.body;
+    var useToken = opts.useToken !== false;
+
+    var headers = { 'Content-Type': 'application/json' };
+    if (useToken && token) headers['Authorization'] = 'Bearer ' + token;
+
+    return fetch(path, { method: method, headers: headers, body: body }).then(function(res) {
+      return res.json().then(function(data) {
+        if (res.status === 401 || res.status === 403) {
+          token = null;
+          localStorage.removeItem('admin_token');
+          document.getElementById('auth-screen').style.display = 'flex';
+          document.getElementById('app-screen').style.display = 'none';
+          throw new Error('Oturum sona erdi. Lütfen tekrar giriş yapın.');
+        }
+        if (!data.success) throw new Error(data.message || 'Bir hata oluştu.');
+        return data;
+      });
+    });
+  }
+
+  // ── Load Categories ──
+  function loadCategories() {
+    var body = document.getElementById('tree-body');
+    clearEl(body);
+    var loadingEl = document.createElement('div');
+    loadingEl.className = 'tree-empty';
+    loadingEl.textContent = 'Yükleniyor...';
+    body.appendChild(loadingEl);
+
+    apiFetch('/api/admin/categories').then(function(res) {
+      categories = res.data || [];
+      renderTree();
+    }).catch(function(err) {
+      var body2 = document.getElementById('tree-body');
+      clearEl(body2);
+      var errEl = document.createElement('div');
+      errEl.className = 'tree-empty';
+      errEl.style.color = 'var(--danger)';
+      errEl.textContent = 'Kategoriler yüklenemedi: ' + err.message;
+      body2.appendChild(errEl);
+    });
+  }
+
+  // ── Build tree structure from flat list ──
+  function buildTree(flat) {
+    var map = {};
+    flat.forEach(function(c) { map[c.id] = Object.assign({}, c, { _children: [] }); });
+    var roots = [];
+    flat.forEach(function(c) {
+      if (c.parent_id && map[c.parent_id]) {
+        map[c.parent_id]._children.push(map[c.id]);
+      } else if (!c.parent_id) {
+        roots.push(map[c.id]);
+      }
+    });
+    function sortNodes(nodes) {
+      nodes.sort(function(a, b) { return (a.sort_order || 0) - (b.sort_order || 0); });
+      nodes.forEach(function(n) { sortNodes(n._children); });
+    }
+    sortNodes(roots);
+    return roots;
+  }
+
+  // ── Render Tree ──
+  function renderTree() {
+    var body = document.getElementById('tree-body');
+    clearEl(body);
+
+    document.getElementById('tree-count').textContent = categories.length + ' kategori';
+
+    if (!categories.length) {
+      var emptyEl = document.createElement('div');
+      emptyEl.className = 'tree-empty';
+      emptyEl.textContent = 'Henüz kategori yok. "+ Yeni Kategori" ile başlayın.';
+      body.appendChild(emptyEl);
+      return;
+    }
+
+    var tree = buildTree(categories);
+    tree.forEach(function(node) { body.appendChild(createNodeEl(node, 0)); });
+  }
+
+  function createNodeEl(node, depth) {
+    var wrapper = document.createElement('div');
+    wrapper.className = 'tree-node';
+    wrapper.dataset.id = node.id;
+
+    var name = (node.names && (node.names['tr'] || node.names['en'] || firstValue(node.names))) || '(isimsiz)';
+    var hasChildren = node._children && node._children.length > 0;
+    var isCollapsed = !!collapsedNodes[node.id];
+
+    // Row
+    var row = document.createElement('div');
+    row.className = 'node-row';
+    row.style.paddingLeft = (16 + depth * 24) + 'px';
+
+    // Toggle arrow
+    var toggle = document.createElement('span');
+    toggle.className = 'node-toggle' + (hasChildren ? (isCollapsed ? '' : ' open') : ' leaf');
+    toggle.textContent = '▶';
+
+    // Children container (created here so toggle can reference it)
+    var childrenEl = document.createElement('div');
+    childrenEl.className = 'node-children';
+    if (isCollapsed) childrenEl.style.display = 'none';
+
+    if (hasChildren) {
+      toggle.style.cursor = 'pointer';
+      (function(nodeId, tgl, cEl) {
+        tgl.addEventListener('click', function(e) {
+          e.stopPropagation();
+          toggleNode(nodeId, tgl, cEl);
+        });
+      })(node.id, toggle, childrenEl);
+    }
+    row.appendChild(toggle);
+
+    // Name
+    var nameEl = document.createElement('span');
+    nameEl.className = 'node-name';
+    nameEl.textContent = name;
+    row.appendChild(nameEl);
+
+    // Badges
+    if (node.is_trending) {
+      var trendBadge = document.createElement('span');
+      trendBadge.className = 'badge badge-trend';
+      trendBadge.textContent = 'TREND';
+      row.appendChild(trendBadge);
+    }
+
+    if (!node.is_active) {
+      var inactiveBadge = document.createElement('span');
+      inactiveBadge.className = 'badge badge-inactive';
+      inactiveBadge.textContent = 'Pasif';
+      row.appendChild(inactiveBadge);
+    }
+
+    if (hasChildren) {
+      var countBadge = document.createElement('span');
+      countBadge.className = 'badge badge-count';
+      countBadge.textContent = String(node._children.length);
+      row.appendChild(countBadge);
+    }
+
+    // Actions
+    var actions = document.createElement('div');
+    actions.className = 'node-actions';
+
+    var editBtn = document.createElement('button');
+    editBtn.className = 'btn-icon';
+    editBtn.textContent = 'Düzenle';
+    (function(nId) {
+      editBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openEditModal(nId);
+      });
+    })(node.id);
+    actions.appendChild(editBtn);
+
+    var addChildBtn = document.createElement('button');
+    addChildBtn.className = 'btn-icon';
+    addChildBtn.textContent = '+ Alt';
+    (function(nId) {
+      addChildBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openCreateModal(nId);
+      });
+    })(node.id);
+    actions.appendChild(addChildBtn);
+
+    var delBtn = document.createElement('button');
+    delBtn.className = 'btn-icon danger';
+    delBtn.textContent = 'Sil';
+    (function(nId, nName, nHasChildren) {
+      delBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        confirmDelete(nId, nName, nHasChildren);
+      });
+    })(node.id, name, hasChildren);
+    actions.appendChild(delBtn);
+
+    row.appendChild(actions);
+    wrapper.appendChild(row);
+
+    if (hasChildren) {
+      node._children.forEach(function(child) {
+        childrenEl.appendChild(createNodeEl(child, depth + 1));
+      });
+    }
+
+    wrapper.appendChild(childrenEl);
+    return wrapper;
+  }
+
+  function toggleNode(id, toggleEl, childrenEl) {
+    if (collapsedNodes[id]) {
+      delete collapsedNodes[id];
+      toggleEl.classList.add('open');
+      childrenEl.style.display = '';
+    } else {
+      collapsedNodes[id] = true;
+      toggleEl.classList.remove('open');
+      childrenEl.style.display = 'none';
+    }
+  }
+
+  // ── Build Locale Tabs (once at startup) ──
+  function buildLocaleTabs() {
+    var tabsEl = document.getElementById('locale-tabs');
+    var panelsEl = document.getElementById('locale-panels');
+
+    LOCALES.forEach(function(locale, i) {
+      // Tab button
+      var tab = document.createElement('button');
+      tab.className = 'locale-tab' + (i === 0 ? ' active' : '');
+      tab.dataset.locale = locale;
+      tab.textContent = LOCALE_LABELS[locale];
+      tab.addEventListener('click', function() { switchLocaleTab(locale); });
+      tabsEl.appendChild(tab);
+
+      // Panel
+      var panel = document.createElement('div');
+      panel.className = 'locale-panel' + (i === 0 ? ' active' : '');
+      panel.id = 'panel-' + locale;
+
+      // Name field
+      var nameGroup = document.createElement('div');
+      nameGroup.className = 'form-group';
+      var nameLabel = document.createElement('label');
+      nameLabel.setAttribute('for', 'name-' + locale);
+      nameLabel.textContent = 'İsim';
+      var nameInput = document.createElement('input');
+      nameInput.type = 'text';
+      nameInput.id = 'name-' + locale;
+      nameInput.placeholder = LOCALE_LABELS[locale] + ' dilinde kategori adı';
+      nameInput.addEventListener('input', function() { updateTabIndicator(locale); });
+      nameGroup.appendChild(nameLabel);
+      nameGroup.appendChild(nameInput);
+      panel.appendChild(nameGroup);
+
+      // Prompt field
+      var promptGroup = document.createElement('div');
+      promptGroup.className = 'form-group';
+      var promptLabel = document.createElement('label');
+      promptLabel.setAttribute('for', 'prompt-' + locale);
+      promptLabel.textContent = 'Prompt (AI için)';
+      var promptArea = document.createElement('textarea');
+      promptArea.id = 'prompt-' + locale;
+      promptArea.placeholder = LOCALE_LABELS[locale] + ' dilinde prompt (opsiyonel)';
+      promptArea.addEventListener('input', function() { updateTabIndicator(locale); });
+      promptGroup.appendChild(promptLabel);
+      promptGroup.appendChild(promptArea);
+      panel.appendChild(promptGroup);
+
+      panelsEl.appendChild(panel);
+    });
+  }
+
+  function switchLocaleTab(locale) {
+    var tabs = document.querySelectorAll('.locale-tab');
+    var panels = document.querySelectorAll('.locale-panel');
+    tabs.forEach(function(t) { t.classList.remove('active'); });
+    panels.forEach(function(p) { p.classList.remove('active'); });
+    document.querySelector('.locale-tab[data-locale="' + locale + '"]').classList.add('active');
+    document.getElementById('panel-' + locale).classList.add('active');
+  }
+
+  function updateTabIndicator(locale) {
+    var nameVal = document.getElementById('name-' + locale).value.trim();
+    var promptVal = document.getElementById('prompt-' + locale).value.trim();
+    var tab = document.querySelector('.locale-tab[data-locale="' + locale + '"]');
+    if (nameVal || promptVal) {
+      tab.classList.add('has-data');
+    } else {
+      tab.classList.remove('has-data');
+    }
+  }
+
+  // ── Build parent dropdown ──
+  function buildParentDropdown(excludeId) {
+    var select = document.getElementById('modal-parent');
+    while (select.options.length > 1) select.remove(1);
+
+    var map = {};
+    categories.forEach(function(c) { map[c.id] = c; });
+
+    function getPath(id) {
+      var parts = [];
+      var cur = map[id];
+      while (cur) {
+        var n = (cur.names && (cur.names['tr'] || cur.names['en'] || firstValue(cur.names))) || cur.id;
+        parts.unshift(n);
+        cur = cur.parent_id ? map[cur.parent_id] : null;
+      }
+      return parts.join(' › ');
+    }
+
+    function isDescendantOf(id, ancestorId) {
+      if (!ancestorId) return false;
+      var cur = map[id];
+      var visited = {};
+      while (cur && cur.parent_id) {
+        if (visited[cur.id]) break; // cycle guard
+        visited[cur.id] = true;
+        if (cur.parent_id === ancestorId) return true;
+        cur = map[cur.parent_id];
+      }
+      return false;
+    }
+
+    var sorted = categories.slice().sort(function(a, b) {
+      return getPath(a.id).localeCompare(getPath(b.id));
+    });
+
+    sorted.forEach(function(c) {
+      if (c.id === excludeId) return;
+      if (excludeId && isDescendantOf(c.id, excludeId)) return;
+      var opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = getPath(c.id);
+      select.appendChild(opt);
+    });
+  }
+
+  // ── Open Create Modal ──
+  function openCreateModal(parentId) {
+    editingId = null;
+    document.getElementById('modal-title').textContent = 'Yeni Kategori';
+    document.getElementById('modal-error').classList.remove('show');
+    clearModalFields();
+    buildParentDropdown(null);
+    if (parentId) {
+      document.getElementById('modal-parent').value = parentId;
+    }
+    document.getElementById('edit-modal').classList.add('show');
+    setTimeout(function() { document.getElementById('name-tr').focus(); }, 50);
+  }
+
+  // ── Open Edit Modal ──
+  function openEditModal(id) {
+    var cat = null;
+    for (var i = 0; i < categories.length; i++) {
+      if (categories[i].id === id) { cat = categories[i]; break; }
+    }
+    if (!cat) return;
+
+    editingId = id;
+    document.getElementById('modal-title').textContent = 'Kategori Düzenle';
+    document.getElementById('modal-error').classList.remove('show');
+    clearModalFields();
+    buildParentDropdown(id);
+
+    document.getElementById('modal-parent').value = cat.parent_id || '';
+    document.getElementById('modal-sort-order').value = cat.sort_order != null ? cat.sort_order : 0;
+    document.getElementById('modal-trending').checked = !!cat.is_trending;
+    document.getElementById('modal-active').checked = cat.is_active !== false;
+
+    LOCALES.forEach(function(locale) {
+      var nameVal = (cat.names && cat.names[locale]) || '';
+      var promptVal = (cat.prompts && cat.prompts[locale]) || '';
+      document.getElementById('name-' + locale).value = nameVal;
+      document.getElementById('prompt-' + locale).value = promptVal;
+      updateTabIndicator(locale);
+    });
+
+    switchLocaleTab('tr');
+    document.getElementById('edit-modal').classList.add('show');
+  }
+
+  function closeEditModal() {
+    document.getElementById('edit-modal').classList.remove('show');
+    editingId = null;
+  }
+
+  function clearModalFields() {
+    document.getElementById('modal-sort-order').value = 0;
+    document.getElementById('modal-trending').checked = false;
+    document.getElementById('modal-active').checked = true;
+    LOCALES.forEach(function(locale) {
+      document.getElementById('name-' + locale).value = '';
+      document.getElementById('prompt-' + locale).value = '';
+      document.querySelector('.locale-tab[data-locale="' + locale + '"]').classList.remove('has-data');
+    });
+    switchLocaleTab('tr');
+  }
+
+  // ── Save Category ──
+  function saveCategory() {
+    var saveBtn = document.getElementById('modal-save-btn');
+    var errorEl = document.getElementById('modal-error');
+    errorEl.classList.remove('show');
+
+    var names = {};
+    var prompts = {};
+    LOCALES.forEach(function(locale) {
+      var n = document.getElementById('name-' + locale).value.trim();
+      var p = document.getElementById('prompt-' + locale).value.trim();
+      if (n) names[locale] = n;
+      if (p) prompts[locale] = p;
+    });
+
+    if (!Object.keys(names).length) {
+      setAlert(errorEl, 'En az bir dilde isim girilmelidir.');
+      return;
+    }
+
+    var parentVal = document.getElementById('modal-parent').value;
+    var payload = {
+      names: names,
+      prompts: prompts,
+      parent_id: parentVal || null,
+      sort_order: parseInt(document.getElementById('modal-sort-order').value) || 0,
+      is_trending: document.getElementById('modal-trending').checked,
+      is_active: document.getElementById('modal-active').checked,
+    };
+
+    saveBtn.disabled = true;
+    setSaveBtnLoading(saveBtn, true);
+
+    var path = editingId ? '/api/admin/categories/' + editingId : '/api/admin/categories';
+    var method = editingId ? 'PATCH' : 'POST';
+    var isEdit = !!editingId;
+
+    apiFetch(path, { method: method, body: JSON.stringify(payload) }).then(function() {
+      showToast(isEdit ? 'Kategori güncellendi.' : 'Kategori oluşturuldu.', 'success');
+      closeEditModal();
+      loadCategories();
+    }).catch(function(err) {
+      setAlert(errorEl, err.message || 'Kayıt başarısız.');
+    }).finally(function() {
+      saveBtn.disabled = false;
+      setSaveBtnLoading(saveBtn, false);
+    });
+  }
+
+  function setSaveBtnLoading(btn, loading) {
+    while (btn.firstChild) btn.removeChild(btn.firstChild);
+    if (loading) {
+      var sp = document.createElement('span');
+      sp.className = 'spinner';
+      btn.appendChild(sp);
+      btn.appendChild(document.createTextNode(' Kaydediliyor...'));
+    } else {
+      btn.appendChild(document.createTextNode('Kaydet'));
+    }
+  }
+
+  // ── Delete ──
+  function confirmDelete(id, name, hasChildren) {
+    var bodyEl = document.getElementById('confirm-body');
+    clearEl(bodyEl);
+
+    var strong = document.createElement('strong');
+    strong.textContent = '"' + name + '"';
+    bodyEl.appendChild(strong);
+    bodyEl.appendChild(document.createTextNode(' kategorisini silmek istediğinizden emin misiniz?'));
+
+    if (hasChildren) {
+      var warn = document.createElement('div');
+      warn.style.marginTop = '10px';
+      warn.style.color = 'var(--danger)';
+      warn.style.fontSize = '12px';
+      warn.textContent = 'Bu kategorinin alt kategorileri var. Silme işlemi başarısız olabilir.';
+      bodyEl.appendChild(warn);
+    }
+
+    // Replace ok button to clear old event listeners
+    var okBtn = document.getElementById('confirm-ok-btn');
+    var newOkBtn = okBtn.cloneNode(true);
+    okBtn.parentNode.replaceChild(newOkBtn, okBtn);
+    (function(catId) {
+      newOkBtn.addEventListener('click', function() {
+        closeConfirmModal();
+        deleteCategory(catId);
+      });
+    })(id);
+
+    document.getElementById('confirm-modal').classList.add('show');
+  }
+
+  function closeConfirmModal() {
+    document.getElementById('confirm-modal').classList.remove('show');
+  }
+
+  function deleteCategory(id) {
+    apiFetch('/api/admin/categories/' + id, { method: 'DELETE' }).then(function() {
+      showToast('Kategori silindi.', 'success');
+      loadCategories();
+    }).catch(function(err) {
+      var msg = err.message || 'Silme başarısız.';
+      if (msg.indexOf('HAS_CHILDREN') !== -1 || msg.toLowerCase().indexOf('children') !== -1 || msg.toLowerCase().indexOf('alt kategori') !== -1) {
+        showToast('Alt kategorileri olan bir kategori silinemez. Önce alt kategorileri silin.', 'error');
+      } else {
+        showToast('Silme başarısız: ' + msg, 'error');
+      }
+    });
+  }
+
+  // ── Toast ──
+  function showToast(message, type) {
+    type = type || 'info';
+    var container = document.getElementById('toast-container');
+    var toast = document.createElement('div');
+    toast.className = 'toast toast-' + type;
+    toast.textContent = message;
+    container.appendChild(toast);
+    setTimeout(function() {
+      toast.style.animation = 'fadeOut 0.3s ease forwards';
+      setTimeout(function() { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 300);
+    }, 3000);
+  }
+
+  // ── Helpers ──
+  function setAlert(el, message) {
+    el.textContent = message;
+    el.classList.add('show');
+  }
+
+  function clearEl(el) {
+    while (el.firstChild) el.removeChild(el.firstChild);
+  }
+
+  function firstValue(obj) {
+    if (!obj) return '';
+    var keys = Object.keys(obj);
+    return keys.length ? obj[keys[0]] : '';
+  }
+
+  // ── Close modals on backdrop click ──
+  document.getElementById('edit-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeEditModal();
+  });
+
+  document.getElementById('confirm-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeConfirmModal();
+  });
+
+  // ── Keyboard shortcuts ──
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeEditModal();
+      closeConfirmModal();
+    }
+  });
+</script>
+</body>
+</html>
