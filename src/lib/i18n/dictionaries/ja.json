@@ -4,7 +4,10 @@
     "description": "質問を作成し、シェアして、正解した人とマッチング。AI搭載の次世代マッチングアプリ。"
   },
   "nav": {
-    "download": "ダウンロード"
+    "download": "ダウンロード",
+    "about": "概要",
+    "blog": "ブログ",
+    "help": "ヘルプ"
   },
   "hero": {
     "label": "次世代マッチング",
@@ -16,6 +19,7 @@
     "card1Option1": "ビーチを散歩",
     "card1Option2": "隠れ家カフェ",
     "card1Option3": "星空の下で",
+    "cardLabel": "質問",
     "card1Button": "答える",
     "card2Question": "あなたを最もよく表す曲は？",
     "card2Option1": "ロマンチック",
@@ -176,7 +180,14 @@
     "privacy": "プライバシーポリシー",
     "terms": "利用規約",
     "social": "ソーシャル",
-    "copyright": "© 2026 Qulo. All rights reserved."
+    "copyright": "© 2026 Qulo. All rights reserved.",
+    "madeWith": "Made with",
+    "inCity": "in Istanbul",
+    "language": "言語",
+    "company": "会社",
+    "about": "概要",
+    "blog": "ブログ",
+    "help": "ヘルプ"
   },
   "privacyPolicy": {
     "title": "プライバシーポリシー",
@@ -269,5 +280,27 @@
     "errorTitle": "Invalid Link",
     "errorDesc": "This verification link is invalid.",
     "openApp": "Open App"
+  },
+  "about": {
+    "title": "Quloについて",
+    "subtitle": "質問ベースのマッチング",
+    "hero": "スワイプ疲れにさようなら。Quloで質問を通じて出会おう。",
+    "whatIsQulo": "Quloとは？",
+    "whatIsQuloDesc": "Quloは、従来のスワイプの代わりに質問と回答のメカニズムを使用する次世代のマッチングプラットフォームです。2-10個の質問を作成し、他のユーザーが解き、すべて正解した人とマッチします。",
+    "whyDifferent": "なぜQuloは違うの？",
+    "whyDifferentDesc": "研究によると、表面的なマッチの80%以上は持続的な関係につながりません。Quloでは、マッチングは相互理解に基づいています。",
+    "howItWorks": "どう使うの？",
+    "step1": "質問を作る — あなたの個性を反映する2-10個の質問を作成",
+    "step2": "発見して解く — 他のユーザーの質問を解く",
+    "step3": "マッチ — すべての質問に正解してつながる",
+    "step4": "チャット＆出会い — 本物のつながりから始める",
+    "swipeFatigue": "スワイプ疲れとは？",
+    "swipeFatigueDesc": "スワイプ疲れとは、常にスワイプし続けることによるユーザーの燃え尽き症候群です。Quloはこの問題を完全に解消します。",
+    "aiPowered": "AIによる提案",
+    "aiPoweredDesc": "人工知能が質問の提案と発見アルゴリズムを支えています。",
+    "globalCommunity": "グローバルコミュニティ",
+    "globalCommunityDesc": "16言語に対応し、Quloは世界中の人々との出会いを可能にします。",
+    "downloadCta": "今すぐダウンロード",
+    "downloadCtaDesc": "Quloを無料でダウンロードして、質問を通じたマッチングを始めよう。"
   }
 }

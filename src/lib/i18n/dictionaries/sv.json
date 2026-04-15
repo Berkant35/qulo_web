@@ -4,7 +4,10 @@
     "description": "Skapa frågor, dela dem, matcha med personen som svarar rätt. AI-driven nästa generations dejtingapp."
   },
   "nav": {
-    "download": "Ladda ner"
+    "download": "Ladda ner",
+    "about": "Om oss",
+    "blog": "Blogg",
+    "help": "Hjälp"
   },
   "hero": {
     "label": "Nästa generationens dejting",
@@ -16,6 +19,7 @@
     "card1Option1": "Promenad på stranden",
     "card1Option2": "Ett gömt kafé",
     "card1Option3": "Under stjärnorna",
+    "cardLabel": "Fråga",
     "card1Button": "Svara",
     "card2Question": "Låten som bäst beskriver dig?",
     "card2Option1": "Romantisk",
@@ -176,7 +180,14 @@
     "privacy": "Integritetspolicy",
     "terms": "Användarvillkor",
     "social": "Socialt",
-    "copyright": "© 2026 Qulo. Alla rättigheter förbehållna."
+    "copyright": "© 2026 Qulo. Alla rättigheter förbehållna.",
+    "madeWith": "Made with",
+    "inCity": "in Istanbul",
+    "language": "Språk",
+    "company": "Företag",
+    "about": "Om oss",
+    "blog": "Blogg",
+    "help": "Hjälp"
   },
   "privacyPolicy": {
     "title": "Integritetspolicy",
@@ -269,5 +280,27 @@
     "errorTitle": "Invalid Link",
     "errorDesc": "This verification link is invalid.",
     "openApp": "Open App"
+  },
+  "about": {
+    "title": "Om Qulo",
+    "subtitle": "Frågebaserad matchning",
+    "hero": "Slut på swipe-trötthet. Träffa genom dina frågor med Qulo.",
+    "whatIsQulo": "Vad är Qulo?",
+    "whatIsQuloDesc": "Qulo är en dejtingplattform av nästa generation som använder ett fråga-och-svar-mekanik istället för traditionell swipning. Skapa 2-10 frågor, andra användare löser dem och du matchar med den som svarar rätt på alla.",
+    "whyDifferent": "Varför är Qulo annorlunda?",
+    "whyDifferentDesc": "Forskning visar att över 80% av ytliga matchningar inte leder till varaktiga relationer. Med Qulo baseras matchning på ömsesidig förståelse.",
+    "howItWorks": "Hur fungerar det?",
+    "step1": "Skapa frågor — 2-10 frågor som speglar din personlighet",
+    "step2": "Upptäck och lös — Lös andra användares frågor",
+    "step3": "Matcha — Svara rätt på alla frågor och skapa en koppling",
+    "step4": "Chatta och träffas — Börja med en riktig koppling",
+    "swipeFatigue": "Vad är swipe-trötthet?",
+    "swipeFatigueDesc": "Swipe-trötthet är utmattningen användare känner av att ständigt swipa. Qulo eliminerar detta problem helt.",
+    "aiPowered": "AI-drivna förslag",
+    "aiPoweredDesc": "Artificiell intelligens driver frågeförslag och upptäcktsalgoritmen.",
+    "globalCommunity": "Globalt community",
+    "globalCommunityDesc": "Med stöd för 16 språk låter Qulo dig träffa människor från hela världen.",
+    "downloadCta": "Ladda ner nu",
+    "downloadCtaDesc": "Ladda ner Qulo gratis och börja matcha genom frågor."
   }
 }

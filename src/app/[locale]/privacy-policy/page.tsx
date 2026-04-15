@@ -1,6 +1,27 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
-import { rtlLocales } from "@/lib/i18n/config";
+import { rtlLocales, locales } from "@/lib/i18n/config";
+import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const seo = PAGE_SEO.privacy[locale] || PAGE_SEO.privacy.en;
+  const pageUrl = `${SITE_URL}/${locale}/privacy-policy`;
+  const languages: Record<string, string> = {};
+  for (const l of locales) languages[l] = `${SITE_URL}/${l}/privacy-policy`;
+  languages["x-default"] = `${SITE_URL}/tr/privacy-policy`;
+  return {
+    title: seo.title,
+    description: seo.description,
+    alternates: { canonical: pageUrl, languages },
+    openGraph: { title: seo.title, description: seo.description, url: pageUrl, siteName: SITE_NAME, type: "website" },
+  };
+}
 
 const sections = [
   { title: "introTitle", body: "intro" },

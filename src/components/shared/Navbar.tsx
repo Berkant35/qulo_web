@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { NeonButton } from "./NeonButton";
@@ -7,6 +9,8 @@ import { APP_STORE_URL } from "@/lib/constants/links";
 
 export function Navbar() {
   const t = useTranslations("nav");
+  const pathname = usePathname();
+  const locale = pathname.split("/")[1] || "tr";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -21,7 +25,7 @@ export function Navbar() {
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <a
-            href="/"
+            href={`/${locale}`}
             className="flex items-center"
             style={{ filter: "drop-shadow(0 0 12px rgba(187,134,252,0.5))" }}
           >
@@ -33,6 +37,28 @@ export function Navbar() {
               style={{ objectFit: "contain" }}
             />
           </a>
+
+          {/* Nav links */}
+          <nav className="hidden sm:flex items-center gap-6">
+            <Link
+              href={`/${locale}/about`}
+              className="text-sm text-qulo-text-secondary hover:text-white transition-colors"
+            >
+              {t("about")}
+            </Link>
+            <Link
+              href={`/${locale}/blog`}
+              className="text-sm text-qulo-text-secondary hover:text-white transition-colors"
+            >
+              {t("blog")}
+            </Link>
+            <Link
+              href={`/${locale}/help`}
+              className="text-sm text-qulo-text-secondary hover:text-white transition-colors"
+            >
+              {t("help")}
+            </Link>
+          </nav>
 
           {/* Right side */}
           <div className="flex items-center gap-4">

@@ -4,7 +4,10 @@
     "description": "Crea domande, condividile, trova il tuo match con la persona che risponde correttamente. App di incontri di nuova generazione con IA."
   },
   "nav": {
-    "download": "Scarica"
+    "download": "Scarica",
+    "about": "Chi siamo",
+    "blog": "Blog",
+    "help": "Aiuto"
   },
   "hero": {
     "label": "Incontri di nuova generazione",
@@ -16,6 +19,7 @@
     "card1Option1": "Passeggiata in spiaggia",
     "card1Option2": "Un caffè nascosto",
     "card1Option3": "Sotto le stelle",
+    "cardLabel": "Domanda",
     "card1Button": "Rispondi",
     "card2Question": "La canzone che ti descrive meglio?",
     "card2Option1": "Romantica",
@@ -176,7 +180,14 @@
     "privacy": "Informativa sulla privacy",
     "terms": "Termini di servizio",
     "social": "Social",
-    "copyright": "© 2026 Qulo. Tutti i diritti riservati."
+    "copyright": "© 2026 Qulo. Tutti i diritti riservati.",
+    "madeWith": "Made with",
+    "inCity": "in Istanbul",
+    "language": "Lingua",
+    "company": "Azienda",
+    "about": "Chi siamo",
+    "blog": "Blog",
+    "help": "Aiuto"
   },
   "privacyPolicy": {
     "title": "Informativa sulla privacy",
@@ -269,5 +280,27 @@
     "errorTitle": "Invalid Link",
     "errorDesc": "This verification link is invalid.",
     "openApp": "Open App"
+  },
+  "about": {
+    "title": "Chi è Qulo",
+    "subtitle": "Matching basato su domande",
+    "hero": "Basta con la stanchezza dello swipe. Incontra attraverso le tue domande con Qulo.",
+    "whatIsQulo": "Cos'è Qulo?",
+    "whatIsQuloDesc": "Qulo è una piattaforma di incontri di nuova generazione che utilizza un meccanismo di domande e risposte invece dello swipe tradizionale. Crea 2-10 domande, altri utenti le risolvono e fai match con chi risponde correttamente.",
+    "whyDifferent": "Perché Qulo è diverso?",
+    "whyDifferentDesc": "Le ricerche mostrano che oltre l'80% dei match superficiali non porta a connessioni durature. Con Qulo, il matching si basa sulla comprensione reciproca.",
+    "howItWorks": "Come funziona?",
+    "step1": "Crea domande — 2-10 domande che riflettono la tua personalità",
+    "step2": "Scopri e risolvi — Risolvi le domande degli altri utenti",
+    "step3": "Fai match — Rispondi correttamente e crea una connessione",
+    "step4": "Chatta e incontra — Inizia con una connessione reale",
+    "swipeFatigue": "Cos'è la stanchezza dello swipe?",
+    "swipeFatigueDesc": "La stanchezza dello swipe è l'esaurimento che gli utenti provano a furia di scorrere. Qulo elimina completamente questo problema.",
+    "aiPowered": "Suggerimenti basati sull'IA",
+    "aiPoweredDesc": "L'intelligenza artificiale alimenta i suggerimenti di domande e l'algoritmo di scoperta.",
+    "globalCommunity": "Comunità globale",
+    "globalCommunityDesc": "Con supporto per 16 lingue, Qulo ti permette di incontrare persone da tutto il mondo.",
+    "downloadCta": "Scarica ora",
+    "downloadCtaDesc": "Scarica Qulo gratuitamente e inizia a fare match attraverso le domande."
   }
 }
