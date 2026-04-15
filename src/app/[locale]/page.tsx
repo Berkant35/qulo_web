@@ -21,7 +21,7 @@ export default async function Home({
   setRequestLocale(locale);
 
   return (
-    <main className="min-h-screen bg-qulo-bg relative">
+    <main id="main-content" className="min-h-screen bg-qulo-bg relative">
       <GridOverlay />
       <Navbar />
       <Hero />

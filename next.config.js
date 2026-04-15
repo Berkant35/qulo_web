@@ -7,6 +7,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
 };
 
 module.exports = withNextIntl(nextConfig);
