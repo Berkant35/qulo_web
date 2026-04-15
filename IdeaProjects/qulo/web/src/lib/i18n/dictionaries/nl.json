@@ -4,7 +4,10 @@
     "description": "Maak vragen, deel ze en match met de persoon die het juiste antwoord geeft. AI-aangedreven next-gen dating-app."
   },
   "nav": {
-    "download": "Downloaden"
+    "download": "Downloaden",
+    "about": "Over ons",
+    "blog": "Blog",
+    "help": "Help"
   },
   "hero": {
     "label": "Next-gen dating",
@@ -180,7 +183,11 @@
     "copyright": "© 2026 Qulo. Alle rechten voorbehouden.",
     "madeWith": "Made with",
     "inCity": "in Istanbul",
-    "language": "Taal"
+    "language": "Taal",
+    "company": "Bedrijf",
+    "about": "Over ons",
+    "blog": "Blog",
+    "help": "Help"
   },
   "privacyPolicy": {
     "title": "Privacybeleid",

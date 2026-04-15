@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
-import { rtlLocales, locales, type Locale } from "@/lib/i18n/config";
+import { rtlLocales, locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 
 export async function generateMetadata({

@@ -4,7 +4,10 @@
     "description": "Erstelle Fragen, teile sie, finde dein Match mit der Person, die richtig antwortet. KI-gestützte Dating-App der nächsten Generation."
   },
   "nav": {
-    "download": "Herunterladen"
+    "download": "Herunterladen",
+    "about": "Über uns",
+    "blog": "Blog",
+    "help": "Hilfe"
   },
   "hero": {
     "label": "Dating der nächsten Generation",
@@ -180,7 +183,11 @@
     "copyright": "© 2026 Qulo. Alle Rechte vorbehalten.",
     "madeWith": "Made with",
     "inCity": "in Istanbul",
-    "language": "Sprache"
+    "language": "Sprache",
+    "company": "Unternehmen",
+    "about": "Über uns",
+    "blog": "Blog",
+    "help": "Hilfe"
   },
   "privacyPolicy": {
     "title": "Datenschutzrichtlinie",

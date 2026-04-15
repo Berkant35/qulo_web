@@ -4,7 +4,10 @@
     "description": "질문을 만들고, 공유하고, 정답을 맞힌 사람과 매칭하세요. AI 기반 차세대 데이팅 앱."
   },
   "nav": {
-    "download": "다운로드"
+    "download": "다운로드",
+    "about": "소개",
+    "blog": "블로그",
+    "help": "도움말"
   },
   "hero": {
     "label": "차세대 데이팅",
@@ -180,7 +183,11 @@
     "copyright": "© 2026 Qulo. All rights reserved.",
     "madeWith": "Made with",
     "inCity": "in Istanbul",
-    "language": "언어"
+    "language": "언어",
+    "company": "회사",
+    "about": "소개",
+    "blog": "블로그",
+    "help": "도움말"
   },
   "privacyPolicy": {
     "title": "개인정보 처리방침",

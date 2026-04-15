@@ -3,7 +3,12 @@
     "title": "Qulo — Meet Through Questions",
     "description": "Create questions, share them, match with the person who answers correctly. AI-powered next-gen dating app."
   },
-  "nav": { "download": "Download" },
+  "nav": {
+    "download": "Download",
+    "about": "About",
+    "blog": "Blog",
+    "help": "Help"
+  },
   "hero": {
     "label": "Next-gen dating",
     "title1": "Meet Through",
@@ -43,15 +48,47 @@
     "label": "Features",
     "title1": "Why",
     "title2": "Qulo?",
-    "diamonds": { "title": "Diamond Economy", "subtitle": "Earn & Spend", "desc": "Earn green diamonds as your questions get solved. More questions, more earnings. Reach milestones to unlock bonus rewards." },
-    "powers": { "title": "Quiz Powers", "subtitle": "6 Powers", "desc": "Oracle, Half, Skip, Time Extend, Hint and Skip All. Use strategic powers while solving questions." },
-    "chatQuestions": { "title": "Chat Questions", "subtitle": "In-Chat Quizzes", "desc": "Send questions to your matches. Lock chat until solved, reveal photos on correct answers. Keep conversations exciting." },
-    "gamification": { "title": "Gamification", "subtitle": "Badges & Levels", "desc": "Earn badges as you progress, level up with milestones. Enrich your profile." },
-    "ai": { "title": "AI Question Creation", "subtitle": "AI-Powered", "desc": "Create engaging questions with AI. Find the questions that best reflect your personality." },
-    "premium": { "title": "Premium Plans", "subtitle": "Plus & Premium", "desc": "Ad-free experience, unlimited discovers, Passport mode, monthly diamond bonus and more questions." }
+    "diamonds": {
+      "title": "Diamond Economy",
+      "subtitle": "Earn & Spend",
+      "desc": "Earn green diamonds as your questions get solved. More questions, more earnings. Reach milestones to unlock bonus rewards."
+    },
+    "powers": {
+      "title": "Quiz Powers",
+      "subtitle": "6 Powers",
+      "desc": "Oracle, Half, Skip, Time Extend, Hint and Skip All. Use strategic powers while solving questions."
+    },
+    "chatQuestions": {
+      "title": "Chat Questions",
+      "subtitle": "In-Chat Quizzes",
+      "desc": "Send questions to your matches. Lock chat until solved, reveal photos on correct answers. Keep conversations exciting."
+    },
+    "gamification": {
+      "title": "Gamification",
+      "subtitle": "Badges & Levels",
+      "desc": "Earn badges as you progress, level up with milestones. Enrich your profile."
+    },
+    "ai": {
+      "title": "AI Question Creation",
+      "subtitle": "AI-Powered",
+      "desc": "Create engaging questions with AI. Find the questions that best reflect your personality."
+    },
+    "premium": {
+      "title": "Premium Plans",
+      "subtitle": "Plus & Premium",
+      "desc": "Ad-free experience, unlimited discovers, Passport mode, monthly diamond bonus and more questions."
+    }
   },
-  "appPreview": { "label": "App", "title1": "Explore the", "title2": "App" },
-  "testimonials": { "label": "Users", "title1": "Success", "title2": "Stories" },
+  "appPreview": {
+    "label": "App",
+    "title1": "Explore the",
+    "title2": "App"
+  },
+  "testimonials": {
+    "label": "Users",
+    "title1": "Success",
+    "title2": "Stories"
+  },
   "whyDifferent": {
     "label": "Difference",
     "title1": "What Makes",
@@ -81,10 +118,37 @@
     "users": "Users",
     "rating": "App Store"
   },
-  "cta": { "title": "Get Started.", "desc": "Meet through your questions, build real connections.", "button": "Download the App" },
-  "footer": { "legal": "Legal", "privacy": "Privacy Policy", "terms": "Terms of Service", "social": "Social", "copyright": "© 2026 Qulo. All rights reserved.", "madeWith": "Made with", "inCity": "in Istanbul", "language": "Language" },
-  "invite": { "title": "You're Invited to Qulo!", "desc": "Download the app and use your invite code.", "redirecting": "Redirecting...", "downloadPrompt": "Download on your phone", "code": "Invite code" },
-  "notFound": { "title": "Page Not Found", "desc": "The page you're looking for doesn't exist.", "back": "Back to Home" },
+  "cta": {
+    "title": "Get Started.",
+    "desc": "Meet through your questions, build real connections.",
+    "button": "Download the App"
+  },
+  "footer": {
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "social": "Social",
+    "copyright": "© 2026 Qulo. All rights reserved.",
+    "madeWith": "Made with",
+    "inCity": "in Istanbul",
+    "language": "Language",
+    "company": "Company",
+    "about": "About",
+    "blog": "Blog",
+    "help": "Help"
+  },
+  "invite": {
+    "title": "You're Invited to Qulo!",
+    "desc": "Download the app and use your invite code.",
+    "redirecting": "Redirecting...",
+    "downloadPrompt": "Download on your phone",
+    "code": "Invite code"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "desc": "The page you're looking for doesn't exist.",
+    "back": "Back to Home"
+  },
   "privacyPolicy": {
     "title": "Privacy Policy",
     "lastUpdated": "Last updated: March 22, 2026",

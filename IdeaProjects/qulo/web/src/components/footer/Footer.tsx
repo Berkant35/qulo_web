@@ -55,6 +55,39 @@ export function Footer() {
 
           {/* Right columns */}
           <div className="flex flex-wrap items-start gap-10">
+            {/* Company */}
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-qulo-green mb-3">
+                {t("company")}
+              </p>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href={`/${locale}/about`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("about")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/blog`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("blog")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/help`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("help")}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
             {/* Legal */}
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-qulo-purple mb-3">
@@ -71,7 +104,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={`/${locale}/terms-of-service`}
+                    href={`/${locale}/terms`}
                     className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
                   >
                     {t("terms")}

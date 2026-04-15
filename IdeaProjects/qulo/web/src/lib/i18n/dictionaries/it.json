@@ -4,7 +4,10 @@
     "description": "Crea domande, condividile, trova il tuo match con la persona che risponde correttamente. App di incontri di nuova generazione con IA."
   },
   "nav": {
-    "download": "Scarica"
+    "download": "Scarica",
+    "about": "Chi siamo",
+    "blog": "Blog",
+    "help": "Aiuto"
   },
   "hero": {
     "label": "Incontri di nuova generazione",
@@ -180,7 +183,11 @@
     "copyright": "© 2026 Qulo. Tutti i diritti riservati.",
     "madeWith": "Made with",
     "inCity": "in Istanbul",
-    "language": "Lingua"
+    "language": "Lingua",
+    "company": "Azienda",
+    "about": "Chi siamo",
+    "blog": "Blog",
+    "help": "Aiuto"
   },
   "privacyPolicy": {
     "title": "Informativa sulla privacy",

@@ -4,7 +4,10 @@
     "description": "创建问题，分享它们，与答对的人配对。AI驱动的新一代交友应用。"
   },
   "nav": {
-    "download": "下载"
+    "download": "下载",
+    "about": "关于",
+    "blog": "博客",
+    "help": "帮助"
   },
   "hero": {
     "label": "新一代交友",
@@ -180,7 +183,11 @@
     "copyright": "© 2026 Qulo. 保留所有权利。",
     "madeWith": "Made with",
     "inCity": "in Istanbul",
-    "language": "语言"
+    "language": "语言",
+    "company": "公司",
+    "about": "关于",
+    "blog": "博客",
+    "help": "帮助"
   },
   "privacyPolicy": {
     "title": "隐私政策",

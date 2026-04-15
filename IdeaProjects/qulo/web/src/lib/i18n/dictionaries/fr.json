@@ -4,7 +4,10 @@
     "description": "Créez des questions, partagez-les, trouvez votre match avec la personne qui répond correctement. Application de rencontre nouvelle génération propulsée par l'IA."
   },
   "nav": {
-    "download": "Télécharger"
+    "download": "Télécharger",
+    "about": "À propos",
+    "blog": "Blog",
+    "help": "Aide"
   },
   "hero": {
     "label": "Rencontres nouvelle génération",
@@ -180,7 +183,11 @@
     "copyright": "© 2026 Qulo. Tous droits réservés.",
     "madeWith": "Made with",
     "inCity": "in Istanbul",
-    "language": "Langue"
+    "language": "Langue",
+    "company": "Entreprise",
+    "about": "À propos",
+    "blog": "Blog",
+    "help": "Aide"
   },
   "privacyPolicy": {
     "title": "Politique de confidentialité",

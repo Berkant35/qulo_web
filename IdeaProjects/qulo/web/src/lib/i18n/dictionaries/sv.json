@@ -4,7 +4,10 @@
     "description": "Skapa frågor, dela dem, matcha med personen som svarar rätt. AI-driven nästa generations dejtingapp."
   },
   "nav": {
-    "download": "Ladda ner"
+    "download": "Ladda ner",
+    "about": "Om oss",
+    "blog": "Blogg",
+    "help": "Hjälp"
   },
   "hero": {
     "label": "Nästa generationens dejting",
@@ -180,7 +183,11 @@
     "copyright": "© 2026 Qulo. Alla rättigheter förbehållna.",
     "madeWith": "Made with",
     "inCity": "in Istanbul",
-    "language": "Språk"
+    "language": "Språk",
+    "company": "Företag",
+    "about": "Om oss",
+    "blog": "Blogg",
+    "help": "Hjälp"
   },
   "privacyPolicy": {
     "title": "Integritetspolicy",

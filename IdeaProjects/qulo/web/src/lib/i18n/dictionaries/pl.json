@@ -4,7 +4,10 @@
     "description": "Twórz pytania, udostępniaj je i dopasowuj się z osobą, która odpowie poprawnie. Aplikacja randkowa nowej generacji z AI."
   },
   "nav": {
-    "download": "Pobierz"
+    "download": "Pobierz",
+    "about": "O nas",
+    "blog": "Blog",
+    "help": "Pomoc"
   },
   "hero": {
     "label": "Randki nowej generacji",
@@ -180,7 +183,11 @@
     "copyright": "© 2026 Qulo. Wszelkie prawa zastrzeżone.",
     "madeWith": "Made with",
     "inCity": "in Istanbul",
-    "language": "Język"
+    "language": "Język",
+    "company": "Firma",
+    "about": "O nas",
+    "blog": "Blog",
+    "help": "Pomoc"
   },
   "privacyPolicy": {
     "title": "Polityka prywatności",
