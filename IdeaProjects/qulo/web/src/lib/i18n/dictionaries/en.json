@@ -14,6 +14,7 @@
     "card1Option1": "Walk on the beach",
     "card1Option2": "A hidden café",
     "card1Option3": "Under the stars",
+    "cardLabel": "Question",
     "card1Button": "Answer",
     "card2Question": "The song that best describes you?",
     "card2Option1": "Romantic",
@@ -81,7 +82,7 @@
     "rating": "App Store"
   },
   "cta": { "title": "Get Started.", "desc": "Meet through your questions, build real connections.", "button": "Download the App" },
-  "footer": { "legal": "Legal", "privacy": "Privacy Policy", "terms": "Terms of Service", "social": "Social", "copyright": "© 2026 Qulo. All rights reserved." },
+  "footer": { "legal": "Legal", "privacy": "Privacy Policy", "terms": "Terms of Service", "social": "Social", "copyright": "© 2026 Qulo. All rights reserved.", "madeWith": "Made with", "inCity": "in Istanbul", "language": "Language" },
   "invite": { "title": "You're Invited to Qulo!", "desc": "Download the app and use your invite code.", "redirecting": "Redirecting...", "downloadPrompt": "Download on your phone", "code": "Invite code" },
   "notFound": { "title": "Page Not Found", "desc": "The page you're looking for doesn't exist.", "back": "Back to Home" },
   "privacyPolicy": {
@@ -215,5 +216,27 @@
     "errorTitle": "Invalid Link",
     "errorDesc": "This verification link is invalid.",
     "openApp": "Open App"
+  },
+  "about": {
+    "title": "About Qulo",
+    "subtitle": "Question-Based Matching",
+    "hero": "End swipe fatigue. Meet through your questions with Qulo.",
+    "whatIsQulo": "What is Qulo?",
+    "whatIsQuloDesc": "Qulo is a next-generation dating platform that uses a question-and-answer mechanism instead of traditional swiping. Create 2-10 questions, other users solve them, and you match with the person who answers all your questions correctly.",
+    "whyDifferent": "Why is Qulo Different?",
+    "whyDifferentDesc": "Research shows that over 80% of superficial matches don't lead to lasting connections. With Qulo, matching is built on mutual understanding — not just looks, but how you think matters too.",
+    "howItWorks": "How Does It Work?",
+    "step1": "Create Questions — Build 2-10 questions that reflect your personality",
+    "step2": "Discover & Solve — Solve other users' questions",
+    "step3": "Match — Answer all questions correctly and make a connection",
+    "step4": "Chat & Meet — Start with a real connection",
+    "swipeFatigue": "What is Swipe Fatigue?",
+    "swipeFatigueDesc": "Swipe fatigue is the burnout users feel from constantly swiping left or right. Qulo eliminates this problem entirely — instead of quickly glancing at profiles, you discover real compatibility through meaningful questions.",
+    "aiPowered": "AI-Powered Suggestions",
+    "aiPoweredDesc": "Artificial intelligence powers question suggestions and the discovery algorithm. It surfaces the most compatible profiles for your questions, saving you time.",
+    "globalCommunity": "Global Community",
+    "globalCommunityDesc": "Supporting 16 languages, Qulo lets you meet people from all over the world. Build meaningful connections without language barriers.",
+    "downloadCta": "Download Now",
+    "downloadCtaDesc": "Download Qulo for free and start matching through questions."
   }
 }

@@ -16,6 +16,7 @@
     "card1Option1": "Spacer po plaży",
     "card1Option2": "Ukryta kawiarnia",
     "card1Option3": "Pod gwiazdami",
+    "cardLabel": "Pytanie",
     "card1Button": "Odpowiedz",
     "card2Question": "Piosenka, która najlepiej cię opisuje?",
     "card2Option1": "Romantyczna",
@@ -176,7 +177,10 @@
     "privacy": "Polityka prywatności",
     "terms": "Regulamin",
     "social": "Social media",
-    "copyright": "© 2026 Qulo. Wszelkie prawa zastrzeżone."
+    "copyright": "© 2026 Qulo. Wszelkie prawa zastrzeżone.",
+    "madeWith": "Made with",
+    "inCity": "in Istanbul",
+    "language": "Język"
   },
   "privacyPolicy": {
     "title": "Polityka prywatności",
@@ -269,5 +273,27 @@
     "errorTitle": "Invalid Link",
     "errorDesc": "This verification link is invalid.",
     "openApp": "Open App"
+  },
+  "about": {
+    "title": "O Qulo",
+    "subtitle": "Dopasowanie oparte na pytaniach",
+    "hero": "Koniec ze zmęczeniem swipe'ami. Poznawaj przez pytania z Qulo.",
+    "whatIsQulo": "Czym jest Qulo?",
+    "whatIsQuloDesc": "Qulo to platforma randkowa nowej generacji, która używa mechanizmu pytań i odpowiedzi zamiast tradycyjnego swipe'owania. Stwórz 2-10 pytań, inni użytkownicy je rozwiązują, a Ty łączysz się z osobą, która odpowie na wszystkie poprawnie.",
+    "whyDifferent": "Dlaczego Qulo jest inne?",
+    "whyDifferentDesc": "Badania pokazują, że ponad 80% powierzchownych dopasowań nie prowadzi do trwałych relacji. W Qulo dopasowanie opiera się na wzajemnym zrozumieniu.",
+    "howItWorks": "Jak to działa?",
+    "step1": "Twórz pytania — 2-10 pytań odzwierciedlających Twoją osobowość",
+    "step2": "Odkrywaj i rozwiązuj — Rozwiązuj pytania innych użytkowników",
+    "step3": "Dopasuj się — Odpowiedz poprawnie i nawiąż połączenie",
+    "step4": "Czatuj i spotykaj się — Zacznij od prawdziwego połączenia",
+    "swipeFatigue": "Co to jest zmęczenie swipe'ami?",
+    "swipeFatigueDesc": "Zmęczenie swipe'ami to wypalenie użytkowników spowodowane ciągłym przesuwaniem. Qulo całkowicie eliminuje ten problem.",
+    "aiPowered": "Sugestie oparte na AI",
+    "aiPoweredDesc": "Sztuczna inteligencja wspiera sugestie pytań i algorytm odkrywania.",
+    "globalCommunity": "Globalna społeczność",
+    "globalCommunityDesc": "Wspierając 16 języków, Qulo pozwala poznawać ludzi z całego świata.",
+    "downloadCta": "Pobierz teraz",
+    "downloadCtaDesc": "Pobierz Qulo za darmo i zacznij dopasowywać się przez pytania."
   }
 }

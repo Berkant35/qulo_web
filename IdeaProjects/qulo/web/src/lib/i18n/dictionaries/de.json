@@ -16,6 +16,7 @@
     "card1Option1": "Spaziergang am Strand",
     "card1Option2": "Ein verstecktes Café",
     "card1Option3": "Unter den Sternen",
+    "cardLabel": "Frage",
     "card1Button": "Antworten",
     "card2Question": "Das Lied, das dich am besten beschreibt?",
     "card2Option1": "Romantisch",
@@ -176,7 +177,10 @@
     "privacy": "Datenschutzrichtlinie",
     "terms": "Nutzungsbedingungen",
     "social": "Soziale Medien",
-    "copyright": "© 2026 Qulo. Alle Rechte vorbehalten."
+    "copyright": "© 2026 Qulo. Alle Rechte vorbehalten.",
+    "madeWith": "Made with",
+    "inCity": "in Istanbul",
+    "language": "Sprache"
   },
   "privacyPolicy": {
     "title": "Datenschutzrichtlinie",
@@ -269,5 +273,27 @@
     "errorTitle": "Invalid Link",
     "errorDesc": "This verification link is invalid.",
     "openApp": "Open App"
+  },
+  "about": {
+    "title": "Über Qulo",
+    "subtitle": "Fragenbasiertes Matching",
+    "hero": "Schluss mit Swipe-Müdigkeit. Lerne Menschen durch Fragen kennen.",
+    "whatIsQulo": "Was ist Qulo?",
+    "whatIsQuloDesc": "Qulo ist eine Dating-Plattform der nächsten Generation, die einen Frage-Antwort-Mechanismus anstelle von traditionellem Swipen nutzt. Erstelle 2-10 Fragen, andere Nutzer lösen sie und du matchst mit der Person, die alle richtig beantwortet.",
+    "whyDifferent": "Warum ist Qulo anders?",
+    "whyDifferentDesc": "Studien zeigen, dass über 80% der oberflächlichen Matches nicht zu dauerhaften Verbindungen führen. Bei Qulo basiert das Matching auf gegenseitigem Verständnis.",
+    "howItWorks": "Wie funktioniert es?",
+    "step1": "Fragen erstellen — 2-10 Fragen, die deine Persönlichkeit widerspiegeln",
+    "step2": "Entdecken & Lösen — Beantworte die Fragen anderer Nutzer",
+    "step3": "Matchen — Beantworte alle Fragen richtig und knüpfe eine Verbindung",
+    "step4": "Chatten & Treffen — Starte mit einer echten Verbindung",
+    "swipeFatigue": "Was ist Swipe-Müdigkeit?",
+    "swipeFatigueDesc": "Swipe-Müdigkeit ist das Burnout, das Nutzer durch ständiges Wischen empfinden. Qulo beseitigt dieses Problem vollständig.",
+    "aiPowered": "KI-gestützte Vorschläge",
+    "aiPoweredDesc": "Künstliche Intelligenz unterstützt Fragenvorschläge und den Entdeckungsalgorithmus.",
+    "globalCommunity": "Globale Community",
+    "globalCommunityDesc": "Mit Unterstützung für 16 Sprachen ermöglicht Qulo dir, Menschen aus der ganzen Welt kennenzulernen.",
+    "downloadCta": "Jetzt herunterladen",
+    "downloadCtaDesc": "Lade Qulo kostenlos herunter und beginne mit dem Matching durch Fragen."
   }
 }

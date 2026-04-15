@@ -14,6 +14,7 @@
     "card1Option1": "Sahilde yürüyüş",
     "card1Option2": "Gizli bir kafe",
     "card1Option3": "Yıldızların altında",
+    "cardLabel": "Soru",
     "card1Button": "Cevapla",
     "card2Question": "Seni en iyi anlatan şarkı?",
     "card2Option1": "Romantik",
@@ -81,7 +82,7 @@
     "rating": "App Store"
   },
   "cta": { "title": "Hemen Başla.", "desc": "Sorularınla tanış, gerçek bağlantılar kur.", "button": "Uygulamayı İndir" },
-  "footer": { "legal": "Legal", "privacy": "Gizlilik Politikası", "terms": "Kullanım Koşulları", "social": "Sosyal", "copyright": "© 2026 Qulo. Tüm hakları saklıdır." },
+  "footer": { "legal": "Legal", "privacy": "Gizlilik Politikası", "terms": "Kullanım Koşulları", "social": "Sosyal", "copyright": "© 2026 Qulo. Tüm hakları saklıdır.", "madeWith": "Made with", "inCity": "in Istanbul", "language": "Dil" },
   "invite": { "title": "Qulo'ya Davet Edildin!", "desc": "Uygulamayı indir ve davet kodunu kullan.", "redirecting": "Yönlendiriliyorsun...", "downloadPrompt": "Telefonundan indir", "code": "Davet kodu" },
   "notFound": { "title": "Sayfa Bulunamadı", "desc": "Aradığın sayfa mevcut değil.", "back": "Ana Sayfaya Dön" },
   "privacyPolicy": {
@@ -215,5 +216,27 @@
     "errorTitle": "Geçersiz Bağlantı",
     "errorDesc": "Bu doğrulama bağlantısı geçersiz.",
     "openApp": "Uygulamayı Aç"
+  },
+  "about": {
+    "title": "Qulo Hakkında",
+    "subtitle": "Soru-Cevap Tabanlı Eşleşme",
+    "hero": "Swipe yorgunluğuna son. Qulo ile sorularınla tanış.",
+    "whatIsQulo": "Qulo Nedir?",
+    "whatIsQuloDesc": "Qulo, geleneksel swipe tabanlı dating uygulamalarından farklı olarak soru-cevap mekanizması kullanan yeni nesil bir tanışma platformudur. 2-10 soru hazırlarsın, diğer kullanıcılar bu soruları çözer ve tüm sorularını doğru cevaplayan kişiyle eşleşirsin.",
+    "whyDifferent": "Neden Farklı?",
+    "whyDifferentDesc": "Araştırmalar, yüzeysel eşleşmelerin %80'inden fazlasının kalıcı bağlara dönüşmediğini gösteriyor. Qulo'da eşleşme, karşılıklı anlayış üzerine kurulu — sadece görünüş değil, düşünce yapısı da önemli.",
+    "howItWorks": "Nasıl Çalışır?",
+    "step1": "Soru Hazırla — Kişiliğini yansıtan 2-10 soru oluştur",
+    "step2": "Keşfet & Çöz — Diğer kullanıcıların sorularını çöz",
+    "step3": "Eşleş — Tüm soruları doğru cevapla ve bağlantı kur",
+    "step4": "Sohbet & Tanış — Gerçek bir bağlantıyla başla",
+    "swipeFatigue": "Swipe Yorgunluğu Nedir?",
+    "swipeFatigueDesc": "Swipe yorgunluğu, kullanıcıların sürekli sola veya sağa kaydırma eyleminden dolayı yaşadığı tükenmişlik hissidir. Qulo bu sorunu tamamen ortadan kaldırır — profillere hızlıca göz atmak yerine, anlamlı sorularla gerçek uyumluluk keşfedersin.",
+    "aiPowered": "AI Destekli Öneriler",
+    "aiPoweredDesc": "Yapay zeka, soru önerileri ve keşif algoritmasını güçlendirir. Sorularına en uygun profilleri öne çıkararak zaman kazandırır.",
+    "globalCommunity": "Küresel Topluluk",
+    "globalCommunityDesc": "16 dilde destek sunan Qulo, dünyanın her yerinden insanlarla tanışmanı sağlar. Dil engeli olmadan anlamlı bağlantılar kur.",
+    "downloadCta": "Hemen İndir",
+    "downloadCtaDesc": "Qulo'yu ücretsiz indir ve sorularla eşleşmeye başla."
   }
 }

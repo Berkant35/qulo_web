@@ -16,6 +16,7 @@
     "card1Option1": "Wandelen op het strand",
     "card1Option2": "Een verborgen café",
     "card1Option3": "Onder de sterren",
+    "cardLabel": "Vraag",
     "card1Button": "Antwoord",
     "card2Question": "Het nummer dat jou het best beschrijft?",
     "card2Option1": "Romantisch",
@@ -176,7 +177,10 @@
     "privacy": "Privacybeleid",
     "terms": "Servicevoorwaarden",
     "social": "Sociaal",
-    "copyright": "© 2026 Qulo. Alle rechten voorbehouden."
+    "copyright": "© 2026 Qulo. Alle rechten voorbehouden.",
+    "madeWith": "Made with",
+    "inCity": "in Istanbul",
+    "language": "Taal"
   },
   "privacyPolicy": {
     "title": "Privacybeleid",
@@ -269,5 +273,27 @@
     "errorTitle": "Invalid Link",
     "errorDesc": "This verification link is invalid.",
     "openApp": "Open App"
+  },
+  "about": {
+    "title": "Over Qulo",
+    "subtitle": "Vragengebaseerde matching",
+    "hero": "Geen swipe-moeheid meer. Ontmoet via je vragen met Qulo.",
+    "whatIsQulo": "Wat is Qulo?",
+    "whatIsQuloDesc": "Qulo is een dating-platform van de volgende generatie dat een vraag-en-antwoord-mechanisme gebruikt in plaats van traditioneel swipen. Maak 2-10 vragen, andere gebruikers lossen ze op en je matcht met degene die alles goed beantwoordt.",
+    "whyDifferent": "Waarom is Qulo anders?",
+    "whyDifferentDesc": "Onderzoek toont aan dat meer dan 80% van de oppervlakkige matches niet leidt tot duurzame verbindingen. Bij Qulo is matching gebaseerd op wederzijds begrip.",
+    "howItWorks": "Hoe werkt het?",
+    "step1": "Maak vragen — 2-10 vragen die je persoonlijkheid weerspiegelen",
+    "step2": "Ontdek en los op — Los de vragen van andere gebruikers op",
+    "step3": "Match — Beantwoord alle vragen correct en maak een verbinding",
+    "step4": "Chat en ontmoet — Begin met een echte verbinding",
+    "swipeFatigue": "Wat is swipe-moeheid?",
+    "swipeFatigueDesc": "Swipe-moeheid is de burn-out die gebruikers voelen door constant te swipen. Qulo lost dit probleem volledig op.",
+    "aiPowered": "AI-gestuurde suggesties",
+    "aiPoweredDesc": "Kunstmatige intelligentie drijft vraagensuggesties en het ontdekkingsalgoritme aan.",
+    "globalCommunity": "Wereldwijde community",
+    "globalCommunityDesc": "Met ondersteuning voor 16 talen laat Qulo je mensen ontmoeten van over de hele wereld.",
+    "downloadCta": "Nu downloaden",
+    "downloadCtaDesc": "Download Qulo gratis en begin met matchen via vragen."
   }
 }

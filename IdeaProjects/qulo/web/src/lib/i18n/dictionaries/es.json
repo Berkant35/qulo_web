@@ -16,6 +16,7 @@
     "card1Option1": "Paseo por la playa",
     "card1Option2": "Un café escondido",
     "card1Option3": "Bajo las estrellas",
+    "cardLabel": "Pregunta",
     "card1Button": "Responder",
     "card2Question": "¿La canción que mejor te describe?",
     "card2Option1": "Romántica",
@@ -176,7 +177,10 @@
     "privacy": "Política de privacidad",
     "terms": "Términos de servicio",
     "social": "Redes sociales",
-    "copyright": "© 2026 Qulo. Todos los derechos reservados."
+    "copyright": "© 2026 Qulo. Todos los derechos reservados.",
+    "madeWith": "Made with",
+    "inCity": "in Istanbul",
+    "language": "Idioma"
   },
   "privacyPolicy": {
     "title": "Política de privacidad",
@@ -269,5 +273,27 @@
     "errorTitle": "Invalid Link",
     "errorDesc": "This verification link is invalid.",
     "openApp": "Open App"
+  },
+  "about": {
+    "title": "Sobre Qulo",
+    "subtitle": "Matching basado en preguntas",
+    "hero": "Adiós al cansancio del swipe. Conoce a través de tus preguntas con Qulo.",
+    "whatIsQulo": "¿Qué es Qulo?",
+    "whatIsQuloDesc": "Qulo es una plataforma de citas de nueva generación que utiliza un mecanismo de preguntas y respuestas en lugar del swipe tradicional.",
+    "whyDifferent": "¿Por qué Qulo es diferente?",
+    "whyDifferentDesc": "Las investigaciones muestran que más del 80% de los matches superficiales no llevan a conexiones duraderas. En Qulo, el matching se basa en la comprensión mutua.",
+    "howItWorks": "¿Cómo funciona?",
+    "step1": "Crea preguntas — 2-10 preguntas que reflejen tu personalidad",
+    "step2": "Descubre y resuelve — Resuelve las preguntas de otros usuarios",
+    "step3": "Haz match — Responde correctamente y crea una conexión",
+    "step4": "Chatea y conoce — Comienza con una conexión real",
+    "swipeFatigue": "¿Qué es el cansancio del swipe?",
+    "swipeFatigueDesc": "El cansancio del swipe es el agotamiento que sienten los usuarios por deslizar constantemente. Qulo elimina completamente este problema.",
+    "aiPowered": "Sugerencias con IA",
+    "aiPoweredDesc": "La inteligencia artificial impulsa las sugerencias de preguntas y el algoritmo de descubrimiento.",
+    "globalCommunity": "Comunidad global",
+    "globalCommunityDesc": "Con soporte en 16 idiomas, Qulo te permite conocer personas de todo el mundo.",
+    "downloadCta": "Descarga ahora",
+    "downloadCtaDesc": "Descarga Qulo gratis y empieza a hacer match con preguntas."
   }
 }

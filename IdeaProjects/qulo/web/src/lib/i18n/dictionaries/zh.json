@@ -16,6 +16,7 @@
     "card1Option1": "海边散步",
     "card1Option2": "隐秘的咖啡馆",
     "card1Option3": "星空下",
+    "cardLabel": "问题",
     "card1Button": "回答",
     "card2Question": "最能描述你的歌曲？",
     "card2Option1": "浪漫的",
@@ -176,7 +177,10 @@
     "privacy": "隐私政策",
     "terms": "服务条款",
     "social": "社交媒体",
-    "copyright": "© 2026 Qulo. 保留所有权利。"
+    "copyright": "© 2026 Qulo. 保留所有权利。",
+    "madeWith": "Made with",
+    "inCity": "in Istanbul",
+    "language": "语言"
   },
   "privacyPolicy": {
     "title": "隐私政策",
@@ -269,5 +273,27 @@
     "errorTitle": "Invalid Link",
     "errorDesc": "This verification link is invalid.",
     "openApp": "Open App"
+  },
+  "about": {
+    "title": "关于Qulo",
+    "subtitle": "基于问答的匹配",
+    "hero": "告别滑动疲劳。通过Qulo用问题认识新朋友。",
+    "whatIsQulo": "什么是Qulo？",
+    "whatIsQuloDesc": "Qulo是一个新一代约会平台，使用问答机制代替传统的滑动。创建2-10个问题，其他用户来解答，与答对所有问题的人匹配。",
+    "whyDifferent": "为什么Qulo不同？",
+    "whyDifferentDesc": "研究表明，超过80%的浅层匹配不会带来持久的关系。在Qulo，匹配建立在相互理解之上。",
+    "howItWorks": "如何使用？",
+    "step1": "创建问题 — 创建2-10个反映你个性的问题",
+    "step2": "发现并解答 — 解答其他用户的问题",
+    "step3": "匹配 — 正确回答所有问题并建立连接",
+    "step4": "聊天与见面 — 从真实的连接开始",
+    "swipeFatigue": "什么是滑动疲劳？",
+    "swipeFatigueDesc": "滑动疲劳是用户因不断左右滑动而产生的倦怠感。Qulo完全消除了这个问题。",
+    "aiPowered": "AI驱动的建议",
+    "aiPoweredDesc": "人工智能为问题建议和发现算法提供支持。",
+    "globalCommunity": "全球社区",
+    "globalCommunityDesc": "支持16种语言，Qulo让你可以认识来自世界各地的人。",
+    "downloadCta": "立即下载",
+    "downloadCtaDesc": "免费下载Qulo，开始通过问题匹配。"
   }
 }

@@ -16,6 +16,7 @@
     "card1Option1": "해변 산책",
     "card1Option2": "숨겨진 카페",
     "card1Option3": "별빛 아래",
+    "cardLabel": "질문",
     "card1Button": "답하기",
     "card2Question": "나를 가장 잘 설명하는 노래는?",
     "card2Option1": "로맨틱",
@@ -176,7 +177,10 @@
     "privacy": "개인정보 처리방침",
     "terms": "이용약관",
     "social": "소셜",
-    "copyright": "© 2026 Qulo. All rights reserved."
+    "copyright": "© 2026 Qulo. All rights reserved.",
+    "madeWith": "Made with",
+    "inCity": "in Istanbul",
+    "language": "언어"
   },
   "privacyPolicy": {
     "title": "개인정보 처리방침",
@@ -269,5 +273,27 @@
     "errorTitle": "Invalid Link",
     "errorDesc": "This verification link is invalid.",
     "openApp": "Open App"
+  },
+  "about": {
+    "title": "Qulo 소개",
+    "subtitle": "질문 기반 매칭",
+    "hero": "스와이프 피로는 그만. Qulo로 질문을 통해 만나세요.",
+    "whatIsQulo": "Qulo란?",
+    "whatIsQuloDesc": "Qulo는 기존의 스와이프 대신 질문과 답변 메커니즘을 사용하는 차세대 데이팅 플랫폼입니다. 2-10개의 질문을 만들고, 다른 사용자가 풀고, 모두 맞힌 사람과 매칭됩니다.",
+    "whyDifferent": "왜 Qulo가 다른가요?",
+    "whyDifferentDesc": "연구에 따르면 표면적인 매칭의 80% 이상이 지속적인 관계로 이어지지 않습니다. Qulo에서 매칭은 상호 이해에 기반합니다.",
+    "howItWorks": "어떻게 작동하나요?",
+    "step1": "질문 만들기 — 성격을 반영하는 2-10개 질문 작성",
+    "step2": "발견하고 풀기 — 다른 사용자의 질문 풀기",
+    "step3": "매칭 — 모든 질문에 정확히 답하고 연결 만들기",
+    "step4": "채팅 & 만남 — 진짜 연결로 시작하기",
+    "swipeFatigue": "스와이프 피로란?",
+    "swipeFatigueDesc": "스와이프 피로는 끊임없는 스와이프로 인한 사용자 번아웃입니다. Qulo는 이 문제를 완전히 해결합니다.",
+    "aiPowered": "AI 기반 추천",
+    "aiPoweredDesc": "인공지능이 질문 추천과 발견 알고리즘을 지원합니다.",
+    "globalCommunity": "글로벌 커뮤니티",
+    "globalCommunityDesc": "16개 언어를 지원하는 Qulo로 전 세계 사람들을 만나보세요.",
+    "downloadCta": "지금 다운로드",
+    "downloadCtaDesc": "Qulo를 무료로 다운로드하고 질문으로 매칭을 시작하세요."
   }
 }

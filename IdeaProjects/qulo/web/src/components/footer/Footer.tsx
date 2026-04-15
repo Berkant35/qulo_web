@@ -45,11 +45,11 @@ export function Footer() {
             <p className="text-xs text-gray-600">{t("copyright")}</p>
             {/* Made with heart */}
             <div className="flex items-center gap-1 mt-2">
-              <p className="text-[10px] text-gray-700">Made with</p>
+              <p className="text-[10px] text-gray-700">{t("madeWith")}</p>
               <svg width="10" height="9" viewBox="0 0 10 9" fill="none" style={{ flexShrink: 0 }}>
                 <path d="M5 8L0.9 3.7C0.3 3.1 0.3 2.1 0.9 1.5C1.5 0.9 2.5 0.9 3.1 1.5L5 3.4L6.9 1.5C7.5 0.9 8.5 0.9 9.1 1.5C9.7 2.1 9.7 3.1 9.1 3.7L5 8Z" fill="rgba(187,134,252,0.5)" />
               </svg>
-              <p className="text-[10px] text-gray-700">in Istanbul</p>
+              <p className="text-[10px] text-gray-700">{t("inCity")}</p>
             </div>
           </div>
 
@@ -112,7 +112,7 @@ export function Footer() {
             {/* Language switcher */}
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-600 mb-3">
-                Language
+                {t("language")}
               </p>
               <LanguageSwitcher />
             </div>
