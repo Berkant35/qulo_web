@@ -87,6 +87,14 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
+                    href={`/${locale}/how-to`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("howto")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href={`/${locale}/help`}
                     className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
                   >
