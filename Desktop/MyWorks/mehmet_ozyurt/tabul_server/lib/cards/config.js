@@ -5,17 +5,32 @@ module.exports = {
   // Strateji
   CHUNK_SIZE: 50,                    // Tek OpenAI çağrısında üretilecek max kart
   PARALLEL_CHUNKS: true,             // Chunk'lar paralel mi sıralı mı çağrılsın
-  FILL_BATCH_SIZE: 30,               // Fill attempt başına istenecek max kart
+  FILL_BATCH_SIZE: 15,               // Fill attempt başına istenecek max kart (küçük batch = AI uyumu daha iyi)
 
   // Garanti & guard
-  MAX_FILL_ATTEMPTS: 5,              // Eksik kart için max ek istek
-  MAX_TOTAL_OPENAI_CALLS: 12,        // Bir istek için OpenAI çağrı tavanı (cost guard)
-  NO_PROGRESS_LIMIT: 2,              // Ardışık 0 yeni kart sonrası fill loop'u kır
+  MAX_FILL_ATTEMPTS: 10,             // Eksik kart için max ek istek (agresif)
+  MAX_TOTAL_OPENAI_CALLS: 15,        // Bir istek için OpenAI çağrı tavanı (cost guard)
+  NO_PROGRESS_LIMIT: 3,              // Ardışık 0 yeni kart sonrası fill loop'u kır
+
+  // Over-provisioning (≥ MIN_COUNT için fazladan iste)
+  OVERPROVISION_FACTOR: 1.33,        // 150 kart → 200 raw iste (dedup sonrası ~150 unique)
+  OVERPROVISION_MIN_COUNT: 100,      // 100+ kart için aktif
+
+  // Server-side model upgrade (yüksek kart sayılarında zayıf model güçlendirilir)
+  MODEL_UPGRADE_MIN_COUNT: 100,
+  MODEL_UPGRADE_FROM: ['gpt-4o-mini'],
+  MODEL_UPGRADE_TO: 'gpt-4o',
+
+  // Rescue round (fill loop tükendiğinde son şans)
+  RESCUE_ENABLED: true,
+  RESCUE_PARALLEL_CALLS: 2,          // Paralel rescue çağrı sayısı
+  RESCUE_TEMPERATURE: 1.0,           // Yaratıcılık max → daha çeşitli kelimeler
 
   // Timeout & retry
   OPENAI_TIMEOUT_MS: 90000,          // Chunk başına HTTP timeout
   OPENAI_RETRY_ON_429: 1,            // 429 için retry sayısı
   OPENAI_RETRY_BACKOFF_MS: 2000,     // 429 retry öncesi bekleme
+  DEFAULT_TEMPERATURE: 0.8,          // Normal çağrılar için (rescue dışı)
 
   // Input limit
   MAX_PROMPT_LENGTH: 2000,

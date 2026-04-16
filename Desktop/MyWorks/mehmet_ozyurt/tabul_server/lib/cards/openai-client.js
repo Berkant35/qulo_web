@@ -55,14 +55,18 @@ function sleep(ms) {
  * @param {number} params.expectedCount   max_tokens hesabı için
  * @param {object} params.logger
  * @param {string} params.label           Log'da chunk/fill etiketi
+ * @param {number} [params.temperature]   Opsiyonel; default config.DEFAULT_TEMPERATURE
  * @returns {Promise<{ raw: string, parsed: object, elapsedMs: number }>}
  */
-async function callOpenAI({ apiKey, model, messages, expectedCount, logger, label }) {
+async function callOpenAI({ apiKey, model, messages, expectedCount, logger, label, temperature }) {
   if (!apiKey) {
     throw new OpenAIError('AUTH', 'OpenAI API key missing');
   }
 
   const maxTokens = calcMaxTokens(expectedCount);
+  const effectiveTemperature = typeof temperature === 'number'
+    ? temperature
+    : config.DEFAULT_TEMPERATURE;
   const startedAt = Date.now();
   let attempt = 0;
   let lastErr;
@@ -74,7 +78,7 @@ async function callOpenAI({ apiKey, model, messages, expectedCount, logger, labe
         {
           model,
           messages,
-          temperature: 0.8,
+          temperature: effectiveTemperature,
           max_tokens: maxTokens,
           response_format: { type: 'json_object' },
         },
