@@ -85,6 +85,14 @@ export function Footer() {
                     {t("help")}
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href={`/${locale}/compare`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("compare")}
+                  </Link>
+                </li>
               </ul>
             </div>
 
