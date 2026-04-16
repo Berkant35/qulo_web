@@ -66,15 +66,33 @@ app.post('/api/generate-cards', async (req, res) => {
       });
     }
 
+    // Server-side model upgrade: yüksek kart sayılarında zayıf model güçlendirilir
+    let effectiveModel = selectedModel;
+    let modelUpgraded = false;
+    if (
+      numericCount >= cardsConfig.MODEL_UPGRADE_MIN_COUNT &&
+      cardsConfig.MODEL_UPGRADE_FROM.includes(selectedModel)
+    ) {
+      effectiveModel = cardsConfig.MODEL_UPGRADE_TO;
+      modelUpgraded = true;
+      logger.info(`model upgraded: ${selectedModel} → ${effectiveModel} (cardCount=${numericCount})`);
+    }
+
     // Generate
     const result = await cardGenerator.generate({
       prompt: prompt.trim(),
       cardCount: numericCount,
-      model: selectedModel,
+      model: effectiveModel,
       language,
       apiKey: OPENAI_API_KEY,
       logger,
     });
+
+    // modelUpgraded flag'ini stats'e ekle
+    if (result?.data?.stats) {
+      result.data.stats.modelUpgraded = modelUpgraded;
+      result.data.stats.requestedModel = selectedModel;
+    }
 
     const status = result.success
       ? 200

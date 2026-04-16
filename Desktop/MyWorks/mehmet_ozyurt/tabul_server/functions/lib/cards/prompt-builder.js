@@ -59,13 +59,22 @@ ${themeRule}
 
 /**
  * Fill prompt'u: exclude list ile ek N kart. themeTitle yok.
- * @param {string[]} excludeWords Daha önce üretilmiş word listesi
+ * @param {object} params
+ * @param {string} params.prompt
+ * @param {number} params.count
+ * @param {string} params.langName
+ * @param {string[]} params.excludeWords Daha önce üretilmiş word listesi
+ * @param {{id:string,text:string}=} params.hint Opsiyonel adaptive hint
  */
-function buildFillMessages({ prompt, count, langName, excludeWords }) {
+function buildFillMessages({ prompt, count, langName, excludeWords, hint }) {
   const baseMessages = buildInitialMessages({ prompt, count, langName, includeThemeTitle: false });
   const excludeListStr = excludeWords.length > 0
     ? excludeWords.map(w => `"${w}"`).join(', ')
     : '(none)';
+
+  const hintLine = hint && hint.text
+    ? `\n- HINT: ${hint.text}`
+    : '';
 
   // System mesajına ek kural ekle
   baseMessages[0].content += `
@@ -73,7 +82,7 @@ function buildFillMessages({ prompt, count, langName, excludeWords }) {
 ADDITIONAL FILL CONSTRAINT:
 - The following ${excludeWords.length} words are ALREADY in the deck. You MUST NOT generate any card whose "word" is in this list (case-insensitive):
 ${excludeListStr}
-- Generate ${count} BRAND-NEW cards that are different from the excluded words. Be creative; choose less obvious but still theme-relevant options.`;
+- Generate ${count} BRAND-NEW cards that are different from the excluded words. Be creative; choose less obvious but still theme-relevant options.${hintLine}`;
 
   baseMessages[1].content = `Generate ${count} ADDITIONAL Tabul cards in ${langName} for theme "${prompt}", excluding the listed words. Stay strictly on theme.`;
 
