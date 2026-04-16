@@ -47,11 +47,14 @@ export default function RootLayout({
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="https://qulo-server-production.up.railway.app" />
         <link rel="preconnect" href="https://qulo-server-production.up.railway.app" crossOrigin="anonymous" />
+        {/* PWA manifest */}
+        <link rel="manifest" href="/manifest.json" />
         {/* Theme color for mobile browsers */}
         <meta name="theme-color" content="#050508" />
         <meta name="color-scheme" content="dark" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Qulo" />
       </head>
       <body
         className={`${inter.variable} font-sans bg-qulo-bg text-white antialiased`}

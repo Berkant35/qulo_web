@@ -1,0 +1,24 @@
+/* TEAM */
+Founder: Berkant Çalıkuşu
+Contact: hello [at] quloapp.com
+Site: https://quloapp.com
+Location: Istanbul, Turkey
+
+/* THANKS */
+Our users, beta testers, and the dating app community.
+
+/* SITE */
+Last update: 2026/04/16
+Language: English, Turkish, German, French, Spanish, Arabic, Russian,
+          Portuguese, Italian, Japanese, Korean, Chinese, Dutch,
+          Polish, Swedish, Hindi (16 languages)
+Standards: HTML5, CSS3, TypeScript
+Components: Next.js 14, React 18, Tailwind CSS, next-intl
+Software: VSCode, Claude Code
+
+                     .d88b.
+                    .8'  `8.
+                    8 Q  q 8
+                    `8.  .8'
+                     `Y88Y'
+                  Qulo — Meet Through Questions

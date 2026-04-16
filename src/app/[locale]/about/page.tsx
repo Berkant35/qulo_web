@@ -3,8 +3,10 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
+import { FAQ, faqTitle } from "@/components/shared/FAQ";
 import { locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
+import { getAboutFaqs } from "@/lib/constants/faqs";
 
 /** Per-locale breadcrumb label for the About page */
 const ABOUT_LABELS: Record<string, string> = {
@@ -189,8 +191,11 @@ export default async function AboutPage({
             </article>
           </section>
 
+          {/* FAQ Section — FAQPage JSON-LD for Google rich snippets */}
+          <FAQ items={getAboutFaqs(locale)} title={faqTitle(locale)} />
+
           {/* Download CTA */}
-          <section className="text-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-10">
+          <section className="text-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-10 mt-16">
             <h2 className="text-2xl font-bold text-white mb-3">
               {t("downloadCta")}
             </h2>

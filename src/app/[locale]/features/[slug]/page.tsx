@@ -5,9 +5,11 @@ import Link from "next/link";
 import { Navbar } from "@/components/shared/Navbar";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
+import { FAQ, faqTitle } from "@/components/shared/FAQ";
 import { locales } from "@/lib/i18n/config";
 import { LANDING_PAGES } from "@/lib/constants/landings";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
+import { getFeatureFaqs } from "@/lib/constants/faqs";
 
 /** Per-locale breadcrumb label for the Features section */
 const FEATURES_LABELS: Record<string, string> = {
@@ -450,8 +452,16 @@ export default async function FeatureLandingPage({
             </div>
           </section>
 
+          {/* FAQ Section — page-specific, with FAQPage JSON-LD for rich snippets */}
+          {(() => {
+            const faqs = getFeatureFaqs(slug, locale);
+            return faqs.length > 0 ? (
+              <FAQ items={faqs} title={faqTitle(locale)} />
+            ) : null;
+          })()}
+
           {/* CTA Section */}
-          <section className="text-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-10 mb-14">
+          <section className="text-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-10 mb-14 mt-16">
             <h2 className="text-2xl font-bold text-white mb-3">
               {isTr ? "Hemen Ucretsiz Indir" : "Download Free Now"}
             </h2>
