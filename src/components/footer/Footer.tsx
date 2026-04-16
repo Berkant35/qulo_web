@@ -174,6 +174,14 @@ export function Footer() {
                     Tokyo
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href={`/${locale}/country`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("countries")}
+                  </Link>
+                </li>
               </ul>
             </div>
 
