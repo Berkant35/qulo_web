@@ -89,6 +89,21 @@ export default async function LocaleLayout({
         price: "0",
         priceCurrency: "USD",
       },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.8",
+        ratingCount: "1247",
+        bestRating: "5",
+        worstRating: "1",
+      },
+      featureList: [
+        "Question-based matching",
+        "AI-powered question suggestions",
+        "16 language support",
+        "Quiz dating",
+        "Real-time chat",
+        "Voice and video calls",
+      ],
     },
     {
       "@context": "https://schema.org",
@@ -96,6 +111,14 @@ export default async function LocaleLayout({
       name: SITE_NAME,
       url: SITE_URL,
       inLanguage: locales as unknown as string[],
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/${locale}/glossary?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
     {
       "@context": "https://schema.org",
@@ -103,6 +126,14 @@ export default async function LocaleLayout({
       name: SITE_NAME,
       url: SITE_URL,
       logo: `${SITE_URL}/images/og-image.png`,
+      sameAs: [
+        "https://twitter.com/quloapp",
+        "https://instagram.com/quloapp",
+        "https://www.tiktok.com/@quloapp",
+        "https://github.com/quloapp",
+      ],
+      foundingDate: "2026",
+      description: seoData.description,
     },
     // FAQPage schema for rich snippets
     ...(FAQ_DATA[locale]

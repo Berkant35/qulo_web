@@ -109,6 +109,14 @@ export function Footer() {
                     {t("statistics")}
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href={`/${locale}/press`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("press")}
+                  </Link>
+                </li>
               </ul>
             </div>
 
