@@ -220,6 +220,13 @@ export const PAGE_SEO: Record<string, Record<string, { title: string; descriptio
     sv: { title: "Dejting i stader — Qulo", description: "Traffa manniskor med Qulo i varldens storsta stader. Matcha genom fragor." },
     hi: { title: "शहरों में डेटिंग — Qulo", description: "दुनिया के सबसे बड़े शहरों में Qulo से लोगों से मिलें। सवालों से मैच करें।" },
   },
+  features: {
+    tr: { title: "Ozellikler — Qulo | Quiz Dating App", description: "Qulo'nun benzersiz ozellikleri: quiz dating, kisilik eslestirme, AI soru onerileri ve daha fazlasi." },
+    en: { title: "Features — Qulo | Quiz Dating App", description: "Qulo's unique features: quiz dating, personality matching, AI question suggestions and more." },
+    de: { title: "Funktionen — Qulo | Quiz Dating App", description: "Qulos einzigartige Funktionen: Quiz-Dating, Personlichkeits-Matching, KI-Fragenvorschlage und mehr." },
+    fr: { title: "Fonctionnalites — Qulo | Quiz Dating App", description: "Les fonctionnalites uniques de Qulo : quiz dating, matching de personnalite, suggestions de questions IA et plus." },
+    es: { title: "Caracteristicas — Qulo | Quiz Dating App", description: "Caracteristicas unicas de Qulo: quiz dating, matching de personalidad, sugerencias de preguntas con IA y mas." },
+  },
   about: {
     tr: { title: "Qulo Hakkında — Soru-Cevap Tabanlı Dating Uygulaması", description: "Qulo nedir? Swipe yerine soru-cevap ile eşleşen yeni nesil dating uygulaması. Quiz dating app ile tanışmanın yeni yolu." },
     en: { title: "About Qulo — Quiz-Based Dating App", description: "What is Qulo? A next-gen dating app that matches through questions instead of swiping. Discover the new way to date with a quiz dating app." },
