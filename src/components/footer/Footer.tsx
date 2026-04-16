@@ -88,6 +88,55 @@ export function Footer() {
               </ul>
             </div>
 
+            {/* Cities */}
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-qulo-purple mb-3">
+                {t("cities")}
+              </p>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href={`/${locale}/dating/istanbul`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    Istanbul
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/dating/london`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    London
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/dating/new-york`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    New York
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/dating/paris`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    Paris
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/dating/tokyo`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    Tokyo
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
             {/* Legal */}
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-qulo-purple mb-3">

@@ -187,7 +187,8 @@
     "company": "회사",
     "about": "소개",
     "blog": "블로그",
-    "help": "도움말"
+    "help": "도움말",
+    "cities": "도시"
   },
   "privacyPolicy": {
     "title": "개인정보 처리방침",
