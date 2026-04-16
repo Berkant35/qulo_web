@@ -3,9 +3,17 @@ import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES, PAGE_SEO } from "@/lib/constants/metadata";
 import { COMPARISONS } from "@/lib/constants/comparisons";
+
+/** Per-locale breadcrumb label for the Compare page */
+const COMPARE_LABELS: Record<string, string> = {
+  tr: "Karşılaştır", en: "Compare", de: "Vergleichen", fr: "Comparer", es: "Comparar",
+  ar: "قارن", ru: "Сравнить", pt: "Comparar", it: "Confronta", ja: "比較",
+  ko: "비교", zh: "比较", nl: "Vergelijken", pl: "Porównaj", sv: "Jämför", hi: "तुलना",
+};
 
 /* ------------------------------------------------------------------ */
 /*  Metadata                                                           */
@@ -120,6 +128,11 @@ export default async function ComparePage({
 
       <div className="pt-24 pb-20 px-6">
         <div className="max-w-4xl mx-auto">
+          <Breadcrumb
+            locale={locale}
+            items={[{ label: COMPARE_LABELS[locale] || COMPARE_LABELS.en }]}
+          />
+
           {/* Hero */}
           <header className="mb-16 text-center">
             <p className="text-qulo-purple text-xs font-semibold uppercase tracking-[0.2em] mb-4">

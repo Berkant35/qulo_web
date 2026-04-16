@@ -15,7 +15,10 @@ export default function InvitePage() {
     const segments = window.location.pathname.split("/");
     const inviteIdx = segments.indexOf("invite");
     if (inviteIdx !== -1 && segments[inviteIdx + 1]) {
-      setCode(segments[inviteIdx + 1]);
+      const raw = segments[inviteIdx + 1];
+      if (/^[a-zA-Z0-9_-]{1,64}$/.test(raw)) {
+        setCode(raw);
+      }
     }
     setPlatform(detectPlatform());
   }, []);

@@ -2,9 +2,17 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { Navbar } from "@/components/shared/Navbar";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { LANDING_PAGES } from "@/lib/constants/landings";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
+
+/** Per-locale breadcrumb label for the Features page */
+const FEATURES_LABELS: Record<string, string> = {
+  tr: "Özellikler", en: "Features", de: "Funktionen", fr: "Fonctionnalités", es: "Características",
+  ar: "ميزات", ru: "Функции", pt: "Recursos", it: "Caratteristiche", ja: "機能",
+  ko: "기능", zh: "功能", nl: "Functies", pl: "Funkcje", sv: "Funktioner", hi: "विशेषताएं",
+};
 
 /* ---------- Metadata ---------- */
 export async function generateMetadata({
@@ -84,6 +92,11 @@ export default async function FeaturesIndexPage({
 
       <div className="pt-24 pb-20 px-6">
         <div className="max-w-3xl mx-auto">
+
+          <Breadcrumb
+            locale={locale}
+            items={[{ label: FEATURES_LABELS[locale] || FEATURES_LABELS.en }]}
+          />
 
           <header className="mb-12 text-center">
             <p className="text-qulo-purple text-xs font-semibold uppercase tracking-[0.2em] mb-4">

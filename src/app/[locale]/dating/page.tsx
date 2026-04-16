@@ -3,6 +3,7 @@ import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { CITIES } from "@/lib/constants/cities";
@@ -109,6 +110,8 @@ export default async function DatingIndexPage({
 
       <div className="pt-24 pb-20 px-6">
         <div className="max-w-3xl mx-auto">
+          <Breadcrumb locale={locale} items={[{ label: "Dating" }]} />
+
           {/* Header */}
           <header className="mb-12 text-center">
             <p className="text-qulo-purple text-xs font-semibold uppercase tracking-[0.2em] mb-4">

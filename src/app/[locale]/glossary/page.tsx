@@ -2,9 +2,17 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 import { GLOSSARY_TERMS } from "@/lib/constants/glossary";
+
+/** Per-locale breadcrumb label for the Glossary page */
+const GLOSSARY_LABELS: Record<string, string> = {
+  tr: "Sözlük", en: "Glossary", de: "Glossar", fr: "Glossaire", es: "Glosario",
+  ar: "قاموس", ru: "Глоссарий", pt: "Glossário", it: "Glossario", ja: "用語集",
+  ko: "용어집", zh: "术语表", nl: "Woordenlijst", pl: "Słowniczek", sv: "Ordlista", hi: "शब्दावली",
+};
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -101,6 +109,11 @@ export default async function GlossaryPage({
 
       <div className="pt-24 pb-20 px-6">
         <div className="max-w-3xl mx-auto">
+          <Breadcrumb
+            locale={locale}
+            items={[{ label: GLOSSARY_LABELS[locale] || GLOSSARY_LABELS.en }]}
+          />
+
           {/* Hero */}
           <header className="mb-16 text-center">
             <p className="text-qulo-purple text-xs font-semibold uppercase tracking-[0.2em] mb-4">

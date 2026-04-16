@@ -21,8 +21,12 @@ export default function ResetPasswordPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const t = params.get("token");
-    setToken(t);
+    const tokenParam = params.get("token");
+    if (!tokenParam || !/^[a-f0-9]{64}$/.test(tokenParam)) {
+      setState("error");
+      return;
+    }
+    setToken(tokenParam);
     if (newPasswordRef.current) newPasswordRef.current.focus();
   }, []);
 
@@ -142,10 +146,11 @@ export default function ResetPasswordPage() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               {/* New Password */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-sm text-qulo-text-secondary">
+                <label htmlFor="new-password" className="text-sm text-qulo-text-secondary">
                   {t("newPassword")}
                 </label>
                 <input
+                  id="new-password"
                   ref={newPasswordRef}
                   type="password"
                   value={newPassword}
@@ -164,10 +169,11 @@ export default function ResetPasswordPage() {
 
               {/* Confirm Password */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-sm text-qulo-text-secondary">
+                <label htmlFor="confirm-password" className="text-sm text-qulo-text-secondary">
                   {t("confirmPassword")}
                 </label>
                 <input
+                  id="confirm-password"
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => {
@@ -185,7 +191,7 @@ export default function ResetPasswordPage() {
 
               {/* Validation Error */}
               {validationError && (
-                <p className="text-red-400 text-xs">{validationError}</p>
+                <p className="text-red-400 text-xs" role="alert">{validationError}</p>
               )}
 
               {/* Submit */}

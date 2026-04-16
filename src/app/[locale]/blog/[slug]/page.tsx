@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { BLOG_POSTS } from "@/lib/constants/blog";
@@ -2208,17 +2209,6 @@ export default async function BlogPostPage({
     inLanguage: locale,
   };
 
-  // BreadcrumbList JSON-LD
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Qulo", item: `${SITE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/${locale}/blog` },
-      { "@type": "ListItem", position: 3, name: title, item: `${SITE_URL}/${locale}/blog/${slug}` },
-    ],
-  };
-
   const CTA_LABELS: Record<string, { ctaTitle: string; ctaDesc: string }> = {
     tr: { ctaTitle: "Qulo'yu Indir", ctaDesc: "Sorularla tanismanin yeni yolunu kesfet. Hemen dene, ucretsiz!" },
     en: { ctaTitle: "Download Qulo", ctaDesc: "Discover the new way to meet through questions. Try it now, for free!" },
@@ -2233,12 +2223,20 @@ export default async function BlogPostPage({
     <main className="min-h-screen bg-qulo-bg text-white">
       <Navbar />
 
-      {/* BlogPosting + Breadcrumb JSON-LD — trusted static constants only */}
+      {/* BlogPosting JSON-LD — trusted static constants only.
+          BreadcrumbList JSON-LD is rendered by the <Breadcrumb /> component below. */}
       <JsonLd data={blogPostingJsonLd} />
-      <JsonLd data={breadcrumbJsonLd} />
 
       <div className="pt-24 pb-20 px-6">
         <div className="max-w-3xl mx-auto">
+          <Breadcrumb
+            locale={locale}
+            items={[
+              { label: "Blog", href: `/${locale}/blog` },
+              { label: title },
+            ]}
+          />
+
           {/* Back to blog */}
           <nav className="mb-8">
             <Link

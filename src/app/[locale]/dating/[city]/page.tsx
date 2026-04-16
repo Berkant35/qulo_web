@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { CITIES, type City } from "@/lib/constants/cities";
@@ -399,6 +400,15 @@ export default async function DatingCityPage({
       {/* Hero Section */}
       <section className="pt-28 pb-16 px-6 text-center">
         <div className="max-w-3xl mx-auto">
+          <div className="text-left">
+            <Breadcrumb
+              locale={locale}
+              items={[
+                { label: "Dating", href: `/${locale}/dating` },
+                { label: cityName },
+              ]}
+            />
+          </div>
           <p className="text-qulo-purple text-xs font-semibold uppercase tracking-[0.2em] mb-4">
             {city.emoji} {cityName}, {countryName}
           </p>

@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import {
   PAGE_SEO,
@@ -23,6 +24,13 @@ import {
 const PAGE_SLUG = "dating-statistics";
 const PUBLISHED_AT = "2026-04-16";
 const MODIFIED_AT = "2026-04-16";
+
+/** Per-locale breadcrumb label for the Dating Statistics page */
+const STATISTICS_LABELS: Record<string, string> = {
+  tr: "İstatistikler", en: "Statistics", de: "Statistiken", fr: "Statistiques", es: "Estadísticas",
+  ar: "إحصائيات", ru: "Статистика", pt: "Estatísticas", it: "Statistiche", ja: "統計",
+  ko: "통계", zh: "统计", nl: "Statistieken", pl: "Statystyki", sv: "Statistik", hi: "आंकड़े",
+};
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -264,6 +272,11 @@ export default async function DatingStatisticsPage({
 
       <article className="pt-24 pb-20 px-6">
         <div className="max-w-4xl mx-auto">
+          <Breadcrumb
+            locale={locale}
+            items={[{ label: STATISTICS_LABELS[locale] || STATISTICS_LABELS.en }]}
+          />
+
           {/* Hero */}
           <header className="mb-16 text-center">
             <p className="text-qulo-purple text-xs font-semibold uppercase tracking-[0.2em] mb-4">
