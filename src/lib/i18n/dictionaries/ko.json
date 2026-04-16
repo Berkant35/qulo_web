@@ -196,7 +196,9 @@
     "statistics": "통계",
     "press": "프레스",
     "advice": "조언",
-    "countries": "국가"
+    "countries": "국가",
+    "trends": "트렌드",
+    "sitemap": "사이트맵"
   },
   "privacyPolicy": {
     "title": "개인정보 처리방침",

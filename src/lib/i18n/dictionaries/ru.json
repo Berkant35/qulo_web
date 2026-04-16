@@ -196,7 +196,9 @@
     "statistics": "Статистика",
     "press": "Пресса",
     "advice": "Советы",
-    "countries": "Страны"
+    "countries": "Страны",
+    "trends": "Тренды",
+    "sitemap": "Карта сайта"
   },
   "privacyPolicy": {
     "title": "Политика конфиденциальности",

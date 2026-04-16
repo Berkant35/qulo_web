@@ -119,6 +119,14 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
+                    href={`/${locale}/trends/2026`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("trends")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href={`/${locale}/press`}
                     className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
                   >
@@ -205,6 +213,14 @@ export function Footer() {
                     className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
                   >
                     {t("terms")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/sitemap-html`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("sitemap")}
                   </Link>
                 </li>
               </ul>

@@ -49,6 +49,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://qulo-server-production.up.railway.app" crossOrigin="anonymous" />
         {/* PWA manifest */}
         <link rel="manifest" href="/manifest.json" />
+        {/* RSS feed for Qulo Blog */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Qulo Blog"
+          href="/feed.xml"
+        />
         {/* Theme color for mobile browsers */}
         <meta name="theme-color" content="#050508" />
         <meta name="color-scheme" content="dark" />
