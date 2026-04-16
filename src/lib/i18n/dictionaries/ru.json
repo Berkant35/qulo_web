@@ -191,7 +191,8 @@
     "help": "Помощь",
     "cities": "Города",
     "compare": "Сравнение",
-    "glossary": "Глоссарий"
+    "glossary": "Глоссарий",
+    "statistics": "Статистика"
   },
   "privacyPolicy": {
     "title": "Политика конфиденциальности",
