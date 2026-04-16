@@ -41,6 +41,18 @@ export function Navbar() {
           {/* Nav links */}
           <nav className="hidden sm:flex items-center gap-6">
             <Link
+              href={`/${locale}/features`}
+              className="text-sm text-qulo-text-secondary hover:text-white transition-colors"
+            >
+              {t("features")}
+            </Link>
+            <Link
+              href={`/${locale}/advice`}
+              className="text-sm text-qulo-text-secondary hover:text-white transition-colors"
+            >
+              {t("advice")}
+            </Link>
+            <Link
               href={`/${locale}/about`}
               className="text-sm text-qulo-text-secondary hover:text-white transition-colors"
             >

@@ -7,7 +7,9 @@
     "download": "Baixar",
     "about": "Sobre",
     "blog": "Blog",
-    "help": "Ajuda"
+    "help": "Ajuda",
+    "features": "Recursos",
+    "advice": "Conselhos"
   },
   "hero": {
     "label": "Encontros de nova geração",
@@ -187,7 +189,19 @@
     "company": "Empresa",
     "about": "Sobre",
     "blog": "Blog",
-    "help": "Ajuda"
+    "help": "Ajuda",
+    "cities": "Cidades",
+    "compare": "Comparar",
+    "glossary": "Glossário",
+    "statistics": "Estatísticas",
+    "press": "Imprensa",
+    "advice": "Conselhos",
+    "howto": "Como usar",
+    "countries": "Países",
+    "trends": "Tendências",
+    "sitemap": "Mapa do site",
+    "pricing": "Preços",
+    "reviews": "Avaliações"
   },
   "privacyPolicy": {
     "title": "Política de Privacidade",

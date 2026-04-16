@@ -7,7 +7,9 @@
     "download": "Pobierz",
     "about": "O nas",
     "blog": "Blog",
-    "help": "Pomoc"
+    "help": "Pomoc",
+    "features": "Funkcje",
+    "advice": "Porady"
   },
   "hero": {
     "label": "Randki nowej generacji",
@@ -187,7 +189,19 @@
     "company": "Firma",
     "about": "O nas",
     "blog": "Blog",
-    "help": "Pomoc"
+    "help": "Pomoc",
+    "cities": "Miasta",
+    "compare": "Porownaj",
+    "glossary": "Słowniczek",
+    "statistics": "Statystyki",
+    "press": "Prasa",
+    "advice": "Porady",
+    "howto": "Jak używać",
+    "countries": "Kraje",
+    "trends": "Trendy",
+    "sitemap": "Mapa strony",
+    "pricing": "Ceny",
+    "reviews": "Opinie"
   },
   "privacyPolicy": {
     "title": "Polityka prywatności",

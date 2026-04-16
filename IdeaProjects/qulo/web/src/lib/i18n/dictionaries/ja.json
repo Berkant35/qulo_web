@@ -7,7 +7,9 @@
     "download": "ダウンロード",
     "about": "概要",
     "blog": "ブログ",
-    "help": "ヘルプ"
+    "help": "ヘルプ",
+    "features": "機能",
+    "advice": "アドバイス"
   },
   "hero": {
     "label": "次世代マッチング",
@@ -187,7 +189,19 @@
     "company": "会社",
     "about": "概要",
     "blog": "ブログ",
-    "help": "ヘルプ"
+    "help": "ヘルプ",
+    "cities": "都市",
+    "compare": "比較",
+    "glossary": "用語集",
+    "statistics": "統計",
+    "press": "プレス",
+    "advice": "アドバイス",
+    "howto": "使い方",
+    "countries": "国",
+    "trends": "トレンド",
+    "sitemap": "サイトマップ",
+    "pricing": "料金",
+    "reviews": "レビュー"
   },
   "privacyPolicy": {
     "title": "プライバシーポリシー",

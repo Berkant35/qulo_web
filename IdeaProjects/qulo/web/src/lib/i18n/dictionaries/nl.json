@@ -7,7 +7,9 @@
     "download": "Downloaden",
     "about": "Over ons",
     "blog": "Blog",
-    "help": "Help"
+    "help": "Help",
+    "features": "Functies",
+    "advice": "Advies"
   },
   "hero": {
     "label": "Next-gen dating",
@@ -187,7 +189,19 @@
     "company": "Bedrijf",
     "about": "Over ons",
     "blog": "Blog",
-    "help": "Help"
+    "help": "Help",
+    "cities": "Steden",
+    "compare": "Vergelijken",
+    "glossary": "Woordenlijst",
+    "statistics": "Statistieken",
+    "press": "Pers",
+    "advice": "Advies",
+    "howto": "Hoe te gebruiken",
+    "countries": "Landen",
+    "trends": "Trends",
+    "sitemap": "Sitemap",
+    "pricing": "Prijzen",
+    "reviews": "Beoordelingen"
   },
   "privacyPolicy": {
     "title": "Privacybeleid",

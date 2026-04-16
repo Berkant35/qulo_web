@@ -3,7 +3,6 @@ import { GridOverlay } from "@/components/shared/GridOverlay";
 import { Navbar } from "@/components/shared/Navbar";
 import { Hero } from "@/components/hero/Hero";
 import { SectionDivider } from "@/components/shared/SectionDivider";
-import { Stats } from "@/components/stats/Stats";
 import { HowItWorks } from "@/components/how-it-works/HowItWorks";
 import { Features } from "@/components/features/Features";
 import { AppPreview } from "@/components/app-preview/AppPreview";
@@ -21,12 +20,10 @@ export default async function Home({
   setRequestLocale(locale);
 
   return (
-    <main className="min-h-screen bg-qulo-bg relative">
+    <main id="main-content" className="min-h-screen bg-qulo-bg relative">
       <GridOverlay />
       <Navbar />
       <Hero />
-      <SectionDivider />
-      <Stats />
       <SectionDivider />
       <HowItWorks />
       <SectionDivider />

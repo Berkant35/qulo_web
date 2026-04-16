@@ -7,7 +7,9 @@
     "download": "Ladda ner",
     "about": "Om oss",
     "blog": "Blogg",
-    "help": "Hjälp"
+    "help": "Hjälp",
+    "features": "Funktioner",
+    "advice": "Råd"
   },
   "hero": {
     "label": "Nästa generationens dejting",
@@ -187,7 +189,19 @@
     "company": "Företag",
     "about": "Om oss",
     "blog": "Blogg",
-    "help": "Hjälp"
+    "help": "Hjälp",
+    "cities": "Stader",
+    "compare": "Jamfor",
+    "glossary": "Ordlista",
+    "statistics": "Statistik",
+    "press": "Press",
+    "advice": "Råd",
+    "howto": "Hur man använder",
+    "countries": "Länder",
+    "trends": "Trender",
+    "sitemap": "Webbplatskarta",
+    "pricing": "Priser",
+    "reviews": "Recensioner"
   },
   "privacyPolicy": {
     "title": "Integritetspolicy",

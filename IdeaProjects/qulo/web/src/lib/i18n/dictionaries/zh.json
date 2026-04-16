@@ -7,7 +7,9 @@
     "download": "下载",
     "about": "关于",
     "blog": "博客",
-    "help": "帮助"
+    "help": "帮助",
+    "features": "功能",
+    "advice": "建议"
   },
   "hero": {
     "label": "新一代交友",
@@ -187,7 +189,19 @@
     "company": "公司",
     "about": "关于",
     "blog": "博客",
-    "help": "帮助"
+    "help": "帮助",
+    "cities": "城市",
+    "compare": "对比",
+    "glossary": "术语表",
+    "statistics": "统计",
+    "press": "媒体",
+    "advice": "建议",
+    "howto": "使用指南",
+    "countries": "国家",
+    "trends": "趋势",
+    "sitemap": "网站地图",
+    "pricing": "价格",
+    "reviews": "评论"
   },
   "privacyPolicy": {
     "title": "隐私政策",

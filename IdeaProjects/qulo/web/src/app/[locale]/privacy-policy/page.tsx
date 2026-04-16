@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { rtlLocales, locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
+
+/** Per-locale breadcrumb label for the Privacy Policy page */
+const PRIVACY_LABELS: Record<string, string> = {
+  tr: "Gizlilik", en: "Privacy", de: "Datenschutz", fr: "Confidentialité", es: "Privacidad",
+  ar: "الخصوصية", ru: "Конфиденциальность", pt: "Privacidade", it: "Privacy", ja: "プライバシー",
+  ko: "개인정보", zh: "隐私", nl: "Privacy", pl: "Prywatność", sv: "Integritet", hi: "गोपनीयता",
+};
 
 export async function generateMetadata({
   params,
@@ -56,6 +64,11 @@ export default async function PrivacyPolicyPage({
       <Navbar />
       <div className="pt-24 pb-20 px-6" dir={rtlLocales.includes(locale) ? "rtl" : "ltr"}>
         <div className="max-w-2xl mx-auto">
+          <Breadcrumb
+            locale={locale}
+            items={[{ label: PRIVACY_LABELS[locale] || PRIVACY_LABELS.en }]}
+          />
+
           <h1 className="text-4xl font-bold text-qulo-purple mb-3">
             {t("title")}
           </h1>

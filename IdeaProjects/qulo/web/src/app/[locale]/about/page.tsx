@@ -2,8 +2,18 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { StoreButtons } from "@/components/hero/StoreButtons";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
+import { FAQ, faqTitle } from "@/components/shared/FAQ";
 import { locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
+import { getAboutFaqs } from "@/lib/constants/faqs";
+
+/** Per-locale breadcrumb label for the About page */
+const ABOUT_LABELS: Record<string, string> = {
+  tr: "Hakkında", en: "About", de: "Über uns", fr: "À propos", es: "Acerca de",
+  ar: "حول", ru: "О нас", pt: "Sobre", it: "Chi siamo", ja: "概要",
+  ko: "소개", zh: "关于", nl: "Over ons", pl: "O nas", sv: "Om oss", hi: "के बारे में",
+};
 
 export async function generateMetadata({
   params,
@@ -78,6 +88,11 @@ export default async function AboutPage({
 
       <div className="pt-24 pb-20 px-6">
         <div className="max-w-3xl mx-auto">
+
+          <Breadcrumb
+            locale={locale}
+            items={[{ label: ABOUT_LABELS[locale] || ABOUT_LABELS.en }]}
+          />
 
           {/* Hero Section */}
           <header className="mb-16 text-center">
@@ -176,8 +191,11 @@ export default async function AboutPage({
             </article>
           </section>
 
+          {/* FAQ Section — FAQPage JSON-LD for Google rich snippets */}
+          <FAQ items={getAboutFaqs(locale)} title={faqTitle(locale)} />
+
           {/* Download CTA */}
-          <section className="text-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-10">
+          <section className="text-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-10 mt-16">
             <h2 className="text-2xl font-bold text-white mb-3">
               {t("downloadCta")}
             </h2>

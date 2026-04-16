@@ -6,3 +6,19 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Respect reduced motion preferences — accessibility + Core Web Vitals CLS */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visible styles for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #BB86FC;
+  outline-offset: 2px;
+}

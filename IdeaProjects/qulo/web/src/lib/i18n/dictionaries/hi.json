@@ -7,7 +7,9 @@
     "download": "डाउनलोड करें",
     "about": "हमारे बारे में",
     "blog": "ब्लॉग",
-    "help": "सहायता"
+    "help": "सहायता",
+    "features": "विशेषताएं",
+    "advice": "सलाह"
   },
   "hero": {
     "label": "अगली पीढ़ी की डेटिंग",
@@ -187,7 +189,19 @@
     "company": "कंपनी",
     "about": "हमारे बारे में",
     "blog": "ब्लॉग",
-    "help": "सहायता"
+    "help": "सहायता",
+    "cities": "शहर",
+    "compare": "तुलना",
+    "glossary": "शब्दावली",
+    "statistics": "आंकड़े",
+    "press": "प्रेस",
+    "advice": "सलाह",
+    "howto": "कैसे इस्तेमाल करें",
+    "countries": "देश",
+    "trends": "रुझान",
+    "sitemap": "साइटमैप",
+    "pricing": "कीमत",
+    "reviews": "समीक्षाएं"
   },
   "privacyPolicy": {
     "title": "गोपनीयता नीति",

@@ -79,10 +79,123 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
+                    href={`/${locale}/advice`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("advice")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/how-to`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("howto")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href={`/${locale}/help`}
                     className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
                   >
                     {t("help")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/pricing`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("pricing")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/glossary`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("glossary")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/dating-statistics`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("statistics")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/trends/2026`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("trends")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/press`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("press")}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Cities */}
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-qulo-purple mb-3">
+                {t("cities")}
+              </p>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href={`/${locale}/dating/istanbul`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    Istanbul
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/dating/london`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    London
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/dating/new-york`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    New York
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/dating/paris`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    Paris
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/dating/tokyo`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    Tokyo
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/country`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("countries")}
                   </Link>
                 </li>
               </ul>
@@ -108,6 +221,14 @@ export function Footer() {
                     className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
                   >
                     {t("terms")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/sitemap-html`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("sitemap")}
                   </Link>
                 </li>
               </ul>

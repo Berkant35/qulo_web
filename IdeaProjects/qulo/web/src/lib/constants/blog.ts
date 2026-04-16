@@ -114,10 +114,10 @@ export const BLOG_POSTS: BlogPost[] = [
     readingTime: 6,
     titles: {
       tr: "İçe Dönükler İçin Quiz Dating: Neden Mükemmel Bir Eşleşme?",
-      en: "Why Introverts Are Choosing Quiz Dating Apps Over Tinder",
-      de: "Warum Introvertierte Quiz-Dating-Apps Tinder vorziehen",
-      fr: "Pourquoi les introvertis préfèrent le quiz dating à Tinder",
-      es: "Por qué los introvertidos eligen apps de quiz dating sobre Tinder",
+      en: "Why Introverts Are Choosing Quiz Dating Over Swipe Apps",
+      de: "Warum Introvertierte Quiz-Dating gegenüber Swipe-Apps bevorzugen",
+      fr: "Pourquoi les introvertis préfèrent le quiz dating aux apps de swipe",
+      es: "Por qué los introvertidos eligen el quiz dating sobre las apps de swipe",
     },
     excerpts: {
       tr: "İçe dönük biri olarak dating uygulamaları sizi bunaltıyor mu? Quiz dating'in neden içe dönükler için ideal olduğunu ve Qulo'nun nasıl fark yarattığını keşfedin.",

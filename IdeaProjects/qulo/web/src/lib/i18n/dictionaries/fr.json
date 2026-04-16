@@ -7,7 +7,9 @@
     "download": "Télécharger",
     "about": "À propos",
     "blog": "Blog",
-    "help": "Aide"
+    "help": "Aide",
+    "features": "Fonctionnalites",
+    "advice": "Conseils"
   },
   "hero": {
     "label": "Rencontres nouvelle génération",
@@ -187,7 +189,19 @@
     "company": "Entreprise",
     "about": "À propos",
     "blog": "Blog",
-    "help": "Aide"
+    "help": "Aide",
+    "cities": "Villes",
+    "compare": "Comparer",
+    "glossary": "Glossaire",
+    "statistics": "Statistiques",
+    "press": "Presse",
+    "advice": "Conseils",
+    "howto": "Guides",
+    "countries": "Pays",
+    "trends": "Tendances",
+    "sitemap": "Plan du site",
+    "pricing": "Tarifs",
+    "reviews": "Avis"
   },
   "privacyPolicy": {
     "title": "Politique de confidentialité",

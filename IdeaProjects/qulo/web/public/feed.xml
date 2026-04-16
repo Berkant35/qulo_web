@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Qulo Blog</title>
+    <link>https://quloapp.com/en/blog</link>
+    <description>Dating insights, relationship tips, and the future of meeting new people</description>
+    <language>en</language>
+    <copyright>© 2026 Qulo. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 16 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://quloapp.com/feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>Why Introverts Are Choosing Quiz Dating Apps Over Tinder</title>
+      <link>https://quloapp.com/en/blog/quiz-dating-for-introverts</link>
+      <description>Do dating apps overwhelm you as an introvert? Discover why quiz dating is ideal for introverts and how Qulo makes a difference.</description>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://quloapp.com/en/blog/quiz-dating-for-introverts</guid>
+    </item>
+
+    <item>
+      <title>The Science Behind Question-Based Matching: Why Questions Beat Photos</title>
+      <link>https://quloapp.com/en/blog/science-behind-question-based-matching</link>
+      <description>Psychology research proves that questions build much stronger connections than superficial attraction. Here's the scientific foundation of question-based matching.</description>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://quloapp.com/en/blog/science-behind-question-based-matching</guid>
+    </item>
+
+    <item>
+      <title>Dating Apps Without Swiping: A Complete Guide for 2026</title>
+      <link>https://quloapp.com/en/blog/dating-apps-without-swiping</link>
+      <description>Tired of the swipe mechanic? You have alternatives. A complete guide to question-based, AI-powered, and interaction-focused dating apps.</description>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://quloapp.com/en/blog/dating-apps-without-swiping</guid>
+    </item>
+
+    <item>
+      <title>5 Signs You Have Dating App Burnout (And What to Do About It)</title>
+      <link>https://quloapp.com/en/blog/dating-app-burnout-signs</link>
+      <description>Feeling burned out from dating apps? Here are 5 signs of dating app burnout and ways to break free from the cycle.</description>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://quloapp.com/en/blog/dating-app-burnout-signs</guid>
+    </item>
+
+    <item>
+      <title>Online Dating Safety Guide: 10 Golden Rules</title>
+      <link>https://quloapp.com/en/blog/online-dating-safety-tips</link>
+      <description>Online dating can be safe — if you take the right steps. Here are 10 golden rules you need to know to protect yourself on dating apps.</description>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://quloapp.com/en/blog/online-dating-safety-tips</guid>
+    </item>
+
+    <item>
+      <title>Quiz Dating: Is the Future of Matching in Questions?</title>
+      <link>https://quloapp.com/en/blog/quiz-dating-future-of-matching</link>
+      <description>While swipe-based matching remains superficial, question-based dating is rising as a new trend. What is quiz dating and why does it lead to deeper connections?</description>
+      <pubDate>Sun, 12 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://quloapp.com/en/blog/quiz-dating-future-of-matching</guid>
+    </item>
+
+    <item>
+      <title>What is Swipe Fatigue and Why is Everyone Tired of It?</title>
+      <link>https://quloapp.com/en/blog/what-is-swipe-fatigue</link>
+      <description>If you're tired of endlessly swiping left and right on dating apps, you're not alone. What is swipe fatigue, why does it happen, and how does Qulo solve it?</description>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://quloapp.com/en/blog/what-is-swipe-fatigue</guid>
+    </item>
+  </channel>
+</rss>

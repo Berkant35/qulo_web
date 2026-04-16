@@ -7,7 +7,9 @@
     "download": "İndir",
     "about": "Hakkında",
     "blog": "Blog",
-    "help": "Yardım"
+    "help": "Yardım",
+    "features": "Ozellikler",
+    "advice": "Tavsiyeler"
   },
   "hero": {
     "label": "Yeni nesil tanışma",
@@ -135,7 +137,19 @@
     "company": "Şirket",
     "about": "Hakkında",
     "blog": "Blog",
-    "help": "Yardım"
+    "help": "Yardım",
+    "cities": "Sehirler",
+    "compare": "Karsilastir",
+    "glossary": "Sözlük",
+    "statistics": "İstatistikler",
+    "press": "Basın",
+    "advice": "Tavsiyeler",
+    "howto": "Nasıl Kullanılır",
+    "countries": "Ülkeler",
+    "trends": "Trendler",
+    "sitemap": "Site Haritası",
+    "pricing": "Fiyatlandırma",
+    "reviews": "Yorumlar"
   },
   "invite": {
     "title": "Qulo'ya Davet Edildin!",

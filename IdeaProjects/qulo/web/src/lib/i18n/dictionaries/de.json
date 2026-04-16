@@ -7,7 +7,9 @@
     "download": "Herunterladen",
     "about": "Über uns",
     "blog": "Blog",
-    "help": "Hilfe"
+    "help": "Hilfe",
+    "features": "Funktionen",
+    "advice": "Ratgeber"
   },
   "hero": {
     "label": "Dating der nächsten Generation",
@@ -187,7 +189,19 @@
     "company": "Unternehmen",
     "about": "Über uns",
     "blog": "Blog",
-    "help": "Hilfe"
+    "help": "Hilfe",
+    "cities": "Stadte",
+    "compare": "Vergleichen",
+    "glossary": "Glossar",
+    "statistics": "Statistiken",
+    "press": "Presse",
+    "advice": "Ratgeber",
+    "howto": "Anleitungen",
+    "countries": "Länder",
+    "trends": "Trends",
+    "sitemap": "Sitemap",
+    "pricing": "Preise",
+    "reviews": "Bewertungen"
   },
   "privacyPolicy": {
     "title": "Datenschutzrichtlinie",

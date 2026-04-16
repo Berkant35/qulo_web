@@ -7,7 +7,9 @@
     "download": "다운로드",
     "about": "소개",
     "blog": "블로그",
-    "help": "도움말"
+    "help": "도움말",
+    "features": "기능",
+    "advice": "조언"
   },
   "hero": {
     "label": "차세대 데이팅",
@@ -187,7 +189,19 @@
     "company": "회사",
     "about": "소개",
     "blog": "블로그",
-    "help": "도움말"
+    "help": "도움말",
+    "cities": "도시",
+    "compare": "비교",
+    "glossary": "용어집",
+    "statistics": "통계",
+    "press": "프레스",
+    "advice": "조언",
+    "howto": "사용 방법",
+    "countries": "국가",
+    "trends": "트렌드",
+    "sitemap": "사이트맵",
+    "pricing": "요금제",
+    "reviews": "리뷰"
   },
   "privacyPolicy": {
     "title": "개인정보 처리방침",

@@ -7,7 +7,9 @@
     "download": "Descargar",
     "about": "Acerca de",
     "blog": "Blog",
-    "help": "Ayuda"
+    "help": "Ayuda",
+    "features": "Caracteristicas",
+    "advice": "Consejos"
   },
   "hero": {
     "label": "Citas de nueva generación",
@@ -187,7 +189,19 @@
     "company": "Empresa",
     "about": "Acerca de",
     "blog": "Blog",
-    "help": "Ayuda"
+    "help": "Ayuda",
+    "cities": "Ciudades",
+    "compare": "Comparar",
+    "glossary": "Glosario",
+    "statistics": "Estadísticas",
+    "press": "Prensa",
+    "advice": "Consejos",
+    "howto": "Guías",
+    "countries": "Países",
+    "trends": "Tendencias",
+    "sitemap": "Mapa del sitio",
+    "pricing": "Precios",
+    "reviews": "Opiniones"
   },
   "privacyPolicy": {
     "title": "Política de privacidad",
