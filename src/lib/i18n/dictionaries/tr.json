@@ -8,7 +8,8 @@
     "about": "Hakkında",
     "blog": "Blog",
     "help": "Yardım",
-    "features": "Ozellikler"
+    "features": "Ozellikler",
+    "advice": "Tavsiyeler"
   },
   "hero": {
     "label": "Yeni nesil tanışma",
@@ -141,7 +142,8 @@
     "compare": "Karsilastir",
     "glossary": "Sözlük",
     "statistics": "İstatistikler",
-    "press": "Basın"
+    "press": "Basın",
+    "advice": "Tavsiyeler"
   },
   "invite": {
     "title": "Qulo'ya Davet Edildin!",

@@ -8,7 +8,8 @@
     "about": "Über uns",
     "blog": "Blog",
     "help": "Hilfe",
-    "features": "Funktionen"
+    "features": "Funktionen",
+    "advice": "Ratgeber"
   },
   "hero": {
     "label": "Dating der nächsten Generation",
@@ -193,7 +194,8 @@
     "compare": "Vergleichen",
     "glossary": "Glossar",
     "statistics": "Statistiken",
-    "press": "Presse"
+    "press": "Presse",
+    "advice": "Ratgeber"
   },
   "privacyPolicy": {
     "title": "Datenschutzrichtlinie",

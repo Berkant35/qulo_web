@@ -8,7 +8,8 @@
     "about": "关于",
     "blog": "博客",
     "help": "帮助",
-    "features": "功能"
+    "features": "功能",
+    "advice": "建议"
   },
   "hero": {
     "label": "新一代交友",
@@ -193,7 +194,8 @@
     "compare": "对比",
     "glossary": "术语表",
     "statistics": "统计",
-    "press": "媒体"
+    "press": "媒体",
+    "advice": "建议"
   },
   "privacyPolicy": {
     "title": "隐私政策",

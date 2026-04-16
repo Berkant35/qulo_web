@@ -47,6 +47,12 @@ export function Navbar() {
               {t("features")}
             </Link>
             <Link
+              href={`/${locale}/advice`}
+              className="text-sm text-qulo-text-secondary hover:text-white transition-colors"
+            >
+              {t("advice")}
+            </Link>
+            <Link
               href={`/${locale}/about`}
               className="text-sm text-qulo-text-secondary hover:text-white transition-colors"
             >

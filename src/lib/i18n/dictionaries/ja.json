@@ -8,7 +8,8 @@
     "about": "概要",
     "blog": "ブログ",
     "help": "ヘルプ",
-    "features": "機能"
+    "features": "機能",
+    "advice": "アドバイス"
   },
   "hero": {
     "label": "次世代マッチング",
@@ -193,7 +194,8 @@
     "compare": "比較",
     "glossary": "用語集",
     "statistics": "統計",
-    "press": "プレス"
+    "press": "プレス",
+    "advice": "アドバイス"
   },
   "privacyPolicy": {
     "title": "プライバシーポリシー",

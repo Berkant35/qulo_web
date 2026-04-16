@@ -8,7 +8,8 @@
     "about": "O nas",
     "blog": "Blog",
     "help": "Pomoc",
-    "features": "Funkcje"
+    "features": "Funkcje",
+    "advice": "Porady"
   },
   "hero": {
     "label": "Randki nowej generacji",
@@ -193,7 +194,8 @@
     "compare": "Porownaj",
     "glossary": "Słowniczek",
     "statistics": "Statystyki",
-    "press": "Prasa"
+    "press": "Prasa",
+    "advice": "Porady"
   },
   "privacyPolicy": {
     "title": "Polityka prywatności",

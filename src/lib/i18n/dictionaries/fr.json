@@ -8,7 +8,8 @@
     "about": "À propos",
     "blog": "Blog",
     "help": "Aide",
-    "features": "Fonctionnalites"
+    "features": "Fonctionnalites",
+    "advice": "Conseils"
   },
   "hero": {
     "label": "Rencontres nouvelle génération",
@@ -193,7 +194,8 @@
     "compare": "Comparer",
     "glossary": "Glossaire",
     "statistics": "Statistiques",
-    "press": "Presse"
+    "press": "Presse",
+    "advice": "Conseils"
   },
   "privacyPolicy": {
     "title": "Politique de confidentialité",

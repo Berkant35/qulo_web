@@ -8,7 +8,8 @@
     "about": "About",
     "blog": "Blog",
     "help": "Help",
-    "features": "Features"
+    "features": "Features",
+    "advice": "Advice"
   },
   "hero": {
     "label": "Next-gen dating",
@@ -141,7 +142,8 @@
     "compare": "Compare",
     "glossary": "Glossary",
     "statistics": "Statistics",
-    "press": "Press"
+    "press": "Press",
+    "advice": "Advice"
   },
   "invite": {
     "title": "You're Invited to Qulo!",

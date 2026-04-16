@@ -8,7 +8,8 @@
     "about": "عن التطبيق",
     "blog": "المدونة",
     "help": "مساعدة",
-    "features": "ميزات"
+    "features": "ميزات",
+    "advice": "نصائح"
   },
   "hero": {
     "label": "مواعدة الجيل الجديد",
@@ -193,7 +194,8 @@
     "compare": "مقارنة",
     "glossary": "قاموس",
     "statistics": "إحصائيات",
-    "press": "الصحافة"
+    "press": "الصحافة",
+    "advice": "نصائح"
   },
   "privacyPolicy": {
     "title": "سياسة الخصوصية",

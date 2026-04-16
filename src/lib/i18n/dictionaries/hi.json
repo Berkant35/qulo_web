@@ -8,7 +8,8 @@
     "about": "हमारे बारे में",
     "blog": "ब्लॉग",
     "help": "सहायता",
-    "features": "विशेषताएं"
+    "features": "विशेषताएं",
+    "advice": "सलाह"
   },
   "hero": {
     "label": "अगली पीढ़ी की डेटिंग",
@@ -193,7 +194,8 @@
     "compare": "तुलना",
     "glossary": "शब्दावली",
     "statistics": "आंकड़े",
-    "press": "प्रेस"
+    "press": "प्रेस",
+    "advice": "सलाह"
   },
   "privacyPolicy": {
     "title": "गोपनीयता नीति",

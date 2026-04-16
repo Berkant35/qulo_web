@@ -8,7 +8,8 @@
     "about": "Om oss",
     "blog": "Blogg",
     "help": "Hjälp",
-    "features": "Funktioner"
+    "features": "Funktioner",
+    "advice": "Råd"
   },
   "hero": {
     "label": "Nästa generationens dejting",
@@ -193,7 +194,8 @@
     "compare": "Jamfor",
     "glossary": "Ordlista",
     "statistics": "Statistik",
-    "press": "Press"
+    "press": "Press",
+    "advice": "Råd"
   },
   "privacyPolicy": {
     "title": "Integritetspolicy",

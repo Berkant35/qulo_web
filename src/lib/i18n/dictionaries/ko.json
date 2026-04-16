@@ -8,7 +8,8 @@
     "about": "소개",
     "blog": "블로그",
     "help": "도움말",
-    "features": "기능"
+    "features": "기능",
+    "advice": "조언"
   },
   "hero": {
     "label": "차세대 데이팅",
@@ -193,7 +194,8 @@
     "compare": "비교",
     "glossary": "용어집",
     "statistics": "통계",
-    "press": "프레스"
+    "press": "프레스",
+    "advice": "조언"
   },
   "privacyPolicy": {
     "title": "개인정보 처리방침",

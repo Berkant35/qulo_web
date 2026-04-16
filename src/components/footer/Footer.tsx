@@ -79,6 +79,14 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
+                    href={`/${locale}/advice`}
+                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
+                  >
+                    {t("advice")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href={`/${locale}/help`}
                     className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
                   >
