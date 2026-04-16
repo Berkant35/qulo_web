@@ -1,9 +1,12 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
+
+const cardsConfig = require('./lib/cards/config');
+const cardGenerator = require('./lib/cards/generator');
+const { newReqId, createLogger } = require('./lib/logger');
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 
@@ -20,95 +23,73 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Tabul kartları oluşturma endpoint'i
+// Tabul kartlari olusturma endpoint'i (strict-count, chunked, fill-loop)
 app.post('/api/generate-cards', async (req, res) => {
+  const reqId = newReqId();
+  const logger = createLogger(reqId);
+
   try {
-    const { prompt, cardCount = 50 } = req.body;
+    const {
+      prompt,
+      cardCount = 50,
+      model = cardsConfig.DEFAULT_MODEL,
+      language = 'tr',
+    } = req.body || {};
 
-    if (!prompt) {
-      return res.status(400).json({ 
-        error: 'Lütfen bir açıklama girin' 
+    // Input validation
+    if (typeof prompt !== 'string' || prompt.trim().length === 0) {
+      return res.status(400).json({
+        success: false, errorCode: 'MISSING_PROMPT', message: 'Prompt gerekli', reqId,
       });
     }
-
+    if (prompt.length > cardsConfig.MAX_PROMPT_LENGTH) {
+      return res.status(400).json({
+        success: false, errorCode: 'PROMPT_TOO_LONG',
+        message: `Prompt en fazla ${cardsConfig.MAX_PROMPT_LENGTH} karakter olabilir`, reqId,
+      });
+    }
+    const numericCount = Number(cardCount);
+    if (!Number.isInteger(numericCount) || numericCount < cardsConfig.MIN_CARD_COUNT || numericCount > cardsConfig.MAX_CARD_COUNT) {
+      return res.status(400).json({
+        success: false, errorCode: 'INVALID_CARD_COUNT',
+        message: `cardCount ${cardsConfig.MIN_CARD_COUNT}-${cardsConfig.MAX_CARD_COUNT} arasinda integer olmali`, reqId,
+      });
+    }
+    const selectedModel = cardsConfig.ALLOWED_MODELS.includes(model) ? model : null;
+    if (!selectedModel) {
+      return res.status(400).json({
+        success: false, errorCode: 'INVALID_MODEL',
+        message: `model şunlardan biri olmalı: ${cardsConfig.ALLOWED_MODELS.join(', ')}`, reqId,
+      });
+    }
     if (!process.env.OPENAI_API_KEY) {
-      return res.status(500).json({ 
-        error: 'API key tanımlanmamış. Lütfen .env dosyasına OPENAI_API_KEY ekleyin' 
+      return res.status(500).json({
+        success: false, errorCode: 'OPENAI_AUTH_ERROR', message: 'OpenAI API key tanımlanmamış', reqId,
       });
     }
 
-    console.log(`📝 Tabul kartları oluşturuluyor: "${prompt}" (${cardCount} kart)`);
-
-    // OpenAI API'ye istek
-    const response = await axios.post(
-      'https://api.openai.com/v1/chat/completions',
-      {
-        model: 'gpt-4',
-        messages: [
-          {
-            role: 'system',
-            content: `Sen bir Tabul (Tabu) kart oyunu kart oluşturucususun. Verilen tema veya açıklamaya göre ${cardCount} adet Tabul kartı oluşturacaksın. 
-            
-Her kart şu formatta olmalı:
-{
-  "kelime": "ANA KELİME",
-  "yasakliKelimeler": ["yasaklı1", "yasaklı2", "yasaklı3", "yasaklı4", "yasaklı5"]
-}
-
-Kurallar:
-- Her kartta tam olarak 5 yasaklı kelime olmalı
-- Yasaklı kelimeler ana kelimeyle ilgili en yakın kelimeleri olmalı
-- Kartlar tema ile uyumlu olmalı
-- Kelimeler Türkçe olmalı
-- Sadece JSON array döndür, başka açıklama yapma`
-          },
-          {
-            role: 'user',
-            content: `${cardCount} adet Tabul kartı oluştur. Tema: ${prompt}`
-          }
-        ],
-        temperature: 0.8,
-        max_tokens: 4000
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-          'Content-Type': 'application/json'
-        }
-      }
-    );
-
-    const content = response.data.choices[0].message.content;
-    
-    // JSON'u parse et
-    let cards;
-    try {
-      // Markdown code block varsa temizle
-      const jsonMatch = content.match(/```json\n([\s\S]*?)\n```/) || content.match(/```([\s\S]*?)```/);
-      const jsonString = jsonMatch ? jsonMatch[1] : content;
-      cards = JSON.parse(jsonString.trim());
-    } catch (parseError) {
-      console.error('JSON parse hatası:', parseError);
-      return res.status(500).json({ 
-        error: 'AI yanıtı işlenemedi',
-        details: content 
-      });
-    }
-
-    console.log(`✅ ${cards.length} adet kart başarıyla oluşturuldu`);
-
-    res.json({
-      success: true,
-      tema: prompt,
-      kartSayisi: cards.length,
-      kartlar: cards
+    // Generate
+    const result = await cardGenerator.generate({
+      prompt: prompt.trim(),
+      cardCount: numericCount,
+      model: selectedModel,
+      language,
+      apiKey: process.env.OPENAI_API_KEY,
+      logger,
     });
 
+    const status = result.success
+      ? 200
+      : (result.errorCode === 'INSUFFICIENT_CARDS' ? 422
+        : result.errorCode === 'OPENAI_AUTH_ERROR' ? 500
+        : result.errorCode === 'OPENAI_QUOTA' ? 500
+        : 500);
+    return res.status(status).json({ ...result, reqId });
   } catch (error) {
-    console.error('Hata:', error.response?.data || error.message);
-    res.status(500).json({ 
-      error: 'Kartlar oluşturulurken hata oluştu',
-      details: error.response?.data?.error?.message || error.message
+    logger.error('Unhandled error:', error?.message || error);
+    return res.status(500).json({
+      success: false, errorCode: 'GENERATION_ERROR',
+      message: 'Kartlar oluşturulurken hata oluştu', reqId,
     });
   }
 });
@@ -123,11 +104,13 @@ app.get('/api/health', (req, res) => {
 
 // ─── Utility: Build category tree from flat list ───
 function buildCategoryTree(flatList, locale) {
-  const localized = flatList.map(row => ({
+  // Sadece istenen dilde ismi olan kategorileri al
+  const filtered = flatList.filter(row => row.names && row.names[locale]);
+  const localized = filtered.map(row => ({
     id: row.id,
     parentId: row.parent_id,
-    name: row.names[locale] || row.names['en'] || Object.values(row.names)[0] || '',
-    prompt: row.prompts[locale] || row.prompts['en'] || Object.values(row.prompts)[0] || '',
+    name: row.names[locale],
+    prompt: (row.prompts && row.prompts[locale]) || '',
     sortOrder: row.sort_order,
     isTrending: row.is_trending,
     children: [],
@@ -138,7 +121,8 @@ function buildCategoryTree(flatList, locale) {
   localized.forEach(item => {
     if (item.parentId && map[item.parentId]) {
       map[item.parentId].children.push(item);
-    } else if (!item.parentId) {
+    } else {
+      // parent_id yoksa root, parent locale'de filtrelendiyse de root'a terfi
       tree.push(item);
     }
   });
@@ -178,7 +162,7 @@ app.post('/api/admin/login', async (req, res) => {
     if (!email || !password) return res.status(400).json({ success: false, message: 'Email ve sifre gerekli' });
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error || !data.session) return res.status(401).json({ success: false, message: 'Gecersiz kimlik bilgileri' });
-    const { data: admin } = await supabase.from('admin_users').select('id').eq('user_id', data.user.id).single();
+    const { data: admin } = await supabase.from('admin_users').select('id').eq('id', data.user.id).single();
     if (!admin) return res.status(403).json({ success: false, message: 'Admin yetkisi yok' });
     return res.json({ success: true, data: { token: data.session.access_token }, message: 'Giris basarili' });
   } catch (err) {
@@ -195,7 +179,7 @@ async function requireAdminAuth(req, res, next) {
     const token = authHeader.split(' ')[1];
     const { data: { user }, error } = await supabase.auth.getUser(token);
     if (error || !user) return res.status(401).json({ success: false, errorCode: 'INVALID_TOKEN', message: 'Gecersiz token' });
-    const { data: admin } = await supabase.from('admin_users').select('id').eq('user_id', user.id).single();
+    const { data: admin } = await supabase.from('admin_users').select('id').eq('id', user.id).single();
     if (!admin) return res.status(403).json({ success: false, errorCode: 'FORBIDDEN', message: 'Admin yetkisi gerekli' });
     req.adminUser = user;
     next();
