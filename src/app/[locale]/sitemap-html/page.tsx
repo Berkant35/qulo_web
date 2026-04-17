@@ -14,7 +14,6 @@ import {
 import { BLOG_POSTS } from "@/lib/constants/blog";
 import { ADVICE_GUIDES } from "@/lib/constants/advice";
 import { HOW_TO_GUIDES } from "@/lib/constants/howto";
-import { COMPARISONS } from "@/lib/constants/comparisons";
 import { LANDING_PAGES } from "@/lib/constants/landings";
 import { CITIES } from "@/lib/constants/cities";
 import { COUNTRIES } from "@/lib/constants/countries";
@@ -71,7 +70,6 @@ interface SitemapCopy {
   featuresSection: string;
   adviceSection: string;
   howtoSection: string;
-  comparisonsSection: string;
   blogSection: string;
   citiesSection: string;
   countriesSection: string;
@@ -83,7 +81,6 @@ interface SitemapCopy {
   features: string;
   advice: string;
   howto: string;
-  compare: string;
   blog: string;
   glossary: string;
   statistics: string;
@@ -104,7 +101,6 @@ function getCopy(locale: string): SitemapCopy {
     featuresSection: isTr ? "Özellikler" : "Features",
     adviceSection: isTr ? "Tavsiye Rehberleri" : "Advice Guides",
     howtoSection: isTr ? "Nasıl Kullanılır Rehberleri" : "How-to Guides",
-    comparisonsSection: isTr ? "Karşılaştırmalar" : "Comparisons",
     blogSection: isTr ? "Blog Yazıları" : "Blog Articles",
     citiesSection: isTr ? "Şehirler" : "Cities",
     countriesSection: isTr ? "Ülkeler" : "Countries",
@@ -115,7 +111,6 @@ function getCopy(locale: string): SitemapCopy {
     features: isTr ? "Özellikler" : "Features",
     advice: isTr ? "Tavsiyeler" : "Advice",
     howto: isTr ? "Nasıl Kullanılır" : "How-to",
-    compare: isTr ? "Karşılaştır" : "Compare",
     blog: "Blog",
     glossary: isTr ? "Sözlük" : "Glossary",
     statistics: isTr ? "İstatistikler" : "Statistics",
@@ -188,13 +183,6 @@ function getHowToTitle(
   return guide.titles[locale] || guide.titles.en;
 }
 
-function getComparisonTitle(
-  comparison: (typeof COMPARISONS)[number],
-  locale: string,
-): string {
-  return comparison.titles[locale] || comparison.titles.en;
-}
-
 function getLandingTitle(
   landing: (typeof LANDING_PAGES)[number],
   locale: string,
@@ -233,7 +221,6 @@ export default async function SitemapHtmlPage({
     { href: `/${locale}/features`, label: copy.features },
     { href: `/${locale}/advice`, label: copy.advice },
     { href: `/${locale}/how-to`, label: copy.howto },
-    { href: `/${locale}/compare`, label: copy.compare },
     { href: `/${locale}/blog`, label: copy.blog },
     { href: `/${locale}/glossary`, label: copy.glossary },
     { href: `/${locale}/dating-statistics`, label: copy.statistics },
@@ -253,11 +240,6 @@ export default async function SitemapHtmlPage({
   const howtoPages: SitemapLink[] = HOW_TO_GUIDES.map((guide) => ({
     href: `/${locale}/how-to/${guide.slug}`,
     label: getHowToTitle(guide, locale),
-  }));
-
-  const comparisonPages: SitemapLink[] = COMPARISONS.map((comparison) => ({
-    href: `/${locale}/compare/${comparison.slug}`,
-    label: getComparisonTitle(comparison, locale),
   }));
 
   const blogPages: SitemapLink[] = BLOG_POSTS.map((post) => ({
@@ -327,13 +309,6 @@ export default async function SitemapHtmlPage({
             id="howto-heading"
             title={copy.howtoSection}
             links={howtoPages}
-            accent="green"
-          />
-
-          <SitemapSection
-            id="comparisons-heading"
-            title={copy.comparisonsSection}
-            links={comparisonPages}
             accent="green"
           />
 

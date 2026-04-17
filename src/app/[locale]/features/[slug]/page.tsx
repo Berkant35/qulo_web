@@ -78,7 +78,6 @@ interface LandingContent {
   solutionTitle: string;
   solutionBullets: string[];
   steps: { title: string; desc: string }[];
-  stats: { value: string; label: string }[];
 }
 
 function getContent(slug: string, locale: string): LandingContent | null {
@@ -130,19 +129,6 @@ function getContent(slug: string, locale: string): LandingContent | null {
             { title: "Create Questions", desc: "Build 2-10 quiz questions that reflect your personality. Use AI for engaging questions." },
             { title: "Discover and Solve", desc: "Explore and answer other users' quiz questions. Use strategic powers." },
             { title: "Match and Meet", desc: "Answer all questions correctly and match. Start chatting, build your real connection." },
-          ],
-      stats: isTr
-        ? [
-            { value: "50K+", label: "Soru Olusturuldu" },
-            { value: "10K+", label: "Eslestirme" },
-            { value: "25K+", label: "Kullanici" },
-            { value: "4.8", label: "App Store Puani" },
-          ]
-        : [
-            { value: "50K+", label: "Questions Created" },
-            { value: "10K+", label: "Matches Made" },
-            { value: "25K+", label: "Users" },
-            { value: "4.8", label: "App Store Rating" },
           ],
     };
   }
@@ -196,19 +182,6 @@ function getContent(slug: string, locale: string): LandingContent | null {
             { title: "Discover and Solve", desc: "No scrolling \u2014 read questions, think and answer. A deep getting-to-know process." },
             { title: "Match and Meet", desc: "Match through correct answers. Build a real connection without swiping." },
           ],
-      stats: isTr
-        ? [
-            { value: "0", label: "Swipe Gerekli" },
-            { value: "3x", label: "Daha Kaliteli Eslestirme" },
-            { value: "25K+", label: "Mutlu Kullanici" },
-            { value: "4.8", label: "App Store Puani" },
-          ]
-        : [
-            { value: "0", label: "Swipes Required" },
-            { value: "3x", label: "Better Match Quality" },
-            { value: "25K+", label: "Happy Users" },
-            { value: "4.8", label: "App Store Rating" },
-          ],
     };
   }
 
@@ -260,19 +233,6 @@ function getContent(slug: string, locale: string): LandingContent | null {
             { title: "Create Personality Questions", desc: "Build 2-10 questions that reflect your values and interests." },
             { title: "Take the Compatibility Test", desc: "Solve other users' personality questions and prove your compatibility." },
             { title: "Meet Your Compatible Match", desc: "Build real connections with matches proven through personality compatibility." },
-          ],
-      stats: isTr
-        ? [
-            { value: "50K+", label: "Kisilik Sorusu" },
-            { value: "92%", label: "Uyumluluk Orani" },
-            { value: "25K+", label: "Kullanici" },
-            { value: "4.8", label: "App Store Puani" },
-          ]
-        : [
-            { value: "50K+", label: "Personality Questions" },
-            { value: "92%", label: "Compatibility Rate" },
-            { value: "25K+", label: "Users" },
-            { value: "4.8", label: "App Store Rating" },
           ],
     };
   }
@@ -432,24 +392,6 @@ export default async function FeatureLandingPage({
                 </li>
               ))}
             </ol>
-          </section>
-
-          {/* Stats / Social Proof Section */}
-          <section className="mb-14">
-            <h2 className="text-2xl font-bold text-qulo-green mb-6 text-center">
-              {isTr ? "Rakamlarla Qulo" : "Qulo in Numbers"}
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {content.stats.map((stat, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-5 text-center"
-                >
-                  <p className="text-2xl font-bold text-qulo-purple">{stat.value}</p>
-                  <p className="text-xs text-qulo-text-secondary mt-1">{stat.label}</p>
-                </div>
-              ))}
-            </div>
           </section>
 
           {/* FAQ Section — page-specific, with FAQPage JSON-LD for rich snippets */}

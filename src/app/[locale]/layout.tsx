@@ -89,13 +89,6 @@ export default async function LocaleLayout({
         price: "0",
         priceCurrency: "USD",
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.8",
-        ratingCount: "1247",
-        bestRating: "5",
-        worstRating: "1",
-      },
       featureList: [
         "Question-based matching",
         "AI-powered question suggestions",

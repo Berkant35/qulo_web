@@ -100,7 +100,6 @@ function ProductJsonLd() {
       { "@type": "Offer", name: "Plus", price: "4.99", priceCurrency: "USD", availability: "https://schema.org/InStock" },
       { "@type": "Offer", name: "Premium", price: "9.99", priceCurrency: "USD", availability: "https://schema.org/InStock" },
     ],
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", ratingCount: "1247", bestRating: "5" },
   });
   return (
     <script

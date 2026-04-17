@@ -59,7 +59,7 @@ export function CardStack() {
             boxShadow: "0 0 30px rgba(105,240,174,0.08)",
           }}
         >
-          <p className="text-xs text-qulo-text-secondary uppercase tracking-widest mb-2">Soru</p>
+          <p className="text-xs text-qulo-text-secondary uppercase tracking-widest mb-2">{t("cardLabel")}</p>
           <p className="text-white font-semibold text-base mb-4">{t("card2Question")}</p>
           <div className="grid grid-cols-2 gap-2">
             <div
@@ -101,7 +101,7 @@ export function CardStack() {
           >
             <div className="flex items-center gap-2 mb-3">
               <div className="w-2 h-2 rounded-full bg-qulo-purple animate-pulse" />
-              <p className="text-xs text-qulo-purple uppercase tracking-widest font-medium">Soru</p>
+              <p className="text-xs text-qulo-purple uppercase tracking-widest font-medium">{t("cardLabel")}</p>
             </div>
             <p className="text-white font-bold text-lg mb-4 leading-snug">{t("card1Question")}</p>
             <div className="space-y-2 mb-4">

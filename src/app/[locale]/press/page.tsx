@@ -98,8 +98,6 @@ type UiCopy = {
   colorRgbLabel: string;
   founderHeading: string;
   founderBio: string;
-  statsHeading: string;
-  stats: { value: string; label: string }[];
   mediaCoverageHeading: string;
   mediaCoverageMessage: string;
   pressContactHeading: string;
@@ -141,8 +139,8 @@ function getCopy(locale: string): UiCopy {
 
     aboutHeading: isTr ? "Qulo Hakkında" : "About Qulo",
     aboutParagraph: isTr
-      ? "Qulo, geleneksel dating uygulamalarının swipe yorgunluğuna alternatif olarak doğmuş, soru-cevap tabanlı bir tanışma platformudur. Kullanıcılar 2-10 arasında soru hazırlar, diğer kullanıcılar bu soruları çözer ve tüm cevapları doğru veren kişiyle eşleşme gerçekleşir. Qulo, 16 dilde hizmet vererek dünya çapında milyonlarca bekarın daha derin ve anlamlı bağlantılar kurmasını hedefler."
-      : "Qulo is a question-and-answer based dating platform born as an alternative to the swipe fatigue of traditional dating apps. Users create 2-10 questions, others solve them, and matching occurs with the person who answers all correctly. With service in 16 languages, Qulo aims to help millions of singles worldwide build deeper and more meaningful connections.",
+      ? "Qulo, geleneksel dating uygulamalarının swipe yorgunluğuna alternatif olarak doğmuş, soru-cevap tabanlı bir tanışma platformudur. Kullanıcılar 2-10 arasında soru hazırlar, diğer kullanıcılar bu soruları çözer ve tüm cevapları doğru veren kişiyle eşleşme gerçekleşir. Qulo, 16 dilde hizmet vererek bekarların daha derin ve anlamlı bağlantılar kurmasını hedefler."
+      : "Qulo is a question-and-answer based dating platform born as an alternative to the swipe fatigue of traditional dating apps. Users create 2-10 questions, others solve them, and matching occurs with the person who answers all correctly. With service in 16 languages, Qulo aims to help singles build deeper and more meaningful connections.",
 
     logosHeading: isTr ? "Logo İndirme" : "Logo Downloads",
     logosSubtitle: isTr
@@ -181,15 +179,6 @@ function getCopy(locale: string): UiCopy {
     founderBio: isTr
       ? "Berkant Çalıkuşu, dating sektöründe yıllar geçirdikten sonra geleneksel uygulamaların yetersiz kaldığını fark ederek Qulo'yu kurdu. Soru-cevap tabanlı eşleşme felsefesinin sektörde devrim yaratacağına inanıyor."
       : "Berkant Çalıkuşu founded Qulo after years in the dating industry, recognizing the inadequacy of traditional apps. He believes the question-based matching philosophy will revolutionize the industry.",
-
-    statsHeading: isTr ? "Rakamlarla Qulo" : "Qulo by the Numbers",
-    stats: [
-      { value: "25,000+", label: isTr ? "Kullanıcı" : "Users" },
-      { value: "16", label: isTr ? "Dil" : "Languages" },
-      { value: "10+", label: isTr ? "Ülke" : "Countries" },
-      { value: "4.8/5", label: isTr ? "Kullanıcı Puanı" : "User Rating" },
-      { value: "7+", label: isTr ? "Blog Yazısı" : "Blog Posts" },
-    ],
 
     mediaCoverageHeading: isTr ? "Medyada Qulo" : "Qulo in the Media",
     mediaCoverageMessage: isTr
@@ -526,37 +515,6 @@ export default async function PressPage({
                 </p>
               </div>
             </div>
-          </section>
-
-          {/* Statistics */}
-          <section
-            aria-labelledby="statistics"
-            className="mb-12 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 sm:p-8"
-          >
-            <h2
-              id="statistics"
-              className="text-2xl font-bold text-qulo-purple mb-6 text-center"
-            >
-              {copy.statsHeading}
-            </h2>
-            <dl className="grid grid-cols-2 sm:grid-cols-5 gap-4">
-              {copy.stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="text-center rounded-xl border border-qulo-purple/20 bg-qulo-purple/5 p-4"
-                >
-                  <dt className="sr-only">{stat.label}</dt>
-                  <dd>
-                    <p className="text-2xl sm:text-3xl font-bold text-qulo-green mb-1">
-                      {stat.value}
-                    </p>
-                    <p className="text-[11px] uppercase tracking-wide text-qulo-text-secondary">
-                      {stat.label}
-                    </p>
-                  </dd>
-                </div>
-              ))}
-            </dl>
           </section>
 
           {/* Media Coverage */}

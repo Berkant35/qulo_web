@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
@@ -128,19 +129,19 @@ const WHY_TITLE: Record<string, (c: string) => string> = {
 /** Per-locale body content paragraph templates */
 const BODY_TEMPLATES: Record<string, (c: string, co: string) => string[]> = {
   tr: (c, co) => [
-    `${c} sehrinde yeni insanlarla tanismak mi istiyorsunuz? Qulo ile sorularinizla eslesin. ${c}, ${co}'nin en buyuk sehirlerinden biri olarak milyonlarca bekar icin firsatlar sunuyor.`,
+    `${c} sehrinde yeni insanlarla tanismak mi istiyorsunuz? Qulo ile sorularinizla eslesin. ${c}, ${co}'nin en buyuk sehirlerinden biri olarak yeni insanlarla tanisma firsatlari sunuyor.`,
     `Swipe yerine soru-cevap tabanli eslesmelerle ${c}'da anlamli baglantilar kurun. Qulo'nun quiz dating sistemi, yuzeyselligi birakip gercek uyumluluklari kesfetmenizi saglar.`,
   ],
   en: (c, co) => [
-    `Looking to meet new people in ${c}? Match through your questions with Qulo. As one of ${co}'s largest cities, ${c} offers opportunities for millions of singles.`,
+    `Looking to meet new people in ${c}? Match through your questions with Qulo. As one of ${co}'s largest cities, ${c} offers opportunities to meet new people.`,
     `Build meaningful connections in ${c} with question-based matching instead of swiping. Qulo's quiz dating system helps you discover real compatibility beyond the surface.`,
   ],
   de: (c, co) => [
-    `Mochten Sie neue Menschen in ${c} kennenlernen? Matchen Sie durch Fragen mit Qulo. Als eine der grossten Stadte ${co}s bietet ${c} Millionen Singles Moglichkeiten.`,
+    `Mochten Sie neue Menschen in ${c} kennenlernen? Matchen Sie durch Fragen mit Qulo. Als eine der grossten Stadte ${co}s bietet ${c} viele Moglichkeiten, neue Leute zu treffen.`,
     `Bauen Sie in ${c} bedeutungsvolle Verbindungen durch fragenbasiertes Matching statt Swipen auf. Qulos Quiz-Dating-System hilft Ihnen, echte Kompatibilitat zu entdecken.`,
   ],
   fr: (c, co) => [
-    `Vous cherchez a rencontrer de nouvelles personnes a ${c} ? Matchez par vos questions avec Qulo. ${c}, l'une des plus grandes villes de ${co}, offre des opportunites a des millions de celibataires.`,
+    `Vous cherchez a rencontrer de nouvelles personnes a ${c} ? Matchez par vos questions avec Qulo. ${c}, l'une des plus grandes villes de ${co}, offre des opportunites de rencontrer de nouvelles personnes.`,
     `Construisez des connexions significatives a ${c} grace au matching par questions au lieu du swipe. Le systeme de quiz dating de Qulo vous aide a decouvrir la vraie compatibilite.`,
   ],
   es: (c, co) => [
@@ -148,11 +149,11 @@ const BODY_TEMPLATES: Record<string, (c: string, co: string) => string[]> = {
     `Construye conexiones significativas en ${c} con matching basado en preguntas en lugar de deslizar. El sistema de quiz dating de Qulo te ayuda a descubrir compatibilidad real.`,
   ],
   ar: (c, co) => [
-    `هل تبحث عن التعرف على أشخاص جدد في ${c}؟ تطابق من خلال أسئلتك مع Qulo. ${c}، واحدة من أكبر مدن ${co}، تقدم فرصًا لملايين العزاب.`,
+    `هل تبحث عن التعرف على أشخاص جدد في ${c}؟ تطابق من خلال أسئلتك مع Qulo. ${c}، واحدة من أكبر مدن ${co}، تقدم فرصًا للقاء أشخاص جدد.`,
     `ابنِ روابط ذات معنى في ${c} من خلال المطابقة القائمة على الأسئلة بدلاً من التمرير. يساعدك نظام Qulo للمواعدة عبر الاختبارات على اكتشاف التوافق الحقيقي.`,
   ],
   ru: (c, co) => [
-    `Хотите познакомиться с новыми людьми в ${c}? Находите пару через вопросы с Qulo. ${c} — один из крупнейших городов ${co}, предлагающий возможности для миллионов одиноких людей.`,
+    `Хотите познакомиться с новыми людьми в ${c}? Находите пару через вопросы с Qulo. ${c} — один из крупнейших городов ${co}, предлагающий возможности для встречи новых людей.`,
     `Стройте значимые связи в ${c} через matching на основе вопросов вместо свайпов. Система квиз-знакомств Qulo помогает найти настоящую совместимость.`,
   ],
   pt: (c, co) => [
@@ -160,19 +161,19 @@ const BODY_TEMPLATES: Record<string, (c: string, co: string) => string[]> = {
     `Construa conexoes significativas em ${c} com matching baseado em perguntas em vez de deslizar. O sistema de quiz dating do Qulo ajuda voce a descobrir compatibilidade real.`,
   ],
   it: (c, co) => [
-    `Vuoi incontrare nuove persone a ${c}? Fai match attraverso le tue domande con Qulo. ${c}, una delle citta piu grandi di ${co}, offre opportunita per milioni di single.`,
+    `Vuoi incontrare nuove persone a ${c}? Fai match attraverso le tue domande con Qulo. ${c}, una delle citta piu grandi di ${co}, offre opportunita di incontrare nuove persone.`,
     `Costruisci connessioni significative a ${c} con il matching basato su domande invece dello swipe. Il sistema di quiz dating di Qulo ti aiuta a scoprire la vera compatibilita.`,
   ],
   ja: (c, co) => [
-    `${c}で新しい人と出会いたいですか？Quloで質問を通じてマッチングしましょう。${co}最大の都市の一つである${c}は、数百万人のシングルにチャンスを提供します。`,
+    `${c}で新しい人と出会いたいですか？Quloで質問を通じてマッチングしましょう。${co}最大の都市の一つである${c}は、新しい人と出会う多くの機会を提供します。`,
     `スワイプの代わりに質問ベースのマッチングで、${c}で意味のあるつながりを築きましょう。Quloのクイズデーティングシステムが本当の相性を発見する手助けをします。`,
   ],
   ko: (c, co) => [
-    `${c}에서 새로운 사람들을 만나고 싶으신가요? Qulo에서 질문으로 매칭하세요. ${co} 최대 도시 중 하나인 ${c}는 수백만 싱글에게 기회를 제공합니다.`,
+    `${c}에서 새로운 사람들을 만나고 싶으신가요? Qulo에서 질문으로 매칭하세요. ${co} 최대 도시 중 하나인 ${c}는 새로운 사람들을 만날 다양한 기회를 제공합니다.`,
     `스와이프 대신 질문 기반 매칭으로 ${c}에서 의미 있는 연결을 만드세요. Qulo의 퀴즈 데이팅 시스템이 진정한 호환성을 발견하도록 도와줍니다.`,
   ],
   zh: (c, co) => [
-    `想在${c}认识新朋友吗？用Qulo通过问题匹配。${c}是${co}最大的城市之一，为数百万单身人士提供机会。`,
+    `想在${c}认识新朋友吗？用Qulo通过问题匹配。${c}是${co}最大的城市之一，提供认识新朋友的多种机会。`,
     `用基于问答的匹配代替滑动，在${c}建立有意义的联系。Qulo的问答约会系统帮助你发现真正的兼容性。`,
   ],
   nl: (c, co) => [
@@ -180,15 +181,15 @@ const BODY_TEMPLATES: Record<string, (c: string, co: string) => string[]> = {
     `Bouw betekenisvolle connecties op in ${c} met matching op basis van vragen in plaats van swipen. Het quiz dating-systeem van Qulo helpt je echte compatibiliteit te ontdekken.`,
   ],
   pl: (c, co) => [
-    `Chcesz poznac nowych ludzi w ${c}? Dopasowuj sie przez pytania z Qulo. ${c}, jedno z najwiekszych miast ${co}, oferuje mozliwosci dla milionow singli.`,
+    `Chcesz poznac nowych ludzi w ${c}? Dopasowuj sie przez pytania z Qulo. ${c}, jedno z najwiekszych miast ${co}, oferuje mozliwosci poznawania nowych ludzi.`,
     `Buduj znaczace polaczenia w ${c} dzieki matchingowi opartemu na pytaniach zamiast przesuwania. System quiz dating Qulo pomaga odkryc prawdziwa kompatybilnosc.`,
   ],
   sv: (c, co) => [
-    `Vill du traffa nya manniskor i ${c}? Matcha genom dina fragor med Qulo. ${c}, en av ${co}s storsta stader, erbjuder mojligheter for miljontals singlar.`,
+    `Vill du traffa nya manniskor i ${c}? Matcha genom dina fragor med Qulo. ${c}, en av ${co}s storsta stader, erbjuder mojligheter att traffa nya manniskor.`,
     `Bygg meningsfulla kontakter i ${c} med fragor-baserad matchning istallet for att swipa. Qulos quiz-dejtingsystem hjalper dig att upptacka riktig kompatibilitet.`,
   ],
   hi: (c, co) => [
-    `${c} में नए लोगों से मिलना चाहते हैं? Qulo के साथ अपने सवालों से मैच करें। ${co} के सबसे बड़े शहरों में से एक ${c} लाखों सिंगल्स को अवसर प्रदान करता है।`,
+    `${c} में नए लोगों से मिलना चाहते हैं? Qulo के साथ अपने सवालों से मैच करें। ${co} के सबसे बड़े शहरों में से एक ${c} नए लोगों से मिलने के कई अवसर प्रदान करता है।`,
     `स्वाइप की जगह सवाल-आधारित मैचिंग से ${c} में सार्थक कनेक्शन बनाएं। Qulo का क्विज़ डेटिंग सिस्टम आपको सच्ची अनुकूलता खोजने में मदद करता है।`,
   ],
 };
@@ -343,7 +344,7 @@ export default async function DatingCityPage({
   setRequestLocale(locale);
 
   const city = CITIES.find((c) => c.slug === citySlug);
-  if (!city) return null;
+  if (!city) notFound();
 
   const cityName = getCityName(city, locale);
   const countryName = getCountryName(city, locale);

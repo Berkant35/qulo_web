@@ -81,8 +81,8 @@ export const FEATURE_FAQS: Record<string, FAQLocaleMap> = {
         a: "Qulo'da sorularınızı çözen kişiyle eşleşirsiniz. Bu süreç swipe'tan daha anlamlı ve tatmin edicidir.",
       },
       {
-        q: "Swipe-free dating app'ler daha az kullanıcıya mı sahip?",
-        a: "Tinder gibi dev uygulamalara göre daha küçükler ama hızla büyüyorlar. Kullanıcıların %72'si 'slow dating' yaklaşımını tercih ettiğini belirtiyor.",
+        q: "Swipe-free dating app'ler yeterli mi?",
+        a: "Evet — araştırmalar kullanıcıların %72'sinin 'slow dating' yaklaşımını tercih ettiğini gösteriyor. Swipe-free uygulamalar, yüzeysel eşleşme yerine anlamlı bağlantıya odaklanır.",
       },
     ],
     en: [
@@ -103,8 +103,8 @@ export const FEATURE_FAQS: Record<string, FAQLocaleMap> = {
         a: "On Qulo, you match with whoever solves your questions. This process is more meaningful and satisfying than swiping.",
       },
       {
-        q: "Do swipe-free dating apps have fewer users?",
-        a: "They are smaller than giants like Tinder but growing rapidly. 72% of users say they prefer the 'slow dating' approach.",
+        q: "Are swipe-free dating apps enough?",
+        a: "Yes — research shows that 72% of users prefer the 'slow dating' approach. Swipe-free apps focus on meaningful connections rather than superficial matches.",
       },
     ],
   },
@@ -119,8 +119,8 @@ export const FEATURE_FAQS: Record<string, FAQLocaleMap> = {
         a: "Kişilik uyumluluğu başarılı ilişkilerin 5 temel faktöründen biri. Arthur Aron'un 36 Soru deneyi gibi bilimsel çalışmalar, soruların derin bağlantı kurduğunu kanıtlıyor.",
       },
       {
-        q: "Kişilik eşleşme app'leri hangileri?",
-        a: "Qulo quiz dating ile kişilik uyumluluğuna odaklanır. eHarmony, OkCupid gibi app'ler de kişilik testi kullanır ama Qulo kullanıcının kendi sorularını hazırlamasına izin verir.",
+        q: "Kişilik eşleşmesi nasıl uygulanır?",
+        a: "Qulo quiz dating ile kişilik uyumluluğuna odaklanır. Kullanıcı kendi sorularını hazırlar, diğer kullanıcılar bu sorulara verdikleri cevaplarla kişilik uyumunu gösterir.",
       },
       {
         q: "Kişilik eşleşmesi görünüşten daha mı önemli?",
@@ -141,8 +141,8 @@ export const FEATURE_FAQS: Record<string, FAQLocaleMap> = {
         a: "Personality compatibility is one of the 5 core factors of successful relationships. Scientific studies like Arthur Aron's 36 Questions experiment prove that questions can build deep connection.",
       },
       {
-        q: "Which apps offer personality matching?",
-        a: "Qulo focuses on personality compatibility through quiz dating. Apps like eHarmony and OkCupid also use personality tests, but Qulo lets you create your own questions.",
+        q: "How is personality matching implemented?",
+        a: "Qulo focuses on personality compatibility through quiz dating. You create your own questions, and others reveal compatibility through the answers they give.",
       },
       {
         q: "Is personality matching more important than looks?",
@@ -151,150 +151,6 @@ export const FEATURE_FAQS: Record<string, FAQLocaleMap> = {
       {
         q: "Does Qulo do a personality test?",
         a: "Instead of a traditional personality test, Qulo lets you build your own test through your own questions. This is more personalized and effective.",
-      },
-    ],
-  },
-};
-
-/* ------------------------------------------------------------------ */
-/*  /compare/[slug] FAQs                                               */
-/* ------------------------------------------------------------------ */
-export const COMPARE_FAQS: Record<string, FAQLocaleMap> = {
-  "qulo-vs-tinder": {
-    tr: [
-      {
-        q: "Qulo Tinder'dan daha mı iyi?",
-        a: "Qulo ve Tinder farklı ihtiyaçlara hizmet ediyor. Qulo derin bağlantı ararken, Tinder hızlı/geniş havuz için uygun. Swipe yorgunluğu yaşıyorsanız Qulo daha iyi bir seçenek.",
-      },
-      {
-        q: "Qulo Tinder'ın yerini alabilir mi?",
-        a: "Qulo ciddi bağlantılar arayan kullanıcılar için Tinder'ın çok daha derin bir alternatifidir. Kullanıcılar her iki platformu birlikte kullanabilir.",
-      },
-      {
-        q: "Tinder'daki ghosting Qulo'da da var mı?",
-        a: "Hayır, Qulo'da efor gerektiren eşleşme sistemi ghosting oranını önemli ölçüde azaltır. Tinder'da %80+ olan ghosting oranı Qulo'da çok daha düşüktür.",
-      },
-      {
-        q: "Hangi app daha ucuz — Qulo mu Tinder mı?",
-        a: "Qulo'nun temel özellikleri ücretsizdir ve Premium fiyatlandırması Tinder'dan daha uygun. Her iki platformun da ücretsiz + premium seçenekleri var.",
-      },
-      {
-        q: "Tinder'dan Qulo'ya nasıl geçilir?",
-        a: "Qulo'yu uygulama mağazasından indirip kayıt olabilirsiniz. İlk sorularınızı hazırlayarak eşleşmeye başlayın — swipe deneyiminden farklı olarak, ilk günden anlamlı bağlantılar kurarsınız.",
-      },
-    ],
-    en: [
-      {
-        q: "Is Qulo better than Tinder?",
-        a: "Qulo and Tinder serve different needs. Qulo is built for deep connection, Tinder for fast/wide reach. If you're feeling swipe fatigue, Qulo is the better choice.",
-      },
-      {
-        q: "Can Qulo replace Tinder?",
-        a: "For users seeking serious connections, Qulo is a far deeper alternative to Tinder. Many people use both platforms together.",
-      },
-      {
-        q: "Does ghosting on Tinder also happen on Qulo?",
-        a: "No — Qulo's effort-based matching system significantly reduces ghosting. While ghosting rates exceed 80% on Tinder, they are much lower on Qulo.",
-      },
-      {
-        q: "Which app is cheaper — Qulo or Tinder?",
-        a: "Qulo's core features are free and its Premium pricing is more affordable than Tinder. Both platforms offer free + premium tiers.",
-      },
-      {
-        q: "How do you switch from Tinder to Qulo?",
-        a: "Download Qulo from your app store and sign up. Start matching by creating your first questions — unlike swiping, you build meaningful connections from day one.",
-      },
-    ],
-  },
-  "qulo-vs-bumble": {
-    tr: [
-      {
-        q: "Qulo Bumble'dan daha mı iyi?",
-        a: "Qulo, dating'e tamamen odaklanmış quiz tabanlı bir deneyim sunar. Bumble kadın-öncelikli kuralı ve çoklu modlarıyla farklılaşır. Soru-cevap ile derin uyumluluk arayanlar için Qulo daha uygundur.",
-      },
-      {
-        q: "Bumble kadın-öncelikli, Qulo nedir?",
-        a: "Qulo'da cinsiyet fark etmeksizin herkes eşit şansa sahiptir. Önemli olan sorulara verilen cevaplar — kim hangi soruyu doğru cevaplar, eşleşme öyle gerçekleşir.",
-      },
-      {
-        q: "Qulo'da ilk adım kim atar?",
-        a: "Qulo'da ilk adım, sorularınızı çözerek eşleşmeye giden kişiler tarafından atılır. Cinsiyet kuralı yok — uyumluluk kanıtlanınca her iki taraf da sohbete başlayabilir.",
-      },
-      {
-        q: "Bumble BFF ve Bizz gibi modları Qulo'da var mı?",
-        a: "Hayır, Qulo dating'e odaklanır. BFF veya Bizz gibi ek modlar yerine, dating deneyiminin derinliğine ve kalitesine yatırım yaparız.",
-      },
-      {
-        q: "Qulo uluslararası mı?",
-        a: "Evet, Qulo 16 dil destekler ve dünya çapında kullanılabilir. Türkçe, İngilizce, Almanca, Fransızca, İspanyolca, Arapça, Rusça ve daha fazlası dahil.",
-      },
-    ],
-    en: [
-      {
-        q: "Is Qulo better than Bumble?",
-        a: "Qulo offers a quiz-based experience focused entirely on dating. Bumble differentiates with its women-first rule and multiple modes. For people seeking deep compatibility through Q&A, Qulo is the better fit.",
-      },
-      {
-        q: "Bumble is women-first — what about Qulo?",
-        a: "On Qulo, everyone has equal chances regardless of gender. What matters is the answers — matching happens whenever someone answers the questions correctly.",
-      },
-      {
-        q: "Who makes the first move on Qulo?",
-        a: "The first move is made by whoever solves your questions to reach a match. No gender rule — once compatibility is proven, either side can start the conversation.",
-      },
-      {
-        q: "Does Qulo have modes like Bumble BFF and Bizz?",
-        a: "No — Qulo focuses on dating. Instead of extra modes like BFF or Bizz, we invest in the depth and quality of the dating experience itself.",
-      },
-      {
-        q: "Is Qulo international?",
-        a: "Yes — Qulo supports 16 languages and is available worldwide, including Turkish, English, German, French, Spanish, Arabic, Russian and more.",
-      },
-    ],
-  },
-  "qulo-vs-hinge": {
-    tr: [
-      {
-        q: "Qulo Hinge'den daha mı iyi?",
-        a: "Hinge prompt tabanlı profillerle ciddi ilişki arayanlar için güçlü bir tercih. Qulo ise pasif begeni yerine aktif soru çözme ile uyumluluğu kanıtlar — daha güçlü bir filtreleme.",
-      },
-      {
-        q: "Hinge 'designed to be deleted' diyor — Qulo ne diyor?",
-        a: "Qulo, sorularla anlamlı bağlantılar kurmaya odaklanır. Amacımız kullanıcının doğru kişiyle gerçek bir ilişki kurması — hızlı sayıdan çok bağlantı kalitesi önemli.",
-      },
-      {
-        q: "Hinge prompt'lar, Qulo sorular — fark nedir?",
-        a: "Hinge prompt'larda kullanıcı kendi cevabını yazar ve karşı taraf bu cevaba 'like' gönderir (pasif beğeni). Qulo'da ise karşı taraf sorularınızı çözerek uyumluluğunu aktif olarak kanıtlar.",
-      },
-      {
-        q: "Qulo ciddi ilişkiler için uygun mu?",
-        a: "Evet, Qulo'nun efor gerektiren eşleşme sistemi yüzeysel etkileşimi azaltır ve ciddi ilişki arayanları doğal olarak filtreler. 25K+ kullanıcımızın çoğu uzun vadeli bağlantı arıyor.",
-      },
-      {
-        q: "Hinge ücreti Qulo'dan pahalı mı?",
-        a: "Hinge'in premium planları (HingeX, Hinge+) Qulo'dan daha pahalı olabiliyor. Qulo, ücretsiz katmanda da daha cömert günlük limitler sunar.",
-      },
-    ],
-    en: [
-      {
-        q: "Is Qulo better than Hinge?",
-        a: "Hinge is a strong choice for those seeking serious relationships through prompt-based profiles. Qulo proves compatibility with active question solving instead of passive likes — a stronger filter.",
-      },
-      {
-        q: "Hinge says 'designed to be deleted' — what does Qulo say?",
-        a: "Qulo focuses on building meaningful connections through questions. Our goal is for users to find a real relationship with the right person — connection quality matters more than quick numbers.",
-      },
-      {
-        q: "Hinge has prompts, Qulo has questions — what's the difference?",
-        a: "On Hinge, users write answers to prompts and others send a 'like' on that answer (passive). On Qulo, the other person actively proves compatibility by solving your questions.",
-      },
-      {
-        q: "Is Qulo suitable for serious relationships?",
-        a: "Yes — Qulo's effort-based matching reduces superficial interaction and naturally filters for people seeking serious connections. Most of our 25K+ users are looking for long-term bonds.",
-      },
-      {
-        q: "Is Hinge more expensive than Qulo?",
-        a: "Hinge's premium tiers (HingeX, Hinge+) can be pricier than Qulo. Qulo also offers more generous daily limits on its free tier.",
       },
     ],
   },
@@ -322,8 +178,8 @@ export const ABOUT_FAQS: FAQLocaleMap = {
       a: "Qulo 2026'da kuruldu ve hızla uluslararası bir dating platformuna dönüştü.",
     },
     {
-      q: "Qulo'nun rakiplerden farkı nedir?",
-      a: "Qulo, soru-cevap tabanlı eşleşme sistemiyle tek başına öncü. Tinder/Bumble/Hinge swipe veya prompt kullanırken, Qulo kendi sorularınızı hazırlamanıza izin verir.",
+      q: "Qulo'nun farkı nedir?",
+      a: "Qulo, soru-cevap tabanlı eşleşme sistemiyle farklılaşır. Yüzeysel tercihlere dayalı swipe veya hazır prompt'lar yerine, kendi sorularınızı hazırlayarak gerçek kişilik uyumunu keşfedersiniz.",
     },
   ],
   en: [
@@ -344,8 +200,8 @@ export const ABOUT_FAQS: FAQLocaleMap = {
       a: "Qulo was founded in 2026 and quickly grew into an international dating platform.",
     },
     {
-      q: "What makes Qulo different from competitors?",
-      a: "Qulo is a pioneer with its question-based matching system. While Tinder/Bumble/Hinge use swipes or prompts, Qulo lets you create your own questions.",
+      q: "What makes Qulo different?",
+      a: "Qulo stands apart with its question-based matching system. Instead of swipes based on surface preferences or pre-written prompts, you create your own questions to discover genuine personality fit.",
     },
   ],
 };
@@ -356,13 +212,6 @@ export const ABOUT_FAQS: FAQLocaleMap = {
  */
 export function getFeatureFaqs(slug: string, locale: string): FAQItem[] {
   const map = FEATURE_FAQS[slug];
-  if (!map) return [];
-  return map[locale] || map.en || [];
-}
-
-/** Resolve compare-page FAQ items with EN fallback. */
-export function getCompareFaqs(slug: string, locale: string): FAQItem[] {
-  const map = COMPARE_FAQS[slug];
   if (!map) return [];
   return map[locale] || map.en || [];
 }

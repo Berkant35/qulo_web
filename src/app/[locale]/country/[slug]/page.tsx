@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
@@ -129,67 +130,67 @@ const WHY_TITLE: Record<string, (c: string) => string> = {
 /** Per-locale body content paragraphs */
 const BODY_TEMPLATES: Record<string, (c: string, p: string) => string[]> = {
   tr: (c, p) => [
-    `${c}'de milyonlarca bekar kisi artik Qulo ile yeni insanlarla tanisiyor. ${c}, ${p} nufusuyla dating uygulamalari icin buyuk bir potansiyel pazar.`,
+    `${c}'de yeni insanlarla tanismak ister misiniz? ${c}, ${p} nufusuyla dating uygulamalari icin buyuk bir potansiyel pazar.`,
     `Swipe tabanli uygulamalar yerine Qulo, soru-cevap sistemiyle daha derin baglantilar kurmanizi saglar. Yuzeyselligi birakip ${c}'de gercek uyumluluklari kesfedin.`,
   ],
   en: (c, p) => [
-    `Millions of singles in ${c} are now meeting new people with Qulo. With a population of ${p}, ${c} is a large potential market for dating apps.`,
+    `Looking to meet new people in ${c}? With a population of ${p}, ${c} is a large potential market for dating apps.`,
     `Instead of swipe-based apps, Qulo helps you build deeper connections through its question-and-answer system. Move beyond the surface and discover real compatibility in ${c}.`,
   ],
   de: (c, p) => [
-    `Millionen von Singles in ${c} lernen jetzt neue Menschen mit Qulo kennen. Mit einer Bevolkerung von ${p} ist ${c} ein grosser potenzieller Markt fur Dating-Apps.`,
+    `Moechten Sie neue Menschen in ${c} kennenlernen? Mit einer Bevolkerung von ${p} ist ${c} ein grosser potenzieller Markt fur Dating-Apps.`,
     `Statt Swipe-basierter Apps hilft Qulo Ihnen, durch sein Frage-Antwort-System tiefere Verbindungen aufzubauen. Entdecken Sie echte Kompatibilitat in ${c}.`,
   ],
   fr: (c, p) => [
-    `Des millions de celibataires en ${c} rencontrent desormais de nouvelles personnes avec Qulo. Avec une population de ${p}, ${c} est un grand marche potentiel pour les apps de dating.`,
+    `Vous cherchez a rencontrer de nouvelles personnes en ${c} ? Avec une population de ${p}, ${c} est un grand marche potentiel pour les apps de dating.`,
     `Au lieu d'apps basees sur le swipe, Qulo vous aide a construire des connexions plus profondes grace a son systeme de questions-reponses. Decouvrez une vraie compatibilite en ${c}.`,
   ],
   es: (c, p) => [
-    `Millones de solteros en ${c} ahora conocen nuevas personas con Qulo. Con una poblacion de ${p}, ${c} es un gran mercado potencial para apps de citas.`,
+    `Buscas conocer gente nueva en ${c}? Con una poblacion de ${p}, ${c} es un gran mercado potencial para apps de citas.`,
     `En lugar de apps basadas en deslizar, Qulo te ayuda a construir conexiones mas profundas con su sistema de preguntas y respuestas. Descubre la compatibilidad real en ${c}.`,
   ],
   ar: (c, p) => [
-    `يلتقي ملايين العزاب في ${c} الآن بأشخاص جدد مع Qulo. بسكان يبلغ ${p}، تعد ${c} سوقًا محتملاً كبيرًا لتطبيقات المواعدة.`,
+    `هل تبحث عن التعرف على أشخاص جدد في ${c}؟ بسكان يبلغ ${p}، تعد ${c} سوقًا محتملاً كبيرًا لتطبيقات المواعدة.`,
     `بدلاً من التطبيقات القائمة على التمرير، يساعدك Qulo على بناء روابط أعمق من خلال نظام الأسئلة والأجوبة. اكتشف التوافق الحقيقي في ${c}.`,
   ],
   ru: (c, p) => [
-    `Миллионы одиноких людей в ${c} теперь знакомятся с новыми людьми через Qulo. С населением ${p} ${c} представляет собой огромный потенциальный рынок для приложений знакомств.`,
+    `Хотите познакомиться с новыми людьми в ${c}? С населением ${p} ${c} представляет собой огромный потенциальный рынок для приложений знакомств.`,
     `Вместо свайп-приложений Qulo помогает вам строить более глубокие связи через систему вопросов и ответов. Откройте настоящую совместимость в ${c}.`,
   ],
   pt: (c, p) => [
-    `Milhoes de solteiros em ${c} agora conhecem novas pessoas com Qulo. Com uma populacao de ${p}, ${c} e um grande mercado potencial para apps de namoro.`,
+    `Quer conhecer pessoas novas em ${c}? Com uma populacao de ${p}, ${c} e um grande mercado potencial para apps de namoro.`,
     `Em vez de apps baseados em deslizar, o Qulo ajuda voce a construir conexoes mais profundas com seu sistema de perguntas e respostas. Descubra a compatibilidade real em ${c}.`,
   ],
   it: (c, p) => [
-    `Milioni di single in ${c} stanno ora incontrando nuove persone con Qulo. Con una popolazione di ${p}, ${c} e un grande mercato potenziale per le app di incontri.`,
+    `Vuoi incontrare nuove persone in ${c}? Con una popolazione di ${p}, ${c} e un grande mercato potenziale per le app di incontri.`,
     `Invece di app basate sullo swipe, Qulo ti aiuta a costruire connessioni piu profonde con il suo sistema di domande e risposte. Scopri la vera compatibilita in ${c}.`,
   ],
   ja: (c, p) => [
-    `${c}の何百万もの独身者がQuloで新しい人と出会っています。人口${p}の${c}は、デートアプリにとって大きな潜在市場です。`,
+    `${c}で新しい人と出会いたいですか？人口${p}の${c}は、デートアプリにとって大きな潜在市場です。`,
     `スワイプベースのアプリの代わりに、Quloは質問と回答のシステムを通じてより深いつながりを築くお手伝いをします。${c}で本当の相性を発見しましょう。`,
   ],
   ko: (c, p) => [
-    `${c}의 수백만 싱글이 이제 Qulo로 새로운 사람들을 만나고 있습니다. ${p} 인구를 가진 ${c}는 데이팅 앱에 큰 잠재 시장입니다.`,
+    `${c}에서 새로운 사람들을 만나고 싶으신가요? ${p} 인구를 가진 ${c}는 데이팅 앱에 큰 잠재 시장입니다.`,
     `스와이프 기반 앱 대신, Qulo는 질문-답변 시스템을 통해 더 깊은 연결을 구축하도록 도와줍니다. ${c}에서 진정한 호환성을 발견하세요.`,
   ],
   zh: (c, p) => [
-    `${c}的数百万单身人士现在通过Qulo认识新朋友。${c}人口${p}，是约会应用的巨大潜在市场。`,
+    `想在${c}认识新朋友吗？${c}人口${p}，是约会应用的巨大潜在市场。`,
     `与其使用基于滑动的应用，Qulo通过问答系统帮助你建立更深层次的联系。在${c}发现真正的兼容性。`,
   ],
   nl: (c, p) => [
-    `Miljoenen singles in ${c} ontmoeten nu nieuwe mensen met Qulo. Met een bevolking van ${p} is ${c} een grote potentiele markt voor datingapps.`,
+    `Wil je nieuwe mensen ontmoeten in ${c}? Met een bevolking van ${p} is ${c} een grote potentiele markt voor datingapps.`,
     `In plaats van swipe-gebaseerde apps helpt Qulo je diepere connecties op te bouwen via zijn vraag-antwoord-systeem. Ontdek echte compatibiliteit in ${c}.`,
   ],
   pl: (c, p) => [
-    `Miliony singli w ${c} poznaja teraz nowych ludzi z Qulo. Z populacja ${p}, ${c} to duzy potencjalny rynek dla aplikacji randkowych.`,
+    `Chcesz poznac nowych ludzi w ${c}? Z populacja ${p}, ${c} to duzy potencjalny rynek dla aplikacji randkowych.`,
     `Zamiast aplikacji opartych na przesuwaniu, Qulo pomaga budowac glebsze polaczenia poprzez system pytan i odpowiedzi. Odkryj prawdziwa kompatybilnosc w ${c}.`,
   ],
   sv: (c, p) => [
-    `Miljontals singlar i ${c} traffar nu nya manniskor med Qulo. Med en befolkning pa ${p} ar ${c} en stor potentiell marknad for dejtingappar.`,
+    `Vill du traffa nya manniskor i ${c}? Med en befolkning pa ${p} ar ${c} en stor potentiell marknad for dejtingappar.`,
     `Istallet for swipe-baserade appar hjalper Qulo dig att bygga djupare kontakter genom sitt fraga-svar-system. Upptack riktig kompatibilitet i ${c}.`,
   ],
   hi: (c, p) => [
-    `${c} में लाखों सिंगल्स अब Qulo के साथ नए लोगों से मिल रहे हैं। ${p} आबादी के साथ ${c} डेटिंग ऐप्स के लिए एक बड़ा संभावित बाज़ार है।`,
+    `क्या आप ${c} में नए लोगों से मिलना चाहते हैं? ${p} आबादी के साथ ${c} डेटिंग ऐप्स के लिए एक बड़ा संभावित बाज़ार है।`,
     `स्वाइप-आधारित ऐप्स के बजाय, Qulo अपने सवाल-जवाब प्रणाली के माध्यम से गहरे कनेक्शन बनाने में मदद करता है। ${c} में वास्तविक अनुकूलता की खोज करें।`,
   ],
 };
@@ -229,23 +230,23 @@ const HOW_IT_WORKS: Record<string, { title: string; steps: string[] }> = {
 };
 
 /** Per-locale stats labels */
-const STATS_LABELS: Record<string, { population: string; users: string; languages: string }> = {
-  tr: { population: "Ulke Nufusu", users: "Aktif Kullanici", languages: "Dil Destegi" },
-  en: { population: "Country Population", users: "Active Users", languages: "Languages" },
-  de: { population: "Bevolkerung", users: "Aktive Nutzer", languages: "Sprachen" },
-  fr: { population: "Population", users: "Utilisateurs actifs", languages: "Langues" },
-  es: { population: "Poblacion", users: "Usuarios activos", languages: "Idiomas" },
-  ar: { population: "عدد السكان", users: "المستخدمون النشطون", languages: "اللغات" },
-  ru: { population: "Население", users: "Активные пользователи", languages: "Языки" },
-  pt: { population: "Populacao", users: "Usuarios ativos", languages: "Idiomas" },
-  it: { population: "Popolazione", users: "Utenti attivi", languages: "Lingue" },
-  ja: { population: "人口", users: "アクティブユーザー", languages: "言語" },
-  ko: { population: "인구", users: "활성 사용자", languages: "언어" },
-  zh: { population: "人口", users: "活跃用户", languages: "语言" },
-  nl: { population: "Bevolking", users: "Actieve gebruikers", languages: "Talen" },
-  pl: { population: "Populacja", users: "Aktywni uzytkownicy", languages: "Jezyki" },
-  sv: { population: "Befolkning", users: "Aktiva anvandare", languages: "Sprak" },
-  hi: { population: "जनसंख्या", users: "सक्रिय उपयोगकर्ता", languages: "भाषाएं" },
+const STATS_LABELS: Record<string, { population: string; languages: string }> = {
+  tr: { population: "Ulke Nufusu", languages: "Dil Destegi" },
+  en: { population: "Country Population", languages: "Languages" },
+  de: { population: "Bevolkerung", languages: "Sprachen" },
+  fr: { population: "Population", languages: "Langues" },
+  es: { population: "Poblacion", languages: "Idiomas" },
+  ar: { population: "عدد السكان", languages: "اللغات" },
+  ru: { population: "Население", languages: "Языки" },
+  pt: { population: "Populacao", languages: "Idiomas" },
+  it: { population: "Popolazione", languages: "Lingue" },
+  ja: { population: "人口", languages: "言語" },
+  ko: { population: "인구", languages: "언어" },
+  zh: { population: "人口", languages: "语言" },
+  nl: { population: "Bevolking", languages: "Talen" },
+  pl: { population: "Populacja", languages: "Jezyki" },
+  sv: { population: "Befolkning", languages: "Sprak" },
+  hi: { population: "जनसंख्या", languages: "भाषाएं" },
 };
 
 /** Per-locale CTA labels */
@@ -351,7 +352,7 @@ export default async function CountryDetailPage({
   setRequestLocale(locale);
 
   const country = COUNTRIES.find((c) => c.slug === slug);
-  if (!country) return null;
+  if (!country) notFound();
 
   const countryName = getCountryName(country, locale);
   const topCitiesText = getTopCities(country, locale);
@@ -504,19 +505,13 @@ export default async function CountryDetailPage({
       {/* Stats */}
       <section className="py-16 px-6">
         <div className="max-w-3xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 text-center">
               <p className="text-3xl font-bold text-qulo-green mb-1">
                 {country.population}
               </p>
               <p className="text-xs text-qulo-text-secondary">
                 {statsLabels.population}
-              </p>
-            </div>
-            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 text-center">
-              <p className="text-3xl font-bold text-qulo-purple mb-1">10K+</p>
-              <p className="text-xs text-qulo-text-secondary">
-                {statsLabels.users}
               </p>
             </div>
             <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 text-center">

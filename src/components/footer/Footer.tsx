@@ -103,26 +103,10 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={`/${locale}/compare`}
-                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
-                  >
-                    {t("compare")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     href={`/${locale}/pricing`}
                     className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
                   >
                     {t("pricing")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href={`/${locale}/testimonials`}
-                    className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
-                  >
-                    {t("reviews")}
                   </Link>
                 </li>
                 <li>

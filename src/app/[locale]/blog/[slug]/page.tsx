@@ -119,9 +119,8 @@ function SwipeFatigueContent({ locale }: { locale: string }) {
           Swipe yorgunlugu, dating uygulamalarinda surekli profillere bakarak sola veya saga kaydirma
           eyleminin yarattigi zihinsel ve duygusal tukenmislik halidir. Bu terim ilk olarak 2020&apos;li
           yillarda populerlesmis olsa da, aslinda insanlarin yillardir hissettigi bir sorunu
-          tanimlamaktadir. Tinder, Bumble, Hinge gibi uygulamalarin ortak noktasi olan swipe
-          mekanigi, baslangicta eglenceli gorunse de zamanla kullanicilari yorucu bir donguye
-          sokmaktadir.
+          tanimlamaktadir. Swipe tabanli uygulamalarin ortak noktasi olan bu mekanik, baslangicta
+          eglenceli gorunse de zamanla kullanicilari yorucu bir donguye sokmaktadir.
         </p>
         <p className="text-qulo-text-secondary leading-relaxed mb-4">
           Arastirmalar, ortalama bir dating uygulamasi kullanicisinin gunde yaklasik 30-40 dakika
@@ -247,8 +246,8 @@ function SwipeFatigueContent({ locale }: { locale: string }) {
       <p className="text-qulo-text-secondary leading-relaxed mb-4">
         Swipe fatigue is the mental and emotional exhaustion caused by endlessly swiping through
         profiles on dating apps. While the term gained popularity in the early 2020s, it describes
-        a problem users have felt for years. The swipe mechanic shared by Tinder, Bumble, Hinge,
-        and similar apps may seem fun at first, but eventually traps users in an exhausting cycle.
+        a problem users have felt for years. The swipe mechanic shared by most traditional dating
+        apps may seem fun at first, but eventually traps users in an exhausting cycle.
       </p>
       <p className="text-qulo-text-secondary leading-relaxed mb-4">
         Research shows that the average dating app user spends approximately 30-40 minutes per day
@@ -372,10 +371,10 @@ function QuizDatingContent({ locale }: { locale: string }) {
         <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Geleneksel Dating Uygulamalarinin Sinirliliklari</h2>
         <p className="text-qulo-text-secondary leading-relaxed mb-4">
           Son on yilda dating uygulamalari milyonlarca insanin tanisma bicimini kokten degistirdi.
-          Tinder&apos;in 2012&apos;de baslattigi swipe mekanigi, dating sektorunu domine etti ve neredeyse
-          tum rakipler ayni modeli benimsedi. Ancak bu modelin ciddi sorunlari var. Arastirmalar,
-          swipe tabanli uygulamalarda yapilan eslesmelerin sadece %2-5&apos;inin gercek bir bulusmaya
-          donustugunu gosteriyor.
+          2012&apos;de populerlesen swipe mekanigi, dating sektorunu domine etti ve neredeyse tum
+          klasik dating uygulamalari ayni modeli benimsedi. Ancak bu modelin ciddi sorunlari var.
+          Arastirmalar, swipe tabanli uygulamalarda yapilan eslesmelerin sadece %2-5&apos;inin
+          gercek bir bulusmaya donustugunu gosteriyor.
         </p>
         <p className="text-qulo-text-secondary leading-relaxed mb-4">
           Swipe mekaniginin temel sorunu, insanlari bir fotograf ve birkac satir biyografiyle
@@ -492,9 +491,10 @@ function QuizDatingContent({ locale }: { locale: string }) {
       <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">The Limitations of Traditional Dating Apps</h2>
       <p className="text-qulo-text-secondary leading-relaxed mb-4">
         Over the past decade, dating apps have fundamentally changed how millions of people meet.
-        The swipe mechanic introduced by Tinder in 2012 dominated the dating industry, and nearly
-        every competitor adopted the same model. However, this model has serious problems. Research
-        shows that only 2-5% of matches made on swipe-based apps result in an actual date.
+        The swipe mechanic that became popular in 2012 dominated the dating industry, and nearly
+        every traditional dating app adopted the same model. However, this model has serious
+        problems. Research shows that only 2-5% of matches made on swipe-based apps result in an
+        actual date.
       </p>
       <p className="text-qulo-text-secondary leading-relaxed mb-4">
         The fundamental problem with the swipe mechanic is that it forces us to evaluate people
@@ -1229,11 +1229,11 @@ function NoSwipeDatingContent({ locale }: { locale: string }) {
       <>
         <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Swipe Mekanizmasinin Tarihi ve Sorunlari</h2>
         <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          2012 yilinda Tinder&apos;in piyasaya surulmesiyle birlikte &quot;swipe&quot; mekanigi dating dunyasinin
-          standart etkilesim modeli haline geldi. Sola kaydir &quot;hayir,&quot; saga kaydir &quot;evet&quot; — bu
-          kadar basit. Bu mekanik, dating uygulamalarini milyonlarca insan icin erisebilir kildi ve
-          sektoru milyar dolarlik bir endustriye donusturdu. Ancak on yildan fazla bir sure sonra,
-          swipe modelinin ciddi yapisal sorunlari artik gormezden gelinemeyecek kadar belirgin.
+          2012 yilindan itibaren populerlesen &quot;swipe&quot; mekanigi, dating dunyasinin standart
+          etkilesim modeli haline geldi. Sola kaydir &quot;hayir,&quot; saga kaydir &quot;evet&quot; — bu kadar
+          basit. Bu mekanik, dating uygulamalarini cok daha erisilebilir kildi ve sektoru milyar
+          dolarlik bir endustriye donusturdu. Ancak on yildan fazla bir sure sonra, swipe modelinin
+          ciddi yapisal sorunlari artik gormezden gelinemeyecek kadar belirgin.
         </p>
         <p className="text-qulo-text-secondary leading-relaxed mb-4">
           Arastirmalar, swipe tabanli uygulamalardaki eslesmelerin sadece %2-5&apos;inin gercek bir
@@ -1274,8 +1274,8 @@ function NoSwipeDatingContent({ locale }: { locale: string }) {
         <h3 className="text-xl font-semibold text-white mb-3 mt-6">2. Yavas Dating (Slow Dating)</h3>
         <p className="text-qulo-text-secondary leading-relaxed mb-4">
           Sonsuz profil akisi yerine, gunde sinirli sayida profil sunan uygulamalar. Amac, her profili
-          dikkatlice degerlendirmeyi tesvik etmektir. Once, Hinge&apos;in &quot;Most Compatible&quot; ozelligi ve
-          Coffee Meets Bagel bu kategorinin onculeridir.
+          dikkatlice degerlendirmeyi tesvik etmektir. Bu kategori, kalite odakli kullanicilarin
+          hiz yerine anlamli eslesme aradigi bir yaklasim sunar.
         </p>
         <p className="text-qulo-text-secondary leading-relaxed mb-4">
           <strong className="text-white">Avantajlari:</strong> Karar yorgunlugunu azaltir, daha dikkatli
@@ -1390,11 +1390,11 @@ function NoSwipeDatingContent({ locale }: { locale: string }) {
     <>
       <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">The History and Problems of the Swipe Mechanic</h2>
       <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        When Tinder launched in 2012, the &quot;swipe&quot; mechanic became the standard interaction model
-        for the dating world. Swipe left for &quot;no,&quot; swipe right for &quot;yes&quot; — that simple. This
-        mechanic made dating apps accessible to millions and transformed the industry into a
-        multi-billion dollar sector. However, after more than a decade, the structural problems
-        of the swipe model have become too significant to ignore.
+        Since 2012, the &quot;swipe&quot; mechanic has become the standard interaction model for the
+        dating world. Swipe left for &quot;no,&quot; swipe right for &quot;yes&quot; — that simple. This mechanic
+        made dating apps far more accessible and transformed the industry into a multi-billion
+        dollar sector. However, after more than a decade, the structural problems of the swipe
+        model have become too significant to ignore.
       </p>
       <p className="text-qulo-text-secondary leading-relaxed mb-4">
         Research shows that only 2-5% of matches on swipe-based apps result in an actual date.
@@ -1434,8 +1434,8 @@ function NoSwipeDatingContent({ locale }: { locale: string }) {
       <h3 className="text-xl font-semibold text-white mb-3 mt-6">2. Slow Dating</h3>
       <p className="text-qulo-text-secondary leading-relaxed mb-4">
         Apps that present a limited number of profiles per day instead of an infinite stream. The goal
-        is to encourage careful evaluation of each profile. Hinge&apos;s &quot;Most Compatible&quot; feature and
-        Coffee Meets Bagel are pioneers in this category.
+        is to encourage careful evaluation of each profile. This category appeals to quality-focused
+        users who prefer meaningful matching over speed.
       </p>
       <p className="text-qulo-text-secondary leading-relaxed mb-4">
         <strong className="text-white">Advantages:</strong> Reduces decision fatigue, more careful
