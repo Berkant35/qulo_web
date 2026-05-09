@@ -1,0 +1,27 @@
+{
+  "name": "qulo-stop-swiping",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Qulo hero ad — Stop swiping. Start solving.",
+  "scripts": {
+    "studio": "npx remotion studio src/index.ts",
+    "render:master": "npx remotion render src/index.ts StopSwipingAd out/qulo-stop-swiping-15s-9x16.mp4",
+    "render:short": "npx remotion render src/index.ts StopSwipingAdShort out/qulo-stop-swiping-6s-9x16.mp4"
+  },
+  "author": "Berkant Calikusu",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@remotion/cli": "^4.0.437",
+    "@remotion/google-fonts": "^4.0.437",
+    "@remotion/media": "^4.0.437",
+    "@remotion/transitions": "^4.0.437",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "remotion": "^4.0.437"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  }
+}
