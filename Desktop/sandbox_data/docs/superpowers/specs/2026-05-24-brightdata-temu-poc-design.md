@@ -73,31 +73,61 @@ Bright Data Global Partnerships Manager Marc Hermann-Cohen aktif diyalog halinde
 
 ### 3.1 L1 — Deterministic Daemon (Python, no AI)
 
-**Sorumluluk:** Her gün belirli saatte Temu'dan veri çekmek.
+**Sorumluluk:** Her gün belirli saatte tüm registered device'lardan paralel veri çekmek.
 
 **Tetikleyici:** macOS `launchd` (her gün 09:00, sleep'ten uyanma desteği ile).
 
-**Akış:**
-1. ADB üzerinden telefon hazır mı kontrol et (`adb devices`, ekran açık mı, Temu yüklü mü, şarj ≥ %30)
-2. Hazır değilse: Telegram L2 alarm + exit
-3. 100 SKU'luk listeyi `targets.json`'dan oku
-4. Her SKU için: Temu app'i aç → arama veya direkt URL deep link → ürün sayfası → screenshot al → koordinat-bazlı parse → SQLite'a yaz
-5. Run sonunda istatistikleri (`runs` tablosu) ve heartbeat'i yaz
+**Device pool pattern (day-1 multi-device ready):**
+- `devices.json` dosyası registered cihazların listesi (PoC'de 1 satır, gelecekte N satır)
+- Daemon `adb devices` ile fiziksel olarak bağlı tüm cihazları görür, `devices.json` ile eşler
+- Her cihaz için ayrı bir worker thread başlatır
+- Worker'lar paralel çalışır, sadece kendi cihazlarını kullanır
+- Bir worker çökerse sadece o cihazın job'ları başarısız, diğerleri etkilenmez
 
-**Bağımsız çalışma garantisi:** AI yok, Python + adb + sqlite3 + Pillow (OCR fallback için). Tek bir Python virtualenv.
+**Job dağıtımı:**
+- 100 SKU consistent hash ile cihazlara dağıtılır (`sku_id → device_id`)
+- Aynı SKU her zaman aynı cihazda → fingerprint tutarlılığı (Temu aynı kullanıcı sanıyor)
+- Cihaz sayısı değişirse: rehash, ama gradual migration ile (1 hafta over-provision)
+
+**Akış (worker başına):**
+1. `adb -s <device_id>` ile cihaz hazır mı kontrol et (ekran açık, Temu yüklü, şarj ≥ %30)
+2. Hazır değilse: Telegram L2 alarm (cihaz adı ile) + worker exit
+3. Bu cihaza atanan SKU listesini al
+4. Her SKU için: Temu app'i aç → arama/deep link → ürün sayfası → screenshot → parse → SQLite'a yaz (`device_id` kolonu dahil)
+5. Worker sonunda kendi `runs` satırını ve heartbeat'i yaz
+
+**Bağımsız çalışma garantisi:** AI yok, Python + adb + sqlite3 + Pillow. Tek bir Python virtualenv. `concurrent.futures.ThreadPoolExecutor` ile N worker.
 
 **Dosya yapısı:**
 ```
 scraper/
-  daemon.py            # main entry
-  adb_client.py        # ADB wrapper
+  daemon.py            # main entry, device pool orchestration
+  adb_client.py        # ADB wrapper (cihaz-id parametreli)
+  device_pool.py       # devices.json okuma, worker spawn, sku → device hash
   temu_actions.py      # selector koordinatları + flow (PATCH HEDEFİ)
   parser.py            # screenshot → structured data
-  storage.py           # SQLite I/O
+  storage.py           # SQLite I/O (device_id kolonlu)
   targets.json         # 100 SKU listesi
+  devices.json         # registered device listesi
 ```
 
-**Patch hedefi:** `temu_actions.py` — Claude bu dosyayı patchler. İçinde sadece koordinatlar, swipe miktarları, bekleme süreleri, retry sayıları, OCR bölgeleri var. Diğer dosyalar Claude tarafından **değiştirilmez**.
+**`devices.json` örneği (PoC = 1 satır):**
+```json
+[
+  {
+    "device_id": "phone_01",
+    "adb_serial": "R3CR70XXXX",
+    "model": "Pixel 7",
+    "screen_resolution": "1080x2400",
+    "active": true,
+    "added_at": "2026-05-24"
+  }
+]
+```
+
+**10-15 cihaza geçince:** Sadece bu JSON'a satır eklenir. Daemon kodu **değişmez**. Yeni cihaz için bir kerelik koordinat kalibrasyonu (farklı ekran çözünürlüğü ise) gerekebilir — `temu_actions.py` model-aware olarak yazılır.
+
+**Patch hedefi:** `temu_actions.py` — Claude bu dosyayı patchler. İçinde model-bazlı koordinatlar, swipe miktarları, bekleme süreleri, retry sayıları, OCR bölgeleri var. Diğer dosyalar Claude tarafından **değiştirilmez**.
 
 ### 3.2 L2 — Health Monitor (Python, no AI)
 
@@ -168,6 +198,9 @@ scraper/
 | Telefon restart sonrası unlock screen | Screenshot'ta lock pattern | L2 alarm, retry 3 kez sonra exit |
 | Şarj < %30 | `adb shell dumpsys battery` | L2 alarm, daemon exit |
 | Sen telefonu kullanıyorsun (foreground app != Temu) | `adb shell dumpsys window` kontrolü | Run skip + log, alarm yok |
+| Mac restart (planlı veya power outage) | launchd RunAtLoad → heartbeat tick | Otomatik resume, Telegram'a "system back online" |
+| Bir cihaz çöktü (multi-device senaryo) | Worker exception, ADB unreachable | Sadece o cihazın worker'ı durur, diğerleri devam; o cihaza assignment'lar bir sonraki run'da rehash |
+| USB hub gücü yetmedi (multi-device) | Sporadic ADB disconnect | L2 alarm — powered hub'a geçme uyarısı |
 | Temu app update sonrası UI değişti | Parse success rate düşüşü | Otomatik L2 → Claude supervisor → patch flow |
 | Captcha tetiklendi | Screenshot'ta captcha keyword OCR | L3 alarm — Claude'a verilmiyor (insan gerek) |
 | Hesap banlandı | "Account suspended" pattern | L3 alarm, daemon kalıcı durdurulur, manuel müdahale |
@@ -191,10 +224,21 @@ CREATE TABLE targets (
   added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Registered devices (PoC: 1 satır, gelecekte N)
+CREATE TABLE devices (
+  device_id TEXT PRIMARY KEY,
+  adb_serial TEXT NOT NULL,
+  model TEXT,
+  screen_resolution TEXT,
+  active BOOLEAN DEFAULT 1,
+  added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Her gün her SKU için bir satır (time-series)
 CREATE TABLE price_observations (
   id INTEGER PRIMARY KEY,
   sku_id TEXT NOT NULL REFERENCES targets(sku_id),
+  device_id TEXT NOT NULL REFERENCES devices(device_id),
   observed_at TIMESTAMP NOT NULL,
   price_usd REAL,
   original_price_usd REAL,  -- indirim öncesi
@@ -209,9 +253,10 @@ CREATE TABLE price_observations (
   UNIQUE(sku_id, observed_at)
 );
 
--- Her run için metrik
+-- Her run için metrik (device başına ayrı satır)
 CREATE TABLE runs (
   id INTEGER PRIMARY KEY,
+  device_id TEXT NOT NULL REFERENCES devices(device_id),
   started_at TIMESTAMP,
   finished_at TIMESTAMP,
   status TEXT,               -- 'success', 'partial', 'failed'
@@ -269,6 +314,90 @@ CREATE TABLE patches (
 **Email tonu:** Kısa, profesyonel, deck + Drive linki. "Marc, demo done — here are the real numbers" gibi.
 
 ---
+
+## 7.5 Bootstrap, Auto-restart ve Operations
+
+### 7.5.1 İlk Kurulum (one-time)
+
+Kullanıcı tek bir komut çalıştırır, sonra **terminal'i bir daha açmaz**:
+
+```bash
+cd ~/sandbox_data
+./install.sh
+```
+
+`install.sh` adımları:
+1. Python 3.11 venv oluştur, `requirements.txt` yükle (adb-python yok — sistem `adb` binary'sini kullan)
+2. `~/Library/Application Support/scraper/` altında SQLite DB oluştur, migration'ları çalıştır
+3. `devices.json` örnek dosyası yaz, kullanıcıdan ilk cihazın ADB serial'ını sor (interactive)
+4. `~/Library/LaunchAgents/` altına 3 plist yaz:
+   - `com.berkant.scraper.daemon.plist` (her gün 09:00, RunAtLoad=true)
+   - `com.berkant.scraper.heartbeat.plist` (her saat — heartbeat eksikse alarm)
+   - `com.berkant.scraper.supervisor.plist` (günde 4 kez — Claude supervisor cron)
+5. `launchctl bootstrap gui/$(id -u) <plist>` ile aktive et
+6. `sudo pmset repeat wakeorpoweron MTWRFSU 08:55:00` — Mac'i 08:55'te uyandır
+7. `.env` dosyasından Telegram bot token + chat_id oku, health check at
+8. İlk başarılı health check sonrası: "✅ System installed and active. Daemon runs daily at 09:00."
+
+**Bundan sonra:** Sistem 7×24 çalışır. Sen sadece Telegram'a bakarsın.
+
+### 7.5.2 Bilgisayar Restart / Power Loss Senaryosu
+
+```
+Mac kapanır (planlı ya da power outage)
+         ↓
+Mac açılır → macOS boot
+         ↓
+launchd boot stage 'ta plist'leri yükler
+         ↓
+RunAtLoad=true olan plist'ler hemen çalışır
+         ↓
+Heartbeat plist çalışır → "system back online" → Telegram'a "✅ System restarted, all healthy"
+         ↓
+Bir sonraki 09:00'da daemon normal çalışır
+```
+
+**Kullanıcı dahil değil.** Login bile gerekmez (LaunchAgent değil LaunchDaemon kullanırsak — system-wide). Ama LaunchAgent'ta da auto-login açıksa otomatik başlar.
+
+**Kritik macOS ayarları (install.sh kontrol eder ve kullanıcıyı uyarır):**
+- System Settings → Energy: "Prevent automatic sleeping when display is off" → AÇIK
+- System Settings → Energy: "Wake for network access" → AÇIK
+- System Settings → Login: Auto-login user → AÇIK (LaunchAgent için)
+- Power outage recovery: BIOS'ta "Restore after power loss" varsa AÇIK
+
+### 7.5.3 Multi-Device Scale Roadmap
+
+**PoC (1 cihaz, Mevcut tasarım):**
+- 1 USB kablo direkt Mac'e
+- `devices.json`'da 1 satır
+- Tek bir daemon process, 1 worker thread
+
+**Faz 2 (2-7 cihaz):**
+- Powered USB hub (örn. Anker 7-port, 60W)
+- `devices.json`'a yeni satırlar
+- Yeni model ise `temu_actions.py` model-aware kalibrasyon (bir kerelik koordinat haritası)
+- Daemon kod **değişmez** — sadece JSON güncellenir
+
+**Faz 3 (8-15 cihaz):**
+- 2 adet powered USB hub (12+ port toplam)
+- Dedicated Mac mini (sessiz, az elektrik, her zaman açık)
+- Ethernet bağlantısı (Wi-Fi 15 cihaz parallelism'i için yetmeyebilir)
+- Job queue: artık SQLite job table; daemon job'ları cihazlara assign eder
+- Monitoring dashboard (basit web UI, `localhost:8080` → her cihazın canlı durumu)
+
+**Faz 4 (15+ cihaz, eğer Bright Data deal büyürse):**
+- Multiple Mac minis (örn. 3 Mac × 15 cihaz = 45 cihaz farm)
+- Central PostgreSQL (SQLite'tan migrate)
+- Job orchestrator (Celery / Temporal)
+- Bu nokta artık ayrı bir spec'in konusu
+
+**Kritik yatırım sırası:**
+1. PoC bitsin, Marc'a numbers gitsin
+2. Marc deal'i onaylarsa → 5-7 cihaz al, Mac mini ayır
+3. Aylık $X gelir gelmeye başlarsa → 15 cihaza çık
+4. Stable cash flow → Mac mini cluster
+
+**Yanlış zamana yatırım yapmama kuralı:** Cihaz almadan önce **gelir kanıtı** ol. PoC sadece 1 cihazla yapılabilir.
 
 ## 8. Risk Listesi
 
