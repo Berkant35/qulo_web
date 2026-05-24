@@ -58,10 +58,12 @@ Bright Data Global Partnerships Manager Marc Hermann-Cohen aktif diyalog halinde
 
 **Dahil:**
 - Tek bir platform: **Temu** (Shopee 2. faza)
-- Tek data tipi: **Daily price + stock tracking** (100 SKU'luk fix bir liste, her gün taranır → time-series)
+- **Full ürün capture** (sadece fiyat değil): başlık, fiyat, indirim, stok, sold count, rating, rating dağılımı, kargo bilgisi, kupon, **tüm varyantlar (her renk/beden için ayrı fiyat ve stok)**, özellikler/specifications, görsel URL'leri
+- **Yorum içerikleri HARİÇ** (sadece yorum sayısı + yıldız dağılımı; metin/fotoğraf çekilmez — hızı korur)
+- 100 SKU'luk fix bir liste, her gün taranır → multi-table time-series
 - Tek cihaz: 1 adet Android telefon, USB ile sürekli bağlı
 - 7 günlük continuous data toplama → success rate, latency, error pattern istatistikleri
-- Marc'a gönderilecek deck + sample CSV + benchmark dokümanı
+- Marc'a gönderilecek deck + denormalized CSV sample + benchmark dokümanı
 
 **Hariç (out of scope):**
 - Shopee scraper (Faz 2)
@@ -72,9 +74,10 @@ Bright Data Global Partnerships Manager Marc Hermann-Cohen aktif diyalog halinde
 
 **Başarı kriteri:**
 - 7 ardışık günde günlük success rate ortalaması ≥ %85
-- Toplam ≥ 500 başarılı data point (100 SKU × 7 gün × ≥%85)
-- Sample CSV temiz, parse hatasız, tarih-damgalı
+- Toplam ≥ 500 başarılı `product_observations` (ürün-gün satırı) + ≥ 3000 `variant_observations` (varyant-gün satırı)
+- Sample CSV (denormalized, Marc için) temiz, parse hatasız, tarih-damgalı, varyant ve özellik JSON'ları dahil
 - Telegram alarm sistemi en az 1 gerçek olayda (örn elle scraper'ı bozma) doğru tetiklenmiş
+- Günlük run ≤ 2 saat tamamlanır (100 SKU × ~55s)
 
 ---
 
@@ -124,15 +127,25 @@ Bright Data Global Partnerships Manager Marc Hermann-Cohen aktif diyalog halinde
 1. `adb -s <device_id>` ile cihaz hazır mı kontrol et (ekran açık, Temu yüklü, şarj ≥ %30)
 2. Hazır değilse: Telegram L2 alarm (cihaz adı ile) + worker exit
 3. Bu cihaza atanan SKU listesini al
-4. Her SKU için:
+4. Her SKU için **full capture flow**:
    a. Temu app'i deep link ile direkt o ürün sayfasına aç (`am start -a VIEW -d temu://product/<id>`) — search yapmadan
    b. Sayfanın yüklenmesini bekle (sleep + uiautomator polling)
-   c. `adb shell uiautomator dump` → ekrandaki tüm UI elementleri XML olarak çek
-   d. Python `lxml` ile XML parse, `resource-id` ve text değerlerini oku (fiyat, stok, rating, vb)
-   e. XML'de eksik field varsa: `adb exec-out screencap -p` → Pillow ile bilinen koordinatlardan crop → Tesseract OCR (fallback)
-   f. Parse edilen veriyi schema validation'dan geçir → SQLite'a yaz (`device_id` kolonu dahil)
-   g. Bir sonraki SKU'ya geç
+   c. **Ana ürün XML dump**: `adb shell uiautomator dump` → lxml parse → title, ana fiyat, indirim, sold count, rating, rating dağılımı, kargo, kupon, ships_from, seller_name, görsel URL'leri çıkar
+   d. **Özellikler bölümü**: Sayfayı features section'a scroll et → tekrar XML dump → her özellik için key-value çıkar
+   e. **Varyant matrisi**: Varyant seçici görünüyorsa, her varyant butonuna tek tek tap → her tap sonrası kısa bekleme → XML dump → o varyantın fiyat ve stok bilgisini çıkar. Bu döngü tüm renk × beden kombinasyonları için
+   f. XML'de eksik field varsa: `adb exec-out screencap -p` → Pillow ile bilinen koordinatlardan crop → Tesseract OCR (fallback)
+   g. Parse edilen veriyi schema validation'dan geçir → ilgili tablolara yaz (`products`, `product_observations`, `variants`, `variant_observations`, `product_features`, `product_images`)
+   h. Çıkıp app'i kill et (next SKU için fingerprint reset)
+   i. Bir sonraki SKU'ya geç
 5. Worker sonunda kendi `runs` satırını ve heartbeat'i yaz
+
+**Süre tahmini (SKU başına):**
+- Ana dump: ~5s
+- Özellikler dump: ~5s
+- Varyant döngüsü (ortalama 6 varyant): ~45s (her varyant: tap + 2s bekleme + dump + parse)
+- Kill + restart: ~5s
+- **Toplam: ~55-60s per SKU**
+- 100 SKU → ~90-100 dakika günlük run
 
 **Veri çekme yöntemi (öncelik sırası):**
 1. **UI Automator XML dump** (ana yöntem, %90 senaryo) — accessibility tree'den structured text. AI yok, OCR yok, pixel okumak yok. Düz XML parsing.
@@ -256,7 +269,9 @@ scraper/
 
 ---
 
-## 6. Veri Modeli (SQLite)
+## 6. Veri Modeli (SQLite, normalized multi-table)
+
+### 6.1 İç Saklama (analitik + time-series için doğru tasarım)
 
 ```sql
 -- İzlenen SKU'lar (manuel olarak doldurulur, 100 satır)
@@ -277,23 +292,89 @@ CREATE TABLE devices (
   added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Her gün her SKU için bir satır (time-series)
-CREATE TABLE price_observations (
+-- Ürün temel bilgisi (yavaş değişen, 1 satır per SKU)
+CREATE TABLE products (
+  sku_id TEXT PRIMARY KEY REFERENCES targets(sku_id),
+  title TEXT,
+  description TEXT,
+  category TEXT,
+  brand TEXT,
+  seller_name TEXT,
+  ships_from TEXT,
+  first_seen_at TIMESTAMP,
+  last_seen_at TIMESTAMP
+);
+
+-- Günlük ürün snapshot'ı (price, rating, stock, vb — her gün 1 satır per SKU)
+CREATE TABLE product_observations (
   id INTEGER PRIMARY KEY,
-  sku_id TEXT NOT NULL REFERENCES targets(sku_id),
+  sku_id TEXT NOT NULL REFERENCES products(sku_id),
   device_id TEXT NOT NULL REFERENCES devices(device_id),
   observed_at TIMESTAMP NOT NULL,
   price_usd REAL,
-  original_price_usd REAL,  -- indirim öncesi
+  original_price_usd REAL,
+  discount_pct REAL,
   in_stock BOOLEAN,
-  sold_count INTEGER,        -- "10k+ sold"
-  rating REAL,
+  sold_count_text TEXT,        -- "10k+"
+  sold_count_estimate INTEGER, -- 10000 (parsed)
+  rating_avg REAL,
   review_count INTEGER,
-  seller_name TEXT,
-  ships_from TEXT,           -- lokasyon
+  rating_5_count INTEGER,
+  rating_4_count INTEGER,
+  rating_3_count INTEGER,
+  rating_2_count INTEGER,
+  rating_1_count INTEGER,
+  has_free_shipping BOOLEAN,
+  shipping_cost_usd REAL,
+  delivery_eta_days_min INTEGER,
+  delivery_eta_days_max INTEGER,
+  has_coupon BOOLEAN,
+  coupon_value_usd REAL,
+  raw_xml_path TEXT,
   raw_screenshot_path TEXT,
-  parse_confidence REAL,     -- 0.0-1.0
+  parse_confidence REAL,
   UNIQUE(sku_id, observed_at)
+);
+
+-- Varyantlar (renk × beden × diğer kombinasyonlar, 1 satır per unique kombinasyon)
+CREATE TABLE variants (
+  id INTEGER PRIMARY KEY,
+  sku_id TEXT NOT NULL REFERENCES products(sku_id),
+  variant_key TEXT NOT NULL,   -- canonicalized: "color:Red|size:M"
+  attributes_json TEXT,        -- {"color":"Red","size":"M"}
+  first_seen_at TIMESTAMP,
+  last_seen_at TIMESTAMP,
+  UNIQUE(sku_id, variant_key)
+);
+
+-- Günlük varyant snapshot'ı (her gün her varyant için 1 satır)
+CREATE TABLE variant_observations (
+  id INTEGER PRIMARY KEY,
+  variant_id INTEGER NOT NULL REFERENCES variants(id),
+  observed_at TIMESTAMP NOT NULL,
+  price_usd REAL,
+  in_stock BOOLEAN,
+  stock_estimate INTEGER,      -- "only 3 left" gibi varsa
+  UNIQUE(variant_id, observed_at)
+);
+
+-- Ürün özellikleri (key-value, her gözlemde upsert)
+CREATE TABLE product_features (
+  id INTEGER PRIMARY KEY,
+  sku_id TEXT NOT NULL REFERENCES products(sku_id),
+  observed_at TIMESTAMP NOT NULL,
+  feature_key TEXT,            -- "Material", "Weight", "Origin"
+  feature_value TEXT,
+  UNIQUE(sku_id, observed_at, feature_key)
+);
+
+-- Görsel URL'leri (indirilmez, sadece URL kaydedilir)
+CREATE TABLE product_images (
+  id INTEGER PRIMARY KEY,
+  sku_id TEXT NOT NULL REFERENCES products(sku_id),
+  observed_at TIMESTAMP NOT NULL,
+  image_url TEXT,
+  image_position INTEGER       -- 0=main, 1=2nd, etc.
 );
 
 -- Her run için metrik (device başına ayrı satır)
@@ -302,18 +383,19 @@ CREATE TABLE runs (
   device_id TEXT NOT NULL REFERENCES devices(device_id),
   started_at TIMESTAMP,
   finished_at TIMESTAMP,
-  status TEXT,               -- 'success', 'partial', 'failed'
+  status TEXT,                 -- 'success', 'partial', 'failed'
   attempted INTEGER,
   succeeded INTEGER,
   parse_errors INTEGER,
-  alert_level TEXT,          -- 'info', 'warn', 'critical'
+  variants_captured INTEGER,
+  alert_level TEXT,            -- 'info', 'warn', 'critical'
   notes TEXT
 );
 
 -- Heartbeat (life signal)
 CREATE TABLE heartbeats (
   ts TIMESTAMP PRIMARY KEY,
-  component TEXT,            -- 'daemon', 'monitor', 'supervisor'
+  component TEXT,              -- 'daemon', 'monitor', 'supervisor'
   status TEXT
 );
 
@@ -323,10 +405,37 @@ CREATE TABLE patches (
   applied_at TIMESTAMP,
   file_path TEXT,
   diff TEXT,
-  canary_result TEXT,        -- '5/5', '3/5', 'failed'
-  status TEXT                -- 'applied', 'rejected', 'rolled_back'
+  canary_result TEXT,          -- '5/5', '3/5', 'failed'
+  status TEXT                  -- 'applied', 'rejected', 'rolled_back'
 );
 ```
+
+### 6.2 Marc'a Gönderilen Düz Tablo (denormalized export view)
+
+Marc'a CSV gönderilirken iç schema 7 tablodan düzleştirilir. Tek satır = 1 ürün × 1 gün:
+
+```csv
+sku_id,observed_at,title,category,seller,ships_from,
+  price_usd,original_price,discount_pct,in_stock,sold_count,
+  rating_avg,review_count,rating_5,rating_4,rating_3,rating_2,rating_1,
+  free_shipping,shipping_cost,delivery_min_days,delivery_max_days,has_coupon,coupon_value,
+  variants_json,features_json,image_urls_json,
+  parse_confidence
+```
+
+**Örnek satır:**
+```csv
+601099001,2026-05-25,"Bluetooth Earbuds Pro","Electronics","TopSeller","CN",
+  15.99,29.99,46.7,true,"10k+",10000,
+  4.7,3421,2100,800,300,150,71,
+  true,0.00,7,15,true,3.00,
+  "[{""color"":""Black"",""size"":""M"",""price"":15.99,""stock"":true},{""color"":""White"",""size"":""M"",""price"":16.99,""stock"":false}]",
+  "{""Battery"":""24h"",""Bluetooth"":""5.3"",""IP_rating"":""IPX4""}",
+  "[""https://img.temu.com/...1.jpg"",""https://img.temu.com/...2.jpg""]",
+  0.94
+```
+
+Bu CSV bir Python script ile (`scripts/export_csv.py`) SQLite'tan üretilir, Marc'a Google Drive linki olarak gönderilir.
 
 ---
 
