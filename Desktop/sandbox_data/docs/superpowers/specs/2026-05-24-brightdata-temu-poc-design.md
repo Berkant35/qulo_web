@@ -23,6 +23,37 @@ Bright Data Global Partnerships Manager Marc Hermann-Cohen aktif diyalog halinde
 
 ---
 
+## 1.5 Phase 0 — Day 0 Feasibility Test (KRİTİK, kod yazmadan önce)
+
+**Süre:** 1-2 saat (tek oturum, 2 haftalık PoC'den ÖNCE).
+
+**Amaç:** Temu'nun hangi veri çekme yöntemine açık olduğunu doğrulamak. Çıktıya göre 2 haftalık planın stratejisi (ve süresi) belirlenir.
+
+**Test adımları:**
+1. Bir Android telefonu USB ile Mac'e bağla, Temu app'i yükle (en güncel sürüm), bir ürün sayfası aç
+2. `adb shell uiautomator dump /sdcard/dump.xml && adb pull /sdcard/dump.xml`
+3. XML'i editörde aç, şu field'ları ara:
+   - Ürün başlığı (text node var mı?)
+   - Fiyat (resource-id ile bulunuyor mu?)
+   - Stok / sold count
+   - Rating ve review count
+   - Seller / ships_from
+4. Eksik kalan field'lar için: `adb exec-out screencap -p > screen.png`, Pillow ile ilgili bölgeyi crop, Tesseract OCR test
+5. (Opsiyonel bonus): `mitmproxy` ile telefonu proxy üzerinden geçir, Temu ürün sayfası açtığında API çağrılarını yakala. Endpoint görünüyor mu? Signing var mı?
+
+**Karar matrisi:**
+
+| Senaryo | Bulgu | Strateji | 2 hafta gerçekçi mi? |
+|---|---|---|---|
+| 🟢 **A: XML zengin** | Tüm field'lar XML'de var | UI Automator only, kolay yol | EVET, hatta erken bitebilir |
+| 🟡 **B: XML kısmi** | Bazı field'lar XML'de (örn fiyat var ama sold_count yok) | XML + region OCR hibrit | EVET (1 hafta scraper + 1 hafta observation) |
+| 🟠 **C: XML boş/kapalı** | uiautomator dump kullanılabilir text vermiyor | Full screenshot + OCR — yavaş, hatalı, koordinat-hassas | RİSKLİ — 3-4 haftaya çıkabilir, scope kıs |
+| 🟢 **D: API yakalanır** | mitmproxy ile clean API endpoint bulundu | Telefon hiç gerekmez, Mac'ten direkt | ÇOK HIZLI — 1 hafta yeterli |
+
+**Eğer C çıkarsa:** Marc'a "PoC 4 haftaya kaydı, alternatif yöntem deniyoruz" diye ara update emaili at, momentum'u kaybetme.
+
+**Day 0 çıktısı:** Bir markdown raporu (`docs/superpowers/specs/2026-05-24-day0-feasibility-report.md`) — hangi senaryo (A/B/C/D), kanıt screenshot'ları, XML dump örneği, karar.
+
 ## 2. Scope (PoC)
 
 **Dahil:**
@@ -93,8 +124,20 @@ Bright Data Global Partnerships Manager Marc Hermann-Cohen aktif diyalog halinde
 1. `adb -s <device_id>` ile cihaz hazır mı kontrol et (ekran açık, Temu yüklü, şarj ≥ %30)
 2. Hazır değilse: Telegram L2 alarm (cihaz adı ile) + worker exit
 3. Bu cihaza atanan SKU listesini al
-4. Her SKU için: Temu app'i aç → arama/deep link → ürün sayfası → screenshot → parse → SQLite'a yaz (`device_id` kolonu dahil)
+4. Her SKU için:
+   a. Temu app'i deep link ile direkt o ürün sayfasına aç (`am start -a VIEW -d temu://product/<id>`) — search yapmadan
+   b. Sayfanın yüklenmesini bekle (sleep + uiautomator polling)
+   c. `adb shell uiautomator dump` → ekrandaki tüm UI elementleri XML olarak çek
+   d. Python `lxml` ile XML parse, `resource-id` ve text değerlerini oku (fiyat, stok, rating, vb)
+   e. XML'de eksik field varsa: `adb exec-out screencap -p` → Pillow ile bilinen koordinatlardan crop → Tesseract OCR (fallback)
+   f. Parse edilen veriyi schema validation'dan geçir → SQLite'a yaz (`device_id` kolonu dahil)
+   g. Bir sonraki SKU'ya geç
 5. Worker sonunda kendi `runs` satırını ve heartbeat'i yaz
+
+**Veri çekme yöntemi (öncelik sırası):**
+1. **UI Automator XML dump** (ana yöntem, %90 senaryo) — accessibility tree'den structured text. AI yok, OCR yok, pixel okumak yok. Düz XML parsing.
+2. **Region OCR fallback** (Pillow + Tesseract) — sadece XML'de olmayan field'lar için, bilinen bounding box'tan crop + OCR. Klasik algoritma, AI değil.
+3. **API doğrudan çağırma** (Day 0'da araştırılır) — eğer Temu mobile API'si mitmproxy ile yakalanıp signing reverse edilebilirse, telefon hiç gerekmez. Bonus.
 
 **Bağımsız çalışma garantisi:** AI yok, Python + adb + sqlite3 + Pillow. Tek bir Python virtualenv. `concurrent.futures.ThreadPoolExecutor` ile N worker.
 
@@ -425,8 +468,11 @@ Bir sonraki 09:00'da daemon normal çalışır
 ## 10. Mimari Onayı Sonrası Adımlar
 
 Bu spec onaylanırsa:
-1. `writing-plans` skill'i ile detaylı implementation plan (her dosya, her fonksiyon)
-2. Hafta 1: L1 daemon + SQLite + Telegram bot — 5 SKU'lu mini test
-3. Hafta 1 sonu: 100 SKU full daemon, gerçek 7 günlük observation başlar
-4. Hafta 2: L2 monitor + L3 Claude supervisor + canary flow
-5. Hafta 2 sonu: deck + CSV + benchmark hazır, Marc'a email
+1. **Day 0 — Feasibility test** (1-2 saat): XML/OCR/API hangisi çalışıyor → karar matrisi → senaryo seçimi
+2. `writing-plans` skill'i ile detaylı implementation plan (her dosya, her fonksiyon, Day 0 sonucuna göre)
+3. Hafta 1: L1 daemon + SQLite + Telegram bot — 5 SKU'lu mini test
+4. Hafta 1 sonu: 100 SKU full daemon, gerçek 7 günlük observation başlar
+5. Hafta 2: L2 monitor + L3 Claude supervisor + canary flow
+6. Hafta 2 sonu: deck + CSV + benchmark hazır, Marc'a email
+
+**Önemli:** Day 0 sonucu C (XML kapalı) çıkarsa plan revize edilir, scope kısılır veya alternatif yöntem (mitmproxy araştırması) ile devam edilir.
