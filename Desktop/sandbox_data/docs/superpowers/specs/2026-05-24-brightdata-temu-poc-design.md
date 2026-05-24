@@ -60,10 +60,11 @@ Bright Data Global Partnerships Manager Marc Hermann-Cohen aktif diyalog halinde
 - Tek bir platform: **Temu** (Shopee 2. faza)
 - **Full ürün capture** (sadece fiyat değil): başlık, fiyat, indirim, stok, sold count, rating, rating dağılımı, kargo bilgisi, kupon, **tüm varyantlar (her renk/beden için ayrı fiyat ve stok)**, özellikler/specifications, görsel URL'leri
 - **Yorum içerikleri HARİÇ** (sadece yorum sayısı + yıldız dağılımı; metin/fotoğraf çekilmez — hızı korur)
-- 100 SKU'luk fix bir liste, her gün taranır → multi-table time-series
-- Tek cihaz: 1 adet Android telefon, USB ile sürekli bağlı
+- 100 SKU'luk fix bir liste, **her SKU 4 saatte 1 yeniden taranır** (intraday volatility için) → günde 6 sample/SKU
+- **24/7 sürekli daemon** (launchd boot'ta başlatır, daemon forever loop'ta scheduler + worker)
+- Tek cihaz: 1 adet Android telefon, USB-PD ile sürekli bağlı + soğutmalı alan
 - 7 günlük continuous data toplama → success rate, latency, error pattern istatistikleri
-- Marc'a gönderilecek deck + denormalized CSV sample + benchmark dokümanı
+- Marc'a gönderilecek deck + denormalized CSV sample + benchmark dokümanı (intraday volatility örnekleri ile)
 
 **Hariç (out of scope):**
 - Shopee scraper (Faz 2)
@@ -73,11 +74,12 @@ Bright Data Global Partnerships Manager Marc Hermann-Cohen aktif diyalog halinde
 - Bright Data marketplace entegrasyonu (önce ürün, sonra entegrasyon)
 
 **Başarı kriteri:**
-- 7 ardışık günde günlük success rate ortalaması ≥ %85
-- Toplam ≥ 500 başarılı `product_observations` (ürün-gün satırı) + ≥ 3000 `variant_observations` (varyant-gün satırı)
-- Sample CSV (denormalized, Marc için) temiz, parse hatasız, tarih-damgalı, varyant ve özellik JSON'ları dahil
+- 7 ardışık günde günlük success rate ortalaması ≥ %85 (her 4-saatlik cycle ayrı ölçülür)
+- Toplam ≥ 3000 başarılı `product_observations` (100 SKU × 6 cycle × 7 gün × ≥%85) + ≥ 18,000 `variant_observations`
+- Sample CSV (denormalized, Marc için) temiz, parse hatasız, tarih-damgalı, varyant ve özellik JSON'ları dahil; intraday volatility örnekleri görünür (aynı SKU'nun gün içi 6 farklı sample'ı)
 - Telegram alarm sistemi en az 1 gerçek olayda (örn elle scraper'ı bozma) doğru tetiklenmiş
-- Günlük run ≤ 2 saat tamamlanır (100 SKU × ~55s)
+- 4-saatlik cycle ≤ 3 saat tamamlanır (100 SKU × ~90s ≈ 150 dakika, %62 utilization, gerisi rest + jitter)
+- 7 gün boyunca daemon hiç kalıcı olarak durmaz (max 30dk consecutive outage)
 
 ---
 
@@ -105,11 +107,65 @@ Bright Data Global Partnerships Manager Marc Hermann-Cohen aktif diyalog halinde
                        +----------------------+
 ```
 
-### 3.1 L1 — Deterministic Daemon (Python, no AI)
+### 3.1 L1 — Continuous Daemon (Python, no AI)
 
-**Sorumluluk:** Her gün belirli saatte tüm registered device'lardan paralel veri çekmek.
+**Sorumluluk:** 24/7 sürekli scheduler + worker döngüsünde tüm registered device'lardan veri çekmek. Her SKU 4 saatte 1 yeniden taranır (intraday volatility için).
 
-**Tetikleyici:** macOS `launchd` (her gün 09:00, sleep'ten uyanma desteği ile).
+**Tetikleyici:** macOS `launchd` boot'ta tek seferlik başlatır + `KeepAlive=true` ile crash olursa otomatik restart eder. Daemon **forever loop**'ta yaşar (günlük tetiklenme YOK).
+
+**Scheduler + Job Queue:**
+
+Daemon ayağa kalkar kalkmaz her SKU için `next_due_at = NOW + random_offset(0, 240min)` ile başlangıç schedule eder (spread initial load). Sonra worker'lar sürekli queue'dan iş çeker:
+
+```sql
+-- Job queue (SQLite)
+CREATE TABLE scrape_jobs (
+  id INTEGER PRIMARY KEY,
+  sku_id TEXT NOT NULL REFERENCES targets(sku_id),
+  device_id TEXT REFERENCES devices(device_id),  -- nullable: any device
+  next_due_at TIMESTAMP NOT NULL,
+  last_scraped_at TIMESTAMP,
+  last_success_at TIMESTAMP,
+  consecutive_failures INTEGER DEFAULT 0,
+  status TEXT DEFAULT 'idle',   -- 'idle', 'running', 'cooldown'
+  cycle_interval_minutes INTEGER DEFAULT 240  -- 4 saat
+);
+```
+
+**Worker loop (per device, paralel thread):**
+```python
+while not shutdown:
+    job = pick_next_due_job(device_id)        # SQL: oldest due, idle status
+    if job is None:
+        sleep(60)                              # nothing to do, check again
+        continue
+    if rate_limiter.exceeded(device_id):
+        sleep(rate_limiter.cooldown_seconds())
+        continue
+    if mandatory_rest_window():                # her saat 5dk rest
+        sleep(mandatory_rest_remaining())
+        continue
+    mark_running(job)
+    scrape(job)                                # Section 3.1 full capture flow
+    next_due_at = NOW + cycle_interval + jitter(-30, +60 seconds)
+    update_job(next_due_at)
+    sleep(random(15, 35))                       # inter-SKU human-like delay
+```
+
+**Rate limiter (anti-bot):**
+- Max 60 scrape ops per hour per device (4 saatte 1 × 100 SKU ÷ 4 = 25/saat ortalama, sınır 60 ile rahat)
+- Min 15 saniye intra-SKU delay
+- Mandatory 5-minute rest her saat başı (örn 14:00-14:05 hiç scrape yok)
+- Daily quiet hours: gece 02:00-06:00 arası %50 yavaş çalışma (Temu'nun bot detection saatlerinde aktivite düşür)
+
+**Human-like patterns:**
+- Inter-SKU delay rastgele (15-35s arası, Gaussian dağılım)
+- Cycle interval'a jitter (-30 ila +60 saniye)
+- Saatte bir 5dk "user rest" (yukarıda)
+- Her 25 SKU sonrası Temu app kill + restart (fingerprint reset, memory leak önleme)
+- Periyodik "doğal davranış": her 4. cycle'da arada home → category → search path izle (sadece bir SKU için, sample variation)
+
+**Akış (worker başına, per SKU full capture flow):**
 
 **Device pool pattern (day-1 multi-device ready):**
 - `devices.json` dosyası registered cihazların listesi (PoC'de 1 satır, gelecekte N satır)
@@ -143,9 +199,12 @@ Bright Data Global Partnerships Manager Marc Hermann-Cohen aktif diyalog halinde
 - Ana dump: ~5s
 - Özellikler dump: ~5s
 - Varyant döngüsü (ortalama 6 varyant): ~45s (her varyant: tap + 2s bekleme + dump + parse)
-- Kill + restart: ~5s
-- **Toplam: ~55-60s per SKU**
-- 100 SKU → ~90-100 dakika günlük run
+- Kill + restart (her 25 SKU'da bir): ~5s amortized
+- Inter-SKU delay (15-35s random): ~25s
+- **Toplam: ~85-90s per SKU (delay dahil)**
+- 100 SKU × 90s = 150 dakika gerçek iş + 30dk mandatory rest = **180 dakika per 4-saatlik cycle**
+- Effective utilization: ~%75, doğal idle %25 (sağlıklı tampon)
+- 6 cycle/gün × 100 SKU = **600 product_observations + ~3,600 variant_observations per gün**
 
 **Veri çekme yöntemi (öncelik sırası):**
 1. **UI Automator XML dump** (ana yöntem, %90 senaryo) — accessibility tree'den structured text. AI yok, OCR yok, pixel okumak yok. Düz XML parsing.
@@ -234,15 +293,19 @@ scraper/
 
 **Bot kurulumu:** BotFather'dan yeni bot, token .env'ye, chat_id berkant'ın özel chat'i.
 
-**Mesaj tipleri:**
+**Mesaj tipleri (24/7 daemon için güncellendi):**
 
 | Tip | Örnek | Saat |
 |---|---|---|
-| L1 daily | "✅ 24 May: 94 SKU başarılı / 100 (%94). Latency 23m. Tüm sistem sağlıklı." | Her gün 09:30 |
-| L2 warn | "⚠️ 24 May: success %72. Parse hatası 18. Claude supervisor 14:00'da bakacak." | Anında |
-| L3 critical | "🚨 KRITIK: Daemon 26 saattir çalışmıyor. Telefon ADB'de görünmüyor." | Anında + ses |
+| L1 daily özet | "✅ 24 May: 6/6 cycle tamamlandı. 588/600 product_obs (%98). 3,490/3,600 variant_obs. Telefon temp avg 32°C. Hiç patch gerekmedi." | Her gün 09:30 (önceki 24h özet) |
+| L1 cycle özet (opsiyonel, debug için açılabilir) | "Cycle 14:00-17:00: 96/100 SKU. Süre 152dk." | Her cycle bitiminde, sadece config açıksa |
+| L2 warn | "⚠️ Cycle 14:00 success %72. Parse hatası 18. Claude supervisor sonraki cron'da bakacak." | Anında |
+| L3 critical | "🚨 KRITIK: Daemon 35dk durdurdu (max 30dk SLA aşıldı). Heartbeat eksik. Telefon ADB'de görünmüyor." | Anında + ses |
+| L3 temp warning | "🔥 Telefon 42°C — forced rest 30dk. Soğutmayı kontrol et." | Anında |
 | Claude patch ok | "🔧 Patch uygulandı: search_button koordinat (300,1200)→(350,1100). Canary 5/5 başarılı." | Patch sonrası |
 | Claude patch fail | "❌ Patch deneyip başaramadım. Manuel müdahale gerek. Detay: state/last_failure.md" | Patch sonrası |
+| Haftalık bakım | "🔧 Pazar bakımı tamamlandı. Disk %32 dolu. Telefon battery health %94. Tüm sistemler nominal." | Her Pazar 03:30 |
+| System restart | "♻️ System rebooted (kasıtlı / power loss). Daemon ayakta, ilk cycle 5dk içinde." | Restart sonrası |
 
 ---
 
@@ -260,7 +323,9 @@ scraper/
 | Temu app update sonrası UI değişti | Parse success rate düşüşü | Otomatik L2 → Claude supervisor → patch flow |
 | Captcha tetiklendi | Screenshot'ta captcha keyword OCR | L3 alarm — Claude'a verilmiyor (insan gerek) |
 | Hesap banlandı | "Account suspended" pattern | L3 alarm, daemon kalıcı durdurulur, manuel müdahale |
-| Mac sleep'te kaldı | `pmset repeat wakeorpoweron MTWRFSU 08:55:00` ile Mac 08:55'te uyandırılır; launchd 09:00'da daemon'ı tetikler | Energy Saver → "Wake for network access" açık; "Prevent automatic sleeping when display is off" açık |
+| Mac sleep'e girdi (24/7 daemon ile uyumsuz) | `pmset -a disablesleep 1` + Energy Saver → "Prevent automatic sleeping" tamamen açık; daemon sleep tespit ederse L3 alarm | 24/7 modunda Mac ASLA uyumamalı — pmset settings install.sh'de zorla ayarlanır |
+| Telefon aşırı ısındı (>40°C) | `dumpsys battery | grep temperature` her cycle | 30dk forced rest + Telegram L3 temp warning. Tekrarlıyorsa cycle interval'i 4h→6h'ya yükselt |
+| Anti-bot tetiklendi (captcha / rate limit / unusual screen) | Screenshot OCR ile "verify", "captcha", "unusual activity" keyword'leri | L3 critical — daemon o cihazı 24h pause eder, Telegram'a "ban risk" mesajı |
 | Mac restart sonrası autostart | `launchd` plist'i LaunchAgents'a kurulu | Otomatik başlar, manuel müdahale yok |
 | Disk dolması | Her run öncesi free disk check (<5GB → alarm) | L2 alarm + 30 gün önceki screenshot'ları sil (LRU) |
 | Network kesintisi | İlk request timeout | Retry 3x exponential backoff, sonra L2 |
@@ -517,7 +582,53 @@ Bir sonraki 09:00'da daemon normal çalışır
 - System Settings → Login: Auto-login user → AÇIK (LaunchAgent için)
 - Power outage recovery: BIOS'ta "Restore after power loss" varsa AÇIK
 
-### 7.5.3 Multi-Device Scale Roadmap
+### 7.5.3 24/7 Telefon Bakım Protokolü
+
+24/7 sürekli çalışan telefon, günde 1 kez çalışana göre çok daha hassas bakım ister:
+
+**Şarj yönetimi:**
+- USB-PD (Power Delivery) şarj cihazı zorunlu, regular charger telefonu beslemeye yetmez (sürekli ekran açık + ADB komutları)
+- İdeal: Battery Care / Adaptive Charging özellikleri AÇIK → %80'de duracak
+- Telefon battery kapasitesini koruyarak hizmet etmeli, 100% şarjda sürekli tutulmamalı
+
+**Termik koruma:**
+- Telefon havalandırması iyi alanda olmalı (kapalı kutu/çekmece YASAK)
+- Küçük USB fan önerilir (5-15W, sessiz model — örn Noctua A4x10 USB 5V)
+- Ortam sıcaklığı 25°C'nin altında ideal
+- `adb shell dumpsys battery | grep temperature` her cycle'da log'lanır; >40°C → 30dk forced rest
+
+**Ekran ve power:**
+- `adb shell svc power stayon usb` — USB bağlıyken ekran kapanmaz (ama daemon bunu enforce eder)
+- `adb shell settings put system screen_brightness 1` — minimum brightness (burn-in koruması)
+- DND (Do Not Disturb) modu açık — bildirimler scrape'i interrupt etmesin
+- AOD (Always On Display) KAPALI — gereksiz pixel kullanımı
+
+**Yazılım kararlılığı:**
+- Google Play auto-update KAPALI (manuel kontrol — sürpriz UI değişikliği önleme)
+- Background app refresh KAPALI (Temu hariç)
+- Battery optimizer Temu için KAPALI (background kill önleme)
+- Sistem update bildirimleri ertelenir
+
+**Önleyici bakım (haftalık otomatik):**
+- Pazar 03:00: telefon adb shell `am force-stop com.einnovation.temu`
+- Cache temizliği: `adb shell pm clear` (login state kaybolmaması için sadece cache, data değil — eğer guest mode kullanılıyorsa data clear de ok)
+- Telegram'a "🔧 Haftalık bakım tamamlandı" mesajı
+
+### 7.5.4 Disk Retention Policy (24/7 zorunlu)
+
+Sürekli çalışan sistem disk doldurur. Yığılma engellenmeli:
+
+| Veri tipi | Retention | Yaşam sonrası ne olur |
+|---|---|---|
+| SQLite DB ana tablolar | Süresiz | Asla silinmez (küçük, milyonlarca satır rahat) |
+| `raw_screenshot_path` PNG dosyaları | 30 gün | 7 gün sonra JPG q60 sıkıştır → 30 gün sonra sil |
+| `raw_xml_path` XML dump'lar | 7 gün | gzip sıkıştır → 14 gün sonra sil |
+| Patch log + `patches` tablosu | Süresiz | Audit trail için kalıcı |
+| Daemon log dosyaları | 90 gün | Logrotate ile günlük rotate, gzip, 90 gün sonra sil |
+
+**Günlük disk check:** Daemon başlangıcında `df -h` kontrolü, free space < 5GB → L2 alarm + LRU eviction.
+
+### 7.5.5 Multi-Device Scale Roadmap
 
 **PoC (1 cihaz, Mevcut tasarım):**
 - 1 USB kablo direkt Mac'e
