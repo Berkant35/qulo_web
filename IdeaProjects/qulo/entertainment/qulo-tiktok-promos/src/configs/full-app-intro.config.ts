@@ -178,7 +178,7 @@ export const fullAppIntroConfig: PromoConfig = {
       startFrame: s(60),
       durationFrames: s(5),
       props: {
-        stats: [
+        items: [
           {label: 'Answered', value: '3/3'},
           {label: 'Diamonds', value: '+5'},
           {label: 'Status', value: 'Matched'},
@@ -274,7 +274,7 @@ export const fullAppIntroConfig: PromoConfig = {
       startFrame: s(106),
       durationFrames: s(8),
       props: {
-        stats: [
+        items: [
           {label: 'Green', value: 'Earn'},
           {label: 'Purple', value: 'Spend'},
           {label: 'Boost', value: '30 = 30min'},
@@ -304,7 +304,7 @@ export const fullAppIntroConfig: PromoConfig = {
       startFrame: s(118),
       durationFrames: s(10),
       props: {
-        stats: [
+        items: [
           {label: 'Real', value: 'Questions'},
           {label: 'Real', value: 'Answers'},
           {label: 'Real', value: 'Matches'},
