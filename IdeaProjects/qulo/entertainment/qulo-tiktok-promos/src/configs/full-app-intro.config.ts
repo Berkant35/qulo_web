@@ -335,7 +335,77 @@ export const fullAppIntroConfig: PromoConfig = {
       props: {scale: 'finale', color: 'mixed', count: 20},
     },
   ],
-  captions: [],
+  captions: [
+    // Sahne 1 (0-4s)
+    {text: 'months on a dating app', startFrame: s(0.5), durationFrames: s(2)},
+    {text: 'met no one', startFrame: s(2.5), durationFrames: s(1.5)},
+
+    // Sahne 2 (4-10s)
+    {text: 'you match', startFrame: s(4.5), durationFrames: s(1.2)},
+    {text: 'they ghost', startFrame: s(5.7), durationFrames: s(1.3)},
+    {text: 'forever loop', startFrame: s(7.5), durationFrames: s(1.8)},
+    {text: 'sound familiar?', startFrame: s(9.3), durationFrames: s(0.7)},
+
+    // Sahne 3 (10-16s)
+    {text: 'a new app', startFrame: s(10.5), durationFrames: s(2)},
+    {text: "you don't swipe", startFrame: s(12.7), durationFrames: s(1.6)},
+    {text: 'you SOLVE', startFrame: s(14.3), durationFrames: s(1.7)},
+
+    // Sahne 4 (16-30s)
+    {text: "it's called Qulo", startFrame: s(16.5), durationFrames: s(2.5)},
+    {text: 'see someone interesting?', startFrame: s(19.5), durationFrames: s(2.5)},
+    {text: "read her 3 questions", startFrame: s(22.5), durationFrames: s(3)},
+    {text: 'she wrote to filter', startFrame: s(26), durationFrames: s(3.5)},
+
+    // Sahne 5 (30-55s)
+    {text: 'answer all three', startFrame: s(30.5), durationFrames: s(2.5)},
+    {text: 'pineapple on pizza?', startFrame: s(33.5), durationFrames: s(3)},
+    {text: 'mountains or beach?', startFrame: s(38.5), durationFrames: s(3)},
+    {text: "don't guess", startFrame: s(42), durationFrames: s(2)},
+    {text: 'last red-flag question', startFrame: s(47), durationFrames: s(3)},
+    {text: 'nail it', startFrame: s(50.5), durationFrames: s(2)},
+    {text: 'one wrong, no match', startFrame: s(52.5), durationFrames: s(2.5)},
+
+    // Sahne 6 (55-65s)
+    {text: 'BOOM', startFrame: s(55.5), durationFrames: s(1.5)},
+    {text: 'three for three', startFrame: s(57), durationFrames: s(2)},
+    {text: 'MATCH UNLOCKED', startFrame: s(59), durationFrames: s(3)},
+    {text: '+5 diamonds', startFrame: s(62), durationFrames: s(2.5)},
+
+    // Sahne 7 (65-78s)
+    {text: 'now you actually talk', startFrame: s(65.5), durationFrames: s(3)},
+    {text: 'about something real', startFrame: s(68.5), durationFrames: s(2.5)},
+    {text: 'no awkward opener', startFrame: s(72), durationFrames: s(3)},
+    {text: 'match handed you the script', startFrame: s(75), durationFrames: s(3)},
+
+    // Sahne 8 (78-93s)
+    {text: 'your turn', startFrame: s(78.5), durationFrames: s(2)},
+    {text: 'build your filter', startFrame: s(81), durationFrames: s(3)},
+    {text: '3 questions', startFrame: s(84.5), durationFrames: s(2.5)},
+    {text: 'weed out the noise', startFrame: s(88), durationFrames: s(4.5)},
+
+    // Sahne 9 (93-103s)
+    {text: 'stuck for ideas?', startFrame: s(93.5), durationFrames: s(2.5)},
+    {text: 'tap once', startFrame: s(96.5), durationFrames: s(1.5)},
+    {text: '✨ AI writes them', startFrame: s(98.5), durationFrames: s(3.5)},
+
+    // Sahne 10 (103-118s)
+    {text: 'green diamonds: EARN', startFrame: s(103.5), durationFrames: s(3.5)},
+    {text: 'purple: SPEND', startFrame: s(107.5), durationFrames: s(3)},
+    {text: '30 = 30 min boost', startFrame: s(111), durationFrames: s(3.5)},
+    {text: 'a whole economy', startFrame: s(115), durationFrames: s(3)},
+
+    // Sahne 11 (118-128s)
+    {text: 'no empty chats', startFrame: s(118.5), durationFrames: s(2.5)},
+    {text: 'no guessing', startFrame: s(121.5), durationFrames: s(2)},
+    {text: 'real questions, real matches', startFrame: s(124), durationFrames: s(4)},
+
+    // Sahne 12 (128-140s)
+    {text: 'stop swiping', startFrame: s(128.5), durationFrames: s(2)},
+    {text: 'start matching', startFrame: s(131), durationFrames: s(2.5)},
+    {text: 'Qulo — iOS + Android', startFrame: s(134), durationFrames: s(3.5)},
+    {text: 'go earn one 💎', startFrame: s(138), durationFrames: s(2)},
+  ],
   audioTrack: {
     path: 'audio/qulo-full-app-intro-mix.mp3',
     volume: 1.0,
