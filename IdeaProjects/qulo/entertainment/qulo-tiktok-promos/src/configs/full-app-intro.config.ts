@@ -1,7 +1,12 @@
 import type {PromoConfig} from '../types';
 
 const FPS = 30;
-const s = (seconds: number) => Math.round(seconds * FPS);
+// VO came in at 115s (1:55), original plan was 140s.
+// Scale all scene/caption timings proportionally so the video matches VO length.
+const TARGET_DURATION = 115;
+const ORIGINAL_DURATION = 140;
+const SCALE = TARGET_DURATION / ORIGINAL_DURATION;
+const s = (seconds: number) => Math.round(seconds * SCALE * FPS);
 
 export const fullAppIntroConfig: PromoConfig = {
   slug: 'full-app-intro',
