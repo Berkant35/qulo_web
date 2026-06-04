@@ -1,0 +1,13 @@
+node_modules
+out/*.mp4
+.DS_Store
+.remotion/
+
+# audio raw outputs (regenerated each build)
+public/audio/raw/vo.mp3
+public/audio/raw/bgm.mp3
+public/audio/qulo-full-app-intro-mix.mp3
+tmp/
+
+# env
+.env

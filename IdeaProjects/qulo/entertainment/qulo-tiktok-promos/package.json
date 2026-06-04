@@ -1,0 +1,35 @@
+{
+  "name": "qulo-tiktok-promos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Qulo English TikTok promo pipeline (9:16, caption-driven, brand-consistent)",
+  "scripts": {
+    "studio": "npx remotion studio src/index.ts",
+    "render": "npx remotion render src/index.ts TikTokPromo",
+    "render:stop-swiping": "npx remotion render src/index.ts TikTokPromo out/qulo-stop-swiping.mp4 --props='{\"configSlug\":\"stop-swiping\"}'",
+    "render:day-in-the-life": "npx remotion render src/index.ts TikTokPromo out/qulo-day-in-the-life.mp4 --props='{\"configSlug\":\"day-in-the-life\"}' --pixel-format yuv420p",
+    "render:match-to-first-date": "npx remotion render src/index.ts TikTokPromo out/qulo-match-to-first-date.mp4 --props='{\"configSlug\":\"match-to-first-date\"}' --pixel-format yuv420p",
+    "render:how-it-works": "npx remotion render src/index.ts TikTokPromo out/qulo-how-it-works.mp4 --props='{\"configSlug\":\"how-it-works\"}'",
+    "render:diamond-economy": "npx remotion render src/index.ts TikTokPromo out/qulo-diamond-economy.mp4 --props='{\"configSlug\":\"diamond-economy\"}'",
+    "render:match-in-60": "npx remotion render src/index.ts TikTokPromo out/qulo-match-in-60.mp4 --props='{\"configSlug\":\"match-in-60\"}'",
+    "render:quality-over-quantity": "npx remotion render src/index.ts TikTokPromo out/qulo-quality-over-quantity.mp4 --props='{\"configSlug\":\"quality-over-quantity\"}'"
+  },
+  "author": "Berkant Calikusu",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@remotion/cli": "^4.0.437",
+    "@remotion/google-fonts": "^4.0.437",
+    "@remotion/transitions": "^4.0.437",
+    "dotenv": "^17.4.2",
+    "elevenlabs": "^1.59.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "remotion": "^4.0.437"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "tsx": "^4.22.4",
+    "typescript": "^5.9.3"
+  }
+}
