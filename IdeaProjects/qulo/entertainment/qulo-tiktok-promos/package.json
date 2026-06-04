@@ -5,6 +5,7 @@
   "description": "Qulo English TikTok promo pipeline (9:16, caption-driven, brand-consistent)",
   "scripts": {
     "studio": "npx remotion studio src/index.ts",
+    "gen:vo": "tsx scripts/generate-vo.ts",
     "render": "npx remotion render src/index.ts TikTokPromo",
     "render:stop-swiping": "npx remotion render src/index.ts TikTokPromo out/qulo-stop-swiping.mp4 --props='{\"configSlug\":\"stop-swiping\"}'",
     "render:day-in-the-life": "npx remotion render src/index.ts TikTokPromo out/qulo-day-in-the-life.mp4 --props='{\"configSlug\":\"day-in-the-life\"}' --pixel-format yuv420p",
