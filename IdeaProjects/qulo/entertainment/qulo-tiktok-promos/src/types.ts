@@ -14,8 +14,7 @@ export type SceneComponent =
   | 'AnswerFeedback'
   | 'MatchCelebration'
   | 'ChatBubble'
-  | 'TimeOfDay'
-  | 'GenericSwipeStack';
+  | 'TimeOfDay';
 
 export type SceneSpec = {
   component: SceneComponent;

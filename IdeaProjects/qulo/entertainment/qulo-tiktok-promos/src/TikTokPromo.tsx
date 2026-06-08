@@ -18,7 +18,6 @@ import {AnswerFeedback} from './components/AnswerFeedback';
 import {MatchCelebration} from './components/MatchCelebration';
 import {ChatBubble} from './components/ChatBubble';
 import {TimeOfDay} from './components/TimeOfDay';
-import {GenericSwipeStack} from './components/GenericSwipeStack';
 import {theme} from './theme';
 
 type Props = {
@@ -61,8 +60,6 @@ const renderScene = (scene: SceneSpec, idx: number) => {
       return <ChatBubble {...cast<React.ComponentProps<typeof ChatBubble>>()} />;
     case 'TimeOfDay':
       return <TimeOfDay {...cast<React.ComponentProps<typeof TimeOfDay>>()} />;
-    case 'GenericSwipeStack':
-      return <GenericSwipeStack {...cast<React.ComponentProps<typeof GenericSwipeStack>>()} />;
     default:
       throw new Error(`Unknown scene component at index ${idx}: ${(scene as SceneSpec).component}`);
   }
