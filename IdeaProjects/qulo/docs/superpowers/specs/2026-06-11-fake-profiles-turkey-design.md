@@ -279,7 +279,7 @@ const { data: pool } = await supabase
   .limit(2000);
 ```
 
-Her profil için 3 random soru seç (kategori çeşitliliği için: 1 relationship + 1 personality + 1 lifestyle/diğer):
+Her profil için 3 random soru seç. **Sampling stratejisi:** basit random (replacement'sız) — kategori dağılımı doğal olarak `ai_question_bank` katı dağılımına uyar. Aynı profilde aynı sorunun tekrarını önle (set kontrol).
 
 ```ts
 for (let i = 0; i < 3; i++) {
@@ -370,7 +370,7 @@ await supabase.from("users").delete().eq("is_seed_profile", true);
 - [ ] `SELECT COUNT(*) FROM questions WHERE user_id IN (SELECT id FROM users WHERE is_seed_profile=true)` = 1050
 - [ ] `SELECT COUNT(*) FROM user_details WHERE user_id IN (...)` = 350
 - [ ] Random 5 profil API call: `/api/v1/users/{id}` → name, photo, bio, sorular gelir
-- [ ] Gerçek test user (İstanbul) `/api/v1/discover` çağırır → ≥50 seed profil görünür (radius default 100km ile)
+- [ ] Test user'ı İstanbul'da, `match_radius_km=500` set ederek `/api/v1/discover` çağırır → ≥50 seed profil görünür. (Default 100km ile sadece İstanbul + Bursa profilleri gelir, ~105 profil — bu da ≥50 koşulunu sağlar.)
 - [ ] Manuel: APP-1915 branch'inde mobile build → discover ekranı dolu
 
 ### Match akış doğrulaması
