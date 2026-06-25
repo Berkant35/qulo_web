@@ -20,6 +20,7 @@
 - AppSpacing sabitleri: `xs=4, sm=8, md=12, lg=16, xl=24, xxl=32`; radius `radiusMd=12, radiusLg=16`; `maxContentWidth=560`.
 - Persistence flag adları: `coach_discover_seen`, `coach_quiz_powers_seen`, `coach_chat_question_seen` (servis `coach_${tourId}_seen` üretir).
 - Feature tamamlandıktan sonra `/flutter-review` ve `/i18n-guardian` çalıştırılır.
+- **Dart paket adı `qulo_v2`** (dizin adı `qulov2`): tüm Dart import'ları `package:qulo_v2/...`. Test komutu `fvm flutter test`. Statik analiz `dart analyze` (bu FVM'de `flutter analyze` CRASH ediyor). Tüm komutlar `qulov2/` dizininden çalışır.
 
 ---
 
@@ -45,7 +46,7 @@
 // qulov2/test/core/coach_mark/coach_mark_registry_test.dart
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qulov2/core/coach_mark/coach_mark_registry.dart';
+import 'package:qulo_v2/core/coach_mark/coach_mark_registry.dart';
 
 void main() {
   test('keyFor returns the same GlobalKey for the same id', () {
@@ -73,7 +74,7 @@ void main() {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `cd qulov2 && flutter test test/core/coach_mark/coach_mark_registry_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/coach_mark/coach_mark_registry_test.dart`
 Expected: FAIL — `coach_mark_registry.dart` yok / `CoachMarkRegistry` tanımsız.
 
 - [ ] **Step 3: Implement registry**
@@ -152,13 +153,13 @@ class CoachMarkStep {
 
 - [ ] **Step 6: Run test to verify it passes**
 
-Run: `cd qulov2 && flutter test test/core/coach_mark/coach_mark_registry_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/coach_mark/coach_mark_registry_test.dart`
 Expected: PASS (4 tests).
 
 - [ ] **Step 7: Analyze + commit**
 
 ```bash
-cd qulov2 && flutter analyze lib/core/coach_mark/
+cd qulov2 && dart analyze lib/core/coach_mark/
 git add qulov2/lib/core/coach_mark/ qulov2/test/core/coach_mark/coach_mark_registry_test.dart
 git commit -m "feat(coach-mark): registry, anchor wrapper, step model"
 ```
@@ -186,8 +187,8 @@ git commit -m "feat(coach-mark): registry, anchor wrapper, step model"
 ```dart
 // qulov2/test/core/coach_mark/coach_mark_controller_test.dart
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qulov2/core/coach_mark/coach_mark_controller.dart';
-import 'package:qulov2/core/coach_mark/coach_mark_step.dart';
+import 'package:qulo_v2/core/coach_mark/coach_mark_controller.dart';
+import 'package:qulo_v2/core/coach_mark/coach_mark_step.dart';
 
 void main() {
   List<String> log = [];
@@ -245,7 +246,7 @@ void main() {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `cd qulov2 && flutter test test/core/coach_mark/coach_mark_controller_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/coach_mark/coach_mark_controller_test.dart`
 Expected: FAIL — `CoachMarkController` tanımsız.
 
 - [ ] **Step 3: Implement controller**
@@ -307,13 +308,13 @@ class CoachMarkController extends ChangeNotifier {
 
 - [ ] **Step 4: Run test to verify it passes**
 
-Run: `cd qulov2 && flutter test test/core/coach_mark/coach_mark_controller_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/coach_mark/coach_mark_controller_test.dart`
 Expected: PASS (5 tests).
 
 - [ ] **Step 5: Commit**
 
 ```bash
-cd qulov2 && flutter analyze lib/core/coach_mark/coach_mark_controller.dart
+cd qulov2 && dart analyze lib/core/coach_mark/coach_mark_controller.dart
 git add qulov2/lib/core/coach_mark/coach_mark_controller.dart qulov2/test/core/coach_mark/coach_mark_controller_test.dart
 git commit -m "feat(coach-mark): controller with queue + lifecycle callbacks"
 ```
@@ -339,10 +340,10 @@ git commit -m "feat(coach-mark): controller with queue + lifecycle callbacks"
 // qulov2/test/core/coach_mark/coach_mark_overlay_test.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qulov2/core/coach_mark/coach_mark_controller.dart';
-import 'package:qulov2/core/coach_mark/coach_mark_overlay.dart';
-import 'package:qulov2/core/coach_mark/coach_mark_step.dart';
-import 'package:qulov2/core/l10n/app_localizations.dart';
+import 'package:qulo_v2/core/coach_mark/coach_mark_controller.dart';
+import 'package:qulo_v2/core/coach_mark/coach_mark_overlay.dart';
+import 'package:qulo_v2/core/coach_mark/coach_mark_step.dart';
+import 'package:qulo_v2/core/l10n/app_localizations.dart';
 
 Widget _wrap(Widget child) => MaterialApp(
       localizationsDelegates: const [AppLocalizationsDelegate()],
@@ -377,7 +378,7 @@ void main() {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `cd qulov2 && flutter test test/core/coach_mark/coach_mark_overlay_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/coach_mark/coach_mark_overlay_test.dart`
 Expected: FAIL — `coach_mark_overlay.dart` yok.
 
 - [ ] **Step 3: Implement painter**
@@ -578,13 +579,13 @@ class _StepDots extends StatelessWidget {
 
 - [ ] **Step 5: Run test to verify it passes**
 
-Run: `cd qulov2 && flutter test test/core/coach_mark/coach_mark_overlay_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/coach_mark/coach_mark_overlay_test.dart`
 Expected: PASS (Task 5'teki `en.dart` key'leri mevcutsa).
 
 - [ ] **Step 6: Commit**
 
 ```bash
-cd qulov2 && flutter analyze lib/core/coach_mark/
+cd qulov2 && dart analyze lib/core/coach_mark/
 git add qulov2/lib/core/coach_mark/coach_mark_painter.dart qulov2/lib/core/coach_mark/coach_mark_overlay.dart qulov2/test/core/coach_mark/coach_mark_overlay_test.dart
 git commit -m "feat(coach-mark): cutout painter + overlay card widget"
 ```
@@ -611,7 +612,7 @@ git commit -m "feat(coach-mark): cutout painter + overlay card widget"
 // qulov2/test/core/services/coach_mark_service_test.dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:qulov2/core/services/coach_mark_service.dart';
+import 'package:qulo_v2/core/services/coach_mark_service.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -639,7 +640,7 @@ void main() {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `cd qulov2 && flutter test test/core/services/coach_mark_service_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/services/coach_mark_service_test.dart`
 Expected: FAIL — `coach_mark_service.dart` yok.
 
 - [ ] **Step 3: Implement service**
@@ -706,13 +707,13 @@ class CoachMarkService {
 
 - [ ] **Step 4: Run test to verify it passes**
 
-Run: `cd qulov2 && flutter test test/core/services/coach_mark_service_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/services/coach_mark_service_test.dart`
 Expected: PASS (3 tests).
 
 - [ ] **Step 5: Commit**
 
 ```bash
-cd qulov2 && flutter analyze lib/core/services/coach_mark_service.dart
+cd qulov2 && dart analyze lib/core/services/coach_mark_service.dart
 git add qulov2/lib/core/services/coach_mark_service.dart qulov2/test/core/services/coach_mark_service_test.dart
 git commit -m "feat(coach-mark): service singleton with persistence + single-tour guard"
 ```
@@ -797,7 +798,7 @@ git commit -m "feat(coach-mark): service singleton with persistence + single-tou
 
 - [ ] **Step 4: Verify keys resolve in EN**
 
-Run: `cd qulov2 && flutter test test/core/coach_mark/coach_mark_overlay_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/coach_mark/coach_mark_overlay_test.dart`
 Expected: PASS (overlay testi artık EN key'leri çözüyor).
 
 - [ ] **Step 5: Run i18n-guardian + commit**
@@ -805,7 +806,7 @@ Expected: PASS (overlay testi artık EN key'leri çözüyor).
 Invoke skill: `/i18n-guardian` — eksik/EN-placeholder çevirileri 14 dile tamamla ve 16 dil tamlığını doğrula.
 
 ```bash
-cd qulov2 && flutter analyze lib/core/l10n/
+cd qulov2 && dart analyze lib/core/l10n/
 git add qulov2/lib/core/l10n/translations/
 git commit -m "i18n(coach-mark): add coach_* keys across 16 locales"
 ```
@@ -930,7 +931,7 @@ maybeStartDiscoverCoach(hasCards: true);
 
 - [ ] **Step 5: Analyze + manual verification**
 
-Run: `cd qulov2 && flutter analyze lib/features/discover/`
+Run: `cd qulov2 && dart analyze lib/features/discover/`
 Expected: No issues.
 
 Manuel doğrulama (debug build, taze kullanıcı / `coach_discover_seen` silinmiş):
@@ -1066,7 +1067,7 @@ void _maybeStartPowerCoach() {
 
 - [ ] **Step 4: Analyze + manual verification (timer edge cases)**
 
-Run: `cd qulov2 && flutter analyze lib/features/quiz/`
+Run: `cd qulov2 && dart analyze lib/features/quiz/`
 Expected: No issues.
 
 Manuel doğrulama (`coach_quiz_powers_seen` silinmiş):
@@ -1155,7 +1156,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) {
 
 - [ ] **Step 4: Analyze + manual verification**
 
-Run: `cd qulov2 && flutter analyze lib/features/chat/`
+Run: `cd qulov2 && dart analyze lib/features/chat/`
 Expected: No issues.
 
 Manuel doğrulama (`coach_chat_question_seen` silinmiş):
@@ -1178,7 +1179,7 @@ git commit -m "feat(coach-mark): chat question button onboarding tooltip"
 
 - [ ] **Step 1: Full analyze + test**
 
-Run: `cd qulov2 && flutter analyze && flutter test test/core/coach_mark/ test/core/services/coach_mark_service_test.dart`
+Run: `cd qulov2 && dart analyze && fvm flutter test test/core/coach_mark/ test/core/services/coach_mark_service_test.dart`
 Expected: No analyze issues; tüm coach-mark testleri PASS.
 
 - [ ] **Step 2: Run flutter-review skill**
