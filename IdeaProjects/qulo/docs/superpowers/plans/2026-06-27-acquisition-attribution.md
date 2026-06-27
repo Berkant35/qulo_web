@@ -32,9 +32,11 @@
 
 - [ ] **Step 1: Server branch aç**
 
+`main` admin altyapısını (campaigns + page-messages + locales) içerir; branch oradan dallanır.
+
 ```bash
 cd /Users/berkantcalikusu/IdeaProjects/qulo/qulo-server
-git checkout -b feat/acquisition-attribution
+git checkout main && git checkout -b feat/acquisition-attribution
 ```
 
 - [ ] **Step 2: Migration dosyasını yaz**
