@@ -2,19 +2,17 @@ import {AbsoluteFill, Audio, Sequence, staticFile} from 'remotion';
 import {theme} from './theme';
 import {twitterConfig} from './configs/twitter-tr.config';
 import type {SceneSpec} from './types';
-import {Placeholder} from './scenes/Placeholder';
 import {S1ChaosCards} from './scenes/S1ChaosCards';
 import {S2Questions} from './scenes/S2Questions';
 import {S3QuloReveal} from './scenes/S3QuloReveal';
 import {S4ProblemFlow} from './scenes/S4ProblemFlow';
 import {S5MatchMoment} from './scenes/S5MatchMoment';
+import {S6Closing} from './scenes/S6Closing';
 
 const renderScene = (scene: SceneSpec, idx: number) => {
   const props = (scene.props ?? {}) as Record<string, never>;
   const cast = <T,>() => props as unknown as T;
   switch (scene.component) {
-    case 'Placeholder':
-      return <Placeholder {...cast<React.ComponentProps<typeof Placeholder>>()} />;
     case 'S1ChaosCards':
       return <S1ChaosCards />;
     case 'S2Questions':
@@ -25,6 +23,8 @@ const renderScene = (scene: SceneSpec, idx: number) => {
       return <S4ProblemFlow />;
     case 'S5MatchMoment':
       return <S5MatchMoment />;
+    case 'S6Closing':
+      return <S6Closing />;
     default:
       throw new Error(`Unknown scene component at index ${idx}: ${scene.component}`);
   }

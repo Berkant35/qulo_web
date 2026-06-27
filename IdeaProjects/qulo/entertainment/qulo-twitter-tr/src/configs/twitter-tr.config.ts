@@ -11,6 +11,6 @@ export const twitterConfig: TwitterConfig = {
     {component: 'S3QuloReveal', startFrame: s(9), durationFrames: s(6)},
     {component: 'S4ProblemFlow', startFrame: s(15), durationFrames: s(8)},
     {component: 'S5MatchMoment', startFrame: s(23), durationFrames: s(4)},
-    {component: 'Placeholder', startFrame: s(27), durationFrames: s(3), props: {label: 'kapanis'}},
+    {component: 'S6Closing', startFrame: s(27), durationFrames: s(3)},
   ],
 };

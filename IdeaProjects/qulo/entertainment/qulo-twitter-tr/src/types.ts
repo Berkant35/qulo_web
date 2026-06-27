@@ -1,5 +1,4 @@
 export type SceneComponent =
-  | 'Placeholder'
   | 'S1ChaosCards'
   | 'S2Questions'
   | 'S3QuloReveal'
