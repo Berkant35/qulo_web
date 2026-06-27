@@ -6,6 +6,7 @@ import {Placeholder} from './scenes/Placeholder';
 import {S1ChaosCards} from './scenes/S1ChaosCards';
 import {S2Questions} from './scenes/S2Questions';
 import {S3QuloReveal} from './scenes/S3QuloReveal';
+import {S4ProblemFlow} from './scenes/S4ProblemFlow';
 
 const renderScene = (scene: SceneSpec, idx: number) => {
   const props = (scene.props ?? {}) as Record<string, never>;
@@ -19,6 +20,8 @@ const renderScene = (scene: SceneSpec, idx: number) => {
       return <S2Questions />;
     case 'S3QuloReveal':
       return <S3QuloReveal />;
+    case 'S4ProblemFlow':
+      return <S4ProblemFlow />;
     default:
       throw new Error(`Unknown scene component at index ${idx}: ${scene.component}`);
   }
