@@ -4,6 +4,7 @@ import {twitterConfig} from './configs/twitter-tr.config';
 import type {SceneSpec} from './types';
 import {Placeholder} from './scenes/Placeholder';
 import {S1ChaosCards} from './scenes/S1ChaosCards';
+import {S2Questions} from './scenes/S2Questions';
 
 const renderScene = (scene: SceneSpec, idx: number) => {
   const props = (scene.props ?? {}) as Record<string, never>;
@@ -13,6 +14,8 @@ const renderScene = (scene: SceneSpec, idx: number) => {
       return <Placeholder {...cast<React.ComponentProps<typeof Placeholder>>()} />;
     case 'S1ChaosCards':
       return <S1ChaosCards />;
+    case 'S2Questions':
+      return <S2Questions />;
     default:
       throw new Error(`Unknown scene component at index ${idx}: ${scene.component}`);
   }
