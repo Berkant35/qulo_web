@@ -6,6 +6,7 @@ const s = (seconds: number) => Math.round(seconds * FPS);
 export const twitterConfig: TwitterConfig = {
   durationInFrames: s(30),
   scenes: [
-    {component: 'Placeholder', startFrame: s(0), durationFrames: s(30), props: {label: 'Qulo Twitter Ad — iskelet'}},
+    {component: 'S1ChaosCards', startFrame: s(0), durationFrames: s(4)},
+    {component: 'Placeholder', startFrame: s(4), durationFrames: s(26), props: {label: 'sonraki sahneler'}},
   ],
 };
