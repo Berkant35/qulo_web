@@ -45,7 +45,7 @@ colors: {
   bg:         '#0D0D0D',   // ana karanlık zemin
   surface:    '#1A1A1A',
   green:      '#69F0AE',   // Qulo yeşili — çözüm/eşleşme/tick
-  purple:     '#BB86FC',   // Qulo moru — sub-accent, elmas
+  purple:     '#BB86FC',   // Qulo moru — sub-accent (logo/aksan)
   danger:     '#CF6679',   // problem/kaos vurgusu (kırmızı)
   text:       '#FFFFFF',
   textMuted:  '#B0B0B0',
@@ -59,9 +59,10 @@ safeZone (16:9): { top: 80, bottom: 100, horizontal: 120 }  // Twitter UI minima
 
 **Marka asset'leri (kanonik, kopyalanmaz — referans):**
 ```
-entertainment/qulo-tiktok-promos/public/  (logo/diamond burada)
-entertainment/qulo-real-demo/assets/brand/qulo_logo.png, green_diamond.png
+entertainment/qulo-tiktok-promos/public/  (logo burada)
+entertainment/qulo-real-demo/assets/brand/qulo_logo.png
 ```
+(Not: Elmas görselleri bu videoda KULLANILMAZ — kullanıcı kararı.)
 App Store / Google Play badge'leri resmi (Apple/Google marketing guideline) SVG/PNG olarak `public/brand/badges/` altına indirilecek.
 
 ---
@@ -87,7 +88,7 @@ entertainment/qulo-twitter-tr/
 | S3 Qulo reveal | yeni `BrainNetwork` (SVG) + `QuizSolve` | Beyin/nöron line-up animasyonu yeni; tick'ler QuizSolve'tan |
 | S3/S5 telefon | `PhoneFrame` + `QuizSolve`/`QuestionCreate` | PhoneFrame landscape kompozisyonda yana yerleştirilir |
 | S4 problem akışı | `StatsGrid`/`ProcessStep` mantığı | Yeni `ProblemFlow`: kırmızı cümle → yeşil tick eleme |
-| S5 eşleşme | `MatchCelebration` + `DiamondBurst` | Landscape merkez pop + elmas burst |
+| S5 eşleşme | `MatchCelebration` | Landscape merkez MATCH pop + yeşil parıltı/spark burst (elmas YOK) |
 | S6 kapanış | `CTAScene` | Logo + motto + store badge'leri (yeni badge asset'leri) |
 | Altyazı | `CaptionTrack` | VO ile senkron Türkçe altyazı (opsiyonel görsel katman) |
 
@@ -99,9 +100,9 @@ entertainment/qulo-twitter-tr/
 |---|---|---|---|---|
 | 0.0–4.0 | 0–120 | **S1 — Boş Kaos** | Tinder-tarzı kartlar yatay eksende sağa-sola savrulur, üst üste, hızlanarak. Her kartta sönük kırmızı ✕. Ortada eşleşme boşluğu. Yazı tek tek: "Yüzlerce kart." → "Sıfır gerçek eşleşme." | "Sağa kaydır. Sola kaydır. Sağa, sola…" |
 | 4.0–9.0 | 120–270 | **S2 — İki Soru** | Kartlar donar, karanlığa çekilir. Büyük tipografi tek tek belirir. | "Bu kısır döngüden sıkılmadınız mı?" → "Kriterlerinize gerçekten uyan birini nasıl bulursunuz?" |
-| 9.0–15.0 | 270–450 | **S3 — Qulo Doğuşu** | Qulo logo + yeşil elmas parıltısı. Beyin/nöron line-up'ları birbirine bağlanır (zihinsel uyum). PhoneFrame içinde sorular tek tek yeşil tick alır. | "Qulo geldi. Artık kaydırmıyorsun — çözüyorsun." + "Sorunu sor. Çözen eşleşir." |
+| 9.0–15.0 | 270–450 | **S3 — Qulo Doğuşu** | Qulo logo + yeşil parıltı/glow. Beyin/nöron line-up'ları birbirine bağlanır (zihinsel uyum). PhoneFrame içinde sorular tek tek yeşil tick alır. | "Qulo geldi. Artık kaydırmıyorsun — çözüyorsun." + "Sorunu sor. Çözen eşleşir." |
 | 15.0–23.0 | 450–690 | **S4 — Problem Akışı (hype)** | Ritmik. Kırmızı problem cümlesi ekrana vurur → üstüne yeşil tick + sönme. 3 problem ardı ardına. | "Sevgili sandığın evli çıktı." / "İlk buluşmada centilmen, sonra maço." / "Egosuz sanmıştın… değilmiş." → "Qulo'da hepsi tek bir doğru soruyla elenir." |
-| 23.0–27.0 | 690–810 | **S5 — Çözüm Anı** | PhoneFrame: tüm tick'ler yeşil → MATCH pop'u + yeşil/mor elmas burst. | "Doğru soruyu soran, doğru insanı bulur." |
+| 23.0–27.0 | 690–810 | **S5 — Çözüm Anı** | PhoneFrame: tüm tick'ler yeşil → MATCH pop'u + yeşil parıltı/spark burst (elmas YOK). | "Doğru soruyu soran, doğru insanı bulur." |
 | 27.0–30.0 | 810–900 | **S6 — Kapanış** | Qulo logo ortada + motto + App Store & Google Play badge'leri (statik 1.5sn tutuş). | "Doğru soru, doğru insan. Qulo." |
 
 ### 5.1 Ekran Metinleri (locked, TR)
@@ -179,14 +180,13 @@ entertainment/qulo-twitter-tr/
       PhoneFrame.tsx
       QuizSolve.tsx
       QuestionCreate.tsx
-      MatchCelebration.tsx
-      DiamondBurst.tsx
+      MatchCelebration.tsx        # yeşil parıltı/spark burst (elmas YOK)
       ProblemFlow.tsx             # YENİ — kırmızı cümle → yeşil tick
       CaptionTrack.tsx
       StoreBadges.tsx             # YENİ — App Store + Google Play badge satırı
   public/
     audio/ vo_tr_final.mp3, music_30s.mp3
-    brand/ qulo_logo.(svg|png), green_diamond, purple_diamond
+    brand/ qulo_logo.(svg|png)
     brand/badges/ app_store_tr.svg, google_play_tr.png
   out/                           # render çıktısı, .gitignore
     qulo-twitter-tr-30s-16x9.mp4
