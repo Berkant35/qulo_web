@@ -10,8 +10,6 @@ import {S5MatchMoment} from './scenes/S5MatchMoment';
 import {S6Closing} from './scenes/S6Closing';
 
 const renderScene = (scene: SceneSpec, idx: number) => {
-  const props = (scene.props ?? {}) as Record<string, never>;
-  const cast = <T,>() => props as unknown as T;
   switch (scene.component) {
     case 'S1ChaosCards':
       return <S1ChaosCards />;
