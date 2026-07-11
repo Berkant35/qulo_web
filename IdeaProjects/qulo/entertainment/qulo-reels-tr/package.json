@@ -1,0 +1,29 @@
+{
+  "name": "qulo-reels-tr",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Qulo Türkçe Instagram Reels reklamı — 9:16, 25sn, retro kolaj.",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "compositions": "remotion compositions src/index.ts",
+    "render": "remotion render src/index.ts QuloReelsAd out/qulo-reels-tr-25s-9x16.mp4",
+    "still": "remotion still src/index.ts QuloReelsAd",
+    "assets": "node tools/generate-assets.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@remotion/cli": "^4.0.437",
+    "@remotion/google-fonts": "^4.0.437",
+    "@remotion/media": "^4.0.437",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "remotion": "^4.0.437"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "pngjs": "^7.0.0",
+    "typescript": "^5.9.3"
+  }
+}
