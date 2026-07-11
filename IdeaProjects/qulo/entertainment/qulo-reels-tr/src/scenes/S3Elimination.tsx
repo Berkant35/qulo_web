@@ -19,19 +19,23 @@ const DEFAULT_ROUNDS: readonly Round[] = [
 // Adayın verdiği cevap: yanlış roundlarda kadının 'yanlis' seçeneği, doğru roundda 'dogru'.
 const roundAnswer = (round: Round) => (round.correct ? round.question.dogru : round.question.yanlis);
 
-const roundStart = (i: number) => 30 + i * 70;
-
 type Props = {
   rounds?: readonly Round[];
   juryStickerSrc?: string;
   juryFlip?: boolean;
+  // İlk round'un başladığı kare (varsayılan 30 = mevcut QuloReelsAd/Varyant A davranışı). Varyant B gibi
+  // sıkıştırılmış sahne sürelerinde daha erken başlatmak için (bkz. kaos.config.ts) kullanılır.
+  firstRoundStart?: number;
 };
 
 export const S3Elimination: React.FC<Props> = ({
   rounds = DEFAULT_ROUNDS,
   juryStickerSrc = 'ai/w1_hook.png',
   juryFlip = false,
+  firstRoundStart = 30,
 }) => {
+  const roundStart = (i: number) => firstRoundStart + i * 70;
+
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
       <CollageShapes variant="elimination" />

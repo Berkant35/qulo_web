@@ -1,8 +1,10 @@
 import {Composition} from 'remotion';
 import {QuloReelsAd} from './QuloReelsAd';
 import {QuloReelsTersKose} from './QuloReelsTersKose';
+import {QuloReelsKaos} from './QuloReelsKaos';
 import {reelsConfig} from './configs/reels-tr.config';
 import {terskoseConfig} from './configs/terskose.config';
+import {kaosConfig} from './configs/kaos.config';
 import {theme} from './theme';
 
 // Yeni varyant eklemek için: bu diziye {id, component, config} ekle (Root'un geri kalanı sabit).
@@ -11,6 +13,7 @@ import {theme} from './theme';
 const compositions = [
   {id: 'QuloReelsAd', component: QuloReelsAd, durationInFrames: reelsConfig.durationInFrames},
   {id: 'QuloReelsTersKose', component: QuloReelsTersKose, durationInFrames: terskoseConfig.durationInFrames},
+  {id: 'QuloReelsKaos', component: QuloReelsKaos, durationInFrames: kaosConfig.durationInFrames},
 ];
 
 export const RemotionRoot: React.FC = () => {
