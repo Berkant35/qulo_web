@@ -4,6 +4,7 @@ import {reelsConfig} from './configs/reels-tr.config';
 import type {SceneSpec} from './types';
 import {Placeholder} from './scenes/Placeholder';
 import {S1Hook} from './scenes/S1Hook';
+import {S2Rules} from './scenes/S2Rules';
 
 const renderScene = (scene: SceneSpec, idx: number) => {
   switch (scene.component) {
@@ -11,6 +12,8 @@ const renderScene = (scene: SceneSpec, idx: number) => {
       return <Placeholder />;
     case 'S1Hook':
       return <S1Hook />;
+    case 'S2Rules':
+      return <S2Rules />;
     default:
       throw new Error(`Unknown scene component at index ${idx}: ${scene.component}`);
   }

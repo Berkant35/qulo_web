@@ -7,7 +7,8 @@ export const reelsConfig: ReelsConfig = {
   durationInFrames: s(25),
   scenes: [
     {component: 'S1Hook', startFrame: s(0), durationFrames: s(3)},
-    {component: 'Placeholder', startFrame: s(3), durationFrames: s(22)},
+    {component: 'S2Rules', startFrame: s(3), durationFrames: s(6)},
+    {component: 'Placeholder', startFrame: s(9), durationFrames: s(16)},
   ],
   audioTracks: [],
 };
