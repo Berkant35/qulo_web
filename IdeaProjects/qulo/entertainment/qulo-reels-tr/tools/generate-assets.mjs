@@ -116,7 +116,7 @@ const removeBackground = (buf) => {
 
 const generateOne = async (asset) => {
   if (flags.has('--dry-run')) {
-    console.log(`[dry-run] ${asset.id}: aspect=${asset.aspectRatio} ref=${asset.referenceOf ?? '-'}`);
+    console.log(`[dry-run] ${asset.id}: aspect=${asset.aspectRatio} ref=${asset.referenceOf ? [asset.referenceOf].flat().join('+') : '-'}`);
     console.log(`  prompt: ${asset.prompt.slice(0, 100)}…`);
     return;
   }
@@ -134,17 +134,19 @@ const generateOne = async (asset) => {
   }
 
   const parts = [];
-  if (asset.referenceOf) {
-    const refPath = `tools/raw/${asset.referenceOf}.png`;
+  // referenceOf: string veya string[] — çift referans (ör. c_* çift sahneleri w1+m3) desteklenir.
+  const refs = asset.referenceOf ? [asset.referenceOf].flat() : [];
+  for (const ref of refs) {
+    const refPath = `tools/raw/${ref}.png`;
     if (!existsSync(refPath)) {
-      throw new Error(`Referans bulunamadı: ${refPath} — önce ${asset.referenceOf} üret.`);
+      throw new Error(`Referans bulunamadı: ${refPath} — önce ${ref} üret.`);
     }
     const refBuf = readFileSync(refPath);
     parts.push({
       inlineData: {mimeType: mimeTypeOf(refBuf), data: refBuf.toString('base64')},
     });
   }
-  parts.push({text: asset.prompt + STYLE_SUFFIX});
+  parts.push({text: asset.prompt + (asset.styleSuffix ?? STYLE_SUFFIX)});
 
   const body = {
     contents: [{parts}],
