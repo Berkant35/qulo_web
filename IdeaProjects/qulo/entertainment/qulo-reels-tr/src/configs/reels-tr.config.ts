@@ -12,5 +12,8 @@ export const reelsConfig: ReelsConfig = {
     {component: 'S4Match', startFrame: s(17), durationFrames: s(5)},
     {component: 'S5Closing', startFrame: s(22), durationFrames: s(3)},
   ],
-  audioTracks: [],
+  audioTracks: [
+    // Müzik-only (VO yok). VO eklenirse müzik 0.30'a çekilip vo_tr_final.mp3 volume 1.0 eklenecek.
+    {path: 'audio/music_25s.mp3', volume: 0.65, startFrame: 0},
+  ],
 };
