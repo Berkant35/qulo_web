@@ -90,6 +90,12 @@ const removeBackground = (buf) => {
 };
 
 const generateOne = async (asset) => {
+  if (flags.has('--dry-run')) {
+    console.log(`[dry-run] ${asset.id}: aspect=${asset.aspectRatio} ref=${asset.referenceOf ?? '-'}`);
+    console.log(`  prompt: ${asset.prompt.slice(0, 100)}…`);
+    return;
+  }
+
   const parts = [];
   if (asset.referenceOf) {
     const refPath = `tools/raw/${asset.referenceOf}.png`;
@@ -109,12 +115,6 @@ const generateOne = async (asset) => {
       imageConfig: {aspectRatio: asset.aspectRatio, imageSize: '2K'},
     },
   };
-
-  if (flags.has('--dry-run')) {
-    console.log(`[dry-run] ${asset.id}: aspect=${asset.aspectRatio} ref=${asset.referenceOf ?? '-'}`);
-    console.log(`  prompt: ${asset.prompt.slice(0, 100)}…`);
-    return;
-  }
 
   console.log(`Üretiliyor: ${asset.id} …`);
   const res = await fetch(API, {
