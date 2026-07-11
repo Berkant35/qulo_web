@@ -1,5 +1,6 @@
 import {Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 
+// Konum sözleşmesi: x = yatay merkez; y = dikey çapa (top = y - width). 2:3 asset'lerde görsel merkez y'nin ~0.25*width altındadır; sahneler koordinatları still doğrulamasıyla ayarlar.
 type Props = {
   src: string;
   width: number;
@@ -49,7 +50,7 @@ export const CollageSticker: React.FC<Props> = ({
       style={{
         position: 'absolute',
         left: x - width / 2,
-        top: y - width, // figürler ~2:3 → yükseklik ≈ width * 1.5; merkezleme sahnede x,y ile ayarlanır
+        top: y - width, // bkz. konum sözleşmesi
         width,
         transform: `translateY(${fallY}px) rotate(${baseRotate + swayDeg + fallRot}deg) scale(${scale}) ${flip ? 'scaleX(-1)' : ''}`,
         opacity: enterOpacity * fallOpacity,

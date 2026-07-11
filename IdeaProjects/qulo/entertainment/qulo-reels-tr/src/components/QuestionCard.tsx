@@ -34,7 +34,7 @@ const StateBadge: React.FC<{state: State; visible: number}> = ({state, visible})
         boxShadow: '0 10px 24px rgba(0,0,0,0.4)',
       }}
     >
-      <svg width={40} height={40} viewBox="0 0 24 24" fill="none" stroke="#FFF" strokeWidth={3.4} strokeLinecap="round">
+      <svg width={40} height={40} viewBox="0 0 24 24" fill="none" stroke={theme.colors.text} strokeWidth={3.4} strokeLinecap="round">
         <path d={glyph} />
       </svg>
     </div>
