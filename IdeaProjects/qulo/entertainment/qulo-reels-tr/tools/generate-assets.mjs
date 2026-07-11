@@ -6,8 +6,10 @@
 //   node tools/generate-assets.mjs --all             # hepsini üret (referanslılar, referansları hazırsa)
 //   ... [--keep-bg]  arka planı temizleme (debug)
 //   ... [--dry-run]  API'ye gitmeden isteği özetle
+//   ... [--reprocess] API'ye gitmeden tools/raw/<id>.png'yi tekrar işle (arka plan temizleme dahil)
 import {readFileSync, writeFileSync, existsSync} from 'node:fs';
 import {PNG} from 'pngjs';
+import jpeg from 'jpeg-js';
 import {MANIFEST, STYLE_SUFFIX} from './assets.manifest.mjs';
 
 const API =
@@ -25,7 +27,7 @@ if (flags.has('--list')) {
 }
 
 const KEY = process.env.GEMINI_API_KEY;
-if (!KEY && !flags.has('--dry-run')) {
+if (!KEY && !flags.has('--dry-run') && !flags.has('--reprocess')) {
   console.error(
     'HATA: GEMINI_API_KEY tanımlı değil.\n' +
       'aistudio.google.com/api-keys üzerinden key alıp şu şekilde çalıştır:\n' +
@@ -42,13 +44,36 @@ if (selected.length === 0) {
   process.exit(1);
 }
 
+// Gemini (gemini-3-pro-image, imageSize 2K) bazen PNG yerine JPEG byte'ları döndürür
+// (inlineData.data içinde), ama biz dosyayı .png olarak kaydediyoruz. Magic byte'lara
+// bakıp gerçek formatı tespit edip uygun decoder'ı seçiyoruz.
+const isJpeg = (buf) => buf[0] === 0xff && buf[1] === 0xd8;
+const isPng = (buf) => buf[0] === 0x89 && buf[1] === 0x50;
+
+const decodeImage = (buf) => {
+  if (isJpeg(buf)) {
+    const {width, height, data} = jpeg.decode(buf, {maxMemoryUsageInMB: 1024});
+    return {width, height, data};
+  }
+  if (isPng(buf)) {
+    return PNG.sync.read(buf);
+  }
+  throw new Error('Bilinmeyen görsel formatı (ne PNG ne JPEG magic byte).');
+};
+
+const mimeTypeOf = (buf) => {
+  if (isJpeg(buf)) return 'image/jpeg';
+  if (isPng(buf)) return 'image/png';
+  return 'application/octet-stream';
+};
+
 // Kenarlardan flood-fill: yeşile yakın piksellerin alpha'sını sıfırla.
 // Sadece kenarlardan erişilebilen yeşil alan silinir; figür içi korunur.
 const isGreen = (data, i) =>
   data[i + 1] > 140 && data[i + 1] > data[i] * 1.6 && data[i + 1] > data[i + 2] * 1.6;
 
 const removeBackground = (buf) => {
-  const png = PNG.sync.read(buf);
+  const png = decodeImage(buf);
   const {width, height, data} = png;
   const visited = new Uint8Array(width * height);
   const queue = [];
@@ -96,14 +121,27 @@ const generateOne = async (asset) => {
     return;
   }
 
+  if (flags.has('--reprocess')) {
+    const rawPath = `tools/raw/${asset.id}.png`;
+    if (!existsSync(rawPath)) {
+      throw new Error(`--reprocess: ${rawPath} bulunamadı — önce API ile üret (bkz. --list).`);
+    }
+    const raw = readFileSync(rawPath);
+    const out = flags.has('--keep-bg') ? raw : removeBackground(raw);
+    writeFileSync(`public/ai/${asset.id}.png`, out);
+    console.log(`  ✓ ${rawPath} → public/ai/${asset.id}.png (${(out.length / 1024) | 0} KB) [reprocess]`);
+    return;
+  }
+
   const parts = [];
   if (asset.referenceOf) {
     const refPath = `tools/raw/${asset.referenceOf}.png`;
     if (!existsSync(refPath)) {
       throw new Error(`Referans bulunamadı: ${refPath} — önce ${asset.referenceOf} üret.`);
     }
+    const refBuf = readFileSync(refPath);
     parts.push({
-      inlineData: {mimeType: 'image/png', data: readFileSync(refPath).toString('base64')},
+      inlineData: {mimeType: mimeTypeOf(refBuf), data: refBuf.toString('base64')},
     });
   }
   parts.push({text: asset.prompt + STYLE_SUFFIX});
