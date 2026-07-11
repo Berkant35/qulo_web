@@ -1,7 +1,5 @@
 import {theme} from '../theme';
-
-// Deterministik sözde-rastgele (Math.random YASAK) — PaperShreds ile aynı sine-hash yöntemi, KaosRain/KaosSweep arasında paylaşılır.
-export const rnd = (i: number, salt: number) => (((Math.sin(i * 127.1 + salt * 311.7) * 43758.5453) % 1) + 1) % 1;
+import {rnd} from './PaperShreds';
 
 // Konum sözleşmesi: x/y = MERKEZ (CollageSticker'ın top-anchor sözleşmesinden farklı — bu kart kendi ortasından konumlanır).
 type Props = {

@@ -3,7 +3,8 @@ import {theme} from '../theme';
 import {CollageShapes} from '../components/CollageShapes';
 import {CollageSticker} from '../components/CollageSticker';
 import {StaggerText} from '../components/StaggerText';
-import {MiniProfileCard, rnd} from '../components/MiniProfileCard';
+import {MiniProfileCard} from '../components/MiniProfileCard';
+import {rnd} from '../components/PaperShreds';
 
 // Varyant B "Kaos'tan Kurala" — açılış: onlarca mini profil kartı sürekli yağıyor (Remotion-çizimi, AI DEĞİL),
 // bunalmış kadın (w1_tired) ortada. Anti-infografik yoğunluk hedefi — kart sayısı/boyutu still ile doğrulanır.

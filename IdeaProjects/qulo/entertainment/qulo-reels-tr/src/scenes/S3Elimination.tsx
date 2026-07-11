@@ -63,7 +63,7 @@ export const S3Elimination: React.FC<Props> = ({
         const start = roundStart(i);
         const isLast = i === rounds.length - 1;
         return (
-          <Sequence key={`${round.src}-${i}`} from={start} durationInFrames={isLast ? 240 - start : 70} name={`Round ${i + 1}`}>
+          <Sequence key={`${round.src}-${i}`} from={start} durationInFrames={isLast ? undefined : 70} name={`Round ${i + 1}`}>
             <CollageSticker
               src={round.src}
               width={560}

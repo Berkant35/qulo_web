@@ -1,10 +1,10 @@
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {theme} from '../theme';
 import {CollageShapes} from '../components/CollageShapes';
-import {PaperShreds} from '../components/PaperShreds';
+import {PaperShreds, rnd} from '../components/PaperShreds';
 import {QuestionCard} from '../components/QuestionCard';
 import {StaggerText} from '../components/StaggerText';
-import {MiniProfileCard, rnd} from '../components/MiniProfileCard';
+import {MiniProfileCard} from '../components/MiniProfileCard';
 import {SORULAR} from '../configs/questions';
 
 // Varyant B "Kaos'tan Kurala" — süpürme: dağınık mini kartlar hızlanarak yanlara uçar, tek büyük soru kartı

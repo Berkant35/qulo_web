@@ -10,7 +10,7 @@ type Props = {
 };
 
 // Deterministik sözde-rastgele (Math.random YASAK — bkz. görev tarifi).
-const rnd = (i: number, salt: number) => (((Math.sin(i * 127.1 + salt * 311.7) * 43758.5453) % 1) + 1) % 1;
+export const rnd = (i: number, salt: number) => (((Math.sin(i * 127.1 + salt * 311.7) * 43758.5453) % 1) + 1) % 1;
 
 // Düzensiz dörtgen (kağıt parçası) clip-path'i, parça başına hafif farklı köşeler.
 const shredClip = (i: number) => {
