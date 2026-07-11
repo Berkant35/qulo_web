@@ -1,4 +1,4 @@
-export type SceneComponent = 'Placeholder';
+export type SceneComponent = 'Placeholder' | 'S1Hook';
 
 export type SceneSpec = {
   component: SceneComponent;

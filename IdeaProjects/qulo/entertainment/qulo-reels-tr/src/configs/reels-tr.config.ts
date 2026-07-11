@@ -6,7 +6,8 @@ export const s = (seconds: number) => Math.round(seconds * FPS);
 export const reelsConfig: ReelsConfig = {
   durationInFrames: s(25),
   scenes: [
-    {component: 'Placeholder', startFrame: s(0), durationFrames: s(25)},
+    {component: 'S1Hook', startFrame: s(0), durationFrames: s(3)},
+    {component: 'Placeholder', startFrame: s(3), durationFrames: s(22)},
   ],
   audioTracks: [],
 };

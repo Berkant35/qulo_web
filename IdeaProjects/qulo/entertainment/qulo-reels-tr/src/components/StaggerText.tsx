@@ -42,6 +42,7 @@ export const StaggerText: React.FC<Props> = ({
         alignItems: align === 'center' ? 'center' : 'flex-start',
         textAlign: align,
         gap: 18,
+        flexShrink: 0,
         fontFamily: theme.fonts.display,
         fontWeight: theme.type.weight,
         fontSize,

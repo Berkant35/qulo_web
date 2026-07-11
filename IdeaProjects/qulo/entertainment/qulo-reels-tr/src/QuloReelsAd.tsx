@@ -3,11 +3,14 @@ import {theme} from './theme';
 import {reelsConfig} from './configs/reels-tr.config';
 import type {SceneSpec} from './types';
 import {Placeholder} from './scenes/Placeholder';
+import {S1Hook} from './scenes/S1Hook';
 
 const renderScene = (scene: SceneSpec, idx: number) => {
   switch (scene.component) {
     case 'Placeholder':
       return <Placeholder />;
+    case 'S1Hook':
+      return <S1Hook />;
     default:
       throw new Error(`Unknown scene component at index ${idx}: ${scene.component}`);
   }
