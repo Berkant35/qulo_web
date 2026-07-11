@@ -18,6 +18,8 @@ export type PropSticker = {
 
 type Props = {
   stickerSrc?: string;
+  stickerX?: number;
+  stickerWidth?: number;
   sorular?: readonly SoruSpec[];
   lines?: string[];
   props?: PropSticker[];
@@ -25,6 +27,8 @@ type Props = {
 
 export const S2Rules: React.FC<Props> = ({
   stickerSrc = 'ai/w1_point.png',
+  stickerX = 300,
+  stickerWidth = 560,
   sorular = SORULAR,
   lines = ['2-10 soru sor.', 'Doğru cevabı *sen* belirle.'],
   props = [],
@@ -32,7 +36,7 @@ export const S2Rules: React.FC<Props> = ({
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
       <CollageShapes variant="rules" />
-      <CollageSticker src={stickerSrc} width={560} x={300} y={1380} enterFrame={0} baseRotate={2} />
+      <CollageSticker src={stickerSrc} width={stickerWidth} x={stickerX} y={1380} enterFrame={0} baseRotate={2} />
       {props.map((p, i) => (
         <CollageSticker
           key={`${p.src}-${i}`}

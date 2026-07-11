@@ -70,7 +70,12 @@ export const S3Elimination: React.FC<Props> = ({
               tearFrame={round.correct ? undefined : 44}
             />
             {!round.correct ? (
-              <PaperShreds startFrame={46} count={16} originX={640} originY={1050} />
+              <>
+                {/* Ana patlama: yırtılma anıyla (tearFrame 44) eşzamanlı, geniş ve yoğun. */}
+                <PaperShreds startFrame={44} count={26} originX={640} originY={1050} spread={420} />
+                {/* İkincil küçük patlama: hafif gecikmeli + sağa kaymış — asimetri için. */}
+                <PaperShreds startFrame={50} count={10} originX={760} originY={1050} spread={260} />
+              </>
             ) : null}
             <QuestionCard
               text={round.question.soru}

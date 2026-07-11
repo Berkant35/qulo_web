@@ -36,6 +36,9 @@ export const terskoseConfig: ReelsConfig = {
       durationFrames: s(6),
       props: {
         stickerSrc: 'ai/m_hook.png',
+        // Erkek figürü kartların soluna çekildi — gövde (çapraz kollar) kartların arkasında kaybolmasın (koordinatör revizyonu).
+        stickerX: 225,
+        stickerWidth: 500,
         sorular: SORULAR_ERKEK,
         props: rulesProps,
       },

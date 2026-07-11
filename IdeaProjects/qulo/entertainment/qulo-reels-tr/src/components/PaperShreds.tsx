@@ -26,7 +26,7 @@ export const PaperShreds: React.FC<Props> = ({startFrame, count = 14, originX, o
   return (
     <>
       {Array.from({length: count}, (_, i) => {
-        const size = 14 + rnd(i, 3) * 16; // 14-30px
+        const size = 16 + rnd(i, 3) * 22; // 16-38px
         const angle = rnd(i, 5) * Math.PI * 2;
         const dist = spread * (0.35 + rnd(i, 7) * 0.65);
         const delay = rnd(i, 9) * 6;
