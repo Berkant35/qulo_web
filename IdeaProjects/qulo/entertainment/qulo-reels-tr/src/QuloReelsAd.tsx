@@ -5,6 +5,7 @@ import type {SceneSpec} from './types';
 import {Placeholder} from './scenes/Placeholder';
 import {S1Hook} from './scenes/S1Hook';
 import {S2Rules} from './scenes/S2Rules';
+import {S3Elimination} from './scenes/S3Elimination';
 
 const renderScene = (scene: SceneSpec, idx: number) => {
   switch (scene.component) {
@@ -14,6 +15,8 @@ const renderScene = (scene: SceneSpec, idx: number) => {
       return <S1Hook />;
     case 'S2Rules':
       return <S2Rules />;
+    case 'S3Elimination':
+      return <S3Elimination />;
     default:
       throw new Error(`Unknown scene component at index ${idx}: ${scene.component}`);
   }
