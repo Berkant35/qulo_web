@@ -2,6 +2,7 @@ import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {theme} from '../theme';
 
 type State = 'neutral' | 'correct' | 'wrong';
+type AnswerTone = 'set' | 'correct' | 'wrong';
 type Props = {
   text: string;
   x: number;
@@ -11,6 +12,37 @@ type Props = {
   enterFrame?: number;
   state?: State;
   stateFrame?: number;
+  answer?: string;
+  answerTone?: AnswerTone;
+  answerFrame?: number;
+};
+
+// Cevap çipi: S2'de kadının belirlediği doğru cevap ('set'), S3'te adayın verdiği cevap ('correct'/'wrong').
+const AnswerChip: React.FC<{answer: string; tone: AnswerTone; scale: number}> = ({answer, tone, scale}) => {
+  const wrong = tone === 'wrong';
+  const color = wrong ? theme.colors.danger : theme.colors.greenDark;
+  return (
+    <div
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 12,
+        marginTop: 20,
+        padding: '10px 24px',
+        borderRadius: theme.radius.pill,
+        border: `3px solid ${color}`,
+        background: wrong ? 'rgba(207,102,121,0.16)' : 'rgba(76,175,80,0.16)',
+        color,
+        fontSize: theme.type.body - 8,
+        fontWeight: 700,
+        transform: `scale(${scale})`,
+        transformOrigin: 'left center',
+      }}
+    >
+      <span>{wrong ? '✕' : '✓'}</span>
+      <span>{answer}</span>
+    </div>
+  );
 };
 
 const StateBadge: React.FC<{state: State; visible: number}> = ({state, visible}) => {
@@ -50,6 +82,9 @@ export const QuestionCard: React.FC<Props> = ({
   enterFrame = 0,
   state = 'neutral',
   stateFrame = 0,
+  answer,
+  answerTone = 'set',
+  answerFrame = 0,
 }) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -59,6 +94,7 @@ export const QuestionCard: React.FC<Props> = ({
   const enter = spring({frame: local, fps, from: 0, to: 1, config: {damping: 13, stiffness: 160}, durationInFrames: 14});
   const chars = Math.round(interpolate(local, [6, 26], [0, text.length], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}));
   const badgeScale = spring({frame: frame - stateFrame, fps, from: 0, to: 1, config: {damping: 10, stiffness: 200}, durationInFrames: 12});
+  const chipScale = spring({frame: frame - answerFrame, fps, from: 0, to: 1, config: {damping: 11, stiffness: 190}, durationInFrames: 12});
 
   return (
     <div
@@ -81,6 +117,11 @@ export const QuestionCard: React.FC<Props> = ({
       }}
     >
       {text.slice(0, chars)}
+      {answer && frame >= answerFrame ? (
+        <div>
+          <AnswerChip answer={answer} tone={answerTone} scale={chipScale} />
+        </div>
+      ) : null}
       <StateBadge state={frame >= stateFrame ? state : 'neutral'} visible={frame >= stateFrame ? badgeScale : 0} />
     </div>
   );

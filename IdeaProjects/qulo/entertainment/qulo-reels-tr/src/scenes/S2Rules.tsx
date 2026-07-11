@@ -23,7 +23,7 @@ export const S2Rules: React.FC = () => {
         }}
       >
         <StaggerText
-          lines={['2-10 soru.', 'Kuralları *sen* koy.']}
+          lines={['2-10 soru sor.', 'Doğru cevabı *sen* belirle.']}
           startFrame={4}
           fontSize={theme.type.title}
           accentColor={theme.colors.purple}
@@ -31,13 +31,16 @@ export const S2Rules: React.FC = () => {
       </div>
       {SORULAR.map((q, i) => (
         <QuestionCard
-          key={q}
-          text={q}
+          key={q.soru}
+          text={q.soru}
           x={620}
-          y={640 + i * 190}
+          y={580 + i * 230}
           width={640}
           rotate={i % 2 === 0 ? -2 : 2}
           enterFrame={40 + i * 40}
+          answer={q.dogru}
+          answerTone="set"
+          answerFrame={40 + i * 40 + 28}
         />
       ))}
     </AbsoluteFill>

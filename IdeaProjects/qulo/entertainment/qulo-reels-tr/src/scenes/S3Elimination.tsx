@@ -12,6 +12,9 @@ const ROUNDS = [
   {src: 'ai/m3.png', question: SORULAR[2], correct: true},
 ] as const;
 
+// Adayın verdiği cevap: yanlış roundlarda kadının 'yanlis' seçeneği, doğru roundda 'dogru'.
+const roundAnswer = (round: (typeof ROUNDS)[number]) => (round.correct ? round.question.dogru : round.question.yanlis);
+
 const roundStart = (i: number) => 30 + i * 70;
 
 export const S3Elimination: React.FC = () => {
@@ -52,14 +55,17 @@ export const S3Elimination: React.FC = () => {
               tearFrame={round.correct ? undefined : 44}
             />
             <QuestionCard
-              text={round.question}
+              text={round.question.soru}
               x={540}
-              y={560}
+              y={500}
               width={680}
               rotate={i % 2 === 0 ? -2 : 2}
               enterFrame={4}
               state={round.correct ? 'correct' : 'wrong'}
-              stateFrame={34}
+              stateFrame={36}
+              answer={roundAnswer(round)}
+              answerTone={round.correct ? 'correct' : 'wrong'}
+              answerFrame={26}
             />
           </Sequence>
         );
