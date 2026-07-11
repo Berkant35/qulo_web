@@ -1,12 +1,17 @@
 import {Composition} from 'remotion';
 import {QuloReelsAd} from './QuloReelsAd';
+import {QuloReelsTersKose} from './QuloReelsTersKose';
 import {reelsConfig} from './configs/reels-tr.config';
+import {terskoseConfig} from './configs/terskose.config';
 import {theme} from './theme';
 
 // Yeni varyant eklemek için: bu diziye {id, component, config} ekle (Root'un geri kalanı sabit).
-// Not: QuloReelsAd kendi config'ini içeride taşır (thin wrapper), bu yüzden durationInFrames
-// doğrudan reelsConfig'ten okunur; ileride varyantlar QuloReelsPlayer'ı config prop'uyla saracak.
-const compositions = [{id: 'QuloReelsAd', component: QuloReelsAd, durationInFrames: reelsConfig.durationInFrames}];
+// Not: her varyant kendi config'ini içeride taşır (thin wrapper), bu yüzden durationInFrames
+// doğrudan ilgili config'ten okunur.
+const compositions = [
+  {id: 'QuloReelsAd', component: QuloReelsAd, durationInFrames: reelsConfig.durationInFrames},
+  {id: 'QuloReelsTersKose', component: QuloReelsTersKose, durationInFrames: terskoseConfig.durationInFrames},
+];
 
 export const RemotionRoot: React.FC = () => {
   return (

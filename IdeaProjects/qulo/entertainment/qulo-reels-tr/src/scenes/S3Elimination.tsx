@@ -4,6 +4,7 @@ import {SORULAR} from '../configs/questions';
 import type {SoruSpec} from '../configs/questions';
 import {CollageShapes} from '../components/CollageShapes';
 import {CollageSticker} from '../components/CollageSticker';
+import {PaperShreds} from '../components/PaperShreds';
 import {QuestionCard} from '../components/QuestionCard';
 import {StaggerText} from '../components/StaggerText';
 
@@ -68,6 +69,9 @@ export const S3Elimination: React.FC<Props> = ({
               baseRotate={i % 2 === 0 ? 3 : -3}
               tearFrame={round.correct ? undefined : 44}
             />
+            {!round.correct ? (
+              <PaperShreds startFrame={46} count={16} originX={640} originY={1050} />
+            ) : null}
             <QuestionCard
               text={round.question.soru}
               x={540}
