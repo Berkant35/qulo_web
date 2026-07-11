@@ -1,16 +1,49 @@
 import {AbsoluteFill} from 'remotion';
 import {theme} from '../theme';
 import {SORULAR} from '../configs/questions';
+import type {SoruSpec} from '../configs/questions';
 import {CollageShapes} from '../components/CollageShapes';
 import {CollageSticker} from '../components/CollageSticker';
 import {QuestionCard} from '../components/QuestionCard';
 import {StaggerText} from '../components/StaggerText';
 
-export const S2Rules: React.FC = () => {
+export type PropSticker = {
+  src: string;
+  width: number;
+  x: number;
+  y: number;
+  rotate?: number;
+  enterFrame?: number;
+};
+
+type Props = {
+  stickerSrc?: string;
+  sorular?: readonly SoruSpec[];
+  lines?: string[];
+  props?: PropSticker[];
+};
+
+export const S2Rules: React.FC<Props> = ({
+  stickerSrc = 'ai/w1_point.png',
+  sorular = SORULAR,
+  lines = ['2-10 soru sor.', 'Doğru cevabı *sen* belirle.'],
+  props = [],
+}) => {
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
       <CollageShapes variant="rules" />
-      <CollageSticker src="ai/w1_point.png" width={560} x={300} y={1380} enterFrame={0} baseRotate={2} />
+      <CollageSticker src={stickerSrc} width={560} x={300} y={1380} enterFrame={0} baseRotate={2} />
+      {props.map((p, i) => (
+        <CollageSticker
+          key={`${p.src}-${i}`}
+          src={p.src}
+          width={p.width}
+          x={p.x}
+          y={p.y}
+          baseRotate={p.rotate ?? 0}
+          enterFrame={p.enterFrame ?? 0}
+        />
+      ))}
       <div
         style={{
           position: 'absolute',
@@ -23,13 +56,13 @@ export const S2Rules: React.FC = () => {
         }}
       >
         <StaggerText
-          lines={['2-10 soru sor.', 'Doğru cevabı *sen* belirle.']}
+          lines={lines}
           startFrame={4}
           fontSize={theme.type.title}
           accentColor={theme.colors.purple}
         />
       </div>
-      {SORULAR.map((q, i) => (
+      {sorular.map((q, i) => (
         <QuestionCard
           key={q.soru}
           text={q.soru}

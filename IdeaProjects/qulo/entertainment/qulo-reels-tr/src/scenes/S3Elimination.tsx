@@ -1,28 +1,41 @@
 import {AbsoluteFill, Sequence} from 'remotion';
 import {theme} from '../theme';
 import {SORULAR} from '../configs/questions';
+import type {SoruSpec} from '../configs/questions';
 import {CollageShapes} from '../components/CollageShapes';
 import {CollageSticker} from '../components/CollageSticker';
 import {QuestionCard} from '../components/QuestionCard';
 import {StaggerText} from '../components/StaggerText';
 
-const ROUNDS = [
+export type Round = {src: string; question: SoruSpec; correct: boolean};
+
+const DEFAULT_ROUNDS: readonly Round[] = [
   {src: 'ai/m1.png', question: SORULAR[0], correct: false},
   {src: 'ai/m2.png', question: SORULAR[1], correct: false},
   {src: 'ai/m3.png', question: SORULAR[2], correct: true},
-] as const;
+];
 
 // Adayın verdiği cevap: yanlış roundlarda kadının 'yanlis' seçeneği, doğru roundda 'dogru'.
-const roundAnswer = (round: (typeof ROUNDS)[number]) => (round.correct ? round.question.dogru : round.question.yanlis);
+const roundAnswer = (round: Round) => (round.correct ? round.question.dogru : round.question.yanlis);
 
 const roundStart = (i: number) => 30 + i * 70;
 
-export const S3Elimination: React.FC = () => {
+type Props = {
+  rounds?: readonly Round[];
+  juryStickerSrc?: string;
+  juryFlip?: boolean;
+};
+
+export const S3Elimination: React.FC<Props> = ({
+  rounds = DEFAULT_ROUNDS,
+  juryStickerSrc = 'ai/w1_hook.png',
+  juryFlip = false,
+}) => {
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
       <CollageShapes variant="elimination" />
       {/* Kadın küçük "jüri" olarak solda sabit */}
-      <CollageSticker src="ai/w1_hook.png" width={300} x={190} y={1500} enterFrame={0} baseRotate={-3} sway={false} />
+      <CollageSticker src={juryStickerSrc} width={300} x={190} y={1500} enterFrame={0} baseRotate={-3} sway={false} flip={juryFlip} />
       <div
         style={{
           position: 'absolute',
@@ -41,10 +54,11 @@ export const S3Elimination: React.FC = () => {
           accentColor={theme.colors.danger}
         />
       </div>
-      {ROUNDS.map((round, i) => {
+      {rounds.map((round, i) => {
         const start = roundStart(i);
+        const isLast = i === rounds.length - 1;
         return (
-          <Sequence key={round.src} from={start} durationInFrames={i === 2 ? 240 - start : 70} name={`Round ${i + 1}`}>
+          <Sequence key={`${round.src}-${i}`} from={start} durationInFrames={isLast ? 240 - start : 70} name={`Round ${i + 1}`}>
             <CollageSticker
               src={round.src}
               width={560}

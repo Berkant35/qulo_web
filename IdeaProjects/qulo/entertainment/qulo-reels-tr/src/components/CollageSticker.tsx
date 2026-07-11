@@ -1,6 +1,8 @@
 import {Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 
 // Konum sözleşmesi: x = yatay merkez; y = dikey çapa (top = y - width). 2:3 asset'lerde görsel merkez y'nin ~0.25*width altındadır; sahneler koordinatları still doğrulamasıyla ayarlar.
+type EnterStyle = 'slap' | 'drift';
+
 type Props = {
   src: string;
   width: number;
@@ -11,6 +13,14 @@ type Props = {
   sway?: boolean;
   tearFrame?: number;
   flip?: boolean;
+  enter?: EnterStyle;
+};
+
+// src'e göre deterministik açı (0-359) — 'drift' girişinde rastgele hissi verir, Math.random YOK.
+const driftAngleDeg = (src: string) => {
+  let h = 0;
+  for (let i = 0; i < src.length; i++) h = (h * 31 + src.charCodeAt(i)) % 360;
+  return h;
 };
 
 export const CollageSticker: React.FC<Props> = ({
@@ -23,6 +33,7 @@ export const CollageSticker: React.FC<Props> = ({
   sway = true,
   tearFrame,
   flip = false,
+  enter = 'slap',
 }) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -30,9 +41,25 @@ export const CollageSticker: React.FC<Props> = ({
   if (local < 0) return null;
 
   // Yapıştırma: büyükten küçülerek "şap" diye oturur.
-  const scale = spring({frame: local, fps, from: 1.5, to: 1, config: {damping: 13, stiffness: 190}, durationInFrames: 14});
-  const enterOpacity = interpolate(local, [0, 5], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const slapScale = spring({frame: local, fps, from: 1.5, to: 1, config: {damping: 13, stiffness: 190}, durationInFrames: 14});
+  const slapOpacity = interpolate(local, [0, 5], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const swayDeg = sway ? Math.sin(frame / 22) * 1.4 : 0;
+
+  // Süzülerek giriş: açılı bir yönden kayar, hafif dönerek yerine oturur (~18 kare).
+  const driftProgress = interpolate(local, [0, 18], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const driftEase = 1 - Math.pow(1 - driftProgress, 3);
+  const driftAngle = (driftAngleDeg(src) * Math.PI) / 180;
+  const driftDist = 170;
+  const driftX = Math.cos(driftAngle) * driftDist * (1 - driftEase);
+  const driftYOffset = Math.sin(driftAngle) * driftDist * (1 - driftEase);
+  const driftRotExtra = (1 - driftEase) * (driftAngleDeg(src) % 2 === 0 ? 16 : -16);
+  const driftOpacity = interpolate(local, [0, 10], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+
+  const scale = enter === 'drift' ? 1 : slapScale;
+  const enterOpacity = enter === 'drift' ? driftOpacity : slapOpacity;
+  const enterOffsetX = enter === 'drift' ? driftX : 0;
+  const enterOffsetY = enter === 'drift' ? driftYOffset : 0;
+  const enterRotExtra = enter === 'drift' ? driftRotExtra : 0;
 
   // Yırtılıp düşme.
   let fallY = 0;
@@ -52,7 +79,7 @@ export const CollageSticker: React.FC<Props> = ({
         left: x - width / 2,
         top: y - width, // bkz. konum sözleşmesi
         width,
-        transform: `translateY(${fallY}px) rotate(${baseRotate + swayDeg + fallRot}deg) scale(${scale}) ${flip ? 'scaleX(-1)' : ''}`,
+        transform: `translate(${enterOffsetX}px, ${enterOffsetY + fallY}px) rotate(${baseRotate + swayDeg + fallRot + enterRotExtra}deg) scale(${scale}) ${flip ? 'scaleX(-1)' : ''}`,
         opacity: enterOpacity * fallOpacity,
       }}
     >

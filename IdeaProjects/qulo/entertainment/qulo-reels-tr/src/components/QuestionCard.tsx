@@ -96,6 +96,13 @@ export const QuestionCard: React.FC<Props> = ({
   const badgeScale = spring({frame: frame - stateFrame, fps, from: 0, to: 1, config: {damping: 10, stiffness: 200}, durationInFrames: 12});
   const chipScale = spring({frame: frame - answerFrame, fps, from: 0, to: 1, config: {damping: 11, stiffness: 190}, durationInFrames: 12});
 
+  // Yanlış rozeti düştüğünde kart hafifçe sallanır (~8 kare, sönümlü ±6px).
+  const shakeT = frame - stateFrame;
+  const shakeX =
+    state === 'wrong' && frame >= stateFrame
+      ? Math.sin(shakeT * 3.2) * 6 * Math.max(0, 1 - shakeT / 8)
+      : 0;
+
   return (
     <div
       style={{
@@ -111,7 +118,7 @@ export const QuestionCard: React.FC<Props> = ({
         fontWeight: 600,
         fontSize: theme.type.body,
         lineHeight: 1.25,
-        transform: `rotate(${rotate}deg) scale(${enter})`,
+        transform: `translateX(${shakeX}px) rotate(${rotate}deg) scale(${enter})`,
         opacity: enter,
         boxShadow: '0 16px 30px rgba(0,0,0,0.45)',
       }}

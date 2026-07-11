@@ -4,11 +4,21 @@ import {CollageShapes} from '../components/CollageShapes';
 import {CollageSticker} from '../components/CollageSticker';
 import {StaggerText} from '../components/StaggerText';
 
-export const S1Hook: React.FC = () => {
+type Props = {
+  stickerSrc?: string;
+  lines?: string[];
+  accentColor?: string;
+};
+
+export const S1Hook: React.FC<Props> = ({
+  stickerSrc = 'ai/w1_hook.png',
+  lines = ['Sana ulaşmak', 'bu kadar *kolay* olmamalı.'],
+  accentColor = theme.colors.green,
+}) => {
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
       <CollageShapes variant="hook" />
-      <CollageSticker src="ai/w1_hook.png" width={720} x={540} y={1280} enterFrame={4} baseRotate={-2} />
+      <CollageSticker src={stickerSrc} width={720} x={540} y={1280} enterFrame={4} baseRotate={-2} />
       <div
         style={{
           position: 'absolute',
@@ -21,10 +31,10 @@ export const S1Hook: React.FC = () => {
         }}
       >
         <StaggerText
-          lines={['Sana ulaşmak', 'bu kadar *kolay* olmamalı.']}
+          lines={lines}
           startFrame={12}
           fontSize={theme.type.title}
-          accentColor={theme.colors.green}
+          accentColor={accentColor}
         />
       </div>
     </AbsoluteFill>
