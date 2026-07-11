@@ -15,7 +15,7 @@ const eliminationRounds: Round[] = [
 
 const rulesProps: PropSticker[] = [
   {src: 'ai/prop_plak.png', width: 190, x: 900, y: 560, rotate: 12, enterFrame: 55},
-  {src: 'ai/prop_pizza.png', width: 180, x: 170, y: 1050, rotate: -14, enterFrame: 95},
+  {src: 'ai/prop_pizza.png', width: 180, x: 955, y: 1395, rotate: -14, enterFrame: 95},
 ];
 
 export const terskoseConfig: ReelsConfig = {
