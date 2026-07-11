@@ -12,6 +12,10 @@ AI-üretimli kolaj sticker'ları (Gemini gemini-3-pro-image) + Remotion animasyo
 - `GEMINI_API_KEY="..." npm run assets -- --all` — AI sticker üretimi (bkz. prompts/characters.md)
 - `npm run render` — final MP4 (out/qulo-reels-tr-25s-9x16.mp4)
 
+## Ses
+- `public/audio/music_25s.mp3` git-ignored; temiz checkout'ta render öncesi
+  `qulo-twitter-tr/public/audio/music_30s.mp3`'ten kopyalanmalı (yoksa render Audio'da hata verir).
+
 ## Sahneler (config: src/configs/reels-tr.config.ts)
 1. S1 Hook (0–3s) — "Sana ulaşmak bu kadar kolay olmamalı."
 2. S2 Kurallar (3–9s) — "2-10 soru. Kuralları sen koy."
