@@ -3,13 +3,16 @@ import {theme} from '../theme';
 import {CollageShapes} from '../components/CollageShapes';
 import {CollageSticker} from '../components/CollageSticker';
 import {MatchSpark} from '../components/MatchSpark';
+import {PaperShreds} from '../components/PaperShreds';
 
 type Props = {
   leftSrc?: string;
   rightSrc?: string;
+  // Varyant E: eşleşme anında çift konfeti patlaması (varsayılan false — diğer varyantlar DEĞİŞMEZ).
+  confetti?: boolean;
 };
 
-export const S4Match: React.FC<Props> = ({leftSrc = 'ai/w1_hook.png', rightSrc = 'ai/m3.png'}) => {
+export const S4Match: React.FC<Props> = ({leftSrc = 'ai/w1_hook.png', rightSrc = 'ai/m3.png', confetti = false}) => {
   const frame = useCurrentFrame();
   // İki figür kenarlardan merkeze kayar.
   const slide = interpolate(frame, [0, 24], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
@@ -22,6 +25,13 @@ export const S4Match: React.FC<Props> = ({leftSrc = 'ai/w1_hook.png', rightSrc =
       {/* width=520 -> visible bottom ≈ y + 0.49*520; 1390 => ~1645, safe-zone uyumlu (bkz. Task 5-7 dersi). */}
       <CollageSticker src={leftSrc} width={520} x={womanX} y={1390} enterFrame={0} baseRotate={-2} />
       <CollageSticker src={rightSrc} width={520} x={manX} y={1390} enterFrame={0} baseRotate={2} flip />
+      {confetti ? (
+        <>
+          {/* MatchSpark (top:560) çevresinde iki asimetrik konfeti patlaması — spark girişiyle eşzamanlı. */}
+          <PaperShreds startFrame={30} count={20} originX={380} originY={700} spread={380} />
+          <PaperShreds startFrame={36} count={16} originX={700} originY={760} spread={320} />
+        </>
+      ) : null}
       <div
         style={{
           position: 'absolute',

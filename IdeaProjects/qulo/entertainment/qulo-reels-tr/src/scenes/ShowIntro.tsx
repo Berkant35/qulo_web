@@ -72,9 +72,12 @@ export const ShowIntro: React.FC = () => {
 
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
-      {/* Perde: sahne kenarlarında dokulu şerit, her şeyin arkasında (başlık/sunucu bunun üstüne biner). */}
-      <CollageSticker src="ai/e_curtain.png" width={460} x={90} y={980} enterFrame={0} baseRotate={0} sway={false} />
-      <CollageSticker src="ai/e_curtain.png" width={460} x={990} y={980} enterFrame={0} baseRotate={0} sway={false} flip />
+      {/* Perde: sahne kenarlarında dokulu şerit, her şeyin arkasında (başlık/sunucu bunun üstüne biner).
+          y=1120: perde beyaz konturunun üst kenarı (~660) panel üst kenarının (~460) belirgin ALTINA iner —
+          y=980'de ikisi ~555-570 bandında hizalanıp ekranı kesen tek düz beyaz şerit gibi okunuyordu
+          (reviewer bulgusu). Perdeler sunucunun arkasında sahne kanadı gibi durur, panel üstte yüzer. */}
+      <CollageSticker src="ai/e_curtain.png" width={460} x={90} y={1120} enterFrame={0} baseRotate={0} sway={false} />
+      <CollageSticker src="ai/e_curtain.png" width={460} x={990} y={1120} enterFrame={0} baseRotate={0} sway={false} flip />
 
       <Spotlight side="left" opacity={0.9 * glowIn} />
       <Spotlight side="right" opacity={0.9 * glowIn} />

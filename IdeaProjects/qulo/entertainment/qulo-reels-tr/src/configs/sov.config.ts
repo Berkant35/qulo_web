@@ -50,6 +50,7 @@ export const sovConfig: ReelsConfig = {
       props: {
         leftSrc: 'ai/w1_hook.png',
         rightSrc: 'ai/m3.png',
+        confetti: true,
       },
     },
     {
