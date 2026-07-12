@@ -85,7 +85,7 @@ export const MANIFEST = [
     referenceOf: ['w1_hook', 'm3'],
     styleSuffix: COUPLE_SUFFIX,
     prompt:
-      'The same couple crouching down together, playing with a cute small cat between them, both smiling with delight at the cat. The woman is the EXACT same woman as in the first reference image; the man is the EXACT same man as in the second reference image.',
+      'The same couple crouching down together, playing with a cute small cat between them, both smiling with delight at the cat. EXACTLY two people and one cat — no other people, no extra faces or heads, no duplicates. NO floor, NO ground plane, NO wooden boards, NO furniture: the figures and cat float directly on the solid pure green background as one cut-out sticker. The woman is the EXACT same woman as in the first reference image; the man is the EXACT same man as in the second reference image.',
   },
   {
     id: 'c_walk',
