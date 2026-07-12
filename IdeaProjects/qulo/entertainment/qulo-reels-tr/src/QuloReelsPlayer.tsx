@@ -8,6 +8,8 @@ import {S4Match} from './scenes/S4Match';
 import {S5Closing} from './scenes/S5Closing';
 import {KaosRain} from './scenes/KaosRain';
 import {KaosSweep} from './scenes/KaosSweep';
+import {MatchRecap} from './scenes/MatchRecap';
+import {PayoffScene} from './scenes/PayoffScene';
 
 const renderScene = (scene: SceneSpec, idx: number) => {
   // scene.props tipi Record<string, unknown> — sahne bileşenlerine spread edilirken
@@ -28,6 +30,10 @@ const renderScene = (scene: SceneSpec, idx: number) => {
       return <KaosRain {...props} />;
     case 'KaosSweep':
       return <KaosSweep {...props} />;
+    case 'MatchRecap':
+      return <MatchRecap {...props} />;
+    case 'PayoffScene':
+      return <PayoffScene {...props} />;
     default:
       throw new Error(`Unknown scene component at index ${idx}: ${scene.component}`);
   }

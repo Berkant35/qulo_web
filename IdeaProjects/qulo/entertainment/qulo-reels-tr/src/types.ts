@@ -1,6 +1,15 @@
 export type {SoruSpec} from './configs/questions';
 
-export type SceneComponent = 'S1Hook' | 'S2Rules' | 'S3Elimination' | 'S4Match' | 'S5Closing' | 'KaosRain' | 'KaosSweep';
+export type SceneComponent =
+  | 'S1Hook'
+  | 'S2Rules'
+  | 'S3Elimination'
+  | 'S4Match'
+  | 'S5Closing'
+  | 'KaosRain'
+  | 'KaosSweep'
+  | 'MatchRecap'
+  | 'PayoffScene';
 
 export type SceneSpec = {
   component: SceneComponent;
