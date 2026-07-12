@@ -24,3 +24,9 @@ export const SORULAR_SOV: readonly SoruSpec[] = [
   {soru: 'Aynı anda kaç kişiyle yazışıyorsun?', dogru: 'Sadece seninle', yanlis: 'Üç... belki dört'},
   {soru: 'Eski sevgilin numaranı biliyor mu?', dogru: 'Engelledim', yanlis: 'Dün aradı'},
 ] as const;
+
+// Varyant H "Kalabalık Yalnızlığı" — TR flört draması mizahı (keskin soru kuralı).
+export const SORULAR_PARTI: readonly SoruSpec[] = [
+  {soru: 'Gerçekten bekâr mısın?', dogru: 'Evet, gerçekten', yanlis: 'Karmaşık'},
+  {soru: 'Buradaki kaç kişiye mesaj attın?', dogru: 'Kimseye', yanlis: 'Saymadım'},
+] as const;

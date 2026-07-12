@@ -10,7 +10,9 @@ export type SceneComponent =
   | 'KaosSweep'
   | 'MatchRecap'
   | 'PayoffScene'
-  | 'ShowIntro';
+  | 'ShowIntro'
+  | 'PartyCrowd'
+  | 'EyeContact';
 
 export type SceneSpec = {
   component: SceneComponent;
