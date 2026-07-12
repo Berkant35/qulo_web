@@ -9,7 +9,8 @@ export type SceneComponent =
   | 'KaosRain'
   | 'KaosSweep'
   | 'MatchRecap'
-  | 'PayoffScene';
+  | 'PayoffScene'
+  | 'ShowIntro';
 
 export type SceneSpec = {
   component: SceneComponent;

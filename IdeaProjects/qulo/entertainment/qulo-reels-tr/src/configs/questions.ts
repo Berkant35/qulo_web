@@ -17,3 +17,10 @@ export const SORULAR_ERKEK: readonly SoruSpec[] = [
   {soru: 'Dağ mı deniz mi?', dogru: 'Dağ', yanlis: 'Deniz'},
   {soru: 'Pizza mı sushi mi?', dogru: 'Pizza', yanlis: 'Sushi'},
 ] as const;
+
+// Varyant E "TV Yarışması" — TR flört draması mizahı (keskin soru kuralı).
+export const SORULAR_SOV: readonly SoruSpec[] = [
+  {soru: 'Evli misin?', dogru: 'Hayır!', yanlis: 'Ayrılmak üzereyiz'},
+  {soru: 'Aynı anda kaç kişiyle yazışıyorsun?', dogru: 'Sadece seninle', yanlis: 'Üç... belki dört'},
+  {soru: 'Eski sevgilin numaranı biliyor mu?', dogru: 'Engelledim', yanlis: 'Dün aradı'},
+] as const;
