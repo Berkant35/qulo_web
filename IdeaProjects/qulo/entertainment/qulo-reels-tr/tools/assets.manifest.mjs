@@ -107,4 +107,53 @@ export const MANIFEST = [
     styleSuffix: PROP_SUFFIX,
     prompt: 'A single appetizing slice of pizza with melted cheese.',
   },
+
+  // ---- 2. dalga (plan: 2026-07-12-qulo-reels-tr-variants-2.md) ----
+  {
+    id: 'e_host',
+    aspectRatio: '2:3',
+    prompt:
+      'A charismatic 1970s TV game show host: man in his 30s with a flashy patterned blazer and bow tie, holding a retro chrome microphone, exaggerated showman smile, one arm gesturing to the side as if presenting a stage.',
+  },
+  {
+    id: 'e_curtain',
+    aspectRatio: '3:4',
+    styleSuffix: PROP_SUFFIX,
+    prompt:
+      'A section of heavy pleated theater stage curtain with dramatic vertical folds, retro TV studio look.',
+  },
+  {
+    id: 'h_crowd1',
+    aspectRatio: '3:4',
+    styleSuffix: COUPLE_SUFFIX,
+    prompt:
+      'A group of three young modern people at a party standing close together, EVERY one of them staring down at their own smartphone, drinks in hands, completely ignoring each other. Cut out as one single group sticker.',
+  },
+  {
+    id: 'h_crowd2',
+    aspectRatio: '3:4',
+    styleSuffix: COUPLE_SUFFIX,
+    prompt:
+      'A different group of three young modern people at a party, two half-turned away, all absorbed in their smartphones, one holding a cocktail glass. Cut out as one single group sticker.',
+  },
+  {
+    id: 'h_look_w',
+    aspectRatio: '2:3',
+    referenceOf: 'w1_hook',
+    prompt:
+      'The SAME woman as in the reference image — identical face, identical hairstyle. At a party, glancing back over her shoulder towards the viewer with a subtle intrigued smile, holding a drink glass in one hand, stylish evening-casual outfit.',
+  },
+  {
+    id: 'h_look_m',
+    aspectRatio: '2:3',
+    referenceOf: 'm_hook',
+    prompt:
+      'The SAME man as in the reference image — identical face, identical hairstyle. Looking off to the side with a curious interested expression, holding a glass in one hand, other hand in pocket, smart-casual evening outfit. ONLY this single figure — NO other people, NO background, NO room, NO curtains: the lone figure floats on the solid pure green background.',
+  },
+  {
+    id: 'prop_disko',
+    aspectRatio: '1:1',
+    styleSuffix: PROP_SUFFIX,
+    prompt: 'A classic mirrored disco ball hanging from a short chain.',
+  },
 ];
