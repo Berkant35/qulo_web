@@ -7,6 +7,7 @@ import {QuloReelsSov} from './QuloReelsSov';
 import {QuloReelsParti} from './QuloReelsParti';
 import {QuloReelsP} from './QuloReelsP';
 import {QuloReelsSorgu} from './QuloReelsSorgu';
+import {QuloReelsKadikoy} from './QuloReelsKadikoy';
 import {reelsConfig} from './configs/reels-tr.config';
 import {terskoseConfig} from './configs/terskose.config';
 import {kaosConfig} from './configs/kaos.config';
@@ -15,6 +16,7 @@ import {sovConfig} from './configs/sov.config';
 import {partiConfig} from './configs/parti.config';
 import {pConfig} from './configs/p.config';
 import {r2Config} from './configs/r2.config';
+import {k2Config} from './configs/k2.config';
 import {theme} from './theme';
 
 // Yeni varyant eklemek için: bu diziye {id, component, config} ekle (Root'un geri kalanı sabit).
@@ -29,6 +31,7 @@ const compositions = [
   {id: 'QuloReelsParti', component: QuloReelsParti, durationInFrames: partiConfig.durationInFrames},
   {id: 'QuloReelsP', component: QuloReelsP, durationInFrames: pConfig.durationInFrames},
   {id: 'QuloReelsSorgu', component: QuloReelsSorgu, durationInFrames: r2Config.durationInFrames},
+  {id: 'QuloReelsKadikoy', component: QuloReelsKadikoy, durationInFrames: k2Config.durationInFrames},
 ];
 
 export const RemotionRoot: React.FC = () => {

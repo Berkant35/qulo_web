@@ -18,7 +18,9 @@ export type SceneComponent =
   | 'DmProblem'
   | 'SorguHook'
   | 'SorguKurallar'
-  | 'InterrogationScene';
+  | 'InterrogationScene'
+  | 'KadikoyHook'
+  | 'KadikoyScene';
 
 export type SceneSpec = {
   component: SceneComponent;

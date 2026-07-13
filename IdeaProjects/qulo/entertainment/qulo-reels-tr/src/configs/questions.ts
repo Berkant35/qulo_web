@@ -51,3 +51,11 @@ export const SORGU_SORULARI: readonly SorguSoru[] = [
   {soru: 'Telefonunuzda kaç dating uygulaması var?', siklar: ['Sadece Qulo', 'İki-üç', 'Hepsi var', 'Avukatımı istiyorum'], dogruIndex: 0, secimIndex: 3},
   {soru: 'Profil fotoğrafınız kaç yıllık?', siklar: ['Geçen hafta çektim', '2-3 sene olmuştur', 'Üniversiteden', 'Askerden'], dogruIndex: 0, secimIndex: 0},
 ] as const;
+
+// Varyant K2 "Kadıköy Kedileri" — kadının soruları, kedi jürisi onayı elenmeyi belirler (bkz. plan:
+// 2026-07-12-qulo-reels-tr-variant-k2.md).
+export const KADIKOY_SORULARI: readonly SoruSpec[] = [
+  {soru: 'İlk buluşmada nereye gidiyoruz?', dogru: 'Moda sahiline', yanlis: 'Arabamla tur atarız'},
+  {soru: 'En uzun ilişkin?', dogru: '3 yıl', yanlis: 'Spor salonuyla, 5 yıl'},
+  {soru: 'Kediler mi, ben mi?', dogru: 'İkiniz de', yanlis: 'Tabii ki sen'},
+] as const;
