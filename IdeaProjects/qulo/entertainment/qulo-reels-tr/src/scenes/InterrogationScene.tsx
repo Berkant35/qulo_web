@@ -55,7 +55,7 @@ export const InterrogationScene: React.FC<Props> = ({
           style={{
             position: 'absolute',
             left: 0,
-            bottom: 150,
+            bottom: theme.safeZone.bottom, // Reels alt UI güvenli bölgesi (260px)
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
