@@ -156,4 +156,13 @@ export const MANIFEST = [
     styleSuffix: PROP_SUFFIX,
     prompt: 'A classic mirrored disco ball hanging from a short chain.',
   },
+
+  // ---- Varyant P "İlgi Bombardımanı" ----
+  {
+    id: 'p_phone',
+    aspectRatio: '2:3',
+    referenceOf: 'w1_hook',
+    prompt:
+      'The SAME woman as in the reference image — identical face, identical hairstyle. She holds a smartphone up with both hands at chest height, glancing down at the screen with a slightly overwhelmed, surprised expression (eyebrows raised), stylish chic outfit. ONLY this single figure — no other people, no background, floating on the solid pure green background.',
+  },
 ];
