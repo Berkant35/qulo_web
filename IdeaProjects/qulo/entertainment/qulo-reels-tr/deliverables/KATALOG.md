@@ -14,8 +14,8 @@ Tümü: 1080×1920 (9:16), H.264 + müzik, Instagram Reels reklam uyumlu. 01-07:
 | 07 | 07-ilgi-bombardimani.mp4 | **İlgi Bombardımanı** — çok beğenilen kadın boş DM'lere boğulur, Qulo'nun soru-kapısı filtre olur; "Kaç kişiye bu mesajı attın? ✗ Kopyala-yapıştır" | Kadın güçlendirme; "görünürlük yük değil, filtre" |
 | 08 | 08-sorgu-odasi.mp4 | **Sorgu Odası** (30sn) — film-noir sorguda 4 şıklı ifade; "Avukatımı istiyorum" ✗ → mugshot ELENDİ; "Yalanı olan giremez." | Komik-gerilim, TR mizahı |
 | 09 | 09-kadikoy-kedileri.mp4 | **Kadıköy Kedileri** (30sn) — grafitili sokak + Moda sahili; kedi jürisi animatik tepkilerle eler; arabalı erko, kaslı, İtalyan; "Kadıköy'de kedilerin onayı şart." | Yerel doku + kedi viralitesi + yeni kast |
-| 08 | 08-sorgu-odasi.mp4 | **Sorgu Odası** (30sn) — film-noir sorgu odası + 4 şıklı ifade; "Avukatımı istiyorum" → mugshot'ta ELENDİ; temiz çıkan eşleşir; "Yalanı olan giremez." İlk Gemini ortam-plate'li varyant | Komik-gerilim; TR komedisi şıklar |
 
 Kapaklar: `NN-<ad>-cover.png` (Reels kapağı olarak yüklenebilir).
-Kaynak: `entertainment/qulo-reels-tr` — composition'lar: QuloReelsAd, QuloReelsTersKose, QuloReelsKaos, QuloReelsBulusma.
+Kaynak: `entertainment/qulo-reels-tr` — composition'lar: QuloReelsAd, QuloReelsTersKose, QuloReelsKaos, QuloReelsBulusma, QuloReelsSov, QuloReelsParti, QuloReelsP, QuloReelsSorgu (900f), QuloReelsKadikoy (900f).
+Kast & aksiyon kütüphanesi: `CAST.md` (animatik pozlar dahil).
 Yeni varyant üretimi: yeni config + (gerekirse) `npm run assets` ile yeni sticker → Root'a bir satır.
