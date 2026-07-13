@@ -37,3 +37,17 @@ export const SORULAR_DM: readonly SoruSpec[] = [
   {soru: 'Kaç kişiye bu mesajı attın?', dogru: 'Sadece sana', yanlis: 'Kopyala-yapıştır'},
   {soru: 'Beni tanımak için ne sorarsın?', dogru: 'Neye güldüğünü', yanlis: 'Numaranı'},
 ] as const;
+
+// Varyant R2 "Sorgu Odası" — 4 şıklı ifade sorgusu: dogruIndex adayın dürüst olsa verirdi seçilecek
+// şık, secimIndex adayın panikle/kaçamakla gerçekte seçtiği şık (bkz. plan: 2026-07-12-qulo-reels-tr-variant-r2.md).
+export type SorguSoru = {
+  soru: string;
+  siklar: readonly [string, string, string, string]; // A-D
+  dogruIndex: 0 | 1 | 2 | 3; // dürüst cevap
+  secimIndex: 0 | 1 | 2 | 3; // adayın seçtiği şık
+};
+export const SORGU_SORULARI: readonly SorguSoru[] = [
+  {soru: 'Eski sevgilinizle son görüşmeniz?', siklar: ['Yıllar önce', 'Geçen hafta, kahve', 'Hatırlamıyorum', 'Hangisi?'], dogruIndex: 0, secimIndex: 3},
+  {soru: 'Telefonunuz neden hep ters duruyor?', siklar: ['Ters durmuyor', 'Ekran çizilmesin', 'Öyle rahat', 'Avukatımı istiyorum'], dogruIndex: 0, secimIndex: 3},
+  {soru: 'Profil fotoğrafınız kaç yıllık?', siklar: ['Geçen hafta çektim', '2-3 sene olmuştur', 'Üniversiteden', 'Askerden'], dogruIndex: 0, secimIndex: 0},
+] as const;

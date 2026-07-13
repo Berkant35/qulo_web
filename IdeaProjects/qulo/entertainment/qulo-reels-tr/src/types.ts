@@ -1,4 +1,5 @@
 export type {SoruSpec} from './configs/questions';
+export type {SorguSoru} from './configs/questions';
 
 export type SceneComponent =
   | 'S1Hook'
@@ -14,7 +15,10 @@ export type SceneComponent =
   | 'PartyCrowd'
   | 'EyeContact'
   | 'DmFlood'
-  | 'DmProblem';
+  | 'DmProblem'
+  | 'SorguHook'
+  | 'SorguKurallar'
+  | 'InterrogationScene';
 
 export type SceneSpec = {
   component: SceneComponent;

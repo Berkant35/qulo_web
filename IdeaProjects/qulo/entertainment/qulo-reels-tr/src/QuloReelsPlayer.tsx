@@ -15,6 +15,9 @@ import {PartyCrowd} from './scenes/PartyCrowd';
 import {EyeContact} from './scenes/EyeContact';
 import {DmFlood} from './scenes/DmFlood';
 import {DmProblem} from './scenes/DmProblem';
+import {SorguHook} from './scenes/SorguHook';
+import {SorguKurallar} from './scenes/SorguKurallar';
+import {InterrogationScene} from './scenes/InterrogationScene';
 
 const renderScene = (scene: SceneSpec, idx: number) => {
   // scene.props tipi Record<string, unknown> — sahne bileşenlerine spread edilirken
@@ -49,6 +52,12 @@ const renderScene = (scene: SceneSpec, idx: number) => {
       return <DmFlood {...props} />;
     case 'DmProblem':
       return <DmProblem {...props} />;
+    case 'SorguHook':
+      return <SorguHook {...props} />;
+    case 'SorguKurallar':
+      return <SorguKurallar {...props} />;
+    case 'InterrogationScene':
+      return <InterrogationScene {...props} />;
     default:
       throw new Error(`Unknown scene component at index ${idx}: ${scene.component}`);
   }
