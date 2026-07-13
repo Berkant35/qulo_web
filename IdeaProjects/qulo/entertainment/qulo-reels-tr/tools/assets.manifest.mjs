@@ -8,6 +8,10 @@ export const STYLE_SUFFIX =
 export const COUPLE_SUFFIX =
   ' Retro 1960s editorial magazine cut-out collage style with a modern twist: both people are MODERN, wearing contemporary 2020s fashion. Black-and-white photographic scene, cut out as a SINGLE sticker with one thick solid white contour outline tracing the whole group silhouette (people + described props together). Both people fully visible, photorealistic fashion-editorial quality, attractive, fully clothed, tasteful. Isolated on a solid pure green (#00FF00) background, nothing else in frame beyond the described scene, sticker does not touch image edges. No text, no letters, no numbers, no logos, no watermarks, no UI elements. Clothing must not contain any green colors.';
 
+// Tam kare ortam plate'leri (bg_*): chroma key YOK, full-bleed arka plan.
+export const BG_SUFFIX =
+  ' Full-bleed vertical 9:16 background plate. Retro 1960s film-noir black-and-white photography with visible halftone print texture, cinematic dramatic lighting. Completely EMPTY of people — no humans, no silhouettes. No text, no letters, no numbers, no logos, no watermarks.';
+
 // Nesne sticker'ları (prop_*): insan yok, tek nesne.
 export const PROP_SUFFIX =
   ' Retro 1960s editorial magazine cut-out collage style: a single object cut out as a sticker with a thick solid white contour outline. Black-and-white photographic object with subtle halftone print texture. Isolated on a solid pure green (#00FF00) background, nothing else in frame, object does not touch image edges. No people, no text, no letters, no logos, no watermarks.';
@@ -164,5 +168,21 @@ export const MANIFEST = [
     referenceOf: 'w1_hook',
     prompt:
       'The SAME woman as in the reference image — identical face, identical hairstyle. She holds a smartphone up with both hands at chest height, glancing down at the screen with a slightly overwhelmed, surprised expression (eyebrows raised), stylish chic outfit. ONLY this single figure — no other people, no background, floating on the solid pure green background.',
+  },
+
+  // ---- Varyant R2 "Sorgu Odası" — ortam plate'leri (chroma yok) ----
+  {
+    id: 'bg_sorgu',
+    aspectRatio: '9:16',
+    styleSuffix: BG_SUFFIX,
+    prompt:
+      'A police interrogation room: a bare metal table with one empty chair on the far side, a single bare light bulb hanging from a cord above the table casting a hard cone of light, a large one-way mirror window on the wall, faint cigarette smoke haze in the air, dark shadowy corners.',
+  },
+  {
+    id: 'bg_mugshot',
+    aspectRatio: '9:16',
+    styleSuffix: BG_SUFFIX,
+    prompt:
+      'A police mugshot backdrop wall: plain wall with evenly spaced horizontal height-measurement lines (plain lines ONLY, no numbers, no letters), lit by a harsh direct camera flash, slight vignette at the edges.',
   },
 ];

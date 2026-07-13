@@ -172,7 +172,9 @@ const generateOne = async (asset) => {
   }
   const raw = Buffer.from(img.inlineData.data, 'base64');
   writeFileSync(`tools/raw/${asset.id}.png`, raw);
-  const out = flags.has('--keep-bg') ? raw : removeBackground(raw);
+  // bg_* plate'leri tam kare kullanılır — chroma temizliği uygulanmaz.
+  const skipChroma = flags.has('--keep-bg') || asset.id.startsWith('bg_');
+  const out = skipChroma ? raw : removeBackground(raw);
   writeFileSync(`public/ai/${asset.id}.png`, out);
   console.log(`  ✓ tools/raw/${asset.id}.png + public/ai/${asset.id}.png (${(out.length / 1024) | 0} KB)`);
 };
