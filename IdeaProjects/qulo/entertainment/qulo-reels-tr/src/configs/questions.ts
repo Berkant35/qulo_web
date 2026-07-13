@@ -30,3 +30,10 @@ export const SORULAR_PARTI: readonly SoruSpec[] = [
   {soru: 'Gerçekten bekâr mısın?', dogru: 'Evet, gerçekten', yanlis: 'Karmaşık'},
   {soru: 'Buradaki kaç kişiye mesaj attın?', dogru: 'Kimseye', yanlis: 'Saymadım'},
 ] as const;
+
+// Varyant P "İlgi Bombardımanı" — TR flört draması mizahı (keskin soru kuralı).
+export const SORULAR_DM: readonly SoruSpec[] = [
+  {soru: 'Bende en çok ne dikkatini çekti?', dogru: 'Kitap yorumların', yanlis: 'Fotoğrafların'},
+  {soru: 'Kaç kişiye bu mesajı attın?', dogru: 'Sadece sana', yanlis: 'Kopyala-yapıştır'},
+  {soru: 'Beni tanımak için ne sorarsın?', dogru: 'Neye güldüğünü', yanlis: 'Numaranı'},
+] as const;

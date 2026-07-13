@@ -12,7 +12,9 @@ export type SceneComponent =
   | 'PayoffScene'
   | 'ShowIntro'
   | 'PartyCrowd'
-  | 'EyeContact';
+  | 'EyeContact'
+  | 'DmFlood'
+  | 'DmProblem';
 
 export type SceneSpec = {
   component: SceneComponent;
