@@ -14,7 +14,7 @@ export type SorguSoru = {
 };
 export const SORGU_SORULARI: readonly SorguSoru[] = [
   {soru: 'Eski sevgilinizle son görüşmeniz?', siklar: ['Yıllar önce', 'Geçen hafta, kahve', 'Hatırlamıyorum', 'Hangisi?'], dogruIndex: 0, secimIndex: 3},
-  {soru: 'Telefonunuz neden hep ters duruyor?', siklar: ['Ters durmuyor', 'Ekran çizilmesin', 'Öyle rahat', 'Avukatımı istiyorum'], dogruIndex: 0, secimIndex: 3},
+  {soru: 'Telefonunuzda kaç dating uygulaması var?', siklar: ['Sadece Qulo', 'İki-üç', 'Hepsi var', 'Avukatımı istiyorum'], dogruIndex: 0, secimIndex: 3},
   {soru: 'Profil fotoğrafınız kaç yıllık?', siklar: ['Geçen hafta çektim', '2-3 sene olmuştur', 'Üniversiteden', 'Askerden'], dogruIndex: 0, secimIndex: 0},
 ];
 ```
