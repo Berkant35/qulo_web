@@ -1,7 +1,7 @@
 # Qulo Reels Reklam Kataloğu
 
-Tümü: 25sn, 1080×1920 (9:16), H.264 + müzik, Instagram Reels reklam uyumlu.
-`00-TUM-VARYANTLAR.mp4` — 7 varyantın arka arkaya birleşik önizlemesi (175sn).
+Tümü: 1080×1920 (9:16), H.264 + müzik, Instagram Reels reklam uyumlu. 01-07: 25sn; 08: 30sn.
+`00-TUM-VARYANTLAR.mp4` — 8 varyantın arka arkaya birleşik önizlemesi (205sn).
 
 | # | Dosya | Konsept | Hedef çengel |
 |---|-------|---------|--------------|
@@ -12,6 +12,7 @@ Tümü: 25sn, 1080×1920 (9:16), H.264 + müzik, Instagram Reels reklam uyumlu.
 | 05 | 05-tv-yarismasi.mp4 | **Retro TV Yarışması** — "DOĞRU CEVAP KİMDE?": şovmen + keskin sorular ("Evli misin? ✗ Ayrılmak üzereyiz") | Mizah + TR flört draması |
 | 06 | 06-kalabalik-yalnizligi.mp4 | **Kalabalık Yalnızlığı** — partide herkes telefonda, iki kişi göz göze; "Gerçekten bekâr mısın?" | Sinematik duygu + keskin soru |
 | 07 | 07-ilgi-bombardimani.mp4 | **İlgi Bombardımanı** — çok beğenilen kadın boş DM'lere boğulur, Qulo'nun soru-kapısı filtre olur; "Kaç kişiye bu mesajı attın? ✗ Kopyala-yapıştır" | Kadın güçlendirme; "görünürlük yük değil, filtre" |
+| 08 | 08-sorgu-odasi.mp4 | **Sorgu Odası** (30sn) — film-noir sorgu odası + 4 şıklı ifade; "Avukatımı istiyorum" → mugshot'ta ELENDİ; temiz çıkan eşleşir; "Yalanı olan giremez." İlk Gemini ortam-plate'li varyant | Komik-gerilim; TR komedisi şıklar |
 
 Kapaklar: `NN-<ad>-cover.png` (Reels kapağı olarak yüklenebilir).
 Kaynak: `entertainment/qulo-reels-tr` — composition'lar: QuloReelsAd, QuloReelsTersKose, QuloReelsKaos, QuloReelsBulusma.
