@@ -12,6 +12,14 @@ export const COUPLE_SUFFIX =
 export const BG_SUFFIX =
   ' Full-bleed vertical 9:16 background plate. Retro 1960s film-noir black-and-white photography with visible halftone print texture, cinematic dramatic lighting. Completely EMPTY of people — no humans, no silhouettes. No text, no letters, no numbers, no logos, no watermarks.';
 
+// Gündüz sokak plate'leri (bg_* gündüz): chroma yok, retro sokak fotoğrafı.
+export const BG_GUN_SUFFIX =
+  ' Full-bleed vertical 9:16 background plate. Retro 1960s black-and-white STREET photography with visible halftone print texture, bright daylight, cinematic depth. Completely EMPTY of people — no humans, no silhouettes. No text, no letters, no numbers, no signage text, no logos, no watermarks.';
+
+// Kedi sticker'ları (kedi_*): tek hayvan, sticker dili.
+export const CAT_SUFFIX =
+  ' Retro 1960s editorial magazine cut-out collage style: a single cat cut out as a sticker with a thick solid white contour outline. Black-and-white photographic animal with subtle halftone print texture. The whole cat fully visible, isolated on a solid pure green (#00FF00) background, nothing else in frame, does not touch image edges. No people, no text, no letters, no logos, no watermarks.';
+
 // Nesne sticker'ları (prop_*): insan yok, tek nesne.
 export const PROP_SUFFIX =
   ' Retro 1960s editorial magazine cut-out collage style: a single object cut out as a sticker with a thick solid white contour outline. Black-and-white photographic object with subtle halftone print texture. Isolated on a solid pure green (#00FF00) background, nothing else in frame, object does not touch image edges. No people, no text, no letters, no logos, no watermarks.';
@@ -184,5 +192,130 @@ export const MANIFEST = [
     styleSuffix: BG_SUFFIX,
     prompt:
       'A police mugshot backdrop wall: plain wall with evenly spaced horizontal height-measurement lines (plain lines ONLY, no numbers, no letters), lit by a harsh direct camera flash, slight vignette at the edges.',
+  },
+
+  // ---- Varyant K2 "Kadıköy Kedileri" — yeni kast + Kadıköy ortamları ----
+  {
+    id: 'bg_kadikoy',
+    aspectRatio: '9:16',
+    styleSuffix: BG_GUN_SUFFIX,
+    prompt:
+      'A narrow charming Istanbul Kadıköy-style street: old buildings with bay windows, large colorful street-art mural painted on one wall, small café tables and chairs along the sidewalk, string lights across the street, cobblestones.',
+  },
+  {
+    id: 'bg_moda',
+    aspectRatio: '9:16',
+    styleSuffix: BG_GUN_SUFFIX,
+    prompt:
+      'Istanbul Moda seaside promenade: waterfront railing in the foreground, calm sea, distant island silhouette on the horizon, a few seagulls flying far away, late afternoon light.',
+  },
+  {
+    id: 'w4',
+    aspectRatio: '2:3',
+    prompt:
+      'A very attractive glamorous young woman in her mid-20s with long wavy hair, elegant chic midi summer dress and heels, confident alluring pose with a knowing smile, looking at the camera.',
+  },
+  {
+    id: 'erko_zengin',
+    aspectRatio: '2:3',
+    prompt:
+      'A smug wealthy-looking man in his early 30s: open-collar shirt under a designer blazer, holding sunglasses in one hand and dangling a luxury car key fob from the other hand, self-satisfied smirk, flashy watch. NO car, NO brand logos, NO emblems anywhere.',
+  },
+  {
+    id: 'erko_kasli',
+    aspectRatio: '2:3',
+    prompt:
+      'A very muscular gym-guy in his late 20s wearing a tight fitted plain t-shirt and joggers, arms crossed to show off his biceps, confident chin-up posture, fully clothed.',
+  },
+  {
+    id: 'italyan',
+    aspectRatio: '2:3',
+    prompt:
+      'A very handsome Mediterranean Italian-style man in his early 30s: impeccably tailored light linen suit with open-collar shirt, neatly styled hair, warm charismatic smile, holding a tiny espresso cup elegantly, effortlessly stylish.',
+  },
+  {
+    id: 'kedi_tekir',
+    aspectRatio: '1:1',
+    styleSuffix: CAT_SUFFIX,
+    prompt: 'A tabby street cat sitting upright, looking straight at the camera with a serious judgmental expression.',
+  },
+  {
+    id: 'kedi_sarman',
+    aspectRatio: '1:1',
+    styleSuffix: CAT_SUFFIX,
+    prompt: 'An orange street cat mid-yawn, eyes squeezed shut, bored expression, sitting.',
+  },
+  {
+    id: 'kedi_sb',
+    aspectRatio: '1:1',
+    styleSuffix: CAT_SUFFIX,
+    prompt: 'A cute black-and-white tuxedo cat sitting with one front paw raised up as if approving or waving.',
+  },
+
+  // ---- K2 kedi aksiyon pozları (animatik: taban→bagir→pati, SpriteFlip) ----
+  {
+    id: 'kedi_tekir_bagir',
+    aspectRatio: '1:1',
+    referenceOf: 'kedi_tekir',
+    styleSuffix: CAT_SUFFIX,
+    prompt: 'The SAME tabby cat as in the reference image — identical fur pattern. Now yowling loudly: mouth wide open, ears flattened back, annoyed aggressive expression, still sitting.',
+  },
+  {
+    id: 'kedi_tekir_pati',
+    aspectRatio: '1:1',
+    referenceOf: 'kedi_tekir',
+    styleSuffix: CAT_SUFFIX,
+    prompt: 'The SAME tabby cat as in the reference image — identical fur pattern. Now swiping one front paw forward fast in a rejecting slap motion, ears back, fierce look.',
+  },
+  {
+    id: 'kedi_sarman_bagir',
+    aspectRatio: '1:1',
+    referenceOf: 'kedi_sarman',
+    styleSuffix: CAT_SUFFIX,
+    prompt: 'The SAME orange cat as in the reference image — identical fur. Now meowing loudly with mouth wide open, complaining expression, sitting.',
+  },
+  {
+    id: 'kedi_sarman_pati',
+    aspectRatio: '1:1',
+    referenceOf: 'kedi_sarman',
+    styleSuffix: CAT_SUFFIX,
+    prompt: 'The SAME orange cat as in the reference image — identical fur. Now swiping a front paw sideways dismissively, unimpressed face.',
+  },
+  {
+    id: 'kedi_sb_bagir',
+    aspectRatio: '1:1',
+    referenceOf: 'kedi_sb',
+    styleSuffix: CAT_SUFFIX,
+    prompt: 'The SAME tuxedo cat as in the reference image — identical fur pattern. Now meowing enthusiastically with mouth open, excited happy energy, sitting.',
+  },
+  {
+    id: 'kedi_sb_pati',
+    aspectRatio: '1:1',
+    referenceOf: 'kedi_sb',
+    styleSuffix: CAT_SUFFIX,
+    prompt: 'The SAME tuxedo cat as in the reference image — identical fur pattern. Now playfully batting both front paws up in the air like a happy high-five, joyful.',
+  },
+
+  // ---- Lüks araç materyalleri (LOGO/AMBLEM/PLAKA ASLA) ----
+  {
+    id: 'prop_luks_sedan',
+    aspectRatio: '3:2',
+    styleSuffix: PROP_SUFFIX,
+    prompt:
+      'A sleek modern German-style luxury sedan, three-quarter front-side view, tinted windows, elegant lines, chrome details. NO brand badges, NO emblems, NO logos, blank license plate area with NO text.',
+  },
+  {
+    id: 'prop_anahtarlik',
+    aspectRatio: '1:1',
+    styleSuffix: PROP_SUFFIX,
+    prompt: 'A luxury car key fob with a leather keychain strap, dangling as if held up. NO brand logos, NO emblems, NO text.',
+  },
+  {
+    id: 'erko_zengin_araba',
+    aspectRatio: '3:4',
+    referenceOf: 'erko_zengin',
+    styleSuffix: COUPLE_SUFFIX,
+    prompt:
+      'EXACTLY one man and one car, no other people: the SAME smug wealthy man as in the reference image — identical face, identical outfit — leaning casually back against the side of a sleek luxury sedan with arms crossed and a self-satisfied smirk. The car has NO brand badges, NO emblems, NO logos, and a blank license plate with NO text. Man and car cut out together as ONE sticker.',
   },
 ];
