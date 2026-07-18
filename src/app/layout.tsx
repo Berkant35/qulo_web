@@ -12,7 +12,12 @@ export const metadata: Metadata = {
   title: "Qulo",
   description: "AI-powered dating app",
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   metadataBase: new URL("https://quloapp.com"),
   robots: {
