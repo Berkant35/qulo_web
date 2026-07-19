@@ -310,6 +310,50 @@ export const MANIFEST = [
     styleSuffix: PROP_SUFFIX,
     prompt: 'A luxury car key fob with a leather keychain strap, dangling as if held up. NO brand logos, NO emblems, NO text.',
   },
+  // ---- Glam kast (Meta policy tavanında çekicilik: dekolte odağı YOK, üstsüz YOK) ----
+  {
+    id: 'w5',
+    aspectRatio: '2:3',
+    prompt:
+      'A stunning glamorous young woman in her mid-20s: long flowing styled hair, elegant fitted knee-length evening dress with a tasteful modest V-neckline (no cleavage exposure, chest covered), high heels, confident alluring pose with one hand brushing her hair back, captivating smile.',
+  },
+  {
+    id: 'm_fit',
+    aspectRatio: '2:3',
+    prompt:
+      'A very handsome athletic man in his late 20s with a visibly muscular physique under a fitted open-collar dress shirt (only the top button open, chest covered), sleeves rolled up showing strong forearms, confident warm smile, smart trousers.',
+  },
+  {
+    id: 'm_zengin2',
+    aspectRatio: '2:3',
+    prompt:
+      'A wealthy-looking very handsome man in his early 30s wearing a tailored black tuxedo with the bow tie undone hanging loose around the collar, luxury wristwatch, adjusting his cufflink, self-assured charming smirk. NO brand logos.',
+  },
+
+  // ---- Varyant G1 "Hayalet Avı" (ghosting) ----
+  {
+    id: 'bg_gece',
+    aspectRatio: '9:16',
+    styleSuffix: BG_SUFFIX,
+    prompt:
+      'A dim night street: a single street lamp casting a cone of light, long shadows on cobblestones, light mist, dark building silhouettes, moody and slightly eerie but not scary.',
+  },
+  {
+    id: 'hayalet_1',
+    aspectRatio: '1:1',
+    styleSuffix: PROP_SUFFIX,
+    prompt:
+      'A cute funny cartoon bedsheet ghost floating, simple white sheet with two oval dark eye holes, small arms out to the sides, friendly comic look.',
+  },
+  {
+    id: 'hayalet_2',
+    aspectRatio: '1:1',
+    referenceOf: 'hayalet_1',
+    styleSuffix: PROP_SUFFIX,
+    prompt:
+      'The SAME cute bedsheet ghost as in the reference image — identical style. Now turned slightly sideways, one arm raised waving goodbye, drifting upward.',
+  },
+
   {
     id: 'erko_zengin_araba',
     aspectRatio: '3:4',
