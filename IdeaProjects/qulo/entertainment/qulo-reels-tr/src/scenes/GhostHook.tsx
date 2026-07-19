@@ -62,7 +62,7 @@ export const GhostHook: React.FC<Props> = ({durationFrames = 120}) => {
       <BackdropPlate src="ai/bg_gece.png" zoomFrom={1} zoomTo={1.07} darken={0.42} durationInFrames={durationFrames} />
 
       <GhostDrift src="ai/hayalet_1.png" leftPct={8} topPct={30} width={190} phase={0.6} swayAmp={22} riseSpeed={0.55} />
-      <GhostDrift src="ai/hayalet_2.png" leftPct={66} topPct={54} width={158} phase={3.4} swayAmp={18} riseSpeed={0.4} />
+      <GhostDrift src="ai/hayalet_2.png" leftPct={5} topPct={60} width={158} phase={3.4} swayAmp={18} riseSpeed={0.4} />
 
       <CollageSticker src="ai/w5.png" width={w5Width} x={760} y={w5Y} enterFrame={4} baseRotate={-2} />
 
