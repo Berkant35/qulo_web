@@ -1,4 +1,4 @@
-import {AbsoluteFill, Sequence} from 'remotion';
+import {AbsoluteFill, Sequence, useVideoConfig} from 'remotion';
 import {theme} from '../theme';
 import {SORULAR} from '../configs/questions';
 import type {SoruSpec} from '../configs/questions';
@@ -34,13 +34,15 @@ export const S3Elimination: React.FC<Props> = ({
   juryFlip = false,
   firstRoundStart = 30,
 }) => {
+  const {height} = useVideoConfig();
+  // 9:16'da (height=1920) jüri y=1500 / round y=1380 → önceki sabitlerle birebir aynı; 4:5'te (1350) alt banda oturur.
   const roundStart = (i: number) => firstRoundStart + i * 70;
 
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
       <CollageShapes variant="elimination" />
       {/* Kadın küçük "jüri" olarak solda sabit */}
-      <CollageSticker src={juryStickerSrc} width={300} x={190} y={1500} enterFrame={0} baseRotate={-3} sway={false} flip={juryFlip} />
+      <CollageSticker src={juryStickerSrc} width={300} x={190} y={height - 420} enterFrame={0} baseRotate={-3} sway={false} flip={juryFlip} />
       <div
         style={{
           position: 'absolute',
@@ -68,7 +70,7 @@ export const S3Elimination: React.FC<Props> = ({
               src={round.src}
               width={560}
               x={640}
-              y={1380}
+              y={height - 540}
               enterFrame={0}
               baseRotate={i % 2 === 0 ? 3 : -3}
               tearFrame={round.correct ? undefined : 44}

@@ -1,4 +1,4 @@
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, useVideoConfig} from 'remotion';
 import {theme} from '../theme';
 import {CollageShapes} from '../components/CollageShapes';
 import {CollageSticker} from '../components/CollageSticker';
@@ -17,6 +17,8 @@ type Props = {
 
 // Varyant C "Buluşma Payoff'u" — küçük soru kartı (video 1'deki mekanik) → büyük çift fotoğrafı (gerçeğe dönüşen cevap).
 export const PayoffScene: React.FC<Props> = ({coupleSrc, question, caption, shapesVariant = 'match'}) => {
+  const {height} = useVideoConfig();
+  // 9:16'da (height=1920) çift y=1310 / caption top=1530 → önceki sabitlerle birebir aynı; 4:5'te (1350) alt banda oturur.
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
       <CollageShapes variant={shapesVariant} />
@@ -32,12 +34,12 @@ export const PayoffScene: React.FC<Props> = ({coupleSrc, question, caption, shap
         answerFrame={20}
       />
       {/* width=880 -> top=y-width=430; çift asset 3:4 oranlı, görünür alt ≈ y + 0.34*880 ≈ 1610 (safe-zone ≤1660 uyumlu). */}
-      <CollageSticker src={coupleSrc} width={880} x={540} y={1310} enterFrame={8} enter="drift" />
+      <CollageSticker src={coupleSrc} width={880} x={540} y={height - 610} enterFrame={8} enter="drift" />
       {/* Caption çiftin alt/gövde bölgesi üstüne biner; StaggerText'in kendi text-shadow'u + accent yeşil okunabilirliği sağlar. */}
       <div
         style={{
           position: 'absolute',
-          top: 1530,
+          top: height - 390,
           left: 0,
           width: '100%',
           display: 'flex',

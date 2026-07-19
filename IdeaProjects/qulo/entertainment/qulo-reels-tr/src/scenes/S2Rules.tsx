@@ -1,4 +1,4 @@
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, useVideoConfig} from 'remotion';
 import {theme} from '../theme';
 import {SORULAR} from '../configs/questions';
 import type {SoruSpec} from '../configs/questions';
@@ -33,10 +33,12 @@ export const S2Rules: React.FC<Props> = ({
   lines = ['2-10 soru sor.', 'Doğru cevabı *sen* belirle.'],
   props = [],
 }) => {
+  const {height} = useVideoConfig();
+  // 9:16'da (height=1920) y=1380 → önceki sabitle birebir aynı; 4:5'te (1350) sticker alt banda otomatik oturur.
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
       <CollageShapes variant="rules" />
-      <CollageSticker src={stickerSrc} width={stickerWidth} x={stickerX} y={1380} enterFrame={0} baseRotate={2} />
+      <CollageSticker src={stickerSrc} width={stickerWidth} x={stickerX} y={height - 540} enterFrame={0} baseRotate={2} />
       {props.map((p, i) => (
         <CollageSticker
           key={`${p.src}-${i}`}

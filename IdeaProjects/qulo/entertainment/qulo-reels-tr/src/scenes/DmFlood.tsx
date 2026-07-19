@@ -1,4 +1,4 @@
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, useVideoConfig} from 'remotion';
 import {theme} from '../theme';
 import {CollageShapes} from '../components/CollageShapes';
 import {CollageSticker} from '../components/CollageSticker';
@@ -9,11 +9,13 @@ import {StaggerText} from '../components/StaggerText';
 // MessageRain sticker'dan ÖNCE render edilir ki kadının opak silüeti (yüzü dahil) baloncukları doğal
 // olarak örtsün; şeffaf alanlardan hâlâ görünürler (bkz. CollageSticker konum sözleşmesi).
 export const DmFlood: React.FC = () => {
+  const {height} = useVideoConfig();
+  // 9:16'da (height=1920) y=1330 → önceki sabitle birebir aynı; 4:5'te (1350) figür alt banda oturur.
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
       <CollageShapes variant="hook" />
       <MessageRain startFrame={0} count={26} phase="flood" />
-      <CollageSticker src="ai/p_phone.png" width={600} x={540} y={1330} enterFrame={6} baseRotate={-1} enter="slap" />
+      <CollageSticker src="ai/p_phone.png" width={600} x={540} y={height - 590} enterFrame={6} baseRotate={-1} enter="slap" />
       <div
         style={{
           position: 'absolute',

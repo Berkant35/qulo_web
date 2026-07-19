@@ -38,6 +38,9 @@ const Sparkle: React.FC<{corner: Corner; size: number; scale: number}> = ({corne
 export const ShowIntro: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
+  // Not: bu sahne üst-ağırlıklı (kicker → başlık paneli → altında sunucu). 4:5'te düz üst-kırpma doğru sonucu verir:
+  // panel/kicker sabit kalır, sunucu 9:16 konumunda durur (dizden aşağısı kırpılır) — height-göreli taşıma paneli
+  // örteceği için UYGULANMAZ (bkz. 4:5 still doğrulaması).
 
   const glowIn = interpolate(frame, [0, 20], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const panelScale = spring({frame: frame - 8, fps, from: 0.4, to: 1, config: {damping: 12, stiffness: 170}, durationInFrames: 16});

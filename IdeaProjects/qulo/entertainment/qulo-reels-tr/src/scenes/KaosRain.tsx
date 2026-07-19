@@ -1,4 +1,4 @@
-import {AbsoluteFill, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {theme} from '../theme';
 import {CollageShapes} from '../components/CollageShapes';
 import {CollageSticker} from '../components/CollageSticker';
@@ -13,6 +13,8 @@ const LOOP = 2500; // dikey döngü uzunluğu (ekran yüksekliği 1920 + giriş/
 
 export const KaosRain: React.FC = () => {
   const frame = useCurrentFrame();
+  const {height} = useVideoConfig();
+  // 9:16'da (height=1920) figür y=1330 → önceki sabitle birebir aynı; 4:5'te (1350) alt banda oturur. Kart yağmuru (LOOP) oran-bağımsız.
 
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
@@ -30,7 +32,7 @@ export const KaosRain: React.FC = () => {
           <MiniProfileCard key={i} x={x} y={y} width={size} rotate={baseRotate + tumble} opacity={depthOpacity} />
         );
       })}
-      <CollageSticker src="ai/w1_tired.png" width={640} x={540} y={1330} enterFrame={6} baseRotate={-1} enter="slap" />
+      <CollageSticker src="ai/w1_tired.png" width={640} x={540} y={height - 590} enterFrame={6} baseRotate={-1} enter="slap" />
       <div
         style={{
           position: 'absolute',

@@ -1,4 +1,4 @@
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, useVideoConfig} from 'remotion';
 import type {SoruSpec} from '../configs/questions';
 import {BackdropPlate} from '../components/BackdropPlate';
 import {CollageSticker} from '../components/CollageSticker';
@@ -25,7 +25,6 @@ const W4_ENTER_FRAME = 76;
 // bottom=top+width*ratio=y+width*(ratio-1)) aspect/width ne olursa olsun kedi jürisinin (top~1520,
 // bkz. CatJury) HEMEN ÜSTÜNDE sabit bir çizgide (~1485) tutan formül — iki ayrı sabit yerine (bkz. plan: 2:3/520→
 // y~1230, 3:4/700→y~1250) tek kaynaktan üretiliyor.
-const SUSPECT_BOTTOM_TARGET = 1485;
 const ASPECT_HEIGHT_RATIO: Record<'2:3' | '3:4', number> = {'2:3': 1.5, '3:4': 4 / 3};
 
 type Props = {
@@ -47,8 +46,11 @@ export const KadikoyScene: React.FC<Props> = ({
   correct,
   durationFrames,
 }) => {
+  const {height} = useVideoConfig();
+  // 9:16'da (height=1920) suspectBottomTarget=1485 → önceki sabitle birebir aynı; 4:5'te (1350) alt banda otomatik oturur.
+  const suspectBottomTarget = height - 435;
   const ratio = ASPECT_HEIGHT_RATIO[suspectAspect];
-  const suspectY = SUSPECT_BOTTOM_TARGET - suspectWidth * (ratio - 1);
+  const suspectY = suspectBottomTarget - suspectWidth * (ratio - 1);
 
   return (
     <AbsoluteFill style={{overflow: 'hidden'}}>
@@ -100,7 +102,7 @@ export const KadikoyScene: React.FC<Props> = ({
             <MatchSpark startFrame={MATCH_FRAME} label="Eşleşme!" />
           </div>
           {/* w4 = K2'nin marka kadını (bkz. CAST.md) — sadece onay round'unda, eşleşme anında girer. */}
-          <CollageSticker src="ai/w4.png" width={460} x={300} y={1210} enterFrame={W4_ENTER_FRAME} enter="drift" baseRotate={-2} />
+          <CollageSticker src="ai/w4.png" width={460} x={300} y={height - 710} enterFrame={W4_ENTER_FRAME} enter="drift" baseRotate={-2} />
         </>
       )}
     </AbsoluteFill>

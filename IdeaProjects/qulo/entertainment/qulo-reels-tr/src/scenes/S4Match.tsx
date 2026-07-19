@@ -1,4 +1,4 @@
-import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {theme} from '../theme';
 import {CollageShapes} from '../components/CollageShapes';
 import {CollageSticker} from '../components/CollageSticker';
@@ -14,6 +14,7 @@ type Props = {
 
 export const S4Match: React.FC<Props> = ({leftSrc = 'ai/w1_hook.png', rightSrc = 'ai/m3.png', confetti = false}) => {
   const frame = useCurrentFrame();
+  const {height} = useVideoConfig();
   // İki figür kenarlardan merkeze kayar.
   const slide = interpolate(frame, [0, 24], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const womanX = interpolate(slide, [0, 1], [40, 330]);
@@ -22,9 +23,10 @@ export const S4Match: React.FC<Props> = ({leftSrc = 'ai/w1_hook.png', rightSrc =
   return (
     <AbsoluteFill style={{background: theme.colors.bg, overflow: 'hidden'}}>
       <CollageShapes variant="match" />
-      {/* width=520 -> visible bottom ≈ y + 0.49*520; 1390 => ~1645, safe-zone uyumlu (bkz. Task 5-7 dersi). */}
-      <CollageSticker src={leftSrc} width={520} x={womanX} y={1390} enterFrame={0} baseRotate={-2} />
-      <CollageSticker src={rightSrc} width={520} x={manX} y={1390} enterFrame={0} baseRotate={2} flip />
+      {/* width=520 -> visible bottom ≈ y + 0.49*520; 9:16'da y=1390 => ~1645, safe-zone uyumlu (bkz. Task 5-7 dersi).
+          4:5'te (height=1350) height-530 çiftleri alt banda otomatik toplar. */}
+      <CollageSticker src={leftSrc} width={520} x={womanX} y={height - 530} enterFrame={0} baseRotate={-2} />
+      <CollageSticker src={rightSrc} width={520} x={manX} y={height - 530} enterFrame={0} baseRotate={2} flip />
       {confetti ? (
         <>
           {/* MatchSpark (top:560) çevresinde iki asimetrik konfeti patlaması — spark girişiyle eşzamanlı. */}

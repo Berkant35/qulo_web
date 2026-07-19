@@ -1,4 +1,4 @@
-import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {theme} from '../theme';
 import type {SorguSoru} from '../configs/questions';
 import {BackdropPlate, LightSwing} from '../components/BackdropPlate';
@@ -36,6 +36,10 @@ export const InterrogationScene: React.FC<Props> = ({
   bgMugshot = 'ai/bg_mugshot.png',
 }) => {
   const frame = useCurrentFrame();
+  const {height} = useVideoConfig();
+  // Mugshot (elenme) kesiti üst kart taşımaz → şüpheli height-göreli olup tam boy alt banda oturur (9:16'da y=1380 birebir aynı).
+  // Sorgu round'u ise üst-ağırlıklı: OptionsCard (y=230, ~700'e kadar) sabit merkez öğe olduğundan şüpheli DÜZ ÜST-KIRPMA ile
+  // kartın altında kalmalı (y=1400 sabit); height-göreli taşınırsa baş kartın arkasında kaybolur (bkz. 4:5 still doğrulaması).
   const cutFrame = durationFrames - CUT_LEAD;
   const isCut = eliminated && frame >= cutFrame;
 
@@ -49,7 +53,7 @@ export const InterrogationScene: React.FC<Props> = ({
       <AbsoluteFill style={{overflow: 'hidden'}}>
         <BackdropPlate src={bgMugshot} zoomFrom={1} zoomTo={1} darken={0.3} durationInFrames={CUT_LEAD} />
         {/* width=560 -> visible bottom ≈ y + 0.49*560 (bkz. CollageSticker konum sözleşmesi). */}
-        <CollageSticker src={suspectSrc} width={560} x={540} y={1380} enterFrame={cutFrame} sway={false} />
+        <CollageSticker src={suspectSrc} width={560} x={540} y={height - 540} enterFrame={cutFrame} sway={false} />
         <EliminationStamp frame={cutFrame + 6} label="ELENDİ" />
         <div
           style={{

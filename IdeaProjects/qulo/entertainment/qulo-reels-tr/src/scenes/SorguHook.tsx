@@ -1,4 +1,4 @@
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, useVideoConfig} from 'remotion';
 import {theme} from '../theme';
 import {BackdropPlate, LightSwing} from '../components/BackdropPlate';
 import {CollageSticker} from '../components/CollageSticker';
@@ -19,12 +19,14 @@ export const SorguHook: React.FC<Props> = ({
   bgSrc = 'ai/bg_sorgu.png',
   durationFrames = 120,
 }) => {
+  const {height} = useVideoConfig();
+  // 9:16'da (height=1920) y=1420 → önceki sabitle birebir aynı; 4:5'te (1350) sorgucu alt banda oturur.
   return (
     <AbsoluteFill style={{overflow: 'hidden'}}>
       <BackdropPlate src={bgSrc} zoomFrom={1} zoomTo={1.07} darken={0.35} durationInFrames={durationFrames} />
       <LightSwing />
       {/* width=480 -> visible bottom ≈ y + 0.49*480 (bkz. CollageSticker konum sözleşmesi). */}
-      <CollageSticker src={stickerSrc} width={480} x={800} y={1420} enterFrame={4} baseRotate={-2} flip />
+      <CollageSticker src={stickerSrc} width={480} x={800} y={height - 500} enterFrame={4} baseRotate={-2} flip />
       <div
         style={{
           position: 'absolute',

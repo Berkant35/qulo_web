@@ -1,4 +1,4 @@
-import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {theme} from '../theme';
 import {CollageShapes} from '../components/CollageShapes';
 import {CollageSticker} from '../components/CollageSticker';
@@ -37,6 +37,8 @@ const LightDot: React.FC<{i: number; frame: number}> = ({i, frame}) => {
 
 export const PartyCrowd: React.FC = () => {
   const frame = useCurrentFrame();
+  const {height} = useVideoConfig();
+  // 9:16'da (height=1920) kalabalık y=1290/1330 → önceki sabitlerle birebir aynı; 4:5'te (1350) alt banda oturur.
 
   // Disko topu: 1:1 asset -> top = y - width, bottom = y (bkz. CollageSticker konum sözleşmesi).
   // Spec taslağı y~430 idi ama safeZone.top+40'ta oturan başlıkla (yaklaşık 180-336 bandı) çakışıyordu
@@ -69,8 +71,8 @@ export const PartyCrowd: React.FC = () => {
       </div>
 
       {/* 3:4 kalabalık kesitleri alt yarıda üst üste biner, ikisi de telefonlarına bakıyor. */}
-      <CollageSticker src="ai/h_crowd1.png" width={560} x={300} y={1290} enterFrame={6} enter="drift" />
-      <CollageSticker src="ai/h_crowd2.png" width={560} x={800} y={1330} enterFrame={14} enter="drift" baseRotate={2} flip />
+      <CollageSticker src="ai/h_crowd1.png" width={560} x={300} y={height - 630} enterFrame={6} enter="drift" />
+      <CollageSticker src="ai/h_crowd2.png" width={560} x={800} y={height - 590} enterFrame={14} enter="drift" baseRotate={2} flip />
 
       <div
         style={{

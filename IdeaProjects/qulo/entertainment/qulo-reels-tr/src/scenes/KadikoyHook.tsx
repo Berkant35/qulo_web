@@ -1,4 +1,4 @@
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, useVideoConfig} from 'remotion';
 import {theme} from '../theme';
 import {BackdropPlate} from '../components/BackdropPlate';
 import {CollageSticker} from '../components/CollageSticker';
@@ -12,11 +12,12 @@ type Props = {
 };
 
 export const KadikoyHook: React.FC<Props> = ({durationFrames = 120}) => {
+  const {height} = useVideoConfig();
   return (
     <AbsoluteFill style={{overflow: 'hidden'}}>
       <BackdropPlate src="ai/bg_kadikoy.png" zoomFrom={1} zoomTo={1.07} darken={0.4} durationInFrames={durationFrames} />
-      {/* width=480 -> visible bottom ≈ y + 0.5*480 = 1450 (bkz. CollageSticker konum sözleşmesi), kedilerin üstünde. */}
-      <CollageSticker src="ai/w4.png" width={480} x={740} y={1210} enterFrame={4} baseRotate={-2} />
+      {/* width=480 -> visible bottom ≈ y + 0.5*480 = 1450 (bkz. CollageSticker konum sözleşmesi), kedilerin üstünde. 9:16'da y=1210. */}
+      <CollageSticker src="ai/w4.png" width={480} x={740} y={height - 710} enterFrame={4} baseRotate={-2} />
       <CatJury reaction="watch" />
       <div
         style={{

@@ -68,9 +68,11 @@ const Bubble: React.FC<{x: number; y: number; startFrame: number; glyph: string;
 // (width 230, top-left konum) 260px alt safe-zone'a (y>=1660) hâlâ biraz taşıyor ama bu yapısal —
 // aday sticker'ları jüriye yer açmak için y-bottom≈1485'te durur (bkz. KadikoyScene), bu yüzden
 // kediler en erken ~1490'da başlayabilir; 1520 suspect-cat çakışmasını önleyip taşmayı asgariye indirir.
-export const CatJury: React.FC<Props> = ({reaction, reactFrame = 0, y = 1520}) => {
+export const CatJury: React.FC<Props> = ({reaction, reactFrame = 0, y}) => {
   const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
+  const {fps, height} = useVideoConfig();
+  // 9:16'da (height=1920) catY=1520 → önceki sabitle birebir aynı; 4:5'te (1350) kedi jürisi alt banda otomatik oturur.
+  const catY = y ?? height - 400;
 
   const bubbleColor = reaction === 'reject' ? theme.colors.danger : theme.colors.greenDark;
   const bubbleGlyph = reaction === 'reject' ? '✕' : '❤';
@@ -108,7 +110,7 @@ export const CatJury: React.FC<Props> = ({reaction, reactFrame = 0, y = 1520}) =
               style={{
                 position: 'absolute',
                 left: cat.x,
-                top: y,
+                top: catY,
                 width: CAT_WIDTH,
                 height: CAT_WIDTH,
                 transform: `translateY(${hop}px) rotate(${sway}deg)`,
@@ -118,7 +120,7 @@ export const CatJury: React.FC<Props> = ({reaction, reactFrame = 0, y = 1520}) =
               <SpriteFlip frames={frames} x={0} y={0} width={CAT_WIDTH} frameDuration={FRAME_DURATION} startFrame={catReactFrame} />
             </div>
             {reaction !== 'watch' ? (
-              <Bubble x={centerX} y={y - 86} startFrame={catReactFrame} glyph={bubbleGlyph} color={bubbleColor} />
+              <Bubble x={centerX} y={catY - 86} startFrame={catReactFrame} glyph={bubbleGlyph} color={bubbleColor} />
             ) : null}
           </div>
         );
