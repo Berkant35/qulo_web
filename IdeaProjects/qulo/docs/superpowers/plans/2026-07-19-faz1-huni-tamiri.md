@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- `flutter analyze` sıfır hata (qulov2 dizininden; `dart analyze` değil).
+- `dart analyze` sıfır hata (qulov2 dizininden). **NOT: `flutter analyze` bu projede CRASH ediyor — `dart analyze` kullan.** Testler: `fvm flutter test`.
 - Kod commit'leri **qulov2 kendi git repo'suna** (`qulov2/`, branch `main`). Docs dış repo'da.
 - Localization: yeni her key **16 dilde** (`lib/core/l10n/translations/*.dart`: ar, de, en, es, fr, hi, it, ja, ko, nl, pl, pt, ru, sv, tr, zh). Hardcode string YASAK; `context.tr('key')` kullan.
 - Screen dosyası max ~200 satır, sadece UI orchestration; logic mixin'de (`mixin XScreenMixin on ConsumerState<XScreen>` + `initMixin`/`disposeMixin`).
@@ -118,9 +118,9 @@ SharedPreferences flag key sabitlerini de buraya ekle (tek-seferlik event/paywal
   static const String flagFirstQuizComplete = 'funnel_first_quiz_complete_seen';
 ```
 
-- [ ] **Step 3: flutter analyze**
+- [ ] **Step 3: dart analyze**
 
-Run: `cd qulov2 && flutter analyze`
+Run: `cd qulov2 && dart analyze`
 Expected: 0 hata. (Not: FunnelEvents delegation-only; singleton'lar inject edilemediği için unit test yerine cihaz testinde doğrulanır — Task 8.)
 
 - [ ] **Step 4: Commit**
@@ -184,7 +184,7 @@ void main() {
 
 - [ ] **Step 2: Test'i çalıştır, fail ettiğini doğrula**
 
-Run: `cd qulov2 && flutter test test/core/services/pending_languages_store_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/services/pending_languages_store_test.dart`
 Expected: FAIL — "PendingLanguagesStore not defined" / dosya yok.
 
 - [ ] **Step 3: PendingLanguagesStore'u oluştur**
@@ -223,7 +223,7 @@ abstract final class PendingLanguagesStore {
 
 - [ ] **Step 4: Test'i çalıştır, geçtiğini doğrula**
 
-Run: `cd qulov2 && flutter test test/core/services/pending_languages_store_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/services/pending_languages_store_test.dart`
 Expected: PASS (4 test).
 
 - [ ] **Step 5: Carousel onStart'ı store'a yazacak şekilde değiştir**
@@ -240,7 +240,7 @@ Yerine (paywall Task 6'da kaldırılacak; burada sadece dil satırını değişt
     _showPremiumSuggestion();
 ```
 Import ekle: `import 'package:qulo_v2/core/services/pending_languages_store.dart';`
-Not: `userLanguagesProvider` importu başka yerde kullanılmıyorsa kaldır (loop refactor — `flutter analyze` unused import uyarısını takip et).
+Not: `userLanguagesProvider` importu başka yerde kullanılmıyorsa kaldır (loop refactor — `dart analyze` unused import uyarısını takip et).
 
 - [ ] **Step 6: app.dart auth-transition listener'ına flush ekle**
 
@@ -272,9 +272,9 @@ Future<void> _flushPendingLanguages(WidgetRef ref) async {
 Import ekle: `import 'package:qulo_v2/core/services/pending_languages_store.dart';` (ve `Result`/`when` için gerekli importlar zaten varsa dokunma).
 Not: `ref` tipi app.dart'taki mevcut listener bağlamına göre `WidgetRef`/`Ref` olabilir — mevcut `ref.read` kullanımıyla aynı tipi kullan.
 
-- [ ] **Step 7: flutter analyze**
+- [ ] **Step 7: dart analyze**
 
-Run: `cd qulov2 && flutter analyze`
+Run: `cd qulov2 && dart analyze`
 Expected: 0 hata (unused import kalmadı).
 
 - [ ] **Step 8: Commit**
@@ -350,7 +350,7 @@ void main() {
 
 - [ ] **Step 2: Test'i çalıştır, fail ettiğini doğrula**
 
-Run: `cd qulov2 && flutter test test/providers/onboarding_seen_provider_test.dart`
+Run: `cd qulov2 && fvm flutter test test/providers/onboarding_seen_provider_test.dart`
 Expected: FAIL — provider tanımlı değil.
 
 - [ ] **Step 3: OnboardingSeenNotifier'ı oluştur (senkron prefs okuması)**
@@ -393,7 +393,7 @@ final onboardingSeenProvider =
 
 - [ ] **Step 4: Test'i çalıştır, geçtiğini doğrula**
 
-Run: `cd qulov2 && flutter test test/providers/onboarding_seen_provider_test.dart`
+Run: `cd qulov2 && fvm flutter test test/providers/onboarding_seen_provider_test.dart`
 Expected: PASS (3 test).
 
 - [ ] **Step 5: main.dart'ta SharedPreferences preload + override**
@@ -456,14 +456,14 @@ Import ekle: `import 'package:qulo_v2/providers/onboarding_seen_provider.dart';`
 
 `app_routes.dart` — `_MainShellState`'teki `_checkOnboarding()` çağrısını ve metodunu **kaldır** (initState'ten `_checkOnboarding()` satırını ve metod gövdesini sil). Carousel artık auth öncesi router guard'ından açılıyor; çift gösterimi önle. `initState`'te başka iş yoksa `super.initState()` kalsın.
 
-- [ ] **Step 8: flutter analyze**
+- [ ] **Step 8: dart analyze**
 
-Run: `cd qulov2 && flutter analyze`
+Run: `cd qulov2 && dart analyze`
 Expected: 0 hata (kaldırılan `_checkOnboarding` sonrası kullanılmayan import/SharedPreferences varsa temizle — loop refactor).
 
 - [ ] **Step 9: Cihaz doğrulaması (deferred — Task 8 E2E'de)**
 
-Not: Router redirect + ilk-frame senkron okuma davranışı widget/cihaz testinden çok gerçek akışta doğrulanır (Task 8). Bu task'ın otomatik kanıtı: notifier unit testleri (Step 4) + `flutter analyze`.
+Not: Router redirect + ilk-frame senkron okuma davranışı widget/cihaz testinden çok gerçek akışta doğrulanır (Task 8). Bu task'ın otomatik kanıtı: notifier unit testleri (Step 4) + `dart analyze`.
 
 - [ ] **Step 10: Commit**
 
@@ -543,12 +543,12 @@ Not: import yolları mevcut projedeki gerçek yollara göre düzelt (`app_failur
 ```
 - Eski `socialLogin` içindeki `setState(() => loginError = null)` davranışını korumak için: SocialAuthMixin `socialLogin` başında error temizlemiyor. Login'de her denemede eski hatayı temizlemek istiyorsan `onSocialAuthError` yeterli (yeni hata set ediyor); temiz başlangıç için `withLoading` çağrısı öncesi login ekranına özel bir override gerekmiyor — mevcut UX (hata yeni denemede güncellenir) korunur. `import 'package:qulo_v2/features/auth/mixins/social_auth_mixin.dart';` ekle.
 
-- [ ] **Step 3: flutter analyze**
+- [ ] **Step 3: dart analyze**
 
-Run: `cd qulov2 && flutter analyze`
+Run: `cd qulov2 && dart analyze`
 Expected: 0 hata. `login_screen.dart:135` `socialLogin('google')` çağrısı hâlâ derlenir (metod artık mixin'den).
 
-- [ ] **Step 4: Cihaz doğrulaması (deferred — Task 8)**: login ekranından Google/Apple hâlâ çalışmalı. Otomatik kanıt: `flutter analyze` (imza uyumu).
+- [ ] **Step 4: Cihaz doğrulaması (deferred — Task 8)**: login ekranından Google/Apple hâlâ çalışmalı. Otomatik kanıt: `dart analyze` (imza uyumu).
 
 - [ ] **Step 5: Commit**
 
@@ -734,9 +734,9 @@ Import: `import 'package:qulo_v2/features/auth/screens/auth_landing_screen.dart'
 ```
 Not: `isAuthRoute = state.matchedLocation.startsWith('/auth')` olduğundan `/auth/landing` zaten auth-route sayılır (döngü olmaz). Pending deep-link bloğundaki (satır 118) `return '/auth/login'` ve invite bloğu login'de kalabilir (deep-link kullanıcıyı doğrudan login'e alır — kabul; landing'e almak istersen aynı şekilde değiştir, ama YAGNI: sadece ana giriş landing).
 
-- [ ] **Step 6: flutter analyze**
+- [ ] **Step 6: dart analyze**
 
-Run: `cd qulov2 && flutter analyze`
+Run: `cd qulov2 && dart analyze`
 Expected: 0 hata.
 
 - [ ] **Step 7: Cihaz doğrulaması (deferred — Task 8)**: fresh install → carousel → landing → Google/Apple/email üç yol.
@@ -816,9 +816,9 @@ Import ekle: `shared_preferences`, `funnel_events.dart`, `analytics_events.dart`
 
 **AppReview çakışması:** Mevcut `onStartChat`/`onGoBack` içindeki `AppReviewManager.instance.tryShowReview(trigger: 'match_celebration')` çağrısı varsa — first-match paywall gösterildiği turda review'ı ATLA (aynı anda iki modal açma). En temizi: `_maybeShowFirstMatchPaywall` içinde paywall gösterildiyse review çağrısı yapılmaz; flag zaten true iken (ikinci+ match) mevcut review davranışı korunur. Uygulama: review çağrısını `_maybeShowFirstMatchPaywall`'ın `shown==true` dalına taşı, ya da onStartChat/onGoBack'te review'ı paywall gösterilmediyse çağır. Mevcut kodun review çağrısını buna göre düzenle (celebration'ı bozmadan).
 
-- [ ] **Step 3: flutter analyze**
+- [ ] **Step 3: dart analyze**
 
-Run: `cd qulov2 && flutter analyze`
+Run: `cd qulov2 && dart analyze`
 Expected: 0 hata (onboarding'de ölü kod/unused import kalmadı).
 
 - [ ] **Step 4: Cihaz doğrulaması (deferred — Task 8)**: ilk eşleşme celebration → çıkışta paywall bir kez; ikinci eşleşmede paywall yok.
@@ -902,9 +902,9 @@ FunnelEvents.logAuthedOnce(
 ```
 Not: `paramMatched` yoksa `{'matched': matched}` yerine mevcut bir param key kullan ya da paramsız bırak. `matched` bool → `Map<String,Object>` uyumlu. Import zaten var (Task 6).
 
-- [ ] **Step 5: flutter analyze**
+- [ ] **Step 5: dart analyze**
 
-Run: `cd qulov2 && flutter analyze`
+Run: `cd qulov2 && dart analyze`
 Expected: 0 hata.
 
 - [ ] **Step 6: Commit**
@@ -934,14 +934,14 @@ done
 ```
 Expected: her key için `grep -L` boş (hiçbir dosya key'i eksik değil). Eksik varsa o dile ekle.
 
-- [ ] **Step 2: flutter analyze (final)**
+- [ ] **Step 2: dart analyze (final)**
 
-Run: `cd qulov2 && flutter analyze`
+Run: `cd qulov2 && dart analyze`
 Expected: 0 hata.
 
 - [ ] **Step 3: Unit testleri çalıştır**
 
-Run: `cd qulov2 && flutter test test/core/services/pending_languages_store_test.dart test/providers/onboarding_seen_provider_test.dart`
+Run: `cd qulov2 && fvm flutter test test/core/services/pending_languages_store_test.dart test/providers/onboarding_seen_provider_test.dart`
 Expected: tüm testler PASS.
 
 - [ ] **Step 4: /flutter-review çalıştır**
@@ -973,7 +973,7 @@ Plan bitince ana session: roadmap Faz 1 checkbox'larını işaretle + Faz Log sa
 - 1.2 social-first → Task 4 (SocialAuthMixin) + Task 5 (landing). ✓
 - 1.3 carousel pre-auth + dil persist → Task 2 (dil store+flush) + Task 3 (router guard+notifier). ✓
 - 1.4 paywall defer → Task 6. ✓
-- Değişmez kurallar (l10n 16 dil, mixin, AppScaffold, flutter analyze) → Task 5 (l10n) + Task 8 (review). ✓
+- Değişmez kurallar (l10n 16 dil, mixin, AppScaffold, dart analyze) → Task 5 (l10n) + Task 8 (review). ✓
 
 **Placeholder:** "add appropriate error handling" vb. yok; her kod adımı gerçek kod içeriyor. Cihaz-doğrulama adımları (UI/router) bilinçli — bu parçalar unit test yerine E2E'de doğrulanır (Task 8), gerekçe belirtildi.
 
