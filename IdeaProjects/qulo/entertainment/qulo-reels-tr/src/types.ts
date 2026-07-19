@@ -20,7 +20,9 @@ export type SceneComponent =
   | 'SorguKurallar'
   | 'InterrogationScene'
   | 'KadikoyHook'
-  | 'KadikoyScene';
+  | 'KadikoyScene'
+  | 'GhostHook'
+  | 'GhostScene';
 
 export type SceneSpec = {
   component: SceneComponent;

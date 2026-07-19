@@ -59,3 +59,11 @@ export const KADIKOY_SORULARI: readonly SoruSpec[] = [
   {soru: 'En uzun ilişkin?', dogru: '3 yıl', yanlis: 'Spor salonuyla, 5 yıl'},
   {soru: 'Kediler mi, ben mi?', dogru: 'İkiniz de', yanlis: 'Tabii ki sen'},
 ] as const;
+
+// Varyant G1 "Hayalet Avı" — ghosting araştırma temelli (bkz. plan: 2026-07-12-qulo-reels-tr-variant-g1.md).
+// Kaçamak cevap veren aday hayalete dönüşür; net cevap veren kalır.
+export const SORULAR_GHOST: readonly SoruSpec[] = [
+  {soru: 'Mesajıma dönmen kaç gün sürer?', dogru: 'Aynı gün', yanlis: 'Yazıyor...'},
+  {soru: 'Üç hafta sonra da burada mısın?', dogru: 'Buradayım', yanlis: 'Bakarız'},
+  {soru: 'Sıkılırsan ne yaparsın?', dogru: 'Konuşurum', yanlis: 'Kaybolurum'},
+] as const;
