@@ -15,6 +15,7 @@ Tümü: 1080×1920 (9:16), H.264 + müzik, Instagram Reels reklam uyumlu. 01-07:
 | 08 | 08-sorgu-odasi.mp4 | **Sorgu Odası** (30sn) — film-noir sorguda 4 şıklı ifade; "Avukatımı istiyorum" ✗ → mugshot ELENDİ; "Yalanı olan giremez." | Komik-gerilim, TR mizahı |
 | 09 | 09-kadikoy-kedileri.mp4 | **Kadıköy Kedileri** (30sn) — grafitili sokak + Moda sahili; kedi jürisi animatik tepkilerle eler; arabalı erko, kaslı, İtalyan; "Kadıköy'de kedilerin onayı şart." | Yerel doku + kedi viralitesi + yeni kast |
 | 10 | 10-hayalet-avi.mp4 (+4x5) | **Hayalet Avı** (30sn) — araştırma temelli: "5 kişiden 4'ü ghostlandı." Kaçamak cevap verenler hayalete dönüşüp uçar (GHOSTLANDI); net cevap kalır. Glam kast (w5/m_fit/m_zengin2). "Hayaletlere değil, cevaplara eşleş." | Ghosting acısı (%76 bulgusu) + mizah; kadın+erkek kitle |
+| 11 | 11-biz-neyiz.mp4 (+4x5) | **Biz Neyiz?** (30sn) — araştırma temelli situationship: "biz neyiz?"den kaçan aday belirsizlik sisine dönüşür (TANIMSIZ); net cevap veren eşleşir (NET). Yeni kast (w6/m_kacamak). "Belirsizlik değil, net cevap." | Situationship (Gen Z 1/3) + belirsizlik stresi |
 
 Kapaklar: `NN-<ad>-cover.png` (Reels kapağı olarak yüklenebilir).
 Kaynak: `entertainment/qulo-reels-tr` — composition'lar: QuloReelsAd, QuloReelsTersKose, QuloReelsKaos, QuloReelsBulusma, QuloReelsSov, QuloReelsParti, QuloReelsP, QuloReelsSorgu (900f), QuloReelsKadikoy (900f).
