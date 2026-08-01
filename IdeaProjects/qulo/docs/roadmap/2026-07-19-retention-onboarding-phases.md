@@ -317,10 +317,12 @@ Brainstorming ile basla: moderasyon saglayici secimi (maliyet/latency), auto-fla
   `AnswerFeedbackOverlay.correctAnswerText` hic gecirilmiyor (kullanici dogru cevabi hic
   gormuyor) · `powerStatMap`'te `ORACLE` yerine `COPY` yazili, Kahin istatistigi sayilmiyor
   (`quiz.service.ts:673`).
-- (2026-08-01 deeplink) **Ikinci AASA kaynagi:** `qulo-server/src/index.ts:112` sunucu kendi
-  apple-app-site-association'ini servis ediyor ve hala sadece `/invite/*` iceriyor. Netlify'daki
-  (quloapp.com) 5 yola guncellendi; Railway domain'i entitlement'ta olmadigi icin sunucudaki
-  olu config ama iki kaynak drift uretir — ya silinmeli ya senkron tutulmali.
+- (2026-08-01 deeplink) **Sunucudaki olu AASA/assetlinks route'lari SILINMELI:**
+  `qulo-server/src/index.ts:112` (apple-app-site-association) ve `:128` (assetlinks.json).
+  quloapp.com'u SADECE Netlify servis ediyor (`curl -sI` → `server: Netlify`); bu route'lar
+  yalnizca Railway domain'inde erisilebilir ve o domain ne iOS entitlement'inda ne Android
+  manifest'inde var. Senkron tutulacak bir sey degil — dogru aksiyon silmek. Simdilik
+  duruyorlar ve iceri hala eski (`/invite/*`), yani yanlis bilgi kaynagi gorevi goruyorlar.
 - (2026-08-01 Faz 2, guard 2. tur — **Y3**) `POWER_UNBLOCK` (chat) ve `rescueWithSkip`
   (quiz) `markPowerUsed`'dan gecmiyor. Sirali koruma var (blok kalkiyor / yanlis cevap
   satiri kalmiyor) ama **es zamanli iki istek ikisi de oder**. Faz 2'nin ana yollarindan
