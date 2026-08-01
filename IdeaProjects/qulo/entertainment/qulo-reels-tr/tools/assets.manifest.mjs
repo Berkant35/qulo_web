@@ -310,6 +310,27 @@ export const MANIFEST = [
     styleSuffix: PROP_SUFFIX,
     prompt: 'A luxury car key fob with a leather keychain strap, dangling as if held up. NO brand logos, NO emblems, NO text.',
   },
+  // ---- Varyant S1 "Biz Neyiz?" (situationship, araştırma temelli) ----
+  {
+    id: 'bg_kafe',
+    aspectRatio: '9:16',
+    styleSuffix: BG_SUFFIX,
+    prompt:
+      'A dim intimate cocktail bar interior at night: small round tables with flickering candles, warm soft bokeh lights in the background, a long bar counter with bottles far behind, moody low-key lighting, cozy but a little melancholic.',
+  },
+  {
+    id: 'w6',
+    aspectRatio: '2:3',
+    prompt:
+      'A very attractive stylish young woman in her mid-20s with a chic elegant outfit, standing with arms lightly crossed and a skeptical, slightly tired but composed expression — as if she is done waiting for an answer, one eyebrow raised, waiting.',
+  },
+  {
+    id: 'm_kacamak',
+    aspectRatio: '2:3',
+    prompt:
+      'A handsome young man in his late 20s, casual trendy outfit, caught mid-shrug with both palms up and an awkward evasive half-smile, avoiding eye contact slightly, the look of someone dodging a serious question.',
+  },
+
   // ---- Glam kast (Meta policy tavanında çekicilik: dekolte odağı YOK, üstsüz YOK) ----
   {
     id: 'w5',
