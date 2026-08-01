@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { LANDING_PAGES } from "@/lib/constants/landings";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 
 /** Per-locale breadcrumb label for the Features page */
 const FEATURES_LABELS: Record<string, string> = {
@@ -42,6 +43,7 @@ export async function generateMetadata({
       siteName: SITE_NAME,
       type: "website",
       locale: ogLocale,
+      images: ogImages(),
     },
   };
 }

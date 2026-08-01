@@ -12,6 +12,7 @@ import {
   SITE_NAME,
   OG_LOCALES,
 } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 
 const PAGE_SLUG = "press";
 const PUBLISHED_AT = "2026-04-16";
@@ -54,11 +55,13 @@ export async function generateMetadata({
       siteName: SITE_NAME,
       type: "website",
       locale: OG_LOCALES[locale] || "en_US",
+      images: ogImages(),
     },
     twitter: {
       card: "summary_large_image",
       title: seo.title,
       description: seo.description,
+      images: ogImages(),
     },
   };
 }

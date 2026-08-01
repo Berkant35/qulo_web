@@ -8,6 +8,7 @@ import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 import { CITIES, type City } from "@/lib/constants/cities";
 
 /* ------------------------------------------------------------------ */
@@ -310,11 +311,13 @@ export async function generateMetadata({
       siteName: SITE_NAME,
       type: "website",
       locale: ogLocale,
+      images: ogImages(),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ogImages(),
     },
   };
 }

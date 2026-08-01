@@ -4,6 +4,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { rtlLocales, locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 
 /** Per-locale breadcrumb label for the Terms of Service page */
 const TERMS_LABELS: Record<string, string> = {
@@ -27,7 +28,7 @@ export async function generateMetadata({
     title: seo.title,
     description: seo.description,
     alternates: { canonical: pageUrl, languages },
-    openGraph: { title: seo.title, description: seo.description, url: pageUrl, siteName: SITE_NAME, type: "website" },
+    openGraph: { title: seo.title, description: seo.description, url: pageUrl, siteName: SITE_NAME, type: "website", images: ogImages() },
   };
 }
 

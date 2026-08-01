@@ -7,6 +7,7 @@ import { FAQ, type FAQItem } from "@/components/shared/FAQ";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -78,8 +79,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: seo.title,
     description: seo.description,
     alternates: { canonical: pageUrl, languages },
-    openGraph: { title: seo.title, description: seo.description, url: pageUrl, siteName: SITE_NAME, type: "website", locale: ogLocale },
-    twitter: { card: "summary_large_image", title: seo.title, description: seo.description },
+    openGraph: { title: seo.title, description: seo.description, url: pageUrl, siteName: SITE_NAME, type: "website", locale: ogLocale, images: ogImages() },
+    twitter: { card: "summary_large_image", title: seo.title, description: seo.description, images: ogImages() },
   };
 }
 

@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 import { GLOSSARY_TERMS } from "@/lib/constants/glossary";
 
 /** Per-locale breadcrumb label for the Glossary page */
@@ -39,6 +40,7 @@ export async function generateMetadata({
       url: pageUrl,
       siteName: SITE_NAME,
       type: "article",
+      images: ogImages(),
     },
   };
 }

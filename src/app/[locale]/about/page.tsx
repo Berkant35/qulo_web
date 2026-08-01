@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { FAQ, faqTitle } from "@/components/shared/FAQ";
 import { locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 import { getAboutFaqs } from "@/lib/constants/faqs";
 
 /** Per-locale breadcrumb label for the About page */
@@ -36,6 +37,7 @@ export async function generateMetadata({
       url: pageUrl,
       siteName: SITE_NAME,
       type: "article",
+      images: ogImages(),
     },
   };
 }

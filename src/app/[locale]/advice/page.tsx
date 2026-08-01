@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 import { ADVICE_GUIDES } from "@/lib/constants/advice";
 
 export function generateStaticParams() {
@@ -45,11 +46,13 @@ export async function generateMetadata({
       siteName: SITE_NAME,
       type: "website",
       locale: ogLocale,
+      images: ogImages(),
     },
     twitter: {
       card: "summary_large_image",
       title: seo.title,
       description: seo.description,
+      images: ogImages(),
     },
   };
 }

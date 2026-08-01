@@ -8,7 +8,11 @@ import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 import { BLOG_POSTS } from "@/lib/constants/blog";
+import { ArticleBlocks, type LocalizedArticle } from "@/components/blog/ArticleBlocks";
+import { whatActuallyPredictsCompatibility } from "./_content/what-actually-predicts-compatibility";
+import { psychologyOfTheFirstMessage } from "./_content/psychology-of-the-first-message";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -57,11 +61,14 @@ export async function generateMetadata({
       type: "article",
       locale: ogLocale,
       publishedTime: post.publishedAt,
+      // Post cover when it has one, site-wide OG image otherwise.
+      images: ogImages(post.coverImage, title),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ogImages(post.coverImage, title),
     },
   };
 }
@@ -2137,7 +2144,34 @@ function MatchingScienceContent({ locale }: { locale: string }) {
 /* ------------------------------------------------------------------ */
 /*  Content router                                                     */
 /* ------------------------------------------------------------------ */
+
+/**
+ * Posts authored as structured data, fully translated into all 16 locales.
+ * New posts go here; the switch below is the legacy per-locale JSX pattern kept
+ * for the 7 posts written before `ArticleBlocks` existed.
+ */
+const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
+  "what-actually-predicts-compatibility": whatActuallyPredictsCompatibility,
+  "psychology-of-the-first-message": psychologyOfTheFirstMessage,
+};
+
+/** Word count of a structured article, or undefined for legacy JSX posts. */
+function structuredWordCount(slug: string, locale: string): number | undefined {
+  const blocks = STRUCTURED_ARTICLES[slug]?.[locale] ?? STRUCTURED_ARTICLES[slug]?.en;
+  if (!blocks) return undefined;
+
+  return blocks.reduce((total, block) => {
+    const text = block.type === "ul" ? block.items.join(" ") : block.text;
+    return total + text.split(/\s+/).filter(Boolean).length;
+  }, 0);
+}
+
 function BlogContent({ slug, locale }: { slug: string; locale: string }) {
+  const article = STRUCTURED_ARTICLES[slug];
+  if (article) {
+    return <ArticleBlocks blocks={article[locale] || article.en} />;
+  }
+
   switch (slug) {
     case "what-is-swipe-fatigue":
       return <SwipeFatigueContent locale={locale} />;
@@ -2177,6 +2211,7 @@ export default async function BlogPostPage({
   const labels = READ_LABELS[locale] || READ_LABELS.en;
 
   const otherPosts = BLOG_POSTS.filter((p) => p.slug !== slug);
+  const wordCount = structuredWordCount(slug, locale);
 
   // BlogPosting JSON-LD
   const blogPostingJsonLd = {
@@ -2185,7 +2220,7 @@ export default async function BlogPostPage({
     headline: title,
     description: excerpt,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
     author: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -2205,16 +2240,34 @@ export default async function BlogPostPage({
       "@id": `${SITE_URL}/${locale}/blog/${slug}`,
     },
     keywords: post.keywords.join(", "),
-    wordCount: 1500,
+    // Omitted rather than guessed for legacy JSX posts whose body isn't data.
+    ...(wordCount ? { wordCount } : {}),
     inLanguage: locale,
+    ...(post.coverImage ? { image: `${SITE_URL}${post.coverImage}` } : {}),
+    ...(post.citations && post.citations.length > 0
+      ? {
+          citation: post.citations.map((c) => ({
+            "@type": "CreativeWork",
+            name: c.title,
+            url: c.url,
+          })),
+        }
+      : {}),
   };
 
+  const REFERENCE_LABELS: Record<string, string> = {
+    tr: "Kaynakça", en: "References", de: "Quellen", fr: "Références", es: "Referencias",
+    ar: "المراجع", ru: "Источники", pt: "Referências", it: "Riferimenti", ja: "参考文献",
+    ko: "참고 문헌", zh: "参考文献", nl: "Bronnen", pl: "Źródła", sv: "Källor", hi: "संदर्भ",
+  };
+  const referencesLabel = REFERENCE_LABELS[locale] || REFERENCE_LABELS.en;
+
   const CTA_LABELS: Record<string, { ctaTitle: string; ctaDesc: string }> = {
-    tr: { ctaTitle: "Qulo'yu Indir", ctaDesc: "Sorularla tanismanin yeni yolunu kesfet. Hemen dene, ucretsiz!" },
+    tr: { ctaTitle: "Qulo'yu İndir", ctaDesc: "Sorularla tanışmanın yeni yolunu keşfet. Hemen dene, ücretsiz!" },
     en: { ctaTitle: "Download Qulo", ctaDesc: "Discover the new way to meet through questions. Try it now, for free!" },
     de: { ctaTitle: "Qulo herunterladen", ctaDesc: "Entdecken Sie den neuen Weg, sich durch Fragen kennenzulernen." },
-    fr: { ctaTitle: "Telecharger Qulo", ctaDesc: "Decouvrez la nouvelle facon de se rencontrer par les questions." },
-    es: { ctaTitle: "Descargar Qulo", ctaDesc: "Descubre la nueva forma de conocerse a traves de preguntas." },
+    fr: { ctaTitle: "Télécharger Qulo", ctaDesc: "Découvrez la nouvelle façon de se rencontrer par les questions." },
+    es: { ctaTitle: "Descargar Qulo", ctaDesc: "Descubre la nueva forma de conocerse a través de preguntas." },
   };
 
   const cta = CTA_LABELS[locale] || CTA_LABELS.en;
@@ -2289,6 +2342,28 @@ export default async function BlogPostPage({
           <article className="prose-qulo">
             <BlogContent slug={slug} locale={locale} />
           </article>
+
+          {/* References — rendered from trusted static blog.ts constants only */}
+          {post.citations && post.citations.length > 0 && (
+            <section className="mt-14 pt-8 border-t border-white/[0.08]">
+              <h2 className="text-xl font-bold text-white mb-5">{referencesLabel}</h2>
+              <ol className="list-decimal list-inside space-y-3 text-sm text-qulo-text-secondary">
+                {post.citations.map((c) => (
+                  <li key={c.url}>
+                    <a
+                      href={c.url}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="text-qulo-purple hover:underline"
+                    >
+                      {c.title}
+                    </a>
+                    <span className="text-qulo-text-secondary/70"> — {c.source}</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
 
           {/* CTA Section */}
           <section className="mt-16 text-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-10">

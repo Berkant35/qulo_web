@@ -1,10 +1,28 @@
 export interface BlogPost {
   slug: string;
   publishedAt: string;
+  /**
+   * Date of the last substantive content revision (ISO date). Omit until the
+   * post is genuinely revised — `dateModified` falls back to `publishedAt`, and
+   * bumping the date without changing the content is a worthless freshness
+   * signal that search engines can detect.
+   */
+  updatedAt?: string;
   readingTime: number;
   titles: Record<string, string>;
   excerpts: Record<string, string>;
   keywords: string[];
+  /**
+   * Optional cover image path relative to /public (e.g. "/images/blog/foo.png").
+   * Backward-compatible: older posts omit it and simply render no cover.
+   */
+  coverImage?: string;
+  /**
+   * Optional academic / source citations. When present they are rendered as a
+   * "References" section under the article and emitted in the BlogPosting
+   * JSON-LD `citation` field (strengthens E-E-A-T for research-backed posts).
+   */
+  citations?: { title: string; source: string; url: string }[];
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -147,5 +165,155 @@ export const BLOG_POSTS: BlogPost[] = [
       es: "La investigación psicológica demuestra que las preguntas crean conexiones más fuertes que la atracción superficial.",
     },
     keywords: ["question based matching science", "compatibility science dating", "psychology of dating", "36 questions dating", "dating bilimi"],
+  },
+  {
+    slug: "what-actually-predicts-compatibility",
+    publishedAt: "2026-07-18",
+    readingTime: 9,
+    titles: {
+      tr: "Aşkı 'Tipiniz' Belirlemez: Uyumluluğu Gerçekte Ne Öngörür?",
+      en: "Your 'Type' Doesn't Predict Love: What Actually Predicts Compatibility",
+      de: "Dein „Typ“ sagt keine Liebe voraus: Was wirklich über Kompatibilität entscheidet",
+      fr: "Votre « type » ne prédit pas l'amour : ce qui prédit vraiment la compatibilité",
+      es: "Tu «tipo» no predice el amor: qué predice de verdad la compatibilidad",
+      ar: "\"نمطك المفضّل\" لا يتنبّأ بالحب: ما الذي يتنبّأ فعلاً بالتوافق",
+      ru: "Ваш «тип» не предсказывает любовь: что на самом деле предсказывает совместимость",
+      pt: "Seu \"tipo\" não prevê o amor: o que realmente prevê a compatibilidade",
+      it: "Il tuo «tipo» non predice l'amore: cosa predice davvero la compatibilità",
+      ja: "「好みのタイプ」は恋を予測しない――本当に相性を決めるものとは",
+      ko: "당신의 '이상형'은 사랑을 예측하지 못한다: 진짜로 궁합을 결정하는 것",
+      zh: "你的「理想型」预测不了爱情：真正决定契合度的是什么",
+      nl: "Je \"type\" voorspelt geen liefde: wat compatibiliteit echt voorspelt",
+      pl: "Twój „typ” nie przewiduje miłości: co naprawdę przewiduje zgodność",
+      sv: "Din \"typ\" förutsäger inte kärlek: vad som faktiskt förutsäger kompatibilitet",
+      hi: "आपका 'टाइप' प्यार की भविष्यवाणी नहीं करता: असल में अनुकूलता का पता किससे चलता है",
+    },
+    excerpts: {
+      tr: "Onlarca yıllık ilişki bilimi net: ne istediğinizi sandığınız 'tip', kiminle bağ kuracağınızı öngörmüyor. Peki uyumluluğu gerçekte ne belirliyor — ve bu neden çoğu dating uygulamasının baştan yanlış kurulduğu anlamına geliyor?",
+      en: "Decades of relationship science are clear: the 'type' you think you want doesn't predict who you'll actually connect with. So what really predicts compatibility — and why does it mean most dating apps are built backwards?",
+      de: "Jahrzehnte der Beziehungsforschung sind eindeutig: Der „Typ“, von dem du glaubst, ihn zu wollen, sagt nicht voraus, mit wem du dich tatsächlich verbindest. Was sagt Kompatibilität also wirklich voraus — und warum bedeutet das, dass die meisten Dating-Apps verkehrt herum gebaut sind?",
+      fr: "Des décennies de science des relations sont claires : le « type » que vous croyez désirer ne prédit pas avec qui vous vous connecterez vraiment. Alors qu'est-ce qui prédit réellement la compatibilité — et pourquoi cela signifie-t-il que la plupart des applications de rencontre sont construites à l'envers ?",
+      es: "Décadas de ciencia de las relaciones lo dejan claro: el «tipo» que crees querer no predice con quién conectarás en realidad. Entonces, ¿qué predice de verdad la compatibilidad? ¿Y por qué eso significa que la mayoría de las apps de citas están construidas al revés?",
+      ar: "عقودٌ من علم العلاقات تقول بوضوح: \"النمط\" الذي تظنّ أنك تريده لا يتنبّأ بمن ستنسجم معه فعلاً. فما الذي يتنبّأ حقاً بالتوافق — ولماذا يعني ذلك أن معظم تطبيقات المواعدة مبنيّة بالمقلوب؟",
+      ru: "Десятилетия науки об отношениях говорят однозначно: «тип», который вы, как вам кажется, хотите, не предсказывает, с кем вы на самом деле сблизитесь. Так что же действительно предсказывает совместимость — и почему из этого следует, что большинство приложений для знакомств устроены задом наперёд?",
+      pt: "Décadas de ciência dos relacionamentos são claras: o \"tipo\" que você acha que quer não prevê com quem você vai realmente se conectar. Então o que de fato prevê a compatibilidade — e por que isso significa que a maioria dos apps de namoro foi construída de trás para frente?",
+      it: "Decenni di scienza delle relazioni parlano chiaro: il «tipo» che credi di volere non predice con chi entrerai davvero in sintonia. Allora cosa predice realmente la compatibilità — e perché questo significa che la maggior parte delle app di dating è costruita al contrario?",
+      ja: "数十年にわたる恋愛心理学の結論ははっきりしています。あなたが求めていると思い込んでいる「タイプ」は、実際に惹かれ合う相手を予測しません。では、本当に相性を決めるものは何か――そしてなぜ、それはほとんどのマッチングアプリが逆向きに作られていることを意味するのでしょうか。",
+      ko: "수십 년간의 관계 심리학이 내린 결론은 분명합니다. 당신이 원한다고 믿는 '이상형'은 실제로 마음이 통할 상대를 예측하지 못합니다. 그렇다면 진짜로 궁합을 결정하는 것은 무엇이며, 왜 그것은 대부분의 데이팅 앱이 거꾸로 설계되어 있음을 뜻할까요?",
+      zh: "数十年的关系科学结论明确：你以为自己想要的那种「理想型」，并不能预测你真正会与谁产生共鸣。那么，究竟是什么真正决定了契合度——又为什么这意味着大多数交友软件的设计方向从一开始就反了？",
+      nl: "Decennia aan relatiewetenschap zijn duidelijk: het \"type\" waarvan je denkt dat je het wilt, voorspelt niet met wie je echt een klik krijgt. Dus wat voorspelt compatibiliteit werkelijk — en waarom betekent dat dat de meeste datingapps verkeerd om zijn gebouwd?",
+      pl: "Dziesięciolecia nauki o relacjach mówią jasno: „typ”, którego — jak ci się wydaje — pragniesz, nie przewiduje, z kim naprawdę się zwiążesz. Co więc naprawdę przewiduje zgodność — i dlaczego oznacza to, że większość aplikacji randkowych jest zbudowana na odwrót?",
+      sv: "Decennier av relationsforskning är tydliga: den \"typ\" du tror att du vill ha förutsäger inte vem du faktiskt får kontakt med. Så vad förutsäger egentligen kompatibilitet — och varför innebär det att de flesta dejtingappar är byggda bakvänt?",
+      hi: "रिश्तों पर दशकों के शोध की बात साफ है: जिस 'टाइप' को आप चाहते हैं, वह यह तय नहीं करता कि आप असल में किससे जुड़ेंगे। तो फिर अनुकूलता की भविष्यवाणी सचमुच किससे होती है — और इसका मतलब यह क्यों है कि ज़्यादातर डेटिंग ऐप उल्टे बने हुए हैं?",
+    },
+    keywords: [
+      "what predicts compatibility",
+      "does your type matter",
+      "ideal partner preferences",
+      "can you predict attraction",
+      "why dating apps dont work",
+      "uyumluluk bilimi",
+      "aşkı ne belirler",
+      "eş seçimi psikolojisi",
+    ],
+    citations: [
+      {
+        title:
+          "Machine learning uncovers the most robust self-report predictors of relationship quality across 43 longitudinal couples studies",
+        source: "Joel, Eastwick et al. — PNAS (2020)",
+        url: "https://www.pnas.org/doi/10.1073/pnas.1917036117",
+      },
+      {
+        title:
+          "Sex differences in mate preferences revisited: Do people know what they initially desire in a romantic partner?",
+        source: "Eastwick & Finkel — Journal of Personality and Social Psychology (2008)",
+        url: "https://faculty.wcas.northwestern.edu/eli-finkel/documents/EastwickFinkel2008_JPSP.pdf",
+      },
+      {
+        title: "Online Dating: A Critical Analysis From the Perspective of Psychological Science",
+        source: "Finkel, Eastwick, Karney, Reis & Sprecher — Psychological Science in the Public Interest (2012)",
+        url: "https://journals.sagepub.com/doi/10.1177/1529100612436522",
+      },
+      {
+        title: "From Looking for Love to Swiping the Field: Online Dating in the U.S.",
+        source: "Pew Research Center (2023)",
+        url: "https://www.pewresearch.org/internet/2023/02/02/from-looking-for-love-to-swiping-the-field-online-dating-in-the-u-s/",
+      },
+    ],
+  },
+  {
+    slug: "psychology-of-the-first-message",
+    publishedAt: "2026-07-20",
+    readingTime: 8,
+    coverImage: "/images/blog/psychology-of-the-first-message.png",
+    titles: {
+      tr: "“Selam” Neden Cevapsız Kalır: Yanıt Alan İlk Mesajın Psikolojisi",
+      en: "Why “Hey” Gets Ignored: The Psychology of a First Message That Gets a Reply",
+      de: "Warum „Hey“ ignoriert wird: Die Psychologie einer ersten Nachricht, die eine Antwort bekommt",
+      fr: "Pourquoi « Hey » reste sans réponse : la psychologie d'un premier message qui fait mouche",
+      es: "Por qué un \"hey\" se ignora: la psicología del primer mensaje que sí recibe respuesta",
+      ar: "لماذا يُتجاهَل \"مرحبًا\"؟ سيكولوجية الرسالة الأولى التي تحصل على رد",
+      ru: "Почему «привет» остаётся без ответа: психология первого сообщения, на которое отвечают",
+      pt: "Por que \"oi\" é ignorado: a psicologia da primeira mensagem que recebe resposta",
+      it: "Perché \"hey\" viene ignorato: la psicologia di un primo messaggio che ottiene risposta",
+      ja: "なぜ「やあ」は無視されるのか──返信がもらえるファーストメッセージの心理学",
+      ko: "\"안녕\"이 무시당하는 이유: 답장을 받는 첫 메시지의 심리학",
+      zh: "为什么「嗨」会被无视：能收到回复的第一条消息背后的心理学",
+      nl: "Waarom 'Hey' wordt genegeerd: de psychologie van een eerste bericht dat wél antwoord krijgt",
+      pl: "Dlaczego „hej” jest ignorowane: psychologia pierwszej wiadomości, która dostaje odpowiedź",
+      sv: "Därför ignoreras \"hej\": psykologin bakom ett första meddelande som får svar",
+      hi: "\"Hey\" को क्यों नज़रअंदाज़ किया जाता है: जवाब पाने वाले पहले मैसेज का मनोविज्ञान",
+    },
+    excerpts: {
+      tr: "Yarım milyondan fazla ilk mesajın verisi ve Harvard’ın konuşma araştırmaları aynı noktada buluşuyor: selamlar görmezden geliniyor, sorular yanıt alıyor. İşte sohbet başlatmanın psikolojisi — ve Qulo’nun bunu her eşleşmeye nasıl yerleştirdiği.",
+      en: "Data from over half a million first messages and Harvard’s conversation research agree: greetings get ignored, questions get replies. Here’s the psychology of starting a conversation — and how Qulo builds it into every match.",
+      de: "Daten aus über einer halben Million erster Nachrichten und Harvards Gesprächsforschung sind sich einig: Begrüßungen werden ignoriert, Fragen bekommen Antworten. Hier ist die Psychologie des Gesprächsanfangs — und wie Qulo sie in jedes Match einbaut.",
+      fr: "Les données de plus d'un demi-million de premiers messages et les recherches de Harvard sur la conversation convergent : les salutations sont ignorées, les questions obtiennent des réponses. Voici la psychologie du premier contact — et comment Qulo l'intègre à chaque match.",
+      es: "Los datos de más de medio millón de primeros mensajes y la investigación sobre conversación de Harvard coinciden: los saludos se ignoran, las preguntas reciben respuesta. Esta es la psicología de empezar una conversación — y cómo Qulo la integra en cada match.",
+      ar: "بيانات أكثر من نصف مليون رسالة أولى وأبحاث المحادثة في هارفارد تتفق على أمر واحد: التحيات تُتجاهَل، والأسئلة تحصل على ردود. إليك سيكولوجية بدء المحادثة — وكيف يدمجها Qulo في كل تطابق.",
+      ru: "Данные более чем полумиллиона первых сообщений и гарвардские исследования разговоров сходятся в одном: приветствия игнорируют, на вопросы отвечают. Вот психология начала разговора — и то, как Qulo встраивает её в каждый мэтч.",
+      pt: "Os dados de mais de meio milhão de primeiras mensagens e a pesquisa sobre conversas de Harvard concordam: cumprimentos são ignorados, perguntas recebem respostas. Aqui está a psicologia de começar uma conversa — e como o Qulo a incorpora em cada match.",
+      it: "I dati di oltre mezzo milione di primi messaggi e le ricerche di Harvard sulla conversazione concordano: i saluti vengono ignorati, le domande ottengono risposte. Ecco la psicologia di come iniziare una conversazione — e come Qulo la integra in ogni match.",
+      ja: "50万件を超えるファーストメッセージのデータとHarvardの会話研究が一致して示すのは、挨拶は無視され、質問は返信をもらえるということ。会話の始め方の心理学と、Quloがそれをすべてのマッチに組み込んでいる仕組みを解説します。",
+      ko: "50만 건이 넘는 첫 메시지 데이터와 하버드의 대화 연구가 같은 결론을 내립니다: 인사말은 무시당하고, 질문은 답장을 받습니다. 대화를 시작하는 심리학, 그리고 Qulo가 이를 모든 매칭에 어떻게 녹여냈는지 소개합니다.",
+      zh: "来自五十多万条第一条消息的数据与哈佛的对话研究得出了同一个结论：打招呼会被无视，提问才会得到回复。这就是开启一段对话的心理学——以及 Qulo 如何把它内置到每一次配对中。",
+      nl: "Data van meer dan een half miljoen eerste berichten en het gespreksonderzoek van Harvard wijzen dezelfde kant op: begroetingen worden genegeerd, vragen krijgen antwoord. Dit is de psychologie achter het beginnen van een gesprek — en hoe Qulo die in elke match inbouwt.",
+      pl: "Dane z ponad pół miliona pierwszych wiadomości i harwardzkie badania nad rozmową są zgodne: powitania są ignorowane, pytania dostają odpowiedzi. Oto psychologia rozpoczynania rozmowy — i to, jak Qulo wbudowuje ją w każde dopasowanie.",
+      sv: "Data från över en halv miljon första meddelanden och Harvards samtalsforskning är överens: hälsningar ignoreras, frågor får svar. Här är psykologin bakom att inleda ett samtal — och hur Qulo bygger in den i varje matchning.",
+      hi: "पाँच लाख से ज़्यादा पहले मैसेजों का डेटा और Harvard का बातचीत पर शोध एक ही बात कहते हैं: सिर्फ़ अभिवादन नज़रअंदाज़ होते हैं, सवालों को जवाब मिलता है। यहाँ है बातचीत शुरू करने का मनोविज्ञान — और Qulo इसे हर मैच में कैसे शामिल करता है।",
+    },
+    keywords: [
+      "first message dating app",
+      "best opening lines online dating",
+      "how to start a conversation on a dating app",
+      "why questions get more replies",
+      "dating app opener psychology",
+      "ilk mesaj ne yazmalı",
+      "sohbet başlatma psikolojisi",
+    ],
+    citations: [
+      {
+        title: "It Doesn't Hurt to Ask: Question-Asking Increases Liking",
+        source:
+          "Huang, Yeomans, Brooks, Minson & Gino — Journal of Personality and Social Psychology (2017)",
+        url: "https://www.hbs.edu/ris/Publication%20Files/Huang%20et%20al%202017_6945bc5e-3b3e-4c0a-addd-254c9e603c60.pdf",
+      },
+      {
+        title: "Taking turns: Reciprocal self-disclosure promotes liking in initial interactions",
+        source:
+          "Sprecher, Treger, Wondra, Hilaire & Wallpe — Journal of Experimental Social Psychology (2013)",
+        url: "https://www.sciencedirect.com/science/article/abs/pii/S002210311300070X",
+      },
+      {
+        title: "Hinge's month-long experiment testing ~100 opening lines",
+        source: "Hinge (2015), reported by International Business Times",
+        url: "https://www.ibtimes.com/best-opening-line-dating-apps-hinge-analyzed-100-responses-its-not-hey-whats-2112058",
+      },
+      {
+        title: "Exactly What To Say In A First Message (analysis of 500,000+ first messages)",
+        source: "OkCupid OkTrends — Christian Rudder (2009), archived",
+        url: "https://gwern.net/doc/psychology/okcupid/exactlywhattosayinafirstmessage.html",
+      },
+    ],
   },
 ];

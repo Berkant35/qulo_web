@@ -12,6 +12,7 @@ import {
   SITE_NAME,
   OG_LOCALES,
 } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 import {
   STAT_CATEGORIES,
   getHighlightStats,
@@ -60,11 +61,13 @@ export async function generateMetadata({
       locale: OG_LOCALES[locale] || "en_US",
       publishedTime: PUBLISHED_AT,
       modifiedTime: MODIFIED_AT,
+      images: ogImages(),
     },
     twitter: {
       card: "summary_large_image",
       title: seo.title,
       description: seo.description,
+      images: ogImages(),
     },
   };
 }

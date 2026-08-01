@@ -8,6 +8,7 @@ import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 import { ADVICE_GUIDES } from "@/lib/constants/advice";
 import { FirstDateTipsContent } from "./_content/FirstDateTipsContent";
 import { DatingProfileGuideContent } from "./_content/DatingProfileGuideContent";
@@ -61,11 +62,13 @@ export async function generateMetadata({
       type: "article",
       locale: ogLocale,
       publishedTime: guide.publishedAt,
+      images: ogImages(),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ogImages(),
     },
   };
 }

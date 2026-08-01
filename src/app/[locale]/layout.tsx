@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { locales, rtlLocales, type Locale } from "@/lib/i18n/config";
-import { SEO, SITE_URL, SITE_NAME, OG_LOCALES, FAQ_DATA } from "@/lib/constants/metadata";
+import { SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -43,19 +45,13 @@ export async function generateMetadata({
       type: "website",
       locale: ogLocale,
       alternateLocale: alternateOgLocales,
-      images: [
-        {
-          url: `${SITE_URL}/images/og-image.png`,
-          width: 1200,
-          height: 630,
-          alt: SITE_NAME,
-        },
-      ],
+      images: ogImages(),
     },
     twitter: {
       card: "summary_large_image",
       title: seo.title,
       description: seo.description,
+      images: ogImages(),
     },
   };
 }
@@ -75,7 +71,7 @@ export default async function LocaleLayout({
   const langScript = `document.documentElement.lang="${locale}";document.documentElement.dir="${dir}";`;
 
   const seoData = SEO[locale as Locale] || SEO.en;
-  const jsonLd = JSON.stringify([
+  const jsonLd = [
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
@@ -128,31 +124,16 @@ export default async function LocaleLayout({
       foundingDate: "2026",
       description: seoData.description,
     },
-    // FAQPage schema for rich snippets
-    ...(FAQ_DATA[locale]
-      ? [
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: FAQ_DATA[locale].map((faq) => ({
-              "@type": "Question",
-              name: faq.q,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: faq.a,
-              },
-            })),
-          },
-        ]
-      : []),
-  ]);
+    // FAQPage lives on the homepage, next to the visible FAQ it describes —
+    // emitting it site-wide marked up Q&A that appears on none of those pages.
+  ];
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       {/* Set lang/dir on <html> for static export — locale is a static param from generateStaticParams, not user input */}
       <script dangerouslySetInnerHTML={{ __html: langScript }} />
       {/* JSON-LD structured data — static server constants only, no user input */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+      <JsonLd data={jsonLd} />
       {children}
     </NextIntlClientProvider>
   );

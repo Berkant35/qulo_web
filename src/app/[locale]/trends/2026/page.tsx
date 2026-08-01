@@ -12,6 +12,7 @@ import {
   SITE_NAME,
   OG_LOCALES,
 } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 
 const PAGE_SLUG = "trends/2026";
 const PUBLISHED_AT = "2026-01-15";
@@ -64,11 +65,13 @@ export async function generateMetadata({
       locale: OG_LOCALES[locale] || "en_US",
       publishedTime: PUBLISHED_AT,
       modifiedTime: MODIFIED_AT,
+      images: ogImages(),
     },
     twitter: {
       card: "summary_large_image",
       title: seo.title,
       description: seo.description,
+      images: ogImages(),
     },
   };
 }

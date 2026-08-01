@@ -11,6 +11,7 @@ import {
   SITE_NAME,
   OG_LOCALES,
 } from "@/lib/constants/metadata";
+import { ogImages } from "@/lib/seo/openGraph";
 import { BLOG_POSTS } from "@/lib/constants/blog";
 import { ADVICE_GUIDES } from "@/lib/constants/advice";
 import { HOW_TO_GUIDES } from "@/lib/constants/howto";
@@ -59,6 +60,7 @@ export async function generateMetadata({
       siteName: SITE_NAME,
       type: "website",
       locale: OG_LOCALES[locale] || "en_US",
+      images: ogImages(),
     },
   };
 }

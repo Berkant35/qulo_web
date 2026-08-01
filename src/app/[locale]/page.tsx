@@ -10,6 +10,8 @@ import { WhyDifferent } from "@/components/why-different/WhyDifferent";
 import { DownloadCTA } from "@/components/download-cta/DownloadCTA";
 import { Footer } from "@/components/footer/Footer";
 import { ScrollToTop } from "@/components/shared/ScrollToTop";
+import { FAQ, faqTitle } from "@/components/shared/FAQ";
+import { FAQ_DATA } from "@/lib/constants/metadata";
 
 export default async function Home({
   params,
@@ -32,6 +34,18 @@ export default async function Home({
       <AppPreview />
       <SectionDivider />
       <WhyDifferent />
+      <SectionDivider />
+      {/* Visible FAQ — these answers carry the facts (free tier, safety, how
+          matching works) that search and AI answers quote. They used to exist
+          only as FAQPage JSON-LD, which no AI system reads on fetch. */}
+      <section className="px-6 pb-4">
+        <div className="max-w-3xl mx-auto">
+          <FAQ
+            items={FAQ_DATA[locale] || FAQ_DATA.en}
+            title={faqTitle(locale)}
+          />
+        </div>
+      </section>
       <SectionDivider />
       <DownloadCTA />
       <Footer />
