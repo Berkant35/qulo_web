@@ -22,7 +22,9 @@ export type SceneComponent =
   | 'KadikoyHook'
   | 'KadikoyScene'
   | 'GhostHook'
-  | 'GhostScene';
+  | 'GhostScene'
+  | 'TanimHook'
+  | 'TanimScene';
 
 export type SceneSpec = {
   component: SceneComponent;

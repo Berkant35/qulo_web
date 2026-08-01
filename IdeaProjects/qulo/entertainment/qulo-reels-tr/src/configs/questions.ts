@@ -67,3 +67,11 @@ export const SORULAR_GHOST: readonly SoruSpec[] = [
   {soru: 'Üç hafta sonra da burada mısın?', dogru: 'Buradayım', yanlis: 'Bakarız'},
   {soru: 'Sıkılırsan ne yaparsın?', dogru: 'Konuşurum', yanlis: 'Kaybolurum'},
 ] as const;
+
+// Varyant S1 "Biz Neyiz?" — situationship araştırma temelli (bkz. plan: 2026-07-12-qulo-reels-tr-variant-s1.md).
+// Etiketten kaçan aday belirsizlik sisine dönüşür; net cevap veren kalır.
+export const SORULAR_TANIM: readonly SoruSpec[] = [
+  {soru: 'Biz neyiz?', dogru: 'Sevgiliyiz', yanlis: 'Etiket koymayalım'},
+  {soru: 'Arkadaşlarına beni nasıl tanıtıyorsun?', dogru: 'Sevgilim diye', yanlis: 'Arkadaşım işte'},
+  {soru: '3 aydır neyiz peki?', dogru: 'Beraberiz', yanlis: 'Akışına bıraktık'},
+] as const;
