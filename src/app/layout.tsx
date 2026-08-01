@@ -20,6 +20,12 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   metadataBase: new URL("https://quloapp.com"),
+  // iOS Safari Smart App Banner — sitenin ustunde "AC" / "GORUNTULE" cubugu.
+  // Universal link ile KARISTIRILMAMALI: universal link yalnizca baska bir
+  // uygulamadan link'e DOKUNULDUGUNDA calisir; adres cubuguna yazilan URL'de
+  // Apple onu kasitli olarak tetiklemez. Sitedeyken uygulama onerisini gosteren
+  // tek mekanizma bu banner.
+  itunes: { appId: "1626734572" },
   robots: {
     index: true,
     follow: true,

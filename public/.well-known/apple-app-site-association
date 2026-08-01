@@ -4,7 +4,18 @@
     "details": [
       {
         "appID": "5W2U3NK284.com.wordpress.calikusuberkant.qulorelease",
-        "paths": ["/invite/*"]
+        "paths": [
+          "/invite",
+          "/invite/*",
+          "/chat",
+          "/chat/*",
+          "/matches",
+          "/matches/*",
+          "/discover",
+          "/discover/*",
+          "/profile",
+          "/profile/*"
+        ]
       }
     ]
   }
