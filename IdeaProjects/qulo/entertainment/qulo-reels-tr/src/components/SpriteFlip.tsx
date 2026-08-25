@@ -4,14 +4,17 @@ import {Img, staticFile, useCurrentFrame} from 'remotion';
 // ardı ardına oynatır (ör. kedi: taban → bağır → pati). Deterministik (sadece kare matematiği,
 // Math.random YOK).
 //
-// Konum sözleşmesi (CollageSticker'dan FARKLI): x,y = width büyüklüğünde bir karenin SOL-ÜST köşesi
-// (top-left). Merkez/alt-çapa hesabı YOK çünkü SpriteFlip sadece 1:1 (kare) asset'lerle kullanılır
-// (ör. kediler) — height her zaman width'e eşittir, bu yüzden basit top-left konumlama yeterli.
+// Konum sözleşmesi (CollageSticker'dan FARKLI): x,y = width×height büyüklüğünde bir kutunun SOL-ÜST
+// köşesi (top-left). Merkez/alt-çapa hesabı YOK. Varsayılan kullanım 1:1 (kare) asset'lerdir (ör.
+// kediler, hayalet) — height verilmezse width'e eşitlenir, basit top-left konumlama yeterli. height
+// opsiyonel override'ı 2:3 gibi kare-olmayan poz dizileri için eklendi (ör. AnneScene'in anne/anne_terlik
+// jürisi) — width verilip height override edilmediğinde eski davranış birebir korunur (backward-compatible).
 type Props = {
   frames: string[];
   x: number;
   y: number;
   width: number;
+  height?: number;
   frameDuration?: number;
   startFrame?: number;
   loop?: boolean;
@@ -23,6 +26,7 @@ export const SpriteFlip: React.FC<Props> = ({
   x,
   y,
   width,
+  height,
   frameDuration = 8,
   startFrame = 0,
   loop = false,
@@ -39,8 +43,10 @@ export const SpriteFlip: React.FC<Props> = ({
     index = loop ? step % frames.length : Math.min(step, frames.length - 1);
   }
 
+  const boxHeight = height ?? width;
+
   return (
-    <div style={{position: 'absolute', left: x, top: y, width, height: width}}>
+    <div style={{position: 'absolute', left: x, top: y, width, height: boxHeight}}>
       <Img
         src={staticFile(frames[index])}
         style={{

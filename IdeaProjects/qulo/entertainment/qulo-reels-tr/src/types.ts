@@ -24,7 +24,9 @@ export type SceneComponent =
   | 'GhostHook'
   | 'GhostScene'
   | 'TanimHook'
-  | 'TanimScene';
+  | 'TanimScene'
+  | 'AnneHook'
+  | 'AnneScene';
 
 export type SceneSpec = {
   component: SceneComponent;

@@ -75,3 +75,11 @@ export const SORULAR_TANIM: readonly SoruSpec[] = [
   {soru: 'Arkadaşlarına beni nasıl tanıtıyorsun?', dogru: 'Sevgilim diye', yanlis: 'Arkadaşım işte'},
   {soru: '3 aydır neyiz peki?', dogru: 'Beraberiz', yanlis: 'Akışına bıraktık'},
 ] as const;
+
+// Varyant AN "Anne Onayı" — kültürel mizah, jüri anne (bkz. plan: 2026-07-12-qulo-reels-tr-variant-anne.md).
+// Annenin dertlerinden sorular; geçemeyen aday terlik yer (ELENDİ), geçen aday onaylanır (Eşleşme!).
+export const SORULAR_ANNE: readonly SoruSpec[] = [
+  {soru: 'Ne iş yapıyorsun evladım?', dogru: 'Öğretmenim', yanlis: 'Kripto işleri'},
+  {soru: 'Akşamları evde misin?', dogru: 'Ailemleyim', yanlis: 'Genelde dışarıdayım'},
+  {soru: 'Kızımı üzersen?', dogru: 'Asla üzmem', yanlis: 'Kimse mükemmel değil'},
+] as const;

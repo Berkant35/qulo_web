@@ -10,6 +10,7 @@ import {QuloReelsSorgu} from './QuloReelsSorgu';
 import {QuloReelsKadikoy} from './QuloReelsKadikoy';
 import {QuloReelsGhost} from './QuloReelsGhost';
 import {QuloReelsTanim} from './QuloReelsTanim';
+import {QuloReelsAnne} from './QuloReelsAnne';
 import {reelsConfig} from './configs/reels-tr.config';
 import {terskoseConfig} from './configs/terskose.config';
 import {kaosConfig} from './configs/kaos.config';
@@ -21,6 +22,7 @@ import {r2Config} from './configs/r2.config';
 import {k2Config} from './configs/k2.config';
 import {g1Config} from './configs/g1.config';
 import {s1Config} from './configs/s1.config';
+import {anneConfig} from './configs/anne.config';
 import {theme} from './theme';
 
 // Yeni varyant eklemek için: bu diziye {id, component, config} ekle (Root'un geri kalanı sabit).
@@ -59,6 +61,8 @@ const compositions: {
   {id: 'QuloReelsGhost45', component: QuloReelsGhost, durationInFrames: g1Config.durationInFrames, width: 1080, height: 1350},
   {id: 'QuloReelsTanim', component: QuloReelsTanim, durationInFrames: s1Config.durationInFrames},
   {id: 'QuloReelsTanim45', component: QuloReelsTanim, durationInFrames: s1Config.durationInFrames, width: 1080, height: 1350},
+  {id: 'QuloReelsAnne', component: QuloReelsAnne, durationInFrames: anneConfig.durationInFrames},
+  {id: 'QuloReelsAnne45', component: QuloReelsAnne, durationInFrames: anneConfig.durationInFrames, width: 1080, height: 1350},
 ];
 
 export const RemotionRoot: React.FC = () => {
