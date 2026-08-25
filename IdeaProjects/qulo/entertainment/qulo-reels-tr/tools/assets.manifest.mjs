@@ -310,6 +310,35 @@ export const MANIFEST = [
     styleSuffix: PROP_SUFFIX,
     prompt: 'A luxury car key fob with a leather keychain strap, dangling as if held up. NO brand logos, NO emblems, NO text.',
   },
+  // ---- Varyant AN "Anne Onayı" (kültürel mizah) ----
+  {
+    id: 'bg_salon',
+    aspectRatio: '9:16',
+    styleSuffix: BG_SUFFIX,
+    prompt:
+      'A cozy traditional Turkish living room: a sofa with lace doilies on the armrests, a low coffee table with small tulip-shaped tea glasses, a patterned rug on the wall, warm homely atmosphere, soft lamp light.',
+  },
+  {
+    id: 'anne',
+    aspectRatio: '2:3',
+    prompt:
+      'A middle-aged Turkish mother in her 50s wearing an elegant blouse and cardigan, arms firmly crossed, a skeptical scrutinizing serious expression as if sizing someone up, looking straight at the camera. Dignified, fully clothed, tasteful.',
+  },
+  {
+    id: 'anne_terlik',
+    aspectRatio: '2:3',
+    referenceOf: 'anne',
+    styleSuffix: STYLE_SUFFIX,
+    prompt:
+      'The SAME middle-aged Turkish mother as in the reference image — identical face, identical outfit. Now she has one arm raised holding a house slipper up in the air as if about to playfully throw it, eyebrows furrowed with comic determination.',
+  },
+  {
+    id: 'prop_terlik',
+    aspectRatio: '1:1',
+    styleSuffix: PROP_SUFFIX,
+    prompt: 'A single classic house slipper, side view, mid-air throwing angle.',
+  },
+
   // ---- Varyant S1 "Biz Neyiz?" (situationship, araştırma temelli) ----
   {
     id: 'bg_kafe',
