@@ -11,6 +11,8 @@ Yeni aksiyon eklemek: manifest'e `<id>_<aksiyon>` girdisi (referenceOf: taban id
 | w2 | casual şık aday | taban (yürüyüş) |
 | w3 | sportif aday | taban (selam) |
 | w4 | glamour (K2 Kadıköy kadını) | taban (özgüven) |
+| w5 | glam (G1 Hayalet, zarif V-yaka) | taban |
+| w6 | situationship kadını (S1, sabrı tükenmiş) | taban |
 
 ## Erkekler
 | id | tanım | aksiyonlar |
@@ -23,6 +25,14 @@ Yeni aksiyon eklemek: manifest'e `<id>_<aksiyon>` girdisi (referenceOf: taban id
 | erko_zengin | lüks arabalı kendini beğenmiş tip | taban (anahtarlık sallama), erko_zengin_araba (arabaya yaslanmış) |
 | erko_kasli | spor salonu tipi | taban (kollar çapraz kaslar) |
 | italyan | Akdeniz karizması | taban (espresso) |
+| m_fit | atletik fitted gömlek (glam kast) | taban |
+| m_zengin2 | smokinli zengin (glam kast) | taban |
+| m_kacamak | kaçamakçı (S1, omuz silken) | taban |
+
+## Anneler / Aile 👩‍👧
+| id | tanım | aksiyonlar |
+|----|-------|-----------|
+| anne | Türk annesi jüri (süzen bakış, kollar kavuşuk) | taban (watch), _terlik (terlik fırlatma) |
 
 ## Kediler (Kadıköy jürisi) 🐈
 | id | tanım | aksiyonlar |
@@ -32,10 +42,10 @@ Yeni aksiyon eklemek: manifest'e `<id>_<aksiyon>` girdisi (referenceOf: taban id
 | kedi_sb | onaycı smokin kedi | taban (pati havada onay), _bagir, _pati |
 
 ## Ortamlar (bg_* tam kare plate)
-bg_sorgu (film-noir sorgu odası), bg_mugshot (mugshot duvarı), bg_kadikoy (grafitili sokak), bg_moda (sahil).
+bg_sorgu (sorgu odası), bg_mugshot (mugshot duvarı), bg_kadikoy (grafitili sokak), bg_moda (sahil), bg_gece (gece sokağı/ghosting), bg_kafe (loş bar/situationship), bg_salon (Türk oturma odası/anne).
 
 ## Prop'lar
-prop_plak, prop_pizza, prop_disko, e_curtain (perde), prop_luks_sedan (logo'suz lüks sedan — MARKA LOGOSU ASLA), prop_anahtarlik (lüks araba anahtarlığı).
+prop_plak, prop_pizza, prop_disko, e_curtain (perde), prop_luks_sedan (logo'suz lüks sedan — MARKA LOGOSU ASLA), prop_anahtarlik (lüks araba anahtarlığı), prop_terlik (ev terliği/anne gag), hayalet_1/hayalet_2 (ghosting animatik).
 
 ## Kurallar
 - Araç/eşya markaları ve logoları ASLA görünmez (trademark).
