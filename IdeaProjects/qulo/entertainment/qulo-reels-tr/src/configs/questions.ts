@@ -83,3 +83,11 @@ export const SORULAR_ANNE: readonly SoruSpec[] = [
   {soru: 'Akşamları evde misin?', dogru: 'Ailemleyim', yanlis: 'Genelde dışarıdayım'},
   {soru: 'Kızımı üzersen?', dogru: 'Asla üzmem', yanlis: 'Kimse mükemmel değil'},
 ] as const;
+
+// Varyant B1 "Kırıntı" — breadcrumbing araştırma temelli (bkz. plan: 2026-07-12-qulo-reels-tr-variant-b1.md).
+// Kaçamak/oyalayan cevap veren aday kırıntılara ufalanıp savrulur; net adım atan kalır.
+export const SORULAR_KIRINTI: readonly SoruSpec[] = [
+  {soru: 'Ne zaman buluşuyoruz?', dogru: "Cumartesi 8'de", yanlis: 'Bir ara bakarız'},
+  {soru: 'Bu hafta müsait misin?', dogru: 'Sana ayırdım', yanlis: 'Duruma göre'},
+  {soru: 'Beni gerçekten istiyor musun?', dogru: 'Netçe evet', yanlis: 'Görüşürüz artık'},
+] as const;

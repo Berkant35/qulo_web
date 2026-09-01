@@ -26,6 +26,8 @@ import {TanimHook} from './scenes/TanimHook';
 import {TanimScene} from './scenes/TanimScene';
 import {AnneHook} from './scenes/AnneHook';
 import {AnneScene} from './scenes/AnneScene';
+import {KirintiHook} from './scenes/KirintiHook';
+import {KirintiScene} from './scenes/KirintiScene';
 
 const renderScene = (scene: SceneSpec, idx: number) => {
   // scene.props tipi Record<string, unknown> — sahne bileşenlerine spread edilirken
@@ -82,6 +84,10 @@ const renderScene = (scene: SceneSpec, idx: number) => {
       return <AnneHook {...props} />;
     case 'AnneScene':
       return <AnneScene {...props} />;
+    case 'KirintiHook':
+      return <KirintiHook {...props} />;
+    case 'KirintiScene':
+      return <KirintiScene {...props} />;
     default:
       throw new Error(`Unknown scene component at index ${idx}: ${scene.component}`);
   }

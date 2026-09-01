@@ -26,7 +26,9 @@ export type SceneComponent =
   | 'TanimHook'
   | 'TanimScene'
   | 'AnneHook'
-  | 'AnneScene';
+  | 'AnneScene'
+  | 'KirintiHook'
+  | 'KirintiScene';
 
 export type SceneSpec = {
   component: SceneComponent;
