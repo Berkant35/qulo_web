@@ -13,6 +13,7 @@ import { BLOG_POSTS } from "@/lib/constants/blog";
 import { ArticleBlocks, type LocalizedArticle } from "@/components/blog/ArticleBlocks";
 import { whatActuallyPredictsCompatibility } from "./_content/what-actually-predicts-compatibility";
 import { psychologyOfTheFirstMessage } from "./_content/psychology-of-the-first-message";
+import { theQuestionDeficit } from "./_content/the-question-deficit";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -2153,6 +2154,7 @@ function MatchingScienceContent({ locale }: { locale: string }) {
 const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
   "what-actually-predicts-compatibility": whatActuallyPredictsCompatibility,
   "psychology-of-the-first-message": psychologyOfTheFirstMessage,
+  "the-question-deficit": theQuestionDeficit,
 };
 
 /** Word count of a structured article, or undefined for legacy JSX posts. */
