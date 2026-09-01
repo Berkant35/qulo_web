@@ -18,7 +18,7 @@ const PAGE_SLUG = "press";
 const PUBLISHED_AT = "2026-04-16";
 const MODIFIED_AT = "2026-04-16";
 
-const PRESS_CONTACT_EMAIL = "press@quloapp.com";
+const PRESS_CONTACT_EMAIL = "info@socrepho.com";
 const FOUNDER_NAME = "Berkant Çalıkuşu";
 const FOUNDER_TITLE = "Founder & CEO";
 
