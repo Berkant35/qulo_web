@@ -360,6 +360,21 @@ export const MANIFEST = [
       'A handsome young man in his late 20s, casual trendy outfit, caught mid-shrug with both palms up and an awkward evasive half-smile, avoiding eye contact slightly, the look of someone dodging a serious question.',
   },
 
+  // ---- Varyant B1 "Kırıntı" (breadcrumbing, araştırma temelli) ----
+  {
+    id: 'bg_bekleme',
+    aspectRatio: '9:16',
+    styleSuffix: BG_SUFFIX,
+    prompt:
+      'A cozy café interior by a large window: a small round table set for two with two coffee cups, one chair occupied-feeling and one EMPTY chair across, warm afternoon light through the window, a few other empty tables blurred behind, quiet waiting mood.',
+  },
+  {
+    id: 'w7',
+    aspectRatio: '2:3',
+    prompt:
+      'A very attractive stylish young woman in her mid-20s, elegant casual outfit, glancing down at her phone in one hand with a hopeful-then-skeptical expression, slight tired half-smile as if she has been kept waiting, standing.',
+  },
+
   // ---- Glam kast (Meta policy tavanında çekicilik: dekolte odağı YOK, üstsüz YOK) ----
   {
     id: 'w5',
