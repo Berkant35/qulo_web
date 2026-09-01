@@ -124,6 +124,21 @@
   to = "/tr/email-verified/index.html"
   status = 200
 
+# Security headers.
+#
+# The CSP lives here rather than in a <meta http-equiv> tag in layout.tsx:
+# frame-ancestors, report-uri and sandbox are ignored when a policy is
+# delivered by meta, so clickjacking protection only works as a real header.
+# This is the single source of truth — do not add a second copy in the app.
+#
+# Why each value:
+#   script-src 'unsafe-inline'  Next.js static export inlines its hydration
+#                               payload and cannot use nonces (no server).
+#                               'unsafe-eval' is deliberately NOT set — the
+#                               production bundles contain no eval/new Function.
+#   style-src  'unsafe-inline'  Next injects critical CSS inline.
+#   img/font   'self'           every image, stylesheet and font is self-hosted.
+#   connect-src                 the reset-password form posts to the API.
 [[headers]]
   for = "/*"
   [headers.values]
@@ -131,6 +146,7 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://qulo-server-production.up.railway.app; manifest-src 'self'; upgrade-insecure-requests"
 
 [[headers]]
   for = "/.well-known/apple-app-site-association"

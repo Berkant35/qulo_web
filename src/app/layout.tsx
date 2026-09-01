@@ -51,10 +51,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta
-          httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://qulo-server-production.up.railway.app; frame-ancestors 'none'"
-        />
+        {/* Content-Security-Policy is served as a real HTTP header from
+            netlify.toml. It is not repeated here: frame-ancestors is ignored
+            in a <meta> policy, and a second copy only drifts out of sync. */}
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="https://qulo-server-production.up.railway.app" />
         <link rel="preconnect" href="https://qulo-server-production.up.railway.app" crossOrigin="anonymous" />
