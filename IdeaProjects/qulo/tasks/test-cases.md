@@ -19,7 +19,7 @@ gerekiyorsa yeni case eklenir.** Kural seti: root `CLAUDE.md` → "Test Disiplin
 ## Durum (son güncelleme: 2026-09-01)
 | Katman | Test | Kapsanan alan |
 |---|---|---|
-| Server | 249 | diamond, exchange, subscription, scoring, badge, report, locale, validator, page-message, referral, segment, quick-assign, user-interests, ai-suggest, notification template, unsubscribe, heartbeat, deletion-feedback, app-config, push-messages |
+| Server | 439 | diamond, exchange, subscription, scoring, auth, revenuecat, webhook, retention, referral, economy-config, badge, report, locale, validator, page-message, referral, segment, quick-assign, user-interests, ai-suggest, notification template, unsubscribe, heartbeat, deletion-feedback, app-config, push-messages |
 | Mobile | 47 | user/page-message/acquisition model, coach-mark (registry/controller/overlay/visibility/service), overlay queue, pending languages, onboarding provider, i18n parity |
 | Supabase | 0 | — |
 | Web | 0 | — |
@@ -41,61 +41,25 @@ Kapsanan: getStatus (5), activate (5, webhook tekrarı dahil), renew (3), cancel
 expire (2), change (3), getDailyStats (7, lazy reset dahil), increment (4), getLimits (2).
 Not: `SubscriptionPlan = 'plus' | 'premium'` — `'free'` aktive edilebilir plan değil.
 
-### [ ] `revenuecat.service` + `webhook.service` — ödeme doğrulama
-- [ ] `verifyPurchase` — geçerli receipt kabul, geçersiz reddedilir
-- [ ] `verifyPurchase` — aynı `transaction_id` iki kez elmas yatırmaz (idempotency)
-- [ ] `verifySubscription` — süresi geçmiş abonelik aktif sayılmaz
-- [ ] `handleRevenueCatEvent` — INITIAL_PURCHASE / RENEWAL / CANCELLATION / EXPIRATION ayrı ayrı
-- [ ] `handleRevenueCatEvent` — bilinmeyen event tipi sessizce yutulur, 500 atmaz
-- [ ] `handleRevenueCatEvent` — bilinmeyen `app_user_id` için kullanıcı yaratmaz
-- [ ] Webhook imza/secret doğrulaması — yanlış secret reddedilir
+### ✅ `revenuecat.service` (19) + `webhook.service` (19)
+`tests/services/revenuecat.service.test.ts`, `tests/services/webhook.service.test.ts`
+Kritik: API çökünce satın alma **geçerli sayılmıyor**; (transaction_id, event_type)
+çifti başına tek işlem; bozuk payload 500 atmıyor (sonsuz retry olurdu).
 
-### [ ] `retention.service` — hesap silme win-back
-- [ ] `checkEligibility` — `minAccountAgeDays`'den yeni hesap uygun değil
-- [ ] `checkEligibility` — daha önce claim etmiş kullanıcı tekrar uygun değil
-- [ ] `claim` — `deletionDiamondAmount` kadar yatırır, ikinci claim vermez
-- [ ] `claim` — uygun olmayan kullanıcı için reddedilir
+### ✅ `retention.service` (20) — `tests/services/retention.service.test.ts`
+Dört uygunluk kapısı ayrı ayrı; `claim` uygunluğu yeniden doğruluyor.
 
-### [ ] `referral.service` — davet ödülü
-- [ ] `generateUniqueCode` — çakışma durumunda yeniden üretir
-- [ ] `applyReferralCode` — kendi kodunu uygulayamaz
-- [ ] `applyReferralCode` — zaten referrer'ı olan kullanıcı ikinci kez uygulayamaz
-- [ ] `applyReferralCode` — geçersiz/olmayan kod reddedilir
-- [ ] `checkAndReward` — `maxCompletedReferrals` limitine ulaşınca ödül vermez
-- [ ] `checkAndReward` — aynı referral için iki kez ödül vermez
-- [ ] `getStats` — sadece kendi davetlerini sayar
+### ✅ `referral.service` (36) — `tests/services/referral.service.test.ts`
+Eski `src/__tests__` dosyası kaldırıldı (getStats bloğu tautolojiydi).
 
-### [ ] `economy-config.service` — fiyat kaynağı
-- [ ] `getActiveConfig` — aktif config yoksa hata atar
-- [ ] `getActiveConfig` — schema'ya uymayan config parse hatası verir (sessizce geçmez)
-- [ ] Cache — 5 dk içinde ikinci çağrı DB'ye gitmez
-- [ ] Cache — DB hatası olsa bile eski cache dönülür
-- [ ] `invalidateCache` — sonraki çağrı DB'ye gider
-- [ ] `createVersion` — versiyon numarası artar, eski pasifleşir
-- [ ] `createVersion` — sınır dışı değer (örn. `greenToPurpleRatio: 20`) reddedilir
-- [ ] `compareVersions` — değişen alanları doğru listeler
+### ✅ `economy-config.service` (25) — `tests/services/economy-config.service.test.ts`
+Cache TTL/hata dayanıklılığı, schema reddi, RPC yedek yolu.
 
-## P0 — Yetki & Veri Sızıntısı
-
-### [ ] `auth.service` (536 satır, sıfır test)
-- [ ] `register` — var olan e-posta ile kayıt reddedilir
-- [ ] `register` — şifre hash'lenir, düz metin saklanmaz
-- [ ] `register` — e-posta case-insensitive eşleşir (`A@b.com` = `a@b.com`)
-- [ ] `verifyEmail` — geçersiz/süresi geçmiş token reddedilir
-- [ ] `verifyEmail` — kullanılmış token ikinci kez çalışmaz
-- [ ] `login` — doğrulanmamış e-posta ile giriş `EMAIL_NOT_VERIFIED`
-- [ ] `login` — yanlış şifre `INVALID_CREDENTIALS`, kullanıcı var/yok bilgisi sızmaz
-- [ ] `login` — banlı kullanıcı reddedilir
-- [ ] `refresh` — geçersiz/iptal edilmiş refresh token reddedilir
-- [ ] `refresh` — eski token rotasyon sonrası çalışmaz
-- [ ] `logout` — refresh token iptal edilir
-- [ ] `forgotPassword` — olmayan e-posta için de aynı cevap (enumeration koruması)
-- [ ] `resetPassword` — süresi geçmiş token reddedilir
-- [ ] `resetPassword` — başarılı reset tüm refresh token'ları iptal eder
-- [ ] `socialLogin` — yeni kullanıcı yaratır
-- [ ] `socialLogin` — mevcut kullanıcıyla eşleşir (Case A)
-- [ ] `socialLogin` — **soft-delete edilmiş hesap geri getirilir (Case B)** ← bilinen 401 bug'ı
-- [ ] `socialLogin` — Case A ve Case B simetrik davranır
+### ✅ `auth.service` (58) — `tests/services/auth.service.test.ts`
+### ✅ `auth.validator` (22) — `tests/validators/auth.validator.test.ts`
+🔴 **Bulunan bug (düzeltildi):** `locale` enum'ı `tr|en`'de kalmıştı; mobil cihaz
+dilini gönderdiği için 14 dilde kayıt 400 alıyordu. Regresyon testi eklendi.
+socialLogin'de Case A/Case B'nin silinmiş hesapta simetrik davrandığı sabitlendi.
 
 ### [ ] `middleware/auth.ts`
 - [ ] Token yoksa 401
