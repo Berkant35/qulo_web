@@ -149,7 +149,10 @@
     "trends": "Trends",
     "sitemap": "Sitemap",
     "pricing": "Pricing",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "guidelines": "Community Guidelines",
+    "safety": "Safety Tips",
+    "childSafety": "Child Safety"
   },
   "invite": {
     "title": "You're Invited to Qulo!",
@@ -316,5 +319,41 @@
     "globalCommunityDesc": "Supporting 16 languages, Qulo lets you meet people from all over the world. Build meaningful connections without language barriers.",
     "downloadCta": "Download Now",
     "downloadCtaDesc": "Download Qulo for free and start matching through questions."
+  },
+  "communityGuidelines": {
+    "title": "Community Guidelines",
+    "lastUpdated": "Last updated: September 1, 2026",
+    "intro": "Qulo works because people answer each other's questions honestly. That only happens when the app feels safe. These guidelines explain what we expect from everyone on Qulo, what is not allowed, and what happens when someone crosses the line.\n\nThey apply everywhere in the app: your profile, your photos, the questions you write, the answers you give and every message you send. Breaking them can cost you your account.",
+    "respectTitle": "1. Be Respectful",
+    "respect": "Everyone on Qulo is a real person.\n\n• Treat others the way you would in person. Disagreement is fine; contempt is not.\n• No harassment, bullying, threats or intimidation — including repeated unwanted messages after someone stops replying.\n• No hate speech or slurs targeting race, ethnicity, national origin, religion, disability, gender, gender identity or sexual orientation.\n• No unsolicited sexual messages. Someone matching with you is not consent to sexual content.\n• If someone unmatches or blocks you, that is their answer. Do not create a new account to reach them.",
+    "authenticityTitle": "2. Be Yourself",
+    "authenticity": "• You must be 18 or older to use Qulo. Accounts belonging to minors are removed.\n• Use recent photos of yourself. No photos of other people, celebrities, stock images, or images altered so heavily that they misrepresent how you look.\n• One account per person. Do not impersonate anyone, and do not use someone else's account.\n• Do not misrepresent your age, name or intentions.\n• No accounts run on behalf of a business, brand or service.",
+    "contentTitle": "3. Content That Is Not Allowed",
+    "content": "The following is removed and can end your account immediately:\n\n• Nudity or sexually explicit content in profile photos, questions, answers or chat.\n• Any content that sexualises, endangers or exploits minors. We have zero tolerance here — see our Child Safety Standards.\n• Violence, threats of violence, encouragement of self-harm, or content glorifying either.\n• Promotion of illegal activity, weapons or drugs.\n• Prostitution, escort services, trafficking, or any exchange of sexual services.\n• Spam, advertising, affiliate links, or recruiting for other platforms and services.\n• Requests for money, investment offers, cryptocurrency pitches, or links to payment pages.",
+    "questionsTitle": "4. Your Questions and Answers",
+    "questions": "Questions are the heart of Qulo, so they are held to the same standard as everything else.\n\n• Do not use questions to collect personal data — phone numbers, home addresses, workplace details or financial information.\n• Do not use questions or answers to advertise, to move people off the platform, or to spread misinformation.\n• Keep your questions answerable and honest. Questions written so that nobody can pass, or designed to humiliate whoever answers, are not what this app is for.\n• Offensive, discriminatory or sexually explicit questions are removed like any other content.",
+    "reportingTitle": "5. Reporting and Blocking",
+    "reporting": "Every profile and every conversation has block and report controls.\n\n• Block removes the person from your matches immediately. They can no longer see your profile or contact you, and you will not see them again.\n• Report sends the profile or conversation to us for review, together with the reason you select. Reports are confidential — the reported person is not told who reported them.\n• Reports involving a suspected minor, threats, or sexual exploitation are prioritised.\n\nIf you are in immediate danger, contact your local emergency services first, then report to us.",
+    "enforcementTitle": "6. What Happens If You Break the Rules",
+    "enforcement": "Depending on how serious the breach is, we may:\n\n• Remove the content — a photo, a question, a message.\n• Restrict features on your account.\n• Suspend or permanently terminate your account.\n\nSerious breaches — child sexual exploitation, threats of violence, scams, non-consensual intimate images — result in immediate permanent removal without warning. Diamonds and remaining subscription time are forfeited when an account is terminated for a breach, and an active subscription must still be cancelled through the App Store or Google Play.\n\nIf you believe your account was removed by mistake, write to info@socrepho.com.",
+    "contactTitle": "7. Contact",
+    "contact": "Questions about these guidelines, or something you need to report from outside the app:\n\nEmail: info@socrepho.com\nWebsite: quloapp.com"
+  },
+  "safetyTips": {
+    "title": "Safety Tips",
+    "lastUpdated": "Last updated: September 1, 2026",
+    "intro": "Most people on Qulo are exactly who they say they are. A few are not. The habits below are what keep that difference from costing you anything.\n\nWe do not run background checks on our users, so please read this before you meet anyone from the app.",
+    "onlineTitle": "1. While You Are Still Chatting",
+    "online": "• Keep the conversation inside Qulo until you trust the person. Moving to another app early removes the safety tools you have here.\n• Be careful with anyone who pushes hard to switch to WhatsApp, Telegram or email within the first few messages.\n• Do not share your home address, workplace, daily routine, identity documents or financial details.\n• Watch for stories that never quite fit: a job abroad, a camera that never works, a reason they can never video call.\n• Search their photos. A reverse image search often reveals whether a picture belongs to someone else.",
+    "scamsTitle": "2. Money and Scams",
+    "scams": "This is the single most common way people are hurt on dating apps.\n\n• Never send money, gift cards or cryptocurrency to someone you met online — no matter how convincing the emergency sounds.\n• Ignore investment advice, trading platforms and \"guaranteed return\" opportunities from matches. That is a scam pattern, not a coincidence.\n• Do not open links to payment pages, verification sites or \"safety check\" services that someone sends you. Qulo will never ask you to verify yourself on an external site.\n• Be careful with intimate photos. Once sent, they can be used to extort you. If that happens, do not pay — report it to us and to your local authorities.",
+    "meetingTitle": "3. Meeting in Person",
+    "meeting": "• Meet in a public place the first few times, and stay in public.\n• Tell a friend or a family member where you are going, who you are meeting and when you expect to be back. Share your live location if you can.\n• Arrange your own transport there and back. Do not be picked up from home, and do not let someone take you somewhere you did not agree to.\n• Keep control of your drink and stay sober enough to make decisions.\n• Keep your phone charged.\n• If something feels wrong, leave. You do not owe anyone an explanation.",
+    "privacyTitle": "4. Protect Your Personal Information",
+    "privacy": "• Photos give away more than you think — house numbers, street signs, workplace badges, school uniforms, car plates.\n• Your username on other platforms can lead back to your full name. Consider using a different one here.\n• Be careful when someone asks a lot of specific questions about where you live, where you work, or how you spend your evenings.\n• Nothing in your profile or your questions should be information you would not want a stranger to hold.",
+    "toolsTitle": "5. The Tools You Have in the App",
+    "tools": "• Block: removes the person from your matches immediately and stops contact in both directions.\n• Report: sends the profile or the conversation to us with the reason you choose. It is confidential.\n• Both are available on every profile and inside every conversation.\n\nPlease report behaviour even when you have already blocked it. Blocking protects you; reporting protects the next person.",
+    "emergencyTitle": "6. If Something Goes Wrong",
+    "emergency": "• If you are in immediate danger, contact your local emergency services first.\n• If you have been assaulted, harassed, threatened or defrauded, report it to your local authorities — and then to us, so that we can act on the account.\n• Keep evidence: screenshots, usernames, message times, payment records.\n\nWe cooperate with law enforcement requests and preserve data related to confirmed violations as required by law.\n\nYou can reach us at info@socrepho.com."
   }
 }

@@ -201,7 +201,10 @@
     "trends": "Trends",
     "sitemap": "Sitemap",
     "pricing": "Prijzen",
-    "reviews": "Beoordelingen"
+    "reviews": "Beoordelingen",
+    "guidelines": "Communityrichtlijnen",
+    "safety": "Veiligheidstips",
+    "childSafety": "Kinderveiligheid"
   },
   "privacyPolicy": {
     "title": "Privacybeleid",
@@ -316,5 +319,41 @@
     "globalCommunityDesc": "Met ondersteuning voor 16 talen laat Qulo je mensen ontmoeten van over de hele wereld.",
     "downloadCta": "Nu downloaden",
     "downloadCtaDesc": "Download Qulo gratis en begin met matchen via vragen."
+  },
+  "communityGuidelines": {
+    "title": "Communityrichtlijnen",
+    "lastUpdated": "Laatst bijgewerkt: 1 september 2026",
+    "intro": "Qulo werkt omdat mensen elkaars vragen eerlijk beantwoorden. Dat gebeurt alleen als de app veilig voelt. Deze richtlijnen leggen uit wat we van iedereen op Qulo verwachten, wat niet is toegestaan en wat er gebeurt als iemand over de grens gaat.\n\nZe gelden overal in de app: je profiel, je foto's, de vragen die je schrijft, de antwoorden die je geeft en elk bericht dat je stuurt. Ze overtreden kan je je account kosten.",
+    "respectTitle": "1. Wees respectvol",
+    "respect": "Iedereen op Qulo is een echt mens.\n\n• Behandel anderen zoals je dat in het echt zou doen. Het oneens zijn mag; minachting niet.\n• Geen intimidatie, pesten of bedreigingen — ook niet herhaalde ongewenste berichten nadat iemand stopt met antwoorden.\n• Geen haatzaaiende taal of scheldwoorden gericht op afkomst, etniciteit, nationaliteit, religie, beperking, gender, genderidentiteit of seksuele oriëntatie.\n• Geen ongevraagde seksuele berichten. Een match is geen toestemming voor seksuele inhoud.\n• Als iemand de match ongedaan maakt of je blokkeert, is dat het antwoord. Maak geen nieuw account aan om die persoon te bereiken.",
+    "authenticityTitle": "2. Wees jezelf",
+    "authenticity": "• Je moet 18 jaar of ouder zijn om Qulo te gebruiken. Accounts van minderjarigen worden verwijderd.\n• Gebruik recente foto's van jezelf. Geen foto's van anderen, beroemdheden, stockbeelden of beelden die zo zijn bewerkt dat ze je uiterlijk verkeerd weergeven.\n• Eén account per persoon. Doe je niet voor als iemand anders en gebruik niet andermans account.\n• Geef geen onjuiste leeftijd, naam of bedoelingen op.\n• Geen accounts die namens een bedrijf, merk of dienst worden beheerd.",
+    "contentTitle": "3. Niet toegestane inhoud",
+    "content": "Het volgende wordt verwijderd en kan je account direct beëindigen:\n\n• Naaktbeelden of seksueel expliciete inhoud in profielfoto's, vragen, antwoorden of chat.\n• Alle inhoud die minderjarigen seksualiseert, in gevaar brengt of uitbuit. Hier geldt nultolerantie — zie onze Kinderveiligheidsnormen.\n• Geweld, bedreiging met geweld, aanmoediging tot zelfbeschadiging of inhoud die dit verheerlijkt.\n• Promotie van illegale activiteiten, wapens of drugs.\n• Prostitutie, escortdiensten, mensenhandel of elke uitwisseling van seksuele diensten.\n• Spam, reclame, affiliate links of werven voor andere platforms en diensten.\n• Verzoeken om geld, investeringsaanbiedingen, cryptovoorstellen of links naar betaalpagina's.",
+    "questionsTitle": "4. Je vragen en antwoorden",
+    "questions": "Vragen zijn het hart van Qulo en gelden daarom dezelfde norm als al het andere.\n\n• Gebruik vragen niet om persoonsgegevens te verzamelen — telefoonnummers, adressen, werkgegevens of financiële informatie.\n• Gebruik vragen of antwoorden niet om te adverteren, mensen van het platform af te leiden of desinformatie te verspreiden.\n• Houd je vragen eerlijk en beantwoordbaar. Vragen die zo geschreven zijn dat niemand ze kan halen, of bedoeld om degene die antwoordt te vernederen, zijn niet waar deze app voor is.\n• Beledigende, discriminerende of seksueel expliciete vragen worden net als alle andere inhoud verwijderd.",
+    "reportingTitle": "5. Melden en blokkeren",
+    "reporting": "Elk profiel en elk gesprek heeft knoppen om te blokkeren en te melden.\n\n• Blokkeren haalt de persoon direct uit je matches. Diegene kan je profiel niet meer zien of contact met je opnemen, en jij ziet die persoon niet meer terug.\n• Melden stuurt het profiel of het gesprek naar ons ter beoordeling, samen met de reden die je kiest. Meldingen zijn vertrouwelijk — de gemelde persoon hoort niet wie de melding deed.\n• Meldingen met een vermoeden van een minderjarige, bedreigingen of seksuele uitbuiting krijgen voorrang.\n\nBen je in direct gevaar, bel dan eerst de lokale hulpdiensten en meld het daarna bij ons.",
+    "enforcementTitle": "6. Wat gebeurt er bij een overtreding",
+    "enforcement": "Afhankelijk van de ernst van de overtreding kunnen wij:\n\n• de inhoud verwijderen — een foto, een vraag, een bericht;\n• functies van je account beperken;\n• je account schorsen of permanent beëindigen.\n\nErnstige overtredingen — seksuele uitbuiting van kinderen, bedreiging met geweld, oplichting, intieme beelden zonder toestemming — leiden zonder waarschuwing tot onmiddellijke, permanente verwijdering. Bij beëindiging wegens een overtreding vervallen diamanten en resterende abonnementstijd; een lopend abonnement moet nog steeds apart worden opgezegd via de App Store of Google Play.\n\nDenk je dat je account per vergissing is verwijderd, mail dan naar info@socrepho.com.",
+    "contactTitle": "7. Contact",
+    "contact": "Vragen over deze richtlijnen, of iets dat je van buiten de app wilt melden:\n\nE-mail: info@socrepho.com\nWebsite: quloapp.com"
+  },
+  "safetyTips": {
+    "title": "Veiligheidstips",
+    "lastUpdated": "Laatst bijgewerkt: 1 september 2026",
+    "intro": "De meeste mensen op Qulo zijn precies wie ze zeggen te zijn. Een enkeling niet. De gewoontes hieronder zorgen ervoor dat dat verschil je niets kost.\n\nWe doen geen antecedentenonderzoek naar onze gebruikers, dus lees dit voordat je met iemand uit de app afspreekt.",
+    "onlineTitle": "1. Zolang jullie nog chatten",
+    "online": "• Houd het gesprek in Qulo totdat je de persoon vertrouwt. Vroeg overstappen naar een andere app kost je de veiligheidsfuncties die je hier hebt.\n• Wees voorzichtig met iemand die in de eerste berichten sterk aandringt op WhatsApp, Telegram of e-mail.\n• Deel je woonadres, werkplek, dagelijkse routine, identiteitsdocumenten of financiële gegevens niet.\n• Let op verhalen die nooit helemaal kloppen: een baan in het buitenland, een camera die het nooit doet, steeds een reden om niet te videobellen.\n• Zoek de foto's op. Een omgekeerde afbeeldingszoekopdracht laat vaak zien of een foto van iemand anders is.",
+    "scamsTitle": "2. Geld en oplichting",
+    "scams": "Dit is verreweg de meest voorkomende manier waarop mensen op datingapps schade oplopen.\n\n• Stuur nooit geld, cadeaubonnen of cryptovaluta naar iemand die je online hebt ontmoet — hoe overtuigend het noodgeval ook klinkt.\n• Negeer beleggingsadvies, handelsplatforms en kansen met een „gegarandeerd rendement\" van matches. Dat is een oplichtingspatroon, geen toeval.\n• Open geen links naar betaalpagina's, verificatiesites of „veiligheidscontroles\" die iemand je stuurt. Qulo vraagt je nooit om jezelf op een externe site te verifiëren.\n• Wees voorzichtig met intieme foto's. Eenmaal verstuurd kunnen ze worden gebruikt om je af te persen. Gebeurt dat, betaal dan niet — meld het bij ons en bij de lokale autoriteiten.",
+    "meetingTitle": "3. Afspreken in het echt",
+    "meeting": "• Spreek de eerste keren af op een openbare plek en blijf in het openbaar.\n• Vertel een vriend of familielid waar je heen gaat, wie je ontmoet en wanneer je terug denkt te zijn. Deel je live locatie als dat kan.\n• Regel je eigen vervoer heen en terug. Laat je niet thuis ophalen en laat je niet meenemen naar een plek die je niet hebt afgesproken.\n• Houd je drankje in de gaten en blijf nuchter genoeg om beslissingen te nemen.\n• Zorg dat je telefoon opgeladen is.\n• Voelt iets niet goed, ga dan weg. Je bent niemand een uitleg schuldig.",
+    "privacyTitle": "4. Bescherm je persoonlijke gegevens",
+    "privacy": "• Foto's verraden meer dan je denkt — huisnummers, straatnaamborden, bedrijfspasjes, schooluniformen, kentekens.\n• Je gebruikersnaam op andere platforms kan naar je volledige naam leiden. Overweeg hier een andere te gebruiken.\n• Wees voorzichtig als iemand veel specifieke vragen stelt over waar je woont, waar je werkt of hoe je je avonden doorbrengt.\n• Niets in je profiel of je vragen zou informatie moeten zijn die je een vreemde niet zou geven.",
+    "toolsTitle": "5. De tools die je in de app hebt",
+    "tools": "• Blokkeren: haalt de persoon direct uit je matches en stopt contact in beide richtingen.\n• Melden: stuurt het profiel of gesprek naar ons met de reden die je kiest. Dit is vertrouwelijk.\n• Beide zijn beschikbaar op elk profiel en in elk gesprek.\n\nMeld gedrag ook als je het al hebt geblokkeerd. Blokkeren beschermt jou; melden beschermt de volgende persoon.",
+    "emergencyTitle": "6. Als er iets misgaat",
+    "emergency": "• Ben je in direct gevaar, bel dan eerst de lokale hulpdiensten.\n• Ben je mishandeld, lastiggevallen, bedreigd of opgelicht, doe dan aangifte bij de lokale autoriteiten — en meld het daarna bij ons, zodat wij tegen het account kunnen optreden.\n• Bewaar bewijs: schermafbeeldingen, gebruikersnamen, tijdstippen van berichten, betaalbewijzen.\n\nWe werken mee aan verzoeken van opsporingsinstanties en bewaren gegevens over bevestigde overtredingen voor zover de wet dat vereist.\n\nJe kunt ons bereiken op info@socrepho.com."
   }
 }

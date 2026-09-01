@@ -201,7 +201,10 @@
     "trends": "Trendy",
     "sitemap": "Mapa strony",
     "pricing": "Ceny",
-    "reviews": "Opinie"
+    "reviews": "Opinie",
+    "guidelines": "Zasady społeczności",
+    "safety": "Wskazówki bezpieczeństwa",
+    "childSafety": "Ochrona dzieci"
   },
   "privacyPolicy": {
     "title": "Polityka prywatności",
@@ -316,5 +319,41 @@
     "globalCommunityDesc": "Wspierając 16 języków, Qulo pozwala poznawać ludzi z całego świata.",
     "downloadCta": "Pobierz teraz",
     "downloadCtaDesc": "Pobierz Qulo za darmo i zacznij dopasowywać się przez pytania."
+  },
+  "communityGuidelines": {
+    "title": "Zasady społeczności",
+    "lastUpdated": "Ostatnia aktualizacja: 1 września 2026 r.",
+    "intro": "Qulo działa, ponieważ ludzie szczerze odpowiadają na swoje pytania. Dzieje się tak tylko wtedy, gdy aplikacja jest bezpieczna. Te zasady wyjaśniają, czego oczekujemy od wszystkich w Qulo, co jest zabronione i co się dzieje, gdy ktoś przekroczy granicę.\n\nObowiązują wszędzie w aplikacji: w Twoim profilu, na Twoich zdjęciach, w pytaniach, które piszesz, w odpowiedziach, których udzielasz, i w każdej wysłanej wiadomości. Ich łamanie może kosztować Cię konto.",
+    "respectTitle": "1. Szanuj innych",
+    "respect": "Każda osoba w Qulo jest prawdziwym człowiekiem.\n\n• Traktuj innych tak, jak zrobiłbyś to twarzą w twarz. Różnica zdań jest w porządku, pogarda nie.\n• Zakaz nękania, zastraszania i gróźb — w tym powtarzanych, niechcianych wiadomości po tym, jak ktoś przestał odpowiadać.\n• Zakaz mowy nienawiści i obelg wymierzonych w rasę, pochodzenie etniczne, narodowość, religię, niepełnosprawność, płeć, tożsamość płciową lub orientację seksualną.\n• Zakaz niechcianych wiadomości o charakterze seksualnym. Dopasowanie nie jest zgodą na treści seksualne.\n• Jeśli ktoś usunie dopasowanie lub Cię zablokuje, to jest jego odpowiedź. Nie zakładaj nowego konta, żeby się z nim skontaktować.",
+    "authenticityTitle": "2. Bądź sobą",
+    "authenticity": "• Aby korzystać z Qulo, musisz mieć ukończone 18 lat. Konta należące do osób niepełnoletnich są usuwane.\n• Używaj aktualnych zdjęć siebie. Zakaz zdjęć innych osób, celebrytów, zdjęć stockowych oraz zdjęć przerobionych tak, że nie oddają Twojego wyglądu.\n• Jedno konto na osobę. Nie podszywaj się pod nikogo i nie korzystaj z cudzego konta.\n• Nie podawaj nieprawdziwego wieku, imienia ani zamiarów.\n• Zakaz kont prowadzonych w imieniu firmy, marki lub usługi.",
+    "contentTitle": "3. Treści niedozwolone",
+    "content": "Poniższe treści są usuwane i mogą natychmiast zakończyć działanie Twojego konta:\n\n• Nagość lub treści o charakterze jednoznacznie seksualnym w zdjęciach profilowych, pytaniach, odpowiedziach lub czacie.\n• Wszelkie treści seksualizujące, narażające lub wykorzystujące osoby niepełnoletnie. Obowiązuje tu zerowa tolerancja — zobacz nasze Standardy ochrony dzieci.\n• Przemoc, groźby przemocy, zachęcanie do samookaleczeń lub treści gloryfikujące którekolwiek z nich.\n• Promowanie nielegalnej działalności, broni lub narkotyków.\n• Prostytucja, usługi towarzyskie, handel ludźmi lub jakakolwiek wymiana usług seksualnych.\n• Spam, reklamy, linki afiliacyjne oraz rekrutacja do innych platform i usług.\n• Prośby o pieniądze, oferty inwestycyjne, propozycje kryptowalutowe lub linki do stron płatności.",
+    "questionsTitle": "4. Twoje pytania i odpowiedzi",
+    "questions": "Pytania są sercem Qulo, więc obowiązuje je ten sam standard co wszystko inne.\n\n• Nie używaj pytań do zbierania danych osobowych — numerów telefonu, adresów, informacji o miejscu pracy czy danych finansowych.\n• Nie używaj pytań ani odpowiedzi do reklamowania, wyprowadzania ludzi poza platformę ani do szerzenia dezinformacji.\n• Pisz pytania uczciwe i możliwe do odpowiedzi. Pytania ułożone tak, by nikt nie mógł ich przejść, albo mające upokorzyć odpowiadającego, nie są celem tej aplikacji.\n• Pytania obraźliwe, dyskryminujące lub o charakterze seksualnym są usuwane jak każda inna treść.",
+    "reportingTitle": "5. Zgłaszanie i blokowanie",
+    "reporting": "Każdy profil i każda rozmowa mają opcje zablokowania i zgłoszenia.\n\n• Blokada natychmiast usuwa osobę z Twoich dopasowań. Nie może już zobaczyć Twojego profilu ani się z Tobą skontaktować, a Ty jej więcej nie zobaczysz.\n• Zgłoszenie przesyła nam profil lub rozmowę do weryfikacji wraz z wybranym powodem. Zgłoszenia są poufne — zgłaszana osoba nie dowiaduje się, kto ją zgłosił.\n• Zgłoszenia dotyczące podejrzenia osoby niepełnoletniej, gróźb lub wykorzystywania seksualnego są traktowane priorytetowo.\n\nJeśli grozi Ci bezpośrednie niebezpieczeństwo, najpierw skontaktuj się z lokalnymi służbami ratunkowymi, a potem zgłoś sprawę nam.",
+    "enforcementTitle": "6. Co się stanie, jeśli złamiesz zasady",
+    "enforcement": "W zależności od wagi naruszenia możemy:\n\n• usunąć treść — zdjęcie, pytanie, wiadomość;\n• ograniczyć funkcje Twojego konta;\n• zawiesić lub trwale zamknąć Twoje konto.\n\nPoważne naruszenia — seksualne wykorzystywanie dzieci, groźby przemocy, oszustwa, intymne zdjęcia bez zgody — skutkują natychmiastowym i trwałym usunięciem bez ostrzeżenia. Przy zamknięciu konta z powodu naruszenia diamenty i pozostały czas subskrypcji przepadają; aktywną subskrypcję trzeba nadal anulować osobno w App Store lub Google Play.\n\nJeśli uważasz, że Twoje konto usunięto przez pomyłkę, napisz na info@socrepho.com.",
+    "contactTitle": "7. Kontakt",
+    "contact": "Pytania dotyczące tych zasad lub zgłoszenie spoza aplikacji:\n\nE-mail: info@socrepho.com\nStrona: quloapp.com"
+  },
+  "safetyTips": {
+    "title": "Wskazówki bezpieczeństwa",
+    "lastUpdated": "Ostatnia aktualizacja: 1 września 2026 r.",
+    "intro": "Większość osób w Qulo jest dokładnie tym, za kogo się podaje. Kilka nie jest. Poniższe nawyki sprawiają, że ta różnica nic Cię nie kosztuje.\n\nNie sprawdzamy przeszłości naszych użytkowników, więc przeczytaj to, zanim spotkasz się z kimś poznanym w aplikacji.",
+    "onlineTitle": "1. Kiedy jeszcze piszecie",
+    "online": "• Prowadź rozmowę w Qulo, dopóki nie zaufasz tej osobie. Wczesne przejście do innej aplikacji pozbawia Cię dostępnych tu narzędzi bezpieczeństwa.\n• Uważaj na kogoś, kto już w pierwszych wiadomościach mocno naciska na WhatsApp, Telegram lub e-mail.\n• Nie udostępniaj adresu domowego, miejsca pracy, codziennego planu dnia, dokumentów tożsamości ani danych finansowych.\n• Zwracaj uwagę na historie, które nigdy do końca się nie kleją: praca za granicą, kamera, która nigdy nie działa, powód, dla którego rozmowa wideo nigdy nie jest możliwa.\n• Sprawdź zdjęcia. Wyszukiwanie wsteczne obrazem często pokazuje, że zdjęcie należy do kogoś innego.",
+    "scamsTitle": "2. Pieniądze i oszustwa",
+    "scams": "To zdecydowanie najczęstszy sposób, w jaki ludzie tracą na aplikacjach randkowych.\n\n• Nigdy nie wysyłaj pieniędzy, kart podarunkowych ani kryptowalut osobie poznanej online — niezależnie od tego, jak przekonująco brzmi nagły wypadek.\n• Ignoruj porady inwestycyjne, platformy tradingowe i okazje z „gwarantowanym zyskiem\" od dopasowań. To schemat oszustwa, nie przypadek.\n• Nie otwieraj linków do stron płatności, stron weryfikacyjnych ani usług „kontroli bezpieczeństwa\", które ktoś Ci przysyła. Qulo nigdy nie poprosi Cię o weryfikację na zewnętrznej stronie.\n• Uważaj na intymne zdjęcia. Po wysłaniu mogą posłużyć do szantażu. Jeśli tak się stanie, nie płać — zgłoś to nam i lokalnym organom.",
+    "meetingTitle": "3. Spotkanie na żywo",
+    "meeting": "• Przez pierwsze kilka razy spotykaj się w miejscu publicznym i zostań w miejscu publicznym.\n• Powiedz przyjacielowi lub komuś z rodziny, dokąd idziesz, z kim się spotykasz i kiedy planujesz wrócić. Jeśli możesz, udostępnij lokalizację na żywo.\n• Zorganizuj własny transport w obie strony. Nie pozwól, by odebrano Cię z domu, ani nie daj się zawieźć w miejsce, na które się nie umawiałeś.\n• Miej kontrolę nad swoim napojem i zachowaj trzeźwość wystarczającą do podejmowania decyzji.\n• Miej naładowany telefon.\n• Jeśli coś Ci nie pasuje, wyjdź. Nikomu nie jesteś winien wyjaśnień.",
+    "privacyTitle": "4. Chroń swoje dane osobowe",
+    "privacy": "• Zdjęcia zdradzają więcej, niż myślisz — numery domów, tablice z nazwami ulic, identyfikatory firmowe, mundurki szkolne, tablice rejestracyjne.\n• Twoja nazwa użytkownika na innych platformach może prowadzić do Twojego pełnego imienia i nazwiska. Rozważ użycie tutaj innej.\n• Zachowaj ostrożność, gdy ktoś zadaje wiele szczegółowych pytań o to, gdzie mieszkasz, gdzie pracujesz albo jak spędzasz wieczory.\n• W Twoim profilu i pytaniach nie powinno być niczego, czego nie chciałbyś przekazać obcej osobie.",
+    "toolsTitle": "5. Narzędzia dostępne w aplikacji",
+    "tools": "• Blokada: natychmiast usuwa osobę z Twoich dopasowań i przerywa kontakt w obie strony.\n• Zgłoszenie: przesyła nam profil lub rozmowę wraz z wybranym powodem. Jest poufne.\n• Obie opcje są dostępne w każdym profilu i w każdej rozmowie.\n\nZgłaszaj zachowanie, nawet jeśli już je zablokowałeś. Blokada chroni Ciebie; zgłoszenie chroni następną osobę.",
+    "emergencyTitle": "6. Jeśli coś pójdzie nie tak",
+    "emergency": "• Jeśli grozi Ci bezpośrednie niebezpieczeństwo, najpierw skontaktuj się z lokalnymi służbami ratunkowymi.\n• Jeśli doszło do napaści, nękania, gróźb lub oszustwa, zgłoś to lokalnym organom — a następnie nam, abyśmy mogli podjąć działania wobec konta.\n• Zachowaj dowody: zrzuty ekranu, nazwy użytkowników, godziny wiadomości, potwierdzenia płatności.\n\nWspółpracujemy z wnioskami organów ścigania i przechowujemy dane dotyczące potwierdzonych naruszeń w zakresie wymaganym przez prawo.\n\nMożesz napisać do nas na info@socrepho.com."
   }
 }

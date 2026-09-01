@@ -149,7 +149,10 @@
     "trends": "Trendler",
     "sitemap": "Site Haritası",
     "pricing": "Fiyatlandırma",
-    "reviews": "Yorumlar"
+    "reviews": "Yorumlar",
+    "guidelines": "Topluluk Kuralları",
+    "safety": "Güvenlik İpuçları",
+    "childSafety": "Çocuk Güvenliği"
   },
   "invite": {
     "title": "Qulo'ya Davet Edildin!",
@@ -316,5 +319,41 @@
     "globalCommunityDesc": "16 dilde destek sunan Qulo, dünyanın her yerinden insanlarla tanışmanı sağlar. Dil engeli olmadan anlamlı bağlantılar kur.",
     "downloadCta": "Hemen İndir",
     "downloadCtaDesc": "Qulo'yu ücretsiz indir ve sorularla eşleşmeye başla."
+  },
+  "communityGuidelines": {
+    "title": "Topluluk Kuralları",
+    "lastUpdated": "Son güncelleme: 1 Eylül 2026",
+    "intro": "Qulo, insanlar birbirinin sorularını dürüstçe yanıtladığı için çalışıyor. Bu da ancak uygulama güvenli hissettirdiğinde oluyor. Bu kurallar; Qulo'daki herkesten ne beklediğimizi, neye izin verilmediğini ve sınır aşıldığında ne olduğunu anlatıyor.\n\nKurallar uygulamanın her yerinde geçerli: profilin, fotoğrafların, yazdığın sorular, verdiğin cevaplar ve gönderdiğin her mesaj. Kuralları çiğnemek hesabına mal olabilir.",
+    "respectTitle": "1. Saygılı Ol",
+    "respect": "Qulo'daki herkes gerçek bir insan.\n\n• Karşındakine yüz yüzeyken davranacağın gibi davran. Fikir ayrılığı normaldir; aşağılama değil.\n• Taciz, zorbalık, tehdit ve yıldırma yasak — biri cevap vermeyi bıraktıktan sonra ısrarla mesaj atmak da buna dahil.\n• Irk, etnik köken, uyruk, din, engellilik, cinsiyet, cinsiyet kimliği veya cinsel yönelim hedef alan nefret söylemi ve hakaret yasak.\n• İstenmeyen cinsel içerikli mesaj gönderme. Birinin seninle eşleşmesi cinsel içeriğe onay verdiği anlamına gelmez.\n• Biri eşleşmeyi kaldırdıysa ya da seni engellediyse, cevabı budur. Ona ulaşmak için yeni hesap açma.",
+    "authenticityTitle": "2. Kendin Ol",
+    "authenticity": "• Qulo'yu kullanmak için 18 yaşını doldurmuş olman gerekir. Reşit olmayanlara ait hesaplar kaldırılır.\n• Kendine ait güncel fotoğraflar kullan. Başkasının fotoğrafı, ünlü fotoğrafı, stok görsel veya görünüşünü yanlış aktaracak kadar değiştirilmiş görseller kullanılamaz.\n• Kişi başına tek hesap. Kimseyi taklit etme, başkasının hesabını kullanma.\n• Yaşını, adını veya niyetini yanlış aktarma.\n• Bir işletme, marka veya hizmet adına yürütülen hesaplar kabul edilmez.",
+    "contentTitle": "3. İzin Verilmeyen İçerikler",
+    "content": "Aşağıdakiler kaldırılır ve hesabını anında sonlandırabilir:\n\n• Profil fotoğraflarında, sorularda, cevaplarda veya sohbette çıplaklık ya da cinsel içerik.\n• Reşit olmayanları cinselleştiren, tehlikeye atan veya istismar eden her türlü içerik. Burada sıfır tolerans uygulanır — Çocuk Güvenliği Standartlarımıza bakabilirsin.\n• Şiddet, şiddet tehdidi, kendine zarar vermeye teşvik veya bunları yücelten içerikler.\n• Yasa dışı faaliyet, silah veya uyuşturucu tanıtımı.\n• Fuhuş, eskort hizmetleri, insan ticareti veya herhangi bir cinsel hizmet takası.\n• Spam, reklam, ortaklık linkleri veya başka platform ve hizmetlere üye toplama.\n• Para talebi, yatırım teklifi, kripto para önerisi veya ödeme sayfalarına yönlendiren linkler.",
+    "questionsTitle": "4. Soruların ve Cevapların",
+    "questions": "Sorular Qulo'nun kalbi; dolayısıyla diğer her şeyle aynı standarda tabidir.\n\n• Soruları kişisel veri toplamak için kullanma — telefon numarası, ev adresi, iş yeri bilgisi veya finansal bilgi.\n• Soruları veya cevapları reklam yapmak, insanları platform dışına çekmek ya da yanlış bilgi yaymak için kullanma.\n• Soruların cevaplanabilir ve dürüst olsun. Kimsenin geçemeyeceği şekilde yazılmış ya da cevaplayanı küçük düşürmek için tasarlanmış sorular bu uygulamanın amacı değil.\n• Saldırgan, ayrımcı veya cinsel içerikli sorular diğer içerikler gibi kaldırılır.",
+    "reportingTitle": "5. Bildirme ve Engelleme",
+    "reporting": "Her profilde ve her sohbette engelleme ile bildirme seçenekleri var.\n\n• Engelle, kişiyi eşleşmelerinden anında çıkarır. Artık profilini göremez ve sana ulaşamaz; sen de onu bir daha görmezsin.\n• Bildir, profili veya sohbeti seçtiğin gerekçeyle birlikte incelememize gönderir. Bildirimler gizlidir — bildirilen kişiye kimin bildirdiği söylenmez.\n• Reşit olmayan şüphesi, tehdit veya cinsel istismar içeren bildirimler öncelikli ele alınır.\n\nAcil tehlike altındaysan önce yerel acil durum servislerine ulaş, sonra bize bildir.",
+    "enforcementTitle": "6. Kuralları Çiğnersen Ne Olur",
+    "enforcement": "İhlalin ağırlığına göre şunları yapabiliriz:\n\n• İçeriği kaldırmak — bir fotoğraf, bir soru, bir mesaj.\n• Hesabındaki özellikleri kısıtlamak.\n• Hesabını askıya almak veya kalıcı olarak kapatmak.\n\nAğır ihlaller — çocuk cinsel istismarı, şiddet tehdidi, dolandırıcılık, rıza dışı mahrem görüntüler — uyarı yapılmadan anında ve kalıcı kaldırmayla sonuçlanır. Hesap ihlal nedeniyle kapatıldığında elmaslar ve kalan abonelik süresi kaybedilir; aktif aboneliğin faturalandırmasını durdurmak için App Store veya Google Play üzerinden ayrıca iptal etmen gerekir.\n\nHesabının yanlışlıkla kaldırıldığını düşünüyorsan info@socrepho.com adresine yaz.",
+    "contactTitle": "7. İletişim",
+    "contact": "Bu kurallarla ilgili sorular ya da uygulama dışından iletmek istediğin bir bildirim için:\n\nE-posta: info@socrepho.com\nWeb sitesi: quloapp.com"
+  },
+  "safetyTips": {
+    "title": "Güvenlik İpuçları",
+    "lastUpdated": "Son güncelleme: 1 Eylül 2026",
+    "intro": "Qulo'daki insanların çoğu tam olarak söyledikleri kişi. Birkaçı değil. Aşağıdaki alışkanlıklar, bu farkın sana bir bedeli olmasını engelleyen şeyler.\n\nKullanıcılarımız hakkında adli sicil kontrolü yapmıyoruz; bu yüzden uygulamadan tanıştığın biriyle buluşmadan önce lütfen bunu oku.",
+    "onlineTitle": "1. Henüz Yazışırken",
+    "online": "• Karşındakine güvenene kadar sohbeti Qulo içinde tut. Erken bir aşamada başka uygulamaya geçmek buradaki güvenlik araçlarını devre dışı bırakır.\n• İlk birkaç mesajda WhatsApp, Telegram veya e-postaya geçmek için ısrar eden kişilere dikkat et.\n• Ev adresini, iş yerini, günlük rutinini, kimlik belgelerini veya finansal bilgilerini paylaşma.\n• Bir türlü oturmayan hikâyelere dikkat et: yurt dışındaki iş, hiç çalışmayan kamera, görüntülü görüşememek için her seferinde başka bir sebep.\n• Fotoğraflarını ara. Tersine görsel arama, bir fotoğrafın başkasına ait olup olmadığını çoğu zaman ortaya çıkarır.",
+    "scamsTitle": "2. Para ve Dolandırıcılık",
+    "scams": "İnsanların tanışma uygulamalarında zarar görmesinin açık ara en yaygın yolu bu.\n\n• Çevrimiçi tanıştığın birine asla para, hediye kartı veya kripto para gönderme — acil durum ne kadar inandırıcı anlatılırsa anlatılsın.\n• Eşleşmelerden gelen yatırım tavsiyelerini, borsa platformlarını ve \"garantili getiri\" fırsatlarını dikkate alma. Bu bir tesadüf değil, bilinen bir dolandırıcılık kalıbı.\n• Birinin gönderdiği ödeme sayfası, doğrulama sitesi veya \"güvenlik kontrolü\" bağlantılarını açma. Qulo seni asla harici bir sitede kendini doğrulamaya yönlendirmez.\n• Mahrem fotoğraflar konusunda dikkatli ol. Bir kez gönderildiğinde şantaj için kullanılabilir. Böyle bir durumda ödeme yapma — bize ve yerel yetkililere bildir.",
+    "meetingTitle": "3. Yüz Yüze Buluşma",
+    "meeting": "• İlk birkaç buluşmayı halka açık bir yerde yap ve halka açık alanda kal.\n• Bir arkadaşına ya da aile üyene nereye gittiğini, kiminle buluştuğunu ve ne zaman döneceğini söyle. Mümkünse canlı konumunu paylaş.\n• Gidiş ve dönüş ulaşımını kendin ayarla. Evden aldırma ve kabul etmediğin bir yere götürülmene izin verme.\n• İçeceğinin kontrolü sende olsun ve karar verebilecek kadar ayık kal.\n• Telefonunun şarjını dolu tut.\n• Bir şey ters geliyorsa oradan ayrıl. Kimseye açıklama borçlu değilsin.",
+    "privacyTitle": "4. Kişisel Bilgilerini Koru",
+    "privacy": "• Fotoğraflar sandığından fazlasını ele verir — kapı numaraları, sokak tabelaları, iş yeri kartları, okul üniformaları, araç plakaları.\n• Diğer platformlardaki kullanıcı adın tam adına ulaşılmasını sağlayabilir. Burada farklı bir ad kullanmayı düşün.\n• Biri nerede yaşadığın, nerede çalıştığın veya akşamlarını nasıl geçirdiğin hakkında çok fazla ayrıntılı soru soruyorsa dikkatli ol.\n• Profilinde ve sorularında, bir yabancının eline geçmesini istemeyeceğin hiçbir bilgi bulunmasın.",
+    "toolsTitle": "5. Uygulamadaki Araçların",
+    "tools": "• Engelle: kişiyi eşleşmelerinden anında çıkarır ve iki yönlü olarak tüm teması keser.\n• Bildir: profili veya sohbeti, seçtiğin gerekçeyle bize iletir. Gizlidir.\n• Her ikisi de her profilde ve her sohbetin içinde mevcuttur.\n\nEngellemiş olsan bile davranışı ayrıca bildir. Engellemek seni korur; bildirmek bir sonraki kişiyi korur.",
+    "emergencyTitle": "6. Bir Şey Ters Giderse",
+    "emergency": "• Acil tehlike altındaysan önce yerel acil durum servislerine ulaş.\n• Saldırıya, tacize, tehdide veya dolandırıcılığa maruz kaldıysan önce yerel yetkililere, ardından bize bildir; hesap hakkında işlem yapabilelim.\n• Kanıtları sakla: ekran görüntüleri, kullanıcı adları, mesaj saatleri, ödeme kayıtları.\n\nKolluk kuvvetlerinin taleplerine işbirliğiyle yanıt veriyor, doğrulanmış ihlallere ilişkin verileri yasanın gerektirdiği şekilde saklıyoruz.\n\nBize info@socrepho.com adresinden ulaşabilirsin."
   }
 }

@@ -201,7 +201,10 @@
     "trends": "Trender",
     "sitemap": "Webbplatskarta",
     "pricing": "Priser",
-    "reviews": "Recensioner"
+    "reviews": "Recensioner",
+    "guidelines": "Communityregler",
+    "safety": "Säkerhetstips",
+    "childSafety": "Barnsäkerhet"
   },
   "privacyPolicy": {
     "title": "Integritetspolicy",
@@ -316,5 +319,41 @@
     "globalCommunityDesc": "Med stöd för 16 språk låter Qulo dig träffa människor från hela världen.",
     "downloadCta": "Ladda ner nu",
     "downloadCtaDesc": "Ladda ner Qulo gratis och börja matcha genom frågor."
+  },
+  "communityGuidelines": {
+    "title": "Communityregler",
+    "lastUpdated": "Senast uppdaterad: 1 september 2026",
+    "intro": "Qulo fungerar för att människor svarar ärligt på varandras frågor. Det sker bara när appen känns trygg. Dessa regler förklarar vad vi förväntar oss av alla på Qulo, vad som inte är tillåtet och vad som händer när någon går över gränsen.\n\nDe gäller överallt i appen: din profil, dina foton, frågorna du skriver, svaren du ger och varje meddelande du skickar. Att bryta mot dem kan kosta dig kontot.",
+    "respectTitle": "1. Visa respekt",
+    "respect": "Alla på Qulo är riktiga människor.\n\n• Behandla andra som du skulle göra ansikte mot ansikte. Att tycka olika är okej; förakt är det inte.\n• Ingen trakasserier, mobbning, hot eller skrämseltaktik — inklusive upprepade oönskade meddelanden efter att någon slutat svara.\n• Inget hat eller kränkande tilltal riktat mot etnicitet, ursprung, nationalitet, religion, funktionsnedsättning, kön, könsidentitet eller sexuell läggning.\n• Inga oombedda sexuella meddelanden. En matchning är inte samtycke till sexuellt innehåll.\n• Om någon tar bort matchningen eller blockerar dig är det svaret. Skapa inte ett nytt konto för att nå personen.",
+    "authenticityTitle": "2. Var dig själv",
+    "authenticity": "• Du måste vara 18 år eller äldre för att använda Qulo. Konton som tillhör minderåriga tas bort.\n• Använd aktuella bilder på dig själv. Inga bilder på andra personer, kändisar, stockbilder eller bilder som är så redigerade att de ger en felaktig bild av hur du ser ut.\n• Ett konto per person. Utge dig inte för att vara någon annan och använd inte någon annans konto.\n• Ange inte felaktig ålder, felaktigt namn eller felaktiga avsikter.\n• Inga konton som drivs för ett företags, varumärkes eller en tjänsts räkning.",
+    "contentTitle": "3. Innehåll som inte är tillåtet",
+    "content": "Följande tas bort och kan avsluta ditt konto omedelbart:\n\n• Nakenhet eller sexuellt explicit innehåll i profilbilder, frågor, svar eller chatt.\n• Allt innehåll som sexualiserar, utsätter eller utnyttjar minderåriga. Här gäller nolltolerans — se våra standarder för barnsäkerhet.\n• Våld, hot om våld, uppmuntran till självskada eller innehåll som förhärligar något av detta.\n• Marknadsföring av olaglig verksamhet, vapen eller droger.\n• Prostitution, eskorttjänster, människohandel eller varje utbyte av sexuella tjänster.\n• Skräppost, reklam, affiliatelänkar eller värvning till andra plattformar och tjänster.\n• Förfrågningar om pengar, investeringserbjudanden, kryptoerbjudanden eller länkar till betalsidor.",
+    "questionsTitle": "4. Dina frågor och svar",
+    "questions": "Frågorna är kärnan i Qulo, så de håller samma standard som allt annat.\n\n• Använd inte frågor för att samla in personuppgifter — telefonnummer, hemadresser, uppgifter om arbetsplats eller ekonomisk information.\n• Använd inte frågor eller svar för att göra reklam, leda människor bort från plattformen eller sprida desinformation.\n• Håll dina frågor ärliga och möjliga att svara på. Frågor som är skrivna så att ingen kan klara dem, eller utformade för att förödmjuka den som svarar, är inte vad den här appen är till för.\n• Kränkande, diskriminerande eller sexuellt explicita frågor tas bort som allt annat innehåll.",
+    "reportingTitle": "5. Anmäla och blockera",
+    "reporting": "Varje profil och varje konversation har funktioner för att blockera och anmäla.\n\n• Blockera tar omedelbart bort personen från dina matchningar. Personen kan inte längre se din profil eller kontakta dig, och du ser inte personen igen.\n• Anmäl skickar profilen eller konversationen till oss för granskning, tillsammans med den orsak du väljer. Anmälningar är konfidentiella — den anmälda personen får inte veta vem som anmälde.\n• Anmälningar som rör misstänkt minderårig, hot eller sexuellt utnyttjande prioriteras.\n\nOm du är i omedelbar fara, kontakta först lokala larmtjänster och anmäl därefter till oss.",
+    "enforcementTitle": "6. Vad som händer om du bryter mot reglerna",
+    "enforcement": "Beroende på hur allvarlig överträdelsen är kan vi:\n\n• ta bort innehållet — ett foto, en fråga, ett meddelande,\n• begränsa funktioner på ditt konto,\n• stänga av eller permanent avsluta ditt konto.\n\nAllvarliga överträdelser — sexuellt utnyttjande av barn, hot om våld, bedrägerier, intima bilder utan samtycke — leder till omedelbar och permanent borttagning utan varning. När ett konto avslutas på grund av en överträdelse går diamanter och kvarvarande prenumerationstid förlorade; en aktiv prenumeration måste ändå sägas upp separat via App Store eller Google Play.\n\nOm du tror att ditt konto togs bort av misstag, skriv till info@socrepho.com.",
+    "contactTitle": "7. Kontakt",
+    "contact": "Frågor om dessa regler, eller något du vill anmäla utanför appen:\n\nE-post: info@socrepho.com\nWebbplats: quloapp.com"
+  },
+  "safetyTips": {
+    "title": "Säkerhetstips",
+    "lastUpdated": "Senast uppdaterad: 1 september 2026",
+    "intro": "De flesta på Qulo är precis de som de säger sig vara. Några få är det inte. Vanorna nedan är det som gör att den skillnaden inte kostar dig något.\n\nVi gör inga bakgrundskontroller av våra användare, så läs det här innan du träffar någon från appen.",
+    "onlineTitle": "1. Medan ni fortfarande chattar",
+    "online": "• Håll samtalet inne i Qulo tills du litar på personen. Att byta app tidigt tar bort de säkerhetsverktyg du har här.\n• Var försiktig med den som redan i de första meddelandena pressar på för att byta till WhatsApp, Telegram eller e-post.\n• Dela inte din hemadress, arbetsplats, dagliga rutin, id-handlingar eller ekonomiska uppgifter.\n• Var uppmärksam på berättelser som aldrig riktigt går ihop: ett jobb utomlands, en kamera som aldrig fungerar, ett skäl till att videosamtal aldrig går.\n• Sök på bilderna. En omvänd bildsökning avslöjar ofta om en bild tillhör någon annan.",
+    "scamsTitle": "2. Pengar och bedrägerier",
+    "scams": "Det här är med bred marginal det vanligaste sättet som människor skadas på dejtingappar.\n\n• Skicka aldrig pengar, presentkort eller kryptovaluta till någon du träffat online — hur övertygande nödsituationen än låter.\n• Ignorera investeringsråd, handelsplattformar och erbjudanden om ”garanterad avkastning” från matchningar. Det är ett bedrägerimönster, inte en slump.\n• Öppna inte länkar till betalsidor, verifieringssidor eller ”säkerhetskontroller” som någon skickar dig. Qulo ber dig aldrig att verifiera dig på en extern webbplats.\n• Var försiktig med intima bilder. När de väl är skickade kan de användas för utpressning. Om det händer: betala inte — anmäl till oss och till lokala myndigheter.",
+    "meetingTitle": "3. Att träffas i verkligheten",
+    "meeting": "• Träffas på en offentlig plats de första gångerna och stanna bland folk.\n• Berätta för en vän eller familjemedlem vart du ska, vem du ska träffa och när du räknar med att vara tillbaka. Dela din liveposition om du kan.\n• Ordna din egen transport dit och hem. Låt dig inte hämtas hemma och låt ingen ta dig någonstans du inte har gått med på.\n• Ha koll på din dryck och håll dig tillräckligt nykter för att kunna fatta beslut.\n• Håll telefonen laddad.\n• Om något känns fel, gå därifrån. Du är ingen en förklaring skyldig.",
+    "privacyTitle": "4. Skydda dina personuppgifter",
+    "privacy": "• Foton avslöjar mer än du tror — husnummer, gatuskyltar, passerkort, skoluniformer, registreringsskyltar.\n• Ditt användarnamn på andra plattformar kan leda till ditt fullständiga namn. Överväg ett annat här.\n• Var försiktig när någon ställer många detaljerade frågor om var du bor, var du jobbar eller hur du tillbringar dina kvällar.\n• Inget i din profil eller dina frågor bör vara information du inte skulle ge till en främling.",
+    "toolsTitle": "5. Verktygen du har i appen",
+    "tools": "• Blockera: tar bort personen från dina matchningar direkt och stoppar kontakt i båda riktningarna.\n• Anmäl: skickar profilen eller konversationen till oss med den orsak du väljer. Det är konfidentiellt.\n• Båda finns på varje profil och inne i varje konversation.\n\nAnmäl beteendet även om du redan har blockerat det. Blockering skyddar dig; anmälan skyddar nästa person.",
+    "emergencyTitle": "6. Om något går fel",
+    "emergency": "• Om du är i omedelbar fara, kontakta först lokala larmtjänster.\n• Om du har blivit utsatt för övergrepp, trakasserier, hot eller bedrägeri, anmäl det till lokala myndigheter — och sedan till oss, så att vi kan agera mot kontot.\n• Spara bevis: skärmbilder, användarnamn, tidpunkter för meddelanden, betalningsunderlag.\n\nVi samarbetar med förfrågningar från brottsbekämpande myndigheter och bevarar uppgifter om bekräftade överträdelser i den utsträckning lagen kräver.\n\nDu når oss på info@socrepho.com."
   }
 }

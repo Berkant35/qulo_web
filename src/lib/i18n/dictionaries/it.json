@@ -201,7 +201,10 @@
     "trends": "Tendenze",
     "sitemap": "Mappa del sito",
     "pricing": "Prezzi",
-    "reviews": "Recensioni"
+    "reviews": "Recensioni",
+    "guidelines": "Linee guida",
+    "safety": "Consigli di sicurezza",
+    "childSafety": "Sicurezza dei minori"
   },
   "privacyPolicy": {
     "title": "Informativa sulla privacy",
@@ -316,5 +319,41 @@
     "globalCommunityDesc": "Con supporto per 16 lingue, Qulo ti permette di incontrare persone da tutto il mondo.",
     "downloadCta": "Scarica ora",
     "downloadCtaDesc": "Scarica Qulo gratuitamente e inizia a fare match attraverso le domande."
+  },
+  "communityGuidelines": {
+    "title": "Linee Guida della Community",
+    "lastUpdated": "Ultimo aggiornamento: 1 settembre 2026",
+    "intro": "Qulo funziona perché le persone rispondono onestamente alle domande degli altri. Questo accade solo se l'app è un luogo sicuro. Queste linee guida spiegano che cosa ci aspettiamo da tutti su Qulo, che cosa non è consentito e che cosa succede quando qualcuno supera il limite.\n\nValgono ovunque nell'app: il tuo profilo, le tue foto, le domande che scrivi, le risposte che dai e ogni messaggio che invii. Violarle può costarti l'account.",
+    "respectTitle": "1. Porta rispetto",
+    "respect": "Su Qulo ci sono persone vere.\n\n• Tratta gli altri come faresti di persona. Il disaccordo va bene, il disprezzo no.\n• Nessuna molestia, prepotenza, minaccia o intimidazione — inclusi i messaggi ripetuti e non graditi dopo che qualcuno ha smesso di rispondere.\n• Nessun discorso d'odio né insulto rivolto a etnia, origine, nazionalità, religione, disabilità, genere, identità di genere o orientamento sessuale.\n• Nessun messaggio sessuale non richiesto. Un match non è un consenso a contenuti sessuali.\n• Se qualcuno annulla il match o ti blocca, quella è la sua risposta. Non creare un nuovo account per raggiungerlo.",
+    "authenticityTitle": "2. Sii te stesso",
+    "authenticity": "• Per usare Qulo devi avere almeno 18 anni. Gli account di minori vengono rimossi.\n• Usa foto recenti di te. Niente foto di altre persone, celebrità, immagini stock o immagini modificate al punto da non rappresentare il tuo aspetto reale.\n• Un account per persona. Non fingerti un'altra persona e non usare l'account altrui.\n• Non falsificare età, nome o intenzioni.\n• Non sono ammessi account gestiti per conto di un'azienda, un marchio o un servizio.",
+    "contentTitle": "3. Contenuti non consentiti",
+    "content": "Quanto segue viene rimosso e può comportare la chiusura immediata dell'account:\n\n• Nudità o contenuti sessualmente espliciti nelle foto profilo, nelle domande, nelle risposte o in chat.\n• Qualsiasi contenuto che sessualizzi, metta in pericolo o sfrutti minori. Qui vale la tolleranza zero — vedi i nostri Standard di Sicurezza dei Minori.\n• Violenza, minacce di violenza, incitamento all'autolesionismo o contenuti che li esaltano.\n• Promozione di attività illegali, armi o droghe.\n• Prostituzione, servizi di escort, tratta di esseri umani o qualsiasi scambio di prestazioni sessuali.\n• Spam, pubblicità, link di affiliazione o reclutamento per altre piattaforme e servizi.\n• Richieste di denaro, proposte di investimento, offerte in criptovalute o link a pagine di pagamento.",
+    "questionsTitle": "4. Le tue domande e risposte",
+    "questions": "Le domande sono il cuore di Qulo, quindi seguono gli stessi criteri di tutto il resto.\n\n• Non usare le domande per raccogliere dati personali — numeri di telefono, indirizzi, informazioni sul lavoro o dati finanziari.\n• Non usare domande o risposte per fare pubblicità, portare le persone fuori dalla piattaforma o diffondere disinformazione.\n• Scrivi domande oneste e a cui si possa rispondere. Le domande costruite in modo che nessuno possa superarle, o pensate per umiliare chi risponde, non sono lo scopo di quest'app.\n• Le domande offensive, discriminatorie o sessualmente esplicite vengono rimosse come qualsiasi altro contenuto.",
+    "reportingTitle": "5. Segnalare e bloccare",
+    "reporting": "Ogni profilo e ogni conversazione hanno i comandi per bloccare e segnalare.\n\n• Blocca rimuove immediatamente la persona dai tuoi match. Non potrà più vedere il tuo profilo né contattarti, e tu non la rivedrai.\n• Segnala invia a noi il profilo o la conversazione per una revisione, insieme al motivo che scegli. Le segnalazioni sono riservate — alla persona segnalata non viene detto chi l'ha segnalata.\n• Le segnalazioni che riguardano un sospetto minore, minacce o sfruttamento sessuale hanno priorità.\n\nSe sei in pericolo immediato, contatta prima i servizi di emergenza locali e poi segnalalo a noi.",
+    "enforcementTitle": "6. Cosa succede se violi le regole",
+    "enforcement": "A seconda della gravità della violazione possiamo:\n\n• rimuovere il contenuto — una foto, una domanda, un messaggio;\n• limitare le funzioni del tuo account;\n• sospendere o chiudere definitivamente il tuo account.\n\nLe violazioni gravi — sfruttamento sessuale di minori, minacce di violenza, truffe, immagini intime non consensuali — comportano la rimozione immediata e definitiva senza preavviso. Quando un account viene chiuso per violazione, i diamanti e il tempo residuo di abbonamento vengono persi; un abbonamento attivo deve comunque essere annullato separatamente tramite App Store o Google Play.\n\nSe ritieni che il tuo account sia stato rimosso per errore, scrivi a info@socrepho.com.",
+    "contactTitle": "7. Contatti",
+    "contact": "Per domande su queste linee guida o per segnalare qualcosa dall'esterno dell'app:\n\nE-mail: info@socrepho.com\nSito web: quloapp.com"
+  },
+  "safetyTips": {
+    "title": "Consigli di Sicurezza",
+    "lastUpdated": "Ultimo aggiornamento: 1 settembre 2026",
+    "intro": "La maggior parte delle persone su Qulo è esattamente chi dice di essere. Alcune no. Le abitudini qui sotto servono a evitare che questa differenza ti costi qualcosa.\n\nNon effettuiamo controlli sui precedenti dei nostri utenti: leggi queste indicazioni prima di incontrare qualcuno conosciuto nell'app.",
+    "onlineTitle": "1. Mentre state ancora chattando",
+    "online": "• Mantieni la conversazione dentro Qulo finché non ti fidi della persona. Passare presto a un'altra app ti priva degli strumenti di sicurezza che hai qui.\n• Diffida di chi insiste molto per spostarsi su WhatsApp, Telegram o e-mail nei primi messaggi.\n• Non condividere indirizzo di casa, luogo di lavoro, routine quotidiana, documenti d'identità o dati finanziari.\n• Fai attenzione alle storie che non tornano mai del tutto: un lavoro all'estero, una webcam che non funziona mai, un motivo per non fare mai una videochiamata.\n• Cerca le sue foto. Una ricerca inversa per immagini spesso rivela se una foto appartiene a qualcun altro.",
+    "scamsTitle": "2. Denaro e truffe",
+    "scams": "È di gran lunga il modo più comune in cui le persone subiscono danni sulle app di incontri.\n\n• Non inviare mai denaro, gift card o criptovalute a una persona conosciuta online, per quanto convincente sembri l'emergenza.\n• Ignora consigli di investimento, piattaforme di trading e opportunità a «rendimento garantito» che arrivano dai match. È uno schema di truffa, non una coincidenza.\n• Non aprire link a pagine di pagamento, siti di verifica o servizi di «controllo di sicurezza» che qualcuno ti invia. Qulo non ti chiederà mai di verificarti su un sito esterno.\n• Attenzione alle foto intime. Una volta inviate possono essere usate per ricattarti. Se accade, non pagare: segnalalo a noi e alle autorità locali.",
+    "meetingTitle": "3. Incontrarsi di persona",
+    "meeting": "• Le prime volte incontratevi in un luogo pubblico e restate in pubblico.\n• Di' a un amico o a un familiare dove vai, chi incontri e quando pensi di tornare. Se puoi, condividi la posizione in tempo reale.\n• Organizza da solo il viaggio di andata e ritorno. Non farti passare a prendere a casa e non lasciarti portare in un posto che non hai concordato.\n• Tieni sotto controllo ciò che bevi e resta abbastanza lucido da poter decidere.\n• Tieni il telefono carico.\n• Se qualcosa non ti convince, vai via. Non devi spiegazioni a nessuno.",
+    "privacyTitle": "4. Proteggi le tue informazioni personali",
+    "privacy": "• Le foto rivelano più di quanto pensi: numeri civici, cartelli stradali, badge aziendali, divise scolastiche, targhe.\n• Il tuo nome utente su altre piattaforme può ricondurre al tuo nome completo. Valuta di usarne uno diverso qui.\n• Fai attenzione se qualcuno fa molte domande specifiche su dove vivi, dove lavori o come passi le serate.\n• Nel tuo profilo e nelle tue domande non dovrebbe esserci nulla che non affideresti a uno sconosciuto.",
+    "toolsTitle": "5. Gli strumenti che hai nell'app",
+    "tools": "• Blocca: rimuove subito la persona dai tuoi match e interrompe il contatto in entrambe le direzioni.\n• Segnala: invia a noi il profilo o la conversazione con il motivo che scegli. È riservato.\n• Entrambi sono disponibili su ogni profilo e all'interno di ogni conversazione.\n\nSegnala un comportamento anche se lo hai già bloccato. Bloccare protegge te; segnalare protegge la persona successiva.",
+    "emergencyTitle": "6. Se qualcosa va storto",
+    "emergency": "• Se sei in pericolo immediato, contatta prima i servizi di emergenza locali.\n• Se hai subito un'aggressione, molestie, minacce o una truffa, denuncialo alle autorità locali e poi segnalalo a noi, così possiamo intervenire sull'account.\n• Conserva le prove: screenshot, nomi utente, orari dei messaggi, ricevute di pagamento.\n\nCollaboriamo con le richieste delle forze dell'ordine e conserviamo i dati relativi alle violazioni confermate quando la legge lo richiede.\n\nPuoi scriverci a info@socrepho.com."
   }
 }
