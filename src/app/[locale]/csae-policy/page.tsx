@@ -42,10 +42,10 @@ const sections = [
     title: "3. Detection & Reporting",
     body: `We employ the following measures to detect and respond to CSAE content:
 
-\u2022 All user-generated content is subject to automated and manual moderation
-\u2022 Users can report inappropriate content or behavior directly within the app
-\u2022 Reported content is reviewed promptly by our trust and safety team
-\u2022 Confirmed CSAE content is immediately removed and reported to the National Center for Missing & Exploited Children (NCMEC) and relevant law enforcement authorities`,
+\u2022 Every profile and every conversation includes block and report controls, so users can report inappropriate content or behavior directly within the app
+\u2022 Reports reach our internal moderation panel, where they are reviewed manually; reports involving a suspected minor are prioritised
+\u2022 Confirmed CSAE content is removed and the account is permanently terminated
+\u2022 Confirmed cases are referred to the competent law enforcement authorities, and to the National Center for Missing & Exploited Children (NCMEC) where applicable`,
   },
   {
     title: "4. Enforcement",
@@ -54,12 +54,12 @@ const sections = [
   {
     title: "5. In-App Safety Features",
     body: `\u2022 Block and report functionality available on every user profile and in chat
-\u2022 Photo moderation before public display
-\u2022 Proactive detection of suspicious messaging patterns`,
+\u2022 Blocking is mutual and immediate: a blocked user is removed from your matches and can no longer see your profile or contact you
+\u2022 Date of birth is collected at registration and accounts declared or reported as belonging to a minor are suspended pending review`,
   },
   {
     title: "6. Contact",
-    body: "To report child safety concerns, please contact us at: safety@quloapp.com",
+    body: "To report child safety concerns, please contact us at: info@socrepho.com\n\nReports sent to this address are reviewed as a priority. If a minor is in immediate danger, contact your local law enforcement authorities first.",
   },
   {
     title: "7. Standards Compliance",
