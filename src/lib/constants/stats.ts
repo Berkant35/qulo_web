@@ -7,7 +7,7 @@
  * not a gap to fill later. If a claim cannot be sourced, delete it rather than
  * hunting for a source that fits.
  *
- * Every figure below was verified against the primary source on 2026-08-01.
+ * Every figure below was verified against the primary source on 2026-09-01.
  */
 
 export interface StatSource {
@@ -39,10 +39,10 @@ export interface StatCategory {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Sources (verified 2026-08-01)                                      */
+/*  Sources (verified 2026-09-01) — also consumed by /trends/2026      */
 /* ------------------------------------------------------------------ */
 
-const SSRS_2026: StatSource = {
+export const SSRS_2026: StatSource = {
   publisher: "SSRS",
   title: "The Public and Online Dating 2026",
   date: "2 February 2026",
@@ -50,15 +50,16 @@ const SSRS_2026: StatSource = {
   sample: "n=2,012 US adults · fielded 2–4 and 16–20 January 2026 · MoE ±2.5pp",
 };
 
-const FORBES_ONEPOLL_2024: StatSource = {
+export const FORBES_ONEPOLL_2024: StatSource = {
   publisher: "Forbes Health / OnePoll",
   title: "Dating app burnout survey",
-  date: "May 2024",
+  date: "10 May 2024",
   url: "https://www.globaldatinginsights.com/news/new-forbes-study-explores-dating-app-burnout/",
-  sample: "n=1,000 US adults who used a dating app in the past year",
+  sample:
+    "n=1,000 US adults who used a dating app in the past year \u00b7 fielded 27 March \u2013 1 April 2024 \u00b7 MoE \u00b13.1pp",
 };
 
-const HINGE_GENZ_2025: StatSource = {
+export const HINGE_GENZ_2025: StatSource = {
   publisher: "Hinge",
   title: "2025 Gen Z D.A.T.E. Report",
   date: "19 November 2025",
@@ -66,13 +67,14 @@ const HINGE_GENZ_2025: StatSource = {
   sample: "~30,000 Hinge daters surveyed worldwide in 2025",
 };
 
-const HUANG_JPSP_2017: StatSource = {
+export const HUANG_JPSP_2017: StatSource = {
   publisher: "Huang, Yeomans, Brooks, Minson & Gino",
   title:
-    "It Doesn't Hurt to Ask: Question-Asking Increases Liking (Journal of Personality and Social Psychology)",
+    "It Doesn't Hurt to Ask: Question-Asking Increases Liking \u2014 Journal of Personality and Social Psychology 113(3), 430\u2013452",
   date: "September 2017",
   url: "https://www.hbs.edu/ris/Publication%20Files/Huang%20et%20al%202017_6945bc5e-3b3e-4c0a-addd-254c9e603c60.pdf",
-  sample: "110 speed daters across more than 2,000 dates",
+  sample:
+    "110 speed daters \u00b7 15\u201319 four-minute dates each \u00b7 1,961 second-date decisions analysed (Study 3)",
 };
 
 export const STAT_CATEGORIES: StatCategory[] = [
@@ -245,22 +247,22 @@ export const STAT_CATEGORIES: StatCategory[] = [
         category: "questions",
         value: "62% / 30%",
         labels: {
-          tr: "Yeterince soru sorduğunu düşünen Gen Z kullanıcı oranı %62; karşısındakinin yeterince sorduğunu hissedenler yalnızca %30",
-          en: "62% of Gen Z daters think they ask enough questions — but only 30% feel their dates do",
-          de: "62% der Singles aus der Gen Z glauben, genug Fragen zu stellen — aber nur 30% finden, dass ihre Dates das tun",
-          fr: "62% des célibataires de la Gen Z pensent poser assez de questions — mais seuls 30% estiment que leurs rendez-vous le font",
-          es: "el 62% de los solteros de la Gen Z cree que hace suficientes preguntas, pero solo el 30% siente que sus citas las hagan",
-          ar: "62% من المواعدين في جيل Gen Z يعتقدون أنهم يطرحون أسئلة كافية — لكن 30% فقط يشعرون بأن الطرف الآخر يفعل ذلك",
-          ru: "62% представителей Gen Z считают, что задают достаточно вопросов, — но лишь 30% чувствуют, что так же поступают их собеседники",
-          pt: "62% de quem sai para encontros na Gen Z acha que faz perguntas suficientes — mas só 30% sentem que seus encontros fazem",
-          it: "il 62% dei single della Gen Z pensa di fare abbastanza domande, ma solo il 30% sente che lo facciano anche gli altri",
-          ja: "Gen Zの利用者の62%は自分は十分に質問していると考えているが、相手もそうだと感じている人は30%にとどまる",
-          ko: "Gen Z 이용자의 62%는 자신이 충분히 질문한다고 생각하지만, 상대도 그렇다고 느끼는 사람은 30%뿐",
-          zh: "62%的Gen Z用户认为自己问了足够多的问题，但只有30%觉得对方也这样做",
-          nl: "62% van de Gen Z-daters denkt genoeg vragen te stellen — maar slechts 30% vindt dat hun dates dat doen",
-          pl: "62% randkujących z pokolenia Gen Z uważa, że zadaje wystarczająco dużo pytań — ale tylko 30% czuje, że robią to ich partnerzy",
-          sv: "62% av Gen Z-dejtarna tycker att de ställer tillräckligt med frågor — men bara 30% upplever att deras dejter gör det",
-          hi: "Gen Z के 62% लोग मानते हैं कि वे पर्याप्त सवाल पूछते हैं, लेकिन सिर्फ 30% को लगता है कि उनके डेट भी ऐसा करते हैं",
+          tr: "Yeterince soru sorduğunu düşünen heteroseksüel Gen Z kullanıcı oranı %62; karşısındakinin yeterince sorduğunu hissedenler yalnızca %30",
+          en: "62% of heterosexual Gen Z daters think they ask enough questions — but only 30% feel their dates do",
+          de: "62% der heterosexuellen Singles aus der Gen Z glauben, genug Fragen zu stellen — aber nur 30% finden, dass ihre Dates das tun",
+          fr: "62% des célibataires hétérosexuels de la Gen Z pensent poser assez de questions — mais seuls 30% estiment que leurs rendez-vous le font",
+          es: "el 62% de los solteros heterosexuales de la Gen Z cree que hace suficientes preguntas, pero solo el 30% siente que sus citas las hagan",
+          ar: "62% من المواعدين المغايرين جنسيًا في جيل Gen Z يعتقدون أنهم يطرحون أسئلة كافية — لكن 30% فقط يشعرون بأن الطرف الآخر يفعل ذلك",
+          ru: "62% гетеросексуальных представителей Gen Z считают, что задают достаточно вопросов, — но лишь 30% чувствуют, что так же поступают их собеседники",
+          pt: "62% de quem sai para encontros heterossexuais na Gen Z acha que faz perguntas suficientes — mas só 30% sentem que seus encontros fazem",
+          it: "il 62% dei single eterosessuali della Gen Z pensa di fare abbastanza domande, ma solo il 30% sente che lo facciano anche gli altri",
+          ja: "異性愛者のGen Z利用者の62%は自分は十分に質問していると考えているが、相手もそうだと感じている人は30%にとどまる",
+          ko: "이성애자 Gen Z 이용자의 62%는 자신이 충분히 질문한다고 생각하지만, 상대도 그렇다고 느끼는 사람은 30%뿐",
+          zh: "62%的异性恋Gen Z用户认为自己问了足够多的问题，但只有30%觉得对方也这样做",
+          nl: "62% van de heteroseksuele Gen Z-daters denkt genoeg vragen te stellen — maar slechts 30% vindt dat hun dates dat doen",
+          pl: "62% heteroseksualnych randkujących z pokolenia Gen Z uważa, że zadaje wystarczająco dużo pytań — ale tylko 30% czuje, że robią to ich partnerzy",
+          sv: "62% av de heterosexuella Gen Z-dejtarna tycker att de ställer tillräckligt med frågor — men bara 30% upplever att deras dejter gör det",
+          hi: "Gen Z के 62% विषमलैंगिक लोग मानते हैं कि वे पर्याप्त सवाल पूछते हैं, लेकिन सिर्फ 30% को लगता है कि उनके डेट भी ऐसा करते हैं",
         },
         source: HINGE_GENZ_2025,
       },
@@ -289,7 +291,7 @@ export const STAT_CATEGORIES: StatCategory[] = [
       },
       {
         category: "questions",
-        value: "2,000+",
+        value: "1,961",
         labels: {
           tr: "İncelenen hızlı tanışma buluşması: daha çok takip sorusu soranlar daha fazla ikinci buluşma daveti aldı",
           en: "Speed dates analysed: those who asked more follow-up questions received more second-date offers",

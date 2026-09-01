@@ -13,10 +13,17 @@ import {
   OG_LOCALES,
 } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import {
+  FORBES_ONEPOLL_2024,
+  HINGE_GENZ_2025,
+  type StatSource,
+} from "@/lib/constants/stats";
+import { SourceLine } from "@/components/shared/SourceLine";
+import { SourceList } from "@/components/shared/SourceList";
 
 const PAGE_SLUG = "trends/2026";
 const PUBLISHED_AT = "2026-01-15";
-const MODIFIED_AT = "2026-04-16";
+const MODIFIED_AT = "2026-09-01";
 
 /** Per-locale breadcrumb labels */
 const TRENDS_LABELS: Record<string, string> = {
@@ -94,10 +101,18 @@ function JsonLd({ data }: { data: object }) {
 interface TrendCopy {
   title: string;
   body: string;
+  /**
+   * Required whenever `body` states a figure. This page carries a "cite this
+   * report" block, so an unsourced number here is a credibility liability —
+   * delete the claim rather than shipping it bare.
+   */
+  source?: StatSource;
 }
 
 interface LocaleCopy {
   eyebrow: string;
+  sourcesHeading: string;
+  sourcesIntro: string;
   heroTitle: string;
   heroSubtitle: string;
   lastUpdated: string;
@@ -122,9 +137,12 @@ interface LocaleCopy {
 
 const COPY_TR: LocaleCopy = {
   eyebrow: "Uzman Analiz",
+  sourcesHeading: "Kaynaklar",
+  sourcesIntro:
+    "Bu sayfadaki her rakam yayımlanmış birincil bir araştırmadan gelir ve yayıncısı, rapor adı, yayın tarihi ve örneklem büyüklüğüyle birlikte verilir. Trend başlıklarının geri kalanı editoryal değerlendirmedir, veri iddiası değildir.",
   heroTitle: "Dating Trendleri 2026",
   heroSubtitle: "Online dating dünyasının 2026 yılının en önemli trendleri",
-  lastUpdated: "Son güncelleme: 16 Nisan 2026",
+  lastUpdated: "Son güncelleme: 1 Eylül 2026",
   trendsHeading: "2026'nın 12 Büyük Trendi",
   conclusionHeading: "Sonuç: Dating'in Yeni Çağı",
   conclusionPara1:
@@ -147,15 +165,17 @@ const COPY_TR: LocaleCopy = {
   trends: [
     {
       title: "Quiz Dating Yükselişi",
-      body: "Kullanıcılar swipe yerine soru-cevap tabanlı eşleşmeye yöneliyor. Hinge'in 2025 Gen Z raporuna göre kullanıcıların %85'i, düşünceli sorular sorulduğunda ikinci bir buluşmayı daha çok istiyor.",
+      body: "Kullanıcılar swipe yerine soru-cevap tabanlı eşleşmeye yöneliyor. Hinge'in 2025 Gen Z raporunda kullanıcıların %85'i, kendilerine düşünceli sorular sorulduğunda ikinci bir buluşmayı daha çok istediklerini söyledi.",
+      source: HINGE_GENZ_2025,
     },
     {
       title: "Swipe Yorgunluğu Zirvesinde",
-      body: "Kullanıcıların %78'i dating uygulamalarından tükenmişlik yaşıyor. Bu rakam, swipe modelinin sınırlarına ulaştığını gösteriyor.",
+      body: "Forbes Health/OnePoll'un 2024 anketinde, son bir yıl içinde dating uygulaması kullanmış kişilerin %78'i tükenmişlik bildirdi; oran kadınlarda %80, erkeklerde %74. Bu, swipe modelinin sınırlarına ulaştığına dair en net göstergelerden biri.",
+      source: FORBES_ONEPOLL_2024,
     },
     {
       title: "Slow Dating / Yavaş Tanışma",
-      body: "Hız yerine derinliği seçen kullanıcılar slow dating'e yöneliyor. Forbes Health/OnePoll 2024 anketinde kullanıcıların %78'i dating uygulamalarında tükenmişlik bildirdi.",
+      body: "Hız yerine derinliği seçen kullanıcılar slow dating'e yöneliyor: daha az eşleşme, daha uzun sohbet, buluşmadan önce daha fazla karşılıklı tanıma. Bu bir sektör gözlemi; elimizde bunu ölçen kamuya açık bir araştırma yok.",
     },
     {
       title: "AI Destekli Eşleşme",
@@ -198,9 +218,12 @@ const COPY_TR: LocaleCopy = {
 
 const COPY_EN: LocaleCopy = {
   eyebrow: "Expert Analysis",
+  sourcesHeading: "Sources",
+  sourcesIntro:
+    "Every figure on this page comes from a published primary study and is shown with its publisher, report title, publication date and sample size. The remaining trend entries are editorial assessment, not data claims.",
   heroTitle: "Dating Trends 2026",
   heroSubtitle: "The most important trends shaping the online dating world in 2026",
-  lastUpdated: "Last updated: April 16, 2026",
+  lastUpdated: "Last updated: September 1, 2026",
   trendsHeading: "The 12 Biggest Trends of 2026",
   conclusionHeading: "Conclusion: A New Era of Dating",
   conclusionPara1:
@@ -224,14 +247,16 @@ const COPY_EN: LocaleCopy = {
     {
       title: "Rise of Quiz Dating",
       body: "Users are moving from swiping toward question-based matching. In Hinge's 2025 Gen Z report, 85% of daters said they are more likely to want a second date when they are asked thoughtful questions.",
+      source: HINGE_GENZ_2025,
     },
     {
       title: "Swipe Fatigue at Peak",
-      body: "78% of users experience burnout from dating apps. This indicates the swipe model has reached its limits.",
+      body: "In the Forbes Health/OnePoll 2024 survey, 78% of people who had used a dating app in the past year reported burnout — 80% of women and 74% of men. It is one of the clearest signals that the swipe model has reached its limits.",
+      source: FORBES_ONEPOLL_2024,
     },
     {
       title: "Slow Dating",
-      body: "Users choosing depth over speed are turning to slow dating. In the Forbes Health/OnePoll 2024 survey, 78% of dating app users reported burnout.",
+      body: "Users choosing depth over speed are turning to slow dating: fewer matches, longer conversations, more mutual knowledge before meeting. This is an industry observation — we have no public research measuring it.",
     },
     {
       title: "AI-Powered Matching",
@@ -272,6 +297,19 @@ const COPY_EN: LocaleCopy = {
   ],
 };
 
+/** Distinct sources cited by these trends, in first-use order. */
+function getTrendSources(trends: TrendCopy[]): StatSource[] {
+  const seen = new Set<string>();
+  const result: StatSource[] = [];
+  for (const trend of trends) {
+    if (trend.source && !seen.has(trend.source.url)) {
+      seen.add(trend.source.url);
+      result.push(trend.source);
+    }
+  }
+  return result;
+}
+
 function getCopy(locale: string): LocaleCopy {
   if (locale === "tr") return COPY_TR;
   return COPY_EN;
@@ -286,6 +324,7 @@ export default async function DatingTrends2026Page({
   setRequestLocale(locale);
 
   const copy = getCopy(locale);
+  const trendSources = getTrendSources(copy.trends);
   const pageUrl = `${SITE_URL}/${locale}/${PAGE_SLUG}`;
   const seo = PAGE_SEO.trends[locale] || PAGE_SEO.trends.en;
 
@@ -325,6 +364,14 @@ export default async function DatingTrends2026Page({
       "slow dating",
       "future of dating",
     ],
+    citation: trendSources.map((source) => ({
+      "@type": "CreativeWork",
+      name: source.title,
+      url: source.url,
+      publisher: { "@type": "Organization", name: source.publisher },
+      datePublished: source.date,
+      ...(source.sample ? { description: source.sample } : {}),
+    })),
   };
 
   // JSON-LD: WebPage schema
@@ -434,6 +481,7 @@ export default async function DatingTrends2026Page({
                       <p className="text-sm text-qulo-text-secondary leading-relaxed">
                         {trend.body}
                       </p>
+                      {trend.source && <SourceLine source={trend.source} />}
                     </div>
                   </div>
                 </article>
@@ -469,6 +517,14 @@ export default async function DatingTrends2026Page({
               <StoreButtons />
             </div>
           </section>
+
+          {/* Sources — a journalist checks these before citing anything, so
+              they must sit above the "cite this report" invitation. */}
+          <SourceList
+            sources={trendSources}
+            heading={copy.sourcesHeading}
+            intro={copy.sourcesIntro}
+          />
 
           {/* Citation Section — backlink magnet */}
           <section

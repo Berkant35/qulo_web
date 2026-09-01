@@ -23,10 +23,12 @@ import {
   type DatingStat,
   type StatCategory,
 } from "@/lib/constants/stats";
+import { SourceLine } from "@/components/shared/SourceLine";
+import { SourceList } from "@/components/shared/SourceList";
 
 const PAGE_SLUG = "dating-statistics";
 const PUBLISHED_AT = "2026-04-16";
-const MODIFIED_AT = "2026-04-16";
+const MODIFIED_AT = "2026-09-01";
 
 /** Per-locale breadcrumb label for the Dating Statistics page */
 const STATISTICS_LABELS: Record<string, string> = {
@@ -132,26 +134,23 @@ function getCopy(locale: string): UiCopy {
       ? "Online dating dünyasından kapsamlı veri raporu — kullanım, swipe yorgunluğu, eşleşme oranları, demografik veriler ve 2026 trendleri."
       : "A comprehensive data report from the online dating world — usage, swipe fatigue, match rates, demographics and 2026 trends.",
     lastUpdated: isTr
-      ? "Son güncelleme: Nisan 2026"
-      : "Last updated: April 2026",
+      ? "Son güncelleme: 1 Eylül 2026"
+      : "Last updated: 1 September 2026",
     citeThisReport: isTr ? "Bu Raporu Kaynak Göster" : "Cite This Report",
     highlightHeading: isTr ? "Öne Çıkan Veriler" : "Key Highlights",
     contextParagraphs: {
       usage: isTr
-        ? "Dating uygulamaları artık global bir fenomen. Dünya genelinde 381 milyondan fazla aktif kullanıcı, mobil dating endüstrisinin ne kadar büyüdüğünü gösteriyor. Ancak bu yoğun kullanım, beraberinde önemli sorunları da getiriyor."
-        : "Dating apps have become a global phenomenon. With more than 381 million active users worldwide, it's clear how massive the mobile dating industry has become. But this heavy usage brings serious problems too.",
-      fatigue: isTr
-        ? "Yüksek kullanım rakamlarının altında ciddi bir tükenmişlik problemi yatıyor. Kullanıcıların büyük çoğunluğu dating app deneyiminden hoşnutsuz. Bu durum, swipe tabanlı modelin sınırlılıklarını net şekilde ortaya koyuyor."
-        : "Beneath the high usage numbers lies a serious burnout problem. The vast majority of users are unhappy with their dating app experience, clearly exposing the limits of the swipe-based model.",
-      matching: isTr
-        ? "Eşleşme istatistikleri özellikle düşündürücü. Yapılan eşleşmelerin sadece küçük bir kısmı gerçek bir bağlantıya dönüşüyor. Bu, dating app'lerin temel vaadinin sorgulanmasına yol açıyor."
-        : "Matching statistics are particularly striking. Only a small fraction of matches translate into real connections, which raises questions about the core promise of dating apps.",
-      demographics: isTr
-        ? "Z kuşağı dating uygulamalarını en aktif kullanan grup, ancak aynı zamanda swipe yorgunluğunu en çok yaşayan grup. Bu çelişki, yeni nesil dating çözümlerine olan ihtiyacı gösteriyor."
-        : "Gen Z is the most active dating app generation, but they also experience swipe fatigue the most. This contradiction signals the need for next-generation dating solutions.",
-      trends: isTr
-        ? "2026'nın en belirgin dating trendi: kullanıcılar daha derin, daha anlamlı ve daha az yüzeysel deneyimler arıyor. Quiz dating, slow dating ve AI destekli eşleşme gibi yaklaşımlar yükselişte."
-        : "The clearest dating trend of 2026: users are seeking deeper, more meaningful and less superficial experiences. Quiz dating, slow dating and AI-powered matching are on the rise.",
+        ? "Online dating artık marjinal bir davranış değil: ABD'li yetişkinlerin üçte biriden fazlası hayatının bir döneminde bir dating sitesi ya da uygulaması kullanmış. Ancak aynı ankette şu anda kullananların oranı çok daha düşük — yani insanların çoğu bu uygulamaları deniyor ve bırakıyor."
+        : "Online dating is no longer a fringe behaviour: more than a third of US adults have used a dating site or app at some point. But in the same survey the share using one right now is far smaller — most people try these apps and leave.",
+      burnout: isTr
+        ? "Bu bırakma eğiliminin altında ciddi bir tükenmişlik problemi yatıyor. Dating uygulaması kullananların büyük çoğunluğu deneyimi yorucu buluyor ve tükenmişlik kadınlarda erkeklerden daha yaygın."
+        : "Beneath that drop-off lies a serious burnout problem. A large majority of dating app users find the experience exhausting, and burnout is more widespread among women than men.",
+      questions: isTr
+        ? "Yorgunluğun bir kısmı mekaniğin kendisinden geliyor. Hem anket verisi hem de saha deneyi aynı yöne işaret ediyor: karşısındakine gerçek sorular soran kişiler daha çok ikinci buluşma alıyor — ama çoğu kişi karşısındakinin yeterince soru sormadığını düşünüyor."
+        : "Some of that fatigue comes from the mechanics themselves. Survey data and field experiments point the same way: people who ask real questions get more second dates — yet most daters feel their own dates do not ask enough.",
+      safety: isTr
+        ? "Güvenlik algısı bu tablonun ayrılmaz bir parçası ve cinsiyete göre keskin biçimde ayrışıyor. Uygulamadan tanışılan biriyle yüz yüze görüşmeyi güvenli bulmayanların oranı kadınlarda erkeklerin neredeyse iki katı."
+        : "Safety perception is inseparable from this picture, and it splits sharply by gender. Women are close to twice as likely as men to say meeting an app match in person is not safe.",
     },
     citationHeading: isTr ? "Bu Raporu Kaynak Gösterin" : "Cite This Report",
     citationIntro: isTr
@@ -169,8 +168,8 @@ function getCopy(locale: string): UiCopy {
       : "Every figure on this page traces to a primary source. We publish no number we cannot verify.",
     methodologyHeading: isTr ? "Metodoloji" : "Methodology",
     methodologyText: isTr
-      ? "Bu sayfadaki her rakam, yayımlanmış birincil bir araştırmadan alınır ve yayıncısı, rapor adı, yayın tarihi ve örneklem büyüklüğüyle birlikte verilir. Kaynağına ulaşılamayan veya doğrulanamayan hiçbir veri yayımlanmaz; kaynağı geçersizleşen veri sayfadan kaldırılır. Qulo kendi platform verisini bu sayfada kullanmaz. Kaynaklar en son 1 Ağustos 2026 tarihinde tek tek doğrulanmıştır."
-      : "Every figure on this page comes from a published primary study and is shown with its publisher, report title, publication date and sample size. We publish no number we cannot trace and verify, and we remove figures whose source is superseded. Qulo does not use its own platform data on this page. Sources were last verified individually on 1 August 2026.",
+      ? "Bu sayfadaki her rakam, yayımlanmış birincil bir araştırmadan alınır ve yayıncısı, rapor adı, yayın tarihi ve örneklem büyüklüğüyle birlikte verilir. Kaynağına ulaşılamayan veya doğrulanamayan hiçbir veri yayımlanmaz; kaynağı geçersizleşen veri sayfadan kaldırılır. Qulo kendi platform verisini bu sayfada kullanmaz. Kaynaklar en son 1 Eylül 2026 tarihinde tek tek doğrulanmıştır."
+      : "Every figure on this page comes from a published primary study and is shown with its publisher, report title, publication date and sample size. We publish no number we cannot trace and verify, and we remove figures whose source is superseded. Qulo does not use its own platform data on this page. Sources were last verified individually on 1 September 2026.",
     aboutHeading: isTr
       ? "Bu Raporu Kim Yayınlıyor?"
       : "Who Publishes This Report?",
@@ -270,6 +269,14 @@ export default async function DatingStatisticsPage({
       name: SITE_NAME,
       url: SITE_URL,
     },
+    citation: getAllSources().map((source) => ({
+      "@type": "CreativeWork",
+      name: source.title,
+      url: source.url,
+      publisher: { "@type": "Organization", name: source.publisher },
+      datePublished: source.date,
+      ...(source.sample ? { description: source.sample } : {}),
+    })),
     variableMeasured,
   };
 
@@ -333,17 +340,7 @@ export default async function DatingStatisticsPage({
                     <p className="text-sm text-white leading-snug">
                       {getLabel(stat, locale)}
                     </p>
-                    <p className="mt-3 text-[10px] uppercase tracking-wider text-qulo-text-secondary">
-                        {copy.source}:{" "}
-                        <a
-                          href={stat.source.url}
-                          target="_blank"
-                          rel="noopener noreferrer nofollow"
-                          className="underline hover:text-qulo-purple"
-                        >
-                          {formatSource(stat.source)}
-                        </a>
-                      </p>
+                    <SourceLine source={stat.source} label={copy.source} />
                   </dd>
                 </div>
               ))}
@@ -398,17 +395,10 @@ export default async function DatingStatisticsPage({
                         <p className="text-sm text-white leading-snug">
                           {getLabel(stat, locale)}
                         </p>
-                        <p className="mt-3 text-[10px] uppercase tracking-wider text-qulo-text-secondary">
-                            {copy.source}:{" "}
-                            <a
-                              href={stat.source.url}
-                              target="_blank"
-                              rel="noopener noreferrer nofollow"
-                              className="underline hover:text-qulo-purple"
-                            >
-                              {formatSource(stat.source)}
-                            </a>
-                          </p>
+                        <SourceLine
+                          source={stat.source}
+                          label={copy.source}
+                        />
                       </dd>
                     </div>
                   ))}
@@ -420,39 +410,11 @@ export default async function DatingStatisticsPage({
           {/* Sources — every figure on this page traces to a primary source.
               This is what a journalist checks before citing; it must come
               BEFORE the "cite this report" invitation below. */}
-          <section
-            id="sources"
-            aria-labelledby="sources-heading"
-            className="mb-16 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 scroll-mt-28"
-          >
-            <h2
-              id="sources-heading"
-              className="text-2xl font-bold text-qulo-green mb-3"
-            >
-              {copy.sourcesHeading}
-            </h2>
-            <p className="text-sm text-qulo-text-secondary mb-6">
-              {copy.sourcesIntro}
-            </p>
-            <ol className="space-y-4">
-              {getAllSources().map((source) => (
-                <li key={source.url} className="text-sm">
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                    className="text-white font-medium underline hover:text-qulo-purple"
-                  >
-                    {source.publisher} — {source.title}
-                  </a>
-                  <p className="text-qulo-text-secondary text-xs mt-1">
-                    {source.date}
-                    {source.sample ? ` · ${source.sample}` : ""}
-                  </p>
-                </li>
-              ))}
-            </ol>
-          </section>
+          <SourceList
+            sources={getAllSources()}
+            heading={copy.sourcesHeading}
+            intro={copy.sourcesIntro}
+          />
 
           {/* Citation Section — backlink magnet */}
           <section
