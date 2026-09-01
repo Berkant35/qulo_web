@@ -147,7 +147,7 @@ const COPY_TR: LocaleCopy = {
   trends: [
     {
       title: "Quiz Dating Yükselişi",
-      body: "2025-2026 arası 'quiz dating' arama hacmi %200 arttı. Kullanıcılar swipe yerine soru-cevap tabanlı eşleşme arıyor. Qulo bu trendin lideri.",
+      body: "Kullanıcılar swipe yerine soru-cevap tabanlı eşleşmeye yöneliyor. Hinge'in 2025 Gen Z raporuna göre kullanıcıların %85'i, düşünceli sorular sorulduğunda ikinci bir buluşmayı daha çok istiyor.",
     },
     {
       title: "Swipe Yorgunluğu Zirvesinde",
@@ -155,11 +155,11 @@ const COPY_TR: LocaleCopy = {
     },
     {
       title: "Slow Dating / Yavaş Tanışma",
-      body: "Hız yerine derinliği seçen kullanıcılar slow dating'e yöneliyor. %72'si bu yaklaşımı tercih ettiğini belirtiyor.",
+      body: "Hız yerine derinliği seçen kullanıcılar slow dating'e yöneliyor. Forbes Health/OnePoll 2024 anketinde kullanıcıların %78'i dating uygulamalarında tükenmişlik bildirdi.",
     },
     {
       title: "AI Destekli Eşleşme",
-      body: "Yapay zeka artık dating'in vazgeçilmezi. Kullanıcıların %85'i AI destekli eşleşmeyi denemek istiyor.",
+      body: "Yapay zeka dating'de hızla yaygınlaşıyor — hem eşleşmede hem de mesaj yazmada. Bu da karşındakinin gerçekten kim olduğunu anlamayı zorlaştırıyor.",
     },
     {
       title: "Anti-Ghosting Hareketi",
@@ -223,7 +223,7 @@ const COPY_EN: LocaleCopy = {
   trends: [
     {
       title: "Rise of Quiz Dating",
-      body: "Between 2025-2026, 'quiz dating' search volume increased by 200%. Users are seeking question-based matching over swiping. Qulo leads this trend.",
+      body: "Users are moving from swiping toward question-based matching. In Hinge's 2025 Gen Z report, 85% of daters said they are more likely to want a second date when they are asked thoughtful questions.",
     },
     {
       title: "Swipe Fatigue at Peak",
@@ -231,11 +231,11 @@ const COPY_EN: LocaleCopy = {
     },
     {
       title: "Slow Dating",
-      body: "Users choosing depth over speed are turning to slow dating. 72% prefer this approach.",
+      body: "Users choosing depth over speed are turning to slow dating. In the Forbes Health/OnePoll 2024 survey, 78% of dating app users reported burnout.",
     },
     {
       title: "AI-Powered Matching",
-      body: "AI has become indispensable in dating. 85% of users want to try AI-powered matching.",
+      body: "AI is spreading fast in dating — in matching and in writing messages alike, which makes it harder to tell who you are actually talking to.",
     },
     {
       title: "Anti-Ghosting Movement",

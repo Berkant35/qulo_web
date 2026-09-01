@@ -18,6 +18,8 @@ import {
   getHighlightStats,
   getLabel,
   getCategoryTitle,
+  formatSource,
+  getAllSources,
   type DatingStat,
   type StatCategory,
 } from "@/lib/constants/stats";
@@ -105,6 +107,8 @@ type UiCopy = {
   shareHeading: string;
   shareTwitter: string;
   shareLinkedIn: string;
+  sourcesHeading: string;
+  sourcesIntro: string;
   methodologyHeading: string;
   methodologyText: string;
   aboutHeading: string;
@@ -159,10 +163,14 @@ function getCopy(locale: string): UiCopy {
     shareHeading: isTr ? "Sosyal Medyada Paylaş" : "Share on Social Media",
     shareTwitter: "Twitter / X",
     shareLinkedIn: "LinkedIn",
+    sourcesHeading: isTr ? "Kaynaklar" : "Sources",
+    sourcesIntro: isTr
+      ? "Bu sayfadaki her rakam birincil kaynağa dayanır. Kaynağı doğrulanamayan hiçbir veri yayımlanmaz."
+      : "Every figure on this page traces to a primary source. We publish no number we cannot verify.",
     methodologyHeading: isTr ? "Metodoloji" : "Methodology",
     methodologyText: isTr
-      ? "Bu raporda yer alan veriler Statista, Pew Research Center ve Stanford Üniversitesi gibi tanınmış araştırma kuruluşlarından derlenmiştir. Ek olarak Qulo platformunun kendi anonim kullanım verileri analiz edilmiştir. Tüm rakamlar Nisan 2026 itibarıyla en güncel halleridir ve yıllık olarak güncellenir."
-      : "The data in this report is compiled from established research organizations such as Statista, Pew Research Center and Stanford University. Anonymous usage data from the Qulo platform is also analyzed. All figures are current as of April 2026 and updated annually.",
+      ? "Bu sayfadaki her rakam, yayımlanmış birincil bir araştırmadan alınır ve yayıncısı, rapor adı, yayın tarihi ve örneklem büyüklüğüyle birlikte verilir. Kaynağına ulaşılamayan veya doğrulanamayan hiçbir veri yayımlanmaz; kaynağı geçersizleşen veri sayfadan kaldırılır. Qulo kendi platform verisini bu sayfada kullanmaz. Kaynaklar en son 1 Ağustos 2026 tarihinde tek tek doğrulanmıştır."
+      : "Every figure on this page comes from a published primary study and is shown with its publisher, report title, publication date and sample size. We publish no number we cannot trace and verify, and we remove figures whose source is superseded. Qulo does not use its own platform data on this page. Sources were last verified individually on 1 August 2026.",
     aboutHeading: isTr
       ? "Bu Raporu Kim Yayınlıyor?"
       : "Who Publishes This Report?",
@@ -237,7 +245,7 @@ export default async function DatingStatisticsPage({
       "@type": "PropertyValue",
       name: getLabel(stat, locale),
       value: stat.value,
-      ...(stat.source ? { description: stat.source } : {}),
+      description: formatSource(stat.source),
     }))
   );
 
@@ -325,11 +333,17 @@ export default async function DatingStatisticsPage({
                     <p className="text-sm text-white leading-snug">
                       {getLabel(stat, locale)}
                     </p>
-                    {stat.source && (
-                      <p className="mt-3 text-[10px] uppercase tracking-wider text-qulo-text-secondary">
-                        {copy.source}: {stat.source}
+                    <p className="mt-3 text-[10px] uppercase tracking-wider text-qulo-text-secondary">
+                        {copy.source}:{" "}
+                        <a
+                          href={stat.source.url}
+                          target="_blank"
+                          rel="noopener noreferrer nofollow"
+                          className="underline hover:text-qulo-purple"
+                        >
+                          {formatSource(stat.source)}
+                        </a>
                       </p>
-                    )}
                   </dd>
                 </div>
               ))}
@@ -384,11 +398,17 @@ export default async function DatingStatisticsPage({
                         <p className="text-sm text-white leading-snug">
                           {getLabel(stat, locale)}
                         </p>
-                        {stat.source && (
-                          <p className="mt-3 text-[10px] uppercase tracking-wider text-qulo-text-secondary">
-                            {copy.source}: {stat.source}
+                        <p className="mt-3 text-[10px] uppercase tracking-wider text-qulo-text-secondary">
+                            {copy.source}:{" "}
+                            <a
+                              href={stat.source.url}
+                              target="_blank"
+                              rel="noopener noreferrer nofollow"
+                              className="underline hover:text-qulo-purple"
+                            >
+                              {formatSource(stat.source)}
+                            </a>
                           </p>
-                        )}
                       </dd>
                     </div>
                   ))}
@@ -396,6 +416,43 @@ export default async function DatingStatisticsPage({
               </section>
             );
           })}
+
+          {/* Sources — every figure on this page traces to a primary source.
+              This is what a journalist checks before citing; it must come
+              BEFORE the "cite this report" invitation below. */}
+          <section
+            id="sources"
+            aria-labelledby="sources-heading"
+            className="mb-16 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 scroll-mt-28"
+          >
+            <h2
+              id="sources-heading"
+              className="text-2xl font-bold text-qulo-green mb-3"
+            >
+              {copy.sourcesHeading}
+            </h2>
+            <p className="text-sm text-qulo-text-secondary mb-6">
+              {copy.sourcesIntro}
+            </p>
+            <ol className="space-y-4">
+              {getAllSources().map((source) => (
+                <li key={source.url} className="text-sm">
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="text-white font-medium underline hover:text-qulo-purple"
+                  >
+                    {source.publisher} — {source.title}
+                  </a>
+                  <p className="text-qulo-text-secondary text-xs mt-1">
+                    {source.date}
+                    {source.sample ? ` · ${source.sample}` : ""}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </section>
 
           {/* Citation Section — backlink magnet */}
           <section
