@@ -19,7 +19,7 @@ gerekiyorsa yeni case eklenir.** Kural seti: root `CLAUDE.md` → "Test Disiplin
 ## Durum (son güncelleme: 2026-09-01)
 | Katman | Test | Kapsanan alan |
 |---|---|---|
-| Server | 191 | diamond, exchange, badge, report, locale, validator, page-message, referral, segment, quick-assign, user-interests, ai-suggest, notification template, unsubscribe, heartbeat, deletion-feedback, app-config, push-messages |
+| Server | 249 | diamond, exchange, subscription, scoring, badge, report, locale, validator, page-message, referral, segment, quick-assign, user-interests, ai-suggest, notification template, unsubscribe, heartbeat, deletion-feedback, app-config, push-messages |
 | Mobile | 47 | user/page-message/acquisition model, coach-mark (registry/controller/overlay/visibility/service), overlay queue, pending languages, onboarding provider, i18n parity |
 | Supabase | 0 | — |
 | Web | 0 | — |
@@ -36,19 +36,10 @@ Yeni testler `tests/` altına (`src/__tests__` build'e dahil, oraya ekleme).
 ### ✅ `diamond.service` (23) — `tests/services/diamond.service.test.ts`
 ### ✅ `exchange.service` (25) — `tests/services/exchange.service.test.ts`
 
-### [ ] `subscription.service` — abonelik durumu ve limitler
-- [ ] `getStatus` — aktif/süresi geçmiş/hiç yok durumları
-- [ ] `activateSubscription` — tier'a göre `monthlyPurpleBonus` yatırılır
-- [ ] `activateSubscription` — aynı `transaction_id` ile ikinci çağrı bonusu tekrar vermez
-- [ ] `renewSubscription` — bitiş tarihi uzar, bonus yeniden yatar
-- [ ] `cancelSubscription` — süre sonuna kadar aktif kalır (anında kesilmez)
-- [ ] `expireSubscription` — free tier limitlerine döner
-- [ ] `changeSubscription` — plus→premium yükseltme ve premium→plus düşürme
-- [ ] `getLimits` — free/plus/premium her biri config'ten okunur, hardcoded değil
-- [ ] `incrementDailySwipes` — günlük limit aşılınca reddedilir
-- [ ] `incrementDailySwipes` — gün değişince sayaç sıfırlanır
-- [ ] `incrementDailyUndos` — free tier'da 0 limit ile hiç izin vermez
-- [ ] `getDailyStats` — başka kullanıcının sayacını döndürmez
+### ✅ `subscription.service` (34) — `tests/services/subscription.service.test.ts`
+Kapsanan: getStatus (5), activate (5, webhook tekrarı dahil), renew (3), cancel (3),
+expire (2), change (3), getDailyStats (7, lazy reset dahil), increment (4), getLimits (2).
+Not: `SubscriptionPlan = 'plus' | 'premium'` — `'free'` aktive edilebilir plan değil.
 
 ### [ ] `revenuecat.service` + `webhook.service` — ödeme doğrulama
 - [ ] `verifyPurchase` — geçerli receipt kabul, geçersiz reddedilir
@@ -199,13 +190,10 @@ Yeni testler `tests/` altına (`src/__tests__` build'e dahil, oraya ekleme).
 - [ ] `unmatch` — iki taraf için de biter, mesajlar erişilemez
 - [ ] `getMatches` — sadece kendi eşleşmeleri
 
-### [ ] `scoring.service` — saf fonksiyonlar, ucuz ve yüksek getiri
-- [ ] `desirabilityScore` — sıfır gösterim bölme hatası vermez
-- [ ] `recencyScore` — 7 gün sonrası düşer, negatife inmez
-- [ ] `distanceScore` — 0 km maksimum, radius sınırında minimum
-- [ ] `profileScore` — eksik alanlarda çökmez
-- [ ] `engagementScore` — sınır değerler
-- [ ] `totalScore` — ağırlıklar toplamı beklenen aralıkta, hepsi 0-1
+### ✅ `scoring.service` (24) — `tests/services/scoring.service.test.ts`
+Kapsanan: 5 skor fonksiyonu + totalScore. Sabitlenen davranışlar:
+`profileScore` üst sınırı 13 (diğerleri 10), `totalScore` ağırlıkları 0.95 topluyor
+(1.0 değil), boost sabit +50 ile her şeyi eziyor, 7 gün+ recency 0 ama **elenmiyor**.
 
 ### [ ] `question.service`
 - [ ] `createQuestion` — max soru sayısı tier'a göre
