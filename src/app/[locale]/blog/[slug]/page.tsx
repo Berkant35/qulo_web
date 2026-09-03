@@ -11,9 +11,11 @@ import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { BLOG_POSTS } from "@/lib/constants/blog";
 import { ArticleBlocks, type LocalizedArticle } from "@/components/blog/ArticleBlocks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { whatActuallyPredictsCompatibility } from "./_content/what-actually-predicts-compatibility";
 import { psychologyOfTheFirstMessage } from "./_content/psychology-of-the-first-message";
 import { theQuestionDeficit } from "./_content/the-question-deficit";
+import { datingAppsWithoutSwiping } from "./_content/dating-apps-without-swiping";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -97,21 +99,23 @@ function formatDate(iso: string, locale: string): string {
  * JSON-LD helper — renders structured data from static server constants.
  * No user input is involved; all values come from hardcoded blog.ts / metadata.ts.
  */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
-
 const READ_LABELS: Record<string, { readTime: string; backToBlog: string; relatedPosts: string }> = {
-  tr: { readTime: "dk okuma", backToBlog: "Blog'a Don", relatedPosts: "Diger Yazilar" },
+  tr: { readTime: "dk okuma", backToBlog: "Blog'a Dön", relatedPosts: "Diğer Yazılar" },
   en: { readTime: "min read", backToBlog: "Back to Blog", relatedPosts: "Related Posts" },
-  de: { readTime: "Min. Lesezeit", backToBlog: "Zuruck zum Blog", relatedPosts: "Weitere Artikel" },
+  de: { readTime: "Min. Lesezeit", backToBlog: "Zurück zum Blog", relatedPosts: "Weitere Artikel" },
   fr: { readTime: "min de lecture", backToBlog: "Retour au Blog", relatedPosts: "Articles connexes" },
-  es: { readTime: "min de lectura", backToBlog: "Volver al Blog", relatedPosts: "Articulos relacionados" },
+  es: { readTime: "min de lectura", backToBlog: "Volver al Blog", relatedPosts: "Artículos relacionados" },
+  ar: { readTime: "دقيقة قراءة", backToBlog: "العودة إلى المدونة", relatedPosts: "مقالات ذات صلة" },
+  ru: { readTime: "мин чтения", backToBlog: "Назад в блог", relatedPosts: "Похожие статьи" },
+  pt: { readTime: "min de leitura", backToBlog: "Voltar ao Blog", relatedPosts: "Artigos relacionados" },
+  it: { readTime: "min di lettura", backToBlog: "Torna al Blog", relatedPosts: "Articoli correlati" },
+  ja: { readTime: "分で読めます", backToBlog: "ブログへ戻る", relatedPosts: "関連記事" },
+  ko: { readTime: "분 분량", backToBlog: "블로그로 돌아가기", relatedPosts: "관련 글" },
+  zh: { readTime: "分钟阅读", backToBlog: "返回博客", relatedPosts: "相关文章" },
+  nl: { readTime: "min leestijd", backToBlog: "Terug naar blog", relatedPosts: "Gerelateerde artikelen" },
+  pl: { readTime: "min czytania", backToBlog: "Powrót do bloga", relatedPosts: "Powiązane artykuły" },
+  sv: { readTime: "min läsning", backToBlog: "Tillbaka till bloggen", relatedPosts: "Relaterade artiklar" },
+  hi: { readTime: "मिनट पढ़ें", backToBlog: "ब्लॉग पर वापस", relatedPosts: "संबंधित लेख" },
 };
 
 /* ------------------------------------------------------------------ */
@@ -1231,327 +1235,6 @@ function DatingBurnoutContent({ locale }: { locale: string }) {
   );
 }
 
-function NoSwipeDatingContent({ locale }: { locale: string }) {
-  if (locale === "tr") {
-    return (
-      <>
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Swipe Mekanizmasinin Tarihi ve Sorunlari</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          2012 yilindan itibaren populerlesen &quot;swipe&quot; mekanigi, dating dunyasinin standart
-          etkilesim modeli haline geldi. Sola kaydir &quot;hayir,&quot; saga kaydir &quot;evet&quot; — bu kadar
-          basit. Bu mekanik, dating uygulamalarini cok daha erisilebilir kildi ve sektoru milyar
-          dolarlik bir endustriye donusturdu. Ancak on yildan fazla bir sure sonra, swipe modelinin
-          ciddi yapisal sorunlari artik gormezden gelinemeyecek kadar belirgin.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Arastirmalar, swipe tabanli uygulamalardaki eslesmelerin sadece %2-5&apos;inin gercek bir
-          bulusmaya donustugunu gostermektedir. Kullanicilarin %78&apos;i tukenmislik yasadigini,
-          %54&apos;u ise uygulamalari kullandiktan sonra kendini daha yalniz hissettigini belirtiyor.
-          Bu veriler, swipe mekaniginin temel vaadini — insanlari birlestirmek — yerine getiremedigini
-          kanitlamaktadir.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Swipe&apos;in temel sorunlari sunlardir: yuzeysellik (karar 0.5-2 saniyede verilir), karar
-          yorgunlugu (gunde yuzlerce swipe), dopamin bagimliligi (kumar benzeri degisken odul sistemi),
-          ve esitsizlik (ust %10 kullanicilara orantisiz ilgi). Bu sorunlar, swipe olmadan dating
-          arayisini hizlandirmistir.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Swipe&apos;siz Dating Uygulamasi Alternatifleri</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          2026 itibariyle, swipe mekanigine alternatif sunan bircok yakla im ortaya cikmistir. Bu
-          alternatifleri dort ana kategoride inceleyebiliriz:
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">1. Soru Tabanli (Quiz-Based) Dating</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Bu modelde kullanicilar kendi sorularini olusturur ve potansiyel eslesmelerin bu sorulari
-          cozmesini bekler. Tum sorulari dogru cevaplayan kisiyle eslesme gerceklesir. Bu yaklasim,
-          psikolojideki &quot;oz-aciklama teorisi&quot;ne dayanir ve derin baglantilar kurulmasini saglar.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          <strong className="text-white">Avantajlari:</strong> Kisilik on planda, anlamli eslesmeler,
-          dogal sohbet baslangici, dusuk ghosting orani, her kullaniciya esit sans.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          <strong className="text-white">En iyi ornek:</strong> Qulo — 2-10 soru hazirlayarak kendi
-          eslesme kriterlerinizi belirlersiniz. Sorularinizi cozen kisiyle eslesirsiniz. Gamification
-          ogeleri (elmaslar, seviyeler, gucler) deneyimi eglenceli kilar.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">2. Yavas Dating (Slow Dating)</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Sonsuz profil akisi yerine, gunde sinirli sayida profil sunan uygulamalar. Amac, her profili
-          dikkatlice degerlendirmeyi tesvik etmektir. Bu kategori, kalite odakli kullanicilarin
-          hiz yerine anlamli eslesme aradigi bir yaklasim sunar.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          <strong className="text-white">Avantajlari:</strong> Karar yorgunlugunu azaltir, daha dikkatli
-          profil inceleme, kalite odakli.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          <strong className="text-white">Dezavantajlari:</strong> Hala fotografa dayali, sinirli havuz,
-          sabir gerektiren yavas surec.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">3. Video Oncelikli (Video-First) Dating</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Profil fotografi yerine kisa tanitim videolari kullanan uygulamalar. Kullanicilar, karsi
-          tarafin ses tonunu, beden dilini ve enerjisini gorebilir. Snack, Loveflutter gibi uygulamalar
-          bu kategoride yer alir.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          <strong className="text-white">Avantajlari:</strong> Daha gercekci izlenim, catfishing riski azalir,
-          enerji uyumu gorulur.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          <strong className="text-white">Dezavantajlari:</strong> Kamera korkusu olanlari dislar, icedonukler
-          icin zorlayici, hala yuzeysel degerlendirme riski.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">4. Yapay Zeka Destekli (AI-Powered) Matching</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Kullanici davranislarini, tercihlerini ve mesajlasma oruntulerini analiz ederek uyumluluk
-          tahmini yapan AI tabanli sistemler. Iris Dating, Teaser AI gibi uygulamalar bu alanda
-          oncudur.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          <strong className="text-white">Avantajlari:</strong> Veri odakli eslesme, kullanici davranisina
-          gore gelisen oneriler, kisisellestirme.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          <strong className="text-white">Dezavantajlari:</strong> &quot;Kara kutu&quot; algoritmasi (neden
-          eslestiginiz belirsiz), gizlilik kaygilari, algoritmik on yargi riski.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Neden Quiz Tabanli Dating One Cikiyor?</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Tum alternatifler arasinda quiz tabanli dating, en kapsamli cozumu sunmaktadir. Bunun
-          nedenleri sunlardir:
-        </p>
-        <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-          <li><strong className="text-white">Seffaflik:</strong> Neden eslestiginizi bilirsiniz — sorulara verilen cevaplar sayesinde</li>
-          <li><strong className="text-white">Adaletli sistem:</strong> Fiziksel gorunum degil, dusunce yapisi belirleyicidir</li>
-          <li><strong className="text-white">Aktif katilim:</strong> Pasif swipe yerine aktif dusunme ve cozme</li>
-          <li><strong className="text-white">Eglence faktoru:</strong> Gamification ogeleri deneyimi keyifli kilar</li>
-          <li><strong className="text-white">Derin baglantilar:</strong> Sorular, insanlarin gercek yonlerini ortaya koyar</li>
-        </ul>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">2026&apos;da Dating Trendleri</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          2026 yilinda dating sektorunde bazi belirgin trendler one cikmaktadir:
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">Gamification</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Oyunlastirma ogeleri (rozet, seviye, odul, meydan okuma) dating deneyimini daha eglenceli
-          ve baglayici kilmaktadir. Qulo&apos;nun elmas ekonomisi, guc sistemleri ve seviye mekanikleri
-          bu trendin oncu orneklerindendir. Arastirmalar, gamification iceren uygulamalarda kullanici
-          bagliliginin %40 daha yuksek oldugunu gostermektedir.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">AI Destekli Kisselestirme</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Yapay zeka, soru onerilerinden eslesme optimizasyonuna kadar dating deneyiminin her
-          asamasinda rol oynamaktadir. Qulo&apos;nun AI destekli soru onerme sistemi, kullanicilarin
-          daha etkili sorular hazirlamasina yardimci olur.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">Kisilik Oncelikli Yaklasim</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          &quot;Personality-first dating&quot; hareketi, fiziksel gorunumun otesinde deger, dusunce ve kisilik
-          uyumlulugunu on plana cikarmaktadir. Bu trend, ozellikle Z kusagi arasinda hizla
-          yayilmaktadir.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Hangi Alternatif Size Uygun?</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Dogru dating uygulamasini secmek, kisisel tercihlerinize baglidir. Iste bir rehber:
-        </p>
-        <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-          <li><strong className="text-white">Anlamli baglantilar istiyorsaniz:</strong> Quiz tabanli dating (Qulo) — sorularla derinlikli eslesme</li>
-          <li><strong className="text-white">Sabriniz varsa:</strong> Yavas dating — gunde sinirli, kaliteli profiller</li>
-          <li><strong className="text-white">Gorsel etkilesim istiyorsaniz:</strong> Video-first dating — canli ve gercekci izlenimler</li>
-          <li><strong className="text-white">Teknolojiye guveniyorsaniz:</strong> AI dating — algoritma tabanli eslesme</li>
-        </ul>
-
-        <blockquote className="border-l-4 border-qulo-green pl-4 my-8 italic text-qulo-text-secondary">
-          &quot;Swipe cagı sona eriyor. 2026&apos;da dating, daha akilli, daha anlamli ve daha insani bir
-          hale geliyor.&quot;
-        </blockquote>
-
-        <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Sonuc</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Swipe mekanizmasi dating sektorunu demokratiklestirdi, ancak yuzeysellik, tukenmislik ve
-          anlamsiz eslesmeler gibi ciddi sorunlar yaratti. 2026&apos;da artik swipe olmadan dating
-          mumkun ve giderek daha populer. Soru tabanli, yavas, video oncelikli ve AI destekli
-          alternatifler, herkes icin daha iyi bir dating deneyimi vaat ediyor. Qulo, bu
-          alternatiflerin en kapsamlisi olarak soru-cevap mekanigini gamification ile
-          birlestirerek dating&apos;i yeniden tanimliyor. Swipe&apos;a veda edin, sorularla tanisin.
-        </p>
-      </>
-    );
-  }
-
-  // English (default fallback)
-  return (
-    <>
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">The History and Problems of the Swipe Mechanic</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Since 2012, the &quot;swipe&quot; mechanic has become the standard interaction model for the
-        dating world. Swipe left for &quot;no,&quot; swipe right for &quot;yes&quot; — that simple. This mechanic
-        made dating apps far more accessible and transformed the industry into a multi-billion
-        dollar sector. However, after more than a decade, the structural problems of the swipe
-        model have become too significant to ignore.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Research shows that only 2-5% of matches on swipe-based apps result in an actual date.
-        78% of users report experiencing burnout, and 54% say they feel lonelier after using
-        these apps. These statistics prove that the swipe mechanic is failing at its fundamental
-        promise — bringing people together.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        The core problems with swiping include: superficiality (decisions made in 0.5-2 seconds),
-        decision fatigue (hundreds of swipes per day), dopamine addiction (variable reward system
-        similar to gambling), and inequality (disproportionate attention to the top 10% of users).
-        These issues have accelerated the search for dating apps without swiping.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">No Swipe Dating App Alternatives</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        As of 2026, several approaches have emerged as alternatives to the swipe mechanic. We can
-        examine these alternatives in four main categories:
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">1. Question-Based (Quiz-Based) Dating</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        In this model, users create their own questions and wait for potential matches to solve them.
-        A match occurs when someone answers all questions correctly. This approach is grounded in
-        the psychological theory of &quot;self-disclosure&quot; and enables the formation of deep connections.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        <strong className="text-white">Advantages:</strong> Personality first, meaningful matches,
-        natural conversation starters, low ghosting rates, equal opportunity for every user.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        <strong className="text-white">Best example:</strong> Qulo — you set your own matching criteria
-        by creating 2-10 questions. You match with whoever solves your questions. Gamification elements
-        (diamonds, levels, powers) make the experience enjoyable.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">2. Slow Dating</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Apps that present a limited number of profiles per day instead of an infinite stream. The goal
-        is to encourage careful evaluation of each profile. This category appeals to quality-focused
-        users who prefer meaningful matching over speed.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        <strong className="text-white">Advantages:</strong> Reduces decision fatigue, more careful
-        profile review, quality-focused.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        <strong className="text-white">Disadvantages:</strong> Still photo-based, limited pool,
-        slow process requiring patience.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">3. Video-First Dating</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Apps that use short introduction videos instead of profile photos. Users can see the other
-        person&apos;s tone of voice, body language, and energy. Apps like Snack and Loveflutter fall
-        into this category.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        <strong className="text-white">Advantages:</strong> More realistic impressions, reduced
-        catfishing risk, energy compatibility visible.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        <strong className="text-white">Disadvantages:</strong> Excludes camera-shy people, challenging
-        for introverts, still risks superficial evaluation.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">4. AI-Powered Matching</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        AI-based systems that analyze user behaviors, preferences, and messaging patterns to predict
-        compatibility. Apps like Iris Dating and Teaser AI are pioneers in this space.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        <strong className="text-white">Advantages:</strong> Data-driven matching, suggestions that
-        improve based on user behavior, personalization.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        <strong className="text-white">Disadvantages:</strong> &quot;Black box&quot; algorithm (unclear why
-        you matched), privacy concerns, risk of algorithmic bias.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Why Quiz-Based Dating Stands Out</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Among all alternatives, quiz-based dating offers the most comprehensive solution for those
-        seeking a dating app without swiping. Here&apos;s why:
-      </p>
-      <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-        <li><strong className="text-white">Transparency:</strong> You know why you matched — through answers to questions</li>
-        <li><strong className="text-white">Fair system:</strong> Thought patterns determine matches, not physical appearance</li>
-        <li><strong className="text-white">Active participation:</strong> Active thinking and solving instead of passive swiping</li>
-        <li><strong className="text-white">Fun factor:</strong> Gamification elements make the experience enjoyable</li>
-        <li><strong className="text-white">Deep connections:</strong> Questions reveal people&apos;s true selves</li>
-      </ul>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Dating Trends in 2026</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Several distinct trends are emerging in the dating industry in 2026:
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">Gamification</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Game elements (badges, levels, rewards, challenges) are making the dating experience more
-        enjoyable and engaging. Qulo&apos;s diamond economy, power systems, and level mechanics are
-        leading examples of this trend. Research shows that user engagement is 40% higher in apps
-        with gamification features.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">AI-Powered Personalization</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Artificial intelligence is playing a role in every stage of the dating experience, from
-        question suggestions to match optimization. Qulo&apos;s AI-powered question suggestion system
-        helps users create more effective questions.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">Personality-First Approach</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        The &quot;personality-first dating&quot; movement prioritizes values, thoughts, and personality
-        compatibility beyond physical appearance. This trend is spreading rapidly, especially
-        among Gen Z users searching for alternative dating apps.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Which Alternative Is Right for You?</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Choosing the right dating app depends on your personal preferences. Here&apos;s a guide:
-      </p>
-      <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-        <li><strong className="text-white">If you want meaningful connections:</strong> Quiz-based dating (Qulo) — deep matching through questions</li>
-        <li><strong className="text-white">If you have patience:</strong> Slow dating — limited, quality profiles daily</li>
-        <li><strong className="text-white">If you prefer visual interaction:</strong> Video-first dating — live and realistic impressions</li>
-        <li><strong className="text-white">If you trust technology:</strong> AI dating — algorithm-based matching</li>
-      </ul>
-
-      <blockquote className="border-l-4 border-qulo-green pl-4 my-8 italic text-qulo-text-secondary">
-        &quot;The age of swiping is ending. In 2026, dating is becoming smarter, more meaningful,
-        and more human.&quot;
-      </blockquote>
-
-      <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Conclusion</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        The swipe mechanic democratized the dating industry, but it also created serious problems
-        like superficiality, burnout, and meaningless matches. In 2026, dating without swiping
-        is not only possible but increasingly popular. Question-based, slow, video-first, and
-        AI-powered alternatives promise a better dating experience for everyone. Qulo, as the most
-        comprehensive of these alternatives, redefines dating by combining the question-answer
-        mechanic with gamification. Say goodbye to swiping, and start meeting through questions.
-      </p>
-    </>
-  );
-}
-
 function IntrovertDatingContent({ locale }: { locale: string }) {
   if (locale === "tr") {
     return (
@@ -2149,12 +1832,13 @@ function MatchingScienceContent({ locale }: { locale: string }) {
 /**
  * Posts authored as structured data, fully translated into all 16 locales.
  * New posts go here; the switch below is the legacy per-locale JSX pattern kept
- * for the 7 posts written before `ArticleBlocks` existed.
+ * for the 6 posts written before `ArticleBlocks` existed.
  */
 const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
   "what-actually-predicts-compatibility": whatActuallyPredictsCompatibility,
   "psychology-of-the-first-message": psychologyOfTheFirstMessage,
   "the-question-deficit": theQuestionDeficit,
+  "dating-apps-without-swiping": datingAppsWithoutSwiping,
 };
 
 /** Word count of a structured article, or undefined for legacy JSX posts. */
@@ -2183,8 +1867,6 @@ function BlogContent({ slug, locale }: { slug: string; locale: string }) {
       return <SafetyTipsContent locale={locale} />;
     case "dating-app-burnout-signs":
       return <DatingBurnoutContent locale={locale} />;
-    case "dating-apps-without-swiping":
-      return <NoSwipeDatingContent locale={locale} />;
     case "quiz-dating-for-introverts":
       return <IntrovertDatingContent locale={locale} />;
     case "science-behind-question-based-matching":
