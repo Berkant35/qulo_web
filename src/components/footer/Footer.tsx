@@ -12,6 +12,7 @@ const COMPANY_LINKS: readonly FooterLinkItem[] = [
   { href: "advice", labelKey: "advice" },
   { href: "how-to", labelKey: "howto" },
   { href: "help", labelKey: "help" },
+  { href: "answers", labelKey: "answers" },
   { href: "pricing", labelKey: "pricing" },
   { href: "glossary", labelKey: "glossary" },
   { href: "dating-statistics", labelKey: "statistics" },
