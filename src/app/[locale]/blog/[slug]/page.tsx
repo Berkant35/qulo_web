@@ -17,6 +17,7 @@ import { psychologyOfTheFirstMessage } from "./_content/psychology-of-the-first-
 import { theQuestionDeficit } from "./_content/the-question-deficit";
 import { datingAppsWithoutSwiping } from "./_content/dating-apps-without-swiping";
 import { whatIsSwipeFatigue } from "./_content/what-is-swipe-fatigue";
+import { quizDatingFutureOfMatching } from "./_content/quiz-dating-future-of-matching";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -120,250 +121,8 @@ const READ_LABELS: Record<string, { readTime: string; backToBlog: string; relate
 };
 
 /* ------------------------------------------------------------------ */
-/*  Article content components                                         */
+/*  Legacy article content components (per-locale JSX, tr + en only)   */
 /* ------------------------------------------------------------------ */
-
-function QuizDatingContent({ locale }: { locale: string }) {
-  if (locale === "tr") {
-    return (
-      <>
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Geleneksel Dating Uygulamalarinin Sinirliliklari</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Son on yilda dating uygulamalari milyonlarca insanin tanisma bicimini kokten degistirdi.
-          2012&apos;de populerlesen swipe mekanigi, dating sektorunu domine etti ve neredeyse tum
-          klasik dating uygulamalari ayni modeli benimsedi. Ancak bu modelin ciddi sorunlari var.
-          Arastirmalar, swipe tabanli uygulamalarda yapilan eslesmelerin sadece %2-5&apos;inin
-          gercek bir bulusmaya donustugunu gosteriyor.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Swipe mekaniginin temel sorunu, insanlari bir fotograf ve birkac satir biyografiyle
-          degerlendirmeye zorlamasidir. Bu yaklasim, insanlari &quot;urun katalogu&quot; gibi sunarak
-          derinlikli baglantilar olusmasini engeller. Kullanicilar zamanla &quot;swipe yorgunlugu&quot;
-          yasar ve uygulamayi terk eder ya da duygusal olarak kopuk bir sekilde kullanmaya devam
-          eder.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Quiz Dating Konsepti: Yeni Bir Paradigma</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Quiz dating, eslesme surecini tamamen yeniden tanimlayan bir yaklasimdir. Temel fikir
-          basittir: bir insani tanimak istiyorsaniz, ona fotograflarina degil, dusuncelerine bakin.
-          Quiz dating&apos;de kullanicilar kendi sorularini olusturur ve potansiyel eslesmelerin bu
-          sorulari cozmesini bekler. Dogru cevaplar uyumluluk gostergesidir.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Bu yaklasim, psikolojide &quot;oz-aciklama&quot; (self-disclosure) teorisine dayanir. Arastirmacilar
-          Arthur Aron ve ekibi, insanlarin birbirlerine anlamli sorular sordugunda daha derin
-          baglantilar kurdugunu kanitlamistir. Aron&apos;un unlu &quot;36 Soru&quot; deneyi, iki yabancinin
-          birbirine giderek daha kisisel sorular sorarak yakinlasabilecegini gostermistir.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Neden Sorular Daha Iyi Eslesme Saglar?</h2>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">1. Bilissel Uyumluluk</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Sorular, iki insanin dusunce yapisinin ne kadar uyumlu oldugunu ortaya koyar. Ayni
-          soruya ayni cevabi veren iki insan, buyuk olasilikla benzer dunya gorusune, degerlere
-          ve yasam tercihlerine sahiptir. Bu, yuzeysel cekiciligin otesinde gercek bir uyumluluk
-          gostergesidir.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">2. Aktif Katilim</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Swipe yapmak pasif bir eylemdir — sadece fotograflara tepki verirsiniz. Soru cozmek ise
-          aktif bir katilim gerektirir. Bu aktif katilim, daha fazla zihinsel yatirim yapilmasini
-          saglar ve eslesen kisilerin birbirine daha bagli hissetmesine yol acar. Psikolojide buna
-          &quot;yatirim etkisi&quot; (investment effect) denir.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">3. Anlamli Sohbet Baslangici</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Geleneksel uygulamalarda en buyuk sorunlardan biri &quot;ne yazacagimi bilmiyorum&quot; durumudur.
-          Quiz dating&apos;de sorular dogal bir sohbet baslangici saglar. &quot;Su soruya verdigin cevap
-          cok ilgincti, neden oyle dusunuyorsun?&quot; gibi bir acilis, &quot;merhaba&quot;dan cok daha etkilidir.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">4. Kisilik Oncelikli Filtreleme</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Sorular, gorunusten bagimsiz olarak kisilik uyumlulugunu olcer. Bu, herkes icin daha adil
-          bir sistem yaratir. Geleneksel uygulamalarda &quot;ust %10&quot; kullanicilar neredeyse tum
-          ilgiyi alirken, quiz dating&apos;de herkesin esit sansi vardir — onemli olan cevaplarinizidir.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Kisilik Testleri ve Uyumluluk Bilimi</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Kisilik uyumlulugu arastirmalari, basarili iliskilerin bes temel faktore dayandigini
-          gostermektedir: benzer degerler, iletisim tarzi uyumu, catisma cozme becerileri, yasam
-          hedefleri ve duygusal zeka uyumu. Geleneksel dating uygulamalari bu faktorlerin hicbirini
-          olcmezken, soru-cevap tabanli sistemler bunlarin bircogunu dolayli olarak degerlendirir.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Ornegin, &quot;Hafta sonu planlarinizda beklenmedik bir degisiklik olsa ne yaparsiniz?&quot; sorusu,
-          bir insanin esneklik duzeyini, catisma cozme yaklasimini ve yasam tarzini tek bir cevapla
-          ortaya koyar. Bu tur sorular, saatlerce konusmadan elde edilemeyecek bilgileri saniyeler
-          icinde sunar.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Qulo&apos;da Soru Hazirlama Rehberi</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Etkili sorular hazirlamak, kaliteli eslesmelerin anahtaridir. Iste Qulo&apos;da soru
-          hazirlarken dikkat etmeniz gerekenler:
-        </p>
-        <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-          <li><strong className="text-white">Cesitli konularda sorun:</strong> Muzik, seyahat, yasam felsefesi, mizah — farkli alanlardan sorular daha kapsamli bir uyumluluk resmi cizer</li>
-          <li><strong className="text-white">Cok kolay veya cok zor sorulardan kacinin:</strong> Herkesin bilebilecegi sorular filtreleme yapmaz, kimsenin bilemeyecegi sorular ise eslesme olasiligini dusurur</li>
-          <li><strong className="text-white">Kisisel dokunuslar ekleyin:</strong> &quot;En sevdigim sehir hangisidir?&quot; gibi sorular, cevap verenin sizi ne kadar tandigini olcer</li>
-          <li><strong className="text-white">Duzenli olarak guncelleyin:</strong> Zamanla degisen ilgi alanlarinizi yansitacak sekilde sorularinizi yenileyin</li>
-          <li><strong className="text-white">2 ile 10 soru arasi optimum:</strong> Cok az soru yeterli filtreleme yapmaz, cok fazla soru eslesme olasiligini dusurur</li>
-        </ul>
-
-        <blockquote className="border-l-4 border-qulo-green pl-4 my-8 italic text-qulo-text-secondary">
-          &quot;Dogru soruyu sormak, dogru insani bulmak demektir. Qulo&apos;da eslesme, bir tesaduf degil — bilincli bir kesiftir.&quot;
-        </blockquote>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Quiz Dating&apos;in Gelecegi</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Dating sektoru bir donum noktasinda. Kullanicilar artik yuzeysel eslesmelerden daha
-          fazlasini istiyor. Quiz dating, bu talebi karsilayan yenilikci bir yaklasimdir. AI
-          teknolojileriyle birlestirildiginde — ornegin Qulo&apos;nun akilli soru onerme sistemi —
-          quiz dating deneyimi daha da kisisellesiyor ve etkili hale geliyor.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Gelecekte dating uygulamalarinin cogunun bir sekilde soru-cevap veya etkilesim tabanli
-          eslesme mekanikleri benimsemesi beklenmektedir. Qulo, bu trendin oncusu olarak sektorde
-          yeni bir standart belirlemeyi hedeflemektedir.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Sonuc: Eslesmenin Gelecegi Sorularda</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Swipe tabanli eslesme modeli, dating sektorune buyuk bir yenilik getirdi ancak
-          sinirliliklari artik acikca goruluyor. Quiz dating, daha derin, daha anlamli ve daha
-          surdurulebilir baglantilar kurmanin yoludur. Qulo ile ilk sorunuzu olusturun ve
-          eslesmenin gelecegini deneyimleyin.
-        </p>
-      </>
-    );
-  }
-
-  // English (default fallback)
-  return (
-    <>
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">The Limitations of Traditional Dating Apps</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Over the past decade, dating apps have fundamentally changed how millions of people meet.
-        The swipe mechanic that became popular in 2012 dominated the dating industry, and nearly
-        every traditional dating app adopted the same model. However, this model has serious
-        problems. Research shows that only 2-5% of matches made on swipe-based apps result in an
-        actual date.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        The fundamental problem with the swipe mechanic is that it forces us to evaluate people
-        based on a photo and a few lines of bio. This approach presents people like a &quot;product
-        catalog,&quot; preventing the formation of deep connections. Users eventually experience
-        &quot;swipe fatigue&quot; and either abandon the app or continue using it in an emotionally
-        disconnected way.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">The Quiz Dating Concept: A New Paradigm</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Quiz dating is an approach that completely redefines the matching process. The core idea
-        is simple: if you want to know someone, look at their thoughts, not their photos. In quiz
-        dating, users create their own questions and wait for potential matches to solve them.
-        Correct answers indicate compatibility.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        This approach is grounded in the psychological theory of &quot;self-disclosure.&quot; Researchers
-        Arthur Aron and his team proved that people form deeper connections when they ask each
-        other meaningful questions. Aron&apos;s famous &quot;36 Questions&quot; experiment showed that two
-        strangers can become close by asking increasingly personal questions.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Why Do Questions Create Better Matches?</h2>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">1. Cognitive Compatibility</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Questions reveal how compatible two people&apos;s thought processes are. Two people who give
-        the same answer to the same question likely share similar worldviews, values, and life
-        preferences. This is a genuine indicator of compatibility that goes beyond superficial
-        attraction.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">2. Active Participation</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Swiping is a passive action — you&apos;re merely reacting to photos. Answering questions requires
-        active participation. This active engagement leads to greater mental investment and makes
-        matched individuals feel more connected to each other. In psychology, this is called the
-        &quot;investment effect.&quot;
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">3. Meaningful Conversation Starters</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        One of the biggest problems with traditional apps is the &quot;I don&apos;t know what to write&quot;
-        situation. In quiz dating, questions provide a natural conversation starter. An opening
-        like &quot;Your answer to that question was really interesting — why do you think that way?&quot;
-        is far more effective than just &quot;hi.&quot;
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">4. Personality-First Filtering</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Questions measure personality compatibility regardless of appearance. This creates a fairer
-        system for everyone. While the &quot;top 10%&quot; of users receive almost all the attention on
-        traditional apps, in quiz dating everyone has an equal chance — what matters is your answers.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Personality Tests and the Science of Compatibility</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Personality compatibility research shows that successful relationships are built on five
-        key factors: shared values, communication style alignment, conflict resolution skills,
-        life goals, and emotional intelligence compatibility. Traditional dating apps measure none
-        of these factors, while question-based systems indirectly assess many of them.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        For example, the question &quot;What would you do if your weekend plans changed unexpectedly?&quot;
-        reveals a person&apos;s flexibility, conflict resolution approach, and lifestyle in a single
-        answer. Questions like these deliver insights in seconds that couldn&apos;t be obtained through
-        hours of conversation.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Guide to Creating Questions on Qulo</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Creating effective questions is the key to quality matches. Here&apos;s what to keep in mind
-        when crafting questions on Qulo:
-      </p>
-      <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-        <li><strong className="text-white">Ask about various topics:</strong> Music, travel, life philosophy, humor — questions from different areas paint a more comprehensive compatibility picture</li>
-        <li><strong className="text-white">Avoid too-easy or too-hard questions:</strong> Questions everyone knows won&apos;t filter effectively; questions nobody can answer reduce matching odds</li>
-        <li><strong className="text-white">Add personal touches:</strong> Questions like &quot;What&apos;s my favorite city?&quot; measure how well the answerer knows you</li>
-        <li><strong className="text-white">Update regularly:</strong> Refresh your questions to reflect your evolving interests</li>
-        <li><strong className="text-white">2 to 10 questions is optimal:</strong> Too few won&apos;t filter enough; too many will reduce matching probability</li>
-      </ul>
-
-      <blockquote className="border-l-4 border-qulo-green pl-4 my-8 italic text-qulo-text-secondary">
-        &quot;Asking the right question means finding the right person. On Qulo, matching isn&apos;t a coincidence — it&apos;s a conscious discovery.&quot;
-      </blockquote>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">The Future of Quiz Dating</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        The dating industry is at a turning point. Users now want more than superficial matches.
-        Quiz dating is an innovative approach that meets this demand. When combined with AI
-        technology — such as Qulo&apos;s smart question suggestion system — the quiz dating experience
-        becomes even more personalized and effective.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        In the future, most dating apps are expected to adopt some form of question-based or
-        interaction-based matching mechanics. As a pioneer of this trend, Qulo aims to set a new
-        standard in the industry.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Conclusion: The Future of Matching Is in Questions</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        The swipe-based matching model brought a major innovation to the dating industry, but its
-        limitations are now clearly visible. Quiz dating is the path to building deeper, more
-        meaningful, and more sustainable connections. Create your first question on Qulo and
-        experience the future of matching.
-      </p>
-    </>
-  );
-}
 
 function SafetyTipsContent({ locale }: { locale: string }) {
   if (locale === "tr") {
@@ -1579,7 +1338,7 @@ function MatchingScienceContent({ locale }: { locale: string }) {
 /**
  * Posts authored as structured data, fully translated into all 16 locales.
  * New posts go here; the switch below is the legacy per-locale JSX pattern kept
- * for the 6 posts written before `ArticleBlocks` existed.
+ * for the 4 posts still written before `ArticleBlocks` existed.
  */
 const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
   "what-actually-predicts-compatibility": whatActuallyPredictsCompatibility,
@@ -1587,6 +1346,7 @@ const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
   "the-question-deficit": theQuestionDeficit,
   "dating-apps-without-swiping": datingAppsWithoutSwiping,
   "what-is-swipe-fatigue": whatIsSwipeFatigue,
+  "quiz-dating-future-of-matching": quizDatingFutureOfMatching,
 };
 
 /** Word count of a structured article, or undefined for legacy JSX posts. */
@@ -1607,8 +1367,6 @@ function BlogContent({ slug, locale }: { slug: string; locale: string }) {
   }
 
   switch (slug) {
-    case "quiz-dating-future-of-matching":
-      return <QuizDatingContent locale={locale} />;
     case "online-dating-safety-tips":
       return <SafetyTipsContent locale={locale} />;
     case "dating-app-burnout-signs":
