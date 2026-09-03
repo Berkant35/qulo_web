@@ -16,6 +16,7 @@ import { whatActuallyPredictsCompatibility } from "./_content/what-actually-pred
 import { psychologyOfTheFirstMessage } from "./_content/psychology-of-the-first-message";
 import { theQuestionDeficit } from "./_content/the-question-deficit";
 import { datingAppsWithoutSwiping } from "./_content/dating-apps-without-swiping";
+import { whatIsSwipeFatigue } from "./_content/what-is-swipe-fatigue";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -121,260 +122,6 @@ const READ_LABELS: Record<string, { readTime: string; backToBlog: string; relate
 /* ------------------------------------------------------------------ */
 /*  Article content components                                         */
 /* ------------------------------------------------------------------ */
-
-function SwipeFatigueContent({ locale }: { locale: string }) {
-  if (locale === "tr") {
-    return (
-      <>
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Swipe Yorgunlugu Nedir?</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Swipe yorgunlugu, dating uygulamalarinda surekli profillere bakarak sola veya saga kaydirma
-          eyleminin yarattigi zihinsel ve duygusal tukenmislik halidir. Bu terim ilk olarak 2020&apos;li
-          yillarda populerlesmis olsa da, aslinda insanlarin yillardir hissettigi bir sorunu
-          tanimlamaktadir. Swipe tabanli uygulamalarin ortak noktasi olan bu mekanik, baslangicta
-          eglenceli gorunse de zamanla kullanicilari yorucu bir donguye sokmaktadir.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Arastirmalar, ortalama bir dating uygulamasi kullanicisinin gunde yaklasik 30-40 dakika
-          harcadigini ve bu surede 100&apos;den fazla profile baktigini gostermektedir. Bu durum, beyinde
-          asiri uyarilmaya ve sonunda karar verme kapasitesinin dusmesine yol acmaktadir.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Swipe Yorgunlugu Neden Olusur?</h2>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">1. Karar Yorgunlugu (Decision Fatigue)</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Insan beyni gunde yaklasik 35.000 karar vermektedir. Dating uygulamalarinda her swipe bir
-          karardir ve surekli &quot;evet&quot; ya da &quot;hayir&quot; demek beynin karar verme kapasitesini tuketir.
-          Psikolog Barry Schwartz&apos;in &quot;Secim Paradoksu&quot; teorisine gore, cok fazla secenek sunuldugunda
-          insanlar daha az tatmin olur ve karar veremez hale gelir. Bu durum dating uygulamalarinda
-          &quot;bir sonraki daha iyi olabilir&quot; dusuncesiyle kendini gosterir.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">2. Dopamin Dongusu ve Bagimlilik</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Swipe mekanigi, kumar makineleriyle benzer bir dopamin dongusu yaratir. Her swipe&apos;ta
-          &quot;acaba bu kisi beni begenecek mi?&quot; belirsizligi beyinde dopamin salgilanmasina neden olur.
-          Bu degisken odul sistemi, kullaniciyi uygulamada tutarken ayni zamanda duygusal
-          tukenmislige yol acar. Eslesme geldiginde kisa sureli bir mutluluk hissedilir, ancak bu
-          his hizla kaybolur ve dongu yeniden baslar.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">3. Yuzeysellik ve Derinlik Eksikligi</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Geleneksel swipe tabanli uygulamalarda karar verme sureci buyuk olcude fiziksel gorunume
-          dayalidir. Bir profil ortalama 0.5-2 saniye incelenmektedir. Bu sure icinde bir insanin
-          kisiliginin, degerlerinin, mizah anlayisinin veya yasam gorusunun anlamli bir sekilde
-          degerlendirilmesi neredeyse imkansizdir. Sonuc olarak eslesmeler yuzeysel kalir ve gercek
-          baglantilar olusmaz.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">4. Ghosting ve Iletisim Sorunlari</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Swipe kulturu, insanlari &quot;tek kullanimlik&quot; gibi gormemize yol acmistir. Eslesme sonrasi
-          mesajlasmalarin buyuk cogunlugu birkac mesaj sonra son bulur. Ghosting (aniden iletisimi
-          kesmek) orani dating uygulamalarinda %80&apos;in uzerindedir. Bu durum, kullanicilarda reddedilme
-          korkusu ve guvensizlik duygularini artirir.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Istatistiklerle Swipe Yorgunlugu</h2>
-        <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-          <li>Dating uygulamasi kullanicilarinin <strong className="text-white">%78&apos;i</strong> bir noktada tukenmislik hissettigini belirtiyor</li>
-          <li>Kullanicilarin <strong className="text-white">%54&apos;u</strong> uygulamalardan sonra kendini daha yalniz hissediyor</li>
-          <li>Eslesmelerin sadece <strong className="text-white">%2-5&apos;i</strong> gercek bir bulusmaya donusuyor</li>
-          <li>Ortalama bir kullanici eslesme icin <strong className="text-white">115 swipe</strong> yapiyor</li>
-          <li>Erkek kullanicilarin <strong className="text-white">%50&apos;si</strong> neredeyse hic eslesme almiyor</li>
-        </ul>
-
-        <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Qulo&apos;nun Cozumu: Soru Tabanli Eslesme</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Qulo, dating uygulamalarindaki temel sorunu kokunden cozmek icin tasarlandi. Swipe yerine
-          soru-cevap tabanli bir eslesme sistemi kullanarak yuzeysellik ortadan kaldirır ve anlamli
-          baglantilar kurmanizi saglar.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">Nasil Calisir?</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Qulo&apos;da 2 ila 10 arasinda soru hazirlarsiniz. Bu sorular sizin kisiliginizi, ilgi
-          alanlarinizi ve degerlerinizi yansitir. Diger kullanicilar sizin sorularinizi cozmeye
-          calisir. Tum sorularinizi dogru cevaplayan kisiyle eslesirsiniz. Bu sistem sayesinde
-          eslesen kisinin sizinle gercekten uyumlu oldugunu bilirsiniz.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">Neden Daha Iyi?</h3>
-        <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-          <li><strong className="text-white">Daha az ama daha kaliteli eslesmeler:</strong> Herkes eslesmez, ama eslesenler gercekten uyumludur</li>
-          <li><strong className="text-white">Kisilik on planda:</strong> Fiziksel gorunum yerine dusunce yapisi ve degerler eslesme kriterlerinizdir</li>
-          <li><strong className="text-white">Eglenceli surec:</strong> Soru cozmek, sonsuz swipe yapmaktan cok daha keyiflidir</li>
-          <li><strong className="text-white">Ghosting orani dusuk:</strong> Efor sarfederek eslesen insanlar, iletisimi surdurme konusunda daha isteklidir</li>
-        </ul>
-
-        <blockquote className="border-l-4 border-qulo-purple pl-4 my-8 italic text-qulo-text-secondary">
-          &quot;Bir insani tanimak icin sordugunuz sorular, yuzlerce swipe&apos;tan daha degerlidir.&quot;
-        </blockquote>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Quiz Dating Nasil Farkli?</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Quiz dating, geleneksel dating app modellerinden temel olarak farklidir. Swipe tabanli
-          uygulamalar &quot;gormek&quot; uzerine kuruluyken, quiz dating &quot;anlamak&quot; uzerine kuruludur. Birini
-          tanimak icin ona sorular sormak, insan iliskilerinin en dogal yoludur. Qulo bu dogal
-          sureci dijital ortama tasir.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Geleneksel dating uygulamalarinda eslesme kriterleri genellikle fiziksel cekicilik, yas ve
-          konum ile sinirlidir. Qulo&apos;da ise eslesme, sorulariniza verilen cevaplarin dogruluguna
-          dayanir. Bu da demektir ki eslestiginiz kisi sizin dusunce yapisinizi, ilgi alanlarinizi
-          veya degerlerinizi gercekten anliyor demektir.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Swipe Yorgunlugundan Kurtulmanin Yollari</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Eger swipe yorgunlugu yasiyorsaniz, iste size bazi oneriler:
-        </p>
-        <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-          <li>Gunluk uygulama kullanim surenizi sinirlayin</li>
-          <li>Profillere daha dikkatli bakin, otomatik swipe yapmaktan kacinin</li>
-          <li>Biyografileri okumaya zaman ayirin</li>
-          <li>Eslesmelerinizle gercekten iletisim kurmaya calisin</li>
-          <li>Alternatif eslesme yontemlerini deneyin — <strong className="text-white">Qulo gibi soru tabanli uygulamalar</strong> swipe dongusunden kurtulmanizi saglar</li>
-        </ul>
-
-        <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Sonuc</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Swipe yorgunlugu, modern dating kulturunun en buyuk sorunlarindan biridir. Sonsuz profil
-          akisi, karar yorgunlugu ve yuzeysel eslesmeler insanlari tuketmektedir. Ancak bu sorunun
-          cozumu, dating uygulamalarindan tamamen vazgecmek degildir. Cozum, eslesme yontemini
-          degistirmektir. Qulo, sorularla tanismanin daha anlamli, daha eglenceli ve daha
-          surdurulebilir bir yol oldugunu kanitlamaktadir.
-        </p>
-      </>
-    );
-  }
-
-  // English (default fallback)
-  return (
-    <>
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">What is Swipe Fatigue?</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Swipe fatigue is the mental and emotional exhaustion caused by endlessly swiping through
-        profiles on dating apps. While the term gained popularity in the early 2020s, it describes
-        a problem users have felt for years. The swipe mechanic shared by most traditional dating
-        apps may seem fun at first, but eventually traps users in an exhausting cycle.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Research shows that the average dating app user spends approximately 30-40 minutes per day
-        and reviews over 100 profiles during that time. This leads to overstimulation in the brain
-        and a gradual decline in decision-making capacity.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Why Does Swipe Fatigue Happen?</h2>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">1. Decision Fatigue</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        The human brain makes approximately 35,000 decisions per day. On dating apps, every swipe
-        is a decision, and constantly saying &quot;yes&quot; or &quot;no&quot; depletes the brain&apos;s decision-making
-        capacity. According to psychologist Barry Schwartz&apos;s &quot;Paradox of Choice&quot; theory, when
-        presented with too many options, people become less satisfied and more indecisive. In dating
-        apps, this manifests as the persistent thought that &quot;the next one might be better.&quot;
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">2. The Dopamine Loop and Addiction</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        The swipe mechanic creates a dopamine loop similar to slot machines. With each swipe, the
-        uncertainty of &quot;will this person like me back?&quot; triggers dopamine release in the brain. This
-        variable reward system keeps users engaged while simultaneously causing emotional burnout.
-        When a match arrives, there&apos;s a brief burst of happiness, but it quickly fades and the cycle
-        restarts.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">3. Superficiality and Lack of Depth</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        In traditional swipe-based apps, the decision-making process is largely based on physical
-        appearance. A profile is reviewed for an average of 0.5-2 seconds. Within this timeframe,
-        making a meaningful assessment of someone&apos;s personality, values, sense of humor, or worldview
-        is virtually impossible. As a result, matches remain superficial and genuine connections
-        rarely form.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">4. Ghosting and Communication Breakdowns</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Swipe culture has led us to view people as &quot;disposable.&quot; The vast majority of post-match
-        conversations end after just a few messages. Ghosting rates on dating apps exceed 80%. This
-        increases feelings of rejection and insecurity among users.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Swipe Fatigue by the Numbers</h2>
-      <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-        <li><strong className="text-white">78%</strong> of dating app users report experiencing burnout at some point</li>
-        <li><strong className="text-white">54%</strong> of users feel lonelier after using apps</li>
-        <li>Only <strong className="text-white">2-5%</strong> of matches result in an actual date</li>
-        <li>The average user makes <strong className="text-white">115 swipes</strong> per match</li>
-        <li><strong className="text-white">50%</strong> of male users receive almost no matches</li>
-      </ul>
-
-      <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Qulo&apos;s Solution: Question-Based Matching</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Qulo was designed to solve the fundamental problem with dating apps from the ground up.
-        By using a question-and-answer based matching system instead of swiping, it eliminates
-        superficiality and enables you to build meaningful connections.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">How Does It Work?</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        On Qulo, you create between 2 and 10 questions. These questions reflect your personality,
-        interests, and values. Other users attempt to answer your questions. You match with the
-        person who answers all your questions correctly. This system ensures that the person you
-        match with is genuinely compatible with you.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">Why Is It Better?</h3>
-      <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-        <li><strong className="text-white">Fewer but higher-quality matches:</strong> Not everyone matches, but those who do are truly compatible</li>
-        <li><strong className="text-white">Personality first:</strong> Thought patterns and values are your matching criteria, not physical appearance</li>
-        <li><strong className="text-white">Enjoyable process:</strong> Answering questions is far more engaging than endless swiping</li>
-        <li><strong className="text-white">Lower ghosting rates:</strong> People who invest effort in matching are more likely to maintain communication</li>
-      </ul>
-
-      <blockquote className="border-l-4 border-qulo-purple pl-4 my-8 italic text-qulo-text-secondary">
-        &quot;The questions you ask to get to know someone are worth more than hundreds of swipes.&quot;
-      </blockquote>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">How Is Quiz Dating Different?</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Quiz dating fundamentally differs from traditional dating app models. While swipe-based apps
-        are built around &quot;seeing,&quot; quiz dating is built around &quot;understanding.&quot; Asking questions to
-        get to know someone is the most natural way of forming human connections. Qulo brings this
-        natural process into the digital space.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        In traditional dating apps, matching criteria are typically limited to physical attractiveness,
-        age, and location. On Qulo, matching is based on the accuracy of answers to your questions.
-        This means the person you match with truly understands your mindset, interests, or values.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">How to Overcome Swipe Fatigue</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        If you&apos;re experiencing swipe fatigue, here are some suggestions:
-      </p>
-      <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-        <li>Limit your daily app usage time</li>
-        <li>Look at profiles more carefully — avoid auto-swiping</li>
-        <li>Take time to read bios</li>
-        <li>Make genuine efforts to communicate with your matches</li>
-        <li>Try alternative matching methods — <strong className="text-white">question-based apps like Qulo</strong> help you break free from the swipe cycle</li>
-      </ul>
-
-      <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Conclusion</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Swipe fatigue is one of the biggest problems in modern dating culture. The endless stream of
-        profiles, decision fatigue, and superficial matches are wearing people down. But the solution
-        isn&apos;t to give up on dating apps entirely. The solution is to change the matching method.
-        Qulo proves that meeting through questions is a more meaningful, more enjoyable, and more
-        sustainable path to genuine connection.
-      </p>
-    </>
-  );
-}
 
 function QuizDatingContent({ locale }: { locale: string }) {
   if (locale === "tr") {
@@ -1839,6 +1586,7 @@ const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
   "psychology-of-the-first-message": psychologyOfTheFirstMessage,
   "the-question-deficit": theQuestionDeficit,
   "dating-apps-without-swiping": datingAppsWithoutSwiping,
+  "what-is-swipe-fatigue": whatIsSwipeFatigue,
 };
 
 /** Word count of a structured article, or undefined for legacy JSX posts. */
@@ -1859,8 +1607,6 @@ function BlogContent({ slug, locale }: { slug: string; locale: string }) {
   }
 
   switch (slug) {
-    case "what-is-swipe-fatigue":
-      return <SwipeFatigueContent locale={locale} />;
     case "quiz-dating-future-of-matching":
       return <QuizDatingContent locale={locale} />;
     case "online-dating-safety-tips":
