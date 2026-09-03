@@ -15,7 +15,7 @@ import {
 import { ogImages } from "@/lib/seo/openGraph";
 import {
   FORBES_ONEPOLL_2024,
-  HINGE_GENZ_2025,
+  HUANG_JPSP_2017,
   type StatSource,
 } from "@/lib/constants/stats";
 import { SourceLine } from "@/components/shared/SourceLine";
@@ -165,8 +165,8 @@ const COPY_TR: LocaleCopy = {
   trends: [
     {
       title: "Quiz Dating Yükselişi",
-      body: "Kullanıcılar swipe yerine soru-cevap tabanlı eşleşmeye yöneliyor. Hinge'in 2025 Gen Z raporunda kullanıcıların %85'i, kendilerine düşünceli sorular sorulduğunda ikinci bir buluşmayı daha çok istediklerini söyledi.",
-      source: HINGE_GENZ_2025,
+      body: "Kullanıcılar swipe yerine soru-cevap tabanlı eşleşmeye yöneliyor. Journal of Personality and Social Psychology'de yayımlanan 2017 tarihli bir çalışmada hızlı tanışma etkinliklerinden 1.961 gerçek ikinci buluşma kararı incelendi: karşısındakinin az önce söylediğinin üzerine takip sorusu soranlar, daha fazla ikinci buluşma daveti aldı.",
+      source: HUANG_JPSP_2017,
     },
     {
       title: "Swipe Yorgunluğu Zirvesinde",
@@ -246,8 +246,8 @@ const COPY_EN: LocaleCopy = {
   trends: [
     {
       title: "Rise of Quiz Dating",
-      body: "Users are moving from swiping toward question-based matching. In Hinge's 2025 Gen Z report, 85% of daters said they are more likely to want a second date when they are asked thoughtful questions.",
-      source: HINGE_GENZ_2025,
+      body: "Users are moving from swiping toward question-based matching. A 2017 study in the Journal of Personality and Social Psychology analysed 1,961 real second-date decisions from speed-dating events and found that people who asked more follow-up questions — the ones that build on what the other person just said — were more likely to be asked out again.",
+      source: HUANG_JPSP_2017,
     },
     {
       title: "Swipe Fatigue at Peak",

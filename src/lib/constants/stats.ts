@@ -7,6 +7,12 @@
  * not a gap to fill later. If a claim cannot be sourced, delete it rather than
  * hunting for a source that fits.
  *
+ * RULE: Qulo is the only dating app that may be named on this site. Never cite a
+ * dating app as a source, not even neutrally. If a claim can only be sourced to
+ * one, delete the claim and its figure together — never strip the attribution
+ * and keep the number, which is how an unsourced statistic gets laundered into
+ * a "fact".
+ *
  * Every figure below was verified against the primary source on 2026-09-01.
  */
 
@@ -57,14 +63,6 @@ export const FORBES_ONEPOLL_2024: StatSource = {
   url: "https://www.globaldatinginsights.com/news/new-forbes-study-explores-dating-app-burnout/",
   sample:
     "n=1,000 US adults who used a dating app in the past year \u00b7 fielded 27 March \u2013 1 April 2024 \u00b7 MoE \u00b13.1pp",
-};
-
-export const HINGE_GENZ_2025: StatSource = {
-  publisher: "Hinge",
-  title: "2025 Gen Z D.A.T.E. Report",
-  date: "19 November 2025",
-  url: "https://hinge.co/newsroom/2025-GenZ-Report",
-  sample: "~30,000 Hinge daters surveyed worldwide in 2025",
 };
 
 export const HUANG_JPSP_2017: StatSource = {
@@ -219,76 +217,6 @@ export const STAT_CATEGORIES: StatCategory[] = [
       hi: "सवाल पूछने की ताकत",
     },
     stats: [
-      {
-        category: "questions",
-        value: "85%",
-        labels: {
-          tr: "Düşünceli sorular sorulduğunda ikinci bir buluşma isteme olasılığı artan Gen Z kullanıcı oranı",
-          en: "Of daters are more likely to want a second date when they are asked thoughtful questions",
-          de: "der Datenden wollen eher ein zweites Date, wenn ihnen durchdachte Fragen gestellt werden",
-          fr: "des célibataires ont davantage envie d'un deuxième rendez-vous lorsqu'on leur pose des questions réfléchies",
-          es: "de quienes tienen citas quiere más una segunda cita cuando le hacen preguntas bien pensadas",
-          ar: "من المواعدين تزداد رغبتهم في موعد ثانٍ عندما تُطرح عليهم أسئلة مدروسة",
-          ru: "участников свиданий чаще хотят второго свидания, когда им задают продуманные вопросы",
-          pt: "de quem sai para encontros tem mais vontade de um segundo encontro quando lhe fazem perguntas atenciosas",
-          it: "di chi esce ad appuntamenti desidera più spesso un secondo incontro quando riceve domande ponderate",
-          ja: "の利用者は、思慮深い質問をされると次のデートを望む傾向が強まる",
-          ko: "의 이용자는 사려 깊은 질문을 받으면 다음 데이트를 원할 가능성이 높아짐",
-          zh: "的用户在被问到用心的问题时，更愿意再约一次",
-          nl: "van de daters wil eerder een tweede date wanneer hun doordachte vragen worden gesteld",
-          pl: "randkujących chętniej chce kolejnej randki, gdy zadaje im się przemyślane pytania",
-          sv: "av dejtarna vill hellre ha en andra dejt när de får genomtänkta frågor",
-          hi: "डेटिंग करने वालों को सोच-समझकर सवाल पूछे जाने पर दूसरी डेट की चाह ज़्यादा होती है",
-        },
-        source: HINGE_GENZ_2025,
-        highlight: true,
-      },
-      {
-        category: "questions",
-        value: "62% / 30%",
-        labels: {
-          tr: "Yeterince soru sorduğunu düşünen heteroseksüel Gen Z kullanıcı oranı %62; karşısındakinin yeterince sorduğunu hissedenler yalnızca %30",
-          en: "62% of heterosexual Gen Z daters think they ask enough questions — but only 30% feel their dates do",
-          de: "62% der heterosexuellen Singles aus der Gen Z glauben, genug Fragen zu stellen — aber nur 30% finden, dass ihre Dates das tun",
-          fr: "62% des célibataires hétérosexuels de la Gen Z pensent poser assez de questions — mais seuls 30% estiment que leurs rendez-vous le font",
-          es: "el 62% de los solteros heterosexuales de la Gen Z cree que hace suficientes preguntas, pero solo el 30% siente que sus citas las hagan",
-          ar: "62% من المواعدين المغايرين جنسيًا في جيل Gen Z يعتقدون أنهم يطرحون أسئلة كافية — لكن 30% فقط يشعرون بأن الطرف الآخر يفعل ذلك",
-          ru: "62% гетеросексуальных представителей Gen Z считают, что задают достаточно вопросов, — но лишь 30% чувствуют, что так же поступают их собеседники",
-          pt: "62% de quem sai para encontros heterossexuais na Gen Z acha que faz perguntas suficientes — mas só 30% sentem que seus encontros fazem",
-          it: "il 62% dei single eterosessuali della Gen Z pensa di fare abbastanza domande, ma solo il 30% sente che lo facciano anche gli altri",
-          ja: "異性愛者のGen Z利用者の62%は自分は十分に質問していると考えているが、相手もそうだと感じている人は30%にとどまる",
-          ko: "이성애자 Gen Z 이용자의 62%는 자신이 충분히 질문한다고 생각하지만, 상대도 그렇다고 느끼는 사람은 30%뿐",
-          zh: "62%的异性恋Gen Z用户认为自己问了足够多的问题，但只有30%觉得对方也这样做",
-          nl: "62% van de heteroseksuele Gen Z-daters denkt genoeg vragen te stellen — maar slechts 30% vindt dat hun dates dat doen",
-          pl: "62% heteroseksualnych randkujących z pokolenia Gen Z uważa, że zadaje wystarczająco dużo pytań — ale tylko 30% czuje, że robią to ich partnerzy",
-          sv: "62% av de heterosexuella Gen Z-dejtarna tycker att de ställer tillräckligt med frågor — men bara 30% upplever att deras dejter gör det",
-          hi: "Gen Z के 62% विषमलैंगिक लोग मानते हैं कि वे पर्याप्त सवाल पूछते हैं, लेकिन सिर्फ 30% को लगता है कि उनके डेट भी ऐसा करते हैं",
-        },
-        source: HINGE_GENZ_2025,
-      },
-      {
-        category: "questions",
-        value: "61%",
-        labels: {
-          tr: "En çok işe yarayan soru tipi: söylenen bir şeyin üzerine gelen takip sorusu (ilgi alanları %50, değerler %49)",
-          en: "Name follow-up questions as the type that lands best — ahead of interests (50%) and values (49%)",
-          de: "nennen Nachfragen als die Fragenart, die am besten ankommt — vor Interessen (50%) und Werten (49%)",
-          fr: "citent les questions de relance comme le type qui fonctionne le mieux, devant les centres d'intérêt (50%) et les valeurs (49%)",
-          es: "menciona las preguntas de seguimiento como el tipo que mejor funciona, por delante de los intereses (50%) y los valores (49%)",
-          ar: "يذكرون أسئلة المتابعة باعتبارها النوع الأكثر نجاحًا — متقدمة على الاهتمامات (50%) والقيم (49%)",
-          ru: "называют уточняющие вопросы самым удачным типом — впереди интересов (50%) и ценностей (49%)",
-          pt: "citam perguntas de acompanhamento como o tipo que funciona melhor — à frente de interesses (50%) e valores (49%)",
-          it: "indica le domande di approfondimento come il tipo che funziona meglio, davanti a interessi (50%) e valori (49%)",
-          ja: "が最も効果的な質問として深掘りの追加質問を挙げた。興味・関心（50%）や価値観（49%）を上回る",
-          ko: "가 가장 효과적인 질문 유형으로 후속 질문을 꼽음 — 관심사(50%)와 가치관(49%)보다 앞섬",
-          zh: "的人认为追问是最奏效的提问方式，领先于兴趣（50%）和价值观（49%）",
-          nl: "noemt vervolgvragen als het type dat het beste werkt — vóór interesses (50%) en waarden (49%)",
-          pl: "wskazuje pytania pogłębiające jako typ, który działa najlepiej — przed zainteresowaniami (50%) i wartościami (49%)",
-          sv: "nämner följdfrågor som den typ som fungerar bäst — före intressen (50%) och värderingar (49%)",
-          hi: "फ़ॉलो-अप सवालों को सबसे कारगर मानते हैं — रुचियों (50%) और मूल्यों (49%) से आगे",
-        },
-        source: HINGE_GENZ_2025,
-      },
       {
         category: "questions",
         value: "1,961",
