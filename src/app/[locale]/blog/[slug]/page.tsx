@@ -18,6 +18,7 @@ import { theQuestionDeficit } from "./_content/the-question-deficit";
 import { datingAppsWithoutSwiping } from "./_content/dating-apps-without-swiping";
 import { whatIsSwipeFatigue } from "./_content/what-is-swipe-fatigue";
 import { quizDatingFutureOfMatching } from "./_content/quiz-dating-future-of-matching";
+import { onlineDatingSafetyTips } from "./_content/online-dating-safety-tips";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -123,272 +124,6 @@ const READ_LABELS: Record<string, { readTime: string; backToBlog: string; relate
 /* ------------------------------------------------------------------ */
 /*  Legacy article content components (per-locale JSX, tr + en only)   */
 /* ------------------------------------------------------------------ */
-
-function SafetyTipsContent({ locale }: { locale: string }) {
-  if (locale === "tr") {
-    return (
-      <>
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Neden Online Dating Guvenligi Onemli?</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Online dating, milyonlarca insanin hayat arkadasini bulmasina yardimci olmustur. Ancak
-          dijital tanisma ortami, bazi riskleri de beraberinde getirir. Sahte profiller, dolandiricilik
-          girisimleri ve kisisel guvenlik tehditleri, bilincli kullanicilar tarafindan kolayca
-          onlenebilir. Bu rehber, online dating deneyiminizi guvenli ve keyifli tutmaniz icin
-          bilmeniz gereken her seyi kapsamaktadir.
-        </p>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Istatistiklere gore, dating uygulamasi kullanicilarinin yaklasik %53&apos;u en az bir kez
-          profil bilgilerinde yalan soyleyen biriyle karsilasmistir. Ayrica romance scam (ask
-          dolandiricilik) vakalari her yil artmaktadir. Ancak dogru onlemleri aldiginizda, online
-          dating oldukca guvenli bir deneyim olabilir.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">10 Altin Kural</h2>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">1. Profil Fotograflarinizi Akillica Secin</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Profil fotograflariniz sizi tanitirken, kisisel guvenliginizi de korumalidir. Ev adresinizi,
-          is yerinizi veya duzenli olarak gittiginiz yerleri belli edecek fotograflar kullanmaktan
-          kacinin. Arabanizin plakasi, evinizdeki adres etiketi veya is kartiniz gibi detaylar
-          fotograflarda gorunmemelidir. Genel ve taninabilir arka planlar yerine, notr ortamlari
-          tercih edin.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">2. Kisisel Bilgilerinizi Koruyun</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Ilk mesajlasmalarda tam adinizi, ev adresinizi, is adresinizi veya finansal bilgilerinizi
-          paslasmayin. Soyadiniz bile sizin hakkinizda sosyal medya uzerinden cok fazla bilgiye
-          ulasilmasina yol acabilir. Guven insa edilene kadar sadece ilk adinizi kullanin ve
-          detayli kisisel bilgileri yuz yuze paylasmayi tercih edin.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">3. Uygulama Ici Mesajlasmayi Tercih Edin</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Tanisma surecinin basinda kisisel telefon numaranizi veya sosyal medya hesaplarinizi
-          paylasmaktan kacinin. Dating uygulamalari genellikle mesaj filtreleme ve raporlama
-          ozellikleri sunar. Bu ozellikler, sorunlu davranislari tespit etmenize ve gerekirse
-          kullaniciyi engellemenize yardimci olur. Kisisel iletisim bilgilerinizi ancak birkac
-          goruntulu arama veya yuz yuze bulusma sonrasi paylasin.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">4. Ilk Bulusmada Halka Acik Yerler Secin</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Ilk bulusmaniz her zaman halka acik, kalabalik bir yerde olmalidir. Kafeler, restoranlar
-          ve alisveris merkezleri iyi seceneklerdir. Karsi tarafin evinize gelmesini veya sizi
-          evine davet etmesini kabul etmeyin. Kendiniz ulasabileceginiz bir konum secin —
-          karsi tarafin aracina binmek ilk bulusma icin uygun degildir.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">5. Bir Yakininizi Bilgilendirin</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Bulusmaya gitmeden once guvendiginiz bir arkadasiniza veya aile uyenize bulusma
-          detaylarini (yer, saat, karsi tarafin adi) bildirin. Bulusma sirasinda periyodik olarak
-          mesaj atin veya &quot;guvenlik check-in&quot; zamani ayarlayin. Bazi uygulamalar bu amacla
-          yerlesik guvenlik ozellikleri sunar.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">6. Goruntulu Arama ile Dogrulayin</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Yuz yuze bulusmadan once en az bir goruntulu arama yapin. Bu, karsi tarafin profil
-          fotograflariyla uyumlu oldugunu dogrulamanizi saglar. Catfishing (sahte profil) vakalarinin
-          cogu goruntulu arama asamasinda ortaya cikar. Goruntulu aramayi surekli reddeden birisi
-          ciddi bir uyari isaretidir.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">7. Alkol ve Madde Tuketimine Dikkat Edin</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Ilk bulusmalarda alkol tuketimini minimum tutun veya tamamen kacinin. Alkol karar verme
-          yetinizi olumsuz etkiler ve potansiyel riskleri fark etmenizi zorlastirir. Iceceginizi
-          her zaman kendiniz siparis edin ve gozunuzun onunde hazirlanmasini saglayin. Iceceginizi
-          asla basibosbirakin.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">8. Finansal Tuzaklara Dusmeyin</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Tanisma surecinde para istemek veya finansal bilgi talep etmek en yaygin dolandiricilik
-          yontemlerinden biridir. Henuz tanismadiginiz birine asla para gondermeyin, banka
-          bilgilerinizi paylasmayin veya finansal yardim tekliflerini kabul etmeyin. &quot;Acil durum&quot;
-          bahane eden para talepleri, tanisma surecinin hangi asamasinda olursa olsun red flag&apos;tir.
-        </p>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">9. Red Flag&apos;leri Taniyin</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Bazi davranislar ciddi uyari isaretleridir ve gormezden gelinmemelidir:
-        </p>
-        <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-          <li>Hizla &quot;asik oldugunu&quot; iddia etmek (love bombing)</li>
-          <li>Surekli goruntulu aramayi reddetmek</li>
-          <li>Finansal bilgi veya para istemek</li>
-          <li>Kontrolcu davranislar sergilemek (surekli nerede oldugunuzu sormak)</li>
-          <li>Gecmisi hakkinda tutarsiz bilgiler vermek</li>
-          <li>Sosyal medya hesabi olmamak veya cok yeni bir hesap</li>
-          <li>Bulusma yerini surekli degistirmek veya izole yerleri tercih etmek</li>
-        </ul>
-
-        <h3 className="text-xl font-semibold text-white mb-3 mt-6">10. Uygulamanin Guvenlik Ozelliklerini Kullanin</h3>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Guvenilir dating uygulamalari engelleme, raporlama ve profil dogrulama gibi guvenlik
-          ozellikleri sunar. Rahatsiz edici bir davranisla karsilastiginizda tereddut etmeden
-          bu ozellikleri kullanin. Qulo gibi uygulamalar, guvenligi temel bir ozellik olarak
-          sunar ve kullanicilari korumak icin surekli olarak guvenlik altyapisini guclendirir.
-        </p>
-
-        <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Qulo&apos;nun Guvenlik Ozellikleri</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Qulo, kullanici guvenligini en ust duzeyde tutmak icin tasarlanmistir. Iste Qulo&apos;nun
-          sundugu guvenlik ozellikleri:
-        </p>
-        <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-          <li><strong className="text-white">Profil dogrulama:</strong> Kullanicilarin gercek kisiler oldugunu dogrulayan sistem</li>
-          <li><strong className="text-white">Engelleme ve raporlama:</strong> Tek dokunusla kullanici engelleme ve uygunsuz davranis raporlama</li>
-          <li><strong className="text-white">Sifreli mesajlasma:</strong> Tum mesajlar sifrelenerek korunur</li>
-          <li><strong className="text-white">Soru tabanli filtreleme:</strong> Swipe tabanli uygulamalarin aksine, Qulo&apos;da eslesmek efor gerektirir — bu da spam ve sahte profilleri dogal olarak filtreler</li>
-        </ul>
-
-        <blockquote className="border-l-4 border-qulo-purple pl-4 my-8 italic text-qulo-text-secondary">
-          &quot;Guvenlik bir ozellik degil, bir haktir. Qulo&apos;da guvenliginiz her zaman onceligimizdir.&quot;
-        </blockquote>
-
-        <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Sonuc: Guvenle Tanisin</h2>
-        <p className="text-qulo-text-secondary leading-relaxed mb-4">
-          Online dating, dogru yaklasimla guvenli ve keyifli bir deneyim olabilir. Bu 10 altin
-          kurali hatirlayarak ve sagduyunuzu kullanarak, potansiyel riskleri minimize edebilir ve
-          anlamli baglantilar kurabilirsiniz. Unutmayin: guvenliginiz her zaman romantizmden
-          once gelir. Qulo ile guvenle tanisin, sorularla eslesin.
-        </p>
-      </>
-    );
-  }
-
-  // English (default fallback)
-  return (
-    <>
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Why Is Online Dating Safety Important?</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Online dating has helped millions of people find their partners. However, the digital
-        dating environment also comes with certain risks. Fake profiles, scam attempts, and personal
-        safety threats can be easily prevented by informed users. This guide covers everything you
-        need to know to keep your online dating experience safe and enjoyable.
-      </p>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        According to statistics, approximately 53% of dating app users have encountered someone
-        who lied in their profile information at least once. Additionally, romance scam cases are
-        increasing every year. However, when you take the right precautions, online dating can be
-        a very safe experience.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">10 Golden Rules</h2>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">1. Choose Your Profile Photos Wisely</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Your profile photos should introduce you while also protecting your personal safety. Avoid
-        using photos that reveal your home address, workplace, or places you regularly visit. Details
-        like your car&apos;s license plate, address labels at home, or business cards should not be
-        visible in photos. Prefer neutral settings over recognizable locations.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">2. Protect Your Personal Information</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        During initial conversations, don&apos;t share your full name, home address, work address, or
-        financial information. Even your last name can lead to extensive information about you
-        through social media. Use only your first name until trust is established, and prefer
-        sharing detailed personal information face to face.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">3. Prefer In-App Messaging</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Avoid sharing your personal phone number or social media accounts early in the getting-to-know
-        process. Dating apps typically offer message filtering and reporting features. These features
-        help you detect problematic behavior and block users if necessary. Share personal contact
-        information only after several video calls or in-person meetings.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">4. Choose Public Places for First Dates</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Your first date should always be in a public, busy place. Cafes, restaurants, and shopping
-        centers are good options. Don&apos;t accept invitations to their home or allow them to come to
-        yours. Choose a location you can get to on your own — getting in the other person&apos;s car
-        is not appropriate for a first date.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">5. Inform Someone You Trust</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Before going on a date, share the details (location, time, the other person&apos;s name) with
-        a trusted friend or family member. Send periodic messages during the date or set up a
-        &quot;safety check-in&quot; time. Some apps offer built-in safety features for this purpose.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">6. Verify Through Video Calls</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Have at least one video call before meeting in person. This allows you to verify that the
-        other person matches their profile photos. Most catfishing cases are revealed during the
-        video call stage. Someone who consistently refuses video calls is a serious red flag.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">7. Be Cautious with Alcohol and Substances</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Keep alcohol consumption to a minimum on first dates or avoid it entirely. Alcohol negatively
-        affects your decision-making ability and makes it harder to notice potential risks. Always
-        order your own drinks and make sure they are prepared in your line of sight. Never leave
-        your drink unattended.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">8. Don&apos;t Fall for Financial Traps</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Asking for money or requesting financial information during the getting-to-know process is
-        one of the most common scam methods. Never send money to someone you haven&apos;t met in person,
-        don&apos;t share banking information, and don&apos;t accept financial assistance offers. Money requests
-        using &quot;emergency&quot; excuses are a red flag regardless of the stage of your relationship.
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">9. Recognize Red Flags</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Certain behaviors are serious warning signs that should not be ignored:
-      </p>
-      <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-        <li>Claiming to be &quot;in love&quot; very quickly (love bombing)</li>
-        <li>Consistently refusing video calls</li>
-        <li>Requesting financial information or money</li>
-        <li>Displaying controlling behavior (constantly asking where you are)</li>
-        <li>Providing inconsistent information about their past</li>
-        <li>Having no social media accounts or very new accounts</li>
-        <li>Constantly changing meeting locations or preferring isolated places</li>
-      </ul>
-
-      <h3 className="text-xl font-semibold text-white mb-3 mt-6">10. Use the App&apos;s Safety Features</h3>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Trustworthy dating apps offer safety features such as blocking, reporting, and profile
-        verification. Don&apos;t hesitate to use these features when you encounter disturbing behavior.
-        Apps like Qulo offer safety as a core feature and continuously strengthen their security
-        infrastructure to protect users.
-      </p>
-
-      <h2 className="text-2xl font-bold text-qulo-purple mb-4 mt-10">Qulo&apos;s Safety Features</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Qulo is designed to maintain the highest level of user safety. Here are the safety features
-        Qulo offers:
-      </p>
-      <ul className="list-disc list-inside text-qulo-text-secondary space-y-2 mb-4">
-        <li><strong className="text-white">Profile verification:</strong> A system that verifies users are real people</li>
-        <li><strong className="text-white">Blocking and reporting:</strong> One-tap user blocking and inappropriate behavior reporting</li>
-        <li><strong className="text-white">Encrypted messaging:</strong> All messages are encrypted and protected</li>
-        <li><strong className="text-white">Question-based filtering:</strong> Unlike swipe-based apps, matching on Qulo requires effort — naturally filtering spam and fake profiles</li>
-      </ul>
-
-      <blockquote className="border-l-4 border-qulo-purple pl-4 my-8 italic text-qulo-text-secondary">
-        &quot;Safety is not a feature — it&apos;s a right. Your safety is always our priority at Qulo.&quot;
-      </blockquote>
-
-      <h2 className="text-2xl font-bold text-qulo-green mb-4 mt-10">Conclusion: Date Safely</h2>
-      <p className="text-qulo-text-secondary leading-relaxed mb-4">
-        Online dating can be a safe and enjoyable experience with the right approach. By remembering
-        these 10 golden rules and using common sense, you can minimize potential risks and build
-        meaningful connections. Remember: your safety always comes before romance. Meet safely
-        with Qulo, match through questions.
-      </p>
-    </>
-  );
-}
 
 function DatingBurnoutContent({ locale }: { locale: string }) {
   if (locale === "tr") {
@@ -1338,7 +1073,7 @@ function MatchingScienceContent({ locale }: { locale: string }) {
 /**
  * Posts authored as structured data, fully translated into all 16 locales.
  * New posts go here; the switch below is the legacy per-locale JSX pattern kept
- * for the 4 posts still written before `ArticleBlocks` existed.
+ * for the 3 posts still written before `ArticleBlocks` existed.
  */
 const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
   "what-actually-predicts-compatibility": whatActuallyPredictsCompatibility,
@@ -1347,6 +1082,7 @@ const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
   "dating-apps-without-swiping": datingAppsWithoutSwiping,
   "what-is-swipe-fatigue": whatIsSwipeFatigue,
   "quiz-dating-future-of-matching": quizDatingFutureOfMatching,
+  "online-dating-safety-tips": onlineDatingSafetyTips,
 };
 
 /** Word count of a structured article, or undefined for legacy JSX posts. */
@@ -1367,8 +1103,6 @@ function BlogContent({ slug, locale }: { slug: string; locale: string }) {
   }
 
   switch (slug) {
-    case "online-dating-safety-tips":
-      return <SafetyTipsContent locale={locale} />;
     case "dating-app-burnout-signs":
       return <DatingBurnoutContent locale={locale} />;
     case "quiz-dating-for-introverts":
