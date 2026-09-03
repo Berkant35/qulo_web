@@ -5,6 +5,8 @@ import { locales, rtlLocales, type Locale } from "@/lib/i18n/config";
 import { SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { JsonLd } from "@/components/shared/JsonLd";
+import { RootHtml } from "@/components/layout/RootHtml";
+import { ROOT_METADATA } from "@/lib/constants/rootMetadata";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -31,6 +33,7 @@ export async function generateMetadata({
   languages["x-default"] = `${SITE_URL}/tr`;
 
   return {
+    ...ROOT_METADATA,
     title: seo.title,
     description: seo.description,
     alternates: {
@@ -68,7 +71,6 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   const dir = rtlLocales.includes(locale) ? "rtl" : "ltr";
-  const langScript = `document.documentElement.lang="${locale}";document.documentElement.dir="${dir}";`;
 
   const seoData = SEO[locale as Locale] || SEO.en;
   const jsonLd = [
@@ -129,12 +131,12 @@ export default async function LocaleLayout({
   ];
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
-      {/* Set lang/dir on <html> for static export — locale is a static param from generateStaticParams, not user input */}
-      <script dangerouslySetInnerHTML={{ __html: langScript }} />
-      {/* JSON-LD structured data — static server constants only, no user input */}
-      <JsonLd data={jsonLd} />
-      {children}
-    </NextIntlClientProvider>
+    <RootHtml lang={locale} dir={dir}>
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        {/* JSON-LD structured data — static server constants only, no user input */}
+        <JsonLd data={jsonLd} />
+        {children}
+      </NextIntlClientProvider>
+    </RootHtml>
   );
 }
