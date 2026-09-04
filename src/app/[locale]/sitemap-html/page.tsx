@@ -184,6 +184,7 @@ export default async function SitemapHtmlPage({
     { href: `/${locale}/how-to`, label: t("howto") },
     { href: `/${locale}/blog`, label: t("blog") },
     { href: `/${locale}/answers`, label: t("answers") },
+    { href: `/${locale}/questions`, label: t("questions") },
     { href: `/${locale}/glossary`, label: t("glossary") },
     { href: `/${locale}/pricing`, label: t("pricing") },
     { href: `/${locale}/dating-statistics`, label: t("statistics") },

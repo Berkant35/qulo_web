@@ -34,7 +34,7 @@ const PRIORITY_RULES = [
   // Leaf content — the pages that answer a specific query and are the ones
   // worth landing on directly.
   { test: (path) => /\/(blog|advice|how-to|answers|glossary)\/[^/]+\/?$/.test(path), priority: 0.9, changefreq: "monthly" },
-  { test: (path) => /\/(blog|glossary|answers|dating-statistics|trends)/.test(path), priority: 0.8, changefreq: "weekly" },
+  { test: (path) => /\/(blog|glossary|answers|questions|dating-statistics|trends)/.test(path), priority: 0.8, changefreq: "weekly" },
   { test: (path) => /\/(features|pricing|help|about)/.test(path), priority: 0.8, changefreq: "monthly" },
 ];
 

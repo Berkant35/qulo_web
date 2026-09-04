@@ -15,7 +15,10 @@
     "verify:brand": "node scripts/verify-brand.mjs",
     "verify": "npm run verify:content && npm run verify:glossary && npm run verify:brand && npm run verify:claims && npm run verify:press",
     "verify:claims": "node scripts/verify-claims.mjs",
-    "verify:press": "node scripts/verify-press-assets.mjs"
+    "verify:press": "node scripts/verify-press-assets.mjs",
+    "verify:links": "node scripts/verify-links.mjs",
+    "import:questions": "node scripts/import-example-questions.mjs",
+    "verify:all": "npm run verify && npm run verify:links"
   },
   "dependencies": {
     "clsx": "^2.1.1",
