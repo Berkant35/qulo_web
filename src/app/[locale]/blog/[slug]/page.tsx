@@ -22,6 +22,7 @@ import { onlineDatingSafetyTips } from "./_content/online-dating-safety-tips";
 import { quizDatingForIntroverts } from "./_content/quiz-dating-for-introverts";
 import { datingAppBurnoutSigns } from "./_content/dating-app-burnout-signs";
 import { scienceBehindQuestionBasedMatching } from "./_content/science-behind-question-based-matching";
+import { isCuffingSeasonReal } from "./_content/is-cuffing-season-real";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -133,6 +134,7 @@ const READ_LABELS: Record<string, { readTime: string; backToBlog: string; relate
  * locales. New posts go here; there is no per-locale JSX fallback any more.
  */
 const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
+  "is-cuffing-season-real": isCuffingSeasonReal,
   "what-actually-predicts-compatibility": whatActuallyPredictsCompatibility,
   "psychology-of-the-first-message": psychologyOfTheFirstMessage,
   "the-question-deficit": theQuestionDeficit,
