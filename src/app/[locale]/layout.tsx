@@ -89,11 +89,11 @@ export default async function LocaleLayout({
       },
       featureList: [
         "Question-based matching",
-        "AI-powered question suggestions",
+        "Ready-made question suggestions",
         "16 language support",
         "Quiz dating",
         "Real-time chat",
-        "Voice and video calls",
+        "Voice messages in chat",
       ],
     },
     {

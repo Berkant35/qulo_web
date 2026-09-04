@@ -23,8 +23,9 @@ import type { LocalizedArticle } from "@/components/blog/ArticleBlocks";
  * `FORBES_ONEPOLL_2024` in `src/lib/constants/stats.ts`). The remaining numbers
  * in the body are prescriptive advice explicitly framed as examples (a 15-minute
  * window, ten profiles per session, a one-week detox, one or two apps) or real
- * product mechanics (two to ten questions, four options each) — neither is a
- * claim about the world, so neither needs a source. Do not reintroduce a
+ * product mechanics (two to four questions on the free plan, up to ten on a
+ * paid plan, four options each) — neither is a claim about the world, so
+ * neither needs a source. Do not reintroduce a
  * statistic here without a named primary source.
  *
  * Attribution policy: the legacy "Why It Happens" for Sign 1 opened with
@@ -33,8 +34,11 @@ import type { LocalizedArticle } from "@/components/blog/ArticleBlocks";
  * is removed; the mechanism is described without a name attached to it.
  *
  * Product-claim policy: the Qulo section describes only mechanisms that exist —
- * each member writes two to ten of their own questions with four options each,
- * and matching requires answering them all correctly. No automated moderation,
+ * each member writes two to four of their own questions — up to ten on a paid
+ * plan — with four options each, and matching requires answering them all
+ * correctly. The free-plan ceiling of four is the number this copy leads with;
+ * a range ending at ten is never written without naming the paid plan in the
+ * same sentence. No automated moderation,
  * photo screening, trust-and-safety team or ID verification is claimed, and the
  * old "the person who solves your questions is genuinely compatible" line is
  * softened to what the mechanic actually proves: they read what you wrote and
@@ -88,7 +92,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "Why It Happens" },
     { type: "p", text: "Brains habituate. Exposed to enough near-identical stimuli in a row, your capacity to notice individual differences drops — the differences are still there, you simply stop registering them. Swipe-based apps present every profile in one standardized format, which strips away most of the signal a person would otherwise give off. Everyone starts to look the same because you can no longer tell them apart." },
     { type: "h2", text: "What to Do" },
-    { type: "p", text: "Move to platforms where personality leads. On Qulo every member writes their own questions — between two and ten of them, each with four options — and those questions introduce a person far better than a photo can. What someone chooses to ask, and which three wrong answers they invent, says something about their humor, their attention and their values. It is very hard for two people to write the same set." },
+    { type: "p", text: "Move to platforms where personality leads. On Qulo every member writes their own questions — two to four of them, up to ten on a paid plan, each with four options — and those questions introduce a person far better than a photo can. What someone chooses to ask, and which three wrong answers they invent, says something about their humor, their attention and their values. It is very hard for two people to write the same set." },
 
     { type: "h2", text: "Sign 5: Preferring to Meet in Real Life" },
     { type: "h2", text: "How to Recognize It" },
@@ -99,7 +103,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "Treat meeting in real life and meeting online as complements rather than alternatives. Join hobby groups, go to events. On the digital side, pick platforms where the interaction itself feels less mechanical. Working through someone's questions on Qulo is closer to a conversation in a café than to sorting a deck of cards — which gives even a digital introduction something of the texture of a real one." },
 
     { type: "h2", accent: "green", text: "How Qulo Combats Burnout by Design" },
-    { type: "p", text: "Qulo was built around what actually causes dating app burnout. Every member writes between two and ten of their own questions, each with four options, and you match by answering all of them correctly. That single mechanic addresses most of what the swipe loop gets wrong:" },
+    { type: "p", text: "Qulo was built around what actually causes dating app burnout. Every member writes two to four of their own questions — up to ten on a paid plan — each with four options, and you match by answering all of them correctly. That single mechanic addresses most of what the swipe loop gets wrong:" },
     { type: "ul", items: [
       "**No infinite scroll:** every interaction is deliberate and finite",
       "**No autopilot:** solving a question requires actually thinking",
@@ -159,7 +163,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "Neden Olur?" },
     { type: "p", text: "Beyin alışır. Arka arkaya yeterince benzer uyarana maruz kaldığınızda bireysel farkları fark etme kapasiteniz düşer — farklar hâlâ oradadır, siz onları kaydetmeyi bırakırsınız. Kaydırma tabanlı uygulamalar her profili tek ve standart bir biçimde sunduğu için insanın verdiği sinyalin çoğu daha baştan silinir. Herkes aynı görünmeye başlar, çünkü artık birbirinden ayıramazsınız." },
     { type: "h2", text: "Ne Yapmalısınız?" },
-    { type: "p", text: "Kişiliğin öne çıktığı platformlara geçin. Qulo'da her üye kendi sorularını yazar — iki ile on arasında, her biri dört seçenekli — ve bu sorular bir insanı hiçbir fotoğrafın yapamayacağı kadar iyi tanıtır. Birinin ne sormayı seçtiği ve yanlış şıkları nasıl uydurduğu; mizahı, dikkati ve değerleri hakkında bir şey söyler. İki kişinin aynı soru setini yazması çok zordur." },
+    { type: "p", text: "Kişiliğin öne çıktığı platformlara geçin. Qulo'da her üye kendi sorularını yazar — iki ile dört arasında, ücretli planda ona kadar, her biri dört seçenekli — ve bu sorular bir insanı hiçbir fotoğrafın yapamayacağı kadar iyi tanıtır. Birinin ne sormayı seçtiği ve yanlış şıkları nasıl uydurduğu; mizahı, dikkati ve değerleri hakkında bir şey söyler. İki kişinin aynı soru setini yazması çok zordur." },
 
     { type: "h2", text: "Belirti 5: Gerçek Hayatta Tanışmayı Tercih Etme" },
     { type: "h2", text: "Nasıl Anlarsınız?" },
@@ -170,7 +174,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "Gerçek hayatta ve çevrimiçi tanışmayı birbirinin alternatifi değil, tamamlayıcısı olarak görün. Hobi gruplarına katılın, etkinliklere gidin. Dijital tarafta ise etkileşimin daha az mekanik hissettiği platformları seçin. Qulo'da birinin sorularını çözmek, bir deste kâğıdı ayıklamaktan çok bir kafe sohbetine benzer — bu da dijital bir tanışmaya bile gerçeğin dokusundan bir şey katar." },
 
     { type: "h2", accent: "green", text: "Qulo'nun Farkı: Tükenmişliği Azaltan Tasarım" },
-    { type: "p", text: "Qulo, dating uygulaması tükenmişliğine gerçekte neyin yol açtığı düşünülerek kuruldu. Her üye kendi sorularından iki ile on tanesini yazar, her biri dört seçeneklidir ve eşleşmek için hepsini doğru cevaplamanız gerekir. Bu tek mekanik, kaydırma döngüsünün yanlış yaptığı şeylerin çoğunu ortadan kaldırır:" },
+    { type: "p", text: "Qulo, dating uygulaması tükenmişliğine gerçekte neyin yol açtığı düşünülerek kuruldu. Her üye kendi sorularından iki ile dört tanesini yazar — ücretli planda ona kadar — her biri dört seçeneklidir ve eşleşmek için hepsini doğru cevaplamanız gerekir. Bu tek mekanik, kaydırma döngüsünün yanlış yaptığı şeylerin çoğunu ortadan kaldırır:" },
     { type: "ul", items: [
       "**Sonsuz kaydırma yok:** her etkileşim bilinçli ve sınırlı",
       "**Otomatik pilot yok:** soru çözmek gerçekten düşünmeyi gerektirir",
@@ -230,7 +234,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "Warum es passiert" },
     { type: "p", text: "Gehirne gewöhnen sich. Wenn Sie genug fast identischen Reizen hintereinander ausgesetzt sind, sinkt Ihre Fähigkeit, individuelle Unterschiede wahrzunehmen — die Unterschiede sind noch da, Sie registrieren sie nur nicht mehr. Wisch-basierte Apps präsentieren jedes Profil in einem einzigen standardisierten Format, was den größten Teil des Signals wegnimmt, das ein Mensch sonst aussendet. Alle beginnen gleich auszusehen, weil Sie sie nicht mehr auseinanderhalten können." },
     { type: "h2", text: "Was Sie tun können" },
-    { type: "p", text: "Wechseln Sie zu Plattformen, auf denen die Persönlichkeit vorangeht. Bei Qulo schreibt jedes Mitglied eigene Fragen — zwischen zwei und zehn, jede mit vier Antwortmöglichkeiten — und diese Fragen stellen einen Menschen weit besser vor, als ein Foto es kann. Was jemand zu fragen wählt und welche drei falschen Antworten er sich ausdenkt, sagt etwas über Humor, Aufmerksamkeit und Werte. Dass zwei Menschen denselben Satz Fragen schreiben, ist sehr unwahrscheinlich." },
+    { type: "p", text: "Wechseln Sie zu Plattformen, auf denen die Persönlichkeit vorangeht. Bei Qulo schreibt jedes Mitglied eigene Fragen — zwischen zwei und vier, im kostenpflichtigen Tarif bis zu zehn, jede mit vier Antwortmöglichkeiten — und diese Fragen stellen einen Menschen weit besser vor, als ein Foto es kann. Was jemand zu fragen wählt und welche drei falschen Antworten er sich ausdenkt, sagt etwas über Humor, Aufmerksamkeit und Werte. Dass zwei Menschen denselben Satz Fragen schreiben, ist sehr unwahrscheinlich." },
 
     { type: "h2", text: "Anzeichen 5: Lieber im echten Leben kennenlernen" },
     { type: "h2", text: "Woran Sie es erkennen" },
@@ -241,7 +245,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "Betrachten Sie das Kennenlernen im echten Leben und online nicht als Alternativen, sondern als Ergänzung. Treten Sie Hobbygruppen bei, gehen Sie zu Veranstaltungen. Wählen Sie auf der digitalen Seite Plattformen, auf denen sich die Interaktion selbst weniger mechanisch anfühlt. Sich bei Qulo durch die Fragen eines Menschen zu arbeiten, ist einem Gespräch im Café näher als dem Sortieren eines Kartenstapels — und das gibt selbst einer digitalen Begegnung etwas von der Textur einer echten." },
 
     { type: "h2", accent: "green", text: "Wie Qulo Burnout schon im Design entgegenwirkt" },
-    { type: "p", text: "Qulo ist um die Frage herum gebaut, was Dating-App-Burnout tatsächlich verursacht. Jedes Mitglied schreibt zwischen zwei und zehn eigene Fragen mit je vier Antwortmöglichkeiten, und ein Match entsteht, wenn man alle richtig beantwortet. Diese eine Mechanik adressiert das meiste, was die Wisch-Schleife falsch macht:" },
+    { type: "p", text: "Qulo ist um die Frage herum gebaut, was Dating-App-Burnout tatsächlich verursacht. Jedes Mitglied schreibt zwischen zwei und vier eigene Fragen — im kostenpflichtigen Tarif bis zu zehn — mit je vier Antwortmöglichkeiten, und ein Match entsteht, wenn man alle richtig beantwortet. Diese eine Mechanik adressiert das meiste, was die Wisch-Schleife falsch macht:" },
     { type: "ul", items: [
       "**Kein endloses Scrollen:** jede Interaktion ist bewusst und endlich",
       "**Kein Autopilot:** eine Frage zu lösen verlangt tatsächliches Nachdenken",
@@ -301,7 +305,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "Pourquoi cela arrive" },
     { type: "p", text: "Le cerveau s'habitue. Exposé à assez de stimuli quasi identiques à la suite, il perd sa capacité à percevoir les différences individuelles — elles sont toujours là, vous cessez simplement de les enregistrer. Les applis fondées sur le balayage présentent chaque profil dans un format unique et standardisé, ce qui efface l'essentiel du signal qu'une personne émettrait autrement. Tout le monde se met à se ressembler parce que vous ne distinguez plus rien." },
     { type: "h2", text: "Quoi faire" },
-    { type: "p", text: "Passez à des plateformes où la personnalité prime. Sur Qulo, chaque membre écrit ses propres questions — entre deux et dix, chacune avec quatre options — et ces questions présentent une personne bien mieux qu'une photo. Ce que quelqu'un choisit de demander, et les trois mauvaises réponses qu'il invente, disent quelque chose de son humour, de son attention et de ses valeurs. Il est très difficile que deux personnes écrivent le même ensemble." },
+    { type: "p", text: "Passez à des plateformes où la personnalité prime. Sur Qulo, chaque membre écrit ses propres questions — entre deux et quatre, jusqu'à dix avec un abonnement payant, chacune avec quatre options — et ces questions présentent une personne bien mieux qu'une photo. Ce que quelqu'un choisit de demander, et les trois mauvaises réponses qu'il invente, disent quelque chose de son humour, de son attention et de ses valeurs. Il est très difficile que deux personnes écrivent le même ensemble." },
 
     { type: "h2", text: "Signe 5 : préférer rencontrer dans la vraie vie" },
     { type: "h2", text: "Comment le reconnaître" },
@@ -312,7 +316,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "Voyez la rencontre dans la vraie vie et en ligne comme complémentaires, non comme des alternatives. Rejoignez des groupes de loisirs, allez à des événements. Côté numérique, choisissez des plateformes où l'interaction elle-même paraît moins mécanique. Répondre aux questions de quelqu'un sur Qulo tient plus d'une conversation au café que du tri d'un paquet de cartes — ce qui donne même à une rencontre en ligne un peu de la texture d'une vraie." },
 
     { type: "h2", accent: "green", text: "Comment Qulo combat l'épuisement dès la conception" },
-    { type: "p", text: "Qulo a été construit autour de ce qui cause réellement l'épuisement lié aux applis. Chaque membre écrit entre deux et dix questions personnelles, chacune avec quatre options, et le match se fait en répondant correctement à toutes. Ce seul mécanisme corrige l'essentiel de ce que la boucle de balayage fait mal :" },
+    { type: "p", text: "Qulo a été construit autour de ce qui cause réellement l'épuisement lié aux applis. Chaque membre écrit entre deux et quatre questions personnelles — jusqu'à dix avec un abonnement payant — chacune avec quatre options, et le match se fait en répondant correctement à toutes. Ce seul mécanisme corrige l'essentiel de ce que la boucle de balayage fait mal :" },
     { type: "ul", items: [
       "**Pas de défilement infini :** chaque interaction est délibérée et finie",
       "**Pas de pilote automatique :** résoudre une question demande de penser vraiment",
@@ -372,7 +376,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "Por qué ocurre" },
     { type: "p", text: "El cerebro se habitúa. Expuesto a suficientes estímulos casi idénticos seguidos, pierde capacidad para percibir diferencias individuales: siguen ahí, simplemente dejas de registrarlas. Las apps basadas en deslizar presentan cada perfil en un único formato estandarizado, lo que borra buena parte de la señal que una persona emitiría de otro modo. Todos empiezan a parecer iguales porque ya no puedes distinguirlos." },
     { type: "h2", text: "Qué hacer" },
-    { type: "p", text: "Cámbiate a plataformas donde mande la personalidad. En Qulo cada usuario escribe sus propias preguntas —entre dos y diez, cada una con cuatro opciones— y esas preguntas presentan a alguien mucho mejor que una foto. Lo que decide preguntar, y las tres respuestas falsas que inventa, dicen algo de su humor, su atención y sus valores. Es muy difícil que dos personas escriban el mismo conjunto." },
+    { type: "p", text: "Cámbiate a plataformas donde mande la personalidad. En Qulo cada usuario escribe sus propias preguntas —entre dos y cuatro, hasta diez con un plan de pago, cada una con cuatro opciones— y esas preguntas presentan a alguien mucho mejor que una foto. Lo que decide preguntar, y las tres respuestas falsas que inventa, dicen algo de su humor, su atención y sus valores. Es muy difícil que dos personas escriban el mismo conjunto." },
 
     { type: "h2", text: "Señal 5: preferir conocerse en la vida real" },
     { type: "h2", text: "Cómo reconocerlo" },
@@ -383,7 +387,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "Trata el conocerse en persona y en línea como complementos, no como alternativas. Únete a grupos de aficiones, ve a eventos. En lo digital, elige plataformas donde la interacción se sienta menos mecánica. Resolver las preguntas de alguien en Qulo se parece más a una charla de café que a ordenar una baraja, y eso da incluso a un encuentro digital algo de la textura de uno real." },
 
     { type: "h2", accent: "green", text: "Cómo Qulo combate el desgaste desde el diseño" },
-    { type: "p", text: "Qulo se construyó alrededor de lo que realmente provoca el desgaste por apps de citas. Cada usuario escribe entre dos y diez preguntas propias, cada una con cuatro opciones, y el match se produce al acertarlas todas. Ese único mecanismo corrige casi todo lo que el bucle de deslizamiento hace mal:" },
+    { type: "p", text: "Qulo se construyó alrededor de lo que realmente provoca el desgaste por apps de citas. Cada usuario escribe entre dos y cuatro preguntas propias —hasta diez con un plan de pago—, cada una con cuatro opciones, y el match se produce al acertarlas todas. Ese único mecanismo corrige casi todo lo que el bucle de deslizamiento hace mal:" },
     { type: "ul", items: [
       "**Sin desplazamiento infinito:** cada interacción es deliberada y finita",
       "**Sin piloto automático:** resolver una pregunta exige pensar de verdad",
@@ -443,7 +447,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "لماذا يحدث" },
     { type: "p", text: "الدماغ يعتاد. حين تتعرض لعدد كافٍ من المؤثرات شبه المتطابقة تباعًا، تنخفض قدرتك على ملاحظة الفروق الفردية — الفروق ما زالت موجودة، لكنك تتوقف عن تسجيلها. تعرض التطبيقات القائمة على التمرير كل ملف بصيغة موحدة واحدة، فتمحو معظم الإشارات التي يبعثها الإنسان عادة. يبدأ الجميع بالتشابه لأنك لم تعد قادرًا على التمييز بينهم." },
     { type: "h2", text: "ماذا تفعل" },
-    { type: "p", text: "انتقل إلى منصات تتقدم فيها الشخصية. في Qulo يكتب كل عضو أسئلته الخاصة — بين سؤالين وعشرة أسئلة، لكل منها أربعة خيارات — وهذه الأسئلة تعرّف بالإنسان أفضل بكثير مما تفعل صورة. ما يختار المرء أن يسأل عنه، والإجابات الثلاث الخاطئة التي يبتكرها، تقول شيئًا عن حسّه الفكاهي وانتباهه وقيمه. ومن الصعب جدًا أن يكتب شخصان المجموعة نفسها." },
+    { type: "p", text: "انتقل إلى منصات تتقدم فيها الشخصية. في Qulo يكتب كل عضو أسئلته الخاصة — بين سؤالين وأربعة أسئلة، وحتى عشرة أسئلة في الخطة المدفوعة، لكل منها أربعة خيارات — وهذه الأسئلة تعرّف بالإنسان أفضل بكثير مما تفعل صورة. ما يختار المرء أن يسأل عنه، والإجابات الثلاث الخاطئة التي يبتكرها، تقول شيئًا عن حسّه الفكاهي وانتباهه وقيمه. ومن الصعب جدًا أن يكتب شخصان المجموعة نفسها." },
 
     { type: "h2", text: "العلامة 5: تفضيل التعارف في الحياة الواقعية" },
     { type: "h2", text: "كيف تعرف ذلك" },
@@ -454,7 +458,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "تعامل مع التعارف في الواقع والتعارف عبر الإنترنت باعتبارهما مكمّلين لا بديلين. انضم إلى مجموعات الهوايات، واحضر الفعاليات. وفي الجانب الرقمي، اختر منصات يبدو فيها التفاعل نفسه أقل ميكانيكية. حلّ أسئلة شخص ما في Qulo أقرب إلى حديث في مقهى منه إلى فرز مجموعة أوراق — وهذا يمنح حتى التعارف الرقمي شيئًا من ملمس التعارف الحقيقي." },
 
     { type: "h2", accent: "green", text: "كيف يواجه Qulo الإرهاق بحكم التصميم" },
-    { type: "p", text: "بُني Qulo حول ما يسبب الإرهاق من تطبيقات المواعدة فعلًا. يكتب كل عضو بين سؤالين وعشرة أسئلة خاصة به، لكل منها أربعة خيارات، ويحدث التطابق عند الإجابة عنها جميعًا بشكل صحيح. هذه الآلية وحدها تعالج معظم ما تخطئ فيه حلقة التمرير:" },
+    { type: "p", text: "بُني Qulo حول ما يسبب الإرهاق من تطبيقات المواعدة فعلًا. يكتب كل عضو بين سؤالين وأربعة أسئلة خاصة به — وحتى عشرة أسئلة في الخطة المدفوعة — لكل منها أربعة خيارات، ويحدث التطابق عند الإجابة عنها جميعًا بشكل صحيح. هذه الآلية وحدها تعالج معظم ما تخطئ فيه حلقة التمرير:" },
     { type: "ul", items: [
       "**لا تمرير لا نهائي:** كل تفاعل مقصود ومحدود",
       "**لا طيار آلي:** حل السؤال يتطلب تفكيرًا فعليًا",
@@ -514,7 +518,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "Почему так происходит" },
     { type: "p", text: "Мозг привыкает. При достаточном количестве почти одинаковых стимулов подряд способность замечать индивидуальные различия снижается — различия никуда не делись, вы просто перестаёте их регистрировать. Приложения, построенные на свайпе, показывают каждую анкету в едином стандартном формате, что стирает большую часть сигнала, который человек иначе подал бы. Все начинают выглядеть одинаково, потому что вы больше не различаете их." },
     { type: "h2", text: "Что делать" },
-    { type: "p", text: "Переходите на площадки, где на первом месте личность. В Qulo каждый участник пишет собственные вопросы — от двух до десяти, у каждого по четыре варианта ответа, — и эти вопросы представляют человека куда лучше любой фотографии. То, о чём человек решает спросить, и три неверных варианта, которые он придумывает, говорят о его юморе, внимании и ценностях. Двум людям очень трудно написать одинаковый набор." },
+    { type: "p", text: "Переходите на площадки, где на первом месте личность. В Qulo каждый участник пишет собственные вопросы — от двух до четырёх, а на платном тарифе до десяти, у каждого по четыре варианта ответа, — и эти вопросы представляют человека куда лучше любой фотографии. То, о чём человек решает спросить, и три неверных варианта, которые он придумывает, говорят о его юморе, внимании и ценностях. Двум людям очень трудно написать одинаковый набор." },
 
     { type: "h2", text: "Признак 5: желание знакомиться в реальной жизни" },
     { type: "h2", text: "Как распознать" },
@@ -525,7 +529,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "Считайте знакомства в жизни и онлайн не альтернативами, а дополнением друг друга. Ходите в клубы по интересам, бывайте на мероприятиях. В цифровой части выбирайте площадки, где само взаимодействие ощущается менее механическим. Разбирать чьи-то вопросы в Qulo ближе к разговору в кафе, чем к перебиранию колоды карт, — и это придаёт даже цифровому знакомству что-то от фактуры настоящего." },
 
     { type: "h2", accent: "green", text: "Как Qulo борется с выгоранием на уровне устройства" },
-    { type: "p", text: "Qulo построен вокруг того, что на самом деле вызывает выгорание от приложений для знакомств. Каждый участник пишет от двух до десяти собственных вопросов, у каждого по четыре варианта ответа, и совпадение происходит, когда вы отвечаете верно на все. Одна эта механика закрывает большую часть того, что петля свайпа делает не так:" },
+    { type: "p", text: "Qulo построен вокруг того, что на самом деле вызывает выгорание от приложений для знакомств. Каждый участник пишет от двух до четырёх собственных вопросов — на платном тарифе до десяти, — у каждого по четыре варианта ответа, и совпадение происходит, когда вы отвечаете верно на все. Одна эта механика закрывает большую часть того, что петля свайпа делает не так:" },
     { type: "ul", items: [
       "**Никакой бесконечной прокрутки:** каждое взаимодействие осознанно и конечно",
       "**Никакого автопилота:** решение вопроса требует настоящего размышления",
@@ -585,7 +589,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "Por que acontece" },
     { type: "p", text: "O cérebro se habitua. Exposto a estímulos quase idênticos em sequência, ele perde capacidade de perceber diferenças individuais — elas continuam ali, você é que para de registrá-las. Apps baseados em deslizar apresentam cada perfil num único formato padronizado, o que apaga boa parte do sinal que uma pessoa emitiria de outro modo. Todos começam a parecer iguais porque você já não consegue distingui-los." },
     { type: "h2", text: "O que fazer" },
-    { type: "p", text: "Migre para plataformas onde a personalidade vem primeiro. No Qulo cada pessoa escreve as próprias perguntas — entre duas e dez, cada uma com quatro opções — e essas perguntas apresentam alguém muito melhor do que uma foto. O que a pessoa escolhe perguntar, e as três respostas erradas que inventa, dizem algo sobre o humor, a atenção e os valores dela. É muito difícil duas pessoas escreverem o mesmo conjunto." },
+    { type: "p", text: "Migre para plataformas onde a personalidade vem primeiro. No Qulo cada pessoa escreve as próprias perguntas — entre duas e quatro, até dez num plano pago, cada uma com quatro opções — e essas perguntas apresentam alguém muito melhor do que uma foto. O que a pessoa escolhe perguntar, e as três respostas erradas que inventa, dizem algo sobre o humor, a atenção e os valores dela. É muito difícil duas pessoas escreverem o mesmo conjunto." },
 
     { type: "h2", text: "Sinal 5: preferir conhecer na vida real" },
     { type: "h2", text: "Como reconhecer" },
@@ -596,7 +600,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "Trate conhecer pessoas na vida real e online como complementos, não como alternativas. Entre em grupos de hobby, vá a eventos. No lado digital, escolha plataformas em que a interação em si pareça menos mecânica. Resolver as perguntas de alguém no Qulo está mais perto de uma conversa de café do que de organizar um baralho — e isso dá até a um encontro digital algo da textura de um real." },
 
     { type: "h2", accent: "green", text: "Como o Qulo combate o esgotamento por design" },
-    { type: "p", text: "O Qulo foi construído em torno do que de fato causa o esgotamento por apps de namoro. Cada pessoa escreve entre duas e dez perguntas próprias, cada uma com quatro opções, e o match acontece quando você acerta todas. Essa única mecânica resolve a maior parte do que o ciclo de deslizar faz errado:" },
+    { type: "p", text: "O Qulo foi construído em torno do que de fato causa o esgotamento por apps de namoro. Cada pessoa escreve entre duas e quatro perguntas próprias — até dez num plano pago —, cada uma com quatro opções, e o match acontece quando você acerta todas. Essa única mecânica resolve a maior parte do que o ciclo de deslizar faz errado:" },
     { type: "ul", items: [
       "**Sem rolagem infinita:** cada interação é deliberada e finita",
       "**Sem piloto automático:** resolver uma pergunta exige pensar de verdade",
@@ -656,7 +660,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "Perché succede" },
     { type: "p", text: "Il cervello si abitua. Esposto a un numero sufficiente di stimoli quasi identici di fila, la capacità di notare le differenze individuali cala — le differenze ci sono ancora, sei tu che smetti di registrarle. Le app basate sullo scorrimento presentano ogni profilo in un unico formato standardizzato, cancellando gran parte del segnale che una persona emetterebbe altrimenti. Cominciano tutti a sembrare uguali perché non riesci più a distinguerli." },
     { type: "h2", text: "Cosa fare" },
-    { type: "p", text: "Passa a piattaforme in cui viene prima la personalità. Su Qulo ogni iscritto scrive le proprie domande — da due a dieci, ciascuna con quattro opzioni — e queste domande presentano una persona molto meglio di quanto possa fare una foto. Che cosa qualcuno sceglie di chiedere, e quali tre risposte sbagliate inventa, dice qualcosa del suo umorismo, della sua attenzione e dei suoi valori. È molto difficile che due persone scrivano lo stesso insieme." },
+    { type: "p", text: "Passa a piattaforme in cui viene prima la personalità. Su Qulo ogni iscritto scrive le proprie domande — da due a quattro, fino a dieci con un piano a pagamento, ciascuna con quattro opzioni — e queste domande presentano una persona molto meglio di quanto possa fare una foto. Che cosa qualcuno sceglie di chiedere, e quali tre risposte sbagliate inventa, dice qualcosa del suo umorismo, della sua attenzione e dei suoi valori. È molto difficile che due persone scrivano lo stesso insieme." },
 
     { type: "h2", text: "Segnale 5: preferire di conoscersi nella vita reale" },
     { type: "h2", text: "Come riconoscerlo" },
@@ -667,7 +671,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "Tratta il conoscersi dal vivo e online come complementari, non come alternative. Iscriviti a gruppi di hobby, vai agli eventi. Sul versante digitale, scegli piattaforme in cui l'interazione stessa sembri meno meccanica. Risolvere le domande di qualcuno su Qulo somiglia più a una chiacchierata al bar che a smazzare un mazzo di carte — e questo dà anche a un incontro digitale qualcosa della trama di uno reale." },
 
     { type: "h2", accent: "green", text: "Come Qulo contrasta il burnout fin dal design" },
-    { type: "p", text: "Qulo è costruito attorno a ciò che causa davvero il burnout da app di incontri. Ogni iscritto scrive da due a dieci domande proprie, ciascuna con quattro opzioni, e il match avviene rispondendo correttamente a tutte. Questa sola meccanica risolve la maggior parte di ciò che il circolo dello scorrimento sbaglia:" },
+    { type: "p", text: "Qulo è costruito attorno a ciò che causa davvero il burnout da app di incontri. Ogni iscritto scrive da due a quattro domande proprie — fino a dieci con un piano a pagamento — ciascuna con quattro opzioni, e il match avviene rispondendo correttamente a tutte. Questa sola meccanica risolve la maggior parte di ciò che il circolo dello scorrimento sbaglia:" },
     { type: "ul", items: [
       "**Niente scorrimento infinito:** ogni interazione è deliberata e finita",
       "**Niente pilota automatico:** risolvere una domanda richiede di pensare davvero",
@@ -727,7 +731,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "なぜ起きるのか" },
     { type: "p", text: "脳は慣れます。ほとんど同じ刺激を連続して浴びると、個々の違いに気づく力が落ちます。違いは消えていないのに、こちらが記録しなくなるのです。スワイプ型のアプリはすべてのプロフィールを単一の規格に流し込むため、人が本来発している情報の多くが削ぎ落とされます。見分けられないから、みんな同じに見え始めるのです。" },
     { type: "h2", text: "どうすればいいか" },
-    { type: "p", text: "人柄が先に立つ場に移りましょう。Qulo では一人ひとりが自分の質問を書きます。2問から10問、それぞれに4つの選択肢。この質問は、どんな写真よりもその人をよく伝えます。何を尋ねるかという選択も、間違いの選択肢を3つどう作るかも、ユーモアや注意深さや価値観を映します。二人の人が同じ組み合わせを書くことは、まずありません。" },
+    { type: "p", text: "人柄が先に立つ場に移りましょう。Qulo では一人ひとりが自分の質問を書きます。2問から4問（有料プランなら最大10問）、それぞれに4つの選択肢。この質問は、どんな写真よりもその人をよく伝えます。何を尋ねるかという選択も、間違いの選択肢を3つどう作るかも、ユーモアや注意深さや価値観を映します。二人の人が同じ組み合わせを書くことは、まずありません。" },
 
     { type: "h2", text: "兆候5：現実で出会いたいと思う" },
     { type: "h2", text: "見分け方" },
@@ -738,7 +742,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "現実の出会いとオンラインの出会いを、代替ではなく補い合うものとして捉えましょう。趣味の集まりに入り、イベントに足を運ぶ。デジタル側では、やり取りそのものが機械的に感じられない場を選ぶ。Qulo で誰かの質問を解く時間は、カードの束を仕分ける作業よりも、カフェでの会話に近いものです。だからオンラインの出会いにも、現実の手触りが少し宿ります。" },
 
     { type: "h2", accent: "green", text: "Qulo が設計で疲れに抗う理由" },
-    { type: "p", text: "Qulo は、マッチングアプリ疲れの本当の原因を軸に作られています。一人ひとりが自分の質問を2問から10問書き、それぞれに4つの選択肢を用意する。すべて正解するとマッチが成立します。この一つの仕組みが、スワイプの輪が抱える問題の大半に答えます。" },
+    { type: "p", text: "Qulo は、マッチングアプリ疲れの本当の原因を軸に作られています。一人ひとりが自分の質問を2問から4問（有料プランなら最大10問）書き、それぞれに4つの選択肢を用意する。すべて正解するとマッチが成立します。この一つの仕組みが、スワイプの輪が抱える問題の大半に答えます。" },
     { type: "ul", items: [
       "**無限スクロールがない：** すべてのやり取りが意識的で、終わりがある",
       "**オートパイロットがない：** 質問を解くには実際に考える必要がある",
@@ -798,7 +802,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "왜 그럴까" },
     { type: "p", text: "뇌는 익숙해집니다. 거의 똑같은 자극을 연달아 충분히 받으면 개별 차이를 알아채는 능력이 떨어집니다. 차이는 그대로인데 우리가 등록하기를 멈추는 것입니다. 스와이프 기반 앱은 모든 프로필을 하나의 표준 형식에 담기 때문에, 사람이 원래 내보내는 신호의 대부분이 지워집니다. 구분할 수 없으니 다들 똑같아 보이기 시작합니다." },
     { type: "h2", text: "무엇을 할까" },
-    { type: "p", text: "성격이 앞서는 플랫폼으로 옮기세요. Qulo에서는 각자 자신의 질문을 씁니다. 두 개에서 열 개까지, 각각 네 개의 선택지가 붙습니다. 이 질문들은 어떤 사진보다 그 사람을 잘 소개합니다. 무엇을 묻기로 했는지, 오답 세 개를 어떻게 지어냈는지가 그 사람의 유머와 주의력과 가치관을 보여 줍니다. 두 사람이 같은 묶음을 쓰기란 매우 어렵습니다." },
+    { type: "p", text: "성격이 앞서는 플랫폼으로 옮기세요. Qulo에서는 각자 자신의 질문을 씁니다. 두 개에서 네 개까지, 유료 플랜에서는 최대 열 개까지 쓸 수 있고, 각각 네 개의 선택지가 붙습니다. 이 질문들은 어떤 사진보다 그 사람을 잘 소개합니다. 무엇을 묻기로 했는지, 오답 세 개를 어떻게 지어냈는지가 그 사람의 유머와 주의력과 가치관을 보여 줍니다. 두 사람이 같은 묶음을 쓰기란 매우 어렵습니다." },
 
     { type: "h2", text: "신호 5: 현실에서 만나고 싶어진다" },
     { type: "h2", text: "어떻게 알아차리나" },
@@ -809,7 +813,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "현실의 만남과 온라인의 만남을 대체재가 아니라 보완재로 보세요. 취미 모임에 나가고 행사에 참여하세요. 디지털 쪽에서는 상호작용 자체가 덜 기계적으로 느껴지는 플랫폼을 고르세요. Qulo에서 누군가의 질문을 푸는 시간은 카드 뭉치를 정리하는 일보다 카페에서 나누는 대화에 가깝습니다. 그래서 온라인 만남에도 현실의 결이 조금 스밉니다." },
 
     { type: "h2", accent: "green", text: "Qulo가 설계로 번아웃에 맞서는 방식" },
-    { type: "p", text: "Qulo는 데이팅 앱 번아웃의 실제 원인을 중심에 두고 만들어졌습니다. 각자 자신의 질문을 두 개에서 열 개까지 쓰고, 각 질문에는 네 개의 선택지가 있으며, 전부 맞혀야 매칭이 성사됩니다. 이 하나의 장치가 스와이프 고리의 문제 대부분을 해결합니다." },
+    { type: "p", text: "Qulo는 데이팅 앱 번아웃의 실제 원인을 중심에 두고 만들어졌습니다. 각자 자신의 질문을 두 개에서 네 개까지(유료 플랜에서는 최대 열 개까지) 쓰고, 각 질문에는 네 개의 선택지가 있으며, 전부 맞혀야 매칭이 성사됩니다. 이 하나의 장치가 스와이프 고리의 문제 대부분을 해결합니다." },
     { type: "ul", items: [
       "**무한 스크롤 없음:** 모든 상호작용이 의도적이고 끝이 있다",
       "**자동조종 없음:** 질문을 풀려면 실제로 생각해야 한다",
@@ -869,7 +873,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "为什么会这样" },
     { type: "p", text: "大脑会习惯。连续接受足够多几乎相同的刺激后，你察觉个体差异的能力会下降——差异仍然存在，只是你不再记录它们。基于滑动的应用把每份资料塞进同一套标准格式，抹去了一个人本来会散发的大部分信息。你分辨不出来了，所以所有人开始看起来一样。" },
     { type: "h2", text: "该怎么做" },
-    { type: "p", text: "转向让性格先说话的平台。在 Qulo，每个人都写自己的问题——两到十道，每道四个选项——这些问题对一个人的介绍远胜任何照片。一个人选择问什么，以及编出哪三个错误答案，都会透露他的幽默感、注意力和价值观。两个人写出同一组问题，几乎不可能。" },
+    { type: "p", text: "转向让性格先说话的平台。在 Qulo，每个人都写自己的问题——两到四道，付费方案最多十道，每道四个选项——这些问题对一个人的介绍远胜任何照片。一个人选择问什么，以及编出哪三个错误答案，都会透露他的幽默感、注意力和价值观。两个人写出同一组问题，几乎不可能。" },
 
     { type: "h2", text: "信号五：更想在现实里认识人" },
     { type: "h2", text: "如何辨认" },
@@ -880,7 +884,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "把现实中的相识和线上的相识看作互补，而不是替代。加入兴趣小组，去参加活动。在数字这一侧，选择互动本身不那么机械的平台。在 Qulo 解开一个人的问题，更像咖啡馆里的一场对话，而不是整理一副牌——这让线上的相识也带上了几分真实的质感。" },
 
     { type: "h2", accent: "green", text: "Qulo 如何用设计对抗倦怠" },
-    { type: "p", text: "Qulo 是围绕交友软件倦怠的真正成因建立的。每个人写下两到十道自己的问题，每道四个选项，全部答对才会匹配。仅这一个机制，就化解了滑动循环大部分做错的地方：" },
+    { type: "p", text: "Qulo 是围绕交友软件倦怠的真正成因建立的。每个人写下两到四道自己的问题（付费方案最多十道），每道四个选项，全部答对才会匹配。仅这一个机制，就化解了滑动循环大部分做错的地方：" },
     { type: "ul", items: [
       "**没有无限滑动：** 每一次互动都是有意的、有尽头的",
       "**没有自动驾驶：** 解一道题需要真的思考",
@@ -940,7 +944,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "Waarom het gebeurt" },
     { type: "p", text: "Breinen wennen. Als je genoeg bijna identieke prikkels achter elkaar krijgt, daalt je vermogen om individuele verschillen op te merken — de verschillen zijn er nog, jij registreert ze alleen niet meer. Op swipen gebaseerde apps presenteren elk profiel in één gestandaardiseerd format, waardoor het grootste deel van het signaal dat iemand anders zou afgeven verdwijnt. Iedereen begint hetzelfde te lijken omdat je ze niet meer uit elkaar houdt." },
     { type: "h2", text: "Wat je kunt doen" },
-    { type: "p", text: "Stap over naar platforms waar de persoonlijkheid voorop staat. Bij Qulo schrijft elk lid eigen vragen — tussen de twee en tien, elk met vier antwoordopties — en die vragen introduceren iemand veel beter dan een foto kan. Wat iemand kiest te vragen, en welke drie foute antwoorden diegene verzint, zegt iets over humor, aandacht en waarden. Dat twee mensen dezelfde set schrijven, is heel onwaarschijnlijk." },
+    { type: "p", text: "Stap over naar platforms waar de persoonlijkheid voorop staat. Bij Qulo schrijft elk lid eigen vragen — tussen de twee en vier, tot tien met een betaald abonnement, elk met vier antwoordopties — en die vragen introduceren iemand veel beter dan een foto kan. Wat iemand kiest te vragen, en welke drie foute antwoorden diegene verzint, zegt iets over humor, aandacht en waarden. Dat twee mensen dezelfde set schrijven, is heel onwaarschijnlijk." },
 
     { type: "h2", text: "Signaal 5: liever in het echt kennismaken" },
     { type: "h2", text: "Hoe je het herkent" },
@@ -951,7 +955,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "Zie kennismaken in het echt en online als aanvulling op elkaar, niet als alternatieven. Sluit je aan bij hobbygroepen, ga naar evenementen. Kies aan de digitale kant platforms waar de interactie zelf minder mechanisch aanvoelt. Je door iemands vragen heen werken op Qulo lijkt meer op een gesprek in een café dan op het sorteren van een kaartspel — en dat geeft zelfs een digitale kennismaking iets van de textuur van een echte." },
 
     { type: "h2", accent: "green", text: "Hoe Qulo burn-out al in het ontwerp tegengaat" },
-    { type: "p", text: "Qulo is gebouwd rond wat dating-app-burn-out werkelijk veroorzaakt. Elk lid schrijft tussen de twee en tien eigen vragen, elk met vier antwoordopties, en je matcht door ze allemaal goed te beantwoorden. Die ene mechaniek pakt het meeste aan van wat de swipe-lus verkeerd doet:" },
+    { type: "p", text: "Qulo is gebouwd rond wat dating-app-burn-out werkelijk veroorzaakt. Elk lid schrijft tussen de twee en vier eigen vragen — tot tien met een betaald abonnement — elk met vier antwoordopties, en je matcht door ze allemaal goed te beantwoorden. Die ene mechaniek pakt het meeste aan van wat de swipe-lus verkeerd doet:" },
     { type: "ul", items: [
       "**Geen oneindig scrollen:** elke interactie is bewust en eindig",
       "**Geen automatische piloot:** een vraag oplossen vraagt om echt nadenken",
@@ -1011,7 +1015,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "Dlaczego tak się dzieje" },
     { type: "p", text: "Mózg się przyzwyczaja. Przy odpowiednio dużej liczbie niemal identycznych bodźców pod rząd spada zdolność dostrzegania różnic — różnice wciąż tam są, to ty przestajesz je rejestrować. Aplikacje oparte na przesuwaniu prezentują każdy profil w jednym ustandaryzowanym formacie, co usuwa większość sygnału, który człowiek inaczej by wysłał. Wszyscy zaczynają wyglądać tak samo, bo już ich nie odróżniasz." },
     { type: "h2", text: "Co robić" },
-    { type: "p", text: "Przejdź na platformy, gdzie na pierwszym miejscu jest osobowość. W Qulo każda osoba pisze własne pytania — od dwóch do dziesięciu, każde z czterema odpowiedziami — a te pytania przedstawiają człowieka o wiele lepiej niż zdjęcie. To, o co ktoś postanawia zapytać, i jakie trzy błędne odpowiedzi wymyśla, mówi coś o jego poczuciu humoru, uwadze i wartościach. Bardzo trudno, żeby dwie osoby napisały ten sam zestaw." },
+    { type: "p", text: "Przejdź na platformy, gdzie na pierwszym miejscu jest osobowość. W Qulo każda osoba pisze własne pytania — od dwóch do czterech, a w planie płatnym nawet do dziesięciu, każde z czterema odpowiedziami — a te pytania przedstawiają człowieka o wiele lepiej niż zdjęcie. To, o co ktoś postanawia zapytać, i jakie trzy błędne odpowiedzi wymyśla, mówi coś o jego poczuciu humoru, uwadze i wartościach. Bardzo trudno, żeby dwie osoby napisały ten sam zestaw." },
 
     { type: "h2", text: "Sygnał 5: chęć poznawania ludzi na żywo" },
     { type: "h2", text: "Jak to rozpoznać" },
@@ -1022,7 +1026,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "Traktuj poznawanie ludzi na żywo i w sieci jako uzupełnienie, a nie alternatywę. Dołącz do grup hobbystycznych, chodź na wydarzenia. Po stronie cyfrowej wybieraj platformy, na których sama interakcja wydaje się mniej mechaniczna. Rozwiązywanie czyichś pytań w Qulo jest bliższe rozmowie w kawiarni niż przekładaniu talii kart — i to daje nawet cyfrowemu poznaniu coś z faktury prawdziwego." },
 
     { type: "h2", accent: "green", text: "Jak Qulo przeciwdziała wypaleniu już w projekcie" },
-    { type: "p", text: "Qulo zbudowano wokół tego, co naprawdę wywołuje wypalenie aplikacjami randkowymi. Każda osoba pisze od dwóch do dziesięciu własnych pytań, każde z czterema odpowiedziami, a dopasowanie następuje po poprawnym odpowiedzeniu na wszystkie. Ta jedna mechanika rozwiązuje większość tego, co pętla przesuwania robi źle:" },
+    { type: "p", text: "Qulo zbudowano wokół tego, co naprawdę wywołuje wypalenie aplikacjami randkowymi. Każda osoba pisze od dwóch do czterech własnych pytań — w planie płatnym do dziesięciu — każde z czterema odpowiedziami, a dopasowanie następuje po poprawnym odpowiedzeniu na wszystkie. Ta jedna mechanika rozwiązuje większość tego, co pętla przesuwania robi źle:" },
     { type: "ul", items: [
       "**Bez nieskończonego przewijania:** każda interakcja jest świadoma i skończona",
       "**Bez autopilota:** rozwiązanie pytania wymaga prawdziwego myślenia",
@@ -1082,7 +1086,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "Varför det händer" },
     { type: "p", text: "Hjärnor vänjer sig. Utsatt för tillräckligt många nästan identiska intryck i rad sjunker din förmåga att lägga märke till individuella skillnader — skillnaderna finns kvar, du slutar bara registrera dem. Svepbaserade appar presenterar varje profil i ett enda standardiserat format, vilket suddar ut det mesta av den signal en människa annars skulle sända. Alla börjar se likadana ut för att du inte längre kan skilja dem åt." },
     { type: "h2", text: "Vad du kan göra" },
-    { type: "p", text: "Byt till plattformar där personligheten kommer först. I Qulo skriver varje medlem sina egna frågor — mellan två och tio, var och en med fyra svarsalternativ — och de frågorna presenterar en människa långt bättre än ett foto kan. Vad någon väljer att fråga om, och vilka tre felaktiga svar hen hittar på, säger något om humor, uppmärksamhet och värderingar. Att två personer skriver samma uppsättning är mycket osannolikt." },
+    { type: "p", text: "Byt till plattformar där personligheten kommer först. I Qulo skriver varje medlem sina egna frågor — mellan två och fyra, upp till tio med ett betalt abonnemang, var och en med fyra svarsalternativ — och de frågorna presenterar en människa långt bättre än ett foto kan. Vad någon väljer att fråga om, och vilka tre felaktiga svar hen hittar på, säger något om humor, uppmärksamhet och värderingar. Att två personer skriver samma uppsättning är mycket osannolikt." },
 
     { type: "h2", text: "Tecken 5: att hellre vilja träffas i verkliga livet" },
     { type: "h2", text: "Hur du känner igen det" },
@@ -1093,7 +1097,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "Se att träffas i verkliga livet och på nätet som komplement, inte som alternativ. Gå med i hobbygrupper, gå på evenemang. På den digitala sidan, välj plattformar där själva samspelet känns mindre mekaniskt. Att arbeta sig igenom någons frågor i Qulo ligger närmare ett samtal på ett kafé än att sortera en kortlek — och det ger även en digital bekantskap något av en verklig bekantskaps textur." },
 
     { type: "h2", accent: "green", text: "Hur Qulo motverkar utmattning genom sin design" },
-    { type: "p", text: "Qulo är byggt kring vad som faktiskt orsakar utmattning av dejtingappar. Varje medlem skriver mellan två och tio egna frågor, var och en med fyra svarsalternativ, och matchningen sker genom att svara rätt på alla. Den enda mekaniken tar itu med det mesta som svepslingan gör fel:" },
+    { type: "p", text: "Qulo är byggt kring vad som faktiskt orsakar utmattning av dejtingappar. Varje medlem skriver mellan två och fyra egna frågor — upp till tio med ett betalt abonnemang — var och en med fyra svarsalternativ, och matchningen sker genom att svara rätt på alla. Den enda mekaniken tar itu med det mesta som svepslingan gör fel:" },
     { type: "ul", items: [
       "**Ingen oändlig scroll:** varje interaktion är medveten och ändlig",
       "**Ingen autopilot:** att lösa en fråga kräver att man faktiskt tänker",
@@ -1153,7 +1157,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "h2", text: "ऐसा क्यों होता है" },
     { type: "p", text: "दिमाग अभ्यस्त हो जाता है। लगातार पर्याप्त मात्रा में लगभग एक जैसे संकेत मिलने पर व्यक्तिगत अंतर देख पाने की क्षमता घट जाती है — अंतर तब भी मौजूद रहते हैं, बस आप उन्हें दर्ज करना बंद कर देते हैं। स्वाइप पर टिकी ऐप्स हर प्रोफाइल को एक ही मानक ढाँचे में पेश करती हैं, जिससे इंसान की ज़्यादातर असली झलक मिट जाती है। सब एक जैसे लगने लगते हैं क्योंकि अब आप उन्हें अलग नहीं कर पाते।" },
     { type: "h2", text: "क्या करें" },
-    { type: "p", text: "ऐसे मंचों पर जाइए जहाँ व्यक्तित्व पहले आता है। Qulo में हर सदस्य अपने सवाल खुद लिखता है — दो से दस तक, हर सवाल में चार विकल्प — और ये सवाल किसी भी तस्वीर से कहीं बेहतर उस इंसान का परिचय देते हैं। कोई क्या पूछना चुनता है, और तीन गलत जवाब कैसे गढ़ता है, इससे उसके हास्य, उसके ध्यान और उसके मूल्यों का पता चलता है। दो लोगों का एक जैसा सेट लिखना बहुत मुश्किल है।" },
+    { type: "p", text: "ऐसे मंचों पर जाइए जहाँ व्यक्तित्व पहले आता है। Qulo में हर सदस्य अपने सवाल खुद लिखता है — दो से चार तक, भुगतान वाली योजना में दस तक, हर सवाल में चार विकल्प — और ये सवाल किसी भी तस्वीर से कहीं बेहतर उस इंसान का परिचय देते हैं। कोई क्या पूछना चुनता है, और तीन गलत जवाब कैसे गढ़ता है, इससे उसके हास्य, उसके ध्यान और उसके मूल्यों का पता चलता है। दो लोगों का एक जैसा सेट लिखना बहुत मुश्किल है।" },
 
     { type: "h2", text: "संकेत 5: असल ज़िंदगी में मिलने की चाह" },
     { type: "h2", text: "कैसे पहचानें" },
@@ -1164,7 +1168,7 @@ export const datingAppBurnoutSigns: LocalizedArticle = {
     { type: "p", text: "असल ज़िंदगी में मिलने और ऑनलाइन मिलने को विकल्प नहीं, एक-दूसरे का पूरक मानिए। शौक के समूहों से जुड़िए, आयोजनों में जाइए। डिजिटल तरफ ऐसे मंच चुनिए जहाँ बातचीत खुद कम मशीनी लगे। Qulo पर किसी के सवाल हल करना ताश की गड्डी छाँटने से ज़्यादा कैफे की बातचीत जैसा है — और इससे ऑनलाइन मुलाकात में भी असली मुलाकात की थोड़ी बनावट आ जाती है।" },
 
     { type: "h2", accent: "green", text: "Qulo बनावट से ही बर्नआउट का सामना कैसे करता है" },
-    { type: "p", text: "Qulo उसी बात के इर्द-गिर्द बना है जो सचमुच डेटिंग ऐप बर्नआउट पैदा करती है। हर सदस्य अपने दो से दस सवाल लिखता है, हर सवाल में चार विकल्प होते हैं, और सबके सही जवाब देने पर ही मैच होता है। यह अकेली व्यवस्था स्वाइप के चक्र की ज़्यादातर गड़बड़ियाँ दूर कर देती है:" },
+    { type: "p", text: "Qulo उसी बात के इर्द-गिर्द बना है जो सचमुच डेटिंग ऐप बर्नआउट पैदा करती है। हर सदस्य अपने दो से चार सवाल लिखता है — भुगतान वाली योजना में दस तक — हर सवाल में चार विकल्प होते हैं, और सबके सही जवाब देने पर ही मैच होता है। यह अकेली व्यवस्था स्वाइप के चक्र की ज़्यादातर गड़बड़ियाँ दूर कर देती है:" },
     { type: "ul", items: [
       "**अंतहीन स्क्रॉल नहीं:** हर बातचीत सोची-समझी और सीमित है",
       "**ऑटोपायलट नहीं:** सवाल हल करने के लिए सचमुच सोचना पड़ता है",

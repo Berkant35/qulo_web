@@ -60,7 +60,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo was built to change the mechanic rather than decorate it. Instead of swiping, matching runs on questions and answers, which takes the split-second appearance judgement out of the front of the process and puts something you can actually be known for in its place." },
 
     { type: "h2", text: "How Does It Work?" },
-    { type: "p", text: "On Qulo you write between 2 and 10 questions. They reflect your personality, your interests and the things you care about. Other people try to solve them, and you match with whoever answers all of them correctly. Because a match costs thought rather than a thumb movement, the person on the other side has demonstrably paid attention to you before the conversation even starts." },
+    { type: "p", text: "On Qulo you write between 2 and 4 questions — up to 10 on a paid plan. They reflect your personality, your interests and the things you care about. Other people try to solve them, and you match with whoever answers all of them correctly. Because a match costs thought rather than a thumb movement, the person on the other side has demonstrably paid attention to you before the conversation even starts." },
 
     { type: "h2", text: "Why Is It Better?" },
     { type: "ul", items: [
@@ -122,7 +122,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo, mekaniği süslemek yerine değiştirmek için kuruldu. Kaydırma yerine eşleşme soru ve cevaplar üzerinden yürür; böylece sürecin en başındaki saniyelik görünüm yargısı devreden çıkar ve yerine gerçekten tanınabileceğiniz bir şey gelir." },
 
     { type: "h2", text: "Nasıl Çalışır?" },
-    { type: "p", text: "Qulo'da 2 ile 10 arasında soru yazarsınız. Bu sorular kişiliğinizi, ilgi alanlarınızı ve önemsediğiniz şeyleri yansıtır. Diğer kullanıcılar bu soruları çözmeye çalışır; hepsini doğru cevaplayan kişiyle eşleşirsiniz. Eşleşmenin bedeli bir parmak hareketi değil düşünmek olduğu için, karşı taraf sohbet daha başlamadan size gerçekten dikkat kesilmiş olur." },
+    { type: "p", text: "Qulo'da 2 ile 4 arasında soru yazarsınız; ücretli planda bu sayı 10'a kadar çıkar. Bu sorular kişiliğinizi, ilgi alanlarınızı ve önemsediğiniz şeyleri yansıtır. Diğer kullanıcılar bu soruları çözmeye çalışır; hepsini doğru cevaplayan kişiyle eşleşirsiniz. Eşleşmenin bedeli bir parmak hareketi değil düşünmek olduğu için, karşı taraf sohbet daha başlamadan size gerçekten dikkat kesilmiş olur." },
 
     { type: "h2", text: "Neden Daha İyi?" },
     { type: "ul", items: [
@@ -184,7 +184,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo wurde gebaut, um die Mechanik zu ändern statt sie zu dekorieren. Statt zu wischen, läuft das Matching über Fragen und Antworten. Damit fällt das Sekundenurteil über das Aussehen vom Anfang des Prozesses weg, und an seine Stelle tritt etwas, wofür man tatsächlich gekannt werden kann." },
 
     { type: "h2", text: "Wie funktioniert das?" },
-    { type: "p", text: "Bei Qulo schreiben Sie zwischen 2 und 10 Fragen. Sie spiegeln Ihre Persönlichkeit, Ihre Interessen und das, was Ihnen wichtig ist. Andere versuchen, sie zu lösen, und Sie matchen mit der Person, die alle richtig beantwortet. Weil ein Match Nachdenken kostet und nicht bloß eine Daumenbewegung, hat die Person auf der anderen Seite Ihnen nachweislich Aufmerksamkeit geschenkt, bevor das Gespräch überhaupt beginnt." },
+    { type: "p", text: "Bei Qulo schreiben Sie zwischen 2 und 4 Fragen — bis zu 10 im kostenpflichtigen Tarif. Sie spiegeln Ihre Persönlichkeit, Ihre Interessen und das, was Ihnen wichtig ist. Andere versuchen, sie zu lösen, und Sie matchen mit der Person, die alle richtig beantwortet. Weil ein Match Nachdenken kostet und nicht bloß eine Daumenbewegung, hat die Person auf der anderen Seite Ihnen nachweislich Aufmerksamkeit geschenkt, bevor das Gespräch überhaupt beginnt." },
 
     { type: "h2", text: "Warum ist das besser?" },
     { type: "ul", items: [
@@ -246,7 +246,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo a été conçu pour changer la mécanique plutôt que la décorer. Au lieu du swipe, le matching repose sur des questions et des réponses : le jugement en une fraction de seconde sur l'apparence disparaît du début du parcours, remplacé par quelque chose pour quoi on peut réellement être reconnu." },
 
     { type: "h2", text: "Comment ça marche ?" },
-    { type: "p", text: "Sur Qulo, vous écrivez entre 2 et 10 questions. Elles reflètent votre personnalité, vos centres d'intérêt et ce qui compte pour vous. Les autres essaient d'y répondre, et vous matchez avec la personne qui répond correctement à toutes. Comme un match coûte de la réflexion et non un mouvement de pouce, la personne en face vous a manifestement prêté attention avant même le début de la conversation." },
+    { type: "p", text: "Sur Qulo, vous écrivez entre 2 et 4 questions — jusqu'à 10 avec un abonnement payant. Elles reflètent votre personnalité, vos centres d'intérêt et ce qui compte pour vous. Les autres essaient d'y répondre, et vous matchez avec la personne qui répond correctement à toutes. Comme un match coûte de la réflexion et non un mouvement de pouce, la personne en face vous a manifestement prêté attention avant même le début de la conversation." },
 
     { type: "h2", text: "Pourquoi est-ce mieux ?" },
     { type: "ul", items: [
@@ -308,7 +308,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo se construyó para cambiar la mecánica en lugar de decorarla. En vez de deslizar, el emparejamiento funciona con preguntas y respuestas: el juicio instantáneo sobre el aspecto sale del principio del proceso y en su lugar queda algo por lo que de verdad te pueden conocer." },
 
     { type: "h2", text: "¿Cómo funciona?" },
-    { type: "p", text: "En Qulo escribes entre 2 y 10 preguntas. Reflejan tu personalidad, tus intereses y lo que te importa. Los demás intentan resolverlas y haces match con quien acierta todas. Como un match cuesta pensar y no un gesto del pulgar, la persona del otro lado te ha prestado atención de forma demostrable antes incluso de que empiece la conversación." },
+    { type: "p", text: "En Qulo escribes entre 2 y 4 preguntas — hasta 10 con un plan de pago. Reflejan tu personalidad, tus intereses y lo que te importa. Los demás intentan resolverlas y haces match con quien acierta todas. Como un match cuesta pensar y no un gesto del pulgar, la persona del otro lado te ha prestado atención de forma demostrable antes incluso de que empiece la conversación." },
 
     { type: "h2", text: "¿Por qué es mejor?" },
     { type: "ul", items: [
@@ -370,7 +370,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "بُني Qulo لتغيير الآلية لا لتزيينها. فبدل التمرير، يقوم التطابق على الأسئلة والأجوبة، وبذلك يخرج حكم اللحظة على المظهر من بداية المسار ليحلّ محلّه شيء يمكن أن تُعرَف به فعلًا." },
 
     { type: "h2", text: "كيف يعمل؟" },
-    { type: "p", text: "في Qulo تكتب ما بين 2 و10 أسئلة تعكس شخصيتك واهتماماتك وما يهمّك. يحاول الآخرون حلّها، وتتطابق مع من يجيب عنها كلها إجابة صحيحة. ولأن التطابق يكلّف تفكيرًا لا حركة إبهام، فإن الطرف الآخر يكون قد انتبه إليك فعليًا قبل أن تبدأ المحادثة أصلًا." },
+    { type: "p", text: "في Qulo تكتب ما بين 2 و4 أسئلة تعكس شخصيتك واهتماماتك وما يهمّك، وحتى 10 أسئلة في الخطة المدفوعة. يحاول الآخرون حلّها، وتتطابق مع من يجيب عنها كلها إجابة صحيحة. ولأن التطابق يكلّف تفكيرًا لا حركة إبهام، فإن الطرف الآخر يكون قد انتبه إليك فعليًا قبل أن تبدأ المحادثة أصلًا." },
 
     { type: "h2", text: "لماذا هو أفضل؟" },
     { type: "ul", items: [
@@ -432,7 +432,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo сделан для того, чтобы поменять саму механику, а не украсить её. Вместо свайпов подбор строится на вопросах и ответах: мгновенная оценка внешности уходит с начала пути, а на её место встаёт то, за что вас действительно можно узнать." },
 
     { type: "h2", text: "Как это работает?" },
-    { type: "p", text: "В Qulo вы пишете от 2 до 10 вопросов. Они отражают ваш характер, интересы и то, что для вас важно. Другие пытаются их решить, и мэтч случается с тем, кто ответил на все правильно. Поскольку мэтч стоит размышления, а не движения большого пальца, человек на другой стороне заведомо уделил вам внимание ещё до начала разговора." },
+    { type: "p", text: "В Qulo вы пишете от 2 до 4 вопросов — до 10 на платном тарифе. Они отражают ваш характер, интересы и то, что для вас важно. Другие пытаются их решить, и мэтч случается с тем, кто ответил на все правильно. Поскольку мэтч стоит размышления, а не движения большого пальца, человек на другой стороне заведомо уделил вам внимание ещё до начала разговора." },
 
     { type: "h2", text: "Почему это лучше?" },
     { type: "ul", items: [
@@ -494,7 +494,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "A Qulo foi construída para mudar a mecânica em vez de decorá-la. No lugar do swipe, o match funciona por perguntas e respostas: o julgamento instantâneo sobre a aparência sai do início do processo e entra algo pelo qual você pode de fato ser conhecido." },
 
     { type: "h2", text: "Como funciona?" },
-    { type: "p", text: "No Qulo você escreve entre 2 e 10 perguntas. Elas refletem a sua personalidade, os seus interesses e o que importa para você. As outras pessoas tentam resolvê-las, e você dá match com quem acerta todas. Como um match custa pensamento e não um movimento de polegar, a pessoa do outro lado comprovadamente prestou atenção em você antes mesmo de a conversa começar." },
+    { type: "p", text: "No Qulo você escreve entre 2 e 4 perguntas — até 10 num plano pago. Elas refletem a sua personalidade, os seus interesses e o que importa para você. As outras pessoas tentam resolvê-las, e você dá match com quem acerta todas. Como um match custa pensamento e não um movimento de polegar, a pessoa do outro lado comprovadamente prestou atenção em você antes mesmo de a conversa começar." },
 
     { type: "h2", text: "Por que é melhor?" },
     { type: "ul", items: [
@@ -556,7 +556,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo è nato per cambiare la meccanica invece di decorarla. Al posto dello swipe il match passa da domande e risposte: il giudizio istantaneo sull'aspetto esce dall'inizio del percorso e al suo posto entra qualcosa per cui puoi davvero essere conosciuto." },
 
     { type: "h2", text: "Come funziona?" },
-    { type: "p", text: "Su Qulo scrivi da 2 a 10 domande. Riflettono la tua personalità, i tuoi interessi e le cose a cui tieni. Gli altri provano a risolverle e il match arriva con chi risponde correttamente a tutte. Poiché un match costa pensiero e non un movimento del pollice, la persona dall'altra parte ti ha dimostrabilmente prestato attenzione prima ancora che la conversazione cominci." },
+    { type: "p", text: "Su Qulo scrivi da 2 a 4 domande — fino a 10 con un piano a pagamento. Riflettono la tua personalità, i tuoi interessi e le cose a cui tieni. Gli altri provano a risolverle e il match arriva con chi risponde correttamente a tutte. Poiché un match costa pensiero e non un movimento del pollice, la persona dall'altra parte ti ha dimostrabilmente prestato attenzione prima ancora che la conversazione cominci." },
 
     { type: "h2", text: "Perché è meglio?" },
     { type: "ul", items: [
@@ -618,7 +618,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo は、仕組みを飾るのではなく作り替えるために作られました。スワイプの代わりに、マッチングは質問と回答の上で動きます。これにより一瞬の外見判断が入口から外れ、代わりに本当に知られうる自分が置かれます。" },
 
     { type: "h2", text: "どう動くのか" },
-    { type: "p", text: "Qulo では2問から10問の質問を書きます。質問はあなたの性格、関心、大事にしていることを映します。ほかの人がそれを解こうとし、すべてに正解した相手とマッチします。マッチの代価が親指の動きではなく思考であるため、会話が始まる前の時点で、相手はすでにあなたに注意を払ったことが証明されています。" },
+    { type: "p", text: "Qulo では2問から4問の質問を書きます（有料プランなら最大10問）。質問はあなたの性格、関心、大事にしていることを映します。ほかの人がそれを解こうとし、すべてに正解した相手とマッチします。マッチの代価が親指の動きではなく思考であるため、会話が始まる前の時点で、相手はすでにあなたに注意を払ったことが証明されています。" },
 
     { type: "h2", text: "なぜそのほうが良いのか" },
     { type: "ul", items: [
@@ -680,7 +680,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo는 방식을 꾸미는 대신 바꾸려고 만들어졌습니다. 스와이프 대신 매칭이 질문과 답으로 굴러가고, 그 결과 순간적인 외모 판단이 과정의 맨 앞에서 빠지고 그 자리에 실제로 당신을 알아볼 수 있는 무언가가 들어섭니다." },
 
     { type: "h2", text: "어떻게 작동하나요?" },
-    { type: "p", text: "Qulo에서는 2개에서 10개 사이의 질문을 씁니다. 질문은 당신의 성격과 관심사, 중요하게 여기는 것을 담습니다. 다른 사람들이 그 질문을 풀고, 전부 맞힌 사람과 매치됩니다. 매치의 대가가 엄지 움직임이 아니라 생각이기 때문에, 대화가 시작되기도 전에 상대가 당신에게 주의를 기울였다는 사실이 증명됩니다." },
+    { type: "p", text: "Qulo에서는 2개에서 4개 사이의 질문을 씁니다 — 유료 플랜에서는 최대 10개입니다. 질문은 당신의 성격과 관심사, 중요하게 여기는 것을 담습니다. 다른 사람들이 그 질문을 풀고, 전부 맞힌 사람과 매치됩니다. 매치의 대가가 엄지 움직임이 아니라 생각이기 때문에, 대화가 시작되기도 전에 상대가 당신에게 주의를 기울였다는 사실이 증명됩니다." },
 
     { type: "h2", text: "왜 더 나은가요?" },
     { type: "ul", items: [
@@ -742,7 +742,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo 的出发点是改造机制，而不是给它加装饰。匹配不再依赖滑动，而是依赖提问与作答；于是那种一瞬间对外表的判断被移出了流程的开头，取而代之的是你真正能被认识的那一面。" },
 
     { type: "h2", text: "它是怎么运作的？" },
-    { type: "p", text: "在 Qulo 上，你写下 2 到 10 个问题。这些问题反映你的性格、兴趣和在意的事。别人尝试解答，全部答对的人才会和你配对。因为一次配对的代价是思考而不是拇指的动作，所以在对话开始之前，对方就已经明确地把注意力放在了你身上。" },
+    { type: "p", text: "在 Qulo 上，你写下 2 到 4 个问题；付费方案最多 10 道。这些问题反映你的性格、兴趣和在意的事。别人尝试解答，全部答对的人才会和你配对。因为一次配对的代价是思考而不是拇指的动作，所以在对话开始之前，对方就已经明确地把注意力放在了你身上。" },
 
     { type: "h2", text: "为什么它更好？" },
     { type: "ul", items: [
@@ -804,7 +804,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo is gebouwd om de mechaniek te veranderen in plaats van te versieren. In plaats van swipen draait het matchen op vragen en antwoorden: het bliksemsnelle oordeel over uiterlijk verdwijnt van de voorkant van het proces en er komt iets voor in de plaats waarom je werkelijk gekend kunt worden." },
 
     { type: "h2", text: "Hoe werkt het?" },
-    { type: "p", text: "Op Qulo schrijf je tussen de 2 en 10 vragen. Ze weerspiegelen je persoonlijkheid, je interesses en wat je belangrijk vindt. Anderen proberen ze op te lossen, en je matcht met degene die ze allemaal goed beantwoordt. Omdat een match denkwerk kost en geen duimbeweging, heeft de persoon aan de andere kant aantoonbaar aandacht aan je besteed nog voordat het gesprek begint." },
+    { type: "p", text: "Op Qulo schrijf je tussen de 2 en 4 vragen — tot 10 met een betaald abonnement. Ze weerspiegelen je persoonlijkheid, je interesses en wat je belangrijk vindt. Anderen proberen ze op te lossen, en je matcht met degene die ze allemaal goed beantwoordt. Omdat een match denkwerk kost en geen duimbeweging, heeft de persoon aan de andere kant aantoonbaar aandacht aan je besteed nog voordat het gesprek begint." },
 
     { type: "h2", text: "Waarom is dit beter?" },
     { type: "ul", items: [
@@ -866,7 +866,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo powstało po to, żeby zmienić mechanikę, a nie ją ozdobić. Zamiast przesuwania dopasowanie opiera się na pytaniach i odpowiedziach: błyskawiczny osąd wyglądu znika z początku procesu, a jego miejsce zajmuje coś, z czego naprawdę można cię poznać." },
 
     { type: "h2", text: "Jak to działa?" },
-    { type: "p", text: "W Qulo piszesz od 2 do 10 pytań. Odzwierciedlają twoją osobowość, zainteresowania i to, na czym ci zależy. Inni próbują je rozwiązać, a dopasowanie następuje z tym, kto odpowie poprawnie na wszystkie. Ponieważ dopasowanie kosztuje myślenie, a nie ruch kciukiem, osoba po drugiej stronie w wymierny sposób poświęciła ci uwagę, zanim rozmowa w ogóle się zaczęła." },
+    { type: "p", text: "W Qulo piszesz od 2 do 4 pytań — do 10 w planie płatnym. Odzwierciedlają twoją osobowość, zainteresowania i to, na czym ci zależy. Inni próbują je rozwiązać, a dopasowanie następuje z tym, kto odpowie poprawnie na wszystkie. Ponieważ dopasowanie kosztuje myślenie, a nie ruch kciukiem, osoba po drugiej stronie w wymierny sposób poświęciła ci uwagę, zanim rozmowa w ogóle się zaczęła." },
 
     { type: "h2", text: "Dlaczego to lepsze?" },
     { type: "ul", items: [
@@ -928,7 +928,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo byggdes för att ändra mekaniken snarare än att dekorera den. I stället för svep vilar matchningen på frågor och svar: det blixtsnabba omdömet om utseendet försvinner från början av processen och ersätts av något du faktiskt kan bli känd för." },
 
     { type: "h2", text: "Hur fungerar det?" },
-    { type: "p", text: "På Qulo skriver du mellan 2 och 10 frågor. De speglar din personlighet, dina intressen och det du bryr dig om. Andra försöker lösa dem, och du matchar med den som svarar rätt på alla. Eftersom en matchning kostar tankearbete och inte en tumrörelse har personen på andra sidan bevisligen ägnat dig uppmärksamhet redan innan samtalet börjar." },
+    { type: "p", text: "På Qulo skriver du mellan 2 och 4 frågor — upp till 10 med ett betalt abonnemang. De speglar din personlighet, dina intressen och det du bryr dig om. Andra försöker lösa dem, och du matchar med den som svarar rätt på alla. Eftersom en matchning kostar tankearbete och inte en tumrörelse har personen på andra sidan bevisligen ägnat dig uppmärksamhet redan innan samtalet börjar." },
 
     { type: "h2", text: "Varför är det bättre?" },
     { type: "ul", items: [
@@ -990,7 +990,7 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "p", text: "Qulo बनावट को सजाने के लिए नहीं, बदलने के लिए बना है। स्वाइप की जगह मैचिंग सवालों और जवाबों पर चलती है, जिससे पल भर में होने वाला शक्ल का फ़ैसला शुरुआत से हट जाता है और उसकी जगह वह चीज़ आती है जिसके लिए आपको सचमुच जाना जा सके।" },
 
     { type: "h2", text: "यह काम कैसे करता है?" },
-    { type: "p", text: "Qulo पर आप 2 से 10 सवाल लिखते हैं। ये सवाल आपके स्वभाव, दिलचस्पियों और आपके लिए अहम चीज़ों को दिखाते हैं। दूसरे लोग उन्हें हल करने की कोशिश करते हैं, और मैच उसी से होता है जो सभी जवाब सही देता है। चूँकि मैच की क़ीमत अंगूठे की हरकत नहीं बल्कि सोच है, इसलिए बातचीत शुरू होने से पहले ही यह साबित हो जाता है कि सामने वाले ने आप पर ध्यान दिया है।" },
+    { type: "p", text: "Qulo पर आप 2 से 4 सवाल लिखते हैं — भुगतान वाली योजना में 10 तक। ये सवाल आपके स्वभाव, दिलचस्पियों और आपके लिए अहम चीज़ों को दिखाते हैं। दूसरे लोग उन्हें हल करने की कोशिश करते हैं, और मैच उसी से होता है जो सभी जवाब सही देता है। चूँकि मैच की क़ीमत अंगूठे की हरकत नहीं बल्कि सोच है, इसलिए बातचीत शुरू होने से पहले ही यह साबित हो जाता है कि सामने वाले ने आप पर ध्यान दिया है।" },
 
     { type: "h2", text: "यह बेहतर क्यों है?" },
     { type: "ul", items: [

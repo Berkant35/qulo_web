@@ -16,6 +16,23 @@ import type { LocalizedArticle } from "@/components/blog/ArticleBlocks";
  * Named competitor apps in the original copy were removed; the article now
  * discusses "swipe-based apps" generically.
  *
+ * Product-claim policy (2026-09-04): the post used to say Qulo's members write
+ * "2-10 questions" and that "Qulo's AI-powered question suggestion system helps
+ * users create more effective questions". Both were false as written.
+ *  - The question cap is per subscription plan, from the active
+ *    `economy_config_versions` row: free 4, Plus 6, Premium 10 (minimum 2 on
+ *    every plan). "2-10" described a Premium account only. Never restate a
+ *    range ending at 10 without naming the paid plan in the same sentence.
+ *  - Nothing in the product calls a model at request time. The suggestions
+ *    feature reads a pre-built `ai_question_bank` table — a library written
+ *    with AI in advance, covering 10 of the app's 16 languages — so the copy
+ *    now says you pick a ready-made question rather than have one written for
+ *    you. Discovery order is a fixed, hand-weighted formula, which is why the
+ *    "AI-powered matching" category now states plainly that Qulo is not in it.
+ *  - "the most comprehensive of these alternatives" went with it: an
+ *    unverifiable superlative that also read as placing Qulo in the AI
+ *    category the same sentence had just listed.
+ *
  * Note: the block model has no h3, so the original h3 sub-headings are authored
  * as h2 (purple). Only the closing "Conclusion" / "Sonuç" heading is green,
  * matching the original markup.
@@ -33,7 +50,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. Question-Based (Quiz-Based) Dating" },
     { type: "p", text: "In this model, users create their own questions and wait for potential matches to solve them. A match occurs when someone answers all questions correctly. This approach is grounded in the psychological theory of \"self-disclosure\" and enables the formation of deep connections." },
     { type: "p", text: "**Advantages:** Personality first, meaningful matches, natural conversation starters, low ghosting rates, equal opportunity for every user." },
-    { type: "p", text: "**Best example:** Qulo — you set your own matching criteria by creating 2-10 questions. You match with whoever solves your questions. Gamification elements (diamonds, levels, powers) make the experience enjoyable." },
+    { type: "p", text: "**Best example:** Qulo — you set your own matching criteria by creating between 2 and 4 questions, and up to 10 on a paid plan. You match with whoever solves your questions. Gamification elements (diamonds, levels, powers) make the experience enjoyable." },
 
     { type: "h2", text: "2. Slow Dating" },
     { type: "p", text: "Apps that present a limited number of profiles per day instead of an infinite stream. The goal is to encourage careful evaluation of each profile. This category appeals to quality-focused users who prefer meaningful matching over speed." },
@@ -46,7 +63,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**Disadvantages:** Excludes camera-shy people, challenging for introverts, still risks superficial evaluation." },
 
     { type: "h2", text: "4. AI-Powered Matching" },
-    { type: "p", text: "AI-based systems that analyze user behaviors, preferences, and messaging patterns to predict compatibility, then reorder who you see accordingly." },
+    { type: "p", text: "AI-based systems that analyze user behaviors, preferences, and messaging patterns to predict compatibility, then reorder who you see accordingly. Qulo does not belong in this category: the order in which profiles reach you comes from a fixed formula with hand-set weights — how often a profile is liked, how active the person is, how recently they were online, how far away they are and how complete their profile is — and no model is involved." },
     { type: "p", text: "**Advantages:** Data-driven matching, suggestions that improve based on user behavior, personalization." },
     { type: "p", text: "**Disadvantages:** \"Black box\" algorithm (unclear why you matched), privacy concerns, risk of algorithmic bias." },
 
@@ -67,7 +84,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Game elements (badges, levels, rewards, challenges) are making the dating experience more enjoyable and engaging. Qulo's diamond economy, power systems, and level mechanics are leading examples of this trend — the app rewards you for thinking about someone, not for scrolling past them." },
 
     { type: "h2", text: "AI-Powered Personalization" },
-    { type: "p", text: "Artificial intelligence is playing a role in every stage of the dating experience, from question suggestions to match optimization. Qulo's AI-powered question suggestion system helps users create more effective questions." },
+    { type: "p", text: "Across the industry, artificial intelligence plays a role at every stage of the dating experience, from question suggestions to match optimization. On Qulo its part is narrower, and worth stating plainly: the suggested questions come from a library written with AI in advance and stored ready-made, so you pick one rather than have a model write for you. That library currently covers 10 of the app's 16 languages, and nothing about who you are shown is decided by a model." },
 
     { type: "h2", text: "Personality-First Approach" },
     { type: "p", text: "The \"personality-first dating\" movement prioritizes values, thoughts, and personality compatibility beyond physical appearance. This trend is spreading rapidly, especially among Gen Z users searching for alternative dating apps." },
@@ -84,7 +101,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "The age of swiping is ending. In 2026, dating is becoming smarter, more meaningful, and more human." },
 
     { type: "h2", accent: "green", text: "Conclusion" },
-    { type: "p", text: "The swipe mechanic democratized the dating industry, but it also created serious problems like superficiality, burnout, and meaningless matches. In 2026, dating without swiping is not only possible but increasingly popular. Question-based, slow, video-first, and AI-powered alternatives promise a better dating experience for everyone. Qulo, as the most comprehensive of these alternatives, redefines dating by combining the question-answer mechanic with gamification. Say goodbye to swiping, and start meeting through questions." },
+    { type: "p", text: "The swipe mechanic democratized the dating industry, but it also created serious problems like superficiality, burnout, and meaningless matches. In 2026, dating without swiping is not only possible but increasingly popular. Question-based, slow, video-first, and AI-powered alternatives promise a better dating experience for everyone. Qulo takes the question-based route, combining the question-and-answer mechanic with gamification. Say goodbye to swiping, and start meeting through questions." },
   ],
   tr: [
     { type: "h2", text: "Swipe Mekanizmasının Tarihi ve Sorunları" },
@@ -98,7 +115,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. Soru Tabanlı (Quiz-Based) Dating" },
     { type: "p", text: "Bu modelde kullanıcılar kendi sorularını oluşturur ve potansiyel eşleşmelerin bu soruları çözmesini bekler. Tüm soruları doğru cevaplayan kişiyle eşleşme gerçekleşir. Bu yaklaşım, psikolojideki \"öz-açıklama\" (self-disclosure) kuramına dayanır ve derin bağlantılar kurulmasını sağlar." },
     { type: "p", text: "**Avantajları:** Kişilik ön planda, anlamlı eşleşmeler, doğal sohbet başlangıcı, düşük ghosting oranı, her kullanıcıya eşit şans." },
-    { type: "p", text: "**En iyi örnek:** Qulo — 2-10 soru hazırlayarak kendi eşleşme kriterlerinizi belirlersiniz. Sorularınızı çözen kişiyle eşleşirsiniz. Oyunlaştırma öğeleri (elmaslar, seviyeler, güçler) deneyimi eğlenceli kılar." },
+    { type: "p", text: "**En iyi örnek:** Qulo — 2 ila 4 soru — ücretli planda 10'a kadar — hazırlayarak kendi eşleşme kriterlerinizi belirlersiniz. Sorularınızı çözen kişiyle eşleşirsiniz. Oyunlaştırma öğeleri (elmaslar, seviyeler, güçler) deneyimi eğlenceli kılar." },
 
     { type: "h2", text: "2. Yavaş Dating (Slow Dating)" },
     { type: "p", text: "Sonsuz profil akışı yerine günde sınırlı sayıda profil sunan uygulamalar. Amaç, her profili dikkatlice değerlendirmeyi teşvik etmek. Bu kategori, hız yerine anlamlı eşleşme arayan kalite odaklı kullanıcılara hitap ediyor." },
@@ -111,7 +128,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**Dezavantajları:** Kamera karşısında rahat olmayanları dışlar, içedönükler için zorlayıcıdır, hâlâ yüzeysel değerlendirme riski taşır." },
 
     { type: "h2", text: "4. Yapay Zekâ Destekli (AI-Powered) Eşleştirme" },
-    { type: "p", text: "Kullanıcı davranışlarını, tercihlerini ve mesajlaşma örüntülerini analiz ederek uyumluluk tahmini yapan ve size kimin görüneceğini buna göre sıralayan yapay zekâ tabanlı sistemler." },
+    { type: "p", text: "Kullanıcı davranışlarını, tercihlerini ve mesajlaşma örüntülerini analiz ederek uyumluluk tahmini yapan ve size kimin görüneceğini buna göre sıralayan yapay zekâ tabanlı sistemler. Qulo bu kategoride değil: profillerin karşınıza çıkma sırası, ağırlıkları elle belirlenmiş sabit bir formülden geliyor — profilin ne sıklıkla beğenildiği, kişinin ne kadar aktif olduğu, en son ne zaman çevrimiçi olduğu, ne kadar uzakta olduğu ve profilinin ne kadar dolu olduğu — işin içinde hiçbir model yok." },
     { type: "p", text: "**Avantajları:** Veri odaklı eşleşme, kullanıcı davranışına göre gelişen öneriler, kişiselleştirme." },
     { type: "p", text: "**Dezavantajları:** \"Kara kutu\" algoritması (neden eşleştiğiniz belirsizdir), gizlilik kaygıları, algoritmik ön yargı riski." },
 
@@ -132,7 +149,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Oyunlaştırma öğeleri (rozet, seviye, ödül, meydan okuma) dating deneyimini daha eğlenceli ve bağlayıcı kılıyor. Qulo'nun elmas ekonomisi, güç sistemleri ve seviye mekanikleri bu trendin öncü örneklerinden — uygulama sizi birinin yanından kaydırıp geçtiğiniz için değil, biri hakkında düşündüğünüz için ödüllendiriyor." },
 
     { type: "h2", text: "Yapay Zekâ Destekli Kişiselleştirme" },
-    { type: "p", text: "Yapay zekâ, soru önerilerinden eşleşme optimizasyonuna kadar dating deneyiminin her aşamasında rol oynuyor. Qulo'nun yapay zekâ destekli soru önerme sistemi, kullanıcıların daha etkili sorular hazırlamasına yardımcı oluyor." },
+    { type: "p", text: "Sektör genelinde yapay zekâ, soru önerilerinden eşleşme optimizasyonuna kadar dating deneyiminin her aşamasında rol oynuyor. Qulo'da ise payı daha dar ve bunu açıkça söylemek gerekiyor: önerilen sorular, önceden yapay zekâ ile yazılıp hazır hâlde saklanan bir kütüphaneden geliyor; yani bir model sizin için soru yazmıyor, siz hazır olanların arasından seçiyorsunuz. Bu kütüphane şu an uygulamanın 16 dilinden 10'unu kapsıyor ve kimin karşınıza çıkacağına hiçbir model karar vermiyor." },
 
     { type: "h2", text: "Kişilik Öncelikli Yaklaşım" },
     { type: "p", text: "\"Personality-first dating\" hareketi, fiziksel görünümün ötesinde değer, düşünce ve kişilik uyumluluğunu ön plana çıkarıyor. Bu eğilim, özellikle Z kuşağı arasında hızla yayılıyor." },
@@ -149,7 +166,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "Swipe çağı sona eriyor. 2026'da dating; daha akıllı, daha anlamlı ve daha insani bir hâle geliyor." },
 
     { type: "h2", accent: "green", text: "Sonuç" },
-    { type: "p", text: "Swipe mekanizması dating sektörünü demokratikleştirdi; ancak yüzeysellik, tükenmişlik ve anlamsız eşleşmeler gibi ciddi sorunlar da yarattı. 2026'da swipe olmadan dating artık mümkün ve giderek daha popüler. Soru tabanlı, yavaş, video öncelikli ve yapay zekâ destekli alternatifler herkes için daha iyi bir dating deneyimi vaat ediyor. Qulo, bu alternatiflerin en kapsamlısı olarak soru-cevap mekaniğini oyunlaştırmayla birleştirip dating'i yeniden tanımlıyor. Swipe'a veda edin, sorularla tanışın." },
+    { type: "p", text: "Swipe mekanizması dating sektörünü demokratikleştirdi; ancak yüzeysellik, tükenmişlik ve anlamsız eşleşmeler gibi ciddi sorunlar da yarattı. 2026'da swipe olmadan dating artık mümkün ve giderek daha popüler. Soru tabanlı, yavaş, video öncelikli ve yapay zekâ destekli alternatifler herkes için daha iyi bir dating deneyimi vaat ediyor. Qulo bu alternatiflerden soru tabanlı olanı seçiyor ve soru-cevap mekaniğini oyunlaştırmayla birleştiriyor. Swipe'a veda edin, sorularla tanışın." },
   ],
   de: [
     { type: "h2", text: "Geschichte und Probleme des Swipe-Prinzips" },
@@ -163,7 +180,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. Fragenbasiertes (quizbasiertes) Dating" },
     { type: "p", text: "In diesem Modell schreiben die Nutzerinnen und Nutzer ihre eigenen Fragen und warten darauf, dass mögliche Matches sie lösen. Ein Match entsteht, wenn jemand alle Fragen richtig beantwortet. Der Ansatz stützt sich auf die psychologische Theorie der „Selbstoffenbarung“ und macht tiefere Verbindungen möglich." },
     { type: "p", text: "**Vorteile:** Persönlichkeit zuerst, bedeutungsvolle Matches, natürliche Gesprächseinstiege, wenig Ghosting, gleiche Chancen für alle." },
-    { type: "p", text: "**Bestes Beispiel:** Qulo — mit 2-10 Fragen legst du deine eigenen Match-Kriterien fest. Du matchst mit der Person, die deine Fragen löst. Spielerische Elemente (Diamanten, Level, Kräfte) machen das Ganze unterhaltsam." },
+    { type: "p", text: "**Bestes Beispiel:** Qulo — mit 2 bis 4 Fragen — im kostenpflichtigen Tarif bis zu 10 — legst du deine eigenen Match-Kriterien fest. Du matchst mit der Person, die deine Fragen löst. Spielerische Elemente (Diamanten, Level, Kräfte) machen das Ganze unterhaltsam." },
 
     { type: "h2", text: "2. Slow Dating" },
     { type: "p", text: "Apps, die statt eines endlosen Stroms nur eine begrenzte Zahl von Profilen pro Tag zeigen. Ziel ist es, jedes Profil in Ruhe zu prüfen. Diese Kategorie spricht qualitätsbewusste Menschen an, denen ein bedeutungsvoller Treffer wichtiger ist als Tempo." },
@@ -176,7 +193,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**Nachteile:** Schließt kamerascheue Menschen aus, anstrengend für Introvertierte, birgt weiterhin das Risiko oberflächlicher Urteile." },
 
     { type: "h2", text: "4. KI-gestütztes Matching" },
-    { type: "p", text: "KI-basierte Systeme, die Verhalten, Vorlieben und Nachrichtenmuster auswerten, um Passung vorherzusagen — und danach neu sortieren, wen du überhaupt zu sehen bekommst." },
+    { type: "p", text: "KI-basierte Systeme, die Verhalten, Vorlieben und Nachrichtenmuster auswerten, um Passung vorherzusagen — und danach neu sortieren, wen du überhaupt zu sehen bekommst. Qulo gehört nicht in diese Kategorie: In welcher Reihenfolge dich Profile erreichen, entscheidet eine feste Formel mit von Hand gesetzten Gewichten — wie oft ein Profil geliked wird, wie aktiv die Person ist, wann sie zuletzt online war, wie weit sie entfernt ist und wie vollständig ihr Profil ist. Ein Modell ist daran nicht beteiligt." },
     { type: "p", text: "**Vorteile:** Datengetriebenes Matching, Vorschläge, die sich mit dem Nutzungsverhalten verbessern, Personalisierung." },
     { type: "p", text: "**Nachteile:** „Black Box“-Algorithmus (unklar, warum es gematcht hat), Datenschutzbedenken, Gefahr algorithmischer Verzerrung." },
 
@@ -197,7 +214,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Spielelemente (Abzeichen, Level, Belohnungen, Herausforderungen) machen das Dating-Erlebnis unterhaltsamer und fesselnder. Qulos Diamanten-Ökonomie, Kräftesystem und Level-Mechanik sind Vorreiter dieses Trends — die App belohnt dich dafür, dass du über jemanden nachdenkst, nicht dafür, dass du an ihm vorbeiwischst." },
 
     { type: "h2", text: "KI-gestützte Personalisierung" },
-    { type: "p", text: "Künstliche Intelligenz spielt in jeder Phase des Dating-Erlebnisses eine Rolle, von Fragenvorschlägen bis zur Match-Optimierung. Qulos KI-gestütztes System für Fragenvorschläge hilft dabei, wirkungsvollere Fragen zu formulieren." },
+    { type: "p", text: "Branchenweit spielt künstliche Intelligenz in jeder Phase des Dating-Erlebnisses eine Rolle, von Fragenvorschlägen bis zur Match-Optimierung. Bei Qulo ist ihr Anteil kleiner, und das gehört klar gesagt: Die vorgeschlagenen Fragen stammen aus einer Bibliothek, die vorab mit KI geschrieben und fertig abgelegt wurde — du wählst also eine aus, statt dir eine von einem Modell schreiben zu lassen. Diese Bibliothek deckt derzeit 10 der 16 Sprachen der App ab, und wer dir angezeigt wird, entscheidet kein Modell." },
 
     { type: "h2", text: "Persönlichkeit zuerst" },
     { type: "p", text: "Die Bewegung des „Personality-First-Dating“ stellt Werte, Gedanken und charakterliche Passung über das Äußere. Dieser Trend verbreitet sich rasant, besonders unter Nutzerinnen und Nutzern der Gen Z, die nach alternativen Dating-Apps suchen." },
@@ -214,7 +231,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "Die Ära des Swipens geht zu Ende. 2026 wird Dating klüger, bedeutungsvoller und menschlicher." },
 
     { type: "h2", accent: "green", text: "Fazit" },
-    { type: "p", text: "Das Swipe-Prinzip hat die Dating-Branche demokratisiert, aber es hat auch ernste Probleme geschaffen: Oberflächlichkeit, Erschöpfung und bedeutungslose Matches. 2026 ist Dating ohne Swipen nicht nur möglich, sondern zunehmend beliebt. Fragenbasierte, langsame, videobasierte und KI-gestützte Alternativen versprechen allen ein besseres Dating-Erlebnis. Qulo als umfassendste dieser Alternativen definiert Dating neu, indem es die Frage-Antwort-Mechanik mit Gamification verbindet. Verabschiede dich vom Swipen und lernt euch über Fragen kennen." },
+    { type: "p", text: "Das Swipe-Prinzip hat die Dating-Branche demokratisiert, aber es hat auch ernste Probleme geschaffen: Oberflächlichkeit, Erschöpfung und bedeutungslose Matches. 2026 ist Dating ohne Swipen nicht nur möglich, sondern zunehmend beliebt. Fragenbasierte, langsame, videobasierte und KI-gestützte Alternativen versprechen allen ein besseres Dating-Erlebnis. Qulo geht den fragenbasierten Weg und verbindet die Frage-Antwort-Mechanik mit Gamification. Verabschiede dich vom Swipen und lernt euch über Fragen kennen." },
   ],
   fr: [
     { type: "h2", text: "Histoire et problèmes du mécanisme du swipe" },
@@ -228,7 +245,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. La rencontre par questions (quiz)" },
     { type: "p", text: "Dans ce modèle, chacun rédige ses propres questions et attend que d'éventuels prétendants les résolvent. Le match se produit lorsque quelqu'un répond correctement à toutes les questions. Cette approche s'appuie sur la théorie psychologique de « l'auto-révélation » et permet de nouer des liens profonds." },
     { type: "p", text: "**Avantages :** la personnalité d'abord, des matchs qui ont du sens, des débuts de conversation naturels, peu de ghosting, une chance égale pour chacun." },
-    { type: "p", text: "**Meilleur exemple :** Qulo — vous fixez vos propres critères en rédigeant 2-10 questions. Vous matchez avec la personne qui les résout. Les éléments de jeu (diamants, niveaux, pouvoirs) rendent l'expérience amusante." },
+    { type: "p", text: "**Meilleur exemple :** Qulo — vous fixez vos propres critères en rédigeant de 2 à 4 questions, jusqu'à 10 avec un abonnement payant. Vous matchez avec la personne qui les résout. Les éléments de jeu (diamants, niveaux, pouvoirs) rendent l'expérience amusante." },
 
     { type: "h2", text: "2. Le slow dating" },
     { type: "p", text: "Des applications qui présentent un nombre limité de profils par jour plutôt qu'un flux infini. L'idée est d'encourager un examen attentif de chaque profil. Cette catégorie séduit celles et ceux qui préfèrent la qualité et le sens à la vitesse." },
@@ -241,7 +258,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**Inconvénients :** exclut celles et ceux qui n'aiment pas la caméra, éprouvant pour les introvertis, et le jugement reste parfois superficiel." },
 
     { type: "h2", text: "4. La mise en relation par IA" },
-    { type: "p", text: "Des systèmes fondés sur l'intelligence artificielle qui analysent comportements, préférences et façons d'écrire pour prédire la compatibilité, puis réordonnent les personnes qui vous sont montrées." },
+    { type: "p", text: "Des systèmes fondés sur l'intelligence artificielle qui analysent comportements, préférences et façons d'écrire pour prédire la compatibilité, puis réordonnent les personnes qui vous sont montrées. Qulo n'entre pas dans cette catégorie : l'ordre dans lequel les profils vous parviennent vient d'une formule fixe aux pondérations réglées à la main — fréquence des likes, activité de la personne, date de sa dernière connexion, distance et complétude du profil. Aucun modèle n'intervient." },
     { type: "p", text: "**Avantages :** un appariement guidé par les données, des suggestions qui s'affinent avec l'usage, de la personnalisation." },
     { type: "p", text: "**Inconvénients :** un algorithme « boîte noire » (on ignore pourquoi le match a eu lieu), des questions de confidentialité, un risque de biais algorithmique." },
 
@@ -262,7 +279,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Les éléments de jeu (badges, niveaux, récompenses, défis) rendent l'expérience plus plaisante et plus engageante. L'économie de diamants de Qulo, son système de pouvoirs et ses mécaniques de niveaux sont des exemples marquants de cette tendance — l'application vous récompense parce que vous pensez à quelqu'un, pas parce que vous l'avez fait défiler." },
 
     { type: "h2", text: "La personnalisation par IA" },
-    { type: "p", text: "L'intelligence artificielle intervient à chaque étape de l'expérience, de la suggestion de questions à l'optimisation des matchs. Le système de suggestion de questions de Qulo, propulsé par l'IA, aide à rédiger des questions plus efficaces." },
+    { type: "p", text: "Dans tout le secteur, l'intelligence artificielle intervient à chaque étape de l'expérience, de la suggestion de questions à l'optimisation des matchs. Chez Qulo, sa part est plus étroite, et autant le dire clairement : les questions proposées viennent d'une bibliothèque rédigée à l'avance avec de l'IA et conservée telle quelle — vous en choisissez une, aucun modèle n'écrit pour vous. Cette bibliothèque couvre aujourd'hui 10 des 16 langues de l'application, et aucun modèle ne décide qui vous est montré." },
 
     { type: "h2", text: "L'approche personnalité d'abord" },
     { type: "p", text: "Le mouvement du « personality-first dating » place les valeurs, les idées et la compatibilité de caractère avant l'apparence physique. Cette tendance se répand vite, surtout chez les utilisateurs de la génération Z en quête d'applications de rencontre alternatives." },
@@ -279,7 +296,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "L'ère du swipe s'achève. En 2026, la rencontre devient plus intelligente, plus signifiante et plus humaine." },
 
     { type: "h2", accent: "green", text: "Conclusion" },
-    { type: "p", text: "Le swipe a démocratisé la rencontre en ligne, mais il a aussi créé de vrais problèmes : superficialité, épuisement et matchs sans lendemain. En 2026, se rencontrer sans swiper est non seulement possible, mais de plus en plus courant. Les alternatives fondées sur les questions, la lenteur, la vidéo ou l'IA promettent une meilleure expérience à tout le monde. Qulo, la plus complète d'entre elles, redéfinit la rencontre en mariant la mécanique question-réponse et la ludification. Dites adieu au swipe, et faites connaissance par les questions." },
+    { type: "p", text: "Le swipe a démocratisé la rencontre en ligne, mais il a aussi créé de vrais problèmes : superficialité, épuisement et matchs sans lendemain. En 2026, se rencontrer sans swiper est non seulement possible, mais de plus en plus courant. Les alternatives fondées sur les questions, la lenteur, la vidéo ou l'IA promettent une meilleure expérience à tout le monde. Qulo suit la voie des questions et marie la mécanique question-réponse et la ludification. Dites adieu au swipe, et faites connaissance par les questions." },
   ],
   es: [
     { type: "h2", text: "Historia y problemas del mecanismo del swipe" },
@@ -293,7 +310,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. Citas basadas en preguntas (quiz)" },
     { type: "p", text: "En este modelo, cada persona escribe sus propias preguntas y espera a que los posibles matches las resuelvan. El match se produce cuando alguien responde correctamente a todas. Este enfoque se apoya en la teoría psicológica de la «autorrevelación» y permite crear vínculos profundos." },
     { type: "p", text: "**Ventajas:** la personalidad por delante, matches con sentido, conversaciones que empiezan solas, poco ghosting, las mismas oportunidades para todo el mundo." },
-    { type: "p", text: "**Mejor ejemplo:** Qulo — defines tus propios criterios de match escribiendo 2-10 preguntas. Haces match con quien resuelva tus preguntas. Los elementos de juego (diamantes, niveles, poderes) hacen que la experiencia sea divertida." },
+    { type: "p", text: "**Mejor ejemplo:** Qulo — defines tus propios criterios de match escribiendo entre 2 y 4 preguntas, hasta 10 con un plan de pago. Haces match con quien resuelva tus preguntas. Los elementos de juego (diamantes, niveles, poderes) hacen que la experiencia sea divertida." },
 
     { type: "h2", text: "2. Slow dating" },
     { type: "p", text: "Apps que muestran un número limitado de perfiles al día en lugar de un flujo infinito. La idea es fomentar que cada perfil se mire con calma. Esta categoría atrae a quienes priorizan la calidad y el sentido por encima de la velocidad." },
@@ -306,7 +323,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**Desventajas:** deja fuera a quien no se siente cómodo ante la cámara, resulta exigente para las personas introvertidas y sigue expuesto a juicios superficiales." },
 
     { type: "h2", text: "4. Emparejamiento con inteligencia artificial" },
-    { type: "p", text: "Sistemas basados en IA que analizan comportamientos, preferencias y patrones de mensajería para predecir la compatibilidad y reordenan en función de eso a quién ves." },
+    { type: "p", text: "Sistemas basados en IA que analizan comportamientos, preferencias y patrones de mensajería para predecir la compatibilidad y reordenan en función de eso a quién ves. Qulo no pertenece a esta categoría: el orden en que te llegan los perfiles sale de una fórmula fija con pesos puestos a mano — cuántos «me gusta» recibe un perfil, cuánto se conecta esa persona, cuándo estuvo en línea por última vez, a qué distancia está y cuán completo tiene el perfil. No interviene ningún modelo." },
     { type: "p", text: "**Ventajas:** emparejamiento guiado por datos, sugerencias que mejoran con el uso, personalización." },
     { type: "p", text: "**Desventajas:** algoritmo de «caja negra» (no queda claro por qué hubo match), dudas sobre la privacidad, riesgo de sesgo algorítmico." },
 
@@ -327,7 +344,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Los elementos de juego (insignias, niveles, recompensas, retos) hacen la experiencia más divertida y envolvente. La economía de diamantes de Qulo, su sistema de poderes y sus mecánicas de nivel son ejemplos destacados de esta tendencia — la app te recompensa por pensar en alguien, no por pasar de largo." },
 
     { type: "h2", text: "Personalización con IA" },
-    { type: "p", text: "La inteligencia artificial interviene en todas las etapas de la experiencia, desde la sugerencia de preguntas hasta la optimización de los matches. El sistema de sugerencia de preguntas de Qulo, impulsado por IA, ayuda a escribir preguntas más eficaces." },
+    { type: "p", text: "En todo el sector, la inteligencia artificial interviene en cada etapa de la experiencia, desde la sugerencia de preguntas hasta la optimización de los matches. En Qulo su papel es más estrecho, y conviene decirlo con claridad: las preguntas sugeridas salen de una biblioteca escrita de antemano con IA y guardada ya hecha, así que eliges una en vez de pedirle a un modelo que la escriba. Esa biblioteca cubre hoy 10 de los 16 idiomas de la aplicación, y ningún modelo decide a quién ves." },
 
     { type: "h2", text: "Enfoque centrado en la personalidad" },
     { type: "p", text: "El movimiento del «personality-first dating» pone los valores, las ideas y la compatibilidad de carácter por delante del aspecto físico. Esta tendencia se extiende rápido, sobre todo entre usuarios de la generación Z que buscan apps de citas alternativas." },
@@ -344,7 +361,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "La era del swipe se acaba. En 2026 las citas son más inteligentes, más significativas y más humanas." },
 
     { type: "h2", accent: "green", text: "Conclusión" },
-    { type: "p", text: "El mecanismo del swipe democratizó el sector de las citas, pero también generó problemas serios: superficialidad, desgaste y matches vacíos. En 2026, tener citas sin swipe no solo es posible, sino cada vez más habitual. Las alternativas basadas en preguntas, en la calma, en el vídeo y en la IA prometen una experiencia mejor para todo el mundo. Qulo, la más completa de todas ellas, redefine las citas combinando la mecánica de pregunta y respuesta con la gamificación. Despídete del swipe y conoce a gente a través de las preguntas." },
+    { type: "p", text: "El mecanismo del swipe democratizó el sector de las citas, pero también generó problemas serios: superficialidad, desgaste y matches vacíos. En 2026, tener citas sin swipe no solo es posible, sino cada vez más habitual. Las alternativas basadas en preguntas, en la calma, en el vídeo y en la IA prometen una experiencia mejor para todo el mundo. Qulo sigue la vía de las preguntas y combina la mecánica de pregunta y respuesta con la gamificación. Despídete del swipe y conoce a gente a través de las preguntas." },
   ],
   ar: [
     { type: "h2", text: "تاريخ آلية السحب ومشكلاتها" },
@@ -358,7 +375,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. المواعدة القائمة على الأسئلة (الكويز)" },
     { type: "p", text: "في هذا النموذج، يكتب المستخدم أسئلته الخاصة وينتظر من المرشحين المحتملين أن يحلّوها. ويحدث التوافق حين يجيب أحدهم عن كل الأسئلة إجابة صحيحة. تستند هذه المقاربة إلى نظرية «الإفصاح عن الذات» في علم النفس، وتتيح نشوء روابط عميقة." },
     { type: "p", text: "**المزايا:** الشخصية أولًا، توافقات ذات معنى، بدايات حديث طبيعية، نسبة تجاهل منخفضة، وفرصة متساوية لكل مستخدم." },
-    { type: "p", text: "**أفضل مثال:** Qulo — تحدّد معايير التوافق الخاصة بك عبر كتابة 2-10 أسئلة. وتتوافق مع من يحلّ أسئلتك. أما عناصر اللعب (الألماسات والمستويات والقوى) فتجعل التجربة ممتعة." },
+    { type: "p", text: "**أفضل مثال:** Qulo — تحدّد معايير التوافق الخاصة بك عبر كتابة سؤالين إلى 4 أسئلة، وحتى 10 أسئلة في الخطة المدفوعة. وتتوافق مع من يحلّ أسئلتك. أما عناصر اللعب (الألماسات والمستويات والقوى) فتجعل التجربة ممتعة." },
 
     { type: "h2", text: "2. المواعدة البطيئة" },
     { type: "p", text: "تطبيقات تعرض عددًا محدودًا من الملفات يوميًا بدلًا من تدفق لا ينتهي. الهدف تشجيعك على تقييم كل ملف بتأنٍّ. تناسب هذه الفئة من يبحث عن الجودة والمعنى أكثر من السرعة." },
@@ -371,7 +388,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**العيوب:** تستبعد من لا يرتاح أمام الكاميرا، ومرهقة للانطوائيين، ولا تزال معرّضة لخطر التقييم السطحي." },
 
     { type: "h2", text: "4. المطابقة المدعومة بالذكاء الاصطناعي" },
-    { type: "p", text: "أنظمة تعتمد على الذكاء الاصطناعي، تحلّل سلوك المستخدمين وتفضيلاتهم وأنماط رسائلهم لتتوقّع مدى التوافق، ثم تعيد ترتيب من تراه بناءً على ذلك." },
+    { type: "p", text: "أنظمة تعتمد على الذكاء الاصطناعي، تحلّل سلوك المستخدمين وتفضيلاتهم وأنماط رسائلهم لتتوقّع مدى التوافق، ثم تعيد ترتيب من تراه بناءً على ذلك. ولا ينتمي Qulo إلى هذه الفئة: ترتيب وصول الملفات إليك يأتي من معادلة ثابتة بأوزان محدَّدة يدويًا — كم مرة يُعجَب بالملف، ومدى نشاط صاحبه، وآخر مرة كان فيها متصلًا، وبُعد المسافة، واكتمال الملف — ولا يشارك في ذلك أي نموذج." },
     { type: "p", text: "**المزايا:** مطابقة قائمة على البيانات، واقتراحات تتحسّن مع سلوك المستخدم، وتخصيص للتجربة." },
     { type: "p", text: "**العيوب:** خوارزمية «صندوق أسود» (لا تعرف لماذا حدث التوافق)، ومخاوف تتعلق بالخصوصية، واحتمال التحيّز الخوارزمي." },
 
@@ -392,7 +409,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "عناصر اللعب (الشارات والمستويات والمكافآت والتحديات) تجعل تجربة المواعدة أكثر متعة وجاذبية. واقتصاد الألماس في Qulo وأنظمة القوى وميكانيكا المستويات أمثلة رائدة على هذا الاتجاه — فالتطبيق يكافئك لأنك فكّرت في شخص ما، لا لأنك مررت من أمامه." },
 
     { type: "h2", text: "التخصيص المدعوم بالذكاء الاصطناعي" },
-    { type: "p", text: "يؤدي الذكاء الاصطناعي دورًا في كل مرحلة من تجربة المواعدة، من اقتراح الأسئلة إلى تحسين التوافقات. ونظام Qulo لاقتراح الأسئلة المدعوم بالذكاء الاصطناعي يساعد المستخدمين على كتابة أسئلة أكثر فاعلية." },
+    { type: "p", text: "على مستوى القطاع، يؤدي الذكاء الاصطناعي دورًا في كل مرحلة من تجربة المواعدة، من اقتراح الأسئلة إلى تحسين التوافقات. أما في Qulo فدوره أضيق، ويستحق القول بوضوح: الأسئلة المقترحة تأتي من مكتبة كُتبت مسبقًا بالذكاء الاصطناعي وحُفظت جاهزة، فأنت تختار منها بدل أن يكتب لك نموذج. وتغطي هذه المكتبة حاليًا 10 لغات من لغات التطبيق الست عشرة، ولا يقرر أي نموذج من تراه." },
 
     { type: "h2", text: "نهج الشخصية أولًا" },
     { type: "p", text: "تضع حركة «المواعدة التي تبدأ من الشخصية» القيم والأفكار وتوافق الطباع فوق المظهر الخارجي. وينتشر هذا الاتجاه بسرعة، خصوصًا بين مستخدمي الجيل Z الباحثين عن تطبيقات مواعدة بديلة." },
@@ -409,7 +426,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "عصر السحب يقترب من نهايته. في 2026 تصبح المواعدة أذكى وأعمق معنى وأكثر إنسانية." },
 
     { type: "h2", accent: "green", text: "الخلاصة" },
-    { type: "p", text: "أتاحت آلية السحب المواعدة للجميع، لكنها خلقت أيضًا مشكلات جدية: السطحية والإنهاك والتوافقات بلا معنى. في 2026، صارت المواعدة بلا سحب ممكنة، بل ورائجة أكثر فأكثر. وتَعِد البدائل القائمة على الأسئلة والبطيئة والقائمة على الفيديو والمدعومة بالذكاء الاصطناعي بتجربة أفضل للجميع. أما Qulo، وهو أشمل هذه البدائل، فيعيد تعريف المواعدة بدمج آلية السؤال والجواب مع التلعيب. ودّع السحب، وابدأ التعارف عبر الأسئلة." },
+    { type: "p", text: "أتاحت آلية السحب المواعدة للجميع، لكنها خلقت أيضًا مشكلات جدية: السطحية والإنهاك والتوافقات بلا معنى. في 2026، صارت المواعدة بلا سحب ممكنة، بل ورائجة أكثر فأكثر. وتَعِد البدائل القائمة على الأسئلة والبطيئة والقائمة على الفيديو والمدعومة بالذكاء الاصطناعي بتجربة أفضل للجميع. أما Qulo فيسلك طريق الأسئلة، ويدمج آلية السؤال والجواب مع التلعيب. ودّع السحب، وابدأ التعارف عبر الأسئلة." },
   ],
   ru: [
     { type: "h2", text: "История и проблемы механики свайпа" },
@@ -423,7 +440,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. Знакомства на основе вопросов (квиз)" },
     { type: "p", text: "В этой модели пользователь сам составляет вопросы и ждёт, когда потенциальные пары их решат. Совпадение происходит, если человек правильно ответил на все вопросы. Подход опирается на психологическую теорию «самораскрытия» и позволяет выстраивать глубокие связи." },
     { type: "p", text: "**Плюсы:** личность на первом месте, осмысленные совпадения, естественное начало разговора, мало гостинга, равные шансы для каждого." },
-    { type: "p", text: "**Лучший пример:** Qulo — вы задаёте собственные критерии совпадения, составляя 2-10 вопросов. Совпадение происходит с тем, кто их решит. Игровые элементы (алмазы, уровни, силы) делают процесс увлекательным." },
+    { type: "p", text: "**Лучший пример:** Qulo — вы задаёте собственные критерии совпадения, составляя от 2 до 4 вопросов — до 10 на платном тарифе. Совпадение происходит с тем, кто их решит. Игровые элементы (алмазы, уровни, силы) делают процесс увлекательным." },
 
     { type: "h2", text: "2. Медленные знакомства" },
     { type: "p", text: "Приложения, которые вместо бесконечной ленты показывают ограниченное число анкет в день. Цель — заставить внимательно рассмотреть каждую. Категория близка тем, кому осмысленное совпадение важнее скорости." },
@@ -436,7 +453,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**Минусы:** отсекает тех, кто стесняется камеры, тяжело даётся интровертам и всё ещё оставляет место поверхностной оценке." },
 
     { type: "h2", text: "4. Подбор на основе искусственного интеллекта" },
-    { type: "p", text: "Системы на базе ИИ, которые анализируют поведение, предпочтения и манеру переписки, прогнозируют совместимость и заново выстраивают порядок тех, кого вы увидите." },
+    { type: "p", text: "Системы на базе ИИ, которые анализируют поведение, предпочтения и манеру переписки, прогнозируют совместимость и заново выстраивают порядок тех, кого вы увидите. Qulo к этой категории не относится: порядок, в котором анкеты доходят до вас, задаёт постоянная формула с вручную выставленными весами — как часто анкету лайкают, насколько человек активен, когда он был в сети, как далеко находится и насколько заполнен профиль. Никакая модель в этом не участвует." },
     { type: "p", text: "**Плюсы:** подбор на данных, рекомендации, которые улучшаются вместе с вашим поведением, персонализация." },
     { type: "p", text: "**Минусы:** алгоритм-«чёрный ящик» (непонятно, почему случилось совпадение), вопросы приватности, риск алгоритмической предвзятости." },
 
@@ -457,7 +474,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Игровые элементы (значки, уровни, награды, испытания) делают знакомства приятнее и увлекательнее. Алмазная экономика Qulo, система сил и уровневая механика — показательные примеры этого тренда: приложение вознаграждает вас за то, что вы подумали о человеке, а не за то, что пролистнули мимо." },
 
     { type: "h2", text: "Персонализация на основе ИИ" },
-    { type: "p", text: "Искусственный интеллект участвует на каждом этапе знакомства — от подсказок для вопросов до оптимизации совпадений. Система подсказок вопросов Qulo на базе ИИ помогает формулировать более действенные вопросы." },
+    { type: "p", text: "В индустрии искусственный интеллект участвует на каждом этапе знакомства — от подсказок для вопросов до оптимизации совпадений. В Qulo его роль уже, и это стоит сказать прямо: предлагаемые вопросы берутся из библиотеки, написанной с помощью ИИ заранее и сохранённой в готовом виде, — вы выбираете из неё, а не просите модель написать за вас. Сейчас библиотека покрывает 10 из 16 языков приложения, и ни одна модель не решает, кого вы увидите." },
 
     { type: "h2", text: "Подход «сначала личность»" },
     { type: "p", text: "Движение «personality-first dating» ставит ценности, мысли и совместимость характеров выше внешности. Тренд распространяется быстро, особенно среди пользователей поколения Z, которые ищут альтернативные приложения для знакомств." },
@@ -474,7 +491,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "Эпоха свайпа заканчивается. В 2026 году знакомства становятся умнее, осмысленнее и человечнее." },
 
     { type: "h2", accent: "green", text: "Заключение" },
-    { type: "p", text: "Свайп сделал знакомства доступными для всех, но породил и серьёзные проблемы: поверхностность, выгорание и совпадения без смысла. В 2026 году знакомиться без свайпа не просто возможно — это становится всё популярнее. Альтернативы на основе вопросов, медленного темпа, видео и ИИ обещают всем более достойный опыт. Qulo, самая полная из этих альтернатив, переопределяет знакомства, соединяя механику вопроса и ответа с геймификацией. Попрощайтесь со свайпом и знакомьтесь через вопросы." },
+    { type: "p", text: "Свайп сделал знакомства доступными для всех, но породил и серьёзные проблемы: поверхностность, выгорание и совпадения без смысла. В 2026 году знакомиться без свайпа не просто возможно — это становится всё популярнее. Альтернативы на основе вопросов, медленного темпа, видео и ИИ обещают всем более достойный опыт. Qulo идёт путём вопросов и соединяет механику вопроса и ответа с геймификацией. Попрощайтесь со свайпом и знакомьтесь через вопросы." },
   ],
   pt: [
     { type: "h2", text: "A história e os problemas do mecanismo de swipe" },
@@ -488,7 +505,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. Encontros baseados em perguntas (quiz)" },
     { type: "p", text: "Nesse modelo, cada pessoa escreve as próprias perguntas e espera que possíveis matches as resolvam. O match acontece quando alguém acerta todas. A abordagem se apoia na teoria psicológica da “autorrevelação” e permite criar vínculos profundos." },
     { type: "p", text: "**Vantagens:** personalidade em primeiro lugar, matches com sentido, conversas que começam sozinhas, pouco ghosting, chance igual para todo mundo." },
-    { type: "p", text: "**Melhor exemplo:** Qulo — você define seus próprios critérios de match escrevendo 2-10 perguntas. Dá match com quem resolver suas perguntas. Os elementos de jogo (diamantes, níveis, poderes) deixam a experiência divertida." },
+    { type: "p", text: "**Melhor exemplo:** Qulo — você define seus próprios critérios de match escrevendo de 2 a 4 perguntas, até 10 num plano pago. Dá match com quem resolver suas perguntas. Os elementos de jogo (diamantes, níveis, poderes) deixam a experiência divertida." },
 
     { type: "h2", text: "2. Slow dating" },
     { type: "p", text: "Aplicativos que mostram um número limitado de perfis por dia em vez de um fluxo infinito. A ideia é incentivar a avaliação cuidadosa de cada perfil. Essa categoria agrada a quem prefere qualidade e sentido à velocidade." },
@@ -501,7 +518,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**Desvantagens:** exclui quem não se sente à vontade diante da câmera, é desgastante para introvertidos e ainda deixa espaço para avaliações superficiais." },
 
     { type: "h2", text: "4. Combinação com inteligência artificial" },
-    { type: "p", text: "Sistemas baseados em IA que analisam comportamentos, preferências e padrões de conversa para prever compatibilidade e, a partir disso, reordenam quem você vê." },
+    { type: "p", text: "Sistemas baseados em IA que analisam comportamentos, preferências e padrões de conversa para prever compatibilidade e, a partir disso, reordenam quem você vê. O Qulo não pertence a essa categoria: a ordem em que os perfis chegam até você vem de uma fórmula fixa com pesos definidos à mão — com que frequência um perfil recebe curtidas, o quanto a pessoa é ativa, quando esteve on-line pela última vez, a que distância está e o quanto o perfil está completo. Nenhum modelo participa disso." },
     { type: "p", text: "**Vantagens:** combinação guiada por dados, sugestões que melhoram conforme o uso, personalização." },
     { type: "p", text: "**Desvantagens:** algoritmo “caixa-preta” (não se sabe por que houve match), preocupações com privacidade, risco de viés algorítmico." },
 
@@ -522,7 +539,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Elementos de jogo (medalhas, níveis, recompensas, desafios) deixam a experiência mais divertida e envolvente. A economia de diamantes do Qulo, o sistema de poderes e as mecânicas de nível são exemplos de destaque dessa tendência — o aplicativo recompensa você por pensar em alguém, não por passar direto." },
 
     { type: "h2", text: "Personalização com IA" },
-    { type: "p", text: "A inteligência artificial atua em todas as etapas da experiência, da sugestão de perguntas à otimização dos matches. O sistema de sugestão de perguntas do Qulo, movido a IA, ajuda a escrever perguntas mais eficazes." },
+    { type: "p", text: "No setor como um todo, a inteligência artificial atua em todas as etapas da experiência, da sugestão de perguntas à otimização dos matches. No Qulo o papel dela é mais estreito, e vale dizer com clareza: as perguntas sugeridas vêm de uma biblioteca escrita com IA de antemão e guardada pronta, ou seja, você escolhe uma em vez de pedir que um modelo escreva por você. Essa biblioteca cobre hoje 10 dos 16 idiomas do aplicativo, e nenhum modelo decide quem aparece para você." },
 
     { type: "h2", text: "Abordagem que começa pela personalidade" },
     { type: "p", text: "O movimento do “personality-first dating” coloca valores, ideias e compatibilidade de temperamento acima da aparência física. A tendência se espalha rápido, sobretudo entre usuários da geração Z em busca de aplicativos de relacionamento alternativos." },
@@ -539,7 +556,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "A era do swipe está acabando. Em 2026, os encontros ficam mais inteligentes, mais significativos e mais humanos." },
 
     { type: "h2", accent: "green", text: "Conclusão" },
-    { type: "p", text: "O mecanismo de swipe democratizou o setor de relacionamentos, mas também criou problemas sérios: superficialidade, esgotamento e matches sem sentido. Em 2026, se relacionar sem swipe não é apenas possível — está cada vez mais comum. As alternativas baseadas em perguntas, em ritmo lento, em vídeo e em IA prometem uma experiência melhor para todo mundo. O Qulo, a mais completa delas, redefine os encontros ao unir a mecânica de pergunta e resposta à gamificação. Despeça-se do swipe e conheça gente pelas perguntas." },
+    { type: "p", text: "O mecanismo de swipe democratizou o setor de relacionamentos, mas também criou problemas sérios: superficialidade, esgotamento e matches sem sentido. Em 2026, se relacionar sem swipe não é apenas possível — está cada vez mais comum. As alternativas baseadas em perguntas, em ritmo lento, em vídeo e em IA prometem uma experiência melhor para todo mundo. O Qulo segue o caminho das perguntas e une a mecânica de pergunta e resposta à gamificação. Despeça-se do swipe e conheça gente pelas perguntas." },
   ],
   it: [
     { type: "h2", text: "Storia e problemi del meccanismo dello swipe" },
@@ -553,7 +570,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. Incontri basati sulle domande (quiz)" },
     { type: "p", text: "In questo modello ciascuno scrive le proprie domande e aspetta che i potenziali match le risolvano. Il match avviene quando qualcuno risponde correttamente a tutte. L'approccio si fonda sulla teoria psicologica dell'«autorivelazione» e permette di costruire legami profondi." },
     { type: "p", text: "**Vantaggi:** la personalità prima di tutto, match che hanno un senso, conversazioni che partono da sole, poco ghosting, pari opportunità per ogni utente." },
-    { type: "p", text: "**Esempio migliore:** Qulo — definisci i tuoi criteri di match scrivendo 2-10 domande. Fai match con chi risolve le tue domande. Gli elementi di gioco (diamanti, livelli, poteri) rendono l'esperienza divertente." },
+    { type: "p", text: "**Esempio migliore:** Qulo — definisci i tuoi criteri di match scrivendo da 2 a 4 domande, fino a 10 con un piano a pagamento. Fai match con chi risolve le tue domande. Gli elementi di gioco (diamanti, livelli, poteri) rendono l'esperienza divertente." },
 
     { type: "h2", text: "2. Slow dating" },
     { type: "p", text: "App che mostrano un numero limitato di profili al giorno invece di un flusso infinito. L'idea è invitare a valutare ogni profilo con calma. Questa categoria piace a chi mette la qualità e il senso davanti alla velocità." },
@@ -566,7 +583,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**Svantaggi:** esclude chi non è a suo agio davanti alla telecamera, è faticoso per gli introversi e lascia comunque spazio a giudizi superficiali." },
 
     { type: "h2", text: "4. Abbinamento con l'intelligenza artificiale" },
-    { type: "p", text: "Sistemi basati sull'IA che analizzano comportamenti, preferenze e modi di scrivere per prevedere la compatibilità e riordinare di conseguenza chi ti viene mostrato." },
+    { type: "p", text: "Sistemi basati sull'IA che analizzano comportamenti, preferenze e modi di scrivere per prevedere la compatibilità e riordinare di conseguenza chi ti viene mostrato. Qulo non rientra in questa categoria: l'ordine in cui i profili ti arrivano nasce da una formula fissa con pesi impostati a mano — quanto spesso un profilo riceve like, quanto la persona è attiva, quando è stata online l'ultima volta, quanto è distante e quanto è completo il profilo. Nessun modello interviene." },
     { type: "p", text: "**Vantaggi:** abbinamento guidato dai dati, suggerimenti che migliorano con l'uso, personalizzazione." },
     { type: "p", text: "**Svantaggi:** algoritmo «scatola nera» (non si capisce perché sia arrivato il match), dubbi sulla privacy, rischio di distorsioni algoritmiche." },
 
@@ -587,7 +604,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Gli elementi di gioco (distintivi, livelli, ricompense, sfide) rendono l'esperienza più divertente e coinvolgente. L'economia dei diamanti di Qulo, il sistema dei poteri e le meccaniche dei livelli sono esempi di punta di questa tendenza — l'app ti premia perché hai pensato a qualcuno, non perché gli sei scorso davanti." },
 
     { type: "h2", text: "Personalizzazione con l'IA" },
-    { type: "p", text: "L'intelligenza artificiale interviene in ogni fase dell'esperienza, dai suggerimenti per le domande all'ottimizzazione dei match. Il sistema di suggerimento delle domande di Qulo, basato sull'IA, aiuta a scrivere domande più efficaci." },
+    { type: "p", text: "Nel settore l'intelligenza artificiale interviene in ogni fase dell'esperienza, dai suggerimenti per le domande all'ottimizzazione dei match. Su Qulo il suo ruolo è più stretto, e conviene dirlo chiaramente: le domande suggerite arrivano da una libreria scritta in anticipo con l'IA e conservata già pronta, quindi ne scegli una invece di farla scrivere a un modello. Quella libreria copre oggi 10 delle 16 lingue dell'app, e nessun modello decide chi ti viene mostrato." },
 
     { type: "h2", text: "L'approccio che parte dalla personalità" },
     { type: "p", text: "Il movimento del «personality-first dating» mette valori, idee e affinità caratteriale davanti all'aspetto fisico. La tendenza si diffonde in fretta, soprattutto fra gli utenti della generazione Z che cercano app di incontri alternative." },
@@ -604,7 +621,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "L'era dello swipe sta finendo. Nel 2026 gli incontri diventano più intelligenti, più significativi e più umani." },
 
     { type: "h2", accent: "green", text: "Conclusione" },
-    { type: "p", text: "Il meccanismo dello swipe ha democratizzato il settore degli incontri, ma ha creato anche problemi seri: superficialità, esaurimento e match senza senso. Nel 2026 incontrarsi senza swipe non è soltanto possibile: è sempre più diffuso. Le alternative basate sulle domande, sulla lentezza, sul video e sull'IA promettono a tutti un'esperienza migliore. Qulo, la più completa fra queste, ridefinisce gli incontri unendo la meccanica domanda-risposta alla gamification. Dai l'addio allo swipe e conosci le persone attraverso le domande." },
+    { type: "p", text: "Il meccanismo dello swipe ha democratizzato il settore degli incontri, ma ha creato anche problemi seri: superficialità, esaurimento e match senza senso. Nel 2026 incontrarsi senza swipe non è soltanto possibile: è sempre più diffuso. Le alternative basate sulle domande, sulla lentezza, sul video e sull'IA promettono a tutti un'esperienza migliore. Qulo segue la strada delle domande e unisce la meccanica domanda-risposta alla gamification. Dai l'addio allo swipe e conosci le persone attraverso le domande." },
   ],
   ja: [
     { type: "h2", text: "スワイプという仕組みの歴史と問題点" },
@@ -618,7 +635,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. 質問ベース（クイズ型）のマッチング" },
     { type: "p", text: "このモデルでは、ユーザーが自分で質問をつくり、気になる相手がそれを解いてくれるのを待つ。すべての質問に正解した相手とだけマッチが成立する。このやり方は心理学でいう「自己開示」の理論に立脚しており、深いつながりが生まれやすい。" },
     { type: "p", text: "**利点：** 人柄が最優先、意味のあるマッチ、会話の自然な入り口、ゴースティングの少なさ、そして誰にでも等しく開かれたチャンス。" },
-    { type: "p", text: "**代表例：** Qulo——2〜10問の質問をつくることで、自分のマッチ基準を自分で決められる。あなたの質問を解いた人とマッチする。ゲーム的な要素（ダイヤ、レベル、パワー）が体験を楽しくしている。" },
+    { type: "p", text: "**代表例：** Qulo——2〜4問（有料プランなら最大10問）の質問をつくることで、自分のマッチ基準を自分で決められる。あなたの質問を解いた人とマッチする。ゲーム的な要素（ダイヤ、レベル、パワー）が体験を楽しくしている。" },
 
     { type: "h2", text: "2. スローデーティング" },
     { type: "p", text: "無限に流れてくるプロフィールではなく、一日に見られる件数をあえて絞って提示するアプリ。ひとつひとつをじっくり見てもらうことが狙いだ。速さよりも意味のある出会いを重んじる、質を求める人に向いている。" },
@@ -631,7 +648,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**欠点：** カメラが苦手な人を締め出す、内向的な人には負担が大きい、それでも表面的な判断の余地は残る。" },
 
     { type: "h2", text: "4. AIによるマッチング" },
-    { type: "p", text: "利用者の行動、好み、メッセージの書き方を分析して相性を予測し、それに応じて誰が表示されるかの順序を組み替えるAIベースの仕組み。" },
+    { type: "p", text: "利用者の行動、好み、メッセージの書き方を分析して相性を予測し、それに応じて誰が表示されるかの順序を組み替えるAIベースの仕組み。Quloはこの区分には入らない。プロフィールが届く順番は、重みを人の手で決めた固定の計算式から出ている——どれだけライクされているか、どれだけ活発か、最後にオンラインだったのはいつか、距離はどれくらいか、プロフィールがどれだけ埋まっているか——モデルは一切関与していない。" },
     { type: "p", text: "**利点：** データに基づくマッチング、使うほど精度が上がる提案、パーソナライズ。" },
     { type: "p", text: "**欠点：** 「ブラックボックス」なアルゴリズム（なぜマッチしたのか分からない）、プライバシーへの懸念、アルゴリズムの偏りのリスク。" },
 
@@ -652,7 +669,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "バッジ、レベル、報酬、チャレンジといったゲーム的要素が、出会いの体験をより楽しく、より夢中にさせている。Quloのダイヤ経済、パワーの仕組み、レベル設計はこの流れを代表する例だ——このアプリは、誰かの前を通り過ぎたことではなく、誰かについて考えたことに報いる。" },
 
     { type: "h2", text: "AIによるパーソナライズ" },
-    { type: "p", text: "人工知能は、質問の提案からマッチの最適化まで、体験のあらゆる段階に関わっている。QuloのAI質問提案システムは、より効果的な質問づくりを手助けする。" },
+    { type: "p", text: "業界全体では、人工知能は質問の提案からマッチの最適化まで、体験のあらゆる段階に関わっている。ただしQuloでの役割はもっと狭く、はっきり書いておきたい。提案される質問は、あらかじめAIで書かれて既製の形で保管されたライブラリから来る。つまりモデルがその場で書くのではなく、あなたが選ぶ。このライブラリは現在アプリの16言語のうち10言語をカバーしており、誰が表示されるかをモデルが決めることはない。" },
 
     { type: "h2", text: "人柄を最優先する考え方" },
     { type: "p", text: "「パーソナリティ・ファースト」の潮流は、外見よりも価値観、考え方、性格の相性を重んじる。別の選択肢を探すZ世代の利用者を中心に、この流れは急速に広がっている。" },
@@ -669,7 +686,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "スワイプの時代は終わりに近づいている。2026年、出会いはより賢く、より意味深く、より人間らしいものになっていく。" },
 
     { type: "h2", accent: "green", text: "まとめ" },
-    { type: "p", text: "スワイプはマッチング業界を民主化したが、同時に表層性、燃え尽き、意味のないマッチという深刻な問題も生んだ。2026年、スワイプなしの出会いはもはや可能なだけでなく、着実に広がりつつある。質問ベース、スロー、動画ファースト、AI——どの選択肢も、より良い出会いの体験を約束している。なかでももっとも包括的なQuloは、質問と答えの仕組みをゲーミフィケーションと組み合わせ、出会いのかたちを定義し直している。スワイプに別れを告げて、質問から始めよう。" },
+    { type: "p", text: "スワイプはマッチング業界を民主化したが、同時に表層性、燃え尽き、意味のないマッチという深刻な問題も生んだ。2026年、スワイプなしの出会いはもはや可能なだけでなく、着実に広がりつつある。質問ベース、スロー、動画ファースト、AI——どの選択肢も、より良い出会いの体験を約束している。Quloが選んだのは質問という道で、質問と答えの仕組みをゲーミフィケーションと組み合わせている。スワイプに別れを告げて、質問から始めよう。" },
   ],
   ko: [
     { type: "h2", text: "스와이프 방식의 역사와 문제점" },
@@ -683,7 +700,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. 질문 기반(퀴즈형) 데이팅" },
     { type: "p", text: "이 모델에서는 이용자가 직접 질문을 만들고, 마음이 가는 상대가 그 질문을 풀어 주기를 기다린다. 모든 질문에 정답을 맞힌 사람과만 매칭이 성사된다. 이 접근은 심리학의 ‘자기 개방’ 이론에 바탕을 두며, 깊은 관계가 만들어지도록 돕는다." },
     { type: "p", text: "**장점:** 성격이 우선, 의미 있는 매칭, 자연스러운 대화의 시작, 낮은 잠수 비율, 모든 이용자에게 동등한 기회." },
-    { type: "p", text: "**가장 좋은 예:** Qulo — 2~10개의 질문을 만들어 자신만의 매칭 기준을 정한다. 그 질문을 푼 사람과 매칭된다. 게임 요소(다이아, 레벨, 파워)가 경험을 즐겁게 만든다." },
+    { type: "p", text: "**가장 좋은 예:** Qulo — 2~4개, 유료 플랜에서는 최대 10개의 질문을 만들어 자신만의 매칭 기준을 정한다. 그 질문을 푼 사람과 매칭된다. 게임 요소(다이아, 레벨, 파워)가 경험을 즐겁게 만든다." },
 
     { type: "h2", text: "2. 슬로 데이팅" },
     { type: "p", text: "끝없이 이어지는 프로필 대신 하루에 볼 수 있는 프로필 수를 제한해 보여 주는 앱. 하나하나를 찬찬히 살펴보게 하려는 의도다. 속도보다 의미 있는 만남을 중시하는, 질을 따지는 이용자에게 맞는다." },
@@ -696,7 +713,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**단점:** 카메라 앞이 불편한 사람을 배제하고, 내향적인 사람에게 부담이 크며, 여전히 피상적인 판단의 여지가 남는다." },
 
     { type: "h2", text: "4. 인공지능 기반 매칭" },
-    { type: "p", text: "이용자의 행동, 취향, 메시지 습관을 분석해 궁합을 예측하고, 그에 맞춰 누구를 보여 줄지 순서를 다시 짜는 인공지능 기반 시스템." },
+    { type: "p", text: "이용자의 행동, 취향, 메시지 습관을 분석해 궁합을 예측하고, 그에 맞춰 누구를 보여 줄지 순서를 다시 짜는 인공지능 기반 시스템. Qulo는 이 범주에 들지 않는다. 프로필이 도착하는 순서는 가중치를 사람이 직접 정한 고정 공식에서 나온다 — 얼마나 자주 좋아요를 받는지, 얼마나 활발한지, 마지막 접속이 언제인지, 거리가 얼마나 되는지, 프로필이 얼마나 채워져 있는지 — 모델은 전혀 관여하지 않는다." },
     { type: "p", text: "**장점:** 데이터에 근거한 매칭, 쓸수록 나아지는 추천, 개인화." },
     { type: "p", text: "**단점:** ‘블랙박스’ 알고리즘(왜 매칭됐는지 알 수 없다), 프라이버시 우려, 알고리즘 편향의 위험." },
 
@@ -717,7 +734,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "배지, 레벨, 보상, 챌린지 같은 게임 요소가 데이팅 경험을 더 즐겁고 몰입감 있게 만든다. Qulo의 다이아 경제, 파워 시스템, 레벨 구조는 이 흐름을 앞서 보여 주는 예다 — 이 앱은 누군가를 스쳐 지나갔다고 보상하지 않고, 누군가를 생각했다고 보상한다." },
 
     { type: "h2", text: "인공지능 기반 개인화" },
-    { type: "p", text: "인공지능은 질문 추천부터 매칭 최적화까지 데이팅 경험의 모든 단계에 관여한다. Qulo의 인공지능 질문 추천 시스템은 더 효과적인 질문을 쓰도록 돕는다." },
+    { type: "p", text: "업계 전체로 보면 인공지능은 질문 추천부터 매칭 최적화까지 데이팅 경험의 모든 단계에 관여한다. 다만 Qulo에서의 역할은 더 좁고, 분명히 밝혀 둘 만하다. 추천되는 질문은 미리 AI로 써서 완성된 채로 보관해 둔 라이브러리에서 나온다. 모델이 그 자리에서 써 주는 것이 아니라, 이용자가 고르는 것이다. 이 라이브러리는 현재 앱의 16개 언어 가운데 10개를 담고 있고, 누가 보이는지는 어떤 모델도 결정하지 않는다." },
 
     { type: "h2", text: "성격을 앞세우는 접근" },
     { type: "p", text: "‘퍼스낼리티 퍼스트’ 흐름은 외모보다 가치관, 생각, 성격의 궁합을 앞에 둔다. 이 흐름은 특히 대안적인 데이팅 앱을 찾는 Z세대 이용자들 사이에서 빠르게 퍼지고 있다." },
@@ -734,7 +751,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "스와이프의 시대가 저물고 있다. 2026년의 데이팅은 더 똑똑하고, 더 의미 있고, 더 사람다워진다." },
 
     { type: "h2", accent: "green", text: "결론" },
-    { type: "p", text: "스와이프는 데이팅 업계의 문턱을 낮췄지만, 동시에 피상성과 번아웃, 의미 없는 매칭이라는 심각한 문제도 만들어 냈다. 2026년, 스와이프 없는 데이팅은 가능할 뿐 아니라 점점 더 흔해지고 있다. 질문 기반, 슬로, 영상 우선, 인공지능 기반 대안은 모두에게 더 나은 데이팅 경험을 약속한다. 그중 가장 폭넓은 Qulo는 질문과 답의 방식을 게이미피케이션과 결합해 데이팅을 다시 정의한다. 스와이프에 작별을 고하고, 질문으로 만나 보자." },
+    { type: "p", text: "스와이프는 데이팅 업계의 문턱을 낮췄지만, 동시에 피상성과 번아웃, 의미 없는 매칭이라는 심각한 문제도 만들어 냈다. 2026년, 스와이프 없는 데이팅은 가능할 뿐 아니라 점점 더 흔해지고 있다. 질문 기반, 슬로, 영상 우선, 인공지능 기반 대안은 모두에게 더 나은 데이팅 경험을 약속한다. Qulo가 택한 길은 질문이며, 질문과 답의 방식을 게이미피케이션과 결합한다. 스와이프에 작별을 고하고, 질문으로 만나 보자." },
   ],
   zh: [
     { type: "h2", text: "滑动机制的历史与问题" },
@@ -748,7 +765,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. 以问题为基础的（答题式）约会" },
     { type: "p", text: "在这种模式里，用户自己写下问题，等着感兴趣的人来解答。只有把所有问题都答对的人才会与你匹配。这种做法建立在心理学中的“自我表露”理论之上，也更容易让人建立深层的连接。" },
     { type: "p", text: "**优点：** 性格优先、有意义的匹配、天然的聊天开场、更低的已读不回率，以及对每个人都平等的机会。" },
-    { type: "p", text: "**最佳范例：** Qulo —— 你通过设置 2～10 道问题来定义自己的匹配标准。谁解开了你的问题，谁就与你匹配。游戏化元素（钻石、等级、能力）让整个过程变得有意思。" },
+    { type: "p", text: "**最佳范例：** Qulo —— 你通过设置 2 到 4 道问题（付费方案最多 10 道）来定义自己的匹配标准。谁解开了你的问题，谁就与你匹配。游戏化元素（钻石、等级、能力）让整个过程变得有意思。" },
 
     { type: "h2", text: "2. 慢约会" },
     { type: "p", text: "这类应用不提供无穷无尽的档案流，而是每天只呈现有限的几份。目的是让你认真看待每一个人。它适合那些看重质量与意义、而不是速度的用户。" },
@@ -761,7 +778,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**缺点：** 把不擅长面对镜头的人挡在门外，对内向的人来说负担不小，也依然留有流于表面的判断空间。" },
 
     { type: "h2", text: "4. 人工智能驱动的匹配" },
-    { type: "p", text: "基于人工智能的系统，会分析用户的行为、偏好和聊天习惯来预测契合度，并据此重新排列你会看到谁。" },
+    { type: "p", text: "基于人工智能的系统，会分析用户的行为、偏好和聊天习惯来预测契合度，并据此重新排列你会看到谁。Qulo 不属于这一类：资料出现在你面前的先后，来自一条权重由人手设定的固定公式——被喜欢的频率、活跃程度、最近一次在线的时间、距离远近，以及资料填得多完整——其中没有任何模型参与。" },
     { type: "p", text: "**优点：** 以数据为依据的匹配，随着使用越来越准的推荐，个性化体验。" },
     { type: "p", text: "**缺点：** “黑箱”算法（不知道为什么会匹配上）、隐私方面的顾虑、算法偏见的风险。" },
 
@@ -782,7 +799,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "徽章、等级、奖励、挑战这些游戏元素，让约会体验更有意思、也更让人投入。Qulo 的钻石经济、能力体系和等级机制正是这股趋势的代表 —— 这款应用奖励的是你认真想过一个人，而不是你从他面前划了过去。" },
 
     { type: "h2", text: "人工智能驱动的个性化" },
-    { type: "p", text: "从问题建议到匹配优化，人工智能出现在约会体验的每一个环节。Qulo 由人工智能驱动的问题建议系统，能帮用户写出更有效的问题。" },
+    { type: "p", text: "就整个行业而言，从问题建议到匹配优化，人工智能出现在约会体验的每一个环节。不过在 Qulo，它的角色要窄得多，这一点值得说清楚：推荐的问题来自一个事先用人工智能写好、成品存放的题库，你是从中挑选，而不是让模型当场替你写。该题库目前覆盖应用 16 种语言中的 10 种，而你会看到谁，没有任何模型参与决定。" },
 
     { type: "h2", text: "性格优先的取向" },
     { type: "p", text: "“性格优先”的潮流把价值观、想法和性情上的契合放在外貌之前。这股风气正在迅速蔓延，尤其是在寻找另类约会应用的 Z 世代用户中间。" },
@@ -799,7 +816,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "滑动的时代正在结束。2026 年的约会，会变得更聪明、更有意义，也更有人味。" },
 
     { type: "h2", accent: "green", text: "结语" },
-    { type: "p", text: "滑动机制让约会变得人人可及，但也带来了肤浅、倦怠和毫无意义的匹配这些严重问题。到了 2026 年，不靠滑动去约会不但可行，而且越来越流行。以问题为基础的、慢节奏的、视频优先的和人工智能驱动的方案，都在许诺一种更好的约会体验。其中最完整的 Qulo，把问答机制和游戏化结合起来，重新定义了约会。跟滑动说再见，从问题开始认识彼此。" },
+    { type: "p", text: "滑动机制让约会变得人人可及，但也带来了肤浅、倦怠和毫无意义的匹配这些严重问题。到了 2026 年，不靠滑动去约会不但可行，而且越来越流行。以问题为基础的、慢节奏的、视频优先的和人工智能驱动的方案，都在许诺一种更好的约会体验。Qulo 走的是问题这条路，把问答机制和游戏化结合了起来。跟滑动说再见，从问题开始认识彼此。" },
   ],
   nl: [
     { type: "h2", text: "De geschiedenis en de problemen van het swipen" },
@@ -813,7 +830,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. Daten op basis van vragen (quiz)" },
     { type: "p", text: "In dit model schrijft iedereen zijn eigen vragen en wacht tot mogelijke matches ze oplossen. Er ontstaat een match wanneer iemand alle vragen goed beantwoordt. Deze aanpak steunt op de psychologische theorie van ‘zelfonthulling’ en maakt diepe verbindingen mogelijk." },
     { type: "p", text: "**Voordelen:** persoonlijkheid eerst, matches die ergens over gaan, gesprekken die vanzelf beginnen, weinig ghosting, gelijke kansen voor iedere gebruiker." },
-    { type: "p", text: "**Beste voorbeeld:** Qulo — je bepaalt je eigen matchcriteria door 2-10 vragen te schrijven. Je matcht met degene die jouw vragen oplost. Speelse elementen (diamanten, levels, krachten) maken het geheel leuk." },
+    { type: "p", text: "**Beste voorbeeld:** Qulo — je bepaalt je eigen matchcriteria door 2 tot 4 vragen te schrijven, met een betaald abonnement tot 10. Je matcht met degene die jouw vragen oplost. Speelse elementen (diamanten, levels, krachten) maken het geheel leuk." },
 
     { type: "h2", text: "2. Slow dating" },
     { type: "p", text: "Apps die per dag een beperkt aantal profielen tonen in plaats van een oneindige stroom. Het doel is dat je elk profiel rustig bekijkt. Deze categorie spreekt mensen aan die kwaliteit en betekenis boven snelheid stellen." },
@@ -826,7 +843,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**Nadelen:** sluit mensen uit die niet van de camera houden, is zwaar voor introverte mensen en laat nog steeds ruimte voor oppervlakkige oordelen." },
 
     { type: "h2", text: "4. Matchen met kunstmatige intelligentie" },
-    { type: "p", text: "AI-systemen die gedrag, voorkeuren en berichtpatronen analyseren om te voorspellen wie bij je past, en op basis daarvan opnieuw bepalen wie je te zien krijgt." },
+    { type: "p", text: "AI-systemen die gedrag, voorkeuren en berichtpatronen analyseren om te voorspellen wie bij je past, en op basis daarvan opnieuw bepalen wie je te zien krijgt. Qulo hoort niet in deze categorie: de volgorde waarin profielen bij je terechtkomen komt uit een vaste formule met handmatig ingestelde gewichten — hoe vaak een profiel geliket wordt, hoe actief iemand is, wanneer diegene voor het laatst online was, hoe ver weg diegene woont en hoe compleet het profiel is. Er komt geen model aan te pas." },
     { type: "p", text: "**Voordelen:** matchen op basis van data, suggesties die met je gedrag meegroeien, personalisatie." },
     { type: "p", text: "**Nadelen:** een ‘black box’-algoritme (onduidelijk waarom je matchte), zorgen over privacy, kans op algoritmische vooringenomenheid." },
 
@@ -847,7 +864,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Spelelementen (badges, levels, beloningen, uitdagingen) maken het daten leuker en meeslepender. De diamanteneconomie van Qulo, het krachtensysteem en de levelmechaniek zijn toonaangevende voorbeelden van deze trend — de app beloont je omdat je over iemand hebt nagedacht, niet omdat je hem voorbij hebt geswipet." },
 
     { type: "h2", text: "Personalisatie met AI" },
-    { type: "p", text: "Kunstmatige intelligentie speelt in elke fase van de datingervaring een rol, van vraagsuggesties tot het optimaliseren van matches. Het door AI aangedreven suggestiesysteem van Qulo helpt gebruikers effectievere vragen te schrijven." },
+    { type: "p", text: "In de branche als geheel speelt kunstmatige intelligentie in elke fase van de datingervaring een rol, van vraagsuggesties tot het optimaliseren van matches. Bij Qulo is die rol smaller, en dat mag helder gezegd worden: de voorgestelde vragen komen uit een bibliotheek die vooraf met AI is geschreven en kant-en-klaar is opgeslagen — je kiest er dus een, in plaats van er een door een model te laten schrijven. Die bibliotheek dekt op dit moment 10 van de 16 talen van de app, en geen enkel model bepaalt wie je te zien krijgt." },
 
     { type: "h2", text: "Persoonlijkheid eerst" },
     { type: "p", text: "De beweging van ‘personality-first dating’ zet waarden, ideeën en karakterklik boven het uiterlijk. Die trend verspreidt zich snel, vooral onder gebruikers uit gen Z die op zoek zijn naar alternatieve datingapps." },
@@ -864,7 +881,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "Het tijdperk van het swipen loopt ten einde. In 2026 wordt daten slimmer, betekenisvoller en menselijker." },
 
     { type: "h2", accent: "green", text: "Conclusie" },
-    { type: "p", text: "Het swipen heeft de datingbranche gedemocratiseerd, maar het bracht ook serieuze problemen: oppervlakkigheid, uitputting en matches zonder betekenis. In 2026 is daten zonder swipen niet alleen mogelijk, het wordt ook steeds populairder. Alternatieven op basis van vragen, traagheid, video en AI beloven iedereen een betere datingervaring. Qulo, de meest complete daarvan, definieert daten opnieuw door de vraag-antwoordmechaniek te combineren met gamification. Neem afscheid van het swipen en leer elkaar kennen via vragen." },
+    { type: "p", text: "Het swipen heeft de datingbranche gedemocratiseerd, maar het bracht ook serieuze problemen: oppervlakkigheid, uitputting en matches zonder betekenis. In 2026 is daten zonder swipen niet alleen mogelijk, het wordt ook steeds populairder. Alternatieven op basis van vragen, traagheid, video en AI beloven iedereen een betere datingervaring. Qulo kiest de weg van de vragen en combineert de vraag-antwoordmechaniek met gamification. Neem afscheid van het swipen en leer elkaar kennen via vragen." },
   ],
   pl: [
     { type: "h2", text: "Historia i problemy mechaniki swipe'a" },
@@ -878,7 +895,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. Randkowanie oparte na pytaniach (quiz)" },
     { type: "p", text: "W tym modelu użytkownik sam układa pytania i czeka, aż potencjalne dopasowania je rozwiążą. Dopasowanie następuje, gdy ktoś odpowie poprawnie na wszystkie. Podejście opiera się na psychologicznej teorii „samoujawnienia” i pozwala budować głębokie więzi." },
     { type: "p", text: "**Zalety:** osobowość na pierwszym miejscu, dopasowania, które coś znaczą, naturalny początek rozmowy, mało ghostingu, równa szansa dla każdego." },
-    { type: "p", text: "**Najlepszy przykład:** Qulo — układając 2-10 pytań, sam ustalasz własne kryteria dopasowania. Dopasowujesz się z tym, kto rozwiąże twoje pytania. Elementy grywalizacji (diamenty, poziomy, moce) sprawiają, że całość jest przyjemna." },
+    { type: "p", text: "**Najlepszy przykład:** Qulo — układając od 2 do 4 pytań — w planie płatnym do 10 — sam ustalasz własne kryteria dopasowania. Dopasowujesz się z tym, kto rozwiąże twoje pytania. Elementy grywalizacji (diamenty, poziomy, moce) sprawiają, że całość jest przyjemna." },
 
     { type: "h2", text: "2. Slow dating" },
     { type: "p", text: "Aplikacje, które zamiast nieskończonego strumienia pokazują ograniczoną liczbę profili dziennie. Chodzi o to, żeby każdy profil obejrzeć spokojnie. Ta kategoria trafia do osób, dla których jakość i sens liczą się bardziej niż tempo." },
@@ -891,7 +908,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**Wady:** wyklucza osoby, które źle czują się przed kamerą, jest męczące dla introwertyków i wciąż zostawia miejsce na powierzchowną ocenę." },
 
     { type: "h2", text: "4. Dopasowanie oparte na sztucznej inteligencji" },
-    { type: "p", text: "Systemy oparte na sztucznej inteligencji, które analizują zachowania, preferencje i sposób pisania wiadomości, przewidują dopasowanie i na tej podstawie na nowo układają kolejność osób, które widzisz." },
+    { type: "p", text: "Systemy oparte na sztucznej inteligencji, które analizują zachowania, preferencje i sposób pisania wiadomości, przewidują dopasowanie i na tej podstawie na nowo układają kolejność osób, które widzisz. Qulo nie należy do tej kategorii: kolejność, w jakiej trafiają do ciebie profile, wynika ze stałego wzoru z ręcznie ustawionymi wagami — jak często profil dostaje polubienia, jak aktywna jest dana osoba, kiedy ostatnio była online, jak daleko mieszka i jak kompletny ma profil. Żaden model nie bierze w tym udziału." },
     { type: "p", text: "**Zalety:** dopasowanie oparte na danych, sugestie poprawiające się wraz z użytkowaniem, personalizacja." },
     { type: "p", text: "**Wady:** algorytm „czarnej skrzynki” (nie wiadomo, dlaczego doszło do dopasowania), obawy o prywatność, ryzyko uprzedzeń algorytmu." },
 
@@ -912,7 +929,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Elementy gry (odznaki, poziomy, nagrody, wyzwania) sprawiają, że randkowanie jest przyjemniejsze i bardziej wciągające. Diamentowa ekonomia Qulo, system mocy i mechanika poziomów to czołowe przykłady tego trendu — aplikacja nagradza cię za to, że pomyślałeś o kimś, a nie za to, że go minąłeś." },
 
     { type: "h2", text: "Personalizacja oparta na sztucznej inteligencji" },
-    { type: "p", text: "Sztuczna inteligencja pojawia się na każdym etapie randkowania, od podpowiadania pytań po optymalizację dopasowań. Oparty na sztucznej inteligencji system podpowiedzi pytań w Qulo pomaga układać skuteczniejsze pytania." },
+    { type: "p", text: "W całej branży sztuczna inteligencja pojawia się na każdym etapie randkowania, od podpowiadania pytań po optymalizację dopasowań. W Qulo jej rola jest węższa i warto powiedzieć to wprost: proponowane pytania pochodzą z biblioteki napisanej wcześniej z pomocą sztucznej inteligencji i przechowywanej w gotowej postaci — wybierasz z niej, zamiast prosić model, żeby napisał za ciebie. Ta biblioteka obejmuje dziś 10 z 16 języków aplikacji, a o tym, kogo zobaczysz, nie decyduje żaden model." },
 
     { type: "h2", text: "Podejście „najpierw osobowość”" },
     { type: "p", text: "Ruch „personality-first dating” stawia wartości, poglądy i zgodność charakterów ponad wygląd. Trend rozprzestrzenia się szybko, zwłaszcza wśród użytkowników pokolenia Z szukających alternatywnych aplikacji randkowych." },
@@ -929,7 +946,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "Era swipe'a dobiega końca. W 2026 roku randkowanie staje się mądrzejsze, bardziej sensowne i bardziej ludzkie." },
 
     { type: "h2", accent: "green", text: "Podsumowanie" },
-    { type: "p", text: "Mechanika swipe'a zdemokratyzowała branżę randkową, ale stworzyła też poważne problemy: powierzchowność, wypalenie i dopasowania bez znaczenia. W 2026 roku randkowanie bez swipe'a jest nie tylko możliwe — staje się coraz popularniejsze. Alternatywy oparte na pytaniach, na spokojnym tempie, na wideo i na sztucznej inteligencji obiecują wszystkim lepsze doświadczenie. Qulo, najpełniejsza z nich, definiuje randkowanie na nowo, łącząc mechanikę pytania i odpowiedzi z grywalizacją. Pożegnaj swipe'a i poznawaj ludzi przez pytania." },
+    { type: "p", text: "Mechanika swipe'a zdemokratyzowała branżę randkową, ale stworzyła też poważne problemy: powierzchowność, wypalenie i dopasowania bez znaczenia. W 2026 roku randkowanie bez swipe'a jest nie tylko możliwe — staje się coraz popularniejsze. Alternatywy oparte na pytaniach, na spokojnym tempie, na wideo i na sztucznej inteligencji obiecują wszystkim lepsze doświadczenie. Qulo idzie drogą pytań i łączy mechanikę pytania i odpowiedzi z grywalizacją. Pożegnaj swipe'a i poznawaj ludzi przez pytania." },
   ],
   sv: [
     { type: "h2", text: "Swipandets historia och problem" },
@@ -943,7 +960,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. Dejting byggd på frågor (quiz)" },
     { type: "p", text: "I den här modellen skriver var och en sina egna frågor och väntar på att möjliga matchningar ska lösa dem. En matchning uppstår när någon svarar rätt på alla frågor. Angreppssättet vilar på den psykologiska teorin om ”självutlämnande” och gör det lättare att bygga djupa band." },
     { type: "p", text: "**Fördelar:** personligheten först, matchningar som betyder något, samtal som startar av sig själva, lite ghosting, lika chans för varje användare." },
-    { type: "p", text: "**Bästa exemplet:** Qulo — du sätter dina egna matchningskriterier genom att skriva 2-10 frågor. Du matchar med den som löser dina frågor. Spelinslagen (diamanter, nivåer, krafter) gör det hela roligt." },
+    { type: "p", text: "**Bästa exemplet:** Qulo — du sätter dina egna matchningskriterier genom att skriva 2 till 4 frågor — upp till 10 med ett betalt abonnemang. Du matchar med den som löser dina frågor. Spelinslagen (diamanter, nivåer, krafter) gör det hela roligt." },
 
     { type: "h2", text: "2. Slow dating" },
     { type: "p", text: "Appar som visar ett begränsat antal profiler om dagen i stället för ett oändligt flöde. Poängen är att du ska hinna se på varje profil ordentligt. Kategorin tilltalar dem som sätter kvalitet och mening före tempo." },
@@ -956,7 +973,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**Nackdelar:** stänger ute den som är obekväm framför kameran, är krävande för introverta och lämnar ändå plats för ytliga omdömen." },
 
     { type: "h2", text: "4. Matchning med artificiell intelligens" },
-    { type: "p", text: "AI-baserade system som analyserar beteenden, preferenser och skrivmönster för att förutsäga hur väl två personer passar ihop, och som utifrån det ordnar om vem du får se." },
+    { type: "p", text: "AI-baserade system som analyserar beteenden, preferenser och skrivmönster för att förutsäga hur väl två personer passar ihop, och som utifrån det ordnar om vem du får se. Qulo hör inte hemma i den kategorin: i vilken ordning profiler når dig avgörs av en fast formel med vikter satta för hand — hur ofta en profil gillas, hur aktiv personen är, när hen senast var online, hur långt bort hen finns och hur komplett profilen är. Ingen modell är inblandad." },
     { type: "p", text: "**Fördelar:** datadriven matchning, förslag som blir bättre av hur du använder appen, personalisering." },
     { type: "p", text: "**Nackdelar:** en algoritm som är en ”svart låda” (oklart varför matchningen blev av), integritetsfrågor, risk för algoritmisk snedvridning." },
 
@@ -977,7 +994,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Spelinslag (märken, nivåer, belöningar, utmaningar) gör dejtandet roligare och mer engagerande. Qulos diamantekonomi, kraftsystem och nivåmekanik är ledande exempel på trenden — appen belönar dig för att du tänkte på någon, inte för att du svepte förbi." },
 
     { type: "h2", text: "Personalisering med AI" },
-    { type: "p", text: "Artificiell intelligens finns med i varje del av dejtingupplevelsen, från frågeförslag till optimering av matchningar. Qulos AI-drivna system för frågeförslag hjälper användarna att skriva mer träffsäkra frågor." },
+    { type: "p", text: "I branschen som helhet finns artificiell intelligens med i varje del av dejtingupplevelsen, från frågeförslag till optimering av matchningar. I Qulo är rollen smalare, och det tål att sägas rakt ut: de föreslagna frågorna kommer från ett bibliotek som skrivits i förväg med AI och sparats färdigt — du väljer alltså en fråga i stället för att låta en modell skriva åt dig. Biblioteket täcker i dag 10 av appens 16 språk, och ingen modell avgör vem du får se." },
 
     { type: "h2", text: "Personligheten först" },
     { type: "p", text: "Rörelsen ”personality-first dating” sätter värderingar, tankar och personkemi före utseendet. Trenden sprider sig snabbt, särskilt bland generation Z-användare som letar efter alternativa dejtingappar." },
@@ -994,7 +1011,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "Swipandets tid går mot sitt slut. År 2026 blir dejtandet smartare, mer meningsfullt och mer mänskligt." },
 
     { type: "h2", accent: "green", text: "Slutsats" },
-    { type: "p", text: "Swipandet demokratiserade dejtingbranschen, men skapade också allvarliga problem: ytlighet, utmattning och matchningar utan mening. År 2026 är dejting utan swipe inte bara möjligt utan allt vanligare. Alternativen som bygger på frågor, på långsamhet, på video och på AI lovar en bättre upplevelse för alla. Qulo, det mest heltäckande av dem, ritar om dejtandet genom att förena fråga-svar-mekaniken med spelifiering. Ta farväl av swipandet och lär känna varandra genom frågor." },
+    { type: "p", text: "Swipandet demokratiserade dejtingbranschen, men skapade också allvarliga problem: ytlighet, utmattning och matchningar utan mening. År 2026 är dejting utan swipe inte bara möjligt utan allt vanligare. Alternativen som bygger på frågor, på långsamhet, på video och på AI lovar en bättre upplevelse för alla. Qulo går frågornas väg och förenar fråga-svar-mekaniken med spelifiering. Ta farväl av swipandet och lär känna varandra genom frågor." },
   ],
   hi: [
     { type: "h2", text: "स्वाइप की कहानी और उसकी दिक़्क़तें" },
@@ -1008,7 +1025,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "h2", text: "1. सवालों पर आधारित (क्विज़) डेटिंग" },
     { type: "p", text: "इस मॉडल में हर व्यक्ति अपने सवाल खुद लिखता है और इंतज़ार करता है कि सामने वाला उन्हें हल करे। मैच तभी होता है जब कोई सारे सवालों के सही जवाब दे। यह तरीका मनोविज्ञान के ‘आत्म-प्रकटन’ सिद्धांत पर टिका है और गहरे रिश्ते बनने की गुंजाइश देता है।" },
     { type: "p", text: "**फ़ायदे:** शख़्सियत सबसे पहले, मायने रखने वाले मैच, बातचीत की सहज शुरुआत, घोस्टिंग कम, और हर उपयोगकर्ता को बराबर मौका।" },
-    { type: "p", text: "**सबसे अच्छा उदाहरण:** Qulo — 2-10 सवाल लिखकर आप अपने मैच की शर्तें खुद तय करते हैं। जो आपके सवाल हल करेगा, मैच उसी से होगा। खेल जैसे तत्व (डायमंड, लेवल, पावर) इस अनुभव को मज़ेदार बनाते हैं।" },
+    { type: "p", text: "**सबसे अच्छा उदाहरण:** Qulo — 2 से 4 सवाल लिखकर (भुगतान वाली योजना में 10 तक) आप अपने मैच की शर्तें खुद तय करते हैं। जो आपके सवाल हल करेगा, मैच उसी से होगा। खेल जैसे तत्व (डायमंड, लेवल, पावर) इस अनुभव को मज़ेदार बनाते हैं।" },
 
     { type: "h2", text: "2. स्लो डेटिंग" },
     { type: "p", text: "ऐसे ऐप्स जो अंतहीन प्रोफ़ाइल दिखाने के बजाय दिन में गिनी-चुनी प्रोफ़ाइल सामने रखते हैं। मक़सद यह है कि हर प्रोफ़ाइल को इत्मीनान से देखा जाए। यह श्रेणी उन लोगों को भाती है जिनके लिए रफ़्तार से ज़्यादा मायने अर्थपूर्ण मुलाक़ात रखती है।" },
@@ -1021,7 +1038,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "**नुक़सान:** कैमरे से झिझकने वालों को बाहर कर देता है, अंतर्मुखी लोगों के लिए भारी पड़ता है, और सतही राय बनने की गुंजाइश फिर भी रहती है।" },
 
     { type: "h2", text: "4. एआई से होने वाला मिलान" },
-    { type: "p", text: "एआई पर आधारित सिस्टम, जो उपयोगकर्ताओं के व्यवहार, पसंद और मैसेज के ढर्रे को पढ़कर अनुकूलता का अंदाज़ा लगाते हैं और उसी के हिसाब से तय करते हैं कि आपको कौन दिखेगा।" },
+    { type: "p", text: "एआई पर आधारित सिस्टम, जो उपयोगकर्ताओं के व्यवहार, पसंद और मैसेज के ढर्रे को पढ़कर अनुकूलता का अंदाज़ा लगाते हैं और उसी के हिसाब से तय करते हैं कि आपको कौन दिखेगा। Qulo इस श्रेणी में नहीं आता: प्रोफ़ाइलें आप तक किस क्रम में पहुँचती हैं, यह हाथ से तय किए गए वज़न वाले एक तय फ़ॉर्मूले से निकलता है — प्रोफ़ाइल को कितनी बार पसंद किया गया, व्यक्ति कितना सक्रिय है, आख़िरी बार कब ऑनलाइन था, कितनी दूर है और प्रोफ़ाइल कितनी भरी हुई है — इसमें कोई मॉडल शामिल नहीं है।" },
     { type: "p", text: "**फ़ायदे:** आँकड़ों पर टिका मिलान, इस्तेमाल के साथ बेहतर होते सुझाव, निजीकरण।" },
     { type: "p", text: "**नुक़सान:** ‘ब्लैक बॉक्स’ एल्गोरिदम (पता नहीं चलता कि मैच क्यों हुआ), निजता की चिंता, और एल्गोरिदम के पूर्वाग्रह का ख़तरा।" },
 
@@ -1042,7 +1059,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "खेल के तत्व (बैज, लेवल, इनाम, चुनौतियाँ) डेटिंग के अनुभव को ज़्यादा मज़ेदार और बाँधे रखने वाला बनाते हैं। Qulo की डायमंड अर्थव्यवस्था, पावर सिस्टम और लेवल की बनावट इस रुझान की अगुआ मिसालें हैं — यह ऐप आपको किसी के आगे से गुज़र जाने पर नहीं, किसी के बारे में सोचने पर इनाम देता है।" },
 
     { type: "h2", text: "एआई से होने वाला निजीकरण" },
-    { type: "p", text: "सवालों के सुझाव से लेकर मैच को बेहतर बनाने तक, कृत्रिम बुद्धिमत्ता डेटिंग के हर पड़ाव में मौजूद है। Qulo का एआई-आधारित सवाल सुझाने वाला सिस्टम उपयोगकर्ताओं को ज़्यादा असरदार सवाल लिखने में मदद करता है।" },
+    { type: "p", text: "पूरे उद्योग में, सवालों के सुझाव से लेकर मैच को बेहतर बनाने तक, कृत्रिम बुद्धिमत्ता डेटिंग के हर पड़ाव में मौजूद है। पर Qulo में उसकी भूमिका इससे कहीं छोटी है, और यह साफ़ कह देना बेहतर है: सुझाए गए सवाल एक ऐसी लाइब्रेरी से आते हैं जो पहले से एआई की मदद से लिखकर तैयार रखी गई है — यानी कोई मॉडल आपके लिए सवाल नहीं लिखता, आप बने-बनाए सवालों में से चुनते हैं। यह लाइब्रेरी फ़िलहाल ऐप की 16 भाषाओं में से 10 को कवर करती है, और आपको कौन दिखेगा, यह कोई मॉडल तय नहीं करता।" },
 
     { type: "h2", text: "शख़्सियत को पहले रखने वाला नज़रिया" },
     { type: "p", text: "‘पर्सनैलिटी-फ़र्स्ट डेटिंग’ की धारा दिखावट से आगे बढ़कर मूल्यों, विचारों और स्वभाव के मेल को अहमियत देती है। यह रुझान तेज़ी से फैल रहा है, ख़ासकर उन जेन-ज़ी उपयोगकर्ताओं में जो वैकल्पिक डेटिंग ऐप्स तलाश रहे हैं।" },
@@ -1059,6 +1076,6 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "quote", text: "स्वाइप का दौर ढल रहा है। 2026 में डेटिंग ज़्यादा समझदार, ज़्यादा अर्थपूर्ण और ज़्यादा इंसानी होती जा रही है।" },
 
     { type: "h2", accent: "green", text: "निष्कर्ष" },
-    { type: "p", text: "स्वाइप ने डेटिंग को सबकी पहुँच में ला दिया, मगर साथ ही सतहीपन, थकान और बेमानी मैच जैसी गंभीर दिक़्क़तें भी खड़ी कर दीं। 2026 में बिना स्वाइप डेटिंग सिर्फ़ मुमकिन नहीं, बल्कि लगातार लोकप्रिय भी हो रही है। सवालों पर टिके, धीमे, वीडियो-पहले और एआई-आधारित विकल्प सबके लिए बेहतर अनुभव का वादा करते हैं। इन सबमें सबसे भरा-पूरा Qulo, सवाल-जवाब की बनावट को गेमिफ़िकेशन से जोड़कर डेटिंग को नए सिरे से गढ़ता है। स्वाइप को अलविदा कहिए, और सवालों के ज़रिए एक-दूसरे से मिलिए।" },
+    { type: "p", text: "स्वाइप ने डेटिंग को सबकी पहुँच में ला दिया, मगर साथ ही सतहीपन, थकान और बेमानी मैच जैसी गंभीर दिक़्क़तें भी खड़ी कर दीं। 2026 में बिना स्वाइप डेटिंग सिर्फ़ मुमकिन नहीं, बल्कि लगातार लोकप्रिय भी हो रही है। सवालों पर टिके, धीमे, वीडियो-पहले और एआई-आधारित विकल्प सबके लिए बेहतर अनुभव का वादा करते हैं। Qulo ने सवालों वाला रास्ता चुना है, और सवाल-जवाब की बनावट को गेमिफ़िकेशन से जोड़ता है। स्वाइप को अलविदा कहिए, और सवालों के ज़रिए एक-दूसरे से मिलिए।" },
   ],
 };

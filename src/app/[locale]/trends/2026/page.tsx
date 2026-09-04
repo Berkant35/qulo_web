@@ -148,7 +148,7 @@ const COPY_TR: LocaleCopy = {
   conclusionPara1:
     "2026, dating dünyasının dönüşüm yılı olarak tarihe geçiyor. Swipe'ın sınırlarına ulaşıldığı, kullanıcıların daha anlamlı ve daha derin deneyimler aradığı bir yıl. Teknoloji, kullanıcı davranışı ve toplumsal değerler birlikte evrim geçiriyor — dating artık sadece bir eşleşme değil, bir yaşam tarzı seçimi.",
   conclusionPara2:
-    "Qulo, bu dönüşümün merkezinde yer alıyor. Soru-cevap tabanlı eşleşme modeliyle, 16 dilde global bir topluluk sunuyor ve Z kuşağının değerlerine, AI destekli eşleşmeye ve etik tasarıma uyum sağlıyor. 2026'da yeni nesil dating'in nasıl görüneceğini merak edenler için cevap net: daha derin, daha kişisel, daha anlamlı.",
+    "Qulo, bu dönüşümün merkezinde yer alıyor. Soru-cevap tabanlı eşleşme modeliyle, 16 dilde global bir topluluk sunuyor ve Z kuşağının değerlerine, kişilik öncelikli tanışmaya ve etik tasarıma uyum sağlıyor. 2026'da yeni nesil dating'in nasıl görüneceğini merak edenler için cevap net: daha derin, daha kişisel, daha anlamlı.",
   ctaHeading: "Trendin Parçası Ol",
   ctaText: "Swipe'dan quiz'e geç — 2026'nın en büyük trendine katıl.",
   citationHeading: "Bu Raporu Kaynak Göster",
@@ -229,7 +229,7 @@ const COPY_EN: LocaleCopy = {
   conclusionPara1:
     "2026 will go down as a year of transformation for the dating industry. The swipe model has reached its limits, users seek deeper and more meaningful experiences, and technology, user behavior and social values are evolving together. Dating is no longer just a matching mechanic — it is a lifestyle choice.",
   conclusionPara2:
-    "Qulo sits at the center of this transformation. With a question-based matching model, a global community across 16 languages, AI-assisted compatibility and an ethical design approach, it aligns directly with Gen Z values and the future of dating. For anyone asking what next-generation dating looks like in 2026 — the answer is clear: deeper, more personal, more meaningful.",
+    "Qulo sits at the center of this transformation. With a question-based matching model, a global community across 16 languages, personality-first discovery and an ethical design approach, it aligns directly with Gen Z values and the future of dating. For anyone asking what next-generation dating looks like in 2026 — the answer is clear: deeper, more personal, more meaningful.",
   ctaHeading: "Be Part of the Trend",
   ctaText: "Move from swipe to quiz — join the biggest dating trend of 2026.",
   citationHeading: "Cite This Report",

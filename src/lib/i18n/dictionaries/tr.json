@@ -1,14 +1,14 @@
 {
   "meta": {
     "title": "Qulo — Sorularla Tanış",
-    "description": "Soru hazırla, paylaş, doğru cevaplayan kişiyle eşleş. AI destekli yeni nesil tanışma uygulaması."
+    "description": "Soru hazırla, paylaş, doğru cevaplayan kişiyle eşleş. Swipe yok, soru-cevap var — yeni nesil tanışma uygulaması."
   },
   "nav": {
     "download": "İndir",
     "about": "Hakkında",
     "blog": "Blog",
     "help": "Yardım",
-    "features": "Ozellikler",
+    "features": "Özellikler",
     "advice": "Tavsiyeler"
   },
   "hero": {
@@ -32,7 +32,7 @@
     "title1": "Nasıl",
     "title2": "Çalışır?",
     "step1Title": "Soru Hazırla",
-    "step1Desc": "2-10 soru oluştur, kişiliğini yansıt",
+    "step1Desc": "2 ile 4 arasında soru oluştur, kişiliğini yansıt",
     "step1Detail": "Her soru seni tanıtan bir pencere.",
     "step2Title": "Keşfet & Çöz",
     "step2Desc": "Diğer kullanıcıların sorularını cevapla",
@@ -71,9 +71,9 @@
       "desc": "İlerledikçe rozetler kazan, milestone'larla seviye atla. Profilini zenginleştir."
     },
     "ai": {
-      "title": "AI Soru Oluşturma",
-      "subtitle": "Yapay Zeka Destekli",
-      "desc": "Yapay zeka ile ilgi çekici sorular oluştur. Kişiliğini en iyi yansıtan soruları bul."
+      "title": "Hazır Soru Önerileri",
+      "subtitle": "AI ile Önceden Yazıldı",
+      "desc": "Hazır soru kütüphanesinden seç. Sorular yapay zekayla önceden yazıldı; kişiliğini en iyi yansıtanları bul."
     },
     "premium": {
       "title": "Premium Planlar",
@@ -111,8 +111,8 @@
     "diff3QuloDesc": "Elmaslar, rozetler, seviyeler ve özel güçler",
     "diff4OthersTitle": "Şansa bırak",
     "diff4OthersDesc": "Algoritma neyi gösterirse",
-    "diff4QuloTitle": "AI destekli eşleşme",
-    "diff4QuloDesc": "AI ile kişiselleştirilmiş soru önerileri"
+    "diff4QuloTitle": "Filtreyi sen koyarsın",
+    "diff4QuloDesc": "Sana kimin ulaşacağına soruların karar verir"
   },
   "stats": {
     "questions": "Soru Oluşturuldu",
@@ -138,8 +138,7 @@
     "about": "Hakkında",
     "blog": "Blog",
     "help": "Yardım",
-    "cities": "Sehirler",
-    "compare": "Karsilastir",
+    "cities": "Şehirler",
     "glossary": "Sözlük",
     "statistics": "İstatistikler",
     "press": "Basın",
@@ -149,7 +148,6 @@
     "trends": "Trendler",
     "sitemap": "Site Haritası",
     "pricing": "Fiyatlandırma",
-    "reviews": "Yorumlar",
     "guidelines": "Topluluk Kuralları",
     "safety": "Güvenlik İpuçları",
     "childSafety": "Çocuk Güvenliği",
@@ -173,7 +171,7 @@
     "introTitle": "Giriş",
     "intro": "Qulo'ya (\"Uygulama\", \"biz\" veya \"bizim\") hoş geldiniz. Qulo, İstanbul, Türkiye merkezli bireysel geliştirici Berkant Çalıkuşu tarafından geliştirilen soru tabanlı bir tanışma uygulamasıdır.\n\nBu Gizlilik Politikası, Qulo'yu kullanırken kişisel verilerinizi nasıl topladığımızı, kullandığımızı, sakladığımızı ve koruduğumuzu açıklamaktadır. Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR), 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve yürürlükteki diğer veri koruma mevzuatına uygun olarak gizliliğinizi korumayı taahhüt ediyoruz.\n\nHesap oluşturarak veya Qulo'yu kullanarak bu Gizlilik Politikası'nı okuduğunuzu ve anladığınızı kabul etmiş olursunuz.",
     "dataCollectionTitle": "Topladığımız Bilgiler",
-    "dataCollection": "Aşağıdaki kategorilerde kişisel veri toplamaktayız:\n\n• Hesap Bilgileri: E-posta adresi, şifre (bcrypt ile şifrelenir — düz metin şifre asla saklanmaz), doğum tarihi (18 yaş üstü doğrulaması için), görüntülenen ad ve cinsiyet.\n\n• Profil Verileri: Profil fotoğrafları, biyografi metni, oluşturduğunuz sorular (kullanıcı başına 2–10 soru) ve diğer kullanıcıların sorularına verdiğiniz cevaplar.\n\n• Konum Verileri: Keşfet özelliğini kullandığınızda (yakındaki kullanıcıları göstermek için) ve Pasaport modunda (yalnızca Premium, farklı konumlardaki kullanıcılara göz atmak için) GPS koordinatları toplanır. Konum yalnızca uygulama kullanımdayken ve yalnızca açık izniniz dahilinde toplanır.\n\n• Kullanım ve Analiz Verileri: Firebase Analytics, 14 aylık saklama süresiyle anonim uygulama kullanım verilerini (görüntülenen ekranlar, kullanılan özellikler, oturum süresi) toplar. Firebase Crashlytics, 90 günlük saklama süresiyle çökme raporları ve cihaz tanılama bilgilerini toplar.\n\n• İşlem Verileri: RevenueCat aracılığıyla Apple App Store veya Google Play üzerinden gerçekleştirilen uygulama içi satın alma geçmişi. Ödeme kartı bilgilerinizi toplamıyor veya saklamıyoruz.\n\n• Sohbet Verileri: Eşleşen kullanıcılar arasında gönderilen mesajlar, sohbet soruları ve bu soruların cevapları dahil.\n\n• Elmas ve Aktivite Verileri: Yeşil elmas kazanımları, mor elmas satın alımları, güç kullanımları (Oracle, Yarıla, Geç, Süre Uzat, İpucu, Hepsini Geç), rozetler, seviyeler ve oyun istatistikleri.\n\n• Giriş Kimlikleri: Google veya Apple ile giriş yapmayı seçerseniz, ilgili sağlayıcıdan bir hesap tanımlayıcısı ve izin verdiğiniz ölçüde adınız ile e-posta adresiniz bize iletilir. Google veya Apple şifreniz hiçbir zaman bize ulaşmaz.\n\n• Sohbet Medyası: Bir sohbet içinde gönderdiğiniz fotoğraflar ve sesli mesajlar. Sesli mesajlar mikrofon erişimi gerektirir; bu izin yalnızca kayda başladığınız anda istenir.\n\n• Reklam ve Ölçümleme Verileri: Uygulama açılışı, kayıt ve satın alma gibi uygulama olayları ile — izleme izni verdiyseniz — cihazınızın reklam tanımlayıcısı (iOS'ta IDFA, Android'de Reklam Kimliği). Bunlar yalnızca kendi reklam kampanyalarımızın performansını ölçmek için kullanılır.\n\n• Hesap Silme Geri Bildirimi: Hesabınızı silerken isteğe bağlı olarak gerekçe belirtirseniz, bu gerekçeyi uygulama sürümü, platform ve dil bilginizle birlikte saklarız.",
+    "dataCollection": "Aşağıdaki kategorilerde kişisel veri toplamaktayız:\n\n• Hesap Bilgileri: E-posta adresi, şifre (bcrypt ile şifrelenir — düz metin şifre asla saklanmaz), doğum tarihi (18 yaş üstü doğrulaması için), görüntülenen ad ve cinsiyet.\n\n• Profil Verileri: Profil fotoğrafları, biyografi metni, oluşturduğunuz sorular (ücretsiz planda kullanıcı başına 2–4 soru, ücretli planlarda 10 soruya kadar) ve diğer kullanıcıların sorularına verdiğiniz cevaplar.\n\n• Konum Verileri: Keşfet özelliğini kullandığınızda (yakındaki kullanıcıları göstermek için) ve Pasaport modunda (yalnızca Premium, farklı konumlardaki kullanıcılara göz atmak için) GPS koordinatları toplanır. Konum yalnızca uygulama kullanımdayken ve yalnızca açık izniniz dahilinde toplanır.\n\n• Kullanım ve Analiz Verileri: Firebase Analytics, 14 aylık saklama süresiyle anonim uygulama kullanım verilerini (görüntülenen ekranlar, kullanılan özellikler, oturum süresi) toplar. Firebase Crashlytics, 90 günlük saklama süresiyle çökme raporları ve cihaz tanılama bilgilerini toplar.\n\n• İşlem Verileri: RevenueCat aracılığıyla Apple App Store veya Google Play üzerinden gerçekleştirilen uygulama içi satın alma geçmişi. Ödeme kartı bilgilerinizi toplamıyor veya saklamıyoruz.\n\n• Sohbet Verileri: Eşleşen kullanıcılar arasında gönderilen mesajlar, sohbet soruları ve bu soruların cevapları dahil.\n\n• Elmas ve Aktivite Verileri: Yeşil elmas kazanımları, mor elmas satın alımları, güç kullanımları (Oracle, Yarıla, Geç, Süre Uzat, İpucu, Hepsini Geç), rozetler, seviyeler ve oyun istatistikleri.\n\n• Giriş Kimlikleri: Google veya Apple ile giriş yapmayı seçerseniz, ilgili sağlayıcıdan bir hesap tanımlayıcısı ve izin verdiğiniz ölçüde adınız ile e-posta adresiniz bize iletilir. Google veya Apple şifreniz hiçbir zaman bize ulaşmaz.\n\n• Sohbet Medyası: Bir sohbet içinde gönderdiğiniz fotoğraflar ve sesli mesajlar. Sesli mesajlar mikrofon erişimi gerektirir; bu izin yalnızca kayda başladığınız anda istenir.\n\n• Reklam ve Ölçümleme Verileri: Uygulama açılışı, kayıt ve satın alma gibi uygulama olayları ile — izleme izni verdiyseniz — cihazınızın reklam tanımlayıcısı (iOS'ta IDFA, Android'de Reklam Kimliği). Bunlar yalnızca kendi reklam kampanyalarımızın performansını ölçmek için kullanılır.\n\n• Hesap Silme Geri Bildirimi: Hesabınızı silerken isteğe bağlı olarak gerekçe belirtirseniz, bu gerekçeyi uygulama sürümü, platform ve dil bilginizle birlikte saklarız.",
     "dataNotCollectedTitle": "Toplamadığımız Bilgiler",
     "dataNotCollected": "Toplamadığımız veriler konusunda şeffaf olmak istiyoruz:\n\n• Telefon numarası veya telefon rehberi bilgileri\n• Qulo dışındaki tarama geçmişi\n• Biyometrik veriler (parmak izi, yüz tarama)\n• Devlet tarafından düzenlenen kimlik belgeleri\n• Finansal bilgiler veya kredi kartı numaraları\n• Cihazınızdaki diğer uygulamalara ait veriler",
     "usageTitle": "Verilerinizi Nasıl ve Hangi Hukuki Sebeple Kullanıyoruz",
@@ -257,7 +255,7 @@
       "matching_how_q": "Eşleşme nasıl çalışır?",
       "matching_how_a": "Sorular oluşturun, diğer kullanıcılar sorularınızı çözsün. Doğru cevaplar eşleşme sağlar.",
       "matching_questions_q": "Soru nasıl oluşturulur?",
-      "matching_questions_a": "Ana ekrandan '+' butonuna tıklayın. 2 ile 10 arasında soru ekleyin, her soruya 4 seçenek girin ve doğru cevabı işaretleyin.",
+      "matching_questions_a": "Ana ekrandan '+' butonuna tıklayın. 2 ile 4 arasında soru ekleyin — ücretli planlarda 10 soruya kadar — her soruya 4 seçenek girin ve doğru cevabı işaretleyin.",
       "diamonds_what_q": "Elmaslar ne işe yarar?",
       "diamonds_what_a": "Yeşil elmaslar güçleri kullanmak için, mor elmaslar özel özellikleri açmak için kullanılır.",
       "diamonds_buy_q": "Elmas nasıl satın alınır?",
@@ -304,18 +302,18 @@
     "subtitle": "Soru-Cevap Tabanlı Eşleşme",
     "hero": "Swipe yorgunluğuna son. Qulo ile sorularınla tanış.",
     "whatIsQulo": "Qulo Nedir?",
-    "whatIsQuloDesc": "Qulo, geleneksel swipe tabanlı dating uygulamalarından farklı olarak soru-cevap mekanizması kullanan yeni nesil bir tanışma platformudur. 2-10 soru hazırlarsın, diğer kullanıcılar bu soruları çözer ve tüm sorularını doğru cevaplayan kişiyle eşleşirsin.",
+    "whatIsQuloDesc": "Qulo, geleneksel swipe tabanlı dating uygulamalarından farklı olarak soru-cevap mekanizması kullanan yeni nesil bir tanışma platformudur. Sorularını hazırlarsın — ücretsiz planda 2 ile 4 arasında, ücretli planlarda 10 soruya kadar — diğer kullanıcılar bu soruları çözer ve tüm sorularını doğru cevaplayan kişiyle eşleşirsin.",
     "whyDifferent": "Neden Farklı?",
     "whyDifferentDesc": "Qulo'da eşleşme, karşılıklı anlayış üzerine kuruludur. Görünüş işin sadece bir parçası; nasıl düşündüğün de en az o kadar önemli. Doğru kişiyi yaklaştıran şey, sorduğun sorulardır.",
     "howItWorks": "Nasıl Çalışır?",
-    "step1": "Soru Hazırla — Kişiliğini yansıtan 2-10 soru oluştur",
+    "step1": "Soru Hazırla — Kişiliğini yansıtan 2 ile 4 arasında soru oluştur",
     "step2": "Keşfet & Çöz — Diğer kullanıcıların sorularını çöz",
     "step3": "Eşleş — Tüm soruları doğru cevapla ve bağlantı kur",
     "step4": "Sohbet & Tanış — Gerçek bir bağlantıyla başla",
     "swipeFatigue": "Swipe Yorgunluğu Nedir?",
     "swipeFatigueDesc": "Swipe yorgunluğu, kullanıcıların sürekli sola veya sağa kaydırma eyleminden dolayı yaşadığı tükenmişlik hissidir. Qulo bu sorunu tamamen ortadan kaldırır — profillere hızlıca göz atmak yerine, anlamlı sorularla gerçek uyumluluk keşfedersin.",
-    "aiPowered": "AI Destekli Öneriler",
-    "aiPoweredDesc": "Yapay zeka, soru önerileri ve keşif algoritmasını güçlendirir. Sorularına en uygun profilleri öne çıkararak zaman kazandırır.",
+    "aiPowered": "Hazır Soru Önerileri",
+    "aiPoweredDesc": "Ne soracağını bilemiyorsan Qulo'nun hazır soru kütüphanesi var: sorular yapay zekayla önceden yazıldı ve uygulamada duruyor — şu an 10 dilde. Önerilere göz at, sana benzeyenleri seç, dilediğin gibi düzenle. Kiminle eşleşeceğine yine tek bir şey karar verir: tüm sorularını doğru cevaplayan kişi.",
     "globalCommunity": "Küresel Topluluk",
     "globalCommunityDesc": "16 dilde destek sunan Qulo, dünyanın her yerinden insanlarla tanışmanı sağlar. Dil engeli olmadan anlamlı bağlantılar kur.",
     "downloadCta": "Hemen İndir",

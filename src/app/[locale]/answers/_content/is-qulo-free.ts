@@ -4,7 +4,7 @@ import type { LocalizedArticle } from "@/components/blog/ArticleBlocks";
 export const isQuloFree: LocalizedArticle = {
   en: [
     { type: "h2", text: "What you get without paying" },
-    { type: "p", text: "The core loop is free. You can create your profile, write your 2 to 10 questions, browse and solve other people's questions, match when you get them all right, and chat with your matches — without a subscription and without spending anything." },
+    { type: "p", text: "The core loop is free. You can create your profile, write your 2 to 4 questions (up to 10 on a paid plan), browse and solve other people's questions, match when you get them all right, and chat with your matches — without a subscription and without spending anything." },
     { type: "h2", text: "The optional subscriptions" },
     { type: "ul", items: [
       "**Free — $0.** Write questions, solve questions, match, chat.",
@@ -19,7 +19,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   tr: [
     { type: "h2", text: "Para ödemeden neler yapabilirsiniz" },
-    { type: "p", text: "Temel döngü ücretsizdir. Profilinizi oluşturabilir, 2 ila 10 sorunuzu yazabilir, başkalarının sorularına göz atıp çözebilir, hepsini doğru bildiğinizde eşleşebilir ve eşleşmelerinizle sohbet edebilirsiniz — abonelik olmadan ve hiçbir ücret ödemeden." },
+    { type: "p", text: "Temel döngü ücretsizdir. Profilinizi oluşturabilir, 2 ila 4 sorunuzu yazabilir (ücretli planda 10'a kadar), başkalarının sorularına göz atıp çözebilir, hepsini doğru bildiğinizde eşleşebilir ve eşleşmelerinizle sohbet edebilirsiniz — abonelik olmadan ve hiçbir ücret ödemeden." },
     { type: "h2", text: "İsteğe bağlı abonelikler" },
     { type: "ul", items: [
       "**Ücretsiz — 0 $.** Soru yaz, soru çöz, eşleş, sohbet et.",
@@ -34,7 +34,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   de: [
     { type: "h2", text: "Was du bekommst, ohne zu bezahlen" },
-    { type: "p", text: "Der Kernablauf ist kostenlos. Du kannst dein Profil anlegen, deine 2 bis 10 Fragen schreiben, die Fragen anderer durchstöbern und lösen, dich matchen, sobald du alle richtig hast, und mit deinen Matches chatten — ohne Abo und ohne einen Cent auszugeben." },
+    { type: "p", text: "Der Kernablauf ist kostenlos. Du kannst dein Profil anlegen, deine 2 bis 4 Fragen schreiben (bis zu 10 im kostenpflichtigen Tarif), die Fragen anderer durchstöbern und lösen, dich matchen, sobald du alle richtig hast, und mit deinen Matches chatten — ohne Abo und ohne einen Cent auszugeben." },
     { type: "h2", text: "Die optionalen Abos" },
     { type: "ul", items: [
       "**Kostenlos — 0 $.** Fragen schreiben, Fragen lösen, matchen, chatten.",
@@ -49,7 +49,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   fr: [
     { type: "h2", text: "Ce que vous obtenez sans payer" },
-    { type: "p", text: "La boucle principale est gratuite. Vous pouvez créer votre profil, écrire vos 2 à 10 questions, parcourir et résoudre les questions des autres, matcher quand vous trouvez toutes les bonnes réponses et discuter avec vos matchs — sans abonnement et sans rien dépenser." },
+    { type: "p", text: "La boucle principale est gratuite. Vous pouvez créer votre profil, écrire vos 2 à 4 questions (jusqu'à 10 avec un abonnement payant), parcourir et résoudre les questions des autres, matcher quand vous trouvez toutes les bonnes réponses et discuter avec vos matchs — sans abonnement et sans rien dépenser." },
     { type: "h2", text: "Les abonnements facultatifs" },
     { type: "ul", items: [
       "**Gratuit — 0 $.** Écrire des questions, résoudre des questions, matcher, discuter.",
@@ -64,7 +64,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   es: [
     { type: "h2", text: "Lo que consigues sin pagar" },
-    { type: "p", text: "El ciclo principal es gratuito. Puedes crear tu perfil, escribir tus 2 a 10 preguntas, explorar y resolver las preguntas de otras personas, hacer match cuando aciertas todas y chatear con tus matches — sin suscripción y sin gastar nada." },
+    { type: "p", text: "El ciclo principal es gratuito. Puedes crear tu perfil, escribir tus 2 a 4 preguntas (hasta 10 con un plan de pago), explorar y resolver las preguntas de otras personas, hacer match cuando aciertas todas y chatear con tus matches — sin suscripción y sin gastar nada." },
     { type: "h2", text: "Las suscripciones opcionales" },
     { type: "ul", items: [
       "**Gratis — 0 $.** Escribir preguntas, resolver preguntas, hacer match, chatear.",
@@ -79,7 +79,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   ar: [
     { type: "h2", text: "ما الذي تحصل عليه دون أن تدفع" },
-    { type: "p", text: "الدورة الأساسية مجانية. يمكنك إنشاء ملفك الشخصي، وكتابة أسئلتك من 2 إلى 10 أسئلة، وتصفح أسئلة الآخرين وحلّها، والتطابق عندما تجيب عنها كلها إجابة صحيحة، والدردشة مع من تطابقت معهم — بلا اشتراك وبلا أن تنفق شيئًا." },
+    { type: "p", text: "الدورة الأساسية مجانية. يمكنك إنشاء ملفك الشخصي، وكتابة أسئلتك، وهي بين سؤالين و4 أسئلة (حتى 10 أسئلة في الخطة المدفوعة)، وتصفح أسئلة الآخرين وحلّها، والتطابق عندما تجيب عنها كلها إجابة صحيحة، والدردشة مع من تطابقت معهم — بلا اشتراك وبلا أن تنفق شيئًا." },
     { type: "h2", text: "الاشتراكات الاختيارية" },
     { type: "ul", items: [
       "**مجاني — 0 دولار.** اكتب الأسئلة، وحلّ الأسئلة، وتطابق، ودردش.",
@@ -94,7 +94,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   ru: [
     { type: "h2", text: "Что доступно без оплаты" },
-    { type: "p", text: "Основной цикл бесплатный. Вы можете создать профиль, написать от 2 до 10 своих вопросов, просматривать и решать вопросы других людей, находить совпадение, когда ответите на все правильно, и переписываться со своими парами — без подписки и не потратив ни копейки." },
+    { type: "p", text: "Основной цикл бесплатный. Вы можете создать профиль, написать от 2 до 4 своих вопросов (до 10 на платном тарифе), просматривать и решать вопросы других людей, находить совпадение, когда ответите на все правильно, и переписываться со своими парами — без подписки и не потратив ни копейки." },
     { type: "h2", text: "Необязательные подписки" },
     { type: "ul", items: [
       "**Бесплатно — 0 $.** Писать вопросы, решать вопросы, находить пары, переписываться.",
@@ -109,7 +109,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   pt: [
     { type: "h2", text: "O que você tem sem pagar" },
-    { type: "p", text: "O ciclo principal é gratuito. Você pode criar seu perfil, escrever suas 2 a 10 perguntas, explorar e resolver as perguntas de outras pessoas, dar match quando acertar todas e conversar com seus matches — sem assinatura e sem gastar nada." },
+    { type: "p", text: "O ciclo principal é gratuito. Você pode criar seu perfil, escrever suas 2 a 4 perguntas (até 10 num plano pago), explorar e resolver as perguntas de outras pessoas, dar match quando acertar todas e conversar com seus matches — sem assinatura e sem gastar nada." },
     { type: "h2", text: "As assinaturas opcionais" },
     { type: "ul", items: [
       "**Grátis — 0 $.** Escrever perguntas, resolver perguntas, dar match, conversar.",
@@ -124,7 +124,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   it: [
     { type: "h2", text: "Che cosa ottieni senza pagare" },
-    { type: "p", text: "Il giro principale è gratuito. Puoi creare il tuo profilo, scrivere le tue domande, da 2 a 10, sfogliare e risolvere le domande degli altri, ottenere un match quando le indovini tutte e chattare con i tuoi match — senza abbonamento e senza spendere nulla." },
+    { type: "p", text: "Il giro principale è gratuito. Puoi creare il tuo profilo, scrivere le tue domande, da 2 a 4 (fino a 10 con un piano a pagamento), sfogliare e risolvere le domande degli altri, ottenere un match quando le indovini tutte e chattare con i tuoi match — senza abbonamento e senza spendere nulla." },
     { type: "h2", text: "Gli abbonamenti facoltativi" },
     { type: "ul", items: [
       "**Gratis — 0 $.** Scrivere domande, risolvere domande, ottenere match, chattare.",
@@ -139,7 +139,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   ja: [
     { type: "h2", text: "お金を払わなくてもできること" },
-    { type: "p", text: "基本の流れは無料です。プロフィールを作り、自分の2問から10問の質問を書き、ほかの人の質問を眺めて解き、すべて正解したらマッチし、マッチした相手とチャットする — ここまでサブスクリプションなしで、一切お金をかけずにできます。" },
+    { type: "p", text: "基本の流れは無料です。プロフィールを作り、自分の2〜4問（有料プランなら最大10問）の質問を書き、ほかの人の質問を眺めて解き、すべて正解したらマッチし、マッチした相手とチャットする — ここまでサブスクリプションなしで、一切お金をかけずにできます。" },
     { type: "h2", text: "任意のサブスクリプション" },
     { type: "ul", items: [
       "**無料 — $0。** 質問を書く、質問を解く、マッチする、チャットする。",
@@ -154,7 +154,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   ko: [
     { type: "h2", text: "돈을 내지 않아도 할 수 있는 것" },
-    { type: "p", text: "핵심 흐름은 무료입니다. 프로필을 만들고, 자신의 질문 2개에서 10개를 쓰고, 다른 사람의 질문을 둘러보고 풀고, 전부 맞히면 매칭되고, 매칭된 상대와 대화할 수 있습니다 — 구독 없이, 한 푼도 쓰지 않고요." },
+    { type: "p", text: "핵심 흐름은 무료입니다. 프로필을 만들고, 자신의 질문을 2~4개(유료 플랜은 최대 10개) 쓰고, 다른 사람의 질문을 둘러보고 풀고, 전부 맞히면 매칭되고, 매칭된 상대와 대화할 수 있습니다 — 구독 없이, 한 푼도 쓰지 않고요." },
     { type: "h2", text: "선택 사항인 구독" },
     { type: "ul", items: [
       "**무료 — $0.** 질문 쓰기, 질문 풀기, 매칭, 대화.",
@@ -169,7 +169,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   zh: [
     { type: "h2", text: "不花钱能做什么" },
-    { type: "p", text: "核心玩法是免费的。你可以创建资料、写下自己的 2 到 10 道题、浏览并解答别人的题目、全部答对就能配对，还能和配对的人聊天 — 不用订阅，也不用花一分钱。" },
+    { type: "p", text: "核心玩法是免费的。你可以创建资料、写下自己的 2 到 4 道题（付费方案最多 10 道）、浏览并解答别人的题目、全部答对就能配对，还能和配对的人聊天 — 不用订阅，也不用花一分钱。" },
     { type: "h2", text: "可选的订阅" },
     { type: "ul", items: [
       "**免费 — $0。** 出题、答题、配对、聊天。",
@@ -184,7 +184,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   nl: [
     { type: "h2", text: "Wat je krijgt zonder te betalen" },
-    { type: "p", text: "De kern is gratis. Je kunt je profiel aanmaken, je 2 tot 10 vragen schrijven, door de vragen van anderen bladeren en ze oplossen, matchen zodra je ze allemaal goed hebt, en chatten met je matches — zonder abonnement en zonder iets uit te geven." },
+    { type: "p", text: "De kern is gratis. Je kunt je profiel aanmaken, je 2 tot 4 vragen schrijven (tot 10 met een betaald abonnement), door de vragen van anderen bladeren en ze oplossen, matchen zodra je ze allemaal goed hebt, en chatten met je matches — zonder abonnement en zonder iets uit te geven." },
     { type: "h2", text: "De optionele abonnementen" },
     { type: "ul", items: [
       "**Gratis — $ 0.** Vragen schrijven, vragen oplossen, matchen, chatten.",
@@ -199,7 +199,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   pl: [
     { type: "h2", text: "Co dostajesz, nie płacąc nic" },
-    { type: "p", text: "Podstawowy obieg jest darmowy. Możesz założyć profil, napisać swoje 2 do 10 pytań, przeglądać i rozwiązywać pytania innych osób, dopasować się, gdy odpowiesz poprawnie na wszystkie, i pisać ze swoimi dopasowaniami — bez abonamentu i bez wydawania złotówki." },
+    { type: "p", text: "Podstawowy obieg jest darmowy. Możesz założyć profil, napisać swoje od 2 do 4 pytań (do 10 w planie płatnym), przeglądać i rozwiązywać pytania innych osób, dopasować się, gdy odpowiesz poprawnie na wszystkie, i pisać ze swoimi dopasowaniami — bez abonamentu i bez wydawania złotówki." },
     { type: "h2", text: "Opcjonalne abonamenty" },
     { type: "ul", items: [
       "**Za darmo — 0 $.** Pisanie pytań, rozwiązywanie pytań, dopasowania, rozmowy.",
@@ -214,7 +214,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   sv: [
     { type: "h2", text: "Vad du får utan att betala" },
-    { type: "p", text: "Grundflödet är gratis. Du kan skapa din profil, skriva dina 2 till 10 frågor, bläddra bland och lösa andras frågor, matcha när du får alla rätt och chatta med dina matchningar — utan prenumeration och utan att lägga en krona." },
+    { type: "p", text: "Grundflödet är gratis. Du kan skapa din profil, skriva dina 2 till 4 frågor (upp till 10 med ett betalt abonnemang), bläddra bland och lösa andras frågor, matcha när du får alla rätt och chatta med dina matchningar — utan prenumeration och utan att lägga en krona." },
     { type: "h2", text: "De valfria prenumerationerna" },
     { type: "ul", items: [
       "**Gratis — 0 $.** Skriva frågor, lösa frågor, matcha, chatta.",
@@ -229,7 +229,7 @@ export const isQuloFree: LocalizedArticle = {
   ],
   hi: [
     { type: "h2", text: "बिना पैसे चुकाए आपको क्या मिलता है" },
-    { type: "p", text: "मुख्य सिलसिला मुफ़्त है। आप अपनी प्रोफ़ाइल बना सकते हैं, अपने 2 से 10 सवाल लिख सकते हैं, दूसरों के सवाल देख और हल कर सकते हैं, सारे सही होने पर मैच कर सकते हैं और अपने मैच से बातचीत कर सकते हैं — बिना किसी सब्सक्रिप्शन के और बिना एक पैसा ख़र्च किए।" },
+    { type: "p", text: "मुख्य सिलसिला मुफ़्त है। आप अपनी प्रोफ़ाइल बना सकते हैं, अपने 2 से 4 सवाल लिख सकते हैं (भुगतान वाली योजना में 10 तक), दूसरों के सवाल देख और हल कर सकते हैं, सारे सही होने पर मैच कर सकते हैं और अपने मैच से बातचीत कर सकते हैं — बिना किसी सब्सक्रिप्शन के और बिना एक पैसा ख़र्च किए।" },
     { type: "h2", text: "वैकल्पिक सब्सक्रिप्शन" },
     { type: "ul", items: [
       "**मुफ़्त — $0।** सवाल लिखें, सवाल हल करें, मैच करें, बातचीत करें।",

@@ -8,7 +8,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   en: [
     { type: "h2", text: "The mechanic, step by step" },
     { type: "ul", items: [
-      "**You write the questions.** Between 2 and 10 of them, each with four options, and you mark which option is correct.",
+      "**You write the questions.** Between 2 and 4 of them, each with four options, and you mark which option is correct.",
       "**Someone else answers them.** They see your questions before they can reach you.",
       "**Every answer has to be right.** Get one wrong and there is no match. Get them all right and the conversation opens.",
       "**The questions are yours.** They can be about your taste, your habits, your opinions — whatever you think someone worth talking to would get right.",
@@ -25,7 +25,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   tr: [
     { type: "h2", text: "Mekanik, adım adım" },
     { type: "ul", items: [
-      "**Soruları siz yazarsınız.** 2 ile 10 arasında, her biri dört şıklı; doğru şıkkı siz işaretlersiniz.",
+      "**Soruları siz yazarsınız.** 2 ila 4 tane, her biri dört şıklı; doğru şıkkı siz işaretlersiniz.",
       "**Bir başkası yanıtlar.** Size ulaşabilmesi için önce sorularınızı görür.",
       "**Her cevabın doğru olması gerekir.** Biri yanlışsa eşleşme yok. Hepsi doğruysa sohbet açılır.",
       "**Sorular size ait.** Zevkinizle, alışkanlıklarınızla, fikirlerinizle ilgili olabilir — konuşmaya değer birinin bilebileceğini düşündüğünüz her şey.",
@@ -42,7 +42,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   de: [
     { type: "h2", text: "Die Mechanik, Schritt für Schritt" },
     { type: "ul", items: [
-      "**Du schreibst die Fragen.** Zwischen 2 und 10 Stück, jede mit vier Antwortmöglichkeiten, und du markierst, welche davon richtig ist.",
+      "**Du schreibst die Fragen.** Zwischen 2 und 4 Stück, jede mit vier Antwortmöglichkeiten, und du markierst, welche davon richtig ist.",
       "**Jemand anderes beantwortet sie.** Bevor diese Person dich erreichen kann, bekommt sie deine Fragen zu sehen.",
       "**Jede Antwort muss stimmen.** Eine falsche, und es gibt kein Match. Alle richtig, und der Chat öffnet sich.",
       "**Die Fragen gehören dir.** Sie dürfen von deinem Geschmack handeln, von deinen Gewohnheiten, deinen Ansichten — von allem, was jemand richtig treffen sollte, mit dem zu reden sich lohnt.",
@@ -59,7 +59,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   fr: [
     { type: "h2", text: "Le mécanisme, étape par étape" },
     { type: "ul", items: [
-      "**C'est vous qui écrivez les questions.** Entre 2 et 10, chacune avec quatre réponses possibles, et c'est vous qui indiquez la bonne.",
+      "**C'est vous qui écrivez les questions.** Entre 2 et 4, chacune avec quatre réponses possibles, et c'est vous qui indiquez la bonne.",
       "**Quelqu'un d'autre y répond.** Avant de pouvoir vous joindre, cette personne voit vos questions.",
       "**Chaque réponse doit être juste.** Une seule erreur et il n'y a pas de match. Tout bon, et la conversation s'ouvre.",
       "**Les questions vous appartiennent.** Elles peuvent porter sur vos goûts, vos habitudes, vos opinions — tout ce qu'une personne qui vaut la peine d'être connue devrait deviner.",
@@ -76,7 +76,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   es: [
     { type: "h2", text: "La mecánica, paso a paso" },
     { type: "ul", items: [
-      "**Las preguntas las escribes tú.** Entre 2 y 10, cada una con cuatro opciones, y tú marcas cuál es la correcta.",
+      "**Las preguntas las escribes tú.** Entre 2 y 4, cada una con cuatro opciones, y tú marcas cuál es la correcta.",
       "**Otra persona las responde.** Antes de poder llegar hasta ti, ve tus preguntas.",
       "**Todas las respuestas tienen que ser correctas.** Una fallada y no hay match. Todas acertadas y se abre la conversación.",
       "**Las preguntas son tuyas.** Pueden ir sobre tus gustos, tus costumbres, tus opiniones — lo que creas que acertaría alguien con quien merezca la pena hablar.",
@@ -93,7 +93,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   ar: [
     { type: "h2", text: "الآلية، خطوة بخطوة" },
     { type: "ul", items: [
-      "**أنت من يكتب الأسئلة.** بين 2 و 10 أسئلة، لكل سؤال أربعة خيارات، وأنت من يحدد الخيار الصحيح.",
+      "**أنت من يكتب الأسئلة.** بين سؤالين و4 أسئلة، لكل سؤال أربعة خيارات، وأنت من يحدد الخيار الصحيح.",
       "**شخص آخر هو من يجيب عنها.** يرى أسئلتك قبل أن يتمكن من الوصول إليك.",
       "**كل إجابة يجب أن تكون صحيحة.** إجابة خاطئة واحدة تعني ألا يحدث توافق. وإذا صحّت كلها، تُفتح المحادثة.",
       "**الأسئلة أسئلتك أنت.** يمكن أن تدور حول ذوقك أو عاداتك أو آرائك — أي شيء ترى أن من يستحق الحديث معه سيعرف إجابته.",
@@ -110,7 +110,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   ru: [
     { type: "h2", text: "Механика, шаг за шагом" },
     { type: "ul", items: [
-      "**Вопросы пишете вы.** От 2 до 10 штук, у каждого четыре варианта ответа, и правильный отмечаете тоже вы.",
+      "**Вопросы пишете вы.** От 2 до 4 штук, у каждого четыре варианта ответа, и правильный отмечаете тоже вы.",
       "**Отвечает кто-то другой.** Прежде чем написать вам, человек видит ваши вопросы.",
       "**Каждый ответ должен быть верным.** Одна ошибка — совпадения не будет. Всё верно — открывается переписка.",
       "**Вопросы принадлежат вам.** Они могут быть о вашем вкусе, ваших привычках, ваших взглядах — о чём угодно, что, по-вашему, угадает человек, с которым стоит поговорить.",
@@ -127,7 +127,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   pt: [
     { type: "h2", text: "A mecânica, passo a passo" },
     { type: "ul", items: [
-      "**Você escreve as perguntas.** Entre 2 e 10 delas, cada uma com quatro opções, e é você quem marca a correta.",
+      "**Você escreve as perguntas.** Entre 2 e 4 delas, cada uma com quatro opções, e é você quem marca a correta.",
       "**Outra pessoa responde.** Antes de conseguir chegar até você, ela vê as suas perguntas.",
       "**Toda resposta precisa estar certa.** Uma errada e não há match. Todas certas e a conversa se abre.",
       "**As perguntas são suas.** Podem ser sobre o seu gosto, os seus hábitos, as suas opiniões — qualquer coisa que você ache que alguém que vale a conversa acertaria.",
@@ -144,7 +144,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   it: [
     { type: "h2", text: "La meccanica, passo per passo" },
     { type: "ul", items: [
-      "**Le domande le scrivi tu.** Da 2 a 10, ognuna con quattro opzioni, e sei tu a segnare quella giusta.",
+      "**Le domande le scrivi tu.** Da 2 a 4, ognuna con quattro opzioni, e sei tu a segnare quella giusta.",
       "**Qualcun altro risponde.** Prima di poterti raggiungere, vede le tue domande.",
       "**Ogni risposta deve essere corretta.** Una sbagliata e niente match. Tutte giuste e la conversazione si apre.",
       "**Le domande sono tue.** Possono riguardare i tuoi gusti, le tue abitudini, le tue opinioni — qualunque cosa che secondo te indovinerebbe una persona con cui vale la pena parlare.",
@@ -161,7 +161,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   ja: [
     { type: "h2", text: "仕組みを順番に" },
     { type: "ul", items: [
-      "**質問を書くのはあなた。** 2問から10問まで、それぞれに選択肢が四つあり、どれが正解かもあなたが決めます。",
+      "**質問を書くのはあなた。** 2問から4問まで、それぞれに選択肢が四つあり、どれが正解かもあなたが決めます。",
       "**答えるのは相手。** あなたに届く前に、相手はまずあなたの質問を見ます。",
       "**全問正解が条件。** 一つでも外せばマッチはありません。すべて当たれば会話が開きます。",
       "**質問はあなたのもの。** 好みでも、習慣でも、意見でもかまいません — 話す価値のある相手なら当てられるはずだ、とあなたが思えるものなら何でも。",
@@ -178,7 +178,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   ko: [
     { type: "h2", text: "구조, 한 단계씩" },
     { type: "ul", items: [
-      "**질문은 당신이 씁니다.** 2개에서 10개까지, 각각 보기 네 개를 달고, 정답도 당신이 표시합니다.",
+      "**질문은 당신이 씁니다.** 2개에서 4개까지, 각각 보기 네 개를 달고, 정답도 당신이 표시합니다.",
       "**답하는 건 상대입니다.** 당신에게 닿기 전에 먼저 당신의 질문을 봅니다.",
       "**모든 답이 맞아야 합니다.** 하나라도 틀리면 매칭은 없습니다. 전부 맞히면 대화가 열립니다.",
       "**질문은 당신의 것입니다.** 취향이든 습관이든 생각이든 상관없습니다 — 이야기할 만한 사람이라면 맞힐 거라고 여기는 무엇이든 좋습니다.",
@@ -195,7 +195,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   zh: [
     { type: "h2", text: "机制，一步一步来" },
     { type: "ul", items: [
-      "**问题由你来写。** 2 到 10 道，每道四个选项，正确答案也由你标出。",
+      "**问题由你来写。** 2 到 4 道，每道四个选项，正确答案也由你标出。",
       "**由别人来答。** 在能联系到你之前，对方先看到你的问题。",
       "**每一题都得答对。** 错一题就没有配对；全对，对话才打开。",
       "**问题是你的。** 可以关于你的品味、你的习惯、你的看法 — 任何你觉得值得聊的人能答对的东西。",
@@ -212,7 +212,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   nl: [
     { type: "h2", text: "De werking, stap voor stap" },
     { type: "ul", items: [
-      "**Jij schrijft de vragen.** Tussen de 2 en 10 stuks, elk met vier opties, en jij markeert welke het juiste antwoord is.",
+      "**Jij schrijft de vragen.** Tussen de 2 en 4 stuks, elk met vier opties, en jij markeert welke het juiste antwoord is.",
       "**Iemand anders beantwoordt ze.** Voordat diegene contact met je kan maken, ziet hij of zij eerst jouw vragen.",
       "**Elk antwoord moet kloppen.** Eentje fout en er is geen match. Allemaal goed en het gesprek gaat open.",
       "**De vragen zijn van jou.** Ze mogen over je smaak gaan, je gewoonten, je meningen — alles waarvan jij denkt dat iemand die het waard is het goed zou raden.",
@@ -229,7 +229,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   pl: [
     { type: "h2", text: "Mechanika, krok po kroku" },
     { type: "ul", items: [
-      "**To ty piszesz pytania.** Od 2 do 10, każde z czterema odpowiedziami, i to ty zaznaczasz tę poprawną.",
+      "**To ty piszesz pytania.** Od 2 do 4, każde z czterema odpowiedziami, i to ty zaznaczasz tę poprawną.",
       "**Odpowiada ktoś inny.** Zanim zdoła do ciebie dotrzeć, widzi twoje pytania.",
       "**Każda odpowiedź musi być trafna.** Jedna pomyłka i dopasowania nie ma. Wszystkie trafione i rozmowa się otwiera.",
       "**Pytania należą do ciebie.** Mogą dotyczyć twojego gustu, twoich nawyków, twoich poglądów — czegokolwiek, co według ciebie odgadnie ktoś, z kim warto porozmawiać.",
@@ -246,7 +246,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   sv: [
     { type: "h2", text: "Mekaniken, steg för steg" },
     { type: "ul", items: [
-      "**Du skriver frågorna.** Mellan 2 och 10 stycken, var och en med fyra svarsalternativ, och du markerar vilket som är rätt.",
+      "**Du skriver frågorna.** Mellan 2 och 4 stycken, var och en med fyra svarsalternativ, och du markerar vilket som är rätt.",
       "**Någon annan svarar på dem.** Innan den personen kan nå dig får hen se dina frågor.",
       "**Varje svar måste vara rätt.** Ett fel och det blir ingen matchning. Alla rätt och samtalet öppnas.",
       "**Frågorna är dina.** De kan handla om din smak, dina vanor, dina åsikter — vad som helst du tror att någon värd att prata med skulle gissa rätt på.",
@@ -263,7 +263,7 @@ export const howQuestionBasedMatchingWorks: LocalizedArticle = {
   hi: [
     { type: "h2", text: "तरीका, कदम दर कदम" },
     { type: "ul", items: [
-      "**सवाल आप लिखते हैं।** 2 से 10 तक, हर सवाल में चार विकल्प, और सही विकल्प भी आप ही चुनते हैं।",
+      "**सवाल आप लिखते हैं।** 2 से 4 तक, हर सवाल में चार विकल्प, और सही विकल्प भी आप ही चुनते हैं।",
       "**जवाब कोई और देता है।** आप तक पहुँचने से पहले वह आपके सवाल देखता है।",
       "**हर जवाब सही होना चाहिए।** एक भी गलत हुआ तो मैच नहीं। सब सही हुए तो बातचीत खुल जाती है।",
       "**सवाल आपके अपने हैं।** वे आपकी पसंद, आपकी आदतों या आपकी राय के बारे में हो सकते हैं — जो भी आपको लगे कि बात करने लायक इंसान सही बता देगा।",

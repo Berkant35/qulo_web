@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Qulo — Kennenlernen durch Fragen",
-    "description": "Erstelle Fragen, teile sie, finde dein Match mit der Person, die richtig antwortet. KI-gestützte Dating-App der nächsten Generation."
+    "description": "Erstelle Fragen, teile sie, finde dein Match mit der Person, die richtig antwortet. Dating über Fragen statt Wischen."
   },
   "nav": {
     "download": "Herunterladen",
@@ -32,7 +32,7 @@
     "title1": "Wie",
     "title2": "funktioniert's?",
     "step1Title": "Fragen erstellen",
-    "step1Desc": "Erstelle 2-10 Fragen, die deine Persönlichkeit widerspiegeln",
+    "step1Desc": "Erstelle 2 bis 4 Fragen, die deine Persönlichkeit widerspiegeln",
     "step1Detail": "Jede Frage ist ein Fenster, das dich vorstellt.",
     "step2Title": "Entdecken & Lösen",
     "step2Desc": "Beantworte die Fragen anderer Nutzer",
@@ -71,9 +71,9 @@
       "desc": "Verdiene Abzeichen mit deinem Fortschritt, steige mit Meilensteinen auf. Bereichere dein Profil."
     },
     "ai": {
-      "title": "KI-Frageerstellung",
-      "subtitle": "KI-gestützt",
-      "desc": "Erstelle ansprechende Fragen mit KI. Finde die Fragen, die deine Persönlichkeit am besten widerspiegeln."
+      "title": "Fragenvorschläge",
+      "subtitle": "Mit KI vorbereitet",
+      "desc": "Wähle aus einer Bibliothek fertiger Fragen, die im Voraus mit KI geschrieben wurden. Finde die, die deine Persönlichkeit am besten widerspiegeln."
     },
     "premium": {
       "title": "Premium-Pläne",
@@ -111,8 +111,8 @@
     "diff3QuloDesc": "Diamanten, Abzeichen, Level und spezielle Kräfte",
     "diff4OthersTitle": "Dem Zufall überlassen",
     "diff4OthersDesc": "Was der Algorithmus zeigt",
-    "diff4QuloTitle": "KI-gestütztes Matching",
-    "diff4QuloDesc": "KI-personalisierte Fragevorschläge"
+    "diff4QuloTitle": "Du bestimmst den Filter",
+    "diff4QuloDesc": "Deine Fragen entscheiden, wer dich erreicht"
   },
   "stats": {
     "questions": "Erstellte Fragen",
@@ -157,7 +157,7 @@
       "matching_how_q": "Wie funktioniert das Matching?",
       "matching_how_a": "Erstelle Fragen und lass andere Nutzer sie lösen. Richtige Antworten führen zu einem Match.",
       "matching_questions_q": "Wie erstelle ich eine Frage?",
-      "matching_questions_a": "Tippe auf den '+'-Button auf dem Hauptbildschirm. Füge 2 bis 10 Fragen hinzu, gib 4 Optionen für jede ein und markiere die richtige Antwort.",
+      "matching_questions_a": "Tippe auf den '+'-Button auf dem Hauptbildschirm. Füge 2 bis 4 Fragen hinzu — bis zu 10 mit einem kostenpflichtigen Abo —, gib 4 Optionen für jede ein und markiere die richtige Antwort.",
       "diamonds_what_q": "Wofür werden Diamanten verwendet?",
       "diamonds_what_a": "Grüne Diamanten aktivieren Kräfte, während lila Diamanten spezielle Funktionen freischalten.",
       "diamonds_buy_q": "Wie kaufe ich Diamanten?",
@@ -190,8 +190,7 @@
     "about": "Über uns",
     "blog": "Blog",
     "help": "Hilfe",
-    "cities": "Stadte",
-    "compare": "Vergleichen",
+    "cities": "Städte",
     "glossary": "Glossar",
     "statistics": "Statistiken",
     "press": "Presse",
@@ -201,7 +200,6 @@
     "trends": "Trends",
     "sitemap": "Sitemap",
     "pricing": "Preise",
-    "reviews": "Bewertungen",
     "guidelines": "Community-Richtlinien",
     "safety": "Sicherheitstipps",
     "childSafety": "Kinderschutz",
@@ -213,7 +211,7 @@
     "introTitle": "Einleitung",
     "intro": "Willkommen bei Qulo (\"App\", \"wir\", \"uns\" oder \"unser\"). Qulo ist eine fragenbasierte Dating-Anwendung, die von Berkant Çalıkuşu, einem unabhängigen Entwickler mit Sitz in Istanbul, Türkei, entwickelt wurde.\n\nDiese Datenschutzrichtlinie erläutert, wie wir Ihre personenbezogenen Daten erfassen, verwenden, speichern und schützen, wenn Sie Qulo nutzen. Wir verpflichten uns, Ihre Privatsphäre im Einklang mit der Datenschutz-Grundverordnung (DSGVO), dem türkischen Datenschutzgesetz (KVKK, Gesetz Nr. 6698) und anderen geltenden Datenschutzgesetzen zu schützen.\n\nMit der Erstellung eines Kontos oder der Nutzung von Qulo bestätigen Sie, dass Sie diese Datenschutzrichtlinie gelesen und verstanden haben.",
     "dataCollectionTitle": "Informationen, die wir erfassen",
-    "dataCollection": "Wir erfassen die folgenden Kategorien personenbezogener Daten:\n\n• Kontoinformationen: E-Mail-Adresse, Passwort (bcrypt-gehasht — wir speichern niemals Klartext-Passwörter), Geburtsdatum (zur Überprüfung der Volljährigkeit ab 18 Jahren), Anzeigename und Geschlecht.\n\n• Profildaten: Profilfotos, Biografietext, von Ihnen erstellte Fragen (2–10 Fragen pro Benutzer) und Ihre Antworten auf Fragen anderer Benutzer.\n\n• Standortdaten: GPS-Koordinaten bei Nutzung der Entdecken-Funktion (zur Anzeige nahegelegener Benutzer) und des Passport-Modus (nur Premium, um Benutzer an anderen Standorten zu durchsuchen). Der Standort wird nur erfasst, während die App aktiv genutzt wird, und nur mit Ihrer ausdrücklichen Genehmigung.\n\n• Nutzungs- und Analysedaten: Firebase Analytics erfasst anonymisierte App-Nutzungsdaten (angezeigte Bildschirme, genutzte Funktionen, Sitzungsdauer) mit einer Aufbewahrungsfrist von 14 Monaten. Firebase Crashlytics erfasst Absturzberichte und Gerätediagnosen mit einer Aufbewahrungsfrist von 90 Tagen.\n\n• Transaktionsdaten: In-App-Kaufhistorie, die über Apple App Store oder Google Play über RevenueCat verarbeitet wird. Wir erfassen oder speichern keine Zahlungskartendaten.\n\n• Chat-Daten: Zwischen gematchten Benutzern ausgetauschte Nachrichten, einschließlich Chat-Fragen und deren Antworten.\n\n• Diamanten- und Aktivitätsdaten: Verdienste an grünen Diamanten, Käufe von lila Diamanten, Nutzung von Kräften (Orakel, Halbieren, Überspringen, Zeitverlängerung, Hinweis, Alle überspringen), Abzeichen, Level und Spielstatistiken.\n\n• Anmeldekennungen: Wenn Sie sich mit Google oder Apple anmelden, erhalten wir von diesem Anbieter eine Kontokennung und, soweit Sie es erlauben, Ihren Namen und Ihre E-Mail-Adresse. Ihr Passwort bei Google oder Apple erhalten wir zu keinem Zeitpunkt.\n\n• Chat-Medien: Fotos und Sprachnachrichten, die Sie in einer Unterhaltung senden. Sprachnachrichten erfordern den Zugriff auf das Mikrofon, der erst im Moment der Aufnahme angefragt wird.\n\n• Werbe- und Messdaten: App-Ereignisse wie App-Starts, Registrierungen und Käufe sowie – sofern Sie Tracking erlauben – die Werbekennung Ihres Geräts (IDFA unter iOS, Werbe-ID unter Android). Diese werden ausschließlich zur Messung der Leistung unserer eigenen Werbekampagnen verwendet.\n\n• Feedback zur Kontolöschung: Wenn Sie uns bei der Löschung Ihres Kontos freiwillig einen Grund nennen, speichern wir diesen zusammen mit App-Version, Plattform und Sprache.",
+    "dataCollection": "Wir erfassen die folgenden Kategorien personenbezogener Daten:\n\n• Kontoinformationen: E-Mail-Adresse, Passwort (bcrypt-gehasht — wir speichern niemals Klartext-Passwörter), Geburtsdatum (zur Überprüfung der Volljährigkeit ab 18 Jahren), Anzeigename und Geschlecht.\n\n• Profildaten: Profilfotos, Biografietext, von Ihnen erstellte Fragen (2–4 Fragen pro Benutzer, bis zu 10 mit einem kostenpflichtigen Abo) und Ihre Antworten auf Fragen anderer Benutzer.\n\n• Standortdaten: GPS-Koordinaten bei Nutzung der Entdecken-Funktion (zur Anzeige nahegelegener Benutzer) und des Passport-Modus (nur Premium, um Benutzer an anderen Standorten zu durchsuchen). Der Standort wird nur erfasst, während die App aktiv genutzt wird, und nur mit Ihrer ausdrücklichen Genehmigung.\n\n• Nutzungs- und Analysedaten: Firebase Analytics erfasst anonymisierte App-Nutzungsdaten (angezeigte Bildschirme, genutzte Funktionen, Sitzungsdauer) mit einer Aufbewahrungsfrist von 14 Monaten. Firebase Crashlytics erfasst Absturzberichte und Gerätediagnosen mit einer Aufbewahrungsfrist von 90 Tagen.\n\n• Transaktionsdaten: In-App-Kaufhistorie, die über Apple App Store oder Google Play über RevenueCat verarbeitet wird. Wir erfassen oder speichern keine Zahlungskartendaten.\n\n• Chat-Daten: Zwischen gematchten Benutzern ausgetauschte Nachrichten, einschließlich Chat-Fragen und deren Antworten.\n\n• Diamanten- und Aktivitätsdaten: Verdienste an grünen Diamanten, Käufe von lila Diamanten, Nutzung von Kräften (Orakel, Halbieren, Überspringen, Zeitverlängerung, Hinweis, Alle überspringen), Abzeichen, Level und Spielstatistiken.\n\n• Anmeldekennungen: Wenn Sie sich mit Google oder Apple anmelden, erhalten wir von diesem Anbieter eine Kontokennung und, soweit Sie es erlauben, Ihren Namen und Ihre E-Mail-Adresse. Ihr Passwort bei Google oder Apple erhalten wir zu keinem Zeitpunkt.\n\n• Chat-Medien: Fotos und Sprachnachrichten, die Sie in einer Unterhaltung senden. Sprachnachrichten erfordern den Zugriff auf das Mikrofon, der erst im Moment der Aufnahme angefragt wird.\n\n• Werbe- und Messdaten: App-Ereignisse wie App-Starts, Registrierungen und Käufe sowie – sofern Sie Tracking erlauben – die Werbekennung Ihres Geräts (IDFA unter iOS, Werbe-ID unter Android). Diese werden ausschließlich zur Messung der Leistung unserer eigenen Werbekampagnen verwendet.\n\n• Feedback zur Kontolöschung: Wenn Sie uns bei der Löschung Ihres Kontos freiwillig einen Grund nennen, speichern wir diesen zusammen mit App-Version, Plattform und Sprache.",
     "dataNotCollectedTitle": "Informationen, die wir NICHT erfassen",
     "dataNotCollected": "Wir möchten transparent darüber sein, was wir nicht erfassen:\n\n• Telefonnummer oder Telefonkontakte\n• Browserverlauf außerhalb von Qulo\n• Biometrische Daten (Fingerabdruck, Gesichtsscan)\n• Amtliche Ausweisdokumente oder Identitätsdokumente\n• Finanzinformationen oder Kreditkartennummern\n• Daten von anderen Apps auf Ihrem Gerät",
     "usageTitle": "Wie wir Ihre Daten verwenden und Rechtsgrundlage",
@@ -304,18 +302,18 @@
     "subtitle": "Fragenbasiertes Matching",
     "hero": "Schluss mit Swipe-Müdigkeit. Lerne Menschen durch Fragen kennen.",
     "whatIsQulo": "Was ist Qulo?",
-    "whatIsQuloDesc": "Qulo ist eine Dating-Plattform der nächsten Generation, die einen Frage-Antwort-Mechanismus anstelle von traditionellem Swipen nutzt. Erstelle 2-10 Fragen, andere Nutzer lösen sie und du matchst mit der Person, die alle richtig beantwortet.",
+    "whatIsQuloDesc": "Qulo ist eine Dating-Plattform der nächsten Generation, die einen Frage-Antwort-Mechanismus anstelle von traditionellem Swipen nutzt. Du erstellst deine Fragen — 2 bis 4 im kostenlosen Tarif, bis zu 10 mit einem kostenpflichtigen Abo —, andere Nutzer lösen sie und du matchst mit der Person, die alle richtig beantwortet.",
     "whyDifferent": "Warum ist Qulo anders?",
     "whyDifferentDesc": "Bei Qulo basiert das Matching auf gegenseitigem Verständnis. Das Aussehen ist nur ein Teil davon — genauso zählt, wie du denkst. Deine Fragen bringen dir die richtige Person näher.",
     "howItWorks": "Wie funktioniert es?",
-    "step1": "Fragen erstellen — 2-10 Fragen, die deine Persönlichkeit widerspiegeln",
+    "step1": "Fragen erstellen — 2 bis 4 Fragen, die deine Persönlichkeit widerspiegeln",
     "step2": "Entdecken & Lösen — Beantworte die Fragen anderer Nutzer",
     "step3": "Matchen — Beantworte alle Fragen richtig und knüpfe eine Verbindung",
     "step4": "Chatten & Treffen — Starte mit einer echten Verbindung",
     "swipeFatigue": "Was ist Swipe-Müdigkeit?",
     "swipeFatigueDesc": "Swipe-Müdigkeit ist das Burnout, das Nutzer durch ständiges Wischen empfinden. Qulo beseitigt dieses Problem vollständig.",
-    "aiPowered": "KI-gestützte Vorschläge",
-    "aiPoweredDesc": "Künstliche Intelligenz unterstützt Fragenvorschläge und den Entdeckungsalgorithmus.",
+    "aiPowered": "Fertige Fragenvorschläge",
+    "aiPoweredDesc": "Du weißt nicht, was du fragen sollst? Qulo bringt eine Bibliothek fertiger Fragen mit, im Voraus mit KI geschrieben und in der App hinterlegt — derzeit in 10 Sprachen. Sieh dir die Vorschläge an, nimm die, die zu dir passen, und bearbeite sie frei. Wer zu dir matcht, entscheidet weiterhin nur eines: wer alle deine Fragen richtig beantwortet.",
     "globalCommunity": "Globale Community",
     "globalCommunityDesc": "Mit Unterstützung für 16 Sprachen ermöglicht Qulo dir, Menschen aus der ganzen Welt kennenzulernen.",
     "downloadCta": "Jetzt herunterladen",

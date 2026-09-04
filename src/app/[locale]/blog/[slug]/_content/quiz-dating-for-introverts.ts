@@ -30,9 +30,10 @@ import type { LocalizedArticle } from "@/components/blog/ArticleBlocks";
  *
  * Product-claim policy: the legacy "Question Types" section illustrated Qulo
  * with open-ended prompts ("What do you value most in life?"), which is not the
- * mechanic. The section now describes what actually exists: you write 2–10
- * multiple-choice questions, four options each, marking the answer that is true
- * of you, and someone matches only by getting every one right. The optional
+ * mechanic. The section now describes what actually exists: you write 2–4
+ * multiple-choice questions on the free plan (up to 10 on a paid plan), four
+ * options each, marking the answer that is true of you, and someone matches
+ * only by getting every one right. The optional
  * powers (hint, halve the options, skip) are named as costing in-app diamonds
  * and as never being required to match. Nothing else is claimed.
  *
@@ -80,7 +81,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Introvert Strategies on Qulo" },
 
     { type: "h2", text: "Question Types" },
-    { type: "p", text: "On Qulo you write between **2 and 10** multiple-choice questions. Each has four options, and you mark the one that is true of you. Someone matches with you only by getting every single question right — there is no partial credit. The question types that work best for introverts:" },
+    { type: "p", text: "On Qulo you write between **2 and 4** multiple-choice questions, or up to 10 on a paid plan. Each has four options, and you mark the one that is true of you. Someone matches with you only by getting every single question right — there is no partial credit. The question types that work best for introverts:" },
     { type: "ul", items: [
       "**Value-based questions:** \"What do I value most?\" — with four options you would genuinely weigh against each other, this reaches real compatibility instead of guesswork",
       "**Scenario questions:** \"What is my ideal rainy Sunday?\" — the four options say more about your life than a bio does",
@@ -142,7 +143,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Qulo'da İçe Dönük Stratejileri" },
 
     { type: "h2", text: "Soru Tipleri" },
-    { type: "p", text: "Qulo'da **2 ile 10** arasında çoktan seçmeli soru yazarsınız. Her sorunun dört seçeneği vardır ve doğru olanı, yani sizin için geçerli olanı işaretlersiniz. Karşı taraf ancak soruların tamamını doğru bilirse sizinle eşleşir — kısmi puan yoktur. İçe dönükler için en iyi işleyen soru tipleri:" },
+    { type: "p", text: "Qulo'da **2 ile 4** arasında çoktan seçmeli soru yazarsınız; ücretli planda bu sayı 10'a kadar çıkar. Her sorunun dört seçeneği vardır ve doğru olanı, yani sizin için geçerli olanı işaretlersiniz. Karşı taraf ancak soruların tamamını doğru bilirse sizinle eşleşir — kısmi puan yoktur. İçe dönükler için en iyi işleyen soru tipleri:" },
     { type: "ul", items: [
       "**Değer soruları:** \"En çok neye değer veririm?\" — gerçekten birbiriyle tartacağınız dört seçenekle, tahmin yerine gerçek uyuma ulaşır",
       "**Senaryo soruları:** \"İdeal yağmurlu pazarım nasıldır?\" — dört seçenek, hayatınız hakkında bir biyografiden fazlasını söyler",
@@ -204,7 +205,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Strategien für Introvertierte auf Qulo" },
 
     { type: "h2", text: "Fragetypen" },
-    { type: "p", text: "Auf Qulo schreiben Sie zwischen **2 und 10** Multiple-Choice-Fragen. Jede hat vier Optionen, und Sie markieren die, die auf Sie zutrifft. Jemand matcht nur mit Ihnen, wenn wirklich alle Fragen richtig beantwortet sind — Teilpunkte gibt es nicht. Die Fragetypen, die für Introvertierte am besten funktionieren:" },
+    { type: "p", text: "Auf Qulo schreiben Sie zwischen **2 und 4** Multiple-Choice-Fragen, im kostenpflichtigen Tarif bis zu 10. Jede hat vier Optionen, und Sie markieren die, die auf Sie zutrifft. Jemand matcht nur mit Ihnen, wenn wirklich alle Fragen richtig beantwortet sind — Teilpunkte gibt es nicht. Die Fragetypen, die für Introvertierte am besten funktionieren:" },
     { type: "ul", items: [
       "**Wertefragen:** „Was ist mir am wichtigsten?“ — mit vier Optionen, die Sie tatsächlich gegeneinander abwägen würden, erreicht das echte Passung statt Raten",
       "**Szenariofragen:** „Wie sieht mein idealer verregneter Sonntag aus?“ — die vier Optionen sagen mehr über Ihr Leben als jede Bio",
@@ -266,7 +267,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Stratégies pour les introvertis sur Qulo" },
 
     { type: "h2", text: "Types de questions" },
-    { type: "p", text: "Sur Qulo, vous rédigez entre **2 et 10** questions à choix multiple. Chacune comporte quatre options, et vous cochez celle qui est vraie pour vous. Quelqu'un ne matche avec vous qu'en trouvant absolument toutes les bonnes réponses — il n'y a pas de demi-point. Les types de questions qui fonctionnent le mieux pour les introvertis :" },
+    { type: "p", text: "Sur Qulo, vous rédigez entre **2 et 4** questions à choix multiple, et jusqu'à 10 avec un abonnement payant. Chacune comporte quatre options, et vous cochez celle qui est vraie pour vous. Quelqu'un ne matche avec vous qu'en trouvant absolument toutes les bonnes réponses — il n'y a pas de demi-point. Les types de questions qui fonctionnent le mieux pour les introvertis :" },
     { type: "ul", items: [
       "**Questions de valeurs :** « À quoi est-ce que j'accorde le plus d'importance ? » — avec quatre options que vous mettriez réellement en balance, on atteint une compatibilité réelle plutôt qu'un pari",
       "**Questions de scénario :** « À quoi ressemble mon dimanche pluvieux idéal ? » — les quatre options en disent plus sur votre vie qu'une bio",
@@ -328,7 +329,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Estrategias para introvertidos en Qulo" },
 
     { type: "h2", text: "Tipos de preguntas" },
-    { type: "p", text: "En Qulo escribes entre **2 y 10** preguntas de opción múltiple. Cada una tiene cuatro opciones y marcas la que es cierta para ti. Alguien hace match contigo solo si acierta absolutamente todas: no hay puntuación parcial. Los tipos de pregunta que mejor funcionan para los introvertidos:" },
+    { type: "p", text: "En Qulo escribes entre **2 y 4** preguntas de opción múltiple, y hasta 10 con un plan de pago. Cada una tiene cuatro opciones y marcas la que es cierta para ti. Alguien hace match contigo solo si acierta absolutamente todas: no hay puntuación parcial. Los tipos de pregunta que mejor funcionan para los introvertidos:" },
     { type: "ul", items: [
       "**Preguntas de valores:** \"¿Qué es lo que más valoro?\" — con cuatro opciones que de verdad sopesarías entre sí, se llega a una compatibilidad real y no a una apuesta",
       "**Preguntas de escenario:** \"¿Cómo es mi domingo lluvioso ideal?\" — las cuatro opciones dicen más de tu vida que una bio",
@@ -390,7 +391,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "استراتيجيات المنطوين في Qulo" },
 
     { type: "h2", text: "أنواع الأسئلة" },
-    { type: "p", text: "في Qulo تكتب ما بين **2 و10** أسئلة اختيار من متعدد. لكل سؤال أربعة خيارات، وأنت تحدد الخيار الصحيح بشأنك. ولا يتطابق معك أحد إلا إذا أجاب عن الأسئلة كلها إجابة صحيحة — لا توجد درجة جزئية. وهذه أنواع الأسئلة الأفضل للمنطوين:" },
+    { type: "p", text: "في Qulo تكتب ما بين **2 و4** أسئلة اختيار من متعدد، وحتى 10 أسئلة في الخطة المدفوعة. لكل سؤال أربعة خيارات، وأنت تحدد الخيار الصحيح بشأنك. ولا يتطابق معك أحد إلا إذا أجاب عن الأسئلة كلها إجابة صحيحة — لا توجد درجة جزئية. وهذه أنواع الأسئلة الأفضل للمنطوين:" },
     { type: "ul", items: [
       "**أسئلة القيم:** \"ما الذي أقدّره أكثر من غيره؟\" — بأربعة خيارات توازن بينها فعلًا، تصل إلى توافق حقيقي بدل التخمين",
       "**أسئلة السيناريو:** \"كيف يبدو يوم الأحد الممطر المثالي عندي؟\" — الخيارات الأربعة تقول عن حياتك أكثر مما تقوله نبذة تعريفية",
@@ -452,7 +453,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Стратегии интроверта в Qulo" },
 
     { type: "h2", text: "Типы вопросов" },
-    { type: "p", text: "В Qulo вы составляете от **2 до 10** вопросов с вариантами ответа. У каждого четыре варианта, и вы отмечаете тот, который верен для вас. Совпадение произойдёт, только если человек ответит правильно абсолютно на все — частичного зачёта нет. Типы вопросов, которые лучше всего работают для интровертов:" },
+    { type: "p", text: "В Qulo вы составляете от **2 до 4** вопросов с вариантами ответа, а на платном тарифе — до 10. У каждого четыре варианта, и вы отмечаете тот, который верен для вас. Совпадение произойдёт, только если человек ответит правильно абсолютно на все — частичного зачёта нет. Типы вопросов, которые лучше всего работают для интровертов:" },
     { type: "ul", items: [
       "**Вопросы о ценностях:** «Что для меня важнее всего?» — с четырьмя вариантами, которые вы действительно взвешивали бы друг против друга, это выводит на настоящую совместимость, а не на угадывание",
       "**Вопросы-сценарии:** «Каким будет мой идеальный дождливый выходной?» — четыре варианта скажут о вашей жизни больше, чем описание профиля",
@@ -514,7 +515,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Estratégias para introvertidos no Qulo" },
 
     { type: "h2", text: "Tipos de pergunta" },
-    { type: "p", text: "No Qulo você escreve entre **2 e 10** perguntas de múltipla escolha. Cada uma tem quatro opções, e você marca a que é verdadeira sobre você. Alguém só dá match com você acertando absolutamente todas — não há pontuação parcial. Os tipos de pergunta que funcionam melhor para introvertidos:" },
+    { type: "p", text: "No Qulo você escreve entre **2 e 4** perguntas de múltipla escolha, e até 10 num plano pago. Cada uma tem quatro opções, e você marca a que é verdadeira sobre você. Alguém só dá match com você acertando absolutamente todas — não há pontuação parcial. Os tipos de pergunta que funcionam melhor para introvertidos:" },
     { type: "ul", items: [
       "**Perguntas de valores:** \"O que eu mais valorizo?\" — com quatro opções que você realmente pesaria entre si, chega-se a compatibilidade real em vez de chute",
       "**Perguntas de cenário:** \"Como é meu domingo chuvoso ideal?\" — as quatro opções dizem mais sobre sua vida do que uma bio",
@@ -576,7 +577,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Strategie per introversi su Qulo" },
 
     { type: "h2", text: "Tipi di domanda" },
-    { type: "p", text: "Su Qulo scrivi da **2 a 10** domande a scelta multipla. Ognuna ha quattro opzioni e tu indichi quella vera per te. Qualcuno entra in match con te solo indovinandole proprio tutte: non esiste punteggio parziale. I tipi di domanda che funzionano meglio per gli introversi:" },
+    { type: "p", text: "Su Qulo scrivi da **2 a 4** domande a scelta multipla, e fino a 10 con un piano a pagamento. Ognuna ha quattro opzioni e tu indichi quella vera per te. Qualcuno entra in match con te solo indovinandole proprio tutte: non esiste punteggio parziale. I tipi di domanda che funzionano meglio per gli introversi:" },
     { type: "ul", items: [
       "**Domande sui valori:** \"A cosa tengo di più?\" — con quattro opzioni che soppeseresti davvero, si arriva a una compatibilità reale invece che a un tiro a indovinare",
       "**Domande di scenario:** \"Com'è la mia domenica di pioggia ideale?\" — le quattro opzioni dicono della tua vita più di una bio",
@@ -638,7 +639,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Quloでの内向型の戦略" },
 
     { type: "h2", text: "質問のタイプ" },
-    { type: "p", text: "Quloでは**2〜10問**の多肢選択式の質問をつくります。それぞれに4つの選択肢があり、自分にとって正しいものに印をつけます。相手はすべての質問に正解して初めてあなたとマッチします。部分点はありません。内向的な人に最も向いている質問のタイプはこちらです。" },
+    { type: "p", text: "Quloでは**2〜4問**（有料プランなら最大10問）の多肢選択式の質問をつくります。それぞれに4つの選択肢があり、自分にとって正しいものに印をつけます。相手はすべての質問に正解して初めてあなたとマッチします。部分点はありません。内向的な人に最も向いている質問のタイプはこちらです。" },
     { type: "ul", items: [
       "**価値観の質問:**「自分が最も大切にしているものは？」──本当に迷うような4択にすると、当てずっぽうではなく本物の相性に届きます",
       "**シチュエーションの質問:**「理想の雨の日曜日は？」──4つの選択肢は、自己紹介文より雄弁にあなたの生活を語ります",
@@ -700,7 +701,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Qulo에서의 내향형 전략" },
 
     { type: "h2", text: "질문 유형" },
-    { type: "p", text: "Qulo에서는 객관식 질문을 **2개에서 10개** 사이로 만듭니다. 각 질문에는 네 개의 선택지가 있고, 당신에게 해당하는 답을 표시합니다. 상대는 모든 질문을 다 맞혀야만 당신과 매칭됩니다. 부분 점수는 없습니다. 내향적인 사람에게 가장 잘 맞는 질문 유형은 이렇습니다." },
+    { type: "p", text: "Qulo에서는 객관식 질문을 **2개에서 4개** 사이로 만들며, 유료 플랜에서는 최대 10개까지 만들 수 있습니다. 각 질문에는 네 개의 선택지가 있고, 당신에게 해당하는 답을 표시합니다. 상대는 모든 질문을 다 맞혀야만 당신과 매칭됩니다. 부분 점수는 없습니다. 내향적인 사람에게 가장 잘 맞는 질문 유형은 이렇습니다." },
     { type: "ul", items: [
       "**가치 질문:** \"내가 가장 소중히 여기는 것은?\" — 실제로 저울질하게 되는 네 개의 선택지를 두면, 찍기가 아니라 진짜 궁합에 닿습니다",
       "**상황 질문:** \"비 오는 일요일에 나의 이상적인 하루는?\" — 네 개의 선택지가 자기소개보다 당신의 삶을 더 많이 말해 줍니다",
@@ -762,7 +763,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "在 Qulo 上的内向者策略" },
 
     { type: "h2", text: "题目类型" },
-    { type: "p", text: "在 Qulo 上，你会写 **2 到 10** 道选择题。每题有四个选项，你标出符合自己的那一个。对方必须全部答对才能与你配对——没有部分得分。最适合内向者的题目类型是：" },
+    { type: "p", text: "在 Qulo 上，你会写 **2 到 4** 道选择题，付费方案最多 10 道。每题有四个选项，你标出符合自己的那一个。对方必须全部答对才能与你配对——没有部分得分。最适合内向者的题目类型是：" },
     { type: "ul", items: [
       "**价值观题：**「我最看重什么？」——当四个选项是你真的会互相权衡的，它触及的是真实的契合，而不是瞎猜",
       "**情景题：**「我理想中的雨天周日是什么样？」——四个选项比一段个人简介更能说明你的生活",
@@ -824,7 +825,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Strategieën voor introverten op Qulo" },
 
     { type: "h2", text: "Soorten vragen" },
-    { type: "p", text: "Op Qulo schrijf je tussen de **2 en 10** meerkeuzevragen. Elke vraag heeft vier opties, en jij markeert het antwoord dat op jou van toepassing is. Iemand matcht alleen met je door ze werkelijk allemaal goed te hebben — deelpunten bestaan niet. De vraagsoorten die voor introverten het beste werken:" },
+    { type: "p", text: "Op Qulo schrijf je tussen de **2 en 4** meerkeuzevragen, en tot 10 met een betaald abonnement. Elke vraag heeft vier opties, en jij markeert het antwoord dat op jou van toepassing is. Iemand matcht alleen met je door ze werkelijk allemaal goed te hebben — deelpunten bestaan niet. De vraagsoorten die voor introverten het beste werken:" },
     { type: "ul", items: [
       "**Waardenvragen:** \"Wat vind ik het belangrijkst?\" — met vier opties die je echt tegen elkaar zou afwegen bereik je echte compatibiliteit in plaats van gokwerk",
       "**Scenariovragen:** \"Hoe ziet mijn ideale regenachtige zondag eruit?\" — de vier opties zeggen meer over je leven dan een bio",
@@ -886,7 +887,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Strategie dla introwertyków w Qulo" },
 
     { type: "h2", text: "Rodzaje pytań" },
-    { type: "p", text: "W Qulo układasz od **2 do 10** pytań wielokrotnego wyboru. Każde ma cztery opcje, a ty zaznaczasz tę prawdziwą o tobie. Ktoś dopasuje się do ciebie wyłącznie wtedy, gdy trafi absolutnie wszystkie — nie ma punktów częściowych. Rodzaje pytań, które sprawdzają się u introwertyków najlepiej:" },
+    { type: "p", text: "W Qulo układasz od **2 do 4** pytań wielokrotnego wyboru, a w planie płatnym nawet do 10. Każde ma cztery opcje, a ty zaznaczasz tę prawdziwą o tobie. Ktoś dopasuje się do ciebie wyłącznie wtedy, gdy trafi absolutnie wszystkie — nie ma punktów częściowych. Rodzaje pytań, które sprawdzają się u introwertyków najlepiej:" },
     { type: "ul", items: [
       "**Pytania o wartości:** \"Co cenię najbardziej?\" — przy czterech opcjach, które naprawdę ważyłbyś między sobą, dociera się do prawdziwego dopasowania, a nie do zgadywanki",
       "**Pytania scenariuszowe:** \"Jak wygląda moja idealna deszczowa niedziela?\" — cztery opcje mówią o twoim życiu więcej niż opis profilu",
@@ -948,7 +949,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Strategier för introverta på Qulo" },
 
     { type: "h2", text: "Frågetyper" },
-    { type: "p", text: "På Qulo skriver du mellan **2 och 10** flervalsfrågor. Varje fråga har fyra alternativ, och du markerar det som stämmer på dig. Någon matchar med dig bara genom att ha rätt på precis alla — det finns inga delpoäng. De frågetyper som fungerar bäst för introverta:" },
+    { type: "p", text: "På Qulo skriver du mellan **2 och 4** flervalsfrågor, och upp till 10 med ett betalt abonnemang. Varje fråga har fyra alternativ, och du markerar det som stämmer på dig. Någon matchar med dig bara genom att ha rätt på precis alla — det finns inga delpoäng. De frågetyper som fungerar bäst för introverta:" },
     { type: "ul", items: [
       "**Värderingsfrågor:** \"Vad värdesätter jag mest?\" — med fyra alternativ du faktiskt skulle väga mot varandra når du verklig samstämmighet i stället för gissningar",
       "**Scenariofrågor:** \"Hur ser min ideala regniga söndag ut?\" — de fyra alternativen säger mer om ditt liv än en presentationstext",
@@ -1010,7 +1011,7 @@ export const quizDatingForIntroverts: LocalizedArticle = {
     { type: "h2", text: "Qulo पर अंतर्मुखी रणनीतियाँ" },
 
     { type: "h2", text: "सवालों के प्रकार" },
-    { type: "p", text: "Qulo पर आप **2 से 10** बहुविकल्पीय सवाल लिखते हैं। हर सवाल में चार विकल्प होते हैं, और आप वही चिह्नित करते हैं जो आप पर सच बैठता है। कोई आपसे तभी मैच होता है जब वह हर एक सवाल सही करे — आंशिक अंक जैसा कुछ नहीं है। अंतर्मुखी लोगों के लिए सबसे कारगर सवालों के प्रकार:" },
+    { type: "p", text: "Qulo पर आप **2 से 4** बहुविकल्पीय सवाल लिखते हैं — भुगतान वाली योजना में 10 तक। हर सवाल में चार विकल्प होते हैं, और आप वही चिह्नित करते हैं जो आप पर सच बैठता है। कोई आपसे तभी मैच होता है जब वह हर एक सवाल सही करे — आंशिक अंक जैसा कुछ नहीं है। अंतर्मुखी लोगों के लिए सबसे कारगर सवालों के प्रकार:" },
     { type: "ul", items: [
       "**मूल्यों के सवाल:** \"मैं सबसे ज़्यादा किसे अहमियत देता हूँ?\" — ऐसे चार विकल्प जिन्हें आप सचमुच आपस में तौलेंगे, अटकल के बजाय असली मेल तक पहुँचाते हैं",
       "**परिस्थिति के सवाल:** \"मेरा आदर्श बरसाती रविवार कैसा होता है?\" — चार विकल्प आपकी ज़िंदगी के बारे में किसी परिचय से ज़्यादा कहते हैं",

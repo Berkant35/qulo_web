@@ -133,7 +133,7 @@ function getCopy(locale: string): UiCopy {
       { dt: isTr ? "Şirket" : "Company", dd: "Qulo" },
       { dt: isTr ? "Kuruluş" : "Founded", dd: "2026" },
       { dt: isTr ? "Kategori" : "Category", dd: "Quiz Dating App" },
-      { dt: "Platform", dd: "iOS, Android, Web" },
+      { dt: "Platform", dd: "iOS, Android" },
       { dt: isTr ? "Diller" : "Languages", dd: "16" },
       { dt: isTr ? "Merkez" : "Headquarters", dd: "Istanbul, Turkey" },
       { dt: isTr ? "Slogan" : "Tag line", dd: isTr ? "Sorularla Tanış" : "Meet Through Questions" },
@@ -142,8 +142,8 @@ function getCopy(locale: string): UiCopy {
 
     aboutHeading: isTr ? "Qulo Hakkında" : "About Qulo",
     aboutParagraph: isTr
-      ? "Qulo, geleneksel dating uygulamalarının swipe yorgunluğuna alternatif olarak doğmuş, soru-cevap tabanlı bir tanışma platformudur. Kullanıcılar 2-10 arasında soru hazırlar, diğer kullanıcılar bu soruları çözer ve tüm cevapları doğru veren kişiyle eşleşme gerçekleşir. Qulo, 16 dilde hizmet vererek bekarların daha derin ve anlamlı bağlantılar kurmasını hedefler."
-      : "Qulo is a question-and-answer based dating platform born as an alternative to the swipe fatigue of traditional dating apps. Users create 2-10 questions, others solve them, and matching occurs with the person who answers all correctly. With service in 16 languages, Qulo aims to help singles build deeper and more meaningful connections.",
+      ? "Qulo, geleneksel dating uygulamalarının swipe yorgunluğuna alternatif olarak doğmuş, soru-cevap tabanlı bir tanışma platformudur. Kullanıcılar kendileri hakkında 2 ila 4 soru hazırlar, ücretli planlarda 10'a kadar; diğer kullanıcılar bu soruları çözer ve tüm cevapları doğru veren kişiyle eşleşme gerçekleşir. Qulo, 16 dilde hizmet vererek bekarların daha derin ve anlamlı bağlantılar kurmasını hedefler."
+      : "Qulo is a question-and-answer based dating platform born as an alternative to the swipe fatigue of traditional dating apps. Users write 2 to 4 questions about themselves, or up to 10 on a paid plan; others answer those questions, and matching occurs with the person who gets them all correct. With service in 16 languages, Qulo aims to help singles build deeper and more meaningful connections.",
 
     logosHeading: isTr ? "Logo İndirme" : "Logo Downloads",
     logosSubtitle: isTr
@@ -180,13 +180,13 @@ function getCopy(locale: string): UiCopy {
 
     founderHeading: isTr ? "Kurucu" : "Founder",
     founderBio: isTr
-      ? "Berkant Çalıkuşu, dating sektöründe yıllar geçirdikten sonra geleneksel uygulamaların yetersiz kaldığını fark ederek Qulo'yu kurdu. Soru-cevap tabanlı eşleşme felsefesinin sektörde devrim yaratacağına inanıyor."
-      : "Berkant Çalıkuşu founded Qulo after years in the dating industry, recognizing the inadequacy of traditional apps. He believes the question-based matching philosophy will revolutionize the industry.",
+      ? "Berkant Çalıkuşu, İstanbul'da yaşayan bağımsız bir geliştirici. Qulo'yu 2026'da kurdu; uygulamayı kendisi geliştiriyor ve yürütüyor. Gizlilik politikasında adı geçen veri sorumlusu da kendisi."
+      : "Berkant Çalıkuşu is an independent developer based in Istanbul, Turkey. He founded Qulo in 2026 and builds and runs the app himself. He is also the data controller named in the privacy policy.",
 
     mediaCoverageHeading: isTr ? "Medyada Qulo" : "Qulo in the Media",
     mediaCoverageMessage: isTr
-      ? "Yakında medyada görünür olacağız. Erken erişim için bize ulaşın."
-      : "Coverage coming soon. Get in touch for early access.",
+      ? "Henüz yayımlanmış bir haber yok. Basın talepleri için bize yazabilirsiniz."
+      : "No press coverage yet. Get in touch with press enquiries.",
 
     pressContactHeading: isTr ? "Basın İletişim" : "Press Contact",
     pressContactEmailLabel: "Email",

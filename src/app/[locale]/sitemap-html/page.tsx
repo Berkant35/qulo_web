@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
@@ -18,6 +18,9 @@ import { HOW_TO_GUIDES } from "@/lib/constants/howto";
 import { LANDING_PAGES } from "@/lib/constants/landings";
 import { CITIES } from "@/lib/constants/cities";
 import { COUNTRIES } from "@/lib/constants/countries";
+import { ANSWER_PAGES, answerQuestion } from "@/lib/constants/answers";
+import { SORTED_GLOSSARY_TERMS } from "@/lib/constants/glossary";
+import { GLOSSARY_CONTENT } from "../glossary/_content";
 
 const PAGE_SLUG = "sitemap-html";
 
@@ -65,63 +68,16 @@ export async function generateMetadata({
   };
 }
 
-interface SitemapCopy {
-  heroTitle: string;
-  heroSubtitle: string;
-  mainPages: string;
-  featuresSection: string;
-  adviceSection: string;
-  howtoSection: string;
-  blogSection: string;
-  citiesSection: string;
-  countriesSection: string;
-  legalSection: string;
-  // Main page labels
-  home: string;
-  about: string;
-  press: string;
-  features: string;
-  advice: string;
-  howto: string;
-  blog: string;
-  glossary: string;
-  statistics: string;
-  trends: string;
-  privacy: string;
-  terms: string;
-  help: string;
-}
-
-function getCopy(locale: string): SitemapCopy {
-  const isTr = locale === "tr";
-  return {
-    heroTitle: isTr ? "Site Haritası" : "Sitemap",
-    heroSubtitle: isTr
-      ? "Qulo web sitesindeki tüm sayfaların organize listesi."
-      : "An organized list of all pages on the Qulo website.",
-    mainPages: isTr ? "Ana Sayfalar" : "Main Pages",
-    featuresSection: isTr ? "Özellikler" : "Features",
-    adviceSection: isTr ? "Tavsiye Rehberleri" : "Advice Guides",
-    howtoSection: isTr ? "Nasıl Kullanılır Rehberleri" : "How-to Guides",
-    blogSection: isTr ? "Blog Yazıları" : "Blog Articles",
-    citiesSection: isTr ? "Şehirler" : "Cities",
-    countriesSection: isTr ? "Ülkeler" : "Countries",
-    legalSection: isTr ? "Yasal" : "Legal",
-    home: isTr ? "Ana Sayfa" : "Home",
-    about: isTr ? "Hakkında" : "About",
-    press: isTr ? "Basın" : "Press",
-    features: isTr ? "Özellikler" : "Features",
-    advice: isTr ? "Tavsiyeler" : "Advice",
-    howto: isTr ? "Nasıl Kullanılır" : "How-to",
-    blog: "Blog",
-    glossary: isTr ? "Sözlük" : "Glossary",
-    statistics: isTr ? "İstatistikler" : "Statistics",
-    trends: isTr ? "Dating Trendleri 2026" : "Dating Trends 2026",
-    privacy: isTr ? "Gizlilik Politikası" : "Privacy Policy",
-    terms: isTr ? "Kullanım Koşulları" : "Terms of Service",
-    help: isTr ? "Yardım" : "Help",
-  };
-}
+/**
+ * Section headings and page labels come from the dictionaries, which carry all
+ * 16 locales for the footer and nav.
+ *
+ * They used to come from a `locale === "tr" ? … : …` table right here, so every
+ * language except Turkish read this page in English while its `hreflang` and
+ * canonical promised a translation. Reusing the footer keys fixes that without
+ * inventing a second set of translations for words the site already has — and
+ * it keeps the sitemap's wording in step with the navigation it describes.
+ */
 
 interface SitemapLink {
   href: string;
@@ -214,20 +170,39 @@ export default async function SitemapHtmlPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const copy = getCopy(locale);
+  const nav = await getTranslations("nav");
+  const t = await getTranslations("footer");
 
+  // The homepage is labelled with the site name — a sitemap's root entry reads
+  // naturally that way and it needs no thirty-second translation of "Home".
   const mainPages: SitemapLink[] = [
-    { href: `/${locale}`, label: copy.home },
-    { href: `/${locale}/about`, label: copy.about },
-    { href: `/${locale}/press`, label: copy.press },
-    { href: `/${locale}/features`, label: copy.features },
-    { href: `/${locale}/advice`, label: copy.advice },
-    { href: `/${locale}/how-to`, label: copy.howto },
-    { href: `/${locale}/blog`, label: copy.blog },
-    { href: `/${locale}/glossary`, label: copy.glossary },
-    { href: `/${locale}/dating-statistics`, label: copy.statistics },
-    { href: `/${locale}/trends/2026`, label: copy.trends },
+    { href: `/${locale}`, label: SITE_NAME },
+    { href: `/${locale}/about`, label: t("about") },
+    { href: `/${locale}/press`, label: t("press") },
+    { href: `/${locale}/features`, label: nav("features") },
+    { href: `/${locale}/advice`, label: t("advice") },
+    { href: `/${locale}/how-to`, label: t("howto") },
+    { href: `/${locale}/blog`, label: t("blog") },
+    { href: `/${locale}/answers`, label: t("answers") },
+    { href: `/${locale}/glossary`, label: t("glossary") },
+    { href: `/${locale}/pricing`, label: t("pricing") },
+    { href: `/${locale}/dating-statistics`, label: t("statistics") },
+    { href: `/${locale}/trends/2026`, label: t("trends") },
   ];
+
+  // Every glossary term, so the 432 term pages are reachable from a crawlable
+  // page and not only from the XML sitemap.
+  const glossaryPages: SitemapLink[] = SORTED_GLOSSARY_TERMS.flatMap((term) => {
+    const entry = GLOSSARY_CONTENT[term.slug]?.[locale];
+    return entry
+      ? [{ href: `/${locale}/glossary/${term.slug}`, label: entry.term }]
+      : [];
+  }).sort((a, b) => a.label.localeCompare(b.label, locale));
+
+  const answerPages: SitemapLink[] = ANSWER_PAGES.map((page) => ({
+    href: `/${locale}/answers/${page.slug}`,
+    label: answerQuestion(page, locale),
+  }));
 
   const featurePages: SitemapLink[] = LANDING_PAGES.map((landing) => ({
     href: `/${locale}/features/${landing.slug}`,
@@ -260,9 +235,12 @@ export default async function SitemapHtmlPage({
   }));
 
   const legalPages: SitemapLink[] = [
-    { href: `/${locale}/privacy-policy`, label: copy.privacy },
-    { href: `/${locale}/terms`, label: copy.terms },
-    { href: `/${locale}/help`, label: copy.help },
+    { href: `/${locale}/privacy-policy`, label: t("privacy") },
+    { href: `/${locale}/terms`, label: t("terms") },
+    { href: `/${locale}/community-guidelines`, label: t("guidelines") },
+    { href: `/${locale}/safety-tips`, label: t("safety") },
+    { href: `/${locale}/csae-policy`, label: t("childSafety") },
+    { href: `/${locale}/help`, label: t("help") },
   ];
 
   return (
@@ -278,66 +256,75 @@ export default async function SitemapHtmlPage({
 
           {/* Hero */}
           <header className="mb-12 text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              {copy.heroTitle}
-            </h1>
-            <p className="text-base text-qulo-text-secondary max-w-2xl mx-auto">
-              {copy.heroSubtitle}
-            </p>
+            <h1 className="text-4xl sm:text-5xl font-bold">{t("sitemap")}</h1>
           </header>
 
           <SitemapSection
             id="main-pages-heading"
-            title={copy.mainPages}
+            title={t("company")}
             links={mainPages}
             accent="purple"
           />
 
           <SitemapSection
             id="features-heading"
-            title={copy.featuresSection}
+            title={nav("features")}
             links={featurePages}
             accent="green"
           />
 
           <SitemapSection
             id="advice-heading"
-            title={copy.adviceSection}
+            title={t("advice")}
             links={advicePages}
             accent="purple"
           />
 
           <SitemapSection
             id="howto-heading"
-            title={copy.howtoSection}
+            title={t("howto")}
             links={howtoPages}
             accent="green"
           />
 
           <SitemapSection
             id="blog-heading"
-            title={copy.blogSection}
+            title={t("blog")}
             links={blogPages}
             accent="purple"
           />
 
           <SitemapSection
+            id="answers-heading"
+            title={t("answers")}
+            links={answerPages}
+            accent="green"
+          />
+
+          <SitemapSection
+            id="glossary-heading"
+            title={t("glossary")}
+            links={glossaryPages}
+            accent="purple"
+          />
+
+          <SitemapSection
             id="cities-heading"
-            title={copy.citiesSection}
+            title={t("cities")}
             links={cityPages}
             accent="green"
           />
 
           <SitemapSection
             id="countries-heading"
-            title={copy.countriesSection}
+            title={t("countries")}
             links={countryPages}
             accent="purple"
           />
 
           <SitemapSection
             id="legal-heading"
-            title={copy.legalSection}
+            title={t("legal")}
             links={legalPages}
             accent="green"
           />

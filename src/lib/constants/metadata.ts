@@ -3,84 +3,84 @@ export const SITE_NAME = "Qulo";
 
 export const SEO: Record<string, { title: string; description: string }> = {
   tr: {
-    title: "Qulo — Sorularla Tanış | AI Dating Uygulaması",
+    title: "Qulo — Sorularla Tanış | Soru-Cevap Tanışma Uygulaması",
     description:
-      "Soru hazırla, paylaş, doğru cevaplayan kişiyle eşleş. AI destekli yeni nesil tanışma uygulaması.",
+      "Soru hazırla, paylaş, doğru cevaplayan kişiyle eşleş. Swipe yok, soru-cevap var — yeni nesil tanışma uygulaması.",
   },
   en: {
-    title: "Qulo — Meet Through Questions | AI Dating App",
+    title: "Qulo — Meet Through Questions | Quiz Dating App",
     description:
-      "Create questions, share them, match with the person who answers correctly. AI-powered next-gen dating app.",
+      "Create questions, share them, match with the person who answers correctly. Question-based dating — no swiping, just a quiz.",
   },
   de: {
-    title: "Qulo — Kennenlernen durch Fragen | AI Dating App",
+    title: "Qulo — Kennenlernen durch Fragen | Quiz Dating App",
     description:
-      "Erstelle Fragen, teile sie und matche mit der Person, die richtig antwortet. KI-gestützte Dating-App der nächsten Generation.",
+      "Erstelle Fragen, teile sie und matche mit der Person, die richtig antwortet. Dating über Fragen statt Wischen.",
   },
   fr: {
-    title: "Qulo — Rencontrez par les Questions | App de Dating IA",
+    title: "Qulo — Rencontrez par les Questions | App de Dating Quiz",
     description:
-      "Créez des questions, partagez-les, matchez avec la personne qui répond correctement. App de rencontre nouvelle génération propulsée par l'IA.",
+      "Créez des questions, partagez-les, matchez avec la personne qui répond correctement. Le dating par les questions, pas par le swipe.",
   },
   es: {
-    title: "Qulo — Conoce a Través de Preguntas | App de Citas con IA",
+    title: "Qulo — Conoce a Través de Preguntas | App de Citas tipo Quiz",
     description:
-      "Crea preguntas, compártelas, haz match con quien responda correctamente. App de citas de nueva generación con IA.",
+      "Crea preguntas, compártelas, haz match con quien responda correctamente. Citas basadas en preguntas, sin deslizar.",
   },
   ar: {
-    title: "Qulo — تعارف من خلال الأسئلة | تطبيق مواعدة بالذكاء الاصطناعي",
+    title: "Qulo — تعارف من خلال الأسئلة | تطبيق مواعدة بالأسئلة",
     description:
-      "أنشئ أسئلة، شاركها، وتطابق مع من يجيب بشكل صحيح. تطبيق مواعدة من الجيل الجديد مدعوم بالذكاء الاصطناعي.",
+      "أنشئ أسئلة، شاركها، وتطابق مع من يجيب بشكل صحيح. مواعدة قائمة على الأسئلة، بلا تمرير.",
   },
   ja: {
-    title: "Qulo — 質問で出会う | AI マッチングアプリ",
+    title: "Qulo — 質問で出会う | クイズ型マッチングアプリ",
     description:
-      "質問を作成し、共有し、正しく答えた人とマッチ。AI搭載の次世代マッチングアプリ。",
+      "質問を作成し、共有し、正しく答えた人とマッチ。スワイプではなく質問で出会う次世代マッチングアプリ。",
   },
   ko: {
-    title: "Qulo — 질문으로 만남 | AI 데이팅 앱",
+    title: "Qulo — 질문으로 만남 | 퀴즈 데이팅 앱",
     description:
-      "질문을 만들고, 공유하고, 정답을 맞힌 사람과 매칭하세요. AI 기반 차세대 데이팅 앱.",
+      "질문을 만들고, 공유하고, 정답을 맞힌 사람과 매칭하세요. 스와이프 대신 질문으로 만나는 데이팅 앱.",
   },
   zh: {
-    title: "Qulo — 通过问题认识 | AI 约会应用",
+    title: "Qulo — 通过问题认识 | 问答约会应用",
     description:
-      "创建问题、分享问题、与答对的人匹配。AI驱动的新一代约会应用。",
+      "创建问题、分享问题、与答对的人匹配。用问答代替滑动的新一代约会应用。",
   },
   ru: {
-    title: "Qulo — Знакомства через вопросы | AI приложение для знакомств",
+    title: "Qulo — Знакомства через вопросы | Приложение-квиз для знакомств",
     description:
-      "Создавайте вопросы, делитесь ими и находите пару с тем, кто ответит правильно. Приложение для знакомств нового поколения на базе ИИ.",
+      "Создавайте вопросы, делитесь ими и находите пару с тем, кто ответит правильно. Знакомства через вопросы, а не свайпы.",
   },
   pt: {
-    title: "Qulo — Conheça Através de Perguntas | App de Namoro com IA",
+    title: "Qulo — Conheça Através de Perguntas | App de Namoro em Quiz",
     description:
-      "Crie perguntas, compartilhe e combine com quem responder corretamente. App de namoro de nova geração com IA.",
+      "Crie perguntas, compartilhe e combine com quem responder corretamente. Namoro baseado em perguntas, sem swipe.",
   },
   it: {
-    title: "Qulo — Incontra Attraverso le Domande | App di Incontri con IA",
+    title: "Qulo — Incontra Attraverso le Domande | App di Incontri a Quiz",
     description:
-      "Crea domande, condividile e fai match con chi risponde correttamente. App di incontri di nuova generazione con IA.",
+      "Crea domande, condividile e fai match con chi risponde correttamente. Incontri basati sulle domande, senza swipe.",
   },
   nl: {
-    title: "Qulo — Ontmoet Via Vragen | AI Dating App",
+    title: "Qulo — Ontmoet Via Vragen | Quiz Dating App",
     description:
-      "Maak vragen, deel ze en match met degene die correct antwoordt. AI-gestuurde dating-app van de nieuwe generatie.",
+      "Maak vragen, deel ze en match met degene die correct antwoordt. Daten via vragen in plaats van swipen.",
   },
   pl: {
-    title: "Qulo — Poznawaj Przez Pytania | Aplikacja Randkowa z AI",
+    title: "Qulo — Poznawaj Przez Pytania | Quizowa Aplikacja Randkowa",
     description:
-      "Twórz pytania, udostępniaj je i dopasowuj się z osobą, która odpowie poprawnie. Aplikacja randkowa nowej generacji z AI.",
+      "Twórz pytania, udostępniaj je i dopasowuj się z osobą, która odpowie poprawnie. Randki oparte na pytaniach, bez swipe'owania.",
   },
   sv: {
-    title: "Qulo — Träffas Genom Frågor | AI Dejtingapp",
+    title: "Qulo — Träffas Genom Frågor | Quiz Dejtingapp",
     description:
-      "Skapa frågor, dela dem och matcha med den som svarar rätt. AI-driven dejtingapp av nästa generation.",
+      "Skapa frågor, dela dem och matcha med den som svarar rätt. Dejting genom frågor i stället för swipe.",
   },
   hi: {
-    title: "Qulo — सवालों से मिलें | AI डेटिंग ऐप",
+    title: "Qulo — सवालों से मिलें | क्विज़ डेटिंग ऐप",
     description:
-      "सवाल बनाएं, शेयर करें, सही जवाब देने वाले से मैच करें। AI-संचालित अगली पीढ़ी का डेटिंग ऐप।",
+      "सवाल बनाएं, शेयर करें, सही जवाब देने वाले से मैच करें। स्वाइप नहीं, सवालों से मुलाकात।",
   },
 };
 
@@ -215,6 +215,10 @@ export const PAGE_SEO: Record<string, Record<string, { title: string; descriptio
     ru: { title: "Политика конфиденциальности — Qulo", description: "Политика конфиденциальности Qulo. Узнайте, как собираются, используются и защищаются ваши данные." },
     pt: { title: "Política de Privacidade — Qulo", description: "Política de privacidade do Qulo. Saiba como seus dados são coletados, usados e protegidos." },
     it: { title: "Informativa sulla Privacy — Qulo", description: "Informativa sulla privacy di Qulo. Scopri come vengono raccolti, utilizzati e protetti i tuoi dati." },
+    nl: { title: "Privacybeleid — Qulo", description: "Het privacybeleid van Qulo. Lees hoe je gegevens worden verzameld, gebruikt en beschermd." },
+    pl: { title: "Polityka prywatności — Qulo", description: "Polityka prywatności Qulo. Dowiedz się, jak Twoje dane są zbierane, wykorzystywane i chronione." },
+    sv: { title: "Integritetspolicy — Qulo", description: "Qulos integritetspolicy. Läs hur dina uppgifter samlas in, används och skyddas." },
+    hi: { title: "गोपनीयता नीति — Qulo", description: "Qulo की गोपनीयता नीति। जानें कि आपका डेटा कैसे एकत्र किया, उपयोग किया और सुरक्षित रखा जाता है।" },
   },
   terms: {
     tr: { title: "Kullanım Koşulları — Qulo", description: "Qulo kullanım koşulları ve hizmet şartları. Uygulamayı kullanmadan önce okuyun." },
@@ -229,6 +233,10 @@ export const PAGE_SEO: Record<string, Record<string, { title: string; descriptio
     ru: { title: "Условия использования — Qulo", description: "Условия использования Qulo. Прочтите перед использованием приложения." },
     pt: { title: "Termos de Serviço — Qulo", description: "Termos de serviço do Qulo. Leia antes de usar o aplicativo." },
     it: { title: "Termini di Servizio — Qulo", description: "Termini di servizio di Qulo. Leggere prima di utilizzare l'app." },
+    nl: { title: "Servicevoorwaarden — Qulo", description: "De servicevoorwaarden van Qulo. Lees ze voordat je de app gebruikt." },
+    pl: { title: "Regulamin — Qulo", description: "Regulamin korzystania z Qulo. Przeczytaj go przed rozpoczęciem korzystania z aplikacji." },
+    sv: { title: "Användarvillkor — Qulo", description: "Qulos användarvillkor. Läs dem innan du använder appen." },
+    hi: { title: "सेवा की शर्तें — Qulo", description: "Qulo की सेवा की शर्तें। ऐप का उपयोग करने से पहले पढ़ें।" },
   },
   communityGuidelines: {
     tr: { title: "Topluluk Kuralları — Qulo", description: "Qulo'yu güvenli tutan kurallar: neler beklediğimiz, neye izin verilmediği ve sınır aşıldığında ne olduğu." },
@@ -272,6 +280,17 @@ export const PAGE_SEO: Record<string, Record<string, { title: string; descriptio
     de: { title: "Hilfe & FAQ — Qulo", description: "Häufig gestellte Fragen und Hilfezentrum für Qulo." },
     fr: { title: "Aide & FAQ — Qulo", description: "Questions fréquemment posées et centre d'aide pour Qulo." },
     es: { title: "Ayuda y Preguntas Frecuentes — Qulo", description: "Preguntas frecuentes y centro de ayuda de Qulo." },
+    ar: { title: "المساعدة والأسئلة الشائعة — Qulo", description: "الأسئلة الشائعة ومركز مساعدة Qulo. كيف يعمل التطبيق، الحساب وتسجيل الدخول، الماس والاشتراك المميز، الأمان والخصوصية." },
+    ru: { title: "Помощь и частые вопросы — Qulo", description: "Часто задаваемые вопросы и центр помощи Qulo. Как это работает, аккаунт и вход, алмазы и Premium, безопасность и конфиденциальность." },
+    pt: { title: "Ajuda e Perguntas Frequentes — Qulo", description: "Perguntas frequentes e central de ajuda do Qulo. Como funciona, conta e login, diamantes e Premium, segurança e privacidade." },
+    it: { title: "Aiuto e Domande Frequenti — Qulo", description: "Domande frequenti e centro assistenza di Qulo. Come funziona, account e accesso, diamanti e Premium, sicurezza e privacy." },
+    ja: { title: "ヘルプとよくある質問 — Qulo", description: "Quloのよくある質問とヘルプセンター。使い方、アカウントとログイン、ダイヤモンドとプレミアム、安全とプライバシーについて。" },
+    ko: { title: "도움말 & 자주 묻는 질문 — Qulo", description: "Qulo 자주 묻는 질문과 도움말 센터. 이용 방법, 계정 & 로그인, 다이아몬드 & 프리미엄, 안전 & 개인정보." },
+    zh: { title: "帮助与常见问题 — Qulo", description: "Qulo 常见问题和帮助中心。使用方法、账户和登录、钻石和高级版、安全和隐私。" },
+    nl: { title: "Hulp & Veelgestelde Vragen — Qulo", description: "Veelgestelde vragen en het helpcentrum van Qulo. Hoe het werkt, account & inloggen, diamanten & Premium, veiligheid & privacy." },
+    pl: { title: "Pomoc i najczęściej zadawane pytania — Qulo", description: "Najczęściej zadawane pytania i centrum pomocy Qulo. Jak to działa, konto i logowanie, diamenty i Premium, bezpieczeństwo i prywatność." },
+    sv: { title: "Hjälp & Vanliga Frågor — Qulo", description: "Vanliga frågor och Qulos hjälpcenter. Så fungerar det, konto & inloggning, diamanter & Premium, säkerhet & integritet." },
+    hi: { title: "सहायता और अक्सर पूछे जाने वाले सवाल — Qulo", description: "Qulo के अक्सर पूछे जाने वाले सवाल और सहायता केंद्र। यह कैसे काम करता है, खाता और लॉगिन, हीरे और प्रीमियम, सुरक्षा और गोपनीयता।" },
   },
   blog: {
     tr: { title: "Blog — Qulo | Dating, İlişkiler ve Uyumluluk", description: "Qulo blog: dating trendleri, ilişki ipuçları, swipe yorgunluğu, quiz dating ve daha fazlası." },
@@ -292,47 +311,58 @@ export const PAGE_SEO: Record<string, Record<string, { title: string; descriptio
     hi: { title: "ब्लॉग — Qulo | डेटिंग, रिश्ते और अनुकूलता", description: "Qulo ब्लॉग: डेटिंग ट्रेंड, रिश्ते की सलाह और बहुत कुछ।" },
   },
   dating: {
-    tr: { title: "Sehirlerde Dating — Qulo", description: "Dunyanin en buyuk sehirlerinde Qulo ile tanisin. Sorularla eslesin, anlamli baglantilar kurun." },
+    tr: { title: "Şehirlerde Dating — Qulo", description: "Dünyanın en büyük şehirlerinde Qulo ile tanışın. Sorularla eşleşin, anlamlı bağlantılar kurun." },
     en: { title: "Dating in Cities — Qulo", description: "Meet people with Qulo in the world's biggest cities. Match through questions, build meaningful connections." },
-    de: { title: "Dating in Stadten — Qulo", description: "Treffen Sie Menschen mit Qulo in den grossten Stadten der Welt. Matchen Sie durch Fragen." },
+    de: { title: "Dating in Städten — Qulo", description: "Treffen Sie Menschen mit Qulo in den größten Städten der Welt. Matchen Sie durch Fragen." },
     fr: { title: "Dating dans les villes — Qulo", description: "Rencontrez des gens avec Qulo dans les plus grandes villes du monde. Matchez par questions." },
-    es: { title: "Citas en ciudades — Qulo", description: "Conoce gente con Qulo en las ciudades mas grandes del mundo. Haz match con preguntas." },
+    es: { title: "Citas en ciudades — Qulo", description: "Conoce gente con Qulo en las ciudades más grandes del mundo. Haz match con preguntas." },
     ar: { title: "المواعدة في المدن — Qulo", description: "تعرف على أشخاص مع Qulo في أكبر مدن العالم. تطابق من خلال الأسئلة." },
     ru: { title: "Знакомства в городах — Qulo", description: "Встречайте людей с Qulo в крупнейших городах мира. Знакомьтесь через вопросы." },
-    pt: { title: "Namoro em cidades — Qulo", description: "Conheca pessoas com Qulo nas maiores cidades do mundo. Combine por perguntas." },
-    it: { title: "Incontri nelle citta — Qulo", description: "Incontra persone con Qulo nelle piu grandi citta del mondo. Fai match con domande." },
+    pt: { title: "Namoro em cidades — Qulo", description: "Conheça pessoas com Qulo nas maiores cidades do mundo. Combine por perguntas." },
+    it: { title: "Incontri nelle città — Qulo", description: "Incontra persone con Qulo nelle più grandi città del mondo. Fai match con domande." },
     ja: { title: "都市でデート — Qulo", description: "世界の大都市でQuloと出会いましょう。質問でマッチング。" },
     ko: { title: "도시에서 데이팅 — Qulo", description: "세계 최대 도시에서 Qulo로 사람들을 만나세요. 질문으로 매칭." },
     zh: { title: "城市约会 — Qulo", description: "在世界最大的城市用Qulo认识人。通过问题匹配。" },
     nl: { title: "Dating in steden — Qulo", description: "Ontmoet mensen met Qulo in de grootste steden ter wereld. Match via vragen." },
-    pl: { title: "Randki w miastach — Qulo", description: "Poznaj ludzi z Qulo w najwiekszych miastach swiata. Dopasowuj sie przez pytania." },
-    sv: { title: "Dejting i stader — Qulo", description: "Traffa manniskor med Qulo i varldens storsta stader. Matcha genom fragor." },
+    pl: { title: "Randki w miastach — Qulo", description: "Poznaj ludzi z Qulo w największych miastach świata. Dopasowuj się przez pytania." },
+    sv: { title: "Dejting i städer — Qulo", description: "Träffa människor med Qulo i världens största städer. Matcha genom frågor." },
     hi: { title: "शहरों में डेटिंग — Qulo", description: "दुनिया के सबसे बड़े शहरों में Qulo से लोगों से मिलें। सवालों से मैच करें।" },
   },
   country: {
-    tr: { title: "Ulkelerde Dating — Qulo", description: "Dunya capinda ulkelerde Qulo ile tanisin. Turkiye, Almanya, Fransa, Ispanya ve daha fazlasi." },
+    tr: { title: "Ülkelerde Dating — Qulo", description: "Dünya çapında ülkelerde Qulo ile tanışın. Türkiye, Almanya, Fransa, İspanya ve daha fazlası." },
     en: { title: "Dating by Country — Qulo", description: "Meet people with Qulo in countries worldwide. Turkey, Germany, France, Spain and more." },
-    de: { title: "Dating nach Land — Qulo", description: "Treffen Sie Menschen mit Qulo in Landern weltweit. Turkei, Deutschland, Frankreich, Spanien und mehr." },
+    de: { title: "Dating nach Land — Qulo", description: "Treffen Sie Menschen mit Qulo in Ländern weltweit. Türkei, Deutschland, Frankreich, Spanien und mehr." },
     fr: { title: "Dating par pays — Qulo", description: "Rencontrez des gens avec Qulo dans les pays du monde entier. Turquie, Allemagne, France, Espagne et plus." },
-    es: { title: "Citas por pais — Qulo", description: "Conoce gente con Qulo en paises de todo el mundo. Turquia, Alemania, Francia, Espana y mas." },
+    es: { title: "Citas por país — Qulo", description: "Conoce gente con Qulo en países de todo el mundo. Turquía, Alemania, Francia, España y más." },
     ar: { title: "المواعدة حسب الدولة — Qulo", description: "تعرف على أشخاص مع Qulo في دول حول العالم. تركيا، ألمانيا، فرنسا، إسبانيا والمزيد." },
     ru: { title: "Знакомства по странам — Qulo", description: "Встречайте людей с Qulo в странах по всему миру. Турция, Германия, Франция, Испания и другие." },
-    pt: { title: "Namoro por pais — Qulo", description: "Conheca pessoas com Qulo em paises ao redor do mundo. Turquia, Alemanha, Franca, Espanha e mais." },
+    pt: { title: "Namoro por país — Qulo", description: "Conheça pessoas com Qulo em países ao redor do mundo. Turquia, Alemanha, França, Espanha e mais." },
     it: { title: "Incontri per paese — Qulo", description: "Incontra persone con Qulo nei paesi di tutto il mondo. Turchia, Germania, Francia, Spagna e altro." },
     ja: { title: "国別デート — Qulo", description: "世界中の国でQuloと出会いましょう。トルコ、ドイツ、フランス、スペインなど。" },
     ko: { title: "국가별 데이팅 — Qulo", description: "전 세계 국가에서 Qulo로 사람들을 만나세요. 터키, 독일, 프랑스, 스페인 등." },
     zh: { title: "按国家约会 — Qulo", description: "在世界各国用Qulo认识人。土耳其、德国、法国、西班牙等。" },
     nl: { title: "Dating per land — Qulo", description: "Ontmoet mensen met Qulo in landen wereldwijd. Turkije, Duitsland, Frankrijk, Spanje en meer." },
-    pl: { title: "Randki wedlug kraju — Qulo", description: "Poznaj ludzi z Qulo w krajach na calym swiecie. Turcja, Niemcy, Francja, Hiszpania i wiecej." },
-    sv: { title: "Dejting efter land — Qulo", description: "Traffa manniskor med Qulo i lander varlden over. Turkiet, Tyskland, Frankrike, Spanien och mer." },
+    pl: { title: "Randki według kraju — Qulo", description: "Poznaj ludzi z Qulo w krajach na całym świecie. Turcja, Niemcy, Francja, Hiszpania i więcej." },
+    sv: { title: "Dejting efter land — Qulo", description: "Träffa människor med Qulo i länder världen över. Turkiet, Tyskland, Frankrike, Spanien och mer." },
     hi: { title: "देश के अनुसार डेटिंग — Qulo", description: "दुनिया भर के देशों में Qulo से लोगों से मिलें। तुर्की, जर्मनी, फ्रांस, स्पेन और अधिक।" },
   },
   features: {
-    tr: { title: "Ozellikler — Qulo | Quiz Dating App", description: "Qulo'nun benzersiz ozellikleri: quiz dating, kisilik eslestirme, AI soru onerileri ve daha fazlasi." },
-    en: { title: "Features — Qulo | Quiz Dating App", description: "Qulo's unique features: quiz dating, personality matching, AI question suggestions and more." },
-    de: { title: "Funktionen — Qulo | Quiz Dating App", description: "Qulos einzigartige Funktionen: Quiz-Dating, Personlichkeits-Matching, KI-Fragenvorschlage und mehr." },
-    fr: { title: "Fonctionnalites — Qulo | Quiz Dating App", description: "Les fonctionnalites uniques de Qulo : quiz dating, matching de personnalite, suggestions de questions IA et plus." },
-    es: { title: "Caracteristicas — Qulo | Quiz Dating App", description: "Caracteristicas unicas de Qulo: quiz dating, matching de personalidad, sugerencias de preguntas con IA y mas." },
+    tr: { title: "Özellikler — Qulo | Quiz Dating App", description: "Qulo'nun benzersiz özellikleri: quiz dating, elmas ekonomisi, quiz güçleri ve hazır soru önerileri." },
+    en: { title: "Features — Qulo | Quiz Dating App", description: "Qulo's unique features: quiz dating, diamond economy, quiz powers and ready-made question suggestions." },
+    de: { title: "Funktionen — Qulo | Quiz Dating App", description: "Qulos einzigartige Funktionen: Quiz-Dating, Diamant-Ökonomie, Quiz-Kräfte und fertige Fragenvorschläge." },
+    fr: { title: "Fonctionnalités — Qulo | Quiz Dating App", description: "Les fonctionnalités uniques de Qulo : quiz dating, économie de diamants, pouvoirs de quiz et suggestions de questions toutes prêtes." },
+    es: { title: "Características — Qulo | Quiz Dating App", description: "Características únicas de Qulo: quiz dating, economía de diamantes, poderes de quiz y sugerencias de preguntas ya listas." },
+    ar: { title: "الميزات — Qulo | تطبيق مواعدة بالأسئلة", description: "ميزات Qulo الفريدة: المواعدة عبر الأسئلة، اقتصاد الماس، قوى الاختبار، واقتراحات الأسئلة الجاهزة." },
+    ru: { title: "Возможности — Qulo | Quiz Dating App", description: "Уникальные возможности Qulo: знакомства через вопросы, экономика алмазов, силы квиза и готовые подсказки вопросов." },
+    pt: { title: "Recursos — Qulo | Quiz Dating App", description: "Recursos exclusivos do Qulo: namoro por perguntas, economia de diamantes, poderes do quiz e sugestões de perguntas prontas." },
+    it: { title: "Funzionalità — Qulo | Quiz Dating App", description: "Le funzionalità uniche di Qulo: incontri tramite domande, economia dei diamanti, poteri del quiz e suggerimenti di domande già pronte." },
+    ja: { title: "機能 — Qulo | クイズ型マッチングアプリ", description: "Quloならではの機能：質問で出会うマッチング、ダイヤモンドエコノミー、クイズパワー、あらかじめ用意された質問の提案。" },
+    ko: { title: "기능 — Qulo | 퀴즈 데이팅 앱", description: "Qulo만의 기능: 질문으로 매칭, 다이아몬드 경제, 퀴즈 파워, 미리 준비된 질문 추천." },
+    zh: { title: "功能 — Qulo | 问答约会应用", description: "Qulo 的独特功能：通过问题匹配、钻石经济、答题技能和现成的问题建议。" },
+    nl: { title: "Functies — Qulo | Quiz Dating App", description: "De unieke functies van Qulo: matchen via vragen, diamanteconomie, quizkrachten en kant-en-klare vraagsuggesties." },
+    pl: { title: "Funkcje — Qulo | Quiz Dating App", description: "Wyjątkowe funkcje Qulo: dopasowanie przez pytania, ekonomia diamentów, moce quizu i gotowe podpowiedzi pytań." },
+    sv: { title: "Funktioner — Qulo | Quiz Dating App", description: "Qulos unika funktioner: matchning genom frågor, diamantekonomi, quizkrafter och färdiga frågeförslag." },
+    hi: { title: "विशेषताएं — Qulo | क्विज़ डेटिंग ऐप", description: "Qulo की खास विशेषताएं: सवालों से मैचिंग, हीरा अर्थव्यवस्था, क्विज़ पावर और पहले से तैयार सवालों के सुझाव।" },
   },
   glossary: {
     tr: { title: "Dating S\u00F6zl\u00FC\u011F\u00FC \u2014 A'dan Z'ye Dating Terimleri | Qulo", description: "Ghosting, catfishing, swipe fatigue ve daha fazlas\u0131. Online dating d\u00FCnyas\u0131n\u0131n t\u00FCm terimlerini \u00F6\u011Frenin." },

@@ -10,7 +10,7 @@ import { ROOT_METADATA } from "@/lib/constants/rootMetadata";
 export const metadata: Metadata = {
   ...ROOT_METADATA,
   title: "Qulo",
-  description: "AI-powered dating app",
+  description: "Dating app where you meet by answering each other's questions",
 };
 
 export default function StandaloneLayout({

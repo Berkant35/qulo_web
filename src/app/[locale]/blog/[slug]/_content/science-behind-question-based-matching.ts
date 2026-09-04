@@ -65,10 +65,10 @@ import type { LocalizedArticle } from "@/components/blog/ArticleBlocks";
  *    each other; Qulo makes that exchange the entry point instead of a photo. It
  *    is not validated matching, and the post now says so in two places.
  *
- * Product claims describe the real mechanic: 2-10 multiple-choice questions,
- * four options each, marking the answer that is true of you; a match requires
- * every answer right; the optional powers (hint, halve the options, skip) cost
- * in-app diamonds and are never required.
+ * Product claims describe the real mechanic: 2-4 multiple-choice questions on a
+ * free account (up to 10 on a paid plan), four options each, marking the answer
+ * that is true of you; a match requires every answer right; the optional powers
+ * (hint, halve the options, skip) cost in-app diamonds and are never required.
  *
  * Brand rule: Qulo is the only dating app nameable on this site. Everything else
  * is "dating apps" / "photo-first apps".
@@ -106,7 +106,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "What Qulo Actually Does With This", accent: "green" },
     { type: "p", text: "Qulo does not claim to run scientifically validated matching, because no such thing exists in dating. What it does is put the exchange first, mechanically, so that it cannot be skipped:" },
     { type: "ul", items: [
-      "**You write 2 to 10 questions about yourself** — multiple choice, four options each — and mark the option that is true of you.",
+      "**You write 2 to 4 questions about yourself** — multiple choice, four options each — and mark the option that is true of you. A paid plan raises the ceiling to 10.",
       "**Someone matches by getting every one right.** A single wrong answer means no match, so nobody arrives by tapping through.",
       "**The questions come before the face,** which reverses the usual order of a first impression.",
       "**Solving takes attention.** Effort is a weak guarantee of anything, but it is real evidence that the other person read what you wrote.",
@@ -160,7 +160,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Qulo Bununla Gerçekte Ne Yapıyor?", accent: "green" },
     { type: "p", text: "Qulo, bilimsel olarak doğrulanmış bir eşleştirme yaptığını iddia etmiyor; çünkü flört alanında böyle bir şey yok. Yaptığı şey, alışverişi mekanik olarak öne almak — atlanamayacak biçimde:" },
     { type: "ul", items: [
-      "**Kendinizle ilgili 2 ila 10 soru yazarsınız** — çoktan seçmeli, her biri dört seçenekli — ve sizin için doğru olan seçeneği işaretlersiniz.",
+      "**Kendinizle ilgili 2 ila 4 soru yazarsınız** — çoktan seçmeli, her biri dört seçenekli — ve sizin için doğru olan seçeneği işaretlersiniz. Ücretli planda bu sınır 10 soruya çıkar.",
       "**Karşı taraf hepsini doğru bilerek eşleşir.** Tek bir yanlış cevap eşleşme olmaması demek; yani kimse öylesine dokunarak gelmiyor.",
       "**Sorular yüzden önce gelir;** bu da ilk izlenimin alışılmış sırasını tersine çevirir.",
       "**Çözmek dikkat ister.** Emek hiçbir şeyin güçlü garantisi değildir ama karşı tarafın yazdığınızı okuduğuna dair gerçek bir kanıttır.",
@@ -214,7 +214,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Was Qulo tatsächlich daraus macht", accent: "green" },
     { type: "p", text: "Qulo behauptet nicht, wissenschaftlich validiertes Matching zu betreiben, denn so etwas gibt es beim Daten nicht. Was es tut: den Austausch mechanisch nach vorn holen, so dass er sich nicht überspringen lässt:" },
     { type: "ul", items: [
-      "**Sie schreiben 2 bis 10 Fragen über sich** — Multiple Choice, je vier Optionen — und markieren die Option, die auf Sie zutrifft.",
+      "**Sie schreiben 2 bis 4 Fragen über sich** — Multiple Choice, je vier Optionen — und markieren die Option, die auf Sie zutrifft. Im kostenpflichtigen Tarif steigt die Grenze auf 10 Fragen.",
       "**Ein Match entsteht nur, wenn jemand alle richtig beantwortet.** Eine einzige falsche Antwort heißt kein Match; niemand kommt also durch bloßes Durchtippen an.",
       "**Die Fragen kommen vor dem Gesicht,** was die übliche Reihenfolge eines ersten Eindrucks umdreht.",
       "**Lösen kostet Aufmerksamkeit.** Aufwand garantiert wenig, ist aber ein echter Beleg dafür, dass die andere Person gelesen hat, was Sie geschrieben haben.",
@@ -268,7 +268,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Ce que Qulo en fait concrètement", accent: "green" },
     { type: "p", text: "Qulo ne prétend pas faire du matching scientifiquement validé, car cela n'existe pas dans la rencontre en ligne. Ce qu'il fait, c'est placer l'échange en premier, mécaniquement, de sorte qu'on ne puisse pas le sauter :" },
     { type: "ul", items: [
-      "**Vous écrivez 2 à 10 questions sur vous** — à choix multiple, quatre options chacune — et vous cochez celle qui est vraie pour vous.",
+      "**Vous écrivez 2 à 4 questions sur vous** — à choix multiple, quatre options chacune — et vous cochez celle qui est vraie pour vous. Avec un abonnement payant, la limite monte à 10 questions.",
       "**On ne matche qu'en trouvant toutes les bonnes réponses.** Une seule erreur et il n'y a pas de match : personne n'arrive en tapotant au hasard.",
       "**Les questions viennent avant le visage,** ce qui inverse l'ordre habituel d'une première impression.",
       "**Résoudre demande de l'attention.** L'effort ne garantit pas grand-chose, mais c'est une preuve réelle que l'autre a lu ce que vous avez écrit.",
@@ -322,7 +322,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Qué hace Qulo realmente con esto", accent: "green" },
     { type: "p", text: "Qulo no afirma tener un emparejamiento validado científicamente, porque en las citas eso no existe. Lo que hace es poner el intercambio primero, de forma mecánica, para que no pueda saltarse:" },
     { type: "ul", items: [
-      "**Escribes de 2 a 10 preguntas sobre ti** —de opción múltiple, cuatro opciones cada una— y marcas la que es cierta en tu caso.",
+      "**Escribes de 2 a 4 preguntas sobre ti** —de opción múltiple, cuatro opciones cada una— y marcas la que es cierta en tu caso. Con un plan de pago el límite sube a 10 preguntas.",
       "**Alguien hace match acertándolas todas.** Una sola respuesta mal significa que no hay match: nadie llega pulsando al azar.",
       "**Las preguntas van antes que la cara,** lo que invierte el orden habitual de una primera impresión.",
       "**Resolver exige atención.** El esfuerzo garantiza poco, pero es una prueba real de que la otra persona leyó lo que escribiste.",
@@ -376,7 +376,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "ماذا تفعل Qulo بهذا فعليًا؟", accent: "green" },
     { type: "p", text: "لا تدّعي Qulo أنها تدير مطابقة موثّقة علميًا، لأن هذا الشيء غير موجود في التعارف. ما تفعله هو تقديم التبادل ميكانيكيًا إلى المقدّمة، بحيث لا يمكن تخطّيه:" },
     { type: "ul", items: [
-      "**تكتب من سؤالين إلى عشرة أسئلة عن نفسك** — اختيار من متعدد، بأربعة خيارات لكل سؤال — وتحدّد الخيار الصحيح بالنسبة إليك.",
+      "**تكتب من سؤالين إلى أربعة أسئلة عن نفسك** — اختيار من متعدد، بأربعة خيارات لكل سؤال — وتحدّد الخيار الصحيح بالنسبة إليك. وفي الخطة المدفوعة يرتفع الحد إلى عشرة أسئلة.",
       "**يحدث التطابق فقط بإصابتها كلها.** إجابة خاطئة واحدة تعني ألا تطابق؛ فلا أحد يصل بمجرد النقر العشوائي.",
       "**الأسئلة تأتي قبل الوجه،** وهذا يقلب الترتيب المعتاد للانطباع الأول.",
       "**الحل يتطلب انتباهًا.** الجهد ضمانة ضعيفة لأي شيء، لكنه دليل حقيقي على أن الطرف الآخر قرأ ما كتبته.",
@@ -430,7 +430,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Что Qulo с этим на самом деле делает", accent: "green" },
     { type: "p", text: "Qulo не утверждает, что у неё научно подтверждённый подбор: в знакомствах такого не существует. Она делает другое — механически ставит обмен первым, так что его нельзя пропустить:" },
     { type: "ul", items: [
-      "**Вы пишете от 2 до 10 вопросов о себе** — с выбором из четырёх вариантов — и отмечаете тот вариант, который верен для вас.",
+      "**Вы пишете от 2 до 4 вопросов о себе** — с выбором из четырёх вариантов — и отмечаете тот вариант, который верен для вас. На платном тарифе предел поднимается до 10 вопросов.",
       "**Совпадение случается, только если человек ответил верно на все.** Один неверный ответ — совпадения нет, так что случайным тыканьем сюда не попасть.",
       "**Вопросы идут раньше лица,** и это переворачивает привычный порядок первого впечатления.",
       "**Решать — значит быть внимательным.** Усилие мало что гарантирует, но это реальное свидетельство того, что человек прочитал написанное вами.",
@@ -484,7 +484,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "O que a Qulo realmente faz com isso", accent: "green" },
     { type: "p", text: "A Qulo não afirma ter matching cientificamente validado, porque isso não existe no namoro. O que ela faz é colocar a troca em primeiro lugar, mecanicamente, de modo que não dê para pular:" },
     { type: "ul", items: [
-      "**Você escreve de 2 a 10 perguntas sobre si** — de múltipla escolha, quatro opções cada — e marca a opção que é verdadeira no seu caso.",
+      "**Você escreve de 2 a 4 perguntas sobre si** — de múltipla escolha, quatro opções cada — e marca a opção que é verdadeira no seu caso. Num plano pago o limite sobe para 10 perguntas.",
       "**Alguém dá match acertando todas.** Uma única resposta errada significa nenhum match: ninguém chega tocando na tela ao acaso.",
       "**As perguntas vêm antes do rosto,** o que inverte a ordem habitual de uma primeira impressão.",
       "**Resolver exige atenção.** Esforço garante pouco, mas é prova real de que a outra pessoa leu o que você escreveu.",
@@ -538,7 +538,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Che cosa ne fa davvero Qulo", accent: "green" },
     { type: "p", text: "Qulo non sostiene di avere un matching validato scientificamente, perché negli incontri una cosa simile non esiste. Quello che fa è mettere lo scambio per primo, meccanicamente, così che non si possa saltare:" },
     { type: "ul", items: [
-      "**Scrivi da 2 a 10 domande su di te** — a scelta multipla, quattro opzioni ciascuna — e segni l'opzione vera per te.",
+      "**Scrivi da 2 a 4 domande su di te** — a scelta multipla, quattro opzioni ciascuna — e segni l'opzione vera per te. Con un piano a pagamento il limite sale a 10 domande.",
       "**Si combacia solo indovinandole tutte.** Una sola risposta sbagliata significa nessun match: nessuno arriva toccando a caso.",
       "**Le domande vengono prima del volto,** e questo capovolge l'ordine abituale di una prima impressione.",
       "**Risolvere richiede attenzione.** Lo sforzo garantisce poco, ma è una prova reale che l'altra persona ha letto ciò che hai scritto.",
@@ -592,7 +592,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Qulo はこれを実際にどう使っているか", accent: "green" },
     { type: "p", text: "Qulo は、科学的に検証されたマッチングを行っているとは主張しません。出会いの領域にそんなものは存在しないからです。やっているのは、やり取りを仕組みとして先に置き、飛ばせなくすることです。" },
     { type: "ul", items: [
-      "**自分についての質問を2問から10問書きます。** 四択で、自分に当てはまる選択肢に印を付けます。",
+      "**自分についての質問を2問から4問書きます。** 四択で、自分に当てはまる選択肢に印を付けます。有料プランなら上限は10問です。",
       "**相手は全問正解して初めてマッチします。** 一問でも外れればマッチはなく、適当にタップして辿り着く人はいません。",
       "**質問は顔より先に来ます。** 第一印象の通常の順番が入れ替わります。",
       "**解くには注意が要ります。** 労力は何かの強い保証にはなりませんが、相手があなたの書いたものを読んだという確かな証拠にはなります。",
@@ -646,7 +646,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Qulo는 이것으로 실제로 무엇을 하나", accent: "green" },
     { type: "p", text: "Qulo는 과학적으로 검증된 매칭을 한다고 주장하지 않습니다. 데이팅에 그런 것은 존재하지 않기 때문입니다. Qulo가 하는 일은 주고받음을 구조적으로 앞에 두어 건너뛸 수 없게 만드는 것입니다." },
     { type: "ul", items: [
-      "**자신에 대한 질문을 2개에서 10개까지 씁니다** — 각 문항 네 개의 선택지 — 그리고 자신에게 해당하는 선택지를 표시합니다.",
+      "**자신에 대한 질문을 2개에서 4개까지 씁니다** — 각 문항 네 개의 선택지 — 그리고 자신에게 해당하는 선택지를 표시합니다. 유료 플랜에서는 상한이 10개로 올라갑니다.",
       "**상대는 전부 맞혀야 매칭됩니다.** 하나만 틀려도 매칭은 없고, 아무렇게나 눌러서 도달하는 사람은 없습니다.",
       "**질문이 얼굴보다 먼저 옵니다.** 첫인상의 익숙한 순서가 뒤집힙니다.",
       "**푸는 데는 주의가 듭니다.** 노력은 무엇의 강한 보증도 아니지만, 상대가 당신이 쓴 것을 읽었다는 진짜 증거는 됩니다.",
@@ -700,7 +700,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Qulo 实际拿它做了什么", accent: "green" },
     { type: "p", text: "Qulo 不宣称自己在做经过科学验证的匹配，因为在约会这件事上并不存在那种东西。它做的是把来回从机制上放到最前面，让它无法被跳过：" },
     { type: "ul", items: [
-      "**你写下2到10个关于自己的问题**——选择题，每题四个选项——并标出对你为真的那一个。",
+      "**你写下2到4个关于自己的问题**——选择题，每题四个选项——并标出对你为真的那一个。付费方案最多可以写10个。",
       "**对方必须全部答对才会配上。**错一题就没有匹配，所以没有人是随手点进来的。",
       "**问题排在脸的前面，**这就把第一印象的惯常顺序倒了过来。",
       "**解题需要注意力。**努力保证不了什么，但它是对方读过你写的东西的真实证据。",
@@ -754,7 +754,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Wat Qulo hier werkelijk mee doet", accent: "green" },
     { type: "p", text: "Qulo beweert niet wetenschappelijk gevalideerd te matchen, want dat bestaat niet in daten. Wat het wel doet: de uitwisseling mechanisch vooropzetten, zodat je haar niet kunt overslaan:" },
     { type: "ul", items: [
-      "**Je schrijft 2 tot 10 vragen over jezelf** — meerkeuze, vier opties per vraag — en markeert de optie die op jou klopt.",
+      "**Je schrijft 2 tot 4 vragen over jezelf** — meerkeuze, vier opties per vraag — en markeert de optie die op jou klopt. Met een betaald abonnement gaat de grens naar 10 vragen.",
       "**Iemand matcht door ze allemaal goed te hebben.** Eén fout antwoord betekent geen match, dus niemand komt binnen door maar wat te tikken.",
       "**De vragen komen vóór het gezicht,** wat de gebruikelijke volgorde van een eerste indruk omdraait.",
       "**Oplossen kost aandacht.** Moeite garandeert weinig, maar het is echt bewijs dat de ander gelezen heeft wat je schreef.",
@@ -808,7 +808,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Co Qulo naprawdę z tym robi", accent: "green" },
     { type: "p", text: "Qulo nie twierdzi, że prowadzi dopasowanie zweryfikowane naukowo, bo w randkowaniu coś takiego nie istnieje. Robi co innego: mechanicznie stawia wymianę na początku, tak żeby nie dało się jej pominąć:" },
     { type: "ul", items: [
-      "**Piszesz od 2 do 10 pytań o sobie** — wielokrotnego wyboru, po cztery opcje — i zaznaczasz tę, która jest o tobie prawdziwa.",
+      "**Piszesz od 2 do 4 pytań o sobie** — wielokrotnego wyboru, po cztery opcje — i zaznaczasz tę, która jest o tobie prawdziwa. W planie płatnym limit rośnie do 10 pytań.",
       "**Dopasowanie następuje tylko przy komplecie trafień.** Jedna zła odpowiedź to brak dopasowania, więc nikt nie dociera tu, klikając na oślep.",
       "**Pytania są przed twarzą,** co odwraca zwykłą kolejność pierwszego wrażenia.",
       "**Rozwiązywanie wymaga uwagi.** Wysiłek niewiele gwarantuje, ale jest realnym dowodem, że druga osoba przeczytała to, co napisałeś.",
@@ -862,7 +862,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Vad Qulo faktiskt gör med det här", accent: "green" },
     { type: "p", text: "Qulo påstår sig inte ha vetenskapligt validerad matchning, för något sådant finns inte inom dejting. Det appen gör är att mekaniskt sätta utbytet först, så att det inte går att hoppa över:" },
     { type: "ul", items: [
-      "**Du skriver 2 till 10 frågor om dig själv** — flervalsfrågor med fyra alternativ vardera — och markerar det alternativ som stämmer på dig.",
+      "**Du skriver 2 till 4 frågor om dig själv** — flervalsfrågor med fyra alternativ vardera — och markerar det alternativ som stämmer på dig. Med ett betalt abonnemang höjs taket till 10 frågor.",
       "**Någon matchar genom att pricka alla rätt.** Ett enda fel svar betyder ingen match, så ingen kommer in genom att trycka på måfå.",
       "**Frågorna kommer före ansiktet,** vilket vänder på den vanliga ordningen för ett första intryck.",
       "**Att lösa kräver uppmärksamhet.** Ansträngning garanterar lite, men är ett verkligt bevis på att den andra läste det du skrev.",
@@ -916,7 +916,7 @@ export const scienceBehindQuestionBasedMatching: LocalizedArticle = {
     { type: "h2", text: "Qulo इसका असल में क्या करती है", accent: "green" },
     { type: "p", text: "Qulo यह दावा नहीं करती कि उसकी मैचिंग वैज्ञानिक रूप से प्रमाणित है, क्योंकि डेटिंग में ऐसी कोई चीज़ है ही नहीं। वह जो करती है वह यह है कि आदान-प्रदान को व्यवस्था के स्तर पर सबसे आगे रख देती है, ताकि उसे छोड़ा न जा सके:" },
     { type: "ul", items: [
-      "**आप अपने बारे में 2 से 10 सवाल लिखते हैं** — बहुविकल्पीय, हर सवाल में चार विकल्प — और वह विकल्प चुनते हैं जो आप पर सही बैठता है।",
+      "**आप अपने बारे में 2 से 4 सवाल लिखते हैं** — बहुविकल्पीय, हर सवाल में चार विकल्प — और वह विकल्प चुनते हैं जो आप पर सही बैठता है। भुगतान वाली योजना में यह सीमा 10 सवाल तक जाती है।",
       "**सामने वाला तभी मैच करता है जब सारे जवाब सही हों।** एक भी ग़लत जवाब का मतलब है कोई मैच नहीं; यानी यहाँ कोई यूँ ही टैप करके नहीं पहुँचता।",
       "**सवाल चेहरे से पहले आते हैं,** और इससे पहले प्रभाव का सामान्य क्रम उलट जाता है।",
       "**हल करने में ध्यान लगता है।** मेहनत किसी बात की पक्की गारंटी नहीं, पर यह असली सबूत है कि सामने वाले ने आपका लिखा पढ़ा।",

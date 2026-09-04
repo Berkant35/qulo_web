@@ -30,7 +30,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     { type: "p", text: "In a classic dating app, the first — and often only — filter is this: a few photos and a few lines of static information. You’re deciding based on exactly the data science says doesn’t predict compatibility. The result is measurable fatigue: according to Pew Research Center’s 2023 report, 36% of online dating users say they feel overwhelmed by the number of messages they receive — rising to 54% among women. Pages of profiles, very little real connection." },
     { type: "p", text: "The problem isn’t people’s effort; it’s that the system measures the wrong signal. When you’re forced to decide before any interaction, you’re stuck with the very data science has proven is not predictive." },
     { type: "h2", accent: "green", text: "How Qulo Flips the Order" },
-    { type: "p", text: "Qulo moves the first filter away from static traits and onto **interaction**. To match with someone on Qulo, you answer 2-10 questions that person wrote themselves. That’s a small but critical difference: you have to actually engage with a question about how they think and what they care about — not just skim their profile and move on." },
+    { type: "p", text: "Qulo moves the first filter away from static traits and onto **interaction**. To match with someone on Qulo, you answer 2-4 questions that person wrote themselves — up to 10 on a paid plan. That’s a small but critical difference: you have to actually engage with a question about how they think and what they care about — not just skim their profile and move on." },
     { type: "p", text: "In scientific terms: Qulo pulls the decision away from the “individual traits” layer and closer to the “relationship-specific interaction” layer that research found to be the real predictor. Answering someone’s questions is a tiny but genuine interaction — not glancing at a photo and swiping right." },
     { type: "p", text: "To be honest: no app can promise you scientifically “guaranteed compatibility” — that’s exactly the claim the 2012 review debunked. Qulo’s claim is more modest and more robust: move the first point of contact away from what science shows doesn’t work (a static profile) and toward what it shows does (interaction)." },
     { type: "quote", text: "Compatibility isn’t written on a profile; it shows up in how two people respond to each other. Qulo makes that first response possible." },
@@ -60,7 +60,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     { type: "p", text: "Klasik bir dating uygulamasında ilk — ve çoğu zaman tek — filtre budur: birkaç fotoğraf ve birkaç satır statik bilgi. Yani bilimin “uyumu öngörmüyor” dediği tam olarak o verilerle karar veriyorsunuz. Sonuç ölçülebilir bir yorgunluk: Pew Research Center’ın 2023 raporuna göre online dating kullanıcılarının %36’sı aldıkları mesaj sayısından bunaldığını söylüyor; kadınlarda bu oran %54’e çıkıyor. Sayfalarca profil, çok az gerçek bağ." },
     { type: "p", text: "Sorun insanların çabası değil; sistemin yanlış sinyali ölçmesi. Etkileşimden önce karar vermeye zorlandığınızda, bilimin öngörücü olmadığını kanıtladığı verilere mahkûm oluyorsunuz." },
     { type: "h2", accent: "green", text: "Qulo Bu Sırayı Nasıl Tersine Çeviriyor?" },
-    { type: "p", text: "Qulo, ilk filtreyi statik özelliklerden alıp **etkileşime** taşır. Qulo’da biriyle eşleşmek için, o kişinin kendi hazırladığı 2-10 soruyu yanıtlarsınız. Bu küçük ama kritik bir fark yaratır: karşınızdaki kişinin nasıl düşündüğüne, neyi önemsediğine dair bir soruyla gerçekten ilgilenmek zorundasınız — profilini şöyle bir süzüp geçmek değil." },
+    { type: "p", text: "Qulo, ilk filtreyi statik özelliklerden alıp **etkileşime** taşır. Qulo’da biriyle eşleşmek için, o kişinin kendi hazırladığı 2-4 soruyu yanıtlarsınız — ücretli planda 10'a kadar. Bu küçük ama kritik bir fark yaratır: karşınızdaki kişinin nasıl düşündüğüne, neyi önemsediğine dair bir soruyla gerçekten ilgilenmek zorundasınız — profilini şöyle bir süzüp geçmek değil." },
     { type: "p", text: "Bunu bilimin diliyle söylersek: Qulo, kararı “bireysel özellikler” katmanından, araştırmaların asıl belirleyici bulduğu “ilişkiye özgü etkileşim” katmanına daha yakın bir yere çeker. Soruları yanıtlamak, minik de olsa gerçek bir etkileşimdir; bir fotoğrafa bakıp sağa kaydırmak değildir." },
     { type: "p", text: "Dürüst olmak gerekirse: hiçbir uygulama size bilimsel olarak “garantili uyum” vaat edemez — 2012 derlemesinin çürüttüğü iddia da tam olarak buydu. Qulo’nun iddiası daha mütevazı ve daha sağlam: ilk temas noktasını, bilimin işe yaramadığını gösterdiği şeyden (statik profil) uzaklaştırıp işe yaradığını gösterdiği şeye (etkileşim) yaklaştırmak." },
     { type: "quote", text: "Uyumluluk bir profilde yazmaz; iki insanın birbirine nasıl karşılık verdiğinde ortaya çıkar. Qulo tam da bu ilk karşılığı mümkün kılar." },
@@ -147,7 +147,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo verlagert den ersten Filter weg von statischen Eigenschaften und hin zur **Interaktion**. Um dich bei Qulo mit jemandem zu matchen, beantwortest du 2-10 Fragen, die diese Person selbst formuliert hat. Das ist ein kleiner, aber entscheidender Unterschied: Du musst dich wirklich mit einer Frage dazu auseinandersetzen, wie diese Person denkt und was ihr wichtig ist — statt nur über ihr Profil zu wischen und weiterzuziehen."
+      "text": "Qulo verlagert den ersten Filter weg von statischen Eigenschaften und hin zur **Interaktion**. Um dich bei Qulo mit jemandem zu matchen, beantwortest du 2-4 Fragen, die diese Person selbst formuliert hat — bis zu 10 im kostenpflichtigen Tarif. Das ist ein kleiner, aber entscheidender Unterschied: Du musst dich wirklich mit einer Frage dazu auseinandersetzen, wie diese Person denkt und was ihr wichtig ist — statt nur über ihr Profil zu wischen und weiterzuziehen."
     },
     {
       "type": "p",
@@ -251,7 +251,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo déplace le premier filtre des traits statiques vers **l'interaction**. Pour matcher avec quelqu'un sur Qulo, vous répondez à 2-10 questions que cette personne a elle-même rédigées. C'est une différence minime mais décisive : vous devez réellement vous confronter à une question sur sa façon de penser et sur ce qui lui importe — au lieu de survoler son profil et de passer votre chemin."
+      "text": "Qulo déplace le premier filtre des traits statiques vers **l'interaction**. Pour matcher avec quelqu'un sur Qulo, vous répondez aux 2-4 questions que cette personne a elle-même rédigées — jusqu'à 10 avec un abonnement payant. C'est une différence minime mais décisive : vous devez réellement vous confronter à une question sur sa façon de penser et sur ce qui lui importe — au lieu de survoler son profil et de passer votre chemin."
     },
     {
       "type": "p",
@@ -355,7 +355,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo aleja el primer filtro de los rasgos estáticos y lo traslada a la **interacción**. Para emparejarte con alguien en Qulo, respondes de 2-10 preguntas que esa persona escribió ella misma. Es una diferencia pequeña pero crucial: tienes que implicarte de verdad con una pregunta sobre cómo piensa y qué le importa, no limitarte a ojear su perfil y seguir adelante."
+      "text": "Qulo aleja el primer filtro de los rasgos estáticos y lo traslada a la **interacción**. Para emparejarte con alguien en Qulo, respondes de 2-4 preguntas que esa persona escribió ella misma — hasta 10 con un plan de pago. Es una diferencia pequeña pero crucial: tienes que implicarte de verdad con una pregunta sobre cómo piensa y qué le importa, no limitarte a ojear su perfil y seguir adelante."
     },
     {
       "type": "p",
@@ -459,7 +459,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "يُبعِد Qulo الفلتر الأول عن السمات الثابتة ويضعه على **التفاعل**. فلكي تتطابق مع أحدهم على Qulo، تجيب عن 2-10 أسئلة كتبها ذلك الشخص بنفسه. وهذا فرق صغير لكنه جوهري: عليك أن تنخرط فعلاً مع سؤال عن طريقة تفكيره وما يهمّه — لا أن تمرّ سريعاً على ملفه وتمضي."
+      "text": "يُبعِد Qulo الفلتر الأول عن السمات الثابتة ويضعه على **التفاعل**. فلكي تتطابق مع أحدهم على Qulo، تجيب عن 2-4 أسئلة كتبها ذلك الشخص بنفسه — وحتى 10 أسئلة في الخطة المدفوعة. وهذا فرق صغير لكنه جوهري: عليك أن تنخرط فعلاً مع سؤال عن طريقة تفكيره وما يهمّه — لا أن تمرّ سريعاً على ملفه وتمضي."
     },
     {
       "type": "p",
@@ -563,7 +563,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo уводит первый фильтр от статичных черт и переносит его на **взаимодействие**. Чтобы совпасть с кем-то в Qulo, вы отвечаете на 2-10 вопросов, которые этот человек составил сам. Это маленькая, но важная разница: вам приходится по-настоящему вникнуть в вопрос о том, как он мыслит и что ему важно, — а не просто пробежать глазами анкету и двигаться дальше."
+      "text": "Qulo уводит первый фильтр от статичных черт и переносит его на **взаимодействие**. Чтобы совпасть с кем-то в Qulo, вы отвечаете на 2-4 вопроса, которые этот человек составил сам, — до 10 на платном тарифе. Это маленькая, но важная разница: вам приходится по-настоящему вникнуть в вопрос о том, как он мыслит и что ему важно, — а не просто пробежать глазами анкету и двигаться дальше."
     },
     {
       "type": "p",
@@ -667,7 +667,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "O Qulo tira o primeiro filtro dos traços estáticos e o coloca na **interação**. Para dar match com alguém no Qulo, você responde a 2-10 perguntas que essa pessoa mesma escreveu. É uma diferença pequena, mas crucial: você precisa realmente se envolver com uma pergunta sobre como ela pensa e com o que ela se importa — em vez de apenas passar os olhos pelo perfil e seguir em frente."
+      "text": "O Qulo tira o primeiro filtro dos traços estáticos e o coloca na **interação**. Para dar match com alguém no Qulo, você responde às 2-4 perguntas que essa pessoa mesma escreveu — até 10 num plano pago. É uma diferença pequena, mas crucial: você precisa realmente se envolver com uma pergunta sobre como ela pensa e com o que ela se importa — em vez de apenas passar os olhos pelo perfil e seguir em frente."
     },
     {
       "type": "p",
@@ -771,7 +771,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo sposta il primo filtro dai tratti statici all'**interazione**. Per abbinarti a qualcuno su Qulo, rispondi a 2-10 domande che quella persona ha scritto di suo pugno. È una differenza piccola ma decisiva: devi davvero confrontarti con una domanda su come pensa e a cosa tiene — non limitarti a scorrere il suo profilo e passare oltre."
+      "text": "Qulo sposta il primo filtro dai tratti statici all'**interazione**. Per abbinarti a qualcuno su Qulo, rispondi alle 2-4 domande che quella persona ha scritto di suo pugno — fino a 10 con un piano a pagamento. È una differenza piccola ma decisiva: devi davvero confrontarti con una domanda su come pensa e a cosa tiene — non limitarti a scorrere il suo profilo e passare oltre."
     },
     {
       "type": "p",
@@ -875,7 +875,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo は、最初のフィルターを静的な特性から外し、**やり取り**へと移します。Qulo で誰かとマッチするには、その人自身が書いた2-10個の質問に答えます。これは小さいけれど決定的な違いです。相手がどう考え、何を大切にしているかについての質問と、実際に向き合わなければならない――プロフィールをさっと眺めて通り過ぎるのではなく。"
+      "text": "Qulo は、最初のフィルターを静的な特性から外し、**やり取り**へと移します。Qulo で誰かとマッチするには、その人自身が書いた2-4個の質問に答えます（有料プランなら最大10個）。これは小さいけれど決定的な違いです。相手がどう考え、何を大切にしているかについての質問と、実際に向き合わなければならない――プロフィールをさっと眺めて通り過ぎるのではなく。"
     },
     {
       "type": "p",
@@ -979,7 +979,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo는 첫 번째 필터를 정적인 특성에서 떼어 내어 **상호작용**으로 옮깁니다. Qulo에서 누군가와 매칭되려면, 그 사람이 직접 쓴 2-10개의 질문에 답해야 합니다. 이것은 작지만 결정적인 차이입니다. 상대가 어떻게 생각하고 무엇을 중요하게 여기는지에 대한 질문과 실제로 마주해야 하니까요 — 프로필을 대충 훑고 지나가는 것이 아니라."
+      "text": "Qulo는 첫 번째 필터를 정적인 특성에서 떼어 내어 **상호작용**으로 옮깁니다. Qulo에서 누군가와 매칭되려면, 그 사람이 직접 쓴 2-4개의 질문에 답해야 합니다 — 유료 플랜에서는 최대 10개입니다. 이것은 작지만 결정적인 차이입니다. 상대가 어떻게 생각하고 무엇을 중요하게 여기는지에 대한 질문과 실제로 마주해야 하니까요 — 프로필을 대충 훑고 지나가는 것이 아니라."
     },
     {
       "type": "p",
@@ -1083,7 +1083,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo 把第一道筛选从静态特质上移开，转到**互动**上。要在 Qulo 上与某人匹配，你需要回答那个人亲自写下的2-10个问题。这是一个虽小却关键的差别：你必须真正去面对一个关于他如何思考、在意什么的问题——而不是把资料随便扫一眼就划走。"
+      "text": "Qulo 把第一道筛选从静态特质上移开，转到**互动**上。要在 Qulo 上与某人匹配，你需要回答那个人亲自写下的2-4个问题（付费方案最多 10 道）。这是一个虽小却关键的差别：你必须真正去面对一个关于他如何思考、在意什么的问题——而不是把资料随便扫一眼就划走。"
     },
     {
       "type": "p",
@@ -1187,7 +1187,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo verplaatst het eerste filter weg van statische eigenschappen en naar **interactie**. Om op Qulo met iemand te matchen, beantwoord je 2-10 vragen die diegene zelf heeft geschreven. Dat is een klein maar cruciaal verschil: je moet je echt verdiepen in een vraag over hoe die persoon denkt en wat hij of zij belangrijk vindt — niet even door hun profiel scrollen en verdergaan."
+      "text": "Qulo verplaatst het eerste filter weg van statische eigenschappen en naar **interactie**. Om op Qulo met iemand te matchen, beantwoord je 2-4 vragen die diegene zelf heeft geschreven — tot 10 met een betaald abonnement. Dat is een klein maar cruciaal verschil: je moet je echt verdiepen in een vraag over hoe die persoon denkt en wat hij of zij belangrijk vindt — niet even door hun profiel scrollen en verdergaan."
     },
     {
       "type": "p",
@@ -1291,7 +1291,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo przenosi pierwszy filtr ze statycznych cech na **interakcję**. Żeby dopasować się do kogoś w Qulo, odpowiadasz na 2-10 pytań, które ta osoba sama ułożyła. To niewielka, ale kluczowa różnica: musisz naprawdę zmierzyć się z pytaniem o to, jak ktoś myśli i na czym mu zależy — a nie tylko prześlizgnąć się po profilu i iść dalej."
+      "text": "Qulo przenosi pierwszy filtr ze statycznych cech na **interakcję**. Żeby dopasować się do kogoś w Qulo, odpowiadasz na 2-4 pytania, które ta osoba sama ułożyła — do 10 w planie płatnym. To niewielka, ale kluczowa różnica: musisz naprawdę zmierzyć się z pytaniem o to, jak ktoś myśli i na czym mu zależy — a nie tylko prześlizgnąć się po profilu i iść dalej."
     },
     {
       "type": "p",
@@ -1395,7 +1395,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo flyttar det första filtret bort från statiska egenskaper och till **samspel**. För att matcha med någon på Qulo svarar du på 2-10 frågor som personen själv har skrivit. Det är en liten men avgörande skillnad: du måste faktiskt engagera dig i en fråga om hur personen tänker och vad hen bryr sig om — inte bara ögna igenom profilen och gå vidare."
+      "text": "Qulo flyttar det första filtret bort från statiska egenskaper och till **samspel**. För att matcha med någon på Qulo svarar du på 2-4 frågor som personen själv har skrivit — upp till 10 med ett betalt abonnemang. Det är en liten men avgörande skillnad: du måste faktiskt engagera dig i en fråga om hur personen tänker och vad hen bryr sig om — inte bara ögna igenom profilen och gå vidare."
     },
     {
       "type": "p",
@@ -1499,7 +1499,7 @@ export const whatActuallyPredictsCompatibility: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Qulo पहले फ़िल्टर को स्थिर गुणों से हटाकर **मेल-जोल** पर ले आता है। Qulo पर किसी से मैच होने के लिए, आप 2-10 सवालों के जवाब देते हैं जो उस इंसान ने खुद लिखे हैं। यह छोटा पर अहम फ़र्क है: आपको सचमुच एक ऐसे सवाल से जुड़ना पड़ता है जो बताता है कि वह कैसे सोचता है और किसकी परवाह करता है — न कि उसकी प्रोफ़ाइल पर बस एक नज़र डालकर आगे बढ़ जाना।"
+      "text": "Qulo पहले फ़िल्टर को स्थिर गुणों से हटाकर **मेल-जोल** पर ले आता है। Qulo पर किसी से मैच होने के लिए, आप 2-4 सवालों के जवाब देते हैं जो उस इंसान ने खुद लिखे हैं — भुगतान वाली योजना में 10 तक। यह छोटा पर अहम फ़र्क है: आपको सचमुच एक ऐसे सवाल से जुड़ना पड़ता है जो बताता है कि वह कैसे सोचता है और किसकी परवाह करता है — न कि उसकी प्रोफ़ाइल पर बस एक नज़र डालकर आगे बढ़ जाना।"
     },
     {
       "type": "p",

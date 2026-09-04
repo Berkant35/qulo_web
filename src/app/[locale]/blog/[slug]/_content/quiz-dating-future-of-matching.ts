@@ -20,8 +20,19 @@ import type { LocalizedArticle } from "@/components/blog/ArticleBlocks";
  * otherwise the claim goes with the number. The unsourced "Arthur Aron proved
  * …/36 Questions" passage was likewise replaced by the Huang et al. citation,
  * which supports the same argument from a checkable source. Qulo's own product
- * facts (2 to 10 questions) are not statistics and stay. Do not reintroduce a
- * number here without a named primary source.
+ * facts (2 to 4 questions on the free plan, up to 10 on a paid plan) are not
+ * statistics and stay. Do not reintroduce a number here without a named
+ * primary source, and never write a range ending at 10 without naming the paid
+ * plan in the same sentence.
+ *
+ * Product-claim policy: the legacy closing of "The Future of Quiz Dating" said
+ * the experience gets better "combined with AI — Qulo's smart question
+ * suggestions, for instance", which implied a model running inside the product.
+ * No AI runs at request time anywhere in Qulo: matching and discovery are a
+ * hand-weighted formula, and the question suggestions are rows read from a
+ * question bank written in advance. The paragraph now says exactly that — a
+ * ready-made library you can browse, not a model composing questions live —
+ * and it does not claim the library covers every locale, because it does not.
  *
  * Brand rule: Qulo is the only dating app nameable on this site. Everything else
  * is described generically as "swipe-based apps" / "mainstream dating apps".
@@ -68,13 +79,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**Avoid questions that are too easy or too hard:** something everyone can guess filters nobody, and something nobody can answer kills your matching odds",
       "**Add personal touches:** a question like \"What's my favourite city?\" measures how well the answerer actually knows you",
       "**Update them regularly:** refresh your questions so they reflect your interests as those change",
-      "**2 to 10 questions is the sweet spot:** too few will not filter enough, too many will shrink your matching probability",
+      "**2 to 4 questions is the sweet spot:** too few will not filter enough, too many will shrink your matching probability — a paid plan raises the ceiling to 10",
     ] },
 
     { type: "quote", text: "Asking the right question means finding the right person. On Qulo, matching is not a coincidence — it is a conscious discovery." },
 
     { type: "h2", text: "The Future of Quiz Dating" },
-    { type: "p", text: "The dating industry is at a turning point. People want more than superficial matches, and quiz dating is an approach built for that demand. Combined with AI — Qulo's smart question suggestions, for instance — the experience becomes more personal and more effective still." },
+    { type: "p", text: "The dating industry is at a turning point. People want more than superficial matches, and quiz dating is an approach built for that demand. The hard part is writing good questions, so Qulo keeps a library of ready-made ones you can browse when inspiration runs out — a bank drafted in advance with the help of AI, not a model writing questions for you on the spot. The question someone matches on is still your own." },
     { type: "p", text: "Question-based and interaction-based matching is likely to keep spreading, because the alternative has already shown its limits. Qulo intends to be the app that sets the standard for it rather than the one that copies it late." },
 
     { type: "h2", accent: "green", text: "Conclusion: The Future of Matching Is in Questions" },
@@ -115,13 +126,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**Çok kolay ya da çok zor sorulardan kaçının:** herkesin tahmin edebileceği bir soru kimseyi elemez, kimsenin bilemeyeceği bir soru da eşleşme ihtimalinizi bitirir",
       "**Kişisel dokunuşlar ekleyin:** \"En sevdiğim şehir hangisi?\" gibi bir soru, cevaplayanın sizi gerçekten ne kadar tanıdığını ölçer",
       "**Sorularınızı düzenli yenileyin:** ilgi alanlarınız değiştikçe sorularınız da onu yansıtsın",
-      "**2 ile 10 soru arası ideal:** çok az soru yeterince filtrelemez, çok fazla soru eşleşme olasılığınızı daraltır",
+      "**2 ile 4 soru arası ideal:** çok az soru yeterince filtrelemez, çok fazla soru eşleşme olasılığınızı daraltır — ücretli planda üst sınır 10'a çıkar",
     ] },
 
     { type: "quote", text: "Doğru soruyu sormak, doğru insanı bulmak demektir. Qulo'da eşleşme bir tesadüf değil — bilinçli bir keşiftir." },
 
     { type: "h2", text: "Quiz Dating'in Geleceği" },
-    { type: "p", text: "Flört sektörü bir dönüm noktasında. İnsanlar artık yüzeysel eşleşmelerden fazlasını istiyor ve quiz dating tam da bu talep için kurulmuş bir yaklaşım. Yapay zekâ ile birleştiğinde — örneğin Qulo'nun akıllı soru önerileriyle — deneyim daha da kişisel ve daha etkili hâle geliyor." },
+    { type: "p", text: "Flört sektörü bir dönüm noktasında. İnsanlar artık yüzeysel eşleşmelerden fazlasını istiyor ve quiz dating tam da bu talep için kurulmuş bir yaklaşım. İşin zor kısmı iyi soru yazmak; bu yüzden Qulo, ilhamınız tükendiğinde göz atabileceğiniz hazır bir soru kütüphanesi tutuyor — önceden yapay zekâ yardımıyla hazırlanmış bir havuz; o anda sizin yerinize soru yazan bir model değil. Eşleşmeyi sağlayan soru yine sizin sorunuz oluyor." },
     { type: "p", text: "Soru ve etkileşim tabanlı eşleşmenin yayılmaya devam etmesi bekleniyor, çünkü alternatifi sınırlarını çoktan gösterdi. Qulo bu alanda standardı geç kopyalayan değil, belirleyen uygulama olmayı hedefliyor." },
 
     { type: "h2", accent: "green", text: "Sonuç: Eşleşmenin Geleceği Sorularda" },
@@ -162,13 +173,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**Vermeiden Sie zu leichte oder zu schwere Fragen:** Was alle erraten können, filtert niemanden, und was niemand beantworten kann, ruiniert Ihre Match-Chancen",
       "**Bauen Sie Persönliches ein:** Eine Frage wie \"Welche Stadt ist meine Lieblingsstadt?\" misst, wie gut das Gegenüber Sie wirklich kennt",
       "**Aktualisieren Sie regelmäßig:** Erneuern Sie Ihre Fragen, damit sie Ihre Interessen abbilden, wenn diese sich ändern",
-      "**2 bis 10 Fragen sind der Idealbereich:** zu wenige filtern nicht genug, zu viele verkleinern Ihre Match-Wahrscheinlichkeit",
+      "**2 bis 4 Fragen sind der Idealbereich:** zu wenige filtern nicht genug, zu viele verkleinern Ihre Match-Wahrscheinlichkeit — im kostenpflichtigen Tarif liegt die Obergrenze bei 10",
     ] },
 
     { type: "quote", text: "Die richtige Frage zu stellen heißt, den richtigen Menschen zu finden. Auf Qulo ist ein Match kein Zufall — es ist eine bewusste Entdeckung." },
 
     { type: "h2", text: "Die Zukunft des Quiz-Datings" },
-    { type: "p", text: "Die Dating-Branche steht an einem Wendepunkt. Menschen wollen mehr als oberflächliche Matches, und Quiz-Dating ist genau für diesen Bedarf gebaut. In Verbindung mit KI — etwa den intelligenten Fragenvorschlägen von Qulo — wird das Erlebnis noch persönlicher und wirksamer." },
+    { type: "p", text: "Die Dating-Branche steht an einem Wendepunkt. Menschen wollen mehr als oberflächliche Matches, und Quiz-Dating ist genau für diesen Bedarf gebaut. Das Schwierige daran ist, gute Fragen zu schreiben. Deshalb hält Qulo eine Sammlung fertiger Fragen bereit, in der Sie stöbern können, wenn Ihnen nichts einfällt — ein im Voraus mit Hilfe von KI verfasster Vorrat, kein Modell, das im Moment für Sie Fragen schreibt. Die Frage, über die jemand mit Ihnen matcht, bleibt Ihre eigene." },
     { type: "p", text: "Frage- und interaktionsbasiertes Matching dürfte sich weiter ausbreiten, denn die Alternative hat ihre Grenzen längst gezeigt. Qulo will dabei die App sein, die den Standard setzt, und nicht die, die ihn spät kopiert." },
 
     { type: "h2", accent: "green", text: "Fazit: Die Zukunft des Matchings liegt in Fragen" },
@@ -209,13 +220,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**Évitez le trop facile et le trop difficile :** ce que tout le monde devine ne filtre personne, et ce que personne ne peut trouver ruine vos chances de match",
       "**Ajoutez une touche personnelle :** une question comme \"Quelle est ma ville préférée ?\" mesure à quel point l'autre vous connaît vraiment",
       "**Mettez-les à jour régulièrement :** renouvelez vos questions pour qu'elles suivent l'évolution de vos centres d'intérêt",
-      "**Entre 2 et 10 questions, c'est l'idéal :** trop peu ne filtre pas assez, trop réduit votre probabilité de match",
+      "**Entre 2 et 4 questions, c'est l'idéal :** trop peu ne filtre pas assez, trop réduit votre probabilité de match — avec un abonnement payant, le plafond monte à 10",
     ] },
 
     { type: "quote", text: "Poser la bonne question, c'est trouver la bonne personne. Sur Qulo, un match n'est pas un hasard — c'est une découverte volontaire." },
 
     { type: "h2", text: "L'avenir du quiz dating" },
-    { type: "p", text: "Le secteur de la rencontre est à un tournant. Les gens veulent mieux que des matchs superficiels, et le quiz dating est justement conçu pour cette attente. Associé à l'IA — par exemple aux suggestions de questions intelligentes de Qulo — l'expérience devient encore plus personnelle et plus efficace." },
+    { type: "p", text: "Le secteur de la rencontre est à un tournant. Les gens veulent mieux que des matchs superficiels, et le quiz dating est justement conçu pour cette attente. Le plus difficile reste d'écrire de bonnes questions : Qulo tient donc à disposition une bibliothèque de questions toutes prêtes, à parcourir quand l'inspiration manque — un fonds rédigé à l'avance avec l'aide de l'IA, et non un modèle qui écrirait vos questions sur le moment. La question sur laquelle on vous matche reste la vôtre." },
     { type: "p", text: "Le matching fondé sur les questions et l'interaction devrait continuer à se répandre, car l'autre modèle a déjà montré ses limites. Qulo entend être l'appli qui fixe la norme, pas celle qui la copie avec retard." },
 
     { type: "h2", accent: "green", text: "Conclusion : l'avenir de la rencontre passe par les questions" },
@@ -256,13 +267,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**Evita lo demasiado fácil y lo demasiado difícil:** lo que cualquiera adivina no filtra a nadie, y lo que nadie puede acertar arruina tus opciones de match",
       "**Añade toques personales:** una pregunta como \"¿Cuál es mi ciudad favorita?\" mide cuánto te conoce de verdad quien responde",
       "**Actualízalas con regularidad:** renueva tus preguntas para que reflejen tus intereses según van cambiando",
-      "**Entre 2 y 10 preguntas es lo ideal:** demasiado pocas no filtran lo suficiente, demasiadas reducen tu probabilidad de match",
+      "**Entre 2 y 4 preguntas es lo ideal:** demasiado pocas no filtran lo suficiente, demasiadas reducen tu probabilidad de match; con un plan de pago el tope sube a 10",
     ] },
 
     { type: "quote", text: "Hacer la pregunta correcta es encontrar a la persona correcta. En Qulo, un match no es una casualidad: es un descubrimiento consciente." },
 
     { type: "h2", text: "El futuro del quiz dating" },
-    { type: "p", text: "El sector de las citas está en un punto de inflexión. La gente quiere algo más que matches superficiales, y el quiz dating está construido justo para esa demanda. Combinado con la IA — por ejemplo, con las sugerencias inteligentes de preguntas de Qulo — la experiencia se vuelve aún más personal y más eficaz." },
+    { type: "p", text: "El sector de las citas está en un punto de inflexión. La gente quiere algo más que matches superficiales, y el quiz dating está construido justo para esa demanda. Lo difícil es escribir buenas preguntas, así que Qulo mantiene una biblioteca de preguntas ya hechas que puedes hojear cuando se te agota la inspiración: un fondo redactado de antemano con ayuda de la IA, no un modelo que escriba tus preguntas en ese instante. La pregunta con la que alguien hace match contigo sigue siendo tuya." },
     { type: "p", text: "Es previsible que el emparejamiento basado en preguntas e interacción siga extendiéndose, porque la alternativa ya ha enseñado sus límites. Qulo aspira a ser la app que marca el estándar, no la que lo copia tarde." },
 
     { type: "h2", accent: "green", text: "Conclusión: el futuro del emparejamiento está en las preguntas" },
@@ -303,13 +314,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**تجنّب السهل جدًا والصعب جدًا:** ما يخمّنه الجميع لا يصفّي أحدًا، وما لا يعرفه أحد يقضي على فرص التوافق",
       "**أضف لمسات شخصية:** سؤال مثل \"ما مدينتي المفضلة؟\" يقيس كم يعرفك المجيب فعلًا",
       "**حدّثها بانتظام:** جدّد أسئلتك لتواكب اهتماماتك كلما تغيّرت",
-      "**من 2 إلى 10 أسئلة هو المدى الأمثل:** القليل جدًا لا يصفّي بما يكفي، والكثير جدًا يقلّص احتمال التوافق",
+      "**من 2 إلى 4 أسئلة هو المدى الأمثل:** القليل جدًا لا يصفّي بما يكفي، والكثير جدًا يقلّص احتمال التوافق — وفي الخطة المدفوعة يرتفع الحد الأقصى إلى 10 أسئلة",
     ] },
 
     { type: "quote", text: "أن تطرح السؤال الصحيح يعني أن تجد الإنسان الصحيح. على Qulo، التوافق ليس مصادفة — بل اكتشاف واعٍ." },
 
     { type: "h2", text: "مستقبل المواعدة بالأسئلة" },
-    { type: "p", text: "يقف قطاع المواعدة عند منعطف. صار الناس يريدون أكثر من توافقات سطحية، والمواعدة بالأسئلة مبنية لهذا الطلب تحديدًا. ومع الذكاء الاصطناعي — مثل اقتراحات الأسئلة الذكية في Qulo — تصبح التجربة أكثر شخصية وأشد فاعلية." },
+    { type: "p", text: "يقف قطاع المواعدة عند منعطف. صار الناس يريدون أكثر من توافقات سطحية، والمواعدة بالأسئلة مبنية لهذا الطلب تحديدًا. والجزء الصعب هو كتابة أسئلة جيدة، ولهذا يوفّر Qulo مكتبة أسئلة جاهزة تتصفّحها حين ينفد الإلهام — مخزون كُتب مسبقًا بمساعدة الذكاء الاصطناعي، لا نموذجًا يكتب أسئلتك لحظتها. والسؤال الذي يتطابق عليه أحدهم يظل سؤالك أنت." },
     { type: "p", text: "من المرجّح أن يواصل التوافق القائم على الأسئلة والتفاعل انتشاره، لأن البديل أظهر حدوده منذ زمن. ويطمح Qulo إلى أن يكون التطبيق الذي يضع المعيار لا الذي ينسخه متأخرًا." },
 
     { type: "h2", accent: "green", text: "الخلاصة: مستقبل التوافق في الأسئلة" },
@@ -350,13 +361,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**Избегайте слишком простого и слишком сложного:** то, что угадает каждый, не отсеет никого, а то, чего не знает никто, убьёт ваши шансы на совпадение",
       "**Добавляйте личное:** вопрос вроде \"Какой город мой любимый?\" измеряет, насколько отвечающий действительно вас знает",
       "**Регулярно обновляйте:** освежайте вопросы, чтобы они отражали ваши интересы по мере их изменения",
-      "**От 2 до 10 вопросов — оптимум:** слишком мало не отфильтрует, слишком много снизит вероятность совпадения",
+      "**От 2 до 4 вопросов — оптимум:** слишком мало не отфильтрует, слишком много снизит вероятность совпадения; на платном тарифе потолок поднимается до 10",
     ] },
 
     { type: "quote", text: "Задать правильный вопрос — значит найти правильного человека. В Qulo совпадение не случайность, а осознанное открытие." },
 
     { type: "h2", text: "Будущее знакомств через вопросы" },
-    { type: "p", text: "Индустрия знакомств находится на переломе. Людям нужно больше, чем поверхностные совпадения, и знакомства через вопросы созданы именно под этот запрос. В связке с ИИ — например, с умными подсказками вопросов в Qulo — опыт становится ещё более личным и более действенным." },
+    { type: "p", text: "Индустрия знакомств находится на переломе. Людям нужно больше, чем поверхностные совпадения, и знакомства через вопросы созданы именно под этот запрос. Самое трудное — придумать хороший вопрос, поэтому в Qulo есть библиотека готовых вопросов: её можно пролистать, когда вдохновение закончилось. Это заранее составленный запас, подготовленный с помощью ИИ, а не модель, которая пишет вопросы за вас в эту самую минуту. Вопрос, по которому с вами совпадают, остаётся вашим." },
     { type: "p", text: "Подбор, основанный на вопросах и взаимодействии, скорее всего, будет распространяться дальше: альтернатива свои пределы уже показала. Qulo намерен быть приложением, которое задаёт стандарт, а не тем, которое запоздало его копирует." },
 
     { type: "h2", accent: "green", text: "Вывод: будущее совпадений — в вопросах" },
@@ -397,13 +408,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**Fuja do fácil demais e do difícil demais:** o que qualquer um adivinha não filtra ninguém, e o que ninguém acerta acaba com suas chances de match",
       "**Coloque toques pessoais:** uma pergunta como \"Qual é a minha cidade favorita?\" mede o quanto quem responde realmente conhece você",
       "**Atualize com regularidade:** renove suas perguntas para que acompanhem seus interesses conforme eles mudam",
-      "**De 2 a 10 perguntas é o ideal:** poucas demais não filtram o bastante, muitas demais reduzem sua probabilidade de match",
+      "**De 2 a 4 perguntas é o ideal:** poucas demais não filtram o bastante, muitas demais reduzem sua probabilidade de match — num plano pago o teto sobe para 10",
     ] },
 
     { type: "quote", text: "Fazer a pergunta certa é encontrar a pessoa certa. No Qulo, um match não é coincidência — é uma descoberta consciente." },
 
     { type: "h2", text: "O futuro do quiz dating" },
-    { type: "p", text: "O setor de namoro está num ponto de virada. As pessoas querem mais do que matches superficiais, e o quiz dating foi construído exatamente para essa demanda. Combinado com IA — como as sugestões inteligentes de perguntas do Qulo — a experiência fica ainda mais pessoal e mais eficaz." },
+    { type: "p", text: "O setor de namoro está num ponto de virada. As pessoas querem mais do que matches superficiais, e o quiz dating foi construído exatamente para essa demanda. A parte difícil é escrever boas perguntas, então o Qulo mantém uma biblioteca de perguntas prontas para você folhear quando a inspiração acabar — um acervo redigido de antemão com ajuda de IA, e não um modelo que escreve suas perguntas na hora. A pergunta pela qual alguém dá match com você continua sendo sua." },
     { type: "p", text: "É provável que a formação de pares baseada em perguntas e interação continue a se espalhar, porque a alternativa já mostrou seus limites. O Qulo pretende ser o aplicativo que define o padrão, não o que o copia tarde." },
 
     { type: "h2", accent: "green", text: "Conclusão: o futuro dos matches está nas perguntas" },
@@ -444,13 +455,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**Evitate il troppo facile e il troppo difficile:** ciò che indovinano tutti non filtra nessuno, ciò che non sa nessuno azzera le vostre possibilità di match",
       "**Aggiungete tocchi personali:** una domanda come \"Qual è la mia città preferita?\" misura quanto chi risponde vi conosce davvero",
       "**Aggiornatele con regolarità:** rinnovate le domande perché seguano i vostri interessi mentre cambiano",
-      "**Da 2 a 10 domande è la misura giusta:** troppo poche non filtrano abbastanza, troppe riducono la probabilità di match",
+      "**Da 2 a 4 domande è la misura giusta:** troppo poche non filtrano abbastanza, troppe riducono la probabilità di match — con un piano a pagamento il tetto sale a 10",
     ] },
 
     { type: "quote", text: "Fare la domanda giusta significa trovare la persona giusta. Su Qulo un match non è una coincidenza: è una scoperta consapevole." },
 
     { type: "h2", text: "Il futuro del quiz dating" },
-    { type: "p", text: "Il settore degli incontri è a una svolta. Le persone vogliono più che match superficiali, e il quiz dating è costruito esattamente su quella domanda. Unito all'IA — per esempio ai suggerimenti intelligenti di domande di Qulo — l'esperienza diventa ancora più personale ed efficace." },
+    { type: "p", text: "Il settore degli incontri è a una svolta. Le persone vogliono più che match superficiali, e il quiz dating è costruito esattamente su quella domanda. La parte difficile è scrivere buone domande, perciò Qulo mette a disposizione una raccolta di domande già pronte da sfogliare quando l'ispirazione manca: un archivio redatto in anticipo con l'aiuto dell'IA, non un modello che scrive le domande al posto tuo sul momento. La domanda su cui qualcuno fa match con te resta la tua." },
     { type: "p", text: "È probabile che l'abbinamento basato su domande e interazione continui a diffondersi, perché l'alternativa ha già mostrato i propri limiti. Qulo punta a essere l'app che fissa lo standard, non quella che lo copia in ritardo." },
 
     { type: "h2", accent: "green", text: "Conclusione: il futuro dell'abbinamento sta nelle domande" },
@@ -491,13 +502,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**簡単すぎ・難しすぎを避ける:** 誰でも当たる質問は誰も絞れず、誰にも当てられない質問はマッチの芽を摘みます",
       "**個人的な色を足す:** 「私の一番好きな街は？」のような質問は、答える人がどれだけ本当にあなたを知っているかを測ります",
       "**定期的に更新する:** 興味の変化に合わせて質問も入れ替えましょう",
-      "**2〜10問がちょうどよい:** 少なすぎると絞り込めず、多すぎるとマッチの確率が下がります",
+      "**2〜4問がちょうどよい:** 少なすぎると絞り込めず、多すぎるとマッチの確率が下がります（有料プランなら上限は10問）",
     ] },
 
     { type: "quote", text: "正しい問いを立てることは、正しい人に出会うことです。Qulo のマッチングは偶然ではなく、意識的な発見です。" },
 
     { type: "h2", text: "クイズデーティングのこれから" },
-    { type: "p", text: "恋愛アプリの業界は転換点にあります。人々は表面的なマッチ以上のものを求めており、クイズデーティングはまさにその需要のために作られた仕組みです。AI と組み合わされば — たとえば Qulo のスマートな質問提案のように — 体験はさらに個人的で、さらに効果的になります。" },
+    { type: "p", text: "恋愛アプリの業界は転換点にあります。人々は表面的なマッチ以上のものを求めており、クイズデーティングはまさにその需要のために作られた仕組みです。むずかしいのは、よい質問を書くことです。だから Qulo には、思いつかないときに眺められる既製の質問ライブラリがあります。あらかじめ AI の助けを借りて用意しておいた蓄えであって、その場であなたの代わりに質問を書くモデルではありません。マッチのきっかけになる質問は、やはりあなた自身のものです。" },
     { type: "p", text: "質問や対話に基づくマッチングは今後も広がっていくでしょう。代わりの方式はすでに限界を見せているからです。Qulo は、その基準を遅れて真似るアプリではなく、基準そのものをつくるアプリでありたいと考えています。" },
 
     { type: "h2", accent: "green", text: "結論 — マッチングの未来は問いの中にある" },
@@ -538,13 +549,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**너무 쉽거나 너무 어려운 질문은 피하세요:** 누구나 맞히는 질문은 아무도 걸러 내지 못하고, 아무도 못 맞히는 질문은 매칭 가능성을 없앱니다",
       "**개인적인 결을 넣으세요:** \"내가 가장 좋아하는 도시는?\" 같은 질문은 답하는 사람이 당신을 실제로 얼마나 아는지 재 줍니다",
       "**주기적으로 갱신하세요:** 관심사가 달라지는 만큼 질문도 새로 고쳐 주세요",
-      "**2~10개가 가장 알맞습니다:** 너무 적으면 걸러 내지 못하고, 너무 많으면 매칭 확률이 줄어듭니다",
+      "**2~4개가 가장 알맞습니다:** 너무 적으면 걸러 내지 못하고, 너무 많으면 매칭 확률이 줄어듭니다(유료 플랜에서는 상한이 10개)",
     ] },
 
     { type: "quote", text: "옳은 질문을 던진다는 것은 옳은 사람을 찾는다는 뜻입니다. Qulo에서 매칭은 우연이 아니라 의식적인 발견입니다." },
 
     { type: "h2", text: "퀴즈 데이팅의 미래" },
-    { type: "p", text: "데이팅 업계는 전환점에 서 있습니다. 사람들은 이제 표면적인 매칭 이상을 원하고, 퀴즈 데이팅은 바로 그 수요를 겨냥해 만들어진 방식입니다. 여기에 AI가 더해지면 — 이를테면 Qulo의 스마트 질문 추천처럼 — 경험은 한층 더 개인적이고 더 효과적이 됩니다." },
+    { type: "p", text: "데이팅 업계는 전환점에 서 있습니다. 사람들은 이제 표면적인 매칭 이상을 원하고, 퀴즈 데이팅은 바로 그 수요를 겨냥해 만들어진 방식입니다. 어려운 부분은 좋은 질문을 쓰는 일입니다. 그래서 Qulo에는 아이디어가 떠오르지 않을 때 둘러볼 수 있는 기성 질문 라이브러리가 있습니다. 미리 AI의 도움을 받아 만들어 둔 보관함이지, 그 자리에서 당신 대신 질문을 써 주는 모델이 아닙니다. 매칭의 근거가 되는 질문은 여전히 당신의 것입니다." },
     { type: "p", text: "질문과 상호작용에 기반한 매칭은 앞으로도 계속 퍼져 나갈 가능성이 큽니다. 대안이 이미 한계를 드러냈기 때문입니다. Qulo는 그 기준을 뒤늦게 베끼는 앱이 아니라, 기준을 세우는 앱이 되고자 합니다." },
 
     { type: "h2", accent: "green", text: "결론: 매칭의 미래는 질문에 있습니다" },
@@ -585,13 +596,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**别太简单也别太难：**人人都能猜中的题筛不掉任何人，谁也答不上的题则会断送你的配对机会",
       "**加入个人色彩：**像“我最喜欢的城市是哪座？”这样的问题，能衡量答题的人究竟有多了解你",
       "**定期更新：**让你的问题跟着兴趣的变化一起更新",
-      "**2 到 10 道题最合适：**太少筛不出什么，太多则会拉低你的配对概率",
+      "**2 到 4 道题最合适：**太少筛不出什么，太多则会拉低你的配对概率；付费方案的上限是 10 道",
     ] },
 
     { type: "quote", text: "问对问题，就是找对人。在 Qulo，配对不是巧合，而是一次有意识的发现。" },
 
     { type: "h2", text: "问答式交友的未来" },
-    { type: "p", text: "交友行业正处在转折点上。人们想要的已不止是表层的配对，而问答式交友正是为这份需求而生。再叠加人工智能 — 比如 Qulo 的智能出题建议 — 体验会变得更个人化，也更有效。" },
+    { type: "p", text: "交友行业正处在转折点上。人们想要的已不止是表层的配对，而问答式交友正是为这份需求而生。难的是写出好问题，所以 Qulo 备了一个现成的题库，灵感枯竭时可以翻一翻——那是事先借助人工智能整理好的存量，不是当场替你写题的模型。别人答对而与你配对的那道题，依然是你自己的。" },
     { type: "p", text: "以问题和互动为基础的配对方式很可能会继续扩散，因为另一条路早已显出了它的边界。Qulo 想做的是定标准的那个应用，而不是迟迟才去模仿的那个。" },
 
     { type: "h2", accent: "green", text: "结语：配对的未来在问题里" },
@@ -632,13 +643,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**Vermijd te makkelijk en te moeilijk:** wat iedereen raadt filtert niemand, en wat niemand kan weten maakt je matchkansen kapot",
       "**Voeg iets persoonlijks toe:** een vraag als \"Wat is mijn favoriete stad?\" meet hoe goed de ander je werkelijk kent",
       "**Ververs ze regelmatig:** werk je vragen bij zodat ze meebewegen met je interesses",
-      "**2 tot 10 vragen is ideaal:** te weinig filtert onvoldoende, te veel verkleint je kans op een match",
+      "**2 tot 4 vragen is ideaal:** te weinig filtert onvoldoende, te veel verkleint je kans op een match — met een betaald abonnement ligt het plafond op 10",
     ] },
 
     { type: "quote", text: "De juiste vraag stellen betekent de juiste persoon vinden. Op Qulo is een match geen toeval — het is een bewuste ontdekking." },
 
     { type: "h2", text: "De toekomst van quizdaten" },
-    { type: "p", text: "De datingsector staat op een kantelpunt. Mensen willen meer dan oppervlakkige matches, en quizdaten is precies voor die vraag gebouwd. In combinatie met AI — bijvoorbeeld de slimme vraagsuggesties van Qulo — wordt de ervaring nog persoonlijker en nog doeltreffender." },
+    { type: "p", text: "De datingsector staat op een kantelpunt. Mensen willen meer dan oppervlakkige matches, en quizdaten is precies voor die vraag gebouwd. Het lastige is het schrijven van goede vragen, dus houdt Qulo een bibliotheek met kant-en-klare vragen bij die je kunt doorbladeren als de inspiratie op is — een vooraf met behulp van AI opgestelde voorraad, geen model dat ter plekke vragen voor je schrijft. De vraag waarop iemand met je matcht, blijft je eigen vraag." },
     { type: "p", text: "Matching op basis van vragen en interactie zal zich waarschijnlijk verder verspreiden, want het alternatief heeft zijn grenzen allang laten zien. Qulo wil de app zijn die de standaard zet, niet die hem te laat nadoet." },
 
     { type: "h2", accent: "green", text: "Conclusie: de toekomst van matchen ligt in vragen" },
@@ -679,13 +690,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**Unikaj zbyt łatwych i zbyt trudnych:** to, co każdy zgadnie, nikogo nie odsieje, a to, czego nikt nie wie, zabija twoje szanse na dopasowanie",
       "**Dodaj osobisty akcent:** pytanie w stylu \"Jakie jest moje ulubione miasto?\" mierzy, jak dobrze odpowiadający naprawdę cię zna",
       "**Odświeżaj je regularnie:** aktualizuj pytania, żeby nadążały za twoimi zainteresowaniami",
-      "**Od 2 do 10 pytań jest optymalne:** za mało nie odsieje wystarczająco, za dużo obniży twoje prawdopodobieństwo dopasowania",
+      "**Od 2 do 4 pytań jest optymalne:** za mało nie odsieje wystarczająco, za dużo obniży twoje prawdopodobieństwo dopasowania — w planie płatnym górna granica to 10",
     ] },
 
     { type: "quote", text: "Zadać właściwe pytanie to znaleźć właściwą osobę. W Qulo dopasowanie nie jest przypadkiem — jest świadomym odkryciem." },
 
     { type: "h2", text: "Przyszłość randkowania przez pytania" },
-    { type: "p", text: "Branża randkowa jest w punkcie zwrotnym. Ludzie chcą czegoś więcej niż powierzchownych dopasowań, a randkowanie przez pytania powstało dokładnie pod tę potrzebę. W połączeniu ze sztuczną inteligencją — na przykład z inteligentnymi podpowiedziami pytań w Qulo — doświadczenie staje się jeszcze bardziej osobiste i jeszcze skuteczniejsze." },
+    { type: "p", text: "Branża randkowa jest w punkcie zwrotnym. Ludzie chcą czegoś więcej niż powierzchownych dopasowań, a randkowanie przez pytania powstało dokładnie pod tę potrzebę. Najtrudniejsze jest napisanie dobrych pytań, dlatego Qulo prowadzi bibliotekę gotowych pytań, którą można przejrzeć, gdy brakuje pomysłów — zapas przygotowany z wyprzedzeniem przy pomocy sztucznej inteligencji, a nie model piszący pytania za ciebie na bieżąco. Pytanie, na którym ktoś się z tobą dopasowuje, wciąż jest twoje." },
     { type: "p", text: "Dopasowywanie oparte na pytaniach i interakcji będzie się najpewniej rozprzestrzeniać dalej, bo alternatywa dawno pokazała swoje granice. Qulo chce być aplikacją, która wyznacza standard, a nie tą, która kopiuje go z opóźnieniem." },
 
     { type: "h2", accent: "green", text: "Wnioski: przyszłość dopasowania leży w pytaniach" },
@@ -726,13 +737,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**Undvik för lätt och för svårt:** det alla kan gissa sållar ingen, och det ingen kan svara på tar död på dina matchchanser",
       "**Lägg in något personligt:** en fråga som \"Vilken är min favoritstad?\" mäter hur väl den som svarar faktiskt känner dig",
       "**Uppdatera dem regelbundet:** förnya frågorna så att de följer med när dina intressen ändras",
-      "**2 till 10 frågor är lagom:** för få sållar inte tillräckligt, för många krymper sannolikheten för en matchning",
+      "**2 till 4 frågor är lagom:** för få sållar inte tillräckligt, för många krymper sannolikheten för en matchning — med ett betalt abonnemang går taket upp till 10",
     ] },
 
     { type: "quote", text: "Att ställa rätt fråga är att hitta rätt person. På Qulo är en matchning ingen slump — den är en medveten upptäckt." },
 
     { type: "h2", text: "Framtiden för frågebaserad dejting" },
-    { type: "p", text: "Dejtingbranschen står vid en vändpunkt. Människor vill ha mer än ytliga matchningar, och frågebaserad dejting är byggd just för det behovet. Tillsammans med AI — till exempel Qulos smarta frågeförslag — blir upplevelsen ännu mer personlig och ännu mer träffsäker." },
+    { type: "p", text: "Dejtingbranschen står vid en vändpunkt. Människor vill ha mer än ytliga matchningar, och frågebaserad dejting är byggd just för det behovet. Det svåra är att skriva bra frågor, så Qulo har ett bibliotek med färdiga frågor att bläddra i när inspirationen tryter — ett förråd som skrivits i förväg med hjälp av AI, inte en modell som skriver frågor åt dig i stunden. Frågan som någon matchar med dig på är fortfarande din egen." },
     { type: "p", text: "Matchning som bygger på frågor och samspel lär fortsätta sprida sig, för alternativet har redan visat var dess gräns går. Qulo vill vara appen som sätter standarden, inte den som kopierar den för sent." },
 
     { type: "h2", accent: "green", text: "Slutsats: matchningens framtid ligger i frågorna" },
@@ -773,13 +784,13 @@ export const quizDatingFutureOfMatching: LocalizedArticle = {
       "**बहुत आसान या बहुत कठिन से बचें:** जो सबको पता हो वह किसी को नहीं छाँटता, और जो किसी को न पता हो वह मैच की गुंजाइश ही ख़त्म कर देता है",
       "**निजी रंग जोड़ें:** \"मेरा पसंदीदा शहर कौन-सा है?\" जैसा सवाल नापता है कि जवाब देने वाला आपको सचमुच कितना जानता है",
       "**नियमित रूप से बदलें:** अपनी दिलचस्पियाँ बदलने के साथ सवालों को भी ताज़ा करते रहें",
-      "**2 से 10 सवाल सबसे उपयुक्त हैं:** बहुत कम सवाल ठीक से नहीं छाँटते, बहुत ज़्यादा मैच की संभावना घटा देते हैं",
+      "**2 से 4 सवाल सबसे उपयुक्त हैं:** बहुत कम सवाल ठीक से नहीं छाँटते, बहुत ज़्यादा मैच की संभावना घटा देते हैं — भुगतान वाली योजना में यह सीमा 10 तक जाती है",
     ] },
 
     { type: "quote", text: "सही सवाल पूछना यानी सही इंसान तक पहुँचना। Qulo पर मैच होना इत्तेफ़ाक़ नहीं — यह एक सचेत खोज है।" },
 
     { type: "h2", text: "क्विज़ डेटिंग का भविष्य" },
-    { type: "p", text: "डेटिंग की दुनिया एक मोड़ पर खड़ी है। लोग अब सतही मैच से आगे कुछ चाहते हैं, और क्विज़ डेटिंग ठीक इसी माँग के लिए बनी है। इसमें एआई जुड़ जाए — जैसे Qulo के स्मार्ट सवाल सुझाव — तो अनुभव और भी निजी और और भी असरदार हो जाता है।" },
+    { type: "p", text: "डेटिंग की दुनिया एक मोड़ पर खड़ी है। लोग अब सतही मैच से आगे कुछ चाहते हैं, और क्विज़ डेटिंग ठीक इसी माँग के लिए बनी है। मुश्किल हिस्सा अच्छे सवाल लिखना है, इसलिए Qulo में पहले से तैयार सवालों की एक लाइब्रेरी रहती है, जिसे विचार न सूझने पर आप देख सकते हैं — यह पहले से एआई की मदद से तैयार किया गया संग्रह है, कोई ऐसा मॉडल नहीं जो उसी वक़्त आपके लिए सवाल लिख दे। जिस सवाल पर कोई आपसे मैच करता है, वह अब भी आपका ही होता है।" },
     { type: "p", text: "सवालों और आपसी सहभागिता पर टिका मैच बनाना आगे भी फैलता रहेगा, क्योंकि दूसरा रास्ता अपनी सीमा कब की दिखा चुका है। Qulo चाहता है कि वह मानक तय करने वाली ऐप बने, देर से उसकी नक़ल करने वाली नहीं।" },
 
     { type: "h2", accent: "green", text: "निष्कर्ष: मैच का भविष्य सवालों में है" },

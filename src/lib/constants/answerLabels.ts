@@ -29,7 +29,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "External figures on this page trace to a primary source. We publish no number we cannot verify.",
     ctaTitle: "Try it yourself",
     ctaDesc:
-      "Write two to ten questions and see who gets them right. Free to use, no swiping.",
+      "Write your own questions and see who gets them right. Free to use, no swiping.",
     ctaLink: "Get Qulo →",
   },
   tr: {
@@ -43,7 +43,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "Bu sayfadaki dış veriler birincil kaynağa dayanır. Doğrulayamadığımız hiçbir rakamı yayımlamayız.",
     ctaTitle: "Kendin dene",
     ctaDesc:
-      "İki ile on arasında soru yaz, kimin doğru bildiğini gör. Ücretsiz, kaydırma yok.",
+      "Kendi sorularını yaz, kimin doğru bildiğini gör. Ücretsiz, kaydırma yok.",
     ctaLink: "Qulo'yu edin →",
   },
   de: {
@@ -57,7 +57,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "Externe Zahlen auf dieser Seite lassen sich bis zur Primärquelle zurückverfolgen. Wir veröffentlichen keine Zahl, die wir nicht prüfen können.",
     ctaTitle: "Probier es selbst aus",
     ctaDesc:
-      "Schreib zwei bis zehn Fragen und sieh, wer sie richtig beantwortet. Kostenlos, ohne Wischen.",
+      "Schreib deine eigenen Fragen und sieh, wer sie richtig beantwortet. Kostenlos, ohne Wischen.",
     ctaLink: "Qulo holen →",
   },
   fr: {
@@ -71,7 +71,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "Les chiffres externes de cette page remontent tous à une source primaire. Nous ne publions aucun chiffre que nous ne pouvons pas vérifier.",
     ctaTitle: "Essayez par vous-même",
     ctaDesc:
-      "Écrivez de deux à dix questions et voyez qui trouve les bonnes réponses. Gratuit, sans balayage.",
+      "Écrivez vos propres questions et voyez qui trouve les bonnes réponses. Gratuit, sans balayage.",
     ctaLink: "Obtenir Qulo →",
   },
   es: {
@@ -85,7 +85,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "Las cifras externas de esta página se remontan a una fuente primaria. No publicamos ningún dato que no podamos verificar.",
     ctaTitle: "Pruébalo tú mismo",
     ctaDesc:
-      "Escribe de dos a diez preguntas y mira quién las acierta. Gratis y sin deslizar.",
+      "Escribe tus propias preguntas y mira quién las acierta. Gratis y sin deslizar.",
     ctaLink: "Consigue Qulo →",
   },
   ar: {
@@ -99,7 +99,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "تعود كل الأرقام الخارجية في هذه الصفحة إلى مصدر أساسي. ولا ننشر رقمًا لا نستطيع التحقق منه.",
     ctaTitle: "جرّبه بنفسك",
     ctaDesc:
-      "اكتب من سؤالين إلى عشرة أسئلة، وانظر من يجيب عنها إجابة صحيحة. مجاني، وبلا تمرير.",
+      "اكتب أسئلتك أنت، وانظر من يجيب عنها إجابة صحيحة. مجاني، وبلا تمرير.",
     ctaLink: "احصل على Qulo →",
   },
   ru: {
@@ -113,7 +113,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "Все внешние цифры на этой странице восходят к первоисточнику. Мы не публикуем ни одного числа, которое не можем проверить.",
     ctaTitle: "Попробуйте сами",
     ctaDesc:
-      "Составьте от двух до десяти вопросов и посмотрите, кто ответит правильно. Бесплатно и без свайпов.",
+      "Составьте свои вопросы и посмотрите, кто ответит правильно. Бесплатно и без свайпов.",
     ctaLink: "Установить Qulo →",
   },
   pt: {
@@ -127,7 +127,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "Os números externos desta página remetem a uma fonte primária. Não publicamos nenhum dado que não possamos verificar.",
     ctaTitle: "Experimente você mesmo",
     ctaDesc:
-      "Escreva de duas a dez perguntas e veja quem acerta. Grátis, sem deslizar.",
+      "Escreva as suas próprias perguntas e veja quem acerta. Grátis, sem deslizar.",
     ctaLink: "Baixar o Qulo →",
   },
   it: {
@@ -141,7 +141,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "I dati esterni di questa pagina risalgono a una fonte primaria. Non pubblichiamo nessun numero che non possiamo verificare.",
     ctaTitle: "Provalo tu stesso",
     ctaDesc:
-      "Scrivi da due a dieci domande e guarda chi le indovina. Gratis, senza scorrere.",
+      "Scrivi le tue domande e guarda chi le indovina. Gratis, senza scorrere.",
     ctaLink: "Scarica Qulo →",
   },
   ja: {
@@ -155,7 +155,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "このページの外部データはすべて一次情報にさかのぼれます。確認できない数字は載せません。",
     ctaTitle: "自分で試す",
     ctaDesc:
-      "質問を二問から十問つくって、誰が正解するか見てみましょう。無料で、スワイプはありません。",
+      "自分の質問をつくって、誰が正解するか見てみましょう。無料で、スワイプはありません。",
     ctaLink: "Qulo を入手 →",
   },
   ko: {
@@ -169,7 +169,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "이 페이지에 실린 외부 수치는 모두 원 출처로 이어집니다. 확인할 수 없는 숫자는 싣지 않습니다.",
     ctaTitle: "직접 해보기",
     ctaDesc:
-      "질문을 두 개에서 열 개까지 만들고 누가 맞히는지 보세요. 무료이고 스와이프도 없습니다.",
+      "직접 질문을 만들고 누가 맞히는지 보세요. 무료이고 스와이프도 없습니다.",
     ctaLink: "Qulo 받기 →",
   },
   zh: {
@@ -182,7 +182,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
     sourcesIntro:
       "本页引用的外部数据都可追溯到一手来源。无法核实的数字，我们不会发布。",
     ctaTitle: "自己试试",
-    ctaDesc: "写下两到十道问题，看看谁能答对。免费使用，无需滑动。",
+    ctaDesc: "写下你自己的问题，看看谁能答对。免费使用，无需滑动。",
     ctaLink: "获取 Qulo →",
   },
   nl: {
@@ -196,7 +196,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "Externe cijfers op deze pagina zijn terug te voeren op een primaire bron. We publiceren geen getal dat we niet kunnen verifiëren.",
     ctaTitle: "Probeer het zelf",
     ctaDesc:
-      "Schrijf twee tot tien vragen en kijk wie ze goed heeft. Gratis, zonder swipen.",
+      "Schrijf je eigen vragen en kijk wie ze goed heeft. Gratis, zonder swipen.",
     ctaLink: "Download Qulo →",
   },
   pl: {
@@ -210,7 +210,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "Wszystkie zewnętrzne dane na tej stronie prowadzą do źródła pierwotnego. Nie publikujemy liczby, której nie możemy zweryfikować.",
     ctaTitle: "Sprawdź sam",
     ctaDesc:
-      "Ułóż od dwóch do dziesięciu pytań i zobacz, kto na nie odpowie. Za darmo, bez przesuwania.",
+      "Ułóż własne pytania i zobacz, kto na nie odpowie. Za darmo, bez przesuwania.",
     ctaLink: "Pobierz Qulo →",
   },
   sv: {
@@ -224,7 +224,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "Externa siffror på den här sidan går att spåra till en primärkälla. Vi publicerar inga siffror som vi inte kan verifiera.",
     ctaTitle: "Testa själv",
     ctaDesc:
-      "Skriv två till tio frågor och se vem som svarar rätt. Gratis att använda, utan svep.",
+      "Skriv dina egna frågor och se vem som svarar rätt. Gratis att använda, utan svep.",
     ctaLink: "Hämta Qulo →",
   },
   hi: {
@@ -238,7 +238,7 @@ export const ANSWER_LABELS: Record<string, AnswerLabels> = {
       "इस पेज के बाहरी आँकड़े मूल स्रोत तक जाते हैं। जिस संख्या की पुष्टि न हो सके, उसे हम प्रकाशित नहीं करते।",
     ctaTitle: "खुद आज़माएँ",
     ctaDesc:
-      "दो से दस सवाल लिखें और देखें कौन उन्हें सही करता है। मुफ़्त, बिना स्वाइप के।",
+      "अपने सवाल ख़ुद लिखें और देखें कौन उन्हें सही करता है। मुफ़्त, बिना स्वाइप के।",
     ctaLink: "Qulo पाएँ →",
   },
 };

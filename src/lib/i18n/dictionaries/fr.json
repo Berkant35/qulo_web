@@ -1,14 +1,14 @@
 {
   "meta": {
     "title": "Qulo — Rencontrez par les Questions",
-    "description": "Créez des questions, partagez-les, trouvez votre match avec la personne qui répond correctement. Application de rencontre nouvelle génération propulsée par l'IA."
+    "description": "Créez des questions, partagez-les, trouvez votre match avec la personne qui répond correctement. Le dating par les questions, pas par le swipe."
   },
   "nav": {
     "download": "Télécharger",
     "about": "À propos",
     "blog": "Blog",
     "help": "Aide",
-    "features": "Fonctionnalites",
+    "features": "Fonctionnalités",
     "advice": "Conseils"
   },
   "hero": {
@@ -32,7 +32,7 @@
     "title1": "Comment ça",
     "title2": "marche ?",
     "step1Title": "Créez des questions",
-    "step1Desc": "Créez 2 à 10 questions reflétant votre personnalité",
+    "step1Desc": "Créez 2 à 4 questions reflétant votre personnalité",
     "step1Detail": "Chaque question est une fenêtre qui vous présente.",
     "step2Title": "Découvrez & Résolvez",
     "step2Desc": "Répondez aux questions des autres utilisateurs",
@@ -71,9 +71,9 @@
       "desc": "Gagnez des badges en progressant, montez de niveau avec les jalons. Enrichissez votre profil."
     },
     "ai": {
-      "title": "Création de questions par IA",
-      "subtitle": "Propulsé par l'IA",
-      "desc": "Créez des questions engageantes avec l'IA. Trouvez les questions qui reflètent le mieux votre personnalité."
+      "title": "Suggestions de questions",
+      "subtitle": "Préparées avec l'IA",
+      "desc": "Choisissez parmi une bibliothèque de questions toutes prêtes, rédigées à l'avance avec l'IA. Trouvez celles qui reflètent le mieux votre personnalité."
     },
     "premium": {
       "title": "Plans Premium",
@@ -111,8 +111,8 @@
     "diff3QuloDesc": "Diamants, badges, niveaux et pouvoirs spéciaux",
     "diff4OthersTitle": "Laisser au hasard",
     "diff4OthersDesc": "Ce que l'algorithme montre",
-    "diff4QuloTitle": "Matching par IA",
-    "diff4QuloDesc": "Suggestions de questions personnalisées par IA"
+    "diff4QuloTitle": "C'est vous qui filtrez",
+    "diff4QuloDesc": "Vos questions décident qui vous atteint"
   },
   "stats": {
     "questions": "Questions créées",
@@ -157,7 +157,7 @@
       "matching_how_q": "Comment fonctionne le matching ?",
       "matching_how_a": "Créez des questions et laissez les autres utilisateurs les résoudre. Les bonnes réponses mènent à un match.",
       "matching_questions_q": "Comment créer une question ?",
-      "matching_questions_a": "Appuyez sur le bouton '+' sur l'écran principal. Ajoutez 2 à 10 questions, entrez 4 options pour chacune et marquez la bonne réponse.",
+      "matching_questions_a": "Appuyez sur le bouton '+' sur l'écran principal. Ajoutez 2 à 4 questions — jusqu'à 10 avec un abonnement payant —, entrez 4 options pour chacune et marquez la bonne réponse.",
       "diamonds_what_q": "À quoi servent les diamants ?",
       "diamonds_what_a": "Les diamants verts servent à activer des pouvoirs, tandis que les diamants violets débloquent des fonctionnalités spéciales.",
       "diamonds_buy_q": "Comment acheter des diamants ?",
@@ -191,7 +191,6 @@
     "blog": "Blog",
     "help": "Aide",
     "cities": "Villes",
-    "compare": "Comparer",
     "glossary": "Glossaire",
     "statistics": "Statistiques",
     "press": "Presse",
@@ -201,7 +200,6 @@
     "trends": "Tendances",
     "sitemap": "Plan du site",
     "pricing": "Tarifs",
-    "reviews": "Avis",
     "guidelines": "Règles de la communauté",
     "safety": "Conseils de sécurité",
     "childSafety": "Protection des mineurs",
@@ -213,7 +211,7 @@
     "introTitle": "Introduction",
     "intro": "Bienvenue sur Qulo (« Application », « nous », « notre »). Qulo est une application de rencontres basée sur les questions, développée par Berkant Çalıkuşu, un développeur indépendant basé à Istanbul, Turquie.\n\nCette Politique de confidentialité explique comment nous collectons, utilisons, stockons et protégeons vos données personnelles lorsque vous utilisez Qulo. Nous nous engageons à protéger votre vie privée conformément au Règlement général sur la protection des données (RGPD), à la loi turque sur la protection des données personnelles (KVKK, loi n° 6698) et aux autres lois applicables en matière de protection des données.\n\nEn créant un compte ou en utilisant Qulo, vous reconnaissez avoir lu et compris cette Politique de confidentialité.",
     "dataCollectionTitle": "Informations que nous collectons",
-    "dataCollection": "Nous collectons les catégories suivantes de données personnelles :\n\n• Informations de compte : Adresse e-mail, mot de passe (haché avec bcrypt — nous ne stockons jamais les mots de passe en clair), date de naissance (pour vérifier l'éligibilité 18+), nom d'affichage et genre.\n\n• Données de profil : Photos de profil, texte de biographie, questions que vous créez (2 à 10 questions par utilisateur) et vos réponses aux questions d'autres utilisateurs.\n\n• Données de localisation : Coordonnées GPS lorsque vous utilisez la fonction Découvrir (pour afficher les utilisateurs à proximité) et le mode Passport (Premium uniquement, pour parcourir les utilisateurs dans d'autres lieux). La localisation n'est collectée que lorsque l'application est en cours d'utilisation et uniquement avec votre permission explicite.\n\n• Données d'utilisation et d'analyse : Firebase Analytics collecte des données anonymisées d'utilisation de l'application (écrans consultés, fonctionnalités utilisées, durée de session) avec une période de conservation de 14 mois. Firebase Crashlytics collecte des rapports de plantage et des diagnostics d'appareil avec une période de conservation de 90 jours.\n\n• Données de transaction : Historique d'achats intégrés traité via Apple App Store ou Google Play par RevenueCat. Nous ne collectons ni ne stockons les informations de carte de paiement.\n\n• Données de chat : Messages échangés entre utilisateurs matchés, y compris les questions de chat et leurs réponses.\n\n• Données de diamants et d'activité : Gains en diamants verts, achats de diamants violets, utilisation des pouvoirs (Oracle, Moitié, Passer, Extension de temps, Indice, Tout passer), badges, niveaux et statistiques de jeu.\n\n• Identifiants de connexion : Si vous choisissez de vous connecter avec Google ou Apple, ce fournisseur nous transmet un identifiant de compte et, dans la mesure où vous l'autorisez, votre nom et votre adresse e-mail. Nous ne recevons jamais votre mot de passe Google ou Apple.\n\n• Médias de conversation : Les photos et messages vocaux que vous envoyez dans une conversation. Les messages vocaux nécessitent l'accès au microphone, demandé uniquement au moment de l'enregistrement.\n\n• Données publicitaires et de mesure : Les événements d'application tels que les ouvertures, inscriptions et achats ainsi que — si vous autorisez le suivi — l'identifiant publicitaire de votre appareil (IDFA sur iOS, identifiant publicitaire sur Android). Ils servent exclusivement à mesurer la performance de nos propres campagnes publicitaires.\n\n• Retour lors de la suppression du compte : Si vous nous indiquez facultativement la raison de la suppression de votre compte, nous conservons ce motif ainsi que la version de l'application, la plateforme et la langue.",
+    "dataCollection": "Nous collectons les catégories suivantes de données personnelles :\n\n• Informations de compte : Adresse e-mail, mot de passe (haché avec bcrypt — nous ne stockons jamais les mots de passe en clair), date de naissance (pour vérifier l'éligibilité 18+), nom d'affichage et genre.\n\n• Données de profil : Photos de profil, texte de biographie, questions que vous créez (2 à 4 questions par utilisateur, jusqu'à 10 avec un abonnement payant) et vos réponses aux questions d'autres utilisateurs.\n\n• Données de localisation : Coordonnées GPS lorsque vous utilisez la fonction Découvrir (pour afficher les utilisateurs à proximité) et le mode Passport (Premium uniquement, pour parcourir les utilisateurs dans d'autres lieux). La localisation n'est collectée que lorsque l'application est en cours d'utilisation et uniquement avec votre permission explicite.\n\n• Données d'utilisation et d'analyse : Firebase Analytics collecte des données anonymisées d'utilisation de l'application (écrans consultés, fonctionnalités utilisées, durée de session) avec une période de conservation de 14 mois. Firebase Crashlytics collecte des rapports de plantage et des diagnostics d'appareil avec une période de conservation de 90 jours.\n\n• Données de transaction : Historique d'achats intégrés traité via Apple App Store ou Google Play par RevenueCat. Nous ne collectons ni ne stockons les informations de carte de paiement.\n\n• Données de chat : Messages échangés entre utilisateurs matchés, y compris les questions de chat et leurs réponses.\n\n• Données de diamants et d'activité : Gains en diamants verts, achats de diamants violets, utilisation des pouvoirs (Oracle, Moitié, Passer, Extension de temps, Indice, Tout passer), badges, niveaux et statistiques de jeu.\n\n• Identifiants de connexion : Si vous choisissez de vous connecter avec Google ou Apple, ce fournisseur nous transmet un identifiant de compte et, dans la mesure où vous l'autorisez, votre nom et votre adresse e-mail. Nous ne recevons jamais votre mot de passe Google ou Apple.\n\n• Médias de conversation : Les photos et messages vocaux que vous envoyez dans une conversation. Les messages vocaux nécessitent l'accès au microphone, demandé uniquement au moment de l'enregistrement.\n\n• Données publicitaires et de mesure : Les événements d'application tels que les ouvertures, inscriptions et achats ainsi que — si vous autorisez le suivi — l'identifiant publicitaire de votre appareil (IDFA sur iOS, identifiant publicitaire sur Android). Ils servent exclusivement à mesurer la performance de nos propres campagnes publicitaires.\n\n• Retour lors de la suppression du compte : Si vous nous indiquez facultativement la raison de la suppression de votre compte, nous conservons ce motif ainsi que la version de l'application, la plateforme et la langue.",
     "dataNotCollectedTitle": "Informations que nous NE collectons PAS",
     "dataNotCollected": "Nous souhaitons être transparents sur ce que nous ne collectons pas :\n\n• Numéro de téléphone ou contacts téléphoniques\n• Historique de navigation en dehors de Qulo\n• Données biométriques (empreinte digitale, scan facial)\n• Pièces d'identité ou documents d'identité délivrés par le gouvernement\n• Informations financières ou numéros de carte de crédit\n• Données d'autres applications sur votre appareil",
     "usageTitle": "Comment nous utilisons vos données et base juridique",
@@ -308,14 +306,14 @@
     "whyDifferent": "Pourquoi Qulo est différent ?",
     "whyDifferentDesc": "Avec Qulo, le matching repose sur la compréhension mutuelle. L'apparence ne fait pas tout : votre façon de penser compte autant, et ce sont vos questions qui rapprochent la bonne personne.",
     "howItWorks": "Comment ça marche ?",
-    "step1": "Créez des questions — 2 à 10 questions qui reflètent votre personnalité",
+    "step1": "Créez des questions — 2 à 4 questions qui reflètent votre personnalité",
     "step2": "Découvrez & Résolvez — Résolvez les questions des autres",
     "step3": "Matchez — Répondez correctement et créez une connexion",
     "step4": "Discutez & Rencontrez — Commencez avec une vraie connexion",
     "swipeFatigue": "Qu'est-ce que la fatigue du swipe ?",
     "swipeFatigueDesc": "La fatigue du swipe est l'épuisement ressenti par les utilisateurs à force de glisser. Qulo élimine complètement ce problème.",
-    "aiPowered": "Suggestions alimentées par l'IA",
-    "aiPoweredDesc": "L'intelligence artificielle alimente les suggestions de questions et l'algorithme de découverte.",
+    "aiPowered": "Suggestions de questions toutes prêtes",
+    "aiPoweredDesc": "Vous ne savez pas quoi demander ? Qulo embarque une bibliothèque de questions toutes prêtes, rédigées à l'avance avec l'IA et stockées dans l'application — actuellement en 10 langues. Parcourez les suggestions, gardez celles qui vous ressemblent et modifiez-les librement. Qui vous match dépend toujours d'une seule chose : la personne qui répond correctement à toutes vos questions.",
     "globalCommunity": "Communauté mondiale",
     "globalCommunityDesc": "Avec le support de 16 langues, Qulo vous permet de rencontrer des personnes du monde entier.",
     "downloadCta": "Téléchargez maintenant",

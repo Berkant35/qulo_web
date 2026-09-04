@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Qulo — Poznawaj przez pytania",
-    "description": "Twórz pytania, udostępniaj je i dopasowuj się z osobą, która odpowie poprawnie. Aplikacja randkowa nowej generacji z AI."
+    "description": "Twórz pytania, udostępniaj je i dopasowuj się z osobą, która odpowie poprawnie. Randki oparte na pytaniach, bez swipe'owania."
   },
   "nav": {
     "download": "Pobierz",
@@ -32,7 +32,7 @@
     "title1": "Jak to",
     "title2": "działa?",
     "step1Title": "Twórz pytania",
-    "step1Desc": "Stwórz 2-10 pytań odzwierciedlających twoją osobowość",
+    "step1Desc": "Stwórz 2-4 pytania odzwierciedlające twoją osobowość",
     "step1Detail": "Każde pytanie to okno, które cię przedstawia.",
     "step2Title": "Odkrywaj i rozwiązuj",
     "step2Desc": "Odpowiadaj na pytania innych użytkowników",
@@ -71,9 +71,9 @@
       "desc": "Zdobywaj odznaki w miarę postępu, awansuj z kamieniami milowymi. Wzbogacaj swój profil."
     },
     "ai": {
-      "title": "Tworzenie pytań z AI",
-      "subtitle": "Napędzane AI",
-      "desc": "Twórz angażujące pytania z pomocą AI. Znajdź pytania, które najlepiej odzwierciedlają twoją osobowość."
+      "title": "Podpowiedzi pytań",
+      "subtitle": "Napisane wcześniej z AI",
+      "desc": "Wybieraj z biblioteki gotowych pytań, napisanych wcześniej z pomocą AI. Znajdź te, które najlepiej odzwierciedlają twoją osobowość."
     },
     "premium": {
       "title": "Plany Premium",
@@ -111,8 +111,8 @@
     "diff3QuloDesc": "Diamenty, odznaki, poziomy i specjalne moce",
     "diff4OthersTitle": "Zdaj się na przypadek",
     "diff4OthersDesc": "Co pokaże algorytm",
-    "diff4QuloTitle": "Dopasowanie z AI",
-    "diff4QuloDesc": "Spersonalizowane sugestie pytań przez AI"
+    "diff4QuloTitle": "To ty ustawiasz filtr",
+    "diff4QuloDesc": "Twoje pytania decydują, kto do ciebie dotrze"
   },
   "stats": {
     "questions": "Utworzone pytania",
@@ -157,7 +157,7 @@
       "matching_how_q": "Jak działa dopasowanie?",
       "matching_how_a": "Twórz pytania i pozwól innym użytkownikom je rozwiązywać. Poprawne odpowiedzi prowadzą do dopasowania.",
       "matching_questions_q": "Jak utworzyć pytanie?",
-      "matching_questions_a": "Dotknij przycisku '+' na ekranie głównym. Dodaj 2 do 10 pytań, wprowadź 4 opcje dla każdego i zaznacz poprawną odpowiedź.",
+      "matching_questions_a": "Dotknij przycisku '+' na ekranie głównym. Dodaj od 2 do 4 pytań — do 10 w planie płatnym — wprowadź 4 opcje dla każdego i zaznacz poprawną odpowiedź.",
       "diamonds_what_q": "Do czego służą diamenty?",
       "diamonds_what_a": "Zielone diamenty służą do aktywowania mocy, a fioletowe diamenty odblokowują specjalne funkcje.",
       "diamonds_buy_q": "Jak kupić diamenty?",
@@ -191,7 +191,6 @@
     "blog": "Blog",
     "help": "Pomoc",
     "cities": "Miasta",
-    "compare": "Porownaj",
     "glossary": "Słowniczek",
     "statistics": "Statystyki",
     "press": "Prasa",
@@ -201,7 +200,6 @@
     "trends": "Trendy",
     "sitemap": "Mapa strony",
     "pricing": "Ceny",
-    "reviews": "Opinie",
     "guidelines": "Zasady społeczności",
     "safety": "Wskazówki bezpieczeństwa",
     "childSafety": "Ochrona dzieci",
@@ -213,7 +211,7 @@
     "introTitle": "Wprowadzenie",
     "intro": "Witamy w Qulo (\"Aplikacja\", \"my\", \"nas\" lub \"nasz\"). Qulo to oparta na pytaniach aplikacja randkowa stworzona przez Berkant Çalıkuşu, niezależnego programistę z Stambułu w Turcji.\n\nNiniejsza Polityka prywatności wyjaśnia, w jaki sposób zbieramy, wykorzystujemy, przechowujemy i chronimy Twoje dane osobowe podczas korzystania z Qulo. Zobowiązujemy się do ochrony Twojej prywatności zgodnie z Ogólnym Rozporządzeniem o Ochronie Danych (RODO/GDPR), Turecką Ustawą o Ochronie Danych Osobowych (KVKK, Ustawa nr 6698) oraz innymi obowiązującymi przepisami o ochronie danych.\n\nTworząc konto lub korzystając z Qulo, potwierdzasz, że przeczytałeś/-aś i zrozumiałeś/-aś niniejszą Politykę prywatności.",
     "dataCollectionTitle": "Informacje, które zbieramy",
-    "dataCollection": "Zbieramy następujące kategorie danych osobowych:\n\n• Informacje o koncie: Adres e-mail, hasło (hashowane bcrypt — nigdy nie przechowujemy haseł w postaci jawnej), data urodzenia (w celu weryfikacji wieku 18+), wyświetlana nazwa i płeć.\n\n• Dane profilowe: Zdjęcia profilowe, tekst biogramu, utworzone przez Ciebie pytania (2–10 pytań na użytkownika) oraz Twoje odpowiedzi na pytania innych użytkowników.\n\n• Dane lokalizacyjne: Współrzędne GPS podczas korzystania z funkcji Odkrywanie (aby pokazać użytkowników w pobliżu) oraz trybu Paszport (tylko Premium, do przeglądania użytkowników w innych lokalizacjach). Lokalizacja jest zbierana wyłącznie podczas korzystania z aplikacji i wyłącznie za Twoją wyraźną zgodą.\n\n• Dane o użytkowaniu i analityce: Firebase Analytics zbiera zanonimizowane dane o użytkowaniu aplikacji (przeglądane ekrany, używane funkcje, czas sesji) z okresem przechowywania 14 miesięcy. Firebase Crashlytics zbiera raporty o awariach i diagnostykę urządzenia z okresem przechowywania 90 dni.\n\n• Dane transakcyjne: Historia zakupów w aplikacji przetwarzanych przez Apple App Store lub Google Play za pośrednictwem RevenueCat. Nie zbieramy ani nie przechowujemy danych kart płatniczych.\n\n• Dane czatu: Wiadomości wymieniane między dopasowanymi użytkownikami, w tym pytania czatowe i ich odpowiedzi.\n\n• Dane o diamentach i aktywności: Zarobki zielonych diamentów, zakupy fioletowych diamentów, użycie mocy (Oracle, Half, Skip, Time Extend, Hint, Skip All), odznaki, poziomy i statystyki rozgrywki.\n\n• Identyfikatory logowania: Jeśli zdecydujesz się zalogować przez Google lub Apple, otrzymujemy od tego dostawcy identyfikator konta oraz — w zakresie, na jaki wyrazisz zgodę — Twoje imię i adres e-mail. Nigdy nie otrzymujemy Twojego hasła do Google ani Apple.\n\n• Multimedia z czatu: Zdjęcia i wiadomości głosowe wysyłane w rozmowie. Wiadomości głosowe wymagają dostępu do mikrofonu, o który prosimy dopiero w momencie nagrywania.\n\n• Dane reklamowe i pomiarowe: Zdarzenia aplikacji, takie jak uruchomienia, rejestracje i zakupy, oraz — jeśli wyrazisz zgodę na śledzenie — identyfikator reklamowy Twojego urządzenia (IDFA w iOS, identyfikator reklamowy w Androidzie). Służą wyłącznie do pomiaru skuteczności naszych własnych kampanii reklamowych.\n\n• Informacja zwrotna przy usuwaniu konta: Jeśli podczas usuwania konta dobrowolnie podasz powód, zapisujemy go wraz z wersją aplikacji, platformą i językiem.",
+    "dataCollection": "Zbieramy następujące kategorie danych osobowych:\n\n• Informacje o koncie: Adres e-mail, hasło (hashowane bcrypt — nigdy nie przechowujemy haseł w postaci jawnej), data urodzenia (w celu weryfikacji wieku 18+), wyświetlana nazwa i płeć.\n\n• Dane profilowe: Zdjęcia profilowe, tekst biogramu, utworzone przez Ciebie pytania (2–4 pytania na użytkownika, do 10 w planie płatnym) oraz Twoje odpowiedzi na pytania innych użytkowników.\n\n• Dane lokalizacyjne: Współrzędne GPS podczas korzystania z funkcji Odkrywanie (aby pokazać użytkowników w pobliżu) oraz trybu Paszport (tylko Premium, do przeglądania użytkowników w innych lokalizacjach). Lokalizacja jest zbierana wyłącznie podczas korzystania z aplikacji i wyłącznie za Twoją wyraźną zgodą.\n\n• Dane o użytkowaniu i analityce: Firebase Analytics zbiera zanonimizowane dane o użytkowaniu aplikacji (przeglądane ekrany, używane funkcje, czas sesji) z okresem przechowywania 14 miesięcy. Firebase Crashlytics zbiera raporty o awariach i diagnostykę urządzenia z okresem przechowywania 90 dni.\n\n• Dane transakcyjne: Historia zakupów w aplikacji przetwarzanych przez Apple App Store lub Google Play za pośrednictwem RevenueCat. Nie zbieramy ani nie przechowujemy danych kart płatniczych.\n\n• Dane czatu: Wiadomości wymieniane między dopasowanymi użytkownikami, w tym pytania czatowe i ich odpowiedzi.\n\n• Dane o diamentach i aktywności: Zarobki zielonych diamentów, zakupy fioletowych diamentów, użycie mocy (Oracle, Half, Skip, Time Extend, Hint, Skip All), odznaki, poziomy i statystyki rozgrywki.\n\n• Identyfikatory logowania: Jeśli zdecydujesz się zalogować przez Google lub Apple, otrzymujemy od tego dostawcy identyfikator konta oraz — w zakresie, na jaki wyrazisz zgodę — Twoje imię i adres e-mail. Nigdy nie otrzymujemy Twojego hasła do Google ani Apple.\n\n• Multimedia z czatu: Zdjęcia i wiadomości głosowe wysyłane w rozmowie. Wiadomości głosowe wymagają dostępu do mikrofonu, o który prosimy dopiero w momencie nagrywania.\n\n• Dane reklamowe i pomiarowe: Zdarzenia aplikacji, takie jak uruchomienia, rejestracje i zakupy, oraz — jeśli wyrazisz zgodę na śledzenie — identyfikator reklamowy Twojego urządzenia (IDFA w iOS, identyfikator reklamowy w Androidzie). Służą wyłącznie do pomiaru skuteczności naszych własnych kampanii reklamowych.\n\n• Informacja zwrotna przy usuwaniu konta: Jeśli podczas usuwania konta dobrowolnie podasz powód, zapisujemy go wraz z wersją aplikacji, platformą i językiem.",
     "dataNotCollectedTitle": "Informacje, których NIE zbieramy",
     "dataNotCollected": "Chcemy być transparentni w kwestii tego, czego nie zbieramy:\n\n• Numer telefonu ani kontakty telefoniczne\n• Historia przeglądania poza Qulo\n• Dane biometryczne (odcisk palca, skan twarzy)\n• Dokumenty tożsamości wydane przez państwo\n• Informacje finansowe ani numery kart kredytowych\n• Dane z innych aplikacji na Twoim urządzeniu",
     "usageTitle": "Jak wykorzystujemy Twoje dane i podstawa prawna",
@@ -304,18 +302,18 @@
     "subtitle": "Dopasowanie oparte na pytaniach",
     "hero": "Koniec ze zmęczeniem swipe'ami. Poznawaj przez pytania z Qulo.",
     "whatIsQulo": "Czym jest Qulo?",
-    "whatIsQuloDesc": "Qulo to platforma randkowa nowej generacji, która używa mechanizmu pytań i odpowiedzi zamiast tradycyjnego swipe'owania. Stwórz 2-10 pytań, inni użytkownicy je rozwiązują, a Ty łączysz się z osobą, która odpowie na wszystkie poprawnie.",
+    "whatIsQuloDesc": "Qulo to platforma randkowa nowej generacji, która używa mechanizmu pytań i odpowiedzi zamiast tradycyjnego swipe'owania. Tworzysz swoje pytania — od 2 do 4 w planie darmowym, do 10 w planie płatnym — inni użytkownicy je rozwiązują, a Ty łączysz się z osobą, która odpowie na wszystkie poprawnie.",
     "whyDifferent": "Dlaczego Qulo jest inne?",
     "whyDifferentDesc": "W Qulo dopasowanie opiera się na wzajemnym zrozumieniu. Wygląd to tylko część obrazu — to, jak myślisz, liczy się tak samo, a Twoje pytania przybliżają właściwą osobę.",
     "howItWorks": "Jak to działa?",
-    "step1": "Twórz pytania — 2-10 pytań odzwierciedlających Twoją osobowość",
+    "step1": "Twórz pytania — 2-4 pytania odzwierciedlające Twoją osobowość",
     "step2": "Odkrywaj i rozwiązuj — Rozwiązuj pytania innych użytkowników",
     "step3": "Dopasuj się — Odpowiedz poprawnie i nawiąż połączenie",
     "step4": "Czatuj i spotykaj się — Zacznij od prawdziwego połączenia",
     "swipeFatigue": "Co to jest zmęczenie swipe'ami?",
     "swipeFatigueDesc": "Zmęczenie swipe'ami to wypalenie użytkowników spowodowane ciągłym przesuwaniem. Qulo całkowicie eliminuje ten problem.",
-    "aiPowered": "Sugestie oparte na AI",
-    "aiPoweredDesc": "Sztuczna inteligencja wspiera sugestie pytań i algorytm odkrywania.",
+    "aiPowered": "Gotowe podpowiedzi pytań",
+    "aiPoweredDesc": "Nie wiesz, o co zapytać? Qulo ma bibliotekę gotowych pytań, napisanych wcześniej z pomocą AI i zapisanych w aplikacji — obecnie w 10 językach. Przejrzyj podpowiedzi, wybierz te, które brzmią jak ty, i zmieniaj je dowolnie. O tym, z kim się połączysz, wciąż decyduje tylko jedno: kto poprawnie odpowie na wszystkie twoje pytania.",
     "globalCommunity": "Globalna społeczność",
     "globalCommunityDesc": "Wspierając 16 języków, Qulo pozwala poznawać ludzi z całego świata.",
     "downloadCta": "Pobierz teraz",

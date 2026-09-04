@@ -23,7 +23,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "Questions you have obviously sent to everyone.",
     ] },
     { type: "h2", accent: "green", text: "Writing questions on Qulo" },
-    { type: "p", text: "Qulo turns this into the actual mechanic: you write 2 to 10 multiple-choice questions with four options each and mark the correct answer, and someone matches with you only by getting all of them right. That constraint is a useful discipline — a question with one defensible answer forces you to be specific about what you actually think, which is exactly what makes it worth answering." },
+    { type: "p", text: "Qulo turns this into the actual mechanic: you write between 2 and 4 multiple-choice questions — up to 10 on a paid plan — with four options each and mark the correct answer, and someone matches with you only by getting all of them right. That constraint is a useful discipline — a question with one defensible answer forces you to be specific about what you actually think, which is exactly what makes it worth answering." },
   ],
   tr: [
     { type: "h2", text: "Bir sorunun geçmesi gereken dört test" },
@@ -46,7 +46,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "Herkese gönderdiğiniz belli olan sorular.",
     ] },
     { type: "h2", accent: "green", text: "Qulo'da soru yazmak" },
-    { type: "p", text: "Qulo bunu doğrudan mekaniğe çeviriyor: dört şıklı 2 ila 10 soru yazıyor, doğru cevabı işaretliyorsunuz; biri ancak hepsini doğru bilirse sizinle eşleşiyor. Bu kısıt aslında faydalı bir disiplin — savunulabilir tek bir cevabı olan bir soru, ne düşündüğünüz konusunda somut olmanızı zorunlu kılar ve zaten cevaplamaya değer kılan da tam olarak budur." },
+    { type: "p", text: "Qulo bunu doğrudan mekaniğe çeviriyor: dört şıklı 2 ila 4 soru — ücretli planda 10'a kadar — yazıyor, doğru cevabı işaretliyorsunuz; biri ancak hepsini doğru bilirse sizinle eşleşiyor. Bu kısıt aslında faydalı bir disiplin — savunulabilir tek bir cevabı olan bir soru, ne düşündüğünüz konusunda somut olmanızı zorunlu kılar ve zaten cevaplamaya değer kılan da tam olarak budur." },
   ],
   de: [
     { type: "h2", text: "Die vier Tests, die eine Frage bestehen muss" },
@@ -69,7 +69,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "Fragen, denen man ansieht, dass du sie an alle geschickt hast.",
     ] },
     { type: "h2", accent: "green", text: "Fragen schreiben auf Qulo" },
-    { type: "p", text: "Qulo macht genau das zur Mechanik: Du schreibst 2 bis 10 Multiple-Choice-Fragen mit je vier Antwortmöglichkeiten und markierst die richtige Antwort; jemand matcht nur dann mit dir, wenn alle Antworten stimmen. Diese Einschränkung ist eine nützliche Disziplin — eine Frage mit genau einer vertretbaren Antwort zwingt dich, konkret zu werden bei dem, was du wirklich denkst, und genau das macht sie überhaupt erst beantwortenswert." },
+    { type: "p", text: "Qulo macht genau das zur Mechanik: Du schreibst zwischen 2 und 4 Multiple-Choice-Fragen — bis zu 10 im kostenpflichtigen Tarif — mit je vier Antwortmöglichkeiten und markierst die richtige Antwort; jemand matcht nur dann mit dir, wenn alle Antworten stimmen. Diese Einschränkung ist eine nützliche Disziplin — eine Frage mit genau einer vertretbaren Antwort zwingt dich, konkret zu werden bei dem, was du wirklich denkst, und genau das macht sie überhaupt erst beantwortenswert." },
   ],
   fr: [
     { type: "h2", text: "Les quatre tests qu'une question doit réussir" },
@@ -92,7 +92,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "Les questions dont on voit tout de suite que vous les avez envoyées à tout le monde.",
     ] },
     { type: "h2", accent: "green", text: "Écrire ses questions sur Qulo" },
-    { type: "p", text: "Qulo en fait carrément sa mécanique : vous écrivez de 2 à 10 questions à choix multiple, quatre options chacune, et vous marquez la bonne réponse ; quelqu'un ne matche avec vous qu'en trouvant toutes les bonnes réponses. Cette contrainte est une discipline utile — une question qui n'admet qu'une seule réponse défendable vous oblige à être précis sur ce que vous pensez vraiment, et c'est exactement ce qui la rend digne d'une réponse." },
+    { type: "p", text: "Qulo en fait carrément sa mécanique : vous écrivez de 2 à 4 questions à choix multiple — jusqu'à 10 avec un abonnement payant —, quatre options chacune, et vous marquez la bonne réponse ; quelqu'un ne matche avec vous qu'en trouvant toutes les bonnes réponses. Cette contrainte est une discipline utile — une question qui n'admet qu'une seule réponse défendable vous oblige à être précis sur ce que vous pensez vraiment, et c'est exactement ce qui la rend digne d'une réponse." },
   ],
   es: [
     { type: "h2", text: "Las cuatro pruebas que una pregunta tiene que pasar" },
@@ -115,7 +115,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "Preguntas que se nota que has enviado a todo el mundo.",
     ] },
     { type: "h2", accent: "green", text: "Escribir preguntas en Qulo" },
-    { type: "p", text: "Qulo convierte esto en la mecánica misma: escribes de 2 a 10 preguntas de opción múltiple con cuatro alternativas cada una y marcas la respuesta correcta; alguien solo hace match contigo si las acierta todas. Esa restricción es una disciplina útil — una pregunta con una sola respuesta defendible te obliga a concretar lo que de verdad piensas, y eso es justo lo que la hace digna de respuesta." },
+    { type: "p", text: "Qulo convierte esto en la mecánica misma: escribes de 2 a 4 preguntas de opción múltiple — hasta 10 con un plan de pago — con cuatro alternativas cada una y marcas la respuesta correcta; alguien solo hace match contigo si las acierta todas. Esa restricción es una disciplina útil — una pregunta con una sola respuesta defendible te obliga a concretar lo que de verdad piensas, y eso es justo lo que la hace digna de respuesta." },
   ],
   ar: [
     { type: "h2", text: "الاختبارات الأربعة التي على السؤال أن يجتازها" },
@@ -138,7 +138,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "أسئلة يبدو واضحًا أنك أرسلتها إلى الجميع.",
     ] },
     { type: "h2", accent: "green", text: "كتابة الأسئلة على Qulo" },
-    { type: "p", text: "يحوّل Qulo هذا إلى الآلية نفسها: تكتب من 2 إلى 10 أسئلة اختيار من متعدد، لكل سؤال أربعة خيارات، وتحدد الإجابة الصحيحة؛ ولا يتطابق معك أحد إلا إذا أصابها كلها. هذا القيد انضباط مفيد — فالسؤال الذي له إجابة واحدة يمكن الدفاع عنها يجبرك على التحديد الدقيق لما تفكر فيه فعلًا، وهذا بالضبط ما يجعله جديرًا بالإجابة." },
+    { type: "p", text: "يحوّل Qulo هذا إلى الآلية نفسها: تكتب بين سؤالين و4 أسئلة اختيار من متعدد — حتى 10 أسئلة في الخطة المدفوعة — لكل سؤال أربعة خيارات، وتحدد الإجابة الصحيحة؛ ولا يتطابق معك أحد إلا إذا أصابها كلها. هذا القيد انضباط مفيد — فالسؤال الذي له إجابة واحدة يمكن الدفاع عنها يجبرك على التحديد الدقيق لما تفكر فيه فعلًا، وهذا بالضبط ما يجعله جديرًا بالإجابة." },
   ],
   ru: [
     { type: "h2", text: "Четыре теста, которые должен пройти вопрос" },
@@ -161,7 +161,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "Вопросы, по которым сразу видно, что вы разослали их всем.",
     ] },
     { type: "h2", accent: "green", text: "Как писать вопросы в Qulo" },
-    { type: "p", text: "Qulo превращает это в саму механику: вы пишете от 2 до 10 вопросов с четырьмя вариантами ответа и отмечаете верный; человек совпадёт с вами, только если ответит правильно на все. Это ограничение — полезная дисциплина: вопрос с единственным защитимым ответом заставляет вас точно сформулировать, что вы на самом деле думаете, а именно это и делает его достойным ответа." },
+    { type: "p", text: "Qulo превращает это в саму механику: вы пишете от 2 до 4 вопросов — до 10 на платном тарифе — с четырьмя вариантами ответа и отмечаете верный; человек совпадёт с вами, только если ответит правильно на все. Это ограничение — полезная дисциплина: вопрос с единственным защитимым ответом заставляет вас точно сформулировать, что вы на самом деле думаете, а именно это и делает его достойным ответа." },
   ],
   pt: [
     { type: "h2", text: "Os quatro testes que uma pergunta precisa passar" },
@@ -184,7 +184,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "Perguntas que dá para ver que você mandou para todo mundo.",
     ] },
     { type: "h2", accent: "green", text: "Escrever perguntas no Qulo" },
-    { type: "p", text: "O Qulo transforma isso na mecânica em si: você escreve de 2 a 10 perguntas de múltipla escolha com quatro alternativas cada e marca a resposta certa; alguém só dá match com você acertando todas. Essa restrição é uma disciplina útil — uma pergunta com uma única resposta defensável obriga você a ser específico sobre o que realmente pensa, e é exatamente isso que a torna digna de resposta." },
+    { type: "p", text: "O Qulo transforma isso na mecânica em si: você escreve de 2 a 4 perguntas de múltipla escolha — até 10 num plano pago — com quatro alternativas cada e marca a resposta certa; alguém só dá match com você acertando todas. Essa restrição é uma disciplina útil — uma pergunta com uma única resposta defensável obriga você a ser específico sobre o que realmente pensa, e é exatamente isso que a torna digna de resposta." },
   ],
   it: [
     { type: "h2", text: "I quattro test che una domanda deve superare" },
@@ -207,7 +207,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "Domande che si capisce al volo che hai mandato a tutti.",
     ] },
     { type: "h2", accent: "green", text: "Scrivere domande su Qulo" },
-    { type: "p", text: "Qulo ne fa direttamente la meccanica: scrivi da 2 a 10 domande a scelta multipla con quattro opzioni ciascuna e segni la risposta giusta; qualcuno abbina con te solo indovinandole tutte. Questo vincolo è una disciplina utile — una domanda con una sola risposta difendibile ti costringe a essere preciso su ciò che pensi davvero, ed è esattamente questo che la rende degna di risposta." },
+    { type: "p", text: "Qulo ne fa direttamente la meccanica: scrivi da 2 a 4 domande a scelta multipla — fino a 10 con un piano a pagamento — con quattro opzioni ciascuna e segni la risposta giusta; qualcuno abbina con te solo indovinandole tutte. Questo vincolo è una disciplina utile — una domanda con una sola risposta difendibile ti costringe a essere preciso su ciò che pensi davvero, ed è esattamente questo che la rende degna di risposta." },
   ],
   ja: [
     { type: "h2", text: "質問が通らなければならない四つのテスト" },
@@ -230,7 +230,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "全員に送っていると一目で分かる質問。",
     ] },
     { type: "h2", accent: "green", text: "Quloで質問を書く" },
-    { type: "p", text: "Quloはこれをそのまま仕組みにしています。四択の質問を2問から10問書き、正解を指定します。相手はすべて正解したときだけあなたとマッチします。この制約はむしろ有用な規律です——筋の通った正解が一つしかない質問は、自分が本当は何を考えているのかをはっきりさせることを強いてきます。そしてそれこそが、答える価値を生むのです。" },
+    { type: "p", text: "Quloはこれをそのまま仕組みにしています。四択の質問を2〜4問（有料プランなら最大10問）書き、正解を指定します。相手はすべて正解したときだけあなたとマッチします。この制約はむしろ有用な規律です——筋の通った正解が一つしかない質問は、自分が本当は何を考えているのかをはっきりさせることを強いてきます。そしてそれこそが、答える価値を生むのです。" },
   ],
   ko: [
     { type: "h2", text: "질문이 통과해야 할 네 가지 시험" },
@@ -253,7 +253,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "모두에게 보냈다는 게 뻔히 보이는 질문.",
     ] },
     { type: "h2", accent: "green", text: "Qulo에서 질문 쓰기" },
-    { type: "p", text: "Qulo는 이것을 그대로 작동 방식으로 만들었습니다. 선택지가 네 개인 질문을 2개에서 10개까지 쓰고 정답을 표시하면, 상대는 전부 맞혔을 때만 당신과 매칭됩니다. 이 제약은 오히려 쓸모 있는 규율입니다 — 정답이 하나뿐인 질문은 자신이 정말로 무엇을 생각하는지 분명히 하도록 만들고, 바로 그 점이 답할 가치를 만듭니다." },
+    { type: "p", text: "Qulo는 이것을 그대로 작동 방식으로 만들었습니다. 선택지가 네 개인 질문을 2~4개(유료 플랜은 최대 10개) 쓰고 정답을 표시하면, 상대는 전부 맞혔을 때만 당신과 매칭됩니다. 이 제약은 오히려 쓸모 있는 규율입니다 — 정답이 하나뿐인 질문은 자신이 정말로 무엇을 생각하는지 분명히 하도록 만들고, 바로 그 점이 답할 가치를 만듭니다." },
   ],
   zh: [
     { type: "h2", text: "一个好问题要通过的四项检验" },
@@ -276,7 +276,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "一看就是群发给所有人的问题。",
     ] },
     { type: "h2", accent: "green", text: "在 Qulo 上写问题" },
-    { type: "p", text: "Qulo 直接把这件事变成了玩法：你写 2 到 10 道单选题，每道四个选项，并标出正确答案；只有全部答对的人才能和你配对。这个限制其实是一种有用的约束——一个只有唯一站得住脚答案的问题，会逼你把自己真正的想法说清楚，而这恰恰就是它值得被回答的原因。" },
+    { type: "p", text: "Qulo 直接把这件事变成了玩法：你写 2 到 4 道单选题（付费方案最多 10 道），每道四个选项，并标出正确答案；只有全部答对的人才能和你配对。这个限制其实是一种有用的约束——一个只有唯一站得住脚答案的问题，会逼你把自己真正的想法说清楚，而这恰恰就是它值得被回答的原因。" },
   ],
   nl: [
     { type: "h2", text: "De vier tests die een vraag moet doorstaan" },
@@ -299,7 +299,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "Vragen waaraan je ziet dat je ze naar iedereen hebt gestuurd.",
     ] },
     { type: "h2", accent: "green", text: "Vragen schrijven op Qulo" },
-    { type: "p", text: "Qulo maakt daar de spelregel zelf van: je schrijft 2 tot 10 meerkeuzevragen met elk vier opties en markeert het juiste antwoord; iemand matcht alleen met jou door ze allemaal goed te hebben. Die beperking is een nuttige discipline — een vraag met één verdedigbaar antwoord dwingt je om concreet te zijn over wat je echt vindt, en precies dat maakt haar het beantwoorden waard." },
+    { type: "p", text: "Qulo maakt daar de spelregel zelf van: je schrijft 2 tot 4 meerkeuzevragen — tot 10 met een betaald abonnement — met elk vier opties en markeert het juiste antwoord; iemand matcht alleen met jou door ze allemaal goed te hebben. Die beperking is een nuttige discipline — een vraag met één verdedigbaar antwoord dwingt je om concreet te zijn over wat je echt vindt, en precies dat maakt haar het beantwoorden waard." },
   ],
   pl: [
     { type: "h2", text: "Cztery testy, które musi przejść pytanie" },
@@ -322,7 +322,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "Pytania, po których widać, że zostały wysłane do wszystkich.",
     ] },
     { type: "h2", accent: "green", text: "Pisanie pytań w Qulo" },
-    { type: "p", text: "Qulo robi z tego samą mechanikę: piszesz od 2 do 10 pytań wielokrotnego wyboru, każde z czterema opcjami, i zaznaczasz poprawną odpowiedź; ktoś dopasuje się do ciebie tylko wtedy, gdy trafi we wszystkie. To ograniczenie jest pożyteczną dyscypliną — pytanie z jedną obronną odpowiedzią zmusza cię do sprecyzowania tego, co naprawdę myślisz, a właśnie to sprawia, że warto na nie odpowiedzieć." },
+    { type: "p", text: "Qulo robi z tego samą mechanikę: piszesz od 2 do 4 pytań wielokrotnego wyboru — do 10 w planie płatnym — każde z czterema opcjami, i zaznaczasz poprawną odpowiedź; ktoś dopasuje się do ciebie tylko wtedy, gdy trafi we wszystkie. To ograniczenie jest pożyteczną dyscypliną — pytanie z jedną obronną odpowiedzią zmusza cię do sprecyzowania tego, co naprawdę myślisz, a właśnie to sprawia, że warto na nie odpowiedzieć." },
   ],
   sv: [
     { type: "h2", text: "De fyra testerna en fråga måste klara" },
@@ -345,7 +345,7 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "Frågor som det syns att du har skickat till alla.",
     ] },
     { type: "h2", accent: "green", text: "Att skriva frågor på Qulo" },
-    { type: "p", text: "Qulo gör precis det till själva mekaniken: du skriver 2 till 10 flervalsfrågor med fyra alternativ var och markerar rätt svar; någon matchar med dig bara genom att få alla rätt. Den begränsningen är en nyttig disciplin — en fråga med ett enda försvarbart svar tvingar dig att bli konkret om vad du faktiskt tycker, och det är precis det som gör den värd att svara på." },
+    { type: "p", text: "Qulo gör precis det till själva mekaniken: du skriver 2 till 4 flervalsfrågor — upp till 10 med ett betalt abonnemang — med fyra alternativ var och markerar rätt svar; någon matchar med dig bara genom att få alla rätt. Den begränsningen är en nyttig disciplin — en fråga med ett enda försvarbart svar tvingar dig att bli konkret om vad du faktiskt tycker, och det är precis det som gör den värd att svara på." },
   ],
   hi: [
     { type: "h2", text: "हर सवाल को पास करने होते हैं ये चार इम्तिहान" },
@@ -368,6 +368,6 @@ export const whatMakesAGoodDatingAppQuestion: LocalizedArticle = {
       "ऐसे सवाल जिन्हें देखकर साफ़ लगे कि आपने सबको यही भेजा है।",
     ] },
     { type: "h2", accent: "green", text: "Qulo पर सवाल लिखना" },
-    { type: "p", text: "Qulo इसी को खेल का नियम बना देता है: आप चार-चार विकल्पों वाले 2 से 10 सवाल लिखते हैं और सही जवाब चुन देते हैं; कोई आपसे तभी मैच करता है जब वह सारे सवाल सही कर ले। यह पाबंदी असल में एक काम का अनुशासन है — जिस सवाल का सिर्फ़ एक टिकाऊ जवाब हो, वह आपको यह साफ़ करने पर मजबूर करता है कि आप सच में क्या सोचते हैं, और यही उसे जवाब देने लायक बनाता है।" },
+    { type: "p", text: "Qulo इसी को खेल का नियम बना देता है: आप चार-चार विकल्पों वाले 2 से 4 सवाल — भुगतान वाली योजना में 10 तक — लिखते हैं और सही जवाब चुन देते हैं; कोई आपसे तभी मैच करता है जब वह सारे सवाल सही कर ले। यह पाबंदी असल में एक काम का अनुशासन है — जिस सवाल का सिर्फ़ एक टिकाऊ जवाब हो, वह आपको यह साफ़ करने पर मजबूर करता है कि आप सच में क्या सोचते हैं, और यही उसे जवाब देने लायक बनाता है।" },
   ],
 };

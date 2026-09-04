@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Qulo — Ontmoet via Vragen",
-    "description": "Maak vragen, deel ze en match met de persoon die het juiste antwoord geeft. AI-aangedreven next-gen dating-app."
+    "description": "Maak vragen, deel ze en match met de persoon die het juiste antwoord geeft. Daten via vragen in plaats van swipen."
   },
   "nav": {
     "download": "Downloaden",
@@ -32,7 +32,7 @@
     "title1": "Hoe",
     "title2": "werkt het?",
     "step1Title": "Vragen maken",
-    "step1Desc": "Maak 2-10 vragen die jouw persoonlijkheid weerspiegelen",
+    "step1Desc": "Maak 2 tot 4 vragen die jouw persoonlijkheid weerspiegelen",
     "step1Detail": "Elke vraag is een venster dat je voorstelt.",
     "step2Title": "Ontdek & Los op",
     "step2Desc": "Beantwoord vragen van andere gebruikers",
@@ -71,9 +71,9 @@
       "desc": "Verdien badges naarmate je vordert, level up met mijlpalen. Verrijk je profiel."
     },
     "ai": {
-      "title": "AI-vraagcreatie",
-      "subtitle": "AI-aangedreven",
-      "desc": "Maak boeiende vragen met AI. Vind de vragen die jouw persoonlijkheid het best weerspiegelen."
+      "title": "Vraagsuggesties",
+      "subtitle": "Vooraf met AI geschreven",
+      "desc": "Kies uit een bibliotheek met kant-en-klare vragen, vooraf met AI geschreven. Vind de vragen die jouw persoonlijkheid het best weerspiegelen."
     },
     "premium": {
       "title": "Premiumplannen",
@@ -111,8 +111,8 @@
     "diff3QuloDesc": "Diamanten, badges, niveaus en speciale krachten",
     "diff4OthersTitle": "Aan het toeval overlaten",
     "diff4OthersDesc": "Wat het algoritme toont",
-    "diff4QuloTitle": "AI-aangedreven matching",
-    "diff4QuloDesc": "AI-gepersonaliseerde vraagsuggesties"
+    "diff4QuloTitle": "Jij bepaalt de filter",
+    "diff4QuloDesc": "Jouw vragen bepalen wie jou bereikt"
   },
   "stats": {
     "questions": "Gemaakte vragen",
@@ -157,7 +157,7 @@
       "matching_how_q": "Hoe werkt matching?",
       "matching_how_a": "Maak vragen en laat andere gebruikers ze oplossen. Juiste antwoorden leiden tot een match.",
       "matching_questions_q": "Hoe maak ik een vraag?",
-      "matching_questions_a": "Tik op de '+'-knop op het hoofdscherm. Voeg 2 tot 10 vragen toe, voer 4 opties in voor elke vraag en markeer het juiste antwoord.",
+      "matching_questions_a": "Tik op de '+'-knop op het hoofdscherm. Voeg 2 tot 4 vragen toe — tot 10 met een betaald abonnement —, voer 4 opties in voor elke vraag en markeer het juiste antwoord.",
       "diamonds_what_q": "Waarvoor worden diamanten gebruikt?",
       "diamonds_what_a": "Groene diamanten worden gebruikt om krachten te activeren, terwijl paarse diamanten speciale functies ontgrendelen.",
       "diamonds_buy_q": "Hoe koop ik diamanten?",
@@ -191,7 +191,6 @@
     "blog": "Blog",
     "help": "Help",
     "cities": "Steden",
-    "compare": "Vergelijken",
     "glossary": "Woordenlijst",
     "statistics": "Statistieken",
     "press": "Pers",
@@ -201,7 +200,6 @@
     "trends": "Trends",
     "sitemap": "Sitemap",
     "pricing": "Prijzen",
-    "reviews": "Beoordelingen",
     "guidelines": "Communityrichtlijnen",
     "safety": "Veiligheidstips",
     "childSafety": "Kinderveiligheid",
@@ -213,7 +211,7 @@
     "introTitle": "Inleiding",
     "intro": "Welkom bij Qulo (\"App\", \"wij\", \"ons\" of \"onze\"). Qulo is een op vragen gebaseerde datingapplicatie ontwikkeld door Berkant Çalıkuşu, een individuele ontwikkelaar gevestigd in Istanbul, Turkije.\n\nDit Privacybeleid legt uit hoe wij uw persoonsgegevens verzamelen, gebruiken, opslaan en beschermen wanneer u Qulo gebruikt. Wij zetten ons in voor de bescherming van uw privacy in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG/GDPR), de Turkse Wet Bescherming Persoonsgegevens (KVKK, Wet nr. 6698) en andere toepasselijke wetgeving inzake gegevensbescherming.\n\nDoor een account aan te maken of Qulo te gebruiken, erkent u dat u dit Privacybeleid hebt gelezen en begrepen.",
     "dataCollectionTitle": "Informatie die wij verzamelen",
-    "dataCollection": "Wij verzamelen de volgende categorieën persoonsgegevens:\n\n• Accountinformatie: E-mailadres, wachtwoord (bcrypt-gehasht — wij slaan nooit wachtwoorden in platte tekst op), geboortedatum (ter verificatie van 18+ leeftijd), weergavenaam en geslacht.\n\n• Profielgegevens: Profielfoto's, biotekst, door u gemaakte vragen (2–10 vragen per gebruiker) en uw antwoorden op vragen van andere gebruikers.\n\n• Locatiegegevens: GPS-coördinaten wanneer u de Ontdek-functie gebruikt (om gebruikers in de buurt te tonen) en Paspoortmodus (alleen Premium, om gebruikers op andere locaties te bekijken). Locatie wordt alleen verzameld terwijl de app in gebruik is en uitsluitend met uw uitdrukkelijke toestemming.\n\n• Gebruiks- en analysegegevens: Firebase Analytics verzamelt geanonimiseerde app-gebruiksgegevens (bekeken schermen, gebruikte functies, sessieduur) met een bewaartermijn van 14 maanden. Firebase Crashlytics verzamelt crashrapporten en apparaatdiagnostiek met een bewaartermijn van 90 dagen.\n\n• Transactiegegevens: Geschiedenis van in-app aankopen verwerkt via Apple App Store of Google Play via RevenueCat. Wij verzamelen of bewaren geen betaalkaartgegevens.\n\n• Chatgegevens: Berichten uitgewisseld tussen gematchte gebruikers, inclusief chatvragen en hun antwoorden.\n\n• Diamant- en activiteitsgegevens: Groene diamantinkomsten, paarse diamantaankopen, gebruik van krachten (Oracle, Half, Skip, Time Extend, Hint, Skip All), badges, niveaus en gameplay-statistieken.\n\n• Aanmeldidentificatoren: Als je ervoor kiest om in te loggen met Google of Apple, ontvangen we van die aanbieder een account-identificatie en, voor zover je dat toestaat, je naam en e-mailadres. We ontvangen nooit je wachtwoord van Google of Apple.\n\n• Chatmedia: Foto's en spraakberichten die je binnen een gesprek verstuurt. Spraakberichten vereisen toegang tot de microfoon; die wordt pas gevraagd op het moment dat je opneemt.\n\n• Advertentie- en meetgegevens: App-gebeurtenissen zoals app-opens, registraties en aankopen en — als je tracking toestaat — de advertentie-identificatie van je apparaat (IDFA op iOS, advertentie-ID op Android). Deze worden uitsluitend gebruikt om de prestaties van onze eigen advertentiecampagnes te meten.\n\n• Feedback bij accountverwijdering: Als je bij het verwijderen van je account vrijwillig een reden opgeeft, bewaren we die reden samen met de app-versie, het platform en de taal.",
+    "dataCollection": "Wij verzamelen de volgende categorieën persoonsgegevens:\n\n• Accountinformatie: E-mailadres, wachtwoord (bcrypt-gehasht — wij slaan nooit wachtwoorden in platte tekst op), geboortedatum (ter verificatie van 18+ leeftijd), weergavenaam en geslacht.\n\n• Profielgegevens: Profielfoto's, biotekst, door u gemaakte vragen (2–4 vragen per gebruiker, tot 10 met een betaald abonnement) en uw antwoorden op vragen van andere gebruikers.\n\n• Locatiegegevens: GPS-coördinaten wanneer u de Ontdek-functie gebruikt (om gebruikers in de buurt te tonen) en Paspoortmodus (alleen Premium, om gebruikers op andere locaties te bekijken). Locatie wordt alleen verzameld terwijl de app in gebruik is en uitsluitend met uw uitdrukkelijke toestemming.\n\n• Gebruiks- en analysegegevens: Firebase Analytics verzamelt geanonimiseerde app-gebruiksgegevens (bekeken schermen, gebruikte functies, sessieduur) met een bewaartermijn van 14 maanden. Firebase Crashlytics verzamelt crashrapporten en apparaatdiagnostiek met een bewaartermijn van 90 dagen.\n\n• Transactiegegevens: Geschiedenis van in-app aankopen verwerkt via Apple App Store of Google Play via RevenueCat. Wij verzamelen of bewaren geen betaalkaartgegevens.\n\n• Chatgegevens: Berichten uitgewisseld tussen gematchte gebruikers, inclusief chatvragen en hun antwoorden.\n\n• Diamant- en activiteitsgegevens: Groene diamantinkomsten, paarse diamantaankopen, gebruik van krachten (Oracle, Half, Skip, Time Extend, Hint, Skip All), badges, niveaus en gameplay-statistieken.\n\n• Aanmeldidentificatoren: Als je ervoor kiest om in te loggen met Google of Apple, ontvangen we van die aanbieder een account-identificatie en, voor zover je dat toestaat, je naam en e-mailadres. We ontvangen nooit je wachtwoord van Google of Apple.\n\n• Chatmedia: Foto's en spraakberichten die je binnen een gesprek verstuurt. Spraakberichten vereisen toegang tot de microfoon; die wordt pas gevraagd op het moment dat je opneemt.\n\n• Advertentie- en meetgegevens: App-gebeurtenissen zoals app-opens, registraties en aankopen en — als je tracking toestaat — de advertentie-identificatie van je apparaat (IDFA op iOS, advertentie-ID op Android). Deze worden uitsluitend gebruikt om de prestaties van onze eigen advertentiecampagnes te meten.\n\n• Feedback bij accountverwijdering: Als je bij het verwijderen van je account vrijwillig een reden opgeeft, bewaren we die reden samen met de app-versie, het platform en de taal.",
     "dataNotCollectedTitle": "Informatie die wij NIET verzamelen",
     "dataNotCollected": "Wij willen transparant zijn over wat wij niet verzamelen:\n\n• Telefoonnummer of telefooncontacten\n• Browsegeschiedenis buiten Qulo\n• Biometrische gegevens (vingerafdruk, gezichtsscan)\n• Door de overheid uitgegeven identiteitsbewijs of identiteitsdocumenten\n• Financiële informatie of creditcardnummers\n• Gegevens van andere apps op uw apparaat",
     "usageTitle": "Hoe wij uw gegevens gebruiken en de rechtsgrondslag",
@@ -304,18 +302,18 @@
     "subtitle": "Vragengebaseerde matching",
     "hero": "Geen swipe-moeheid meer. Ontmoet via je vragen met Qulo.",
     "whatIsQulo": "Wat is Qulo?",
-    "whatIsQuloDesc": "Qulo is een dating-platform van de volgende generatie dat een vraag-en-antwoord-mechanisme gebruikt in plaats van traditioneel swipen. Maak 2-10 vragen, andere gebruikers lossen ze op en je matcht met degene die alles goed beantwoordt.",
+    "whatIsQuloDesc": "Qulo is een dating-platform van de volgende generatie dat een vraag-en-antwoord-mechanisme gebruikt in plaats van traditioneel swipen. Je maakt je vragen — 2 tot 4 met het gratis abonnement, tot 10 met een betaald abonnement — andere gebruikers lossen ze op en je matcht met degene die alles goed beantwoordt.",
     "whyDifferent": "Waarom is Qulo anders?",
     "whyDifferentDesc": "Bij Qulo is matching gebaseerd op wederzijds begrip. Uiterlijk is maar een deel van het verhaal: hoe je denkt telt net zo zwaar, en jouw vragen brengen de juiste persoon dichterbij.",
     "howItWorks": "Hoe werkt het?",
-    "step1": "Maak vragen — 2-10 vragen die je persoonlijkheid weerspiegelen",
+    "step1": "Maak vragen — 2 tot 4 vragen die je persoonlijkheid weerspiegelen",
     "step2": "Ontdek en los op — Los de vragen van andere gebruikers op",
     "step3": "Match — Beantwoord alle vragen correct en maak een verbinding",
     "step4": "Chat en ontmoet — Begin met een echte verbinding",
     "swipeFatigue": "Wat is swipe-moeheid?",
     "swipeFatigueDesc": "Swipe-moeheid is de burn-out die gebruikers voelen door constant te swipen. Qulo lost dit probleem volledig op.",
-    "aiPowered": "AI-gestuurde suggesties",
-    "aiPoweredDesc": "Kunstmatige intelligentie drijft vraagensuggesties en het ontdekkingsalgoritme aan.",
+    "aiPowered": "Kant-en-klare vraagsuggesties",
+    "aiPoweredDesc": "Weet je niet wat je moet vragen? Qulo heeft een bibliotheek met kant-en-klare vragen, vooraf met AI geschreven en in de app opgeslagen — op dit moment in 10 talen. Blader door de suggesties, kies de vragen die bij je passen en pas ze vrij aan. Met wie je matcht, wordt nog steeds door één ding bepaald: wie al je vragen goed beantwoordt.",
     "globalCommunity": "Wereldwijde community",
     "globalCommunityDesc": "Met ondersteuning voor 16 talen laat Qulo je mensen ontmoeten van over de hele wereld.",
     "downloadCta": "Nu downloaden",

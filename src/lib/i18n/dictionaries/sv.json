@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Qulo — Möts genom frågor",
-    "description": "Skapa frågor, dela dem, matcha med personen som svarar rätt. AI-driven nästa generations dejtingapp."
+    "description": "Skapa frågor, dela dem, matcha med personen som svarar rätt. Dejting genom frågor i stället för swipe."
   },
   "nav": {
     "download": "Ladda ner",
@@ -32,7 +32,7 @@
     "title1": "Hur",
     "title2": "fungerar det?",
     "step1Title": "Skapa frågor",
-    "step1Desc": "Skapa 2-10 frågor som speglar din personlighet",
+    "step1Desc": "Skapa 2 till 4 frågor som speglar din personlighet",
     "step1Detail": "Varje fråga är ett fönster som presenterar dig.",
     "step2Title": "Utforska & Lös",
     "step2Desc": "Svara på andra användares frågor",
@@ -71,9 +71,9 @@
       "desc": "Tjäna märken när du avancerar, gå upp i nivå med milstolpar. Berika din profil."
     },
     "ai": {
-      "title": "AI-frågeskapande",
-      "subtitle": "AI-driven",
-      "desc": "Skapa engagerande frågor med AI. Hitta frågorna som bäst speglar din personlighet."
+      "title": "Frågeförslag",
+      "subtitle": "Skrivna i förväg med AI",
+      "desc": "Välj bland ett bibliotek av färdiga frågor, skrivna i förväg med AI. Hitta de som bäst speglar din personlighet."
     },
     "premium": {
       "title": "Premiumplaner",
@@ -111,8 +111,8 @@
     "diff3QuloDesc": "Diamanter, märken, nivåer och speciella krafter",
     "diff4OthersTitle": "Lämna åt slumpen",
     "diff4OthersDesc": "Vad algoritmen visar",
-    "diff4QuloTitle": "AI-driven matchning",
-    "diff4QuloDesc": "AI-personaliserade frågeförslag"
+    "diff4QuloTitle": "Du sätter filtret",
+    "diff4QuloDesc": "Dina frågor avgör vem som når fram till dig"
   },
   "stats": {
     "questions": "Skapade frågor",
@@ -157,7 +157,7 @@
       "matching_how_q": "Hur fungerar matchning?",
       "matching_how_a": "Skapa frågor och låt andra användare lösa dem. Rätta svar leder till en match.",
       "matching_questions_q": "Hur skapar jag en fråga?",
-      "matching_questions_a": "Tryck på '+'-knappen på huvudskärmen. Lägg till 2 till 10 frågor, ange 4 alternativ för varje och markera det rätta svaret.",
+      "matching_questions_a": "Tryck på '+'-knappen på huvudskärmen. Lägg till 2 till 4 frågor — upp till 10 med ett betalabonnemang — ange 4 alternativ för varje och markera det rätta svaret.",
       "diamonds_what_q": "Vad används diamanter till?",
       "diamonds_what_a": "Gröna diamanter används för att aktivera krafter, medan lila diamanter låser upp specialfunktioner.",
       "diamonds_buy_q": "Hur köper jag diamanter?",
@@ -190,8 +190,7 @@
     "about": "Om oss",
     "blog": "Blogg",
     "help": "Hjälp",
-    "cities": "Stader",
-    "compare": "Jamfor",
+    "cities": "Städer",
     "glossary": "Ordlista",
     "statistics": "Statistik",
     "press": "Press",
@@ -201,7 +200,6 @@
     "trends": "Trender",
     "sitemap": "Webbplatskarta",
     "pricing": "Priser",
-    "reviews": "Recensioner",
     "guidelines": "Communityregler",
     "safety": "Säkerhetstips",
     "childSafety": "Barnsäkerhet",
@@ -213,7 +211,7 @@
     "introTitle": "Introduktion",
     "intro": "Välkommen till Qulo (\"Appen\", \"vi\", \"oss\" eller \"vår\"). Qulo är en frågebaserad dejtingapplikation utvecklad av Berkant Çalıkuşu, en enskild utvecklare baserad i Istanbul, Turkiet.\n\nDenna integritetspolicy förklarar hur vi samlar in, använder, lagrar och skyddar dina personuppgifter när du använder Qulo. Vi är engagerade i att skydda din integritet i enlighet med den allmänna dataskyddsförordningen (GDPR), den turkiska lagen om skydd av personuppgifter (KVKK, lag nr 6698) och andra tillämpliga dataskyddslagar.\n\nGenom att skapa ett konto eller använda Qulo bekräftar du att du har läst och förstått denna integritetspolicy.",
     "dataCollectionTitle": "Information vi samlar in",
-    "dataCollection": "Vi samlar in följande kategorier av personuppgifter:\n\n• Kontoinformation: E-postadress, lösenord (bcrypt-hashat — vi lagrar aldrig lösenord i klartext), födelsedatum (för att verifiera 18+ ålder), visningsnamn och kön.\n\n• Profildata: Profilfoton, biotext, frågor du skapar (2–10 frågor per användare) och dina svar på andra användares frågor.\n\n• Platsdata: GPS-koordinater när du använder Utforska-funktionen (för att visa användare i närheten) och Passportläge (endast Premium, för att bläddra bland användare på andra platser). Platsdata samlas endast in när appen används och endast med ditt uttryckliga tillstånd.\n\n• Användnings- och analysdata: Firebase Analytics samlar in anonymiserad appanvändningsdata (visade skärmar, använda funktioner, sessionslängd) med en lagringsperiod på 14 månader. Firebase Crashlytics samlar in kraschrapporter och enhetsdiagnostik med en lagringsperiod på 90 dagar.\n\n• Transaktionsdata: Historik över köp i appen som behandlas via Apple App Store eller Google Play genom RevenueCat. Vi samlar inte in eller lagrar betalkortsuppgifter.\n\n• Chattdata: Meddelanden som utbyts mellan matchade användare, inklusive chattfrågor och deras svar.\n\n• Diamant- och aktivitetsdata: Gröna diamantintäkter, lila diamantköp, kraftanvändning (Oracle, Half, Skip, Time Extend, Hint, Skip All), märken, nivåer och spelstatistik.\n\n• Inloggningsidentifierare: Om du väljer att logga in med Google eller Apple får vi en kontoidentifierare från den leverantören och, i den mån du tillåter det, ditt namn och din e-postadress. Vi får aldrig ditt lösenord hos Google eller Apple.\n\n• Chattmedia: Foton och röstmeddelanden som du skickar i en konversation. Röstmeddelanden kräver åtkomst till mikrofonen, vilket efterfrågas först när du spelar in.\n\n• Annons- och mätdata: Apphändelser som appöppningar, registreringar och köp samt — om du tillåter spårning — enhetens annonsidentifierare (IDFA på iOS, annons-ID på Android). De används enbart för att mäta resultatet av våra egna annonskampanjer.\n\n• Feedback vid kontoradering: Om du frivilligt anger varför du raderar ditt konto sparar vi den anledningen tillsammans med appversion, plattform och språk.",
+    "dataCollection": "Vi samlar in följande kategorier av personuppgifter:\n\n• Kontoinformation: E-postadress, lösenord (bcrypt-hashat — vi lagrar aldrig lösenord i klartext), födelsedatum (för att verifiera 18+ ålder), visningsnamn och kön.\n\n• Profildata: Profilfoton, biotext, frågor du skapar (2–4 frågor per användare, upp till 10 med ett betalabonnemang) och dina svar på andra användares frågor.\n\n• Platsdata: GPS-koordinater när du använder Utforska-funktionen (för att visa användare i närheten) och Passportläge (endast Premium, för att bläddra bland användare på andra platser). Platsdata samlas endast in när appen används och endast med ditt uttryckliga tillstånd.\n\n• Användnings- och analysdata: Firebase Analytics samlar in anonymiserad appanvändningsdata (visade skärmar, använda funktioner, sessionslängd) med en lagringsperiod på 14 månader. Firebase Crashlytics samlar in kraschrapporter och enhetsdiagnostik med en lagringsperiod på 90 dagar.\n\n• Transaktionsdata: Historik över köp i appen som behandlas via Apple App Store eller Google Play genom RevenueCat. Vi samlar inte in eller lagrar betalkortsuppgifter.\n\n• Chattdata: Meddelanden som utbyts mellan matchade användare, inklusive chattfrågor och deras svar.\n\n• Diamant- och aktivitetsdata: Gröna diamantintäkter, lila diamantköp, kraftanvändning (Oracle, Half, Skip, Time Extend, Hint, Skip All), märken, nivåer och spelstatistik.\n\n• Inloggningsidentifierare: Om du väljer att logga in med Google eller Apple får vi en kontoidentifierare från den leverantören och, i den mån du tillåter det, ditt namn och din e-postadress. Vi får aldrig ditt lösenord hos Google eller Apple.\n\n• Chattmedia: Foton och röstmeddelanden som du skickar i en konversation. Röstmeddelanden kräver åtkomst till mikrofonen, vilket efterfrågas först när du spelar in.\n\n• Annons- och mätdata: Apphändelser som appöppningar, registreringar och köp samt — om du tillåter spårning — enhetens annonsidentifierare (IDFA på iOS, annons-ID på Android). De används enbart för att mäta resultatet av våra egna annonskampanjer.\n\n• Feedback vid kontoradering: Om du frivilligt anger varför du raderar ditt konto sparar vi den anledningen tillsammans med appversion, plattform och språk.",
     "dataNotCollectedTitle": "Information vi INTE samlar in",
     "dataNotCollected": "Vi vill vara transparenta om vad vi inte samlar in:\n\n• Telefonnummer eller telefonkontakter\n• Surfhistorik utanför Qulo\n• Biometriska data (fingeravtryck, ansiktsskanning)\n• Statlig identitetshandling eller identitetsdokument\n• Finansiell information eller kreditkortsnummer\n• Data från andra appar på din enhet",
     "usageTitle": "Hur vi använder dina data och rättslig grund",
@@ -304,18 +302,18 @@
     "subtitle": "Frågebaserad matchning",
     "hero": "Slut på swipe-trötthet. Träffa genom dina frågor med Qulo.",
     "whatIsQulo": "Vad är Qulo?",
-    "whatIsQuloDesc": "Qulo är en dejtingplattform av nästa generation som använder ett fråga-och-svar-mekanik istället för traditionell swipning. Skapa 2-10 frågor, andra användare löser dem och du matchar med den som svarar rätt på alla.",
+    "whatIsQuloDesc": "Qulo är en dejtingplattform av nästa generation som använder ett fråga-och-svar-mekanik istället för traditionell swipning. Du skapar dina frågor — 2 till 4 i gratisplanen, upp till 10 med ett betalabonnemang — andra användare löser dem och du matchar med den som svarar rätt på alla.",
     "whyDifferent": "Varför är Qulo annorlunda?",
     "whyDifferentDesc": "Med Qulo bygger matchningen på ömsesidig förståelse. Utseendet är bara en del: hur du tänker väger lika tungt, och det är dina frågor som för rätt person närmare.",
     "howItWorks": "Hur fungerar det?",
-    "step1": "Skapa frågor — 2-10 frågor som speglar din personlighet",
+    "step1": "Skapa frågor — 2 till 4 frågor som speglar din personlighet",
     "step2": "Upptäck och lös — Lös andra användares frågor",
     "step3": "Matcha — Svara rätt på alla frågor och skapa en koppling",
     "step4": "Chatta och träffas — Börja med en riktig koppling",
     "swipeFatigue": "Vad är swipe-trötthet?",
     "swipeFatigueDesc": "Swipe-trötthet är utmattningen användare känner av att ständigt swipa. Qulo eliminerar detta problem helt.",
-    "aiPowered": "AI-drivna förslag",
-    "aiPoweredDesc": "Artificiell intelligens driver frågeförslag och upptäcktsalgoritmen.",
+    "aiPowered": "Färdiga frågeförslag",
+    "aiPoweredDesc": "Vet du inte vad du ska fråga? Qulo har ett bibliotek med färdiga frågor, skrivna i förväg med AI och sparade i appen — just nu på 10 språk. Bläddra bland förslagen, välj de som låter som du och ändra dem fritt. Vem du matchar med avgörs fortfarande av en enda sak: vem som svarar rätt på alla dina frågor.",
     "globalCommunity": "Globalt community",
     "globalCommunityDesc": "Med stöd för 16 språk låter Qulo dig träffa människor från hela världen.",
     "downloadCta": "Ladda ner nu",
