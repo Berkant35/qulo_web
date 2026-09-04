@@ -114,6 +114,10 @@ export default async function LocaleLayout({
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      // Stable identity. /press declares a richer Organization (founder,
+      // address, contactPoint); sharing an `@id` makes the two one entity
+      // instead of two competing ones on that page.
+      "@id": `${SITE_URL}/#organization`,
       name: SITE_NAME,
       url: SITE_URL,
       logo: `${SITE_URL}/images/og-image.png`,

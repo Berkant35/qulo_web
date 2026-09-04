@@ -88,17 +88,10 @@ export default async function FeatureLandingPage({
   const description = landing.descriptions[locale] || landing.descriptions.en;
   const faqs = getFeatureFaqs(slug, locale);
 
+  // The app itself is declared once site-wide by the localized root layout.
+  // Repeating it here produced two SoftwareApplication nodes on every one of
+  // these pages; the remaining WebPage still describes the app via `about`.
   const jsonLdData = [
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name: SITE_NAME,
-      applicationCategory: "SocialNetworkingApplication",
-      operatingSystem: "iOS, Android",
-      url: SITE_URL,
-      description,
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-    },
     {
       "@context": "https://schema.org",
       "@type": "WebPage",

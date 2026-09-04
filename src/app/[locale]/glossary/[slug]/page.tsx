@@ -96,8 +96,9 @@ export default async function GlossaryTermPage({
     })
     .filter((value): value is { slug: string; emoji: string; name: string } => value !== null);
 
-  // DefinedTerm for the term itself and a BreadcrumbList for its place in the
-  // tree. Both describe content that is visibly on this page.
+  // DefinedTerm only. The visible <Breadcrumb> component emits its own
+  // BreadcrumbList — richer, since it starts at the home page — so declaring a
+  // second one here put two competing trails on all 432 term pages.
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -110,19 +111,6 @@ export default async function GlossaryTermPage({
         name: labels.hubTitle,
         url: `${SITE_URL}/${locale}/glossary`,
       },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: labels.hubTitle,
-          item: `${SITE_URL}/${locale}/glossary`,
-        },
-        { "@type": "ListItem", position: 2, name: entry.term },
-      ],
     },
   ];
 

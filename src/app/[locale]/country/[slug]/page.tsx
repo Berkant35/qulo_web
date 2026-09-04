@@ -387,27 +387,12 @@ export default async function CountryDetailPage({
     url: `${SITE_URL}/${locale}/country/${slug}`,
   };
 
-  const appJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Qulo",
-    operatingSystem: "iOS, Android",
-    applicationCategory: "SocialNetworkingApplication",
-    url: SITE_URL,
-    description: (DESC_TEMPLATES[locale] || DESC_TEMPLATES.en)(countryName, country.population),
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
 
   return (
     <main className="min-h-screen bg-qulo-bg text-white">
       <Navbar />
 
       <JsonLd data={countryJsonLd} />
-      <JsonLd data={appJsonLd} />
 
       {/* Hero Section */}
       <section className="pt-28 pb-16 px-6 text-center">

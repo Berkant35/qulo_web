@@ -276,6 +276,9 @@ export default async function PressPage({
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    // Same `@id` as the site-wide Organization in the root layout, so this
+    // richer declaration merges into that entity rather than competing with it.
+    "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/brand/purple_diamond.svg`,

@@ -379,27 +379,12 @@ export default async function DatingCityPage({
     },
   };
 
-  const appJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Qulo",
-    operatingSystem: "iOS, Android",
-    applicationCategory: "SocialNetworkingApplication",
-    url: SITE_URL,
-    description: (DESC_TEMPLATES[locale] || DESC_TEMPLATES.en)(cityName, countryName),
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
 
   return (
     <main className="min-h-screen bg-qulo-bg text-white">
       <Navbar />
 
       <JsonLd data={placeJsonLd} />
-      <JsonLd data={appJsonLd} />
 
       {/* Hero Section */}
       <section className="pt-28 pb-16 px-6 text-center">
