@@ -1,6 +1,7 @@
 /**
- * Structural parity guard for the structured blog articles in
- * `src/app/[locale]/blog/[slug]/_content/`.
+ * Structural parity guard for the structured articles in
+ * `src/app/[locale]/blog/[slug]/_content/` and
+ * `src/app/[locale]/advice/[slug]/_content/`.
  *
  * Each article must exist in all 16 locales, and every locale must mirror `en`
  * exactly in block-type sequence, `accent: "green"` indices and `ul` item
@@ -15,11 +16,14 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const LOCALES = ["tr","en","de","fr","es","ar","ru","pt","it","ja","ko","zh","nl","pl","sv","hi"];
-const DIR = "src/app/[locale]/blog/[slug]/_content";
+const DIRS = [
+  "src/app/[locale]/blog/[slug]/_content",
+  "src/app/[locale]/advice/[slug]/_content",
+];
 
 /** Evaluate the exported object literal without importing TypeScript. */
 function loadArticle(file) {
-  const src = readFileSync(join(DIR, file), "utf8");
+  const src = readFileSync(file, "utf8");
   const start = src.indexOf(": LocalizedArticle = ");
   if (start < 0) throw new Error(`${file}: no LocalizedArticle export found`);
   const literal = src.slice(src.indexOf("{", start)).replace(/;\s*$/, "");
@@ -33,7 +37,12 @@ const shape = (blocks) => ({
 });
 
 const errors = [];
-const files = readdirSync(DIR).filter((f) => f.endsWith(".ts")).sort();
+const files = DIRS.flatMap((dir) =>
+  readdirSync(dir)
+    .filter((f) => f.endsWith(".ts"))
+    .sort()
+    .map((f) => join(dir, f)),
+);
 
 for (const file of files) {
   const article = loadArticle(file);
@@ -59,7 +68,7 @@ for (const file of files) {
   }
 
   console.log(
-    `${present.length === 16 ? "OK  " : "??  "} ${file.padEnd(42)} ` +
+    `${present.length === 16 ? "OK  " : "??  "} ${file.split("/").pop().padEnd(42)} ` +
       `${present.length} locales · ${article.en.length} blocks · green [${ref.green}] · ul [${ref.uls}]`,
   );
 }
@@ -69,4 +78,6 @@ if (errors.length) {
   for (const e of errors) console.error(`  - ${e}`);
   process.exit(1);
 }
-console.log(`\nPASS — ${files.length} articles, all 16 locales structurally identical to en`);
+console.log(
+  `\nPASS — ${files.length} articles across ${DIRS.length} trees, all 16 locales structurally identical to en`,
+);

@@ -3,14 +3,46 @@
   <channel>
     <title>Qulo Blog</title>
     <link>https://quloapp.com/en/blog</link>
-    <description>Dating insights, relationship tips, and the future of meeting new people</description>
+    <description>How people actually meet, and what happens when matching runs on questions instead of photos.</description>
     <language>en</language>
     <copyright>© 2026 Qulo. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 16 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://quloapp.com/feed.xml" rel="self" type="application/rss+xml" />
 
     <item>
-      <title>Why Introverts Are Choosing Quiz Dating Apps Over Tinder</title>
+      <title>The Question Deficit: Why You Both Left Thinking the Other One Wasn&apos;t Curious</title>
+      <link>https://quloapp.com/en/blog/the-question-deficit</link>
+      <description>You left thinking the other person wasn’t curious about you. They left thinking exactly the same about you. Both of you are sincere — we all ask fewer questions than we believe we do, and what earns a second date is the follow-up: the question built out of what the other person just said.</description>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://quloapp.com/en/blog/the-question-deficit</guid>
+    </item>
+
+    <item>
+      <title>Why “Hey” Gets Ignored: The Psychology of a First Message That Gets a Reply</title>
+      <link>https://quloapp.com/en/blog/psychology-of-the-first-message</link>
+      <description>A bare greeting asks for nothing, so it gets nothing back. Harvard’s conversation research shows what actually earns a reply — and how Qulo builds that question into every match.</description>
+      <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://quloapp.com/en/blog/psychology-of-the-first-message</guid>
+    </item>
+
+    <item>
+      <title>Your &apos;Type&apos; Doesn&apos;t Predict Love: What Actually Predicts Compatibility</title>
+      <link>https://quloapp.com/en/blog/what-actually-predicts-compatibility</link>
+      <description>Decades of relationship science are clear: the &apos;type&apos; you think you want doesn&apos;t predict who you&apos;ll actually connect with. So what really predicts compatibility — and why does it mean most dating apps are built backwards?</description>
+      <pubDate>Sat, 18 Jul 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://quloapp.com/en/blog/what-actually-predicts-compatibility</guid>
+    </item>
+
+    <item>
+      <title>Dating Apps Without Swiping: A Complete Guide for 2026</title>
+      <link>https://quloapp.com/en/blog/dating-apps-without-swiping</link>
+      <description>Tired of the swipe mechanic? You have alternatives. A complete guide to question-based, AI-powered, and interaction-focused dating apps.</description>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://quloapp.com/en/blog/dating-apps-without-swiping</guid>
+    </item>
+
+    <item>
+      <title>Why Introverts Are Choosing Quiz Dating Over Swipe Apps</title>
       <link>https://quloapp.com/en/blog/quiz-dating-for-introverts</link>
       <description>Do dating apps overwhelm you as an introvert? Discover why quiz dating is ideal for introverts and how Qulo makes a difference.</description>
       <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
@@ -20,17 +52,9 @@
     <item>
       <title>The Science Behind Question-Based Matching: Why Questions Beat Photos</title>
       <link>https://quloapp.com/en/blog/science-behind-question-based-matching</link>
-      <description>Psychology research proves that questions build much stronger connections than superficial attraction. Here's the scientific foundation of question-based matching.</description>
+      <description>Psychology research shows that questions build much stronger connections than superficial attraction. Here&apos;s the scientific foundation of question-based matching.</description>
       <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://quloapp.com/en/blog/science-behind-question-based-matching</guid>
-    </item>
-
-    <item>
-      <title>Dating Apps Without Swiping: A Complete Guide for 2026</title>
-      <link>https://quloapp.com/en/blog/dating-apps-without-swiping</link>
-      <description>Tired of the swipe mechanic? You have alternatives. A complete guide to question-based, AI-powered, and interaction-focused dating apps.</description>
-      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://quloapp.com/en/blog/dating-apps-without-swiping</guid>
     </item>
 
     <item>
@@ -60,7 +84,7 @@
     <item>
       <title>What is Swipe Fatigue and Why is Everyone Tired of It?</title>
       <link>https://quloapp.com/en/blog/what-is-swipe-fatigue</link>
-      <description>If you're tired of endlessly swiping left and right on dating apps, you're not alone. What is swipe fatigue, why does it happen, and how does Qulo solve it?</description>
+      <description>If you&apos;re tired of endlessly swiping left and right on dating apps, you&apos;re not alone. What is swipe fatigue, why does it happen, and how does Qulo solve it?</description>
       <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://quloapp.com/en/blog/what-is-swipe-fatigue</guid>
     </item>

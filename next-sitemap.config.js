@@ -31,8 +31,10 @@ const NOINDEX_ROUTES = ["/invite", "/email-verified", "/reset-password"];
 /** Higher priority for the pages we actually want surfaced first. */
 const PRIORITY_RULES = [
   { test: (path) => /^\/[a-z]{2}\/?$/.test(path), priority: 1.0, changefreq: "daily" },
-  { test: (path) => /\/(blog|advice|how-to)\/[^/]+\/?$/.test(path), priority: 0.9, changefreq: "monthly" },
-  { test: (path) => /\/(blog|glossary|dating-statistics|trends)/.test(path), priority: 0.8, changefreq: "weekly" },
+  // Leaf content — the pages that answer a specific query and are the ones
+  // worth landing on directly.
+  { test: (path) => /\/(blog|advice|how-to|answers|glossary)\/[^/]+\/?$/.test(path), priority: 0.9, changefreq: "monthly" },
+  { test: (path) => /\/(blog|glossary|answers|dating-statistics|trends)/.test(path), priority: 0.8, changefreq: "weekly" },
   { test: (path) => /\/(features|pricing|help|about)/.test(path), priority: 0.8, changefreq: "monthly" },
 ];
 
