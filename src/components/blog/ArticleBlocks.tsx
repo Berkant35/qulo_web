@@ -10,6 +10,7 @@ import type { ReactNode } from "react";
  */
 export type ArticleBlock =
   | { type: "h2"; text: string; accent?: "purple" | "green" }
+  | { type: "h3"; text: string }
   | { type: "p"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "quote"; text: string };
@@ -45,6 +46,12 @@ export function ArticleBlocks({ blocks }: { blocks: ArticleBlock[] }) {
               >
                 {renderInline(block.text)}
               </h2>
+            );
+          case "h3":
+            return (
+              <h3 key={i} className="text-xl font-semibold text-white mb-3 mt-6">
+                {renderInline(block.text)}
+              </h3>
             );
           case "p":
             return (

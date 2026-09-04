@@ -3,17 +3,12 @@ import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { locales } from "@/lib/i18n/config";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { locales, rtlLocales } from "@/lib/i18n/config";
 import { LANDING_PAGES } from "@/lib/constants/landings";
+import { landingLabels } from "@/lib/constants/landingLabels";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-
-/** Per-locale breadcrumb label for the Features page */
-const FEATURES_LABELS: Record<string, string> = {
-  tr: "Özellikler", en: "Features", de: "Funktionen", fr: "Fonctionnalités", es: "Características",
-  ar: "ميزات", ru: "Функции", pt: "Recursos", it: "Caratteristiche", ja: "機能",
-  ko: "기능", zh: "功能", nl: "Functies", pl: "Funkcje", sv: "Funktioner", hi: "विशेषताएं",
-};
 
 /* ---------- Metadata ---------- */
 export async function generateMetadata({
@@ -48,21 +43,6 @@ export async function generateMetadata({
   };
 }
 
-/* ---------- JSON-LD helper ---------- */
-function JsonLd({ data }: { data: object }) {
-  /**
-   * All values are static server-side constants (SITE_NAME, SITE_URL, landing
-   * page titles/descriptions from landings.ts). No user-supplied input flows
-   * into this structured data, so there is no XSS risk.
-   */
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
-
 /* ---------- Page ---------- */
 export default async function FeaturesIndexPage({
   params,
@@ -72,12 +52,12 @@ export default async function FeaturesIndexPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const isTr = locale === "tr";
+  const labels = landingLabels(locale);
 
   const collectionJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: isTr ? "Ozellikler" : "Features",
+    name: labels.section,
     url: `${SITE_URL}/${locale}/features`,
     isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE_URL },
     hasPart: LANDING_PAGES.map((lp) => ({
@@ -92,25 +72,23 @@ export default async function FeaturesIndexPage({
       <Navbar />
       <JsonLd data={collectionJsonLd} />
 
-      <div className="pt-24 pb-20 px-6">
+      <div
+        className="pt-24 pb-20 px-6"
+        dir={rtlLocales.includes(locale) ? "rtl" : "ltr"}
+      >
         <div className="max-w-3xl mx-auto">
 
-          <Breadcrumb
-            locale={locale}
-            items={[{ label: FEATURES_LABELS[locale] || FEATURES_LABELS.en }]}
-          />
+          <Breadcrumb locale={locale} items={[{ label: labels.section }]} />
 
           <header className="mb-12 text-center">
             <p className="text-qulo-purple text-xs font-semibold uppercase tracking-[0.2em] mb-4">
-              {isTr ? "Ozellikler" : "Features"}
+              {labels.section}
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
-              {isTr ? "Qulo'nun Benzersiz Ozellikleri" : "Qulo's Unique Features"}
+              {labels.hubTitle}
             </h1>
             <p className="text-lg text-qulo-text-secondary max-w-xl mx-auto">
-              {isTr
-                ? "Quiz dating, kisilik eslestirme, AI soru onerileri ve daha fazlasi."
-                : "Quiz dating, personality matching, AI question suggestions and more."}
+              {labels.hubIntro}
             </p>
           </header>
 

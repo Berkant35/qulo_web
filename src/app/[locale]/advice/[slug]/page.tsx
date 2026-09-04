@@ -10,10 +10,11 @@ import { locales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { ADVICE_GUIDES } from "@/lib/constants/advice";
-import { FirstDateTipsContent } from "./_content/FirstDateTipsContent";
-import { DatingProfileGuideContent } from "./_content/DatingProfileGuideContent";
-import { RedFlagsContent } from "./_content/RedFlagsContent";
-import { LongDistanceContent } from "./_content/LongDistanceContent";
+import { ArticleBlocks, type LocalizedArticle } from "@/components/blog/ArticleBlocks";
+import { firstDateTips } from "./_content/first-date-tips";
+import { datingProfileGuide } from "./_content/dating-profile-guide";
+import { redFlagsOnlineDating } from "./_content/red-flags-online-dating";
+import { longDistanceRelationships } from "./_content/long-distance-relationships";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -117,19 +118,36 @@ const READ_LABELS: Record<string, { readTime: string; backToAdvice: string; rela
 /* ------------------------------------------------------------------ */
 /*  Content router                                                     */
 /* ------------------------------------------------------------------ */
+/**
+ * Guides authored as structured, fully localized data. Every article carries
+ * all 16 locales, so no reader is served English under a translated canonical.
+ * The per-locale JSX components this replaced shipped `tr` and `en` only.
+ *
+ * Every slug in `ADVICE_GUIDES` must appear here; a missing one renders an
+ * empty body rather than silently falling back to English.
+ */
+const STRUCTURED_GUIDES: Record<string, LocalizedArticle> = {
+  "first-date-tips": firstDateTips,
+  "dating-profile-guide": datingProfileGuide,
+  "red-flags-online-dating": redFlagsOnlineDating,
+  "long-distance-relationships": longDistanceRelationships,
+};
+
+/** Word count of a guide's body in this locale, for the Article JSON-LD. */
+function structuredWordCount(slug: string, locale: string): number | undefined {
+  const blocks = STRUCTURED_GUIDES[slug]?.[locale] ?? STRUCTURED_GUIDES[slug]?.en;
+  if (!blocks) return undefined;
+
+  return blocks.reduce((total, block) => {
+    const text = block.type === "ul" ? block.items.join(" ") : block.text;
+    return total + text.split(/\s+/).filter(Boolean).length;
+  }, 0);
+}
+
 function AdviceContent({ slug, locale }: { slug: string; locale: string }) {
-  switch (slug) {
-    case "first-date-tips":
-      return <FirstDateTipsContent locale={locale} />;
-    case "dating-profile-guide":
-      return <DatingProfileGuideContent locale={locale} />;
-    case "red-flags-online-dating":
-      return <RedFlagsContent locale={locale} />;
-    case "long-distance-relationships":
-      return <LongDistanceContent locale={locale} />;
-    default:
-      return null;
-  }
+  const article = STRUCTURED_GUIDES[slug];
+  if (!article) return null;
+  return <ArticleBlocks blocks={article[locale] || article.en} />;
 }
 
 /* ------------------------------------------------------------------ */
@@ -151,6 +169,7 @@ export default async function AdvicePostPage({
   const labels = READ_LABELS[locale] || READ_LABELS.en;
 
   const otherGuides = ADVICE_GUIDES.filter((g) => g.slug !== slug);
+  const wordCount = structuredWordCount(slug, locale);
 
   // Article JSON-LD
   const articleJsonLd = {
@@ -180,7 +199,9 @@ export default async function AdvicePostPage({
     },
     keywords: guide.keywords.join(", "),
     articleSection: guide.category,
-    wordCount: 1500,
+    // Counted from the rendered content; omitted for slugs whose body is still
+    // per-locale JSX, since a guessed number is worse than no number.
+    ...(wordCount !== undefined ? { wordCount } : {}),
     inLanguage: locale,
   };
 
