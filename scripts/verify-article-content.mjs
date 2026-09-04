@@ -19,6 +19,7 @@ const LOCALES = ["tr","en","de","fr","es","ar","ru","pt","it","ja","ko","zh","nl
 const DIRS = [
   "src/app/[locale]/blog/[slug]/_content",
   "src/app/[locale]/advice/[slug]/_content",
+  "src/app/[locale]/questions/_content",
 ];
 
 /** Evaluate the exported object literal without importing TypeScript. */
