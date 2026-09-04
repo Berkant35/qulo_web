@@ -15,6 +15,22 @@ import {
 import { ogImages } from "@/lib/seo/openGraph";
 
 const PAGE_SLUG = "press";
+
+/**
+ * Brand files offered for download. Every entry is a file that actually exists
+ * under `public/` — checked by `scripts/verify-press-assets.mjs`, which fails
+ * the build if one goes missing. The page previously advertised a
+ * `/press-kit.zip` that was never generated, so both of its download buttons
+ * returned 404.
+ */
+const PRESS_ASSETS = [
+  { href: "/brand/qulo-logo-1024.png", label: "Logo 1024", format: "PNG" },
+  { href: "/brand/qulo-logo-512.png", label: "Logo 512", format: "PNG" },
+  { href: "/brand/qulo-logo-256.png", label: "Logo 256", format: "PNG" },
+  { href: "/brand/qulo_splash.svg", label: "Splash", format: "SVG" },
+  { href: "/brand/purple_diamond.svg", label: "Purple diamond", format: "SVG" },
+  { href: "/brand/green_diamond.svg", label: "Green diamond", format: "SVG" },
+] as const;
 const PUBLISHED_AT = "2026-04-16";
 const MODIFIED_AT = "2026-04-16";
 
@@ -94,7 +110,6 @@ type UiCopy = {
   logosHeading: string;
   logosSubtitle: string;
   logoVariations: { label: string; src: string; alt: string; bg: string }[];
-  downloadZipCta: string;
   colorsHeading: string;
   colorsSubtitle: string;
   colorHexLabel: string;
@@ -111,8 +126,6 @@ type UiCopy = {
   pressContactTopics: string[];
   fullPressKitHeading: string;
   fullPressKitDescription: string;
-  fullPressKitItems: string[];
-  fullPressKitCta: string;
   internalLinksHeading: string;
   internalLinks: { label: string; href: string }[];
   ctaHeading: string;
@@ -169,7 +182,6 @@ function getCopy(locale: string): UiCopy {
         bg: "bg-qulo-bg",
       },
     ],
-    downloadZipCta: isTr ? "Logoları ZIP olarak indir" : "Download all logos as ZIP",
 
     colorsHeading: isTr ? "Marka Renkleri" : "Brand Colors",
     colorsSubtitle: isTr
@@ -199,22 +211,8 @@ function getCopy(locale: string): UiCopy {
 
     fullPressKitHeading: isTr ? "Tam Press Kit" : "Full Press Kit",
     fullPressKitDescription: isTr
-      ? "ZIP içinde şunlar var:"
-      : "What's inside the ZIP:",
-    fullPressKitItems: isTr
-      ? [
-          "Tüm logo varyasyonları (SVG, PNG)",
-          "Uygulama ekran görüntüleri (iOS + Android)",
-          "Fact sheet (PDF)",
-          "Kurucu fotoğrafı (yüksek çözünürlük)",
-        ]
-      : [
-          "All logo variations (SVG, PNG)",
-          "App screenshots (iOS + Android)",
-          "Fact sheet (PDF)",
-          "Founder photo (high resolution)",
-        ],
-    fullPressKitCta: isTr ? "Press Kit ZIP indir" : "Download Press Kit ZIP",
+      ? "Marka dosyaları, doğrudan indirilebilir:"
+      : "Brand files, ready to download:",
 
     internalLinksHeading: isTr ? "Daha Fazla" : "More",
     internalLinks: [
@@ -432,14 +430,6 @@ export default async function PressPage({
                 </a>
               ))}
             </div>
-            <div className="mt-6 text-center">
-              <a
-                href="/press-kit.zip"
-                className="inline-flex items-center gap-2 rounded-lg border border-qulo-purple/40 bg-qulo-purple/10 px-5 py-3 text-sm font-semibold text-qulo-purple hover:bg-qulo-purple/20 transition-colors"
-              >
-                {copy.downloadZipCta}
-              </a>
-            </div>
           </section>
 
           {/* Brand Colors */}
@@ -603,17 +593,26 @@ export default async function PressPage({
             <p className="text-sm text-qulo-text-secondary mb-4">
               {copy.fullPressKitDescription}
             </p>
-            <ul className="list-disc list-inside space-y-2 text-sm text-white mb-6 marker:text-qulo-green">
-              {copy.fullPressKitItems.map((item) => (
-                <li key={item}>{item}</li>
+            {/* Direct links to files that exist. This section used to promise a
+                /press-kit.zip containing screenshots, a fact-sheet PDF and a
+                founder photo; none of the three existed and the ZIP itself was
+                a live 404 behind two call-to-action buttons. */}
+            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {PRESS_ASSETS.map((asset) => (
+                <li key={asset.href}>
+                  <a
+                    href={asset.href}
+                    download
+                    className="block rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-3 text-center text-sm text-qulo-text-secondary hover:text-white hover:border-qulo-purple/40 transition-colors"
+                  >
+                    {asset.label}
+                    <span className="block text-[10px] uppercase tracking-wider mt-1">
+                      {asset.format}
+                    </span>
+                  </a>
+                </li>
               ))}
             </ul>
-            <a
-              href="/press-kit.zip"
-              className="inline-flex items-center gap-2 rounded-lg bg-qulo-purple px-5 py-3 text-sm font-semibold text-white hover:bg-qulo-purple/90 transition-colors"
-            >
-              {copy.fullPressKitCta}
-            </a>
           </section>
 
           {/* CTA */}

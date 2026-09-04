@@ -13,8 +13,9 @@
     "verify:content": "node scripts/verify-article-content.mjs",
     "verify:glossary": "node scripts/verify-glossary-content.mjs",
     "verify:brand": "node scripts/verify-brand.mjs",
-    "verify": "npm run verify:content && npm run verify:glossary && npm run verify:brand && npm run verify:claims",
-    "verify:claims": "node scripts/verify-claims.mjs"
+    "verify": "npm run verify:content && npm run verify:glossary && npm run verify:brand && npm run verify:claims && npm run verify:press",
+    "verify:claims": "node scripts/verify-claims.mjs",
+    "verify:press": "node scripts/verify-press-assets.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
