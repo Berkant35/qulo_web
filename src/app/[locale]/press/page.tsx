@@ -5,6 +5,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { locales } from "@/lib/i18n/config";
 import {
   PAGE_SEO,
@@ -13,6 +14,12 @@ import {
   OG_LOCALES,
 } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import {
+  pressLabelsFor,
+  type PressFactKey,
+  type PressLinkKey,
+  type PressLogoKey,
+} from "@/lib/constants/pressLabels";
 
 const PAGE_SLUG = "press";
 
@@ -24,26 +31,72 @@ const PAGE_SLUG = "press";
  * returned 404.
  */
 const PRESS_ASSETS = [
+  // Size-plus-format rows: the same token in every language, so no key.
   { href: "/brand/qulo-logo-1024.png", label: "Logo 1024", format: "PNG" },
   { href: "/brand/qulo-logo-512.png", label: "Logo 512", format: "PNG" },
   { href: "/brand/qulo-logo-256.png", label: "Logo 256", format: "PNG" },
-  { href: "/brand/qulo_splash.svg", label: "Splash", format: "SVG" },
-  { href: "/brand/purple_diamond.svg", label: "Purple diamond", format: "SVG" },
-  { href: "/brand/green_diamond.svg", label: "Green diamond", format: "SVG" },
+  // The three named marks reuse the gallery's localized names rather than
+  // printing "Purple diamond" in fourteen languages that do not read English.
+  { href: "/brand/qulo_splash.svg", logoKey: "splash", format: "SVG" },
+  { href: "/brand/purple_diamond.svg", logoKey: "purple", format: "SVG" },
+  { href: "/brand/green_diamond.svg", logoKey: "green", format: "SVG" },
 ] as const;
+
+/**
+ * The logo gallery. Paths stay here rather than in the label module so
+ * `verify:press` — which only reads this file — keeps checking that they exist.
+ * Names and alt text come from `PRESS_LABELS[locale].logos`, keyed by `key`.
+ */
+const LOGO_ASSETS: { key: PressLogoKey; src: string }[] = [
+  { key: "purple", src: "/brand/purple_diamond.svg" },
+  { key: "green", src: "/brand/green_diamond.svg" },
+  { key: "splash", src: "/brand/qulo_splash.svg" },
+];
+
+/** Quick-facts rows, in print order. Labels and values are per locale. */
+const FACT_ORDER: PressFactKey[] = [
+  "name",
+  "founded",
+  "category",
+  "platforms",
+  "price",
+  "languages",
+  "basedIn",
+  "tagline",
+  "website",
+];
+
+/** Internal links at the foot of the page, in print order. */
+const MORE_LINKS: { key: PressLinkKey; path: string }[] = [
+  { key: "about", path: "about" },
+  { key: "statistics", path: "dating-statistics" },
+  { key: "blog", path: "blog" },
+  { key: "contact", path: "help" },
+];
+
 const PUBLISHED_AT = "2026-04-16";
-const MODIFIED_AT = "2026-04-16";
+const MODIFIED_AT = "2026-09-04";
 
 const PRESS_CONTACT_EMAIL = "info@socrepho.com";
 const FOUNDER_NAME = "Berkant Çalıkuşu";
-const FOUNDER_TITLE = "Founder & CEO";
+/** Avatar monogram. Derived so it cannot drift from the name beside it. */
+const FOUNDER_INITIALS = FOUNDER_NAME.split(" ")
+  .map((part) => part[0])
+  .join("");
 
-/** Per-locale breadcrumb label for the Press Kit page */
-const PRESS_LABELS: Record<string, string> = {
-  tr: "Basın Kiti", en: "Press Kit", de: "Pressekit", fr: "Kit Presse", es: "Kit de Prensa",
-  ar: "ملف الصحافة", ru: "Пресс-кит", pt: "Kit de Imprensa", it: "Kit Stampa", ja: "プレスキット",
-  ko: "프레스 키트", zh: "媒体资料", nl: "Perskit", pl: "Materiały Prasowe", sv: "Presskit", hi: "प्रेस किट",
-};
+/** Brand color palette — static, used for both UI and content. */
+const BRAND_COLORS: {
+  name: string;
+  hex: string;
+  rgb: string;
+  preview: string;
+  textOnDark?: boolean;
+}[] = [
+  { name: "Qulo Purple", hex: "#BB86FC", rgb: "187, 134, 252", preview: "#BB86FC" },
+  { name: "Qulo Green", hex: "#69F0AE", rgb: "105, 240, 174", preview: "#69F0AE" },
+  { name: "Qulo Dark Background", hex: "#050508", rgb: "5, 5, 8", preview: "#050508", textOnDark: true },
+  { name: "Qulo Light Text", hex: "#FFFFFF", rgb: "255, 255, 255", preview: "#FFFFFF" },
+];
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -82,167 +135,6 @@ export async function generateMetadata({
   };
 }
 
-/**
- * JSON-LD renderer — only static trusted content (no user input).
- * Uses dangerouslySetInnerHTML because Next.js requires it for
- * application/ld+json scripts. All content originates from server-side
- * static constants (PAGE_SEO, SITE_URL, locale slug). No user input.
- */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
-
-/** Per-locale UI strings — TR + EN full, others fall back to EN */
-type UiCopy = {
-  eyebrow: string;
-  heroTitle: string;
-  heroSubtitle: string;
-  quickFactsHeading: string;
-  quickFacts: { dt: string; dd: string }[];
-  aboutHeading: string;
-  aboutParagraph: string;
-  logosHeading: string;
-  logosSubtitle: string;
-  logoVariations: { label: string; src: string; alt: string; bg: string }[];
-  colorsHeading: string;
-  colorsSubtitle: string;
-  colorHexLabel: string;
-  colorRgbLabel: string;
-  founderHeading: string;
-  founderBio: string;
-  mediaCoverageHeading: string;
-  mediaCoverageMessage: string;
-  pressContactHeading: string;
-  pressContactEmailLabel: string;
-  pressContactResponseLabel: string;
-  pressContactResponseValue: string;
-  pressContactTopicsLabel: string;
-  pressContactTopics: string[];
-  fullPressKitHeading: string;
-  fullPressKitDescription: string;
-  internalLinksHeading: string;
-  internalLinks: { label: string; href: string }[];
-  ctaHeading: string;
-  ctaText: string;
-};
-
-function getCopy(locale: string): UiCopy {
-  const isTr = locale === "tr";
-  return {
-    eyebrow: isTr ? "Basın Merkezi" : "Press Center",
-    heroTitle: isTr ? "Basın Kiti" : "Press Kit",
-    heroSubtitle: isTr
-      ? "Qulo hakkında haber yapmak veya medyada bahsetmek için tüm kaynaklar"
-      : "All resources you need to write about or feature Qulo in the media",
-
-    quickFactsHeading: isTr ? "Hızlı Bilgiler" : "Quick Facts",
-    quickFacts: [
-      { dt: isTr ? "Şirket" : "Company", dd: "Qulo" },
-      { dt: isTr ? "Kuruluş" : "Founded", dd: "2026" },
-      { dt: isTr ? "Kategori" : "Category", dd: "Quiz Dating App" },
-      { dt: "Platform", dd: "iOS, Android" },
-      { dt: isTr ? "Diller" : "Languages", dd: "16" },
-      { dt: isTr ? "Merkez" : "Headquarters", dd: "Istanbul, Turkey" },
-      { dt: isTr ? "Slogan" : "Tag line", dd: isTr ? "Sorularla Tanış" : "Meet Through Questions" },
-      { dt: isTr ? "Web Sitesi" : "Website", dd: "quloapp.com" },
-    ],
-
-    aboutHeading: isTr ? "Qulo Hakkında" : "About Qulo",
-    aboutParagraph: isTr
-      ? "Qulo, geleneksel dating uygulamalarının swipe yorgunluğuna alternatif olarak doğmuş, soru-cevap tabanlı bir tanışma platformudur. Kullanıcılar kendileri hakkında 2 ila 4 soru hazırlar, ücretli planlarda 10'a kadar; diğer kullanıcılar bu soruları çözer ve tüm cevapları doğru veren kişiyle eşleşme gerçekleşir. Qulo, 16 dilde hizmet vererek bekarların daha derin ve anlamlı bağlantılar kurmasını hedefler."
-      : "Qulo is a question-and-answer based dating platform born as an alternative to the swipe fatigue of traditional dating apps. Users write 2 to 4 questions about themselves, or up to 10 on a paid plan; others answer those questions, and matching occurs with the person who gets them all correct. With service in 16 languages, Qulo aims to help singles build deeper and more meaningful connections.",
-
-    logosHeading: isTr ? "Logo İndirme" : "Logo Downloads",
-    logosSubtitle: isTr
-      ? "Qulo logo varyasyonları. Tıklayarak yeni sekmede aç ve indir."
-      : "Qulo logo variations. Click to open in a new tab and download.",
-    logoVariations: [
-      {
-        label: isTr ? "Mor Logo" : "Purple Logo",
-        src: "/brand/purple_diamond.svg",
-        alt: isTr ? "Qulo mor elmas logosu" : "Qulo purple diamond logo",
-        bg: "bg-qulo-bg",
-      },
-      {
-        label: isTr ? "Yeşil Logo" : "Green Logo",
-        src: "/brand/green_diamond.svg",
-        alt: isTr ? "Qulo yeşil elmas logosu" : "Qulo green diamond logo",
-        bg: "bg-qulo-bg",
-      },
-      {
-        label: isTr ? "Splash Logo" : "Splash Logo",
-        src: "/brand/qulo_splash.svg",
-        alt: isTr ? "Qulo splash logosu" : "Qulo splash logo",
-        bg: "bg-qulo-bg",
-      },
-    ],
-
-    colorsHeading: isTr ? "Marka Renkleri" : "Brand Colors",
-    colorsSubtitle: isTr
-      ? "Qulo marka kimliğinin temel renkleri. HEX ve RGB değerleri ile."
-      : "Core colors of the Qulo brand identity, with HEX and RGB values.",
-    colorHexLabel: "HEX",
-    colorRgbLabel: "RGB",
-
-    founderHeading: isTr ? "Kurucu" : "Founder",
-    founderBio: isTr
-      ? "Berkant Çalıkuşu, İstanbul'da yaşayan bağımsız bir geliştirici. Qulo'yu 2026'da kurdu; uygulamayı kendisi geliştiriyor ve yürütüyor. Gizlilik politikasında adı geçen veri sorumlusu da kendisi."
-      : "Berkant Çalıkuşu is an independent developer based in Istanbul, Turkey. He founded Qulo in 2026 and builds and runs the app himself. He is also the data controller named in the privacy policy.",
-
-    mediaCoverageHeading: isTr ? "Medyada Qulo" : "Qulo in the Media",
-    mediaCoverageMessage: isTr
-      ? "Henüz yayımlanmış bir haber yok. Basın talepleri için bize yazabilirsiniz."
-      : "No press coverage yet. Get in touch with press enquiries.",
-
-    pressContactHeading: isTr ? "Basın İletişim" : "Press Contact",
-    pressContactEmailLabel: "Email",
-    pressContactResponseLabel: isTr ? "Yanıt Süresi" : "Response Time",
-    pressContactResponseValue: isTr ? "24 saat içinde" : "Within 24 hours",
-    pressContactTopicsLabel: isTr ? "Önerilen Konular" : "Suggested Topics",
-    pressContactTopics: isTr
-      ? ["İnceleme talebi", "Röportaj", "Özellik haberi", "Founder söyleşisi"]
-      : ["Review request", "Interview", "Feature story", "Founder Q&A"],
-
-    fullPressKitHeading: isTr ? "Tam Press Kit" : "Full Press Kit",
-    fullPressKitDescription: isTr
-      ? "Marka dosyaları, doğrudan indirilebilir:"
-      : "Brand files, ready to download:",
-
-    internalLinksHeading: isTr ? "Daha Fazla" : "More",
-    internalLinks: [
-      { label: isTr ? "Hakkımızda" : "About", href: `/${locale}/about` },
-      { label: isTr ? "İstatistikler" : "Statistics", href: `/${locale}/dating-statistics` },
-      { label: "Blog", href: `/${locale}/blog` },
-      { label: isTr ? "İletişim" : "Contact", href: `/${locale}/help` },
-    ],
-
-    ctaHeading: isTr ? "Qulo'yu Deneyin" : "Try Qulo",
-    ctaText: isTr
-      ? "Sorularla tanışın, gerçek bağlantılar kurun."
-      : "Meet through questions, build real connections.",
-  };
-}
-
-/** Brand color palette — static, used for both UI and content. */
-const BRAND_COLORS: {
-  name: string;
-  hex: string;
-  rgb: string;
-  preview: string;
-  textOnDark?: boolean;
-}[] = [
-  { name: "Qulo Purple", hex: "#BB86FC", rgb: "187, 134, 252", preview: "#BB86FC" },
-  { name: "Qulo Green", hex: "#69F0AE", rgb: "105, 240, 174", preview: "#69F0AE" },
-  { name: "Qulo Dark Background", hex: "#050508", rgb: "5, 5, 8", preview: "#050508", textOnDark: true },
-  { name: "Qulo Light Text", hex: "#FFFFFF", rgb: "255, 255, 255", preview: "#FFFFFF" },
-];
-
 export default async function PressPage({
   params,
 }: {
@@ -251,7 +143,7 @@ export default async function PressPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const copy = getCopy(locale);
+  const labels = pressLabelsFor(locale);
   const pageUrl = `${SITE_URL}/${locale}/${PAGE_SLUG}`;
   const seo = PAGE_SEO.press[locale] || PAGE_SEO.press.en;
 
@@ -278,17 +170,19 @@ export default async function PressPage({
     "@type": "Organization",
     // Same `@id` as the site-wide Organization in the root layout, so this
     // richer declaration merges into that entity rather than competing with it.
+    // For the same reason there is no `description` here: the layout already
+    // carries one in the page's own language, and a hard-coded English second
+    // copy would give one entity two descriptions, one of them in the wrong
+    // language.
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/brand/purple_diamond.svg`,
-    description:
-      "Qulo is a question-and-answer based dating platform that matches users through quiz mechanics instead of swiping.",
     foundingDate: "2026",
     founder: {
       "@type": "Person",
       name: FOUNDER_NAME,
-      jobTitle: FOUNDER_TITLE,
+      jobTitle: labels.founderRole,
     },
     address: {
       "@type": "PostalAddress",
@@ -314,7 +208,8 @@ export default async function PressPage({
     "@context": "https://schema.org",
     "@type": "Person",
     name: FOUNDER_NAME,
-    jobTitle: FOUNDER_TITLE,
+    jobTitle: labels.founderRole,
+    description: labels.founderBio,
     worksFor: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -339,21 +234,18 @@ export default async function PressPage({
 
       <article className="pt-24 pb-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <Breadcrumb
-            locale={locale}
-            items={[{ label: PRESS_LABELS[locale] || PRESS_LABELS.en }]}
-          />
+          <Breadcrumb locale={locale} items={[{ label: labels.breadcrumb }]} />
 
           {/* Hero */}
           <header className="mb-16 text-center">
             <p className="text-qulo-purple text-xs font-semibold uppercase tracking-[0.2em] mb-4">
-              {copy.eyebrow}
+              {labels.eyebrow}
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold mb-6 leading-tight">
-              {copy.heroTitle}
+              {labels.heroTitle}
             </h1>
             <p className="text-lg text-qulo-text-secondary max-w-2xl mx-auto">
-              {copy.heroSubtitle}
+              {labels.heroSubtitle}
             </p>
           </header>
 
@@ -366,15 +258,17 @@ export default async function PressPage({
               id="quick-facts"
               className="text-2xl font-bold text-qulo-purple mb-6"
             >
-              {copy.quickFactsHeading}
+              {labels.quickFactsHeading}
             </h2>
             <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-              {copy.quickFacts.map((fact) => (
-                <div key={fact.dt}>
+              {FACT_ORDER.map((key) => (
+                <div key={key}>
                   <dt className="text-qulo-text-secondary uppercase tracking-wide text-xs mb-1">
-                    {fact.dt}
+                    {labels.facts[key].term}
                   </dt>
-                  <dd className="text-white text-base mb-3">{fact.dd}</dd>
+                  <dd className="text-white text-base mb-3">
+                    {labels.facts[key].value}
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -389,11 +283,18 @@ export default async function PressPage({
               id="about-qulo"
               className="text-2xl font-bold text-qulo-purple mb-4"
             >
-              {copy.aboutHeading}
+              {labels.aboutHeading}
             </h2>
-            <p className="text-base text-qulo-text-secondary leading-relaxed">
-              {copy.aboutParagraph}
-            </p>
+            <div className="space-y-4">
+              {labels.aboutParagraphs.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="text-base text-qulo-text-secondary leading-relaxed"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           </section>
 
           {/* Logo Downloads */}
@@ -402,30 +303,30 @@ export default async function PressPage({
             className="mb-12 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 sm:p-8"
           >
             <h2 id="logos" className="text-2xl font-bold text-qulo-purple mb-3">
-              {copy.logosHeading}
+              {labels.logosHeading}
             </h2>
             <p className="text-sm text-qulo-text-secondary mb-6">
-              {copy.logosSubtitle}
+              {labels.logosSubtitle}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {copy.logoVariations.map((logo) => (
+              {LOGO_ASSETS.map((logo) => (
                 <a
-                  key={logo.src}
+                  key={logo.key}
                   href={logo.src}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group flex flex-col items-center justify-center rounded-xl border border-white/[0.08] ${logo.bg} p-6 hover:border-qulo-purple/40 transition-colors`}
+                  className="group flex flex-col items-center justify-center rounded-xl border border-white/[0.08] bg-qulo-bg p-6 hover:border-qulo-purple/40 transition-colors"
                 >
                   <div className="flex items-center justify-center h-24 mb-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={logo.src}
-                      alt={logo.alt}
+                      alt={labels.logos[logo.key].alt}
                       className="max-h-20 w-auto"
                     />
                   </div>
                   <p className="text-sm font-semibold text-white text-center">
-                    {logo.label}
+                    {labels.logos[logo.key].label}
                   </p>
                   <p className="text-[10px] text-qulo-text-secondary uppercase tracking-wider mt-1 group-hover:text-qulo-green transition-colors">
                     SVG
@@ -444,10 +345,10 @@ export default async function PressPage({
               id="colors"
               className="text-2xl font-bold text-qulo-purple mb-3"
             >
-              {copy.colorsHeading}
+              {labels.colorsHeading}
             </h2>
             <p className="text-sm text-qulo-text-secondary mb-6">
-              {copy.colorsSubtitle}
+              {labels.colorsSubtitle}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {BRAND_COLORS.map((color) => (
@@ -467,16 +368,17 @@ export default async function PressPage({
                       {color.name}
                     </p>
                   </div>
+                  {/* HEX and RGB are the same token in every language. */}
                   <div className="bg-white/[0.02] p-4 grid grid-cols-2 gap-3">
                     <div>
                       <p className="text-[10px] uppercase tracking-wider text-qulo-text-secondary mb-1">
-                        {copy.colorHexLabel}
+                        HEX
                       </p>
                       <code className="text-xs text-white">{color.hex}</code>
                     </div>
                     <div>
                       <p className="text-[10px] uppercase tracking-wider text-qulo-text-secondary mb-1">
-                        {copy.colorRgbLabel}
+                        RGB
                       </p>
                       <code className="text-xs text-white">{color.rgb}</code>
                     </div>
@@ -495,19 +397,24 @@ export default async function PressPage({
               id="founder"
               className="text-2xl font-bold text-qulo-purple mb-6"
             >
-              {copy.founderHeading}
+              {labels.founderHeading}
             </h2>
             <div className="flex flex-col sm:flex-row gap-6 items-start">
-              <div className="flex-shrink-0 w-24 h-24 rounded-full bg-gradient-to-br from-qulo-purple to-qulo-green flex items-center justify-center text-white text-3xl font-bold">
-                BÇ
+              <div
+                aria-hidden="true"
+                className="flex-shrink-0 w-24 h-24 rounded-full bg-gradient-to-br from-qulo-purple to-qulo-green flex items-center justify-center text-white text-3xl font-bold"
+              >
+                {FOUNDER_INITIALS}
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-white mb-1">
                   {FOUNDER_NAME}
                 </h3>
-                <p className="text-sm text-qulo-green mb-4">{FOUNDER_TITLE}</p>
+                <p className="text-sm text-qulo-green mb-4">
+                  {labels.founderRole}
+                </p>
                 <p className="text-sm text-qulo-text-secondary leading-relaxed">
-                  {copy.founderBio}
+                  {labels.founderBio}
                 </p>
               </div>
             </div>
@@ -522,14 +429,16 @@ export default async function PressPage({
               id="media-coverage"
               className="text-2xl font-bold text-qulo-purple mb-3"
             >
-              {copy.mediaCoverageHeading}
+              {labels.coverageHeading}
             </h2>
             <p className="text-sm text-qulo-text-secondary">
-              {copy.mediaCoverageMessage}
+              {labels.coverageMessage}
             </p>
           </section>
 
-          {/* Press Contact */}
+          {/* Press Contact — an address and what it is good for. No response-time
+              promise: the page used to guarantee a reply within 24 hours from a
+              one-person operation. */}
           <section
             aria-labelledby="press-contact"
             className="mb-12 rounded-2xl border border-qulo-green/20 bg-qulo-green/5 p-6 sm:p-8"
@@ -538,12 +447,12 @@ export default async function PressPage({
               id="press-contact"
               className="text-2xl font-bold text-qulo-purple mb-6"
             >
-              {copy.pressContactHeading}
+              {labels.contactHeading}
             </h2>
             <dl className="space-y-4">
               <div>
                 <dt className="text-qulo-text-secondary uppercase tracking-wide text-xs mb-1">
-                  {copy.pressContactEmailLabel}
+                  {labels.contactEmailLabel}
                 </dt>
                 <dd>
                   <a
@@ -555,20 +464,12 @@ export default async function PressPage({
                 </dd>
               </div>
               <div>
-                <dt className="text-qulo-text-secondary uppercase tracking-wide text-xs mb-1">
-                  {copy.pressContactResponseLabel}
-                </dt>
-                <dd className="text-white text-base">
-                  {copy.pressContactResponseValue}
-                </dd>
-              </div>
-              <div>
                 <dt className="text-qulo-text-secondary uppercase tracking-wide text-xs mb-2">
-                  {copy.pressContactTopicsLabel}
+                  {labels.contactTopicsLabel}
                 </dt>
                 <dd>
                   <ul className="flex flex-wrap gap-2">
-                    {copy.pressContactTopics.map((topic) => (
+                    {labels.contactTopics.map((topic) => (
                       <li
                         key={topic}
                         className="text-xs text-white rounded-full border border-white/[0.1] bg-white/[0.04] px-3 py-1"
@@ -582,19 +483,19 @@ export default async function PressPage({
             </dl>
           </section>
 
-          {/* Full Press Kit */}
+          {/* Brand files */}
           <section
-            aria-labelledby="full-press-kit"
+            aria-labelledby="brand-files"
             className="mb-12 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 sm:p-8"
           >
             <h2
-              id="full-press-kit"
+              id="brand-files"
               className="text-2xl font-bold text-qulo-purple mb-3"
             >
-              {copy.fullPressKitHeading}
+              {labels.filesHeading}
             </h2>
             <p className="text-sm text-qulo-text-secondary mb-4">
-              {copy.fullPressKitDescription}
+              {labels.filesUsageNote}
             </p>
             {/* Direct links to files that exist. This section used to promise a
                 /press-kit.zip containing screenshots, a fact-sheet PDF and a
@@ -608,7 +509,7 @@ export default async function PressPage({
                     download
                     className="block rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-3 text-center text-sm text-qulo-text-secondary hover:text-white hover:border-qulo-purple/40 transition-colors"
                   >
-                    {asset.label}
+                    {"logoKey" in asset ? labels.logos[asset.logoKey].label : asset.label}
                     <span className="block text-[10px] uppercase tracking-wider mt-1">
                       {asset.format}
                     </span>
@@ -621,10 +522,10 @@ export default async function PressPage({
           {/* CTA */}
           <section className="mb-12 text-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-10">
             <h2 className="text-2xl font-bold text-white mb-3">
-              {copy.ctaHeading}
+              {labels.ctaHeading}
             </h2>
             <p className="text-qulo-text-secondary text-sm mb-6 max-w-xl mx-auto">
-              {copy.ctaText}
+              {labels.ctaText}
             </p>
             <div className="flex justify-center">
               <StoreButtons />
@@ -637,17 +538,17 @@ export default async function PressPage({
               id="more-links"
               className="text-2xl font-bold text-qulo-purple mb-6"
             >
-              {copy.internalLinksHeading}
+              {labels.moreHeading}
             </h2>
             <ul className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {copy.internalLinks.map((link) => (
-                <li key={link.href}>
+              {MORE_LINKS.map((link) => (
+                <li key={link.key}>
                   <Link
-                    href={link.href}
+                    href={`/${locale}/${link.path}`}
                     className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 text-center hover:border-qulo-purple/40 transition-colors"
                   >
                     <p className="text-sm font-semibold text-white">
-                      {link.label}
+                      {labels.moreLinks[link.key]}
                     </p>
                   </Link>
                 </li>
