@@ -160,7 +160,7 @@ function BlogContent({ slug, locale }: { slug: string; locale: string }) {
   const article = STRUCTURED_ARTICLES[slug];
   if (!article) return null;
 
-  return <ArticleBlocks blocks={article[locale] || article.en} />;
+  return <ArticleBlocks blocks={article[locale] || article.en} locale={locale} />;
 }
 
 /* ------------------------------------------------------------------ */

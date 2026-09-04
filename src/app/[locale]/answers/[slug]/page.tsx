@@ -152,7 +152,7 @@ export default async function AnswerPage({
             {labels.updated}: <time dateTime={updated}>{formatDate(updated, locale)}</time>
           </p>
 
-          {body ? <ArticleBlocks blocks={body[locale] || body.en} /> : null}
+          {body ? <ArticleBlocks blocks={body[locale] || body.en} locale={locale} /> : null}
 
           {page.sources && page.sources.length > 0 ? (
             <div className="mt-14">

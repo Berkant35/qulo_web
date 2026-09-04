@@ -147,7 +147,7 @@ function structuredWordCount(slug: string, locale: string): number | undefined {
 function AdviceContent({ slug, locale }: { slug: string; locale: string }) {
   const article = STRUCTURED_GUIDES[slug];
   if (!article) return null;
-  return <ArticleBlocks blocks={article[locale] || article.en} />;
+  return <ArticleBlocks blocks={article[locale] || article.en} locale={locale} />;
 }
 
 /* ------------------------------------------------------------------ */

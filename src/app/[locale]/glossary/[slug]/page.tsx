@@ -163,7 +163,7 @@ export default async function GlossaryTermPage({
             </p>
           </div>
 
-          <ArticleBlocks blocks={entry.blocks} />
+          <ArticleBlocks blocks={entry.blocks} locale={locale} excludeSlug={slug} />
 
           {term.article ? (
             <div className="mt-12 rounded-2xl border border-qulo-purple/25 bg-qulo-purple/[0.06] p-6">
