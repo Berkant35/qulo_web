@@ -13,6 +13,11 @@
  *   - pages that must be indexable say so, and the noindexed location pages
  *     stay noindexed
  *   - each sampled page serves its own language, not an English fallback
+ *   - the apex redirects to the visitor's language and does not answer 200
+ *
+ * The apex check exists because that URL answered 200 with a Next error page
+ * from the site's first deploy until 2026-09-05 and nobody noticed: two bugs
+ * hid each other, and no check looked at the front door.
  *
  * Run: `npm run check:live`
  */
@@ -49,6 +54,28 @@ if (sitemap.status !== 200) note(`sitemap-0.xml returned ${sitemap.status}`);
 // The count is expected to move as content ships; a collapse is the signal.
 if (urlCount < 1000) note(`sitemap lists only ${urlCount} URLs — expected ~1200`);
 
+/**
+ * The apex must redirect, never render. A 200 here means a static index.html
+ * has reappeared and is shadowing the redirect rules again.
+ */
+for (const [language, expected] of [
+  ["en-US,en;q=0.9", "/en/"],
+  ["tr-TR,tr;q=0.9", "/tr/"],
+  ["de-DE,de;q=0.9", "/de/"],
+  ["fi-FI,fi;q=0.9", "/en/"], // unsupported language falls back to English
+]) {
+  const response = await fetch(SITE, {
+    redirect: "manual",
+    headers: { "accept-language": language },
+  });
+  const location = response.headers.get("location") || "";
+  if (response.status !== 302) {
+    note(`apex answered ${response.status} for ${language} — expected a 302`);
+  } else if (!location.endsWith(expected)) {
+    note(`apex sent ${language} to ${location || "nowhere"}, expected ${expected}`);
+  }
+}
+
 const robots = await get("/robots.txt");
 if (robots.status !== 200) note(`robots.txt returned ${robots.status}`);
 for (const agent of ["Googlebot", "GPTBot", "ClaudeBot", "PerplexityBot"]) {
@@ -73,7 +100,7 @@ for (const sample of SAMPLES) {
   );
 }
 
-console.log(`sitemap: ${urlCount} URLs\n`);
+console.log(`sitemap: ${urlCount} URLs · apex redirects by language\n`);
 console.log("  code  robots   lang  path                                       title");
 console.log(rows.join("\n"));
 
