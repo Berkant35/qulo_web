@@ -26,6 +26,7 @@ import { scienceBehindQuestionBasedMatching } from "./_content/science-behind-qu
 import { isCuffingSeasonReal } from "./_content/is-cuffing-season-real";
 import { paradoxOfChoiceDating } from "./_content/paradox-of-choice-dating";
 import { howToAnswerWell } from "./_content/how-to-answer-well";
+import { attachmentStylesDatingApps } from "./_content/attachment-styles-dating-apps";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -138,6 +139,7 @@ const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
   "is-cuffing-season-real": isCuffingSeasonReal,
   "paradox-of-choice-dating": paradoxOfChoiceDating,
   "how-to-answer-well": howToAnswerWell,
+  "attachment-styles-dating-apps": attachmentStylesDatingApps,
   "what-actually-predicts-compatibility": whatActuallyPredictsCompatibility,
   "psychology-of-the-first-message": psychologyOfTheFirstMessage,
   "the-question-deficit": theQuestionDeficit,
