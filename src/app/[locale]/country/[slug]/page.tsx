@@ -308,9 +308,24 @@ export async function generateMetadata({
   for (const l of locales) languages[l] = `${SITE_URL}/${l}/country/${slug}`;
   languages["x-default"] = `${SITE_URL}/tr/country/${slug}`;
 
+  // Deliberately noindex, follow.
+  //
+  // These pages are template-identical: a measurement across the export found
+  // Istanbul and Paris sharing 98% of their words, with only the city name and
+  // a population figure varying, and the same holds for the title and meta
+  // description. 352 such URLs — city plus country, across 16 locales — were
+  // 23% of the sitemap. That is the doorway-page pattern Google's own guidelines
+  // name, and at that share it risks dragging the site-level quality signal down
+  // onto pages that earn their place.
+  //
+  // They stay live and crawlable (`follow: true`) so they work as direct or
+  // ad-campaign landings and still pass link equity. They are also excluded from
+  // the sitemap in `next-sitemap.config.js`. Reversible: if these ever carry
+  // genuinely per-city content, drop the `robots` line and the sitemap exclusion.
   return {
     title,
     description,
+    robots: { index: false, follow: true },
     alternates: { canonical: pageUrl, languages },
     openGraph: {
       title,

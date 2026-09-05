@@ -28,6 +28,17 @@ const CITATION_CRAWLERS = [
 /** Utility routes: real pages users land on, but nothing to index. */
 const NOINDEX_ROUTES = ["/invite", "/email-verified", "/reset-password"];
 
+/**
+ * Location pages, excluded from the sitemap and noindexed in-page.
+ *
+ * The 352 city and country URLs are template-identical — Istanbul and Paris
+ * share 98% of their words, and their titles and meta descriptions differ only
+ * by the place name. At 23% of the sitemap that is a doorway-page pattern, and
+ * it puts a site-level quality signal at risk for the sake of pages that carry
+ * no per-city content. They stay live and crawlable for direct and ad traffic.
+ */
+const TEMPLATE_ROUTES = ["/dating/", "/country/"];
+
 /** Higher priority for the pages we actually want surfaced first. */
 const PRIORITY_RULES = [
   { test: (path) => /^\/[a-z]{2}\/?$/.test(path), priority: 1.0, changefreq: "daily" },
@@ -49,7 +60,11 @@ module.exports = {
   priority: 0.7,
   // Utility routes carry the homepage's canonical, so indexing them would create
   // duplicate-content signals — they are excluded here and noindexed in-page.
-  exclude: ["/404", ...NOINDEX_ROUTES.map((route) => `/*${route}`)],
+  exclude: [
+    "/404",
+    ...NOINDEX_ROUTES.map((route) => `/*${route}`),
+    ...TEMPLATE_ROUTES.map((route) => `/*${route}*`),
+  ],
   transform: async (config, path) => {
     const rule = PRIORITY_RULES.find((candidate) => candidate.test(path));
     return {
