@@ -239,7 +239,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "**Reis und Shavers** Modell davon, wie Nähe entsteht, benennt drei Dinge, die eine Antwort tragen muss. Nicht Charme, nicht Schlagfertigkeit — diese:"
+      "text": "**Reis und Shaver**s Modell davon, wie Nähe entsteht, benennt drei Dinge, die eine Antwort tragen muss. Nicht Charme, nicht Schlagfertigkeit — diese:"
     },
     {
       "type": "ul",
@@ -251,7 +251,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "**Laurenceau, Barrett und Pietromonaco** haben dieses Modell in derselben Zeitschrift geprüft, mit Tagebüchern, die die Teilnehmenden unmittelbar nach ihren Gesprächen ausfüllten, über eine und über zwei Wochen. Sowohl sich zu öffnen als auch eine Antwort zu bekommen sagte voraus, wie nah sich ein Austausch anfühlte — aber die Art, wie geantwortet wurde, erklärte einen Teil des Zusammenhangs zwischen dem Sich-Öffnen des Gegenübers und dem Gefühl von Nähe im Gespräch. Jemand sagt dir etwas Echtes; ob daraus Nähe wird, hängt davon ab, was zurückkommt."
+      "text": "**Laurenceau, Barrett und Pietromonaco** haben dieses Modell im **Journal of Personality and Social Psychology** geprüft, mit Tagebüchern, die die Teilnehmenden unmittelbar nach ihren Gesprächen ausfüllten, über eine und über zwei Wochen. Sowohl sich zu öffnen als auch eine Antwort zu bekommen sagte voraus, wie nah sich ein Austausch anfühlte — aber die Art, wie geantwortet wurde, erklärte einen Teil des Zusammenhangs zwischen dem Sich-Öffnen des Gegenübers und dem Gefühl von Nähe im Gespräch. Jemand sagt dir etwas Echtes; ob daraus Nähe wird, hängt davon ab, was zurückkommt."
     },
     {
       "type": "h2",
@@ -280,7 +280,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Am Anfang hast du oft fast nichts: ein paar Fotos, eine Zeile Text, eine Frage, die für irgendwen geschrieben wurde. Der ehrliche Zug ist, trotzdem als du selbst zu antworten. Eine leicht schräge, konkrete Antwort gibt der anderen Person etwas in die Hand. Eine sichere gibt ihr nichts — und sichere Antworten sind der Grund, warum so viele Gesprächsanfänge nach zwei Nachrichten sterben."
+      "text": "Am Anfang hast du oft fast nichts: ein paar Fotos, eine Zeile Text, eine Frage, die für irgendwen geschrieben wurde. Der ehrliche Zug ist, trotzdem als du selbst zu antworten. Eine leicht schräge, konkrete Antwort gibt der anderen Person etwas in die Hand. Eine sichere gibt ihr nichts in die Hand, und damit bleibt der nächsten Nachricht kein Ansatzpunkt."
     },
     {
       "type": "p",
@@ -339,7 +339,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "**Laurenceau, Barrett et Pietromonaco** ont mis ce modèle à l'épreuve dans la même revue, à l'aide de carnets que les participants remplissaient juste après leurs conversations, sur une et sur deux semaines. Se livrer et recevoir une réponse prédisaient l'un comme l'autre à quel point un échange paraissait intime — mais la manière dont on répondait expliquait en partie le lien entre l'ouverture de l'autre et le sentiment de proximité dans la conversation. Quelqu'un vous dit quelque chose de vrai ; que cela devienne de l'intimité dépend de ce qui revient."
+      "text": "**Laurenceau, Barrett et Pietromonaco** ont mis ce modèle à l'épreuve dans le **Journal of Personality and Social Psychology**, à l'aide de carnets que les participants remplissaient juste après leurs conversations, sur une et sur deux semaines. Se livrer et recevoir une réponse prédisaient l'un comme l'autre à quel point un échange paraissait intime — mais la manière dont on répondait expliquait en partie le lien entre l'ouverture de l'autre et le sentiment de proximité dans la conversation. Quelqu'un vous dit quelque chose de vrai ; que cela devienne de l'intimité dépend de ce qui revient."
     },
     {
       "type": "h2",
@@ -368,7 +368,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Au début, vous n'avez souvent presque rien : quelques photos, une ligne de texte, une question écrite pour n'importe qui. Le geste honnête est de répondre quand même en étant vous-même. Une réponse un peu bizarre et précise donne à l'autre quelque chose à quoi se raccrocher. Une réponse prudente ne lui donne rien, et les réponses prudentes sont la raison pour laquelle tant d'échanges meurent au bout de deux messages."
+      "text": "Au début, vous n'avez souvent presque rien : quelques photos, une ligne de texte, une question écrite pour n'importe qui. Le geste honnête est de répondre quand même en étant vous-même. Une réponse un peu bizarre et précise donne à l'autre quelque chose à quoi se raccrocher. Une réponse prudente ne lui donne rien à quoi se raccrocher, ce qui laisse le message suivant sans point de départ."
     },
     {
       "type": "p",
@@ -427,7 +427,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "**Laurenceau, Barrett y Pietromonaco** pusieron ese modelo a prueba en la misma revista, con diarios que los participantes rellenaban justo después de sus conversaciones, a lo largo de una semana y de dos. Tanto abrirse como recibir respuesta predecían lo íntimo que se sentía un intercambio; pero la forma de responder explicaba en parte el vínculo entre que la otra persona se abriera y que la conversación se sintiera cercana. Alguien te cuenta algo real; que eso aterrice como intimidad depende de lo que vuelve."
+      "text": "**Laurenceau, Barrett y Pietromonaco** pusieron ese modelo a prueba en el **Journal of Personality and Social Psychology**, con diarios que los participantes rellenaban justo después de sus conversaciones, a lo largo de una semana y de dos. Tanto abrirse como recibir respuesta predecían lo íntimo que se sentía un intercambio; pero la forma de responder explicaba en parte el vínculo entre que la otra persona se abriera y que la conversación se sintiera cercana. Alguien te cuenta algo real; que eso aterrice como intimidad depende de lo que vuelve."
     },
     {
       "type": "h2",
@@ -456,7 +456,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "Al principio muchas veces no tienes casi nada: unas fotos, una línea de texto, una pregunta escrita para cualquiera. Lo honesto es responder igualmente siendo tú. Una respuesta algo rara y concreta le da a la otra persona algo que sostener. Una respuesta segura no le da nada, y las respuestas seguras son la razón por la que tantos comienzos mueren a los dos mensajes."
+      "text": "Al principio muchas veces no tienes casi nada: unas fotos, una línea de texto, una pregunta escrita para cualquiera. Lo honesto es responder igualmente siendo tú. Una respuesta algo rara y concreta le da a la otra persona algo que sostener. Una respuesta segura no le da nada que sostener, y el mensaje siguiente se queda sin punto de partida."
     },
     {
       "type": "p",
@@ -515,7 +515,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "وقد وضع **لورنسو وباريت وبييتروموناكو** ذلك النموذج على المحكّ في الدورية نفسها، عبر يوميات كان المشاركون يملؤونها فور انتهاء محادثاتهم، على مدى أسبوع وأسبوعين. فكلٌّ من البوح وتلقّي الاستجابة تنبّأ بمدى الشعور بالحميمية في التبادل — لكن الاستجابة هي ما فسّر جزئيًا الصلة بين انفتاح الطرف الآخر وشعورك بقرب المحادثة. يقول لك أحدهم شيئًا حقيقيًا؛ وأمّا هل يهبط ذلك حميمية أم لا، فرهنٌ بما يعود إليه."
+      "text": "وقد وضع **لورنسو وباريت وبييتروموناكو** ذلك النموذج على المحكّ في **Journal of Personality and Social Psychology**، عبر يوميات كان المشاركون يملؤونها فور انتهاء محادثاتهم، على مدى أسبوع وأسبوعين. فكلٌّ من البوح وتلقّي الاستجابة تنبّأ بمدى الشعور بالحميمية في التبادل — لكن الاستجابة هي ما فسّر جزئيًا الصلة بين انفتاح الطرف الآخر وشعورك بقرب المحادثة. يقول لك أحدهم شيئًا حقيقيًا؛ وأمّا هل يهبط ذلك حميمية أم لا، فرهنٌ بما يعود إليه."
     },
     {
       "type": "h2",
@@ -544,7 +544,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "في البداية لا يكون لديك في الغالب شيء يُذكر: بضع صور، وسطر من الكلام، وسؤال كتبه لأي أحد. والحركة الأمينة أن تجيب بوصفك أنت على أي حال. فإجابة محدّدة، وإن بدت غريبة قليلًا، تعطي الطرف الآخر ما يمسك به. أمّا الإجابة الآمنة فلا تعطيه شيئًا — والإجابات الآمنة هي سبب موت هذا العدد الكبير من البدايات بعد رسالتين."
+      "text": "في البداية لا يكون لديك في الغالب شيء يُذكر: بضع صور، وسطر من الكلام، وسؤال كتبه لأي أحد. والحركة الأمينة أن تجيب بوصفك أنت على أي حال. فإجابة محدّدة، وإن بدت غريبة قليلًا، تعطي الطرف الآخر ما يمسك به. أمّا الإجابة الآمنة فلا تعطيه شيئًا يمسك به، فلا يبقى للرسالة التالية ما تنطلق منه."
     },
     {
       "type": "p",
@@ -691,7 +691,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "**Laurenceau, Barrett e Pietromonaco** puseram esse modelo à prova na mesma revista, com diários que as pessoas preenchiam logo depois das suas conversas, ao longo de uma e de duas semanas. Tanto se abrir quanto ser respondido previa o quanto uma troca parecia íntima — mas a responsividade explicava em parte a ligação entre o outro se abrir e a conversa parecer próxima. Alguém te conta algo real; se aquilo vira intimidade depende do que volta."
+      "text": "**Laurenceau, Barrett e Pietromonaco** puseram esse modelo à prova no **Journal of Personality and Social Psychology**, com diários que as pessoas preenchiam logo depois das suas conversas, ao longo de uma e de duas semanas. Tanto se abrir quanto ser respondido previa o quanto uma troca parecia íntima — mas a responsividade explicava em parte a ligação entre o outro se abrir e a conversa parecer próxima. Alguém te conta algo real; se aquilo vira intimidade depende do que volta."
     },
     {
       "type": "h2",
@@ -720,7 +720,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "No começo você costuma ter quase nada: algumas fotos, uma linha de texto, uma pergunta que a pessoa escreveu para qualquer um. A jogada honesta é responder como você é, mesmo assim. Uma resposta um pouco estranha, mas específica, dá ao outro algo para segurar. Uma resposta segura não dá nada — e respostas seguras são o motivo de tantas aberturas morrerem depois de duas mensagens."
+      "text": "No começo você costuma ter quase nada: algumas fotos, uma linha de texto, uma pergunta que a pessoa escreveu para qualquer um. A jogada honesta é responder como você é, mesmo assim. Uma resposta um pouco estranha, mas específica, dá ao outro algo para segurar. Uma resposta segura não dá nada para segurar, e a mensagem seguinte fica sem um ponto de partida."
     },
     {
       "type": "p",
@@ -779,7 +779,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "**Laurenceau, Barrett e Pietromonaco** hanno messo alla prova quel modello sulla stessa rivista, con diari che i partecipanti compilavano subito dopo le loro conversazioni, per una e per due settimane. Sia aprirsi sia ricevere una risposta prediceva quanto uno scambio risultasse intimo — ma la responsività spiegava in parte il legame tra l'aprirsi dell'altro e il sentire vicina la conversazione. Qualcuno ti dice qualcosa di vero; che diventi intimità o no lo decide ciò che torna indietro."
+      "text": "**Laurenceau, Barrett e Pietromonaco** hanno messo alla prova quel modello sul **Journal of Personality and Social Psychology**, con diari che i partecipanti compilavano subito dopo le loro conversazioni, per una e per due settimane. Sia aprirsi sia ricevere una risposta prediceva quanto uno scambio risultasse intimo — ma la responsività spiegava in parte il legame tra l'aprirsi dell'altro e il sentire vicina la conversazione. Qualcuno ti dice qualcosa di vero; che diventi intimità o no lo decide ciò che torna indietro."
     },
     {
       "type": "h2",
@@ -808,7 +808,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "All'inizio spesso non hai quasi niente: qualche foto, una riga di testo, una domanda scritta per chiunque. La mossa onesta è rispondere comunque, da te stesso. Una risposta un po' strana ma precisa dà all'altra persona qualcosa a cui aggrapparsi. Una risposta prudente non le dà niente — ed è per le risposte prudenti che tanti inizi muoiono dopo due messaggi."
+      "text": "All'inizio spesso non hai quasi niente: qualche foto, una riga di testo, una domanda scritta per chiunque. La mossa onesta è rispondere comunque, da te stesso. Una risposta un po' strana ma precisa dà all'altra persona qualcosa a cui aggrapparsi. Una risposta prudente non le dà niente a cui aggrapparsi, e il messaggio successivo resta senza un punto da cui partire."
     },
     {
       "type": "p",
@@ -867,7 +867,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "**Laurenceau、Barrett、Pietromonaco** の三氏は、同じ学術誌でそのモデルを検証しました。参加者は会話が終わった直後に日記をつけ、それを一週間と二週間にわたって続けました。自分を開くことも、返してもらうことも、どちらもそのやり取りがどれだけ親密に感じられたかを予測しました——ただし、相手が心を開いたことと会話が近く感じられることとのつながりを部分的に説明していたのは、応答性のほうでした。誰かがあなたに本当のことを言う。それが親密さとして着地するかどうかは、返ってくるものが決めます。"
+      "text": "**Laurenceau、Barrett、Pietromonaco** の三氏は、**Journal of Personality and Social Psychology** でそのモデルを検証しました。参加者は会話が終わった直後に日記をつけ、それを一週間と二週間にわたって続けました。自分を開くことも、返してもらうことも、どちらもそのやり取りがどれだけ親密に感じられたかを予測しました——ただし、相手が心を開いたことと会話が近く感じられることとのつながりを部分的に説明していたのは、応答性のほうでした。誰かがあなたに本当のことを言う。それが親密さとして着地するかどうかは、返ってくるものが決めます。"
     },
     {
       "type": "h2",
@@ -896,7 +896,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "始まりの時点では、たいてい何もありません。写真が数枚、一行の文章、誰に向けてでもいいように書かれた質問がひとつ。それでも自分として答えるのが、誠実なやり方です。少し変わっていても具体的な答えは、相手に握るものを渡します。無難な答えは何も渡しません。そして、これだけ多くの出だしがメッセージ二通で途切れてしまう理由は、その無難な答えにあります。"
+      "text": "始まりの時点では、たいてい何もありません。写真が数枚、一行の文章、誰に向けてでもいいように書かれた質問がひとつ。それでも自分として答えるのが、誠実なやり方です。少し変わっていても具体的な答えは、相手に握るものを渡します。無難な答えは、握るものを何も渡しません。次のメッセージは、そこから始める手がかりを持てないままになります。"
     },
     {
       "type": "p",
@@ -955,7 +955,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "**Laurenceau, Barrett, Pietromonaco**는 같은 저널에서 그 모델을 시험했습니다. 참가자들은 대화가 끝난 직후에 일기를 적었고, 그 기록은 한 주와 두 주에 걸쳐 이어졌습니다. 자기를 드러내는 것도 응답을 받는 것도 그 대화가 얼마나 친밀하게 느껴졌는지를 예측했습니다 — 다만 상대가 마음을 여는 것과 대화가 가깝게 느껴지는 것 사이의 연결은 반응성이 부분적으로 설명했습니다. 누군가 당신에게 진짜인 것을 말합니다. 그것이 친밀감으로 내려앉는지는 돌아오는 것이 정합니다."
+      "text": "**Laurenceau, Barrett, Pietromonaco**는 **Journal of Personality and Social Psychology**에서 그 모델을 시험했습니다. 참가자들은 대화가 끝난 직후에 일기를 적었고, 그 기록은 한 주와 두 주에 걸쳐 이어졌습니다. 자기를 드러내는 것도 응답을 받는 것도 그 대화가 얼마나 친밀하게 느껴졌는지를 예측했습니다 — 다만 상대가 마음을 여는 것과 대화가 가깝게 느껴지는 것 사이의 연결은 반응성이 부분적으로 설명했습니다. 누군가 당신에게 진짜인 것을 말합니다. 그것이 친밀감으로 내려앉는지는 돌아오는 것이 정합니다."
     },
     {
       "type": "h2",
@@ -984,7 +984,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "초반에는 가진 것이 거의 없을 때가 많습니다. 사진 몇 장, 한 줄의 글, 아무에게나 쓴 질문 하나. 정직한 수는 그래도 자기 자신으로 답하는 것입니다. 조금 이상하더라도 구체적인 대답은 상대에게 붙잡을 것을 줍니다. 안전한 대답은 아무것도 주지 않습니다 — 그토록 많은 시작이 메시지 두 개 만에 끊기는 이유가 안전한 대답입니다."
+      "text": "초반에는 가진 것이 거의 없을 때가 많습니다. 사진 몇 장, 한 줄의 글, 아무에게나 쓴 질문 하나. 정직한 수는 그래도 자기 자신으로 답하는 것입니다. 조금 이상하더라도 구체적인 대답은 상대에게 붙잡을 것을 줍니다. 안전한 대답은 붙잡을 것을 아무것도 주지 않고, 그래서 다음 메시지는 시작할 자리를 찾지 못합니다."
     },
     {
       "type": "p",
@@ -1043,7 +1043,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "**Laurenceau、Barrett 与 Pietromonaco** 在同一本期刊上检验了这个模型：参与者在每次谈话结束后立刻写日记，记录分别持续一周和两周。自我袒露和被回应，都能预示一次交流让人觉得有多亲密——但对方的敞开与这次谈话让人觉得亲近，两者之间的联系有一部分是由回应性解释的。有人对你说了一件真实的事；它会不会落成亲密，取决于回来的是什么。"
+      "text": "**Laurenceau、Barrett 与 Pietromonaco** 在 **Journal of Personality and Social Psychology** 上检验了这个模型：参与者在每次谈话结束后立刻写日记，记录分别持续一周和两周。自我袒露和被回应，都能预示一次交流让人觉得有多亲密——但对方的敞开与这次谈话让人觉得亲近，两者之间的联系有一部分是由回应性解释的。有人对你说了一件真实的事；它会不会落成亲密，取决于回来的是什么。"
     },
     {
       "type": "h2",
@@ -1072,7 +1072,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "刚开始的时候，你手上往往几乎什么都没有：几张照片、一行字、一个写给所有人的问题。诚实的做法是照样以你自己的样子回答。一个稍微有点怪但具体的回答，能给对方一个可以抓住的东西。一个安全的回答什么都不给——而这么多开场之所以在两条消息之后就死掉，原因正是安全的回答。"
+      "text": "刚开始的时候，你手上往往几乎什么都没有：几张照片、一行字、一个写给所有人的问题。诚实的做法是照样以你自己的样子回答。一个稍微有点怪但具体的回答，能给对方一个可以抓住的东西。一个安全的回答给不出任何可以抓住的东西，下一条消息也就没有了起点。"
     },
     {
       "type": "p",
@@ -1131,7 +1131,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "**Laurenceau, Barrett en Pietromonaco** toetsten dat model in hetzelfde tijdschrift, met dagboeken die mensen direct na hun gesprekken invulden, over één en twee weken. Zowel jezelf blootgeven als antwoord krijgen voorspelde hoe intiem een uitwisseling aanvoelde — maar responsiviteit verklaarde voor een deel het verband tussen de ander die zich opende en het gesprek dat nabij voelde. Iemand vertelt je iets echts; of dat als intimiteit landt, hangt af van wat er terugkomt."
+      "text": "**Laurenceau, Barrett en Pietromonaco** toetsten dat model in het **Journal of Personality and Social Psychology**, met dagboeken die mensen direct na hun gesprekken invulden, over één en twee weken. Zowel jezelf blootgeven als antwoord krijgen voorspelde hoe intiem een uitwisseling aanvoelde — maar responsiviteit verklaarde voor een deel het verband tussen de ander die zich opende en het gesprek dat nabij voelde. Iemand vertelt je iets echts; of dat als intimiteit landt, hangt af van wat er terugkomt."
     },
     {
       "type": "h2",
@@ -1160,7 +1160,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "In het begin heb je vaak bijna niets: een paar foto's, een regel tekst, een vraag die voor iedereen is geschreven. De eerlijke zet is om toch als jezelf te antwoorden. Een licht eigenaardig, specifiek antwoord geeft de ander iets om vast te pakken. Een veilig antwoord geeft niets, en veilige antwoorden zijn de reden dat zoveel openingen na twee berichten doodbloeden."
+      "text": "In het begin heb je vaak bijna niets: een paar foto's, een regel tekst, een vraag die voor iedereen is geschreven. De eerlijke zet is om toch als jezelf te antwoorden. Een licht eigenaardig, specifiek antwoord geeft de ander iets om vast te pakken. Een veilig antwoord geeft niets om vast te pakken, waardoor het volgende bericht nergens kan beginnen."
     },
     {
       "type": "p",
@@ -1395,7 +1395,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "**Laurenceau, Barrett और Pietromonaco** ने उसी पत्रिका में इस मॉडल को परखा: लोगों ने अपनी बातचीत ख़त्म होते ही डायरी में लिखा, और यह सिलसिला एक और दो हफ़्ते चला। अपने बारे में खुलकर कहना और जवाब पाना, दोनों बताते थे कि कोई बातचीत कितनी नज़दीकी लगी — पर सामने वाले के खुलने और बातचीत के नज़दीक लगने के बीच की कड़ी को कुछ हद तक रिस्पॉन्सिवनेस ने समझाया। कोई आपसे कुछ सच्चा कहता है; वह नज़दीकी बनकर उतरेगा या नहीं, यह इस पर टिका है कि वापस क्या आता है।"
+      "text": "**Laurenceau, Barrett और Pietromonaco** ने **Journal of Personality and Social Psychology** में इस मॉडल को परखा: लोगों ने अपनी बातचीत ख़त्म होते ही डायरी में लिखा, और यह सिलसिला एक और दो हफ़्ते चला। अपने बारे में खुलकर कहना और जवाब पाना, दोनों बताते थे कि कोई बातचीत कितनी नज़दीकी लगी — पर सामने वाले के खुलने और बातचीत के नज़दीक लगने के बीच की कड़ी को कुछ हद तक रिस्पॉन्सिवनेस ने समझाया। कोई आपसे कुछ सच्चा कहता है; वह नज़दीकी बनकर उतरेगा या नहीं, यह इस पर टिका है कि वापस क्या आता है।"
     },
     {
       "type": "h2",
@@ -1424,7 +1424,7 @@ export const howToAnswerWell: LocalizedArticle = {
     },
     {
       "type": "p",
-      "text": "शुरुआत में अक्सर आपके पास लगभग कुछ नहीं होता: कुछ तस्वीरें, एक पंक्ति, और एक सवाल जो उन्होंने सबके लिए लिखा है। ईमानदार क़दम फिर भी अपनी तरह जवाब देना है। थोड़ा अटपटा पर ठोस जवाब सामने वाले को थामने के लिए कुछ देता है। सुरक्षित जवाब कुछ नहीं देता — और इतनी सारी शुरुआतें दो संदेशों के बाद जो ख़त्म हो जाती हैं, उसकी वजह यही सुरक्षित जवाब हैं।"
+      "text": "शुरुआत में अक्सर आपके पास लगभग कुछ नहीं होता: कुछ तस्वीरें, एक पंक्ति, और एक सवाल जो उन्होंने सबके लिए लिखा है। ईमानदार क़दम फिर भी अपनी तरह जवाब देना है। थोड़ा अटपटा पर ठोस जवाब सामने वाले को थामने के लिए कुछ देता है। सुरक्षित जवाब थामने के लिए कुछ नहीं देता, और अगले संदेश के पास शुरू करने की कोई जगह नहीं बचती।"
     },
     {
       "type": "p",
