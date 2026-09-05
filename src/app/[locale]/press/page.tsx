@@ -528,7 +528,7 @@ export default async function PressPage({
               {labels.ctaText}
             </p>
             <div className="flex justify-center">
-              <StoreButtons />
+              <StoreButtons campaign="web-press" />
             </div>
           </section>
 

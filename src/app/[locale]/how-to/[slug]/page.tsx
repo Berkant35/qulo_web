@@ -365,7 +365,7 @@ export default async function HowToDetailPage({
             <h2 className="text-2xl font-bold text-white mb-3">{cta.ctaTitle}</h2>
             <p className="text-qulo-text-secondary text-sm mb-6">{cta.ctaDesc}</p>
             <div className="flex justify-center">
-              <StoreButtons />
+              <StoreButtons campaign="web-howto" />
             </div>
           </section>
 

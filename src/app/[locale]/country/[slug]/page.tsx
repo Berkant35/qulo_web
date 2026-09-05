@@ -431,7 +431,7 @@ export default async function CountryDetailPage({
           <p className="text-qulo-text-secondary text-base max-w-xl mx-auto mb-8">
             {bodyParagraphs[0]}
           </p>
-          <StoreButtons />
+          <StoreButtons campaign="web-country" />
         </div>
       </section>
 
@@ -536,7 +536,7 @@ export default async function CountryDetailPage({
           <p className="text-qulo-text-secondary text-sm mb-8">
             {ctaLabels.desc}
           </p>
-          <StoreButtons />
+          <StoreButtons campaign="web-country" />
         </div>
       </section>
 

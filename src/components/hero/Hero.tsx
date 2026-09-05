@@ -112,7 +112,7 @@ export function Hero() {
 
             {/* Store buttons */}
             <div className="flex justify-center lg:justify-start">
-              <StoreButtons />
+              <StoreButtons campaign="web-home" />
             </div>
           </div>
 

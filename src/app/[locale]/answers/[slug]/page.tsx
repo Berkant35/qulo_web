@@ -5,6 +5,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
+import { StoreButtons } from "@/components/hero/StoreButtons";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { SourceList } from "@/components/shared/SourceList";
 import { ArticleBlocks, type LocalizedArticle } from "@/components/blog/ArticleBlocks";
@@ -185,12 +186,10 @@ export default async function AnswerPage({
           <div className="mt-12 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6">
             <h2 className="text-lg font-semibold text-white mb-2">{labels.ctaTitle}</h2>
             <p className="text-qulo-text-secondary text-sm mb-4">{labels.ctaDesc}</p>
-            <Link
-              href={`/${locale}`}
-              className="inline-flex items-center gap-2 text-qulo-green text-sm font-medium hover:underline"
-            >
-              {labels.ctaLink}
-            </Link>
+            {/* Store buttons rather than a link to the home page. Analytics
+                shows roughly one page per visitor, so a reader who has to click
+                through to the home page to find a download link does not. */}
+            <StoreButtons campaign="web-answers" />
           </div>
         </article>
       </div>

@@ -138,7 +138,7 @@ export default async function FeatureLandingPage({
               {content.heroSub}
             </p>
             <div className="flex justify-center">
-              <StoreButtons />
+              <StoreButtons campaign="web-features" />
             </div>
           </header>
 
@@ -210,7 +210,7 @@ export default async function FeatureLandingPage({
             <h2 className="text-2xl font-bold text-white mb-3">{labels.ctaTitle}</h2>
             <p className="text-qulo-text-secondary text-sm mb-6">{labels.ctaDesc}</p>
             <div className="flex justify-center">
-              <StoreButtons />
+              <StoreButtons campaign="web-features" />
             </div>
           </section>
 

@@ -164,7 +164,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
                 ))}
               </ul>
               <div className="flex justify-center">
-                <StoreButtons />
+                <StoreButtons campaign="web-pricing" />
               </div>
             </div>
 
@@ -188,7 +188,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
                 ))}
               </ul>
               <div className="flex justify-center">
-                <StoreButtons />
+                <StoreButtons campaign="web-pricing" />
               </div>
             </div>
 
@@ -209,7 +209,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
                 ))}
               </ul>
               <div className="flex justify-center">
-                <StoreButtons />
+                <StoreButtons campaign="web-pricing" />
               </div>
             </div>
           </div>

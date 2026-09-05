@@ -524,7 +524,7 @@ export default async function DatingStatisticsPage({
               {copy.ctaText}
             </p>
             <div className="flex justify-center">
-              <StoreButtons />
+              <StoreButtons campaign="web-statistics" />
             </div>
           </section>
 

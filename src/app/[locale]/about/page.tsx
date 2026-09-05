@@ -205,7 +205,7 @@ export default async function AboutPage({
               {t("downloadCtaDesc")}
             </p>
             <div className="flex justify-center">
-              <StoreButtons />
+              <StoreButtons campaign="web-about" />
             </div>
           </section>
 

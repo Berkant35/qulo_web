@@ -514,7 +514,7 @@ export default async function DatingTrends2026Page({
               {copy.ctaText}
             </p>
             <div className="flex justify-center">
-              <StoreButtons />
+              <StoreButtons campaign="web-trends" />
             </div>
           </section>
 
