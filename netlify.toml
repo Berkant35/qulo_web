@@ -159,3 +159,9 @@
   [headers.values]
     Content-Type = "application/json"
     Access-Control-Allow-Origin = "*"
+
+# UA-based store redirect. Declared here as well as in the function's own
+# `config` export so the path is visible when reading the site config.
+[[edge_functions]]
+  path = "/go/app"
+  function = "store-redirect"

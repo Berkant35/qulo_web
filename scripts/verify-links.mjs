@@ -46,6 +46,18 @@ function collect(dir, prefix) {
 
 collect(OUT, "");
 
+/**
+ * Paths served by Netlify rather than by a file in `out/` — edge functions and
+ * redirect rules. Read from netlify.toml so this list cannot drift from the
+ * config: a route that stops being declared there starts failing here, which
+ * is the behaviour we want.
+ */
+const netlifyConfig = existsSync("netlify.toml") ? readFileSync("netlify.toml", "utf8") : "";
+for (const match of netlifyConfig.matchAll(/^\s*(?:path|from)\s*=\s*"([^"]+)"/gm)) {
+  const route = match[1];
+  if (!route.includes("*") && !route.includes(":")) served.add(route);
+}
+
 /** Site-internal targets only: no protocol, no protocol-relative, no fragment. */
 function internalTargets(html) {
   return [...html.matchAll(/(?:href|src)="(\/[^"#]*)"/g)]

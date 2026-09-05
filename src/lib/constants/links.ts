@@ -52,3 +52,16 @@ export const SOCIAL = {
   instagram: "https://instagram.com/quloapp",
   tiktok: "https://tiktok.com/@quloapp",
 } as const;
+
+/**
+ * Edge-resolved store link: `/go/app?c=<campaign>` reads the visitor's
+ * User-Agent server side and redirects to the right store, carrying the
+ * campaign into the Play referrer.
+ *
+ * Prefer this wherever a single button must be correct on first paint. Where
+ * both stores are shown side by side, `storeLinks()` is still right — there is
+ * nothing to guess.
+ */
+export function STORE_REDIRECT(campaign: string): string {
+  return `/go/app?c=${encodeURIComponent(campaign)}`;
+}
