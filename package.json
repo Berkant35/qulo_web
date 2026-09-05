@@ -18,7 +18,8 @@
     "verify:press": "node scripts/verify-press-assets.mjs",
     "verify:links": "node scripts/verify-links.mjs",
     "import:questions": "node scripts/import-example-questions.mjs",
-    "verify:all": "npm run verify && npm run verify:links"
+    "verify:all": "npm run verify && npm run verify:links",
+    "check:live": "node scripts/check-live.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
