@@ -4,6 +4,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { locales, rtlLocales, type Locale } from "@/lib/i18n/config";
 import { SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { RootHtml } from "@/components/layout/RootHtml";
 import { ROOT_METADATA } from "@/lib/constants/rootMetadata";
@@ -25,12 +26,7 @@ export async function generateMetadata({
     .filter((l) => l !== locale)
     .map((l) => OG_LOCALES[l] || "en_US");
 
-  // hreflang alternates for all 16 languages + x-default
-  const languages: Record<string, string> = {};
-  for (const l of locales) {
-    languages[l] = `${SITE_URL}/${l}`;
-  }
-  languages["x-default"] = `${SITE_URL}/tr`;
+  const languages = alternateLanguages("");
 
   return {
     ...ROOT_METADATA,

@@ -7,6 +7,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { COUNTRIES } from "@/lib/constants/countries";
 
 export function generateStaticParams() {
@@ -23,9 +24,7 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/country`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/country`;
-  languages["x-default"] = `${SITE_URL}/tr/country`;
+  const languages = alternateLanguages("/country");
 
   return {
     title: seo.title,

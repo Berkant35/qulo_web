@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { rtlLocales, locales } from "@/lib/i18n/config";
+import { rtlLocales } from "@/lib/i18n/config";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 
@@ -13,9 +14,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const pageUrl = `${SITE_URL}/${locale}/csae-policy`;
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/csae-policy`;
-  languages["x-default"] = `${SITE_URL}/en/csae-policy`;
+  const languages = alternateLanguages("/csae-policy");
   return {
     title: `Child Safety Standards – ${SITE_NAME}`,
     description: "Qulo's Child Sexual Abuse and Exploitation (CSAE) prevention policy, safety standards, and reporting procedures.",

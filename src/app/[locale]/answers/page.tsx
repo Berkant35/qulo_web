@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import { locales, rtlLocales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { ANSWER_PAGES, answerQuestion, answerSummary } from "@/lib/constants/answers";
 import { ANSWER_LABELS } from "@/lib/constants/answerLabels";
 
@@ -24,9 +25,7 @@ export async function generateMetadata({
   const labels = ANSWER_LABELS[locale] || ANSWER_LABELS.en;
   const pageUrl = `${SITE_URL}/${locale}/answers`;
 
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/answers`;
-  languages["x-default"] = `${SITE_URL}/tr/answers`;
+  const languages = alternateLanguages("/answers");
 
   return {
     title: `${labels.hubTitle} — ${SITE_NAME}`,

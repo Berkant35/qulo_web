@@ -11,6 +11,7 @@ import { ArticleBlocks } from "@/components/blog/ArticleBlocks";
 import { locales, rtlLocales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { GLOSSARY_TERMS, SORTED_GLOSSARY_TERMS } from "@/lib/constants/glossary";
 import { GLOSSARY_LABELS } from "@/lib/constants/glossaryLabels";
 import { GLOSSARY_CONTENT } from "../_content";
@@ -46,9 +47,7 @@ export async function generateMetadata({
   const title = headline(labels.question, entry.term);
   const pageUrl = `${SITE_URL}/${locale}/glossary/${slug}`;
 
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/glossary/${slug}`;
-  languages["x-default"] = `${SITE_URL}/tr/glossary/${slug}`;
+  const languages = alternateLanguages(`/glossary/${slug}`);
 
   return {
     title: `${title} — ${SITE_NAME}`,

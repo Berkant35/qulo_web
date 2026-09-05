@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { rtlLocales, locales } from "@/lib/i18n/config";
+import { rtlLocales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 
 /** Per-locale breadcrumb label for the Terms of Service page */
 const TERMS_LABELS: Record<string, string> = {
@@ -21,9 +22,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const seo = PAGE_SEO.terms[locale] || PAGE_SEO.terms.en;
   const pageUrl = `${SITE_URL}/${locale}/terms`;
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/terms`;
-  languages["x-default"] = `${SITE_URL}/tr/terms`;
+  const languages = alternateLanguages("/terms");
   return {
     title: seo.title,
     description: seo.description,

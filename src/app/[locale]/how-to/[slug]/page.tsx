@@ -9,6 +9,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { HOW_TO_GUIDES } from "@/lib/constants/howto";
 
 /* ------------------------------------------------------------------ */
@@ -41,9 +42,7 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/how-to/${slug}`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/how-to/${slug}`;
-  languages["x-default"] = `${SITE_URL}/tr/how-to/${slug}`;
+  const languages = alternateLanguages(`/how-to/${slug}`);
 
   return {
     title: `${title} — Qulo`,

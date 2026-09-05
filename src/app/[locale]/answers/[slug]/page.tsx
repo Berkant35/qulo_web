@@ -12,6 +12,7 @@ import { ArticleBlocks, type LocalizedArticle } from "@/components/blog/ArticleB
 import { locales, rtlLocales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { ANSWER_PAGES, answerQuestion, answerSummary } from "@/lib/constants/answers";
 import { ANSWER_LABELS } from "@/lib/constants/answerLabels";
 import { howQuestionBasedMatchingWorks } from "../_content/how-question-based-matching-works";
@@ -46,9 +47,7 @@ export async function generateMetadata({
   const summary = answerSummary(page, locale);
   const pageUrl = `${SITE_URL}/${locale}/answers/${slug}`;
 
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/answers/${slug}`;
-  languages["x-default"] = `${SITE_URL}/tr/answers/${slug}`;
+  const languages = alternateLanguages(`/answers/${slug}`);
 
   return {
     title: `${question} — ${SITE_NAME}`,

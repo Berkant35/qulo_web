@@ -12,6 +12,7 @@ import {
   OG_LOCALES,
 } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { BLOG_POSTS } from "@/lib/constants/blog";
 import { ADVICE_GUIDES } from "@/lib/constants/advice";
 import { HOW_TO_GUIDES } from "@/lib/constants/howto";
@@ -44,9 +45,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const seo = PAGE_SEO.sitemap[locale] || PAGE_SEO.sitemap.en;
   const pageUrl = `${SITE_URL}/${locale}/${PAGE_SLUG}`;
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/${PAGE_SLUG}`;
-  languages["x-default"] = `${SITE_URL}/tr/${PAGE_SLUG}`;
+  const languages = alternateLanguages(`/${PAGE_SLUG}`);
   return {
     title: seo.title,
     description: seo.description,

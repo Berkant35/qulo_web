@@ -12,6 +12,7 @@ import { LANDING_PAGES } from "@/lib/constants/landings";
 import { landingLabels } from "@/lib/constants/landingLabels";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { getFeatureFaqs } from "@/lib/constants/faqs";
 import { LANDING_CONTENT } from "../_content";
 
@@ -37,9 +38,7 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/features/${slug}`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/features/${slug}`;
-  languages["x-default"] = `${SITE_URL}/tr/features/${slug}`;
+  const languages = alternateLanguages(`/features/${slug}`);
 
   return {
     title,

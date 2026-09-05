@@ -9,6 +9,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { locales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { BLOG_POSTS } from "@/lib/constants/blog";
 import { ArticleBlocks, type LocalizedArticle } from "@/components/blog/ArticleBlocks";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -54,9 +55,7 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/blog/${slug}`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/blog/${slug}`;
-  languages["x-default"] = `${SITE_URL}/tr/blog/${slug}`;
+  const languages = alternateLanguages(`/blog/${slug}`);
 
   return {
     title: `${title} — Qulo Blog`,

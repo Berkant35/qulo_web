@@ -4,9 +4,10 @@ import { Navbar } from "@/components/shared/Navbar";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { FAQ, faqTitle } from "@/components/shared/FAQ";
-import { locales } from "@/lib/i18n/config";
+
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { getAboutFaqs } from "@/lib/constants/faqs";
 
 /** Per-locale breadcrumb label for the About page */
@@ -24,9 +25,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const seo = PAGE_SEO.about[locale] || PAGE_SEO.about.en;
   const pageUrl = `${SITE_URL}/${locale}/about`;
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/about`;
-  languages["x-default"] = `${SITE_URL}/tr/about`;
+  const languages = alternateLanguages("/about");
   return {
     title: seo.title,
     description: seo.description,

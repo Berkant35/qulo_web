@@ -9,6 +9,7 @@ import { ArticleBlocks } from "@/components/blog/ArticleBlocks";
 import { locales, rtlLocales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 import { EXAMPLE_QUESTIONS, QUESTION_CATEGORIES } from "@/lib/constants/exampleQuestions";
 import { QUESTION_LABELS } from "@/lib/constants/questionLabels";
 import { writingQuestions } from "./_content/writing-questions";
@@ -33,9 +34,7 @@ export async function generateMetadata({
   const description = seo?.description ?? labels.intro;
   const pageUrl = `${SITE_URL}/${locale}/questions`;
 
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/questions`;
-  languages["x-default"] = `${SITE_URL}/tr/questions`;
+  const languages = alternateLanguages("/questions");
 
   return {
     title,

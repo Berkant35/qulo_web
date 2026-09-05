@@ -4,11 +4,12 @@ import Link from "next/link";
 import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { locales, rtlLocales } from "@/lib/i18n/config";
+import { rtlLocales } from "@/lib/i18n/config";
 import { LANDING_PAGES } from "@/lib/constants/landings";
 import { landingLabels } from "@/lib/constants/landingLabels";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
+import { alternateLanguages } from "@/lib/seo/alternates";
 
 /* ---------- Metadata ---------- */
 export async function generateMetadata({
@@ -23,9 +24,7 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/features`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = `${SITE_URL}/${l}/features`;
-  languages["x-default"] = `${SITE_URL}/tr/features`;
+  const languages = alternateLanguages("/features");
 
   return {
     title: seo.title,
