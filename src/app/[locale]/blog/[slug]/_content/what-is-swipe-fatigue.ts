@@ -23,6 +23,57 @@ import type { LocalizedArticle } from "@/components/blog/ArticleBlocks";
  * Brand rule: Qulo is the only dating app nameable on this site. Everything else
  * is described generically as "swipe-based apps".
  *
+ * Paradox of choice, removed 2026-09-05: the "1. Decision Fatigue" paragraph
+ * used to cite Barry Schwartz's paradox of choice as established — "when people
+ * are given too many options, they end up less satisfied with what they choose"
+ * — in all 16 locales. That blanket claim does not hold. Scheibehenne,
+ * Greifeneder & Todd (2010), Journal of Consumer Research 37(3), pooled 63
+ * conditions from 50 experiments covering 5,036 people and found a mean effect
+ * size of virtually zero, with wide variance between studies; the sibling post
+ * `paradox-of-choice-dating.ts` reports that meta-analysis and the narrower
+ * dating-specific findings that did replicate. Shipping both files with the law
+ * asserted here and refuted there would have put the blog in contradiction with
+ * itself, so this file gave way — it is the less-sourced of the two.
+ *
+ * What replaced it is the felt experience, which is real and needs no citation:
+ * judging a long queue of strangers is work and it wears you down, and that
+ * tiredness is not the same thing as being spoilt for choice. No research
+ * framing, no pointer to the sibling post — `ArticleBlocks` has no link block,
+ * so a cross-reference could only be prose naming the article, which reads as a
+ * plug inside a section that is otherwise describing a feeling. The decision-
+ * fatigue framing itself (a finite budget for decisions, the "next profile
+ * might be better" thought) is untouched; only the general "more options → less
+ * satisfaction" law went. Block count is unchanged in all 16 locales — the
+ * rewrite stayed inside the existing `p` block. Do not reintroduce the law here.
+ *
+ * Dopamine and addiction, removed 2026-09-05: section 2 was headed "The Dopamine
+ * Loop and Addiction" and asserted, in all 16 locales and with no source at all,
+ * that the swipe mechanic "works like a slot machine", that "unpredictable
+ * rewards are exactly the pattern that keeps a brain pulling the lever", that
+ * "this variable reward system holds your attention while draining it", and that
+ * a match produces a burst of happiness on that schedule. Three claims are
+ * bundled there: a named neurochemical mechanism, "addiction" as a description of
+ * the reader, and deliberate engineering of the app on a reinforcement schedule.
+ * None of them has a source in this repo. Variable-ratio reinforcement is a real
+ * concept in behavioural psychology, but this post cited nobody for it, and a
+ * citation must not be invented to rescue a sentence — so the framing went rather
+ * than gaining a footnote. Leaving it in place would also have contradicted the
+ * paradox-of-choice correction two sections above: the same file cannot strip an
+ * unsourced psychological law from section 1 and keep a stronger one in section 2.
+ * Three sibling posts had fabricated neuroscience removed for the same reason.
+ *
+ * What replaced it is only the experience, which needs no citation: you cannot
+ * know whether someone will like you back, there is no way to find out but to
+ * keep going, and you check again later in case something arrived. The heading
+ * changed with it — "The Pull of Not Knowing" names the unpredictability instead
+ * of a brain chemical. The section is shorter than what it replaced and still
+ * earns its place: it is the only one describing the compulsion to re-check,
+ * which sections 1, 3 and 4 (decision cost, superficiality, ghosting) do not
+ * cover. Block count and the "2." numbering are unchanged in all 16 locales; the
+ * rewrite stayed inside the existing h2 and `p`. Do not reintroduce dopamine,
+ * the slot machine, "addiction", or a variable-reward schedule here — and do not
+ * add a citation for them that has not been read against the primary source.
+ *
  * Note: the block model has no h3, so the original h3 sub-headings ("1. Decision
  * Fatigue", "How Does It Work?", …) are authored as purple h2. The two headings
  * the original markup rendered in `text-qulo-green` — "Qulo's Solution" and the
@@ -37,10 +88,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "Why Does Swipe Fatigue Happen?" },
 
     { type: "h2", text: "1. Decision Fatigue" },
-    { type: "p", text: "Every swipe is a decision, and the human brain does not have an unlimited budget for those. Constantly saying \"yes\" or \"no\" to strangers depletes the same decision-making capacity you need for the rest of your day. Psychologist Barry Schwartz's **paradox of choice** describes what comes next: when people are given too many options, they end up less satisfied with what they choose and slower to choose at all. On dating apps this shows up as the nagging thought that the next profile might be better." },
+    { type: "p", text: "Every swipe is a decision, and the human brain does not have an unlimited budget for those. Constantly saying \"yes\" or \"no\" to strangers depletes the same decision-making capacity you need for the rest of your day. This is not the pleasant tiredness of having plenty to pick from — judging one stranger after another is work, and it wears you down. By the end of a session you are not weighing anyone carefully; you are clearing a queue, trailed by the thought that the next profile might be better." },
 
-    { type: "h2", text: "2. The Dopamine Loop and Addiction" },
-    { type: "p", text: "The swipe mechanic works like a slot machine. Every swipe carries the uncertainty of \"will this person like me back?\", and unpredictable rewards are exactly the pattern that keeps a brain pulling the lever. This variable reward system holds your attention while draining it. A match produces a short burst of happiness, it fades quickly, and the loop starts over." },
+    { type: "h2", text: "2. The Pull of Not Knowing" },
+    { type: "p", text: "Every swipe leaves the same question open: will this person like me back? There is no way to find out except to keep going, so you keep going — and later you open the app again to check, in case something arrived while you were away. A match feels good for a moment, the moment passes, and the question opens again with the next person. An outcome you cannot predict is hard to put down, and that is what keeps the app in your hand long after the evening stopped being enjoyable." },
 
     { type: "h2", text: "3. Superficiality and Lack of Depth" },
     { type: "p", text: "On swipe-based apps the decision is made almost instantly, and mostly on physical appearance. In that fraction of a second there is no way to assess someone's personality, values, sense of humour or view of the world — the mechanic leaves no room for it. As a result the matches stay superficial and genuine connection rarely forms." },
@@ -99,10 +150,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "Swipe Yorgunluğu Neden Oluşur?" },
 
     { type: "h2", text: "1. Karar Yorgunluğu" },
-    { type: "p", text: "Her kaydırma bir karardır ve insan beyninin karar bütçesi sınırsız değildir. Yabancılara sürekli \"evet\" ya da \"hayır\" demek, günün geri kalanında ihtiyaç duyduğunuz karar verme kapasitesini tüketir. Psikolog Barry Schwartz'ın **seçim paradoksu** kavramı devamını anlatır: insanlara çok fazla seçenek sunulduğunda seçtiklerinden daha az tatmin olur, seçmekte de zorlanırlar. Flört uygulamalarında bu, \"bir sonraki daha iyi olabilir\" düşüncesi olarak kendini gösterir." },
+    { type: "p", text: "Her kaydırma bir karardır ve insan beyninin karar bütçesi sınırsız değildir. Yabancılara sürekli \"evet\" ya da \"hayır\" demek, günün geri kalanında ihtiyaç duyduğunuz karar verme kapasitesini tüketir. Bu, bol seçenek olmasının verdiği hoş bir yorgunluk değildir; arka arkaya yabancı değerlendirmek emek ister ve insanı aşındırır. Bir oturumun sonunda artık kimseyi dikkatle tartmazsınız, sadece bir kuyruğu boşaltırsınız — peşinizden de \"bir sonraki daha iyi olabilir\" düşüncesi gelir." },
 
-    { type: "h2", text: "2. Dopamin Döngüsü ve Bağımlılık" },
-    { type: "p", text: "Swipe mekaniği bir kumar makinesi gibi çalışır. Her kaydırmada \"acaba bu kişi de beni beğenecek mi?\" belirsizliği vardır ve beyni kolu çevirmeye devam ettiren tam da bu öngörülemeyen ödül düzenidir. Değişken ödül sistemi dikkatinizi tutarken bir yandan da tüketir. Eşleşme geldiğinde kısa süreli bir mutluluk yaşanır, hızla söner ve döngü baştan başlar." },
+    { type: "h2", text: "2. Bilmemenin Çekimi" },
+    { type: "p", text: "Her kaydırmada aynı soru açık kalır: acaba bu kişi de sizi beğenecek mi? Bunu öğrenmenin devam etmekten başka yolu yoktur, siz de devam edersiniz — sonra da yokluğunuzda bir şey gelmiş olabilir diye uygulamayı tekrar açıp bakarsınız. Eşleşme bir an iyi hissettirir, o an geçer ve soru bir sonraki kişiyle yeniden açılır. Sonucunu kestiremediğiniz bir şeyi elden bırakmak zordur; akşam keyifli olmaktan çıktıktan çok sonra bile telefonu elinizde tutan şey budur." },
 
     { type: "h2", text: "3. Yüzeysellik ve Derinlik Eksikliği" },
     { type: "p", text: "Swipe tabanlı uygulamalarda karar neredeyse anında ve büyük ölçüde fiziksel görünüme bakılarak verilir. O saniyenin içinde bir insanın kişiliğini, değerlerini, mizah anlayışını ya da dünyaya bakışını değerlendirmenin imkânı yoktur; mekanik buna yer bırakmaz. Sonuçta eşleşmeler yüzeysel kalır ve gerçek bir bağ nadiren kurulur." },
@@ -161,10 +212,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "Warum entsteht Swipe-Müdigkeit?" },
 
     { type: "h2", text: "1. Entscheidungsmüdigkeit" },
-    { type: "p", text: "Jeder Wisch ist eine Entscheidung, und das menschliche Gehirn hat dafür kein unbegrenztes Budget. Ständig \"ja\" oder \"nein\" zu Fremden zu sagen, verbraucht genau die Entscheidungskraft, die man für den Rest des Tages braucht. Der Psychologe Barry Schwartz beschreibt mit dem **Paradox der Wahl**, was danach passiert: Wer zu viele Optionen bekommt, ist mit der getroffenen Wahl weniger zufrieden und entscheidet langsamer. In Dating-Apps zeigt sich das als der nagende Gedanke, das nächste Profil könnte besser sein." },
+    { type: "p", text: "Jeder Wisch ist eine Entscheidung, und das menschliche Gehirn hat dafür kein unbegrenztes Budget. Ständig \"ja\" oder \"nein\" zu Fremden zu sagen, verbraucht genau die Entscheidungskraft, die man für den Rest des Tages braucht. Das ist nicht die angenehme Müdigkeit dessen, der reichlich zur Auswahl hat: einen Fremden nach dem anderen zu beurteilen ist Arbeit, und sie zermürbt. Gegen Ende einer Sitzung wägen Sie niemanden mehr sorgfältig ab, Sie arbeiten nur noch eine Warteschlange ab — begleitet von dem nagenden Gedanken, das nächste Profil könnte besser sein." },
 
-    { type: "h2", text: "2. Die Dopaminschleife und die Abhängigkeit" },
-    { type: "p", text: "Die Wischmechanik funktioniert wie ein Spielautomat. Bei jedem Wisch steht die Ungewissheit im Raum: \"Wird diese Person mich auch mögen?\" Unvorhersehbare Belohnungen sind genau das Muster, das ein Gehirn weiter am Hebel ziehen lässt. Dieses variable Belohnungssystem hält die Aufmerksamkeit und zehrt sie gleichzeitig auf. Ein Match erzeugt einen kurzen Glücksschub, der schnell verfliegt — und die Schleife beginnt von vorn." },
+    { type: "h2", text: "2. Der Sog des Nichtwissens" },
+    { type: "p", text: "Bei jedem Wisch bleibt dieselbe Frage offen: Wird diese Person mich auch mögen? Herausfinden lässt sich das nur, indem man weitermacht, also macht man weiter — und öffnet die App später noch einmal, falls in der Zwischenzeit etwas gekommen ist. Ein Match fühlt sich einen Moment lang gut an, der Moment vergeht, und mit der nächsten Person steht dieselbe Frage wieder offen. Etwas, dessen Ausgang Sie nicht vorhersehen können, legt man schwer aus der Hand — und genau das hält die App in Ihrer Hand, lange nachdem der Abend aufgehört hat, angenehm zu sein." },
 
     { type: "h2", text: "3. Oberflächlichkeit und fehlende Tiefe" },
     { type: "p", text: "In Swipe-basierten Apps fällt die Entscheidung fast augenblicklich und überwiegend nach dem Aussehen. In diesem Sekundenbruchteil lassen sich weder Persönlichkeit noch Werte, Humor oder Weltsicht beurteilen — die Mechanik lässt dafür keinen Raum. Entsprechend bleiben die Matches oberflächlich, und echte Verbindung entsteht selten." },
@@ -223,10 +274,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "Pourquoi la fatigue du swipe apparaît-elle ?" },
 
     { type: "h2", text: "1. La fatigue décisionnelle" },
-    { type: "p", text: "Chaque swipe est une décision, et le cerveau humain ne dispose pas d'un budget illimité pour cela. Dire sans cesse \"oui\" ou \"non\" à des inconnus épuise la capacité de décision dont vous avez besoin pour le reste de la journée. Le psychologue Barry Schwartz décrit la suite avec son **paradoxe du choix** : trop d'options rendent les gens moins satisfaits de ce qu'ils choisissent et plus lents à choisir. Sur les applis de rencontre, cela prend la forme d'une pensée lancinante : le prochain profil sera peut-être meilleur." },
+    { type: "p", text: "Chaque swipe est une décision, et le cerveau humain ne dispose pas d'un budget illimité pour cela. Dire sans cesse \"oui\" ou \"non\" à des inconnus épuise la capacité de décision dont vous avez besoin pour le reste de la journée. Ce n'est pas l'agréable fatigue de qui a l'embarras du choix : juger un inconnu après l'autre est un travail, et cela use. À la fin d'une session, vous ne pesez plus personne avec soin, vous videz une file d'attente — avec, en arrière-plan, cette pensée lancinante : le prochain profil sera peut-être meilleur." },
 
-    { type: "h2", text: "2. La boucle dopaminergique et l'addiction" },
-    { type: "p", text: "La mécanique du swipe fonctionne comme une machine à sous. Chaque swipe porte l'incertitude du \"est-ce que cette personne va m'aimer en retour ?\", et les récompenses imprévisibles sont précisément le schéma qui pousse un cerveau à tirer le levier encore une fois. Ce système de récompense variable retient l'attention tout en la vidant. Un match provoque une brève poussée de bonheur, qui s'évapore vite, et la boucle repart." },
+    { type: "h2", text: "2. L'attrait de ne pas savoir" },
+    { type: "p", text: "À chaque swipe, la même question reste ouverte : est-ce que cette personne va m'aimer en retour ? Il n'y a pas d'autre moyen de le savoir que de continuer, alors vous continuez — puis vous rouvrez l'application plus tard pour vérifier, au cas où quelque chose serait arrivé en votre absence. Un match fait du bien un instant, l'instant passe, et la question se rouvre avec la personne suivante. On lâche difficilement ce dont on ne peut pas prévoir l'issue, et c'est ce qui garde l'application dans votre main longtemps après que la soirée a cessé d'être agréable." },
 
     { type: "h2", text: "3. Superficialité et manque de profondeur" },
     { type: "p", text: "Sur les applis fondées sur le swipe, la décision se prend presque instantanément et surtout sur l'apparence physique. En une fraction de seconde, impossible d'évaluer la personnalité, les valeurs, l'humour ou la vision du monde de quelqu'un : la mécanique n'y laisse aucune place. Les matchs restent donc superficiels et une vraie connexion se forme rarement." },
@@ -285,10 +336,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "¿Por qué aparece el cansancio del swipe?" },
 
     { type: "h2", text: "1. Fatiga de decisión" },
-    { type: "p", text: "Cada deslizamiento es una decisión, y el cerebro humano no tiene un presupuesto ilimitado para ellas. Decir sin descanso \"sí\" o \"no\" a desconocidos agota la misma capacidad de decidir que necesitas para el resto del día. El psicólogo Barry Schwartz describe lo que viene después con su **paradoja de la elección**: cuando se ofrecen demasiadas opciones, la gente queda menos satisfecha con lo que elige y tarda más en elegir. En las apps de citas eso aparece como el pensamiento insistente de que el siguiente perfil podría ser mejor." },
+    { type: "p", text: "Cada deslizamiento es una decisión, y el cerebro humano no tiene un presupuesto ilimitado para ellas. Decir sin descanso \"sí\" o \"no\" a desconocidos agota la misma capacidad de decidir que necesitas para el resto del día. No es el cansancio agradable de quien tiene mucho donde elegir: juzgar a un desconocido tras otro es trabajo, y desgasta. Al final de una sesión ya no sopesas a nadie con cuidado, solo vacías una cola, arrastrando el pensamiento insistente de que el siguiente perfil podría ser mejor." },
 
-    { type: "h2", text: "2. El bucle de dopamina y la adicción" },
-    { type: "p", text: "La mecánica del swipe funciona como una máquina tragaperras. Cada deslizamiento lleva dentro la incertidumbre de \"¿le gustaré yo también?\", y las recompensas impredecibles son justo el patrón que hace que un cerebro siga tirando de la palanca. Ese sistema de recompensa variable retiene tu atención mientras la vacía. Un match da una descarga breve de felicidad, se apaga rápido y el bucle vuelve a empezar." },
+    { type: "h2", text: "2. El tirón de no saber" },
+    { type: "p", text: "En cada deslizamiento queda abierta la misma pregunta: ¿le gustaré yo también? No hay forma de averiguarlo salvo seguir, así que sigues; y más tarde vuelves a abrir la aplicación para mirar, por si ha llegado algo mientras no estabas. Un match sienta bien un momento, el momento pasa y la pregunta se abre de nuevo con la siguiente persona. Cuesta soltar algo cuyo desenlace no puedes prever, y eso es lo que mantiene la aplicación en tu mano mucho después de que la noche haya dejado de ser agradable." },
 
     { type: "h2", text: "3. Superficialidad y falta de profundidad" },
     { type: "p", text: "En las apps basadas en el swipe la decisión se toma casi al instante y sobre todo por el aspecto físico. En esa fracción de segundo no hay forma de valorar la personalidad, los valores, el humor o la mirada sobre el mundo de nadie: la mecánica no deja espacio para ello. El resultado es que los matches se quedan en la superficie y la conexión real rara vez llega." },
@@ -347,10 +398,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "لماذا يحدث إرهاق التمرير؟" },
 
     { type: "h2", text: "1. إرهاق اتخاذ القرار" },
-    { type: "p", text: "كل تمريرة قرار، وميزانية الدماغ البشري لاتخاذ القرارات ليست بلا حدود. قول \"نعم\" أو \"لا\" للغرباء بلا توقّف يستهلك القدرة نفسها التي تحتاجها لبقية يومك. يصف عالم النفس باري شوارتز ما يحدث بعد ذلك بمفهوم **مفارقة الاختيار**: حين تُعرض على الناس خيارات أكثر من اللازم، يقلّ رضاهم عمّا يختارونه ويصبح الاختيار نفسه أبطأ. وفي تطبيقات المواعدة يظهر ذلك على شكل فكرة ملحّة: ربما يكون الملف التالي أفضل." },
+    { type: "p", text: "كل تمريرة قرار، وميزانية الدماغ البشري لاتخاذ القرارات ليست بلا حدود. قول \"نعم\" أو \"لا\" للغرباء بلا توقّف يستهلك القدرة نفسها التي تحتاجها لبقية يومك. وهذا ليس التعب اللطيف الذي ترافقه وفرة الخيارات؛ فالحكم على غريب بعد غريب عمل يستنزفك. وفي نهاية الجلسة لم تعد تزن أحدًا بعناية، بل تفرّغ طابورًا، وتلاحقك فكرة ملحّة: ربما يكون الملف التالي أفضل." },
 
-    { type: "h2", text: "2. حلقة الدوبامين والإدمان" },
-    { type: "p", text: "تعمل آلية التمرير مثل ماكينة القمار. كل تمريرة تحمل سؤالًا معلّقًا: \"هل سيعجب بي هذا الشخص أيضًا؟\"، والمكافآت غير المتوقّعة هي بالضبط النمط الذي يبقي الدماغ ممسكًا بالذراع. هذا النظام ذو المكافأة المتغيّرة يمسك انتباهك ويستنزفه في الوقت نفسه. يأتي التطابق فتشعر بدفقة سعادة قصيرة سرعان ما تخبو، ثم تبدأ الحلقة من جديد." },
+    { type: "h2", text: "2. جاذبية عدم المعرفة" },
+    { type: "p", text: "مع كل تمريرة يبقى السؤال نفسه مفتوحًا: هل سيعجب بي هذا الشخص أيضًا؟ لا سبيل إلى المعرفة إلا بالمتابعة، فتتابع؛ ثم تفتح التطبيق مرة أخرى بعد حين لتتحقّق، تحسّبًا لشيء وصل في غيابك. التطابق يمنحك شعورًا طيبًا للحظة، ثم تمضي اللحظة، وينفتح السؤال نفسه من جديد مع الشخص التالي. من الصعب أن تترك شيئًا لا تستطيع توقّع نتيجته، وهذا بالضبط ما يُبقي التطبيق في يدك بعد أن تكون الأمسية قد كفّت عن كونها ممتعة بوقت طويل." },
 
     { type: "h2", text: "3. السطحية وغياب العمق" },
     { type: "p", text: "في التطبيقات القائمة على التمرير يُتّخذ القرار في لحظة تقريبًا، وعلى أساس المظهر الخارجي في الأغلب. في ذلك الجزء من الثانية لا سبيل لتقييم شخصية أحد أو قيمه أو حسّه الفكاهي أو نظرته إلى العالم؛ الآلية نفسها لا تترك مجالًا لذلك. والنتيجة أن التطابقات تبقى سطحية ونادرًا ما ينشأ ارتباط حقيقي." },
@@ -409,10 +460,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "Почему возникает усталость от свайпов?" },
 
     { type: "h2", text: "1. Усталость от решений" },
-    { type: "p", text: "Каждый свайп — это решение, а бюджет мозга на решения не безграничен. Постоянные «да» и «нет» незнакомым людям расходуют ту же способность выбирать, которая нужна вам на весь оставшийся день. Психолог Барри Шварц описал продолжение в концепции **парадокса выбора**: когда вариантов слишком много, человек меньше доволен сделанным выбором и дольше не может его сделать. В приложениях для знакомств это превращается в навязчивую мысль, что следующая анкета может оказаться лучше." },
+    { type: "p", text: "Каждый свайп — это решение, а бюджет мозга на решения не безграничен. Постоянные «да» и «нет» незнакомым людям расходуют ту же способность выбирать, которая нужна вам на весь оставшийся день. И это не приятная усталость человека, у которого богатый выбор: оценивать одного незнакомца за другим — работа, и она изматывает. К концу сессии вы уже никого не взвешиваете внимательно, вы просто разбираете очередь, а следом тянется навязчивая мысль, что следующая анкета может оказаться лучше." },
 
-    { type: "h2", text: "2. Дофаминовая петля и зависимость" },
-    { type: "p", text: "Механика свайпа работает как игровой автомат. В каждом свайпе есть неопределённость: «а понравлюсь ли я в ответ?» — и именно непредсказуемое вознаграждение заставляет мозг снова дёргать рычаг. Такая система переменного подкрепления удерживает внимание и одновременно его выжигает. Мэтч даёт короткую вспышку радости, она быстро гаснет, и петля начинается заново." },
+    { type: "h2", text: "2. Притяжение неизвестности" },
+    { type: "p", text: "После каждого свайпа остаётся открытым один и тот же вопрос: а понравлюсь ли я в ответ? Узнать это можно только одним способом — продолжать, и вы продолжаете; а потом снова открываете приложение, чтобы проверить, не пришло ли что-нибудь, пока вас не было. Мэтч на мгновение радует, мгновение проходит, и со следующим человеком вопрос открывается заново. Трудно выпустить из рук то, исход чего нельзя предсказать, — именно поэтому телефон остаётся в руке ещё долго после того, как вечер перестал быть приятным." },
 
     { type: "h2", text: "3. Поверхностность и нехватка глубины" },
     { type: "p", text: "В приложениях со свайпами решение принимается почти мгновенно и в основном по внешности. За эту долю секунды невозможно оценить ни характер, ни ценности, ни чувство юмора, ни взгляд человека на мир — механика просто не оставляет для этого места. В результате мэтчи остаются поверхностными, а настоящая связь возникает редко." },
@@ -471,10 +522,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "Por que a fadiga do swipe acontece?" },
 
     { type: "h2", text: "1. Fadiga de decisão" },
-    { type: "p", text: "Cada swipe é uma decisão, e o cérebro humano não tem orçamento ilimitado para isso. Dizer \"sim\" ou \"não\" a desconhecidos o tempo todo consome a mesma capacidade de decidir de que você precisa para o resto do dia. O psicólogo Barry Schwartz descreve o que vem depois com o **paradoxo da escolha**: diante de opções demais, as pessoas ficam menos satisfeitas com o que escolhem e demoram mais para escolher. Nos aplicativos de relacionamento isso aparece como aquele pensamento insistente de que o próximo perfil pode ser melhor." },
+    { type: "p", text: "Cada swipe é uma decisão, e o cérebro humano não tem orçamento ilimitado para isso. Dizer \"sim\" ou \"não\" a desconhecidos o tempo todo consome a mesma capacidade de decidir de que você precisa para o resto do dia. E não é o cansaço agradável de quem tem muito por onde escolher: julgar um desconhecido atrás do outro dá trabalho e vai desgastando. No fim de uma sessão você já não pesa ninguém com cuidado, apenas esvazia uma fila, arrastando o pensamento insistente de que o próximo perfil pode ser melhor." },
 
-    { type: "h2", text: "2. O ciclo da dopamina e o vício" },
-    { type: "p", text: "A mecânica do swipe funciona como uma máquina caça-níqueis. Cada deslizada carrega a incerteza do \"será que essa pessoa vai gostar de mim também?\", e recompensas imprevisíveis são exatamente o padrão que mantém um cérebro puxando a alavanca. Esse sistema de recompensa variável segura a sua atenção enquanto a esvazia. Um match dá uma explosão curta de alegria, que passa rápido, e o ciclo recomeça." },
+    { type: "h2", text: "2. O puxão de não saber" },
+    { type: "p", text: "A cada swipe fica aberta a mesma pergunta: será que essa pessoa vai gostar de mim também? Não há como descobrir a não ser continuando, então você continua — e mais tarde abre o aplicativo de novo para conferir, caso algo tenha chegado enquanto você estava fora. Um match faz bem por um instante, o instante passa e a pergunta se abre outra vez com a próxima pessoa. É difícil largar algo cujo desfecho você não consegue prever, e é isso que mantém o aplicativo na sua mão muito depois de a noite ter deixado de ser agradável." },
 
     { type: "h2", text: "3. Superficialidade e falta de profundidade" },
     { type: "p", text: "Nos aplicativos baseados em swipe a decisão é tomada quase instantaneamente e sobretudo pela aparência física. Nessa fração de segundo não há como avaliar a personalidade, os valores, o humor ou a visão de mundo de alguém — a mecânica não deixa espaço para isso. O resultado é que os matches ficam na superfície e a conexão de verdade raramente aparece." },
@@ -533,10 +584,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "Perché nasce la swipe fatigue?" },
 
     { type: "h2", text: "1. Affaticamento decisionale" },
-    { type: "p", text: "Ogni swipe è una decisione, e il cervello umano non ha un budget illimitato per queste cose. Dire in continuazione \"sì\" o \"no\" a degli sconosciuti consuma la stessa capacità decisionale che ti serve per il resto della giornata. Lo psicologo Barry Schwartz descrive il seguito con il **paradosso della scelta**: davanti a troppe opzioni le persone sono meno soddisfatte di ciò che scelgono e più lente a scegliere. Nelle app di incontri questo diventa il pensiero fisso che il prossimo profilo potrebbe essere migliore." },
+    { type: "p", text: "Ogni swipe è una decisione, e il cervello umano non ha un budget illimitato per queste cose. Dire in continuazione \"sì\" o \"no\" a degli sconosciuti consuma la stessa capacità decisionale che ti serve per il resto della giornata. E non è la stanchezza piacevole di chi ha solo l'imbarazzo della scelta: giudicare uno sconosciuto dopo l'altro è lavoro, e logora. Alla fine di una sessione non stai più soppesando nessuno con attenzione, stai svuotando una coda, con dietro il pensiero fisso che il prossimo profilo potrebbe essere migliore." },
 
-    { type: "h2", text: "2. Il ciclo della dopamina e la dipendenza" },
-    { type: "p", text: "La meccanica dello swipe funziona come una slot machine. Ogni scorrimento porta con sé l'incertezza del \"e se piacessi anche io?\", e le ricompense imprevedibili sono esattamente lo schema che tiene un cervello attaccato alla leva. Questo sistema a ricompensa variabile trattiene l'attenzione e insieme la prosciuga. Un match dà una scarica breve di felicità, che svanisce in fretta, e il ciclo riparte." },
+    { type: "h2", text: "2. L'attrazione del non sapere" },
+    { type: "p", text: "A ogni swipe resta aperta la stessa domanda: e se piacessi anch'io? Non c'è modo di scoprirlo se non andando avanti, e allora vai avanti; poi riapri l'app più tardi per controllare, nel caso sia arrivato qualcosa mentre non c'eri. Un match fa piacere per un attimo, l'attimo passa e la domanda si riapre con la persona successiva. È difficile posare qualcosa di cui non riesci a prevedere l'esito, ed è questo che tiene l'app in mano molto dopo che la serata ha smesso di essere piacevole." },
 
     { type: "h2", text: "3. Superficialità e mancanza di profondità" },
     { type: "p", text: "Nelle app basate sullo swipe la decisione arriva quasi all'istante, e soprattutto sull'aspetto fisico. In quella frazione di secondo non c'è modo di valutare la personalità, i valori, il senso dell'umorismo o lo sguardo sul mondo di qualcuno: la meccanica non lascia spazio. Il risultato è che i match restano in superficie e un legame vero si forma di rado." },
@@ -595,10 +646,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "なぜスワイプ疲れは起きるのか" },
 
     { type: "h2", text: "1. 決断疲れ" },
-    { type: "p", text: "スワイプは一回ごとが決断であり、人間の脳の決断予算は無限ではありません。見知らぬ相手に「はい」か「いいえ」を言い続けることは、その日の残りに必要な判断力をそのまま削っていきます。心理学者バリー・シュワルツの**選択のパラドックス**が、その先を説明しています。選択肢が多すぎると人は選んだものへの満足度が下がり、そもそも選ぶこと自体が遅くなる。マッチングアプリでは、これが「次の人のほうが良いかもしれない」という執拗な考えとして現れます。" },
+    { type: "p", text: "スワイプは一回ごとが決断であり、人間の脳の決断予算は無限ではありません。見知らぬ相手に「はい」か「いいえ」を言い続けることは、その日の残りに必要な判断力をそのまま削っていきます。しかもこれは、選べる相手がたくさんいることの心地よい疲れではありません。見知らぬ人を次から次へと値踏みするのは労働であり、確実に人をすり減らします。セッションの終わりごろには、もう誰も丁寧に量ってはいません。ただ列を片づけているだけで、その背後には「次の人のほうが良いかもしれない」という考えが張りついています。" },
 
-    { type: "h2", text: "2. ドーパミンのループと依存" },
-    { type: "p", text: "スワイプの仕組みはスロットマシンとよく似ています。一回ごとに「この人も自分を気に入ってくれるだろうか」という不確かさが伴い、予測できない報酬こそが脳にレバーを引かせ続けるパターンです。この変動報酬の仕組みは注意を引きつけながら、同時にそれをすり減らします。マッチが成立すると短い高揚が訪れますが、すぐに冷めてループが最初から始まります。" },
+    { type: "h2", text: "2. 分からないことの引力" },
+    { type: "p", text: "スワイプするたびに、同じ問いが開いたまま残ります。この人も自分を気に入ってくれるだろうか。それを確かめる方法は続けること以外になく、だから続けてしまいます。そして後からもう一度アプリを開き、離れているあいだに何か届いていないかを確かめます。マッチが成立すれば一瞬うれしくなりますが、その一瞬は過ぎ去り、次の相手でまた同じ問いが開きます。結果を予測できないものは手放しにくく、その夜が楽しくなくなってからずいぶん経っても、アプリが手の中に残り続けるのはそのためです。" },
 
     { type: "h2", text: "3. 表面性と深さの欠如" },
     { type: "p", text: "スワイプ型のアプリでは、判断はほぼ一瞬で、しかも大部分が外見によって下されます。そのわずかな時間で相手の性格や価値観、ユーモア、世界の見方を評価する方法はありません。仕組みがその余地を残していないのです。結果としてマッチは表面的なままで、本当のつながりはめったに生まれません。" },
@@ -657,10 +708,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "스와이프 피로는 왜 생기는가" },
 
     { type: "h2", text: "1. 결정 피로" },
-    { type: "p", text: "스와이프는 한 번마다 하나의 결정이고, 인간의 뇌가 결정에 쓸 수 있는 예산은 무한하지 않습니다. 낯선 사람에게 쉬지 않고 “예” 또는 “아니오”를 말하는 일은 하루의 나머지를 위해 필요한 판단력을 그대로 깎아냅니다. 심리학자 배리 슈워츠의 **선택의 역설**이 그다음을 설명합니다. 선택지가 너무 많으면 사람은 자기가 고른 것에 덜 만족하고, 고르는 일 자체도 느려집니다. 데이팅 앱에서는 이것이 “다음 사람이 더 나을지도 모른다”는 집요한 생각으로 나타납니다." },
+    { type: "p", text: "스와이프는 한 번마다 하나의 결정이고, 인간의 뇌가 결정에 쓸 수 있는 예산은 무한하지 않습니다. 낯선 사람에게 쉬지 않고 “예” 또는 “아니오”를 말하는 일은 하루의 나머지를 위해 필요한 판단력을 그대로 깎아냅니다. 게다가 이것은 고를 사람이 많아서 생기는 기분 좋은 피로가 아닙니다. 낯선 사람을 하나씩 계속 판단하는 일은 노동이고, 사람을 닳게 합니다. 한 세션이 끝날 무렵이면 더는 누구도 신중하게 재지 않습니다. 그저 줄을 비워 나갈 뿐이고, 그 뒤에는 “다음 사람이 더 나을지도 모른다”는 생각이 따라붙습니다." },
 
-    { type: "h2", text: "2. 도파민 루프와 중독" },
-    { type: "p", text: "스와이프 방식은 슬롯머신처럼 작동합니다. 넘길 때마다 “이 사람도 나를 좋아할까?”라는 불확실성이 따라오고, 예측할 수 없는 보상이야말로 뇌가 레버를 계속 당기게 만드는 패턴입니다. 이 가변 보상 체계는 주의를 붙잡아 두는 동시에 소진시킵니다. 매치가 뜨면 짧은 행복감이 오지만 금세 식고, 루프는 처음부터 다시 시작됩니다." },
+    { type: "h2", text: "2. 알 수 없다는 것의 끌림" },
+    { type: "p", text: "스와이프할 때마다 같은 물음이 열린 채 남습니다. 이 사람도 나를 좋아할까. 그것을 확인할 방법은 계속하는 것밖에 없고, 그래서 계속하게 됩니다. 그리고 얼마 뒤에는 자리를 비운 사이에 무언가 도착하지 않았는지 앱을 다시 열어 확인합니다. 매치가 뜨면 잠깐 기분이 좋아지지만 그 순간은 지나가고, 다음 사람에게서 같은 물음이 다시 열립니다. 결과를 예측할 수 없는 일은 손에서 놓기 어렵고, 그 저녁이 즐겁지 않게 된 뒤로도 한참 동안 앱이 손에 남아 있는 이유가 바로 그것입니다." },
 
     { type: "h2", text: "3. 피상성과 깊이의 부재" },
     { type: "p", text: "스와이프 기반 앱에서는 판단이 거의 즉시, 그것도 대부분 외모로 내려집니다. 그 찰나에 누군가의 성격이나 가치관, 유머 감각, 세계관을 평가할 방법은 없습니다. 방식 자체가 그럴 여지를 남기지 않기 때문입니다. 그래서 매치는 표면에 머물고 진짜 연결은 좀처럼 생기지 않습니다." },
@@ -719,10 +770,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "滑动疲劳为什么会出现？" },
 
     { type: "h2", text: "1. 决策疲劳" },
-    { type: "p", text: "每一次滑动都是一次决定，而人脑用于决策的预算并非无限。不停地对陌生人说“是”或“不是”，消耗的正是你一天剩下的时间里所需要的判断力。心理学家巴里·施瓦茨提出的**选择的悖论**说明了接下来会发生什么：当可选项太多时，人对自己的选择更不满意，也更难做出选择。在交友软件里，这表现为一个挥之不去的念头——下一个也许更好。" },
+    { type: "p", text: "每一次滑动都是一次决定，而人脑用于决策的预算并非无限。不停地对陌生人说“是”或“不是”，消耗的正是你一天剩下的时间里所需要的判断力。而这并不是“可挑的人太多”带来的那种愉快的疲惫：一个接一个地打量陌生人是件苦差事，它会把人磨损掉。一轮刷下来，你已经不再认真掂量任何人，只是在清空一条队列，身后跟着那个挥之不去的念头——下一个也许更好。" },
 
-    { type: "h2", text: "2. 多巴胺循环与成瘾" },
-    { type: "p", text: "滑动机制的运作方式很像老虎机。每一次滑动都带着“这个人会不会也喜欢我”的不确定，而不可预测的奖励恰恰是让大脑不断去拉杆的那种模式。这套可变奖励系统一边抓住你的注意力，一边把它耗干。配对出现时会有短暂的兴奋，很快消退，循环从头开始。" },
+    { type: "h2", text: "2. 不确定带来的牵引" },
+    { type: "p", text: "每一次滑动之后，同一个问题都悬着：这个人会不会也喜欢我。除了继续往下滑，没有别的办法知道答案，于是你继续；过一会儿又把应用打开看一眼，怕自己不在的时候有什么消息进来。配对出现时会开心一小会儿，那一会儿很快过去，问题又随着下一个人重新悬起来。结果无法预料的事最难放下，这也是为什么在这个晚上早已不再愉快之后，手机还留在你手里。" },
 
     { type: "h2", text: "3. 表面化与缺乏深度" },
     { type: "p", text: "在以滑动为核心的软件里，判断几乎是瞬间做出的，而且主要基于外表。在那一瞬间，没有办法评估一个人的性格、价值观、幽默感或者看待世界的方式——机制本身没有为此留出空间。结果就是配对停留在表面，真正的连接很少发生。" },
@@ -781,10 +832,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "Waarom ontstaat swipemoeheid?" },
 
     { type: "h2", text: "1. Beslissingsmoeheid" },
-    { type: "p", text: "Elke swipe is een beslissing, en het menselijk brein heeft daarvoor geen onbeperkt budget. Voortdurend \"ja\" of \"nee\" zeggen tegen vreemden put precies het beslisvermogen uit dat je voor de rest van je dag nodig hebt. Psycholoog Barry Schwartz beschrijft met de **paradox van de keuze** wat er daarna gebeurt: bij te veel opties zijn mensen minder tevreden met wat ze kiezen en kiezen ze trager. In datingapps wordt dat de knagende gedachte dat het volgende profiel beter zou kunnen zijn." },
+    { type: "p", text: "Elke swipe is een beslissing, en het menselijk brein heeft daarvoor geen onbeperkt budget. Voortdurend \"ja\" of \"nee\" zeggen tegen vreemden put precies het beslisvermogen uit dat je voor de rest van je dag nodig hebt. En dat is niet de aangename vermoeidheid van iemand die volop te kiezen heeft: de ene vreemde na de andere beoordelen is werk, en het sleept je leeg. Aan het eind van een sessie weeg je niemand meer zorgvuldig af, je werkt alleen nog een rij weg, met daarachter de knagende gedachte dat het volgende profiel beter zou kunnen zijn." },
 
-    { type: "h2", text: "2. De dopamineloop en verslaving" },
-    { type: "p", text: "De swipemechaniek werkt als een gokautomaat. Bij elke veeg hangt de onzekerheid in de lucht: \"vindt deze persoon mij ook leuk?\" Onvoorspelbare beloningen zijn precies het patroon dat een brein aan de hendel houdt. Dit systeem van wisselende beloning houdt je aandacht vast en put haar tegelijk uit. Een match geeft een korte flits van geluk, die snel wegebt, en de lus begint opnieuw." },
+    { type: "h2", text: "2. De trek van niet weten" },
+    { type: "p", text: "Bij elke veeg blijft dezelfde vraag open: vindt deze persoon mij ook leuk? Er is geen andere manier om daarachter te komen dan doorgaan, dus ga je door — en later open je de app opnieuw om te kijken, voor het geval er iets binnenkwam terwijl je weg was. Een match voelt even goed, dat moment gaat voorbij, en bij de volgende persoon staat dezelfde vraag weer open. Iets waarvan je de afloop niet kunt voorspellen leg je moeilijk weg, en dat is wat de app in je hand houdt lang nadat de avond opgehouden is leuk te zijn." },
 
     { type: "h2", text: "3. Oppervlakkigheid en gebrek aan diepgang" },
     { type: "p", text: "In swipe-apps valt de beslissing vrijwel onmiddellijk, en vooral op uiterlijk. In die fractie van een seconde is er geen manier om iemands persoonlijkheid, waarden, humor of kijk op de wereld te beoordelen — de mechaniek laat er simpelweg geen ruimte voor. Het gevolg is dat matches oppervlakkig blijven en echte verbinding zelden ontstaat." },
@@ -843,10 +894,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "Skąd bierze się zmęczenie swipe'owaniem?" },
 
     { type: "h2", text: "1. Zmęczenie decyzyjne" },
-    { type: "p", text: "Każde przesunięcie to decyzja, a ludzki mózg nie ma na nie nieograniczonego budżetu. Nieustanne mówienie nieznajomym \"tak\" albo \"nie\" zużywa dokładnie tę zdolność decydowania, której potrzebujesz na resztę dnia. Psycholog Barry Schwartz opisuje dalszy ciąg **paradoksem wyboru**: gdy opcji jest zbyt wiele, ludzie są mniej zadowoleni z tego, co wybrali, i wolniej podejmują decyzję. W aplikacjach randkowych przybiera to postać natrętnej myśli, że następny profil może być lepszy." },
+    { type: "p", text: "Każde przesunięcie to decyzja, a ludzki mózg nie ma na nie nieograniczonego budżetu. Nieustanne mówienie nieznajomym \"tak\" albo \"nie\" zużywa dokładnie tę zdolność decydowania, której potrzebujesz na resztę dnia. I nie jest to przyjemne zmęczenie kogoś, kto ma w czym wybierać: ocenianie jednego nieznajomego po drugim to praca, która wyjaławia. Pod koniec sesji nikogo już nie ważysz uważnie — po prostu opróżniasz kolejkę, ciągnąc za sobą natrętną myśl, że następny profil może być lepszy." },
 
-    { type: "h2", text: "2. Pętla dopaminowa i uzależnienie" },
-    { type: "p", text: "Mechanika przesuwania działa jak automat do gry. Przy każdym ruchu wisi w powietrzu niepewność: \"czy ta osoba też mnie polubi?\", a nieprzewidywalne nagrody to dokładnie ten schemat, który każe mózgowi ciągnąć za dźwignię. Ten system zmiennej nagrody przytrzymuje uwagę i jednocześnie ją wyjaławia. Dopasowanie daje krótki zastrzyk radości, który szybko gaśnie, i pętla rusza od nowa." },
+    { type: "h2", text: "2. Przyciąganie niewiedzy" },
+    { type: "p", text: "Po każdym przesunięciu zostaje otwarte to samo pytanie: czy ta osoba też mnie polubi? Nie da się tego sprawdzić inaczej niż idąc dalej, więc idziesz dalej — a potem znów otwierasz aplikację, żeby zajrzeć, czy coś nie przyszło pod twoją nieobecność. Dopasowanie cieszy przez chwilę, chwila mija, a przy kolejnej osobie pytanie otwiera się od nowa. Trudno odłożyć coś, czego rozstrzygnięcia nie potrafisz przewidzieć, i to właśnie trzyma aplikację w twojej dłoni długo po tym, jak wieczór przestał być przyjemny." },
 
     { type: "h2", text: "3. Powierzchowność i brak głębi" },
     { type: "p", text: "W aplikacjach opartych na przesuwaniu decyzja zapada niemal natychmiast i przede wszystkim na podstawie wyglądu. W tym ułamku sekundy nie sposób ocenić czyjejś osobowości, wartości, poczucia humoru ani spojrzenia na świat — mechanika po prostu nie zostawia na to miejsca. W efekcie dopasowania pozostają powierzchowne, a prawdziwa więź powstaje rzadko." },
@@ -905,10 +956,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "Varför uppstår swipe-trötthet?" },
 
     { type: "h2", text: "1. Beslutströtthet" },
-    { type: "p", text: "Varje svep är ett beslut, och den mänskliga hjärnan har ingen obegränsad budget för sådana. Att oavbrutet säga \"ja\" eller \"nej\" till främlingar tär på precis den beslutsförmåga du behöver för resten av dagen. Psykologen Barry Schwartz beskriver fortsättningen med **valets paradox**: när människor får för många alternativ blir de mindre nöjda med det de väljer och långsammare på att välja alls. I dejtingappar visar det sig som den gnagande tanken att nästa profil kanske är bättre." },
+    { type: "p", text: "Varje svep är ett beslut, och den mänskliga hjärnan har ingen obegränsad budget för sådana. Att oavbrutet säga \"ja\" eller \"nej\" till främlingar tär på precis den beslutsförmåga du behöver för resten av dagen. Och det är inte den behagliga tröttheten hos någon som har gott om att välja på: att bedöma den ena främlingen efter den andra är arbete, och det nöter. I slutet av en session väger du inte längre någon noggrant, du betar bara av en kö — med den gnagande tanken släpande efter dig att nästa profil kanske är bättre." },
 
-    { type: "h2", text: "2. Dopaminslingan och beroendet" },
-    { type: "p", text: "Swipe-mekaniken fungerar som en enarmad bandit. Varje svep bär på osäkerheten \"kommer den här personen att gilla mig tillbaka?\", och oförutsägbara belöningar är precis det mönster som får en hjärna att dra i spaken igen. Det här systemet med rörlig belöning håller kvar uppmärksamheten samtidigt som det tömmer den. En matchning ger en kort lyckokick som snabbt klingar av, och slingan börjar om." },
+    { type: "h2", text: "2. Dragningen i att inte veta" },
+    { type: "p", text: "Efter varje svep står samma fråga öppen: kommer den här personen att gilla mig tillbaka? Det finns inget sätt att få veta annat än att fortsätta, så du fortsätter — och öppnar appen igen en stund senare för att kolla, ifall något kommit medan du var borta. En matchning känns bra ett ögonblick, ögonblicket går över, och med nästa person står samma fråga öppen igen. Något vars utgång du inte kan förutse är svårt att lägga ifrån sig, och det är det som håller kvar appen i handen långt efter att kvällen slutat vara trevlig." },
 
     { type: "h2", text: "3. Ytlighet och brist på djup" },
     { type: "p", text: "I swipe-baserade appar fattas beslutet nästan omedelbart, och mest utifrån utseende. På den bråkdelen av en sekund går det inte att bedöma någons personlighet, värderingar, humor eller syn på världen — mekaniken lämnar helt enkelt inget utrymme för det. Följden är att matchningarna förblir ytliga och att äkta kontakt sällan uppstår." },
@@ -967,10 +1018,10 @@ export const whatIsSwipeFatigue: LocalizedArticle = {
     { type: "h2", text: "स्वाइप थकान क्यों होती है?" },
 
     { type: "h2", text: "1. फ़ैसलों की थकान" },
-    { type: "p", text: "हर स्वाइप एक फ़ैसला है, और इंसानी दिमाग़ के पास फ़ैसलों का बजट असीमित नहीं होता। अजनबियों को लगातार \"हाँ\" या \"ना\" कहना उसी क्षमता को चुकाता है जो आपको बाक़ी दिन के लिए चाहिए। मनोवैज्ञानिक बैरी श्वार्ट्ज़ **चुनाव के विरोधाभास** से आगे की कहानी बताते हैं: जब विकल्प ज़रूरत से ज़्यादा हों तो लोग अपने चुनाव से कम संतुष्ट होते हैं और चुनने में भी देर लगाते हैं। डेटिंग ऐप्स पर यह इस ज़िद्दी ख़याल की शक्ल लेता है कि अगली प्रोफ़ाइल शायद बेहतर हो।" },
+    { type: "p", text: "हर स्वाइप एक फ़ैसला है, और इंसानी दिमाग़ के पास फ़ैसलों का बजट असीमित नहीं होता। अजनबियों को लगातार \"हाँ\" या \"ना\" कहना उसी क्षमता को चुकाता है जो आपको बाक़ी दिन के लिए चाहिए। और यह चुनने को बहुत कुछ होने की सुहानी थकान नहीं है: एक के बाद एक अजनबी को परखना मेहनत का काम है और यह इंसान को घिसता जाता है। सत्र के आख़िर तक आप किसी को ठीक से तौलते नहीं रहते, बस एक क़तार निपटाते रहते हैं — और पीछे-पीछे यह ज़िद्दी ख़याल चलता रहता है कि अगली प्रोफ़ाइल शायद बेहतर हो।" },
 
-    { type: "h2", text: "2. डोपामिन का चक्र और लत" },
-    { type: "p", text: "स्वाइप की बनावट स्लॉट मशीन की तरह काम करती है। हर स्वाइप के साथ यह अनिश्चितता जुड़ी रहती है कि \"क्या यह इंसान भी मुझे पसंद करेगा?\", और अप्रत्याशित इनाम ठीक वही ढर्रा है जो दिमाग़ को बार-बार लीवर खींचने पर लगाए रखता है। बदलते इनाम की यह व्यवस्था ध्यान को थामे रखती है और साथ ही उसे निचोड़ती भी है। मैच होने पर ख़ुशी की छोटी-सी लहर आती है, जल्दी उतर जाती है, और चक्र फिर शुरू हो जाता है।" },
+    { type: "h2", text: "2. न जानने का खिंचाव" },
+    { type: "p", text: "हर स्वाइप के बाद वही सवाल खुला रह जाता है: क्या यह इंसान भी मुझे पसंद करेगा? इसे जानने का एक ही रास्ता है — आगे बढ़ते रहना, सो आप बढ़ते रहते हैं; और थोड़ी देर बाद ऐप दोबारा खोलकर देख लेते हैं कि आपकी ग़ैरहाज़िरी में कुछ आया तो नहीं। मैच होने पर एक पल अच्छा लगता है, वह पल बीत जाता है, और अगले इंसान के साथ वही सवाल फिर से खुल जाता है। जिस चीज़ का नतीजा आप पहले से नहीं जान सकते, उसे हाथ से रखना मुश्किल होता है — और शाम के मज़ेदार न रह जाने के काफ़ी बाद तक ऐप आपके हाथ में इसी वजह से टिका रहता है।" },
 
     { type: "h2", text: "3. सतहीपन और गहराई की कमी" },
     { type: "p", text: "स्वाइप पर टिकी ऐप्स में फ़ैसला लगभग तुरंत होता है, और ज़्यादातर शक्ल-सूरत के आधार पर। सेकंड के उस हिस्से में किसी के स्वभाव, मूल्यों, हास्यबोध या दुनिया को देखने के नज़रिए को आँकना मुमकिन ही नहीं — बनावट इसके लिए जगह ही नहीं छोड़ती। नतीजा यह कि मैच सतह पर ही रह जाते हैं और असली जुड़ाव कम ही बनता है।" },

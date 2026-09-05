@@ -24,6 +24,7 @@ import { quizDatingForIntroverts } from "./_content/quiz-dating-for-introverts";
 import { datingAppBurnoutSigns } from "./_content/dating-app-burnout-signs";
 import { scienceBehindQuestionBasedMatching } from "./_content/science-behind-question-based-matching";
 import { isCuffingSeasonReal } from "./_content/is-cuffing-season-real";
+import { paradoxOfChoiceDating } from "./_content/paradox-of-choice-dating";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -134,6 +135,7 @@ const READ_LABELS: Record<string, { readTime: string; backToBlog: string; relate
  */
 const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
   "is-cuffing-season-real": isCuffingSeasonReal,
+  "paradox-of-choice-dating": paradoxOfChoiceDating,
   "what-actually-predicts-compatibility": whatActuallyPredictsCompatibility,
   "psychology-of-the-first-message": psychologyOfTheFirstMessage,
   "the-question-deficit": theQuestionDeficit,

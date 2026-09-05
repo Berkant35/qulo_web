@@ -63,6 +63,12 @@ for (const file of files) {
       .flatMap((b) => (b.type === "ul" ? b.items : [b.text]))
       .forEach((t, i) => {
         if ((t.match(/\*\*/g) || []).length % 2 !== 0) errors.push(`${file} [${l}] — unbalanced ** in text #${i}`);
+        // A lone `*` renders as a literal asterisk: `renderInline` splits only
+        // on `**bold**`. This slipped past the check above because a stray pair
+        // of single asterisks leaves the `**` count even — journal names were
+        // written as *Italics* and would have shipped with the marks visible.
+        const stray = t.replace(/\*\*[^*]+\*\*/g, "").match(/\*/g);
+        if (stray) errors.push(`${file} [${l}] — ${stray.length} single "*" in text #${i}; only **bold** renders`);
         const entity = t.match(/&(?:quot|apos|amp|lt|gt|nbsp|#\d+);/);
         if (entity) errors.push(`${file} [${l}] — HTML entity ${entity[0]} in text #${i}`);
       });
