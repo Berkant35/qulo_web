@@ -1,15 +1,34 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { NeonButton } from "./NeonButton";
-import { APP_STORE_URL } from "@/lib/constants/links";
+import { storeLinks } from "@/lib/constants/links";
+
+/**
+ * The download button in the header is the most prominent call to action on
+ * every page, and it linked to the App Store for everyone — so an Android
+ * visitor who tapped it landed on an Apple page they cannot install from.
+ *
+ * Static export means there is no server to read the user agent, so the store
+ * is chosen after mount. The initial value stays the App Store: that is what
+ * the button already did, so nothing regresses in the moment before hydration,
+ * and only the case that was broken changes.
+ */
+const NAV_CAMPAIGN = "web-nav";
 
 export function Navbar() {
   const t = useTranslations("nav");
   const pathname = usePathname();
+  const [storeHref, setStoreHref] = useState(storeLinks(NAV_CAMPAIGN).ios);
+
+  useEffect(() => {
+    const links = storeLinks(NAV_CAMPAIGN);
+    setStoreHref(/android/i.test(navigator.userAgent) ? links.android : links.ios);
+  }, []);
   const locale = pathname.split("/")[1] || "tr";
 
   return (
@@ -75,7 +94,7 @@ export function Navbar() {
           {/* Right side */}
           <div className="flex items-center gap-4">
             <LanguageSwitcher />
-            <NeonButton href={APP_STORE_URL}>
+            <NeonButton href={storeHref}>
               {t("download")}
             </NeonButton>
           </div>
