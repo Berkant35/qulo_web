@@ -74,7 +74,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   {
     slug: "catfishing",
     emoji: "🐱",
-    related: ["chatfishing", "red-flag", "ghosting"],
+    related: ["kittenfishing", "chatfishing", "red-flag", "ghosting"],
     keywords: ["catfishing", "fake profile", "online dating safety"],
     article: { type: "blog", slug: "online-dating-safety-tips" },
   },
@@ -124,6 +124,12 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     keywords: ["future faking", "empty promises dating", "manipulation"],
   },
   {
+    slug: "gaslighting",
+    emoji: "🕯️",
+    related: ["love-bombing", "future-faking", "floodlighting", "red-flag"],
+    keywords: ["gaslighting", "gaslighting meaning", "emotional manipulation", "what is gaslighting"],
+  },
+  {
     slug: "ghosting",
     emoji: "👻",
     related: ["cloaking", "zombieing", "orbiting"],
@@ -149,6 +155,13 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     emoji: "😬",
     related: ["beige-flag", "red-flag", "talking-stage"],
     keywords: ["the ick", "ick meaning", "dating slang"],
+  },
+  {
+    slug: "kittenfishing",
+    emoji: "🐾",
+    related: ["catfishing", "chatfishing", "beige-flag", "red-flag"],
+    keywords: ["kittenfishing", "kittenfishing meaning", "exaggerated dating profile", "edited dating photos"],
+    article: { type: "blog", slug: "online-dating-safety-tips" },
   },
   {
     slug: "love-bombing",

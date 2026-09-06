@@ -10,10 +10,12 @@ import { cuffingSeason } from "./cuffing-season";
 import { floodlighting } from "./floodlighting";
 import { fomo } from "./fomo";
 import { futureFaking } from "./future-faking";
+import { gaslighting } from "./gaslighting";
 import { ghosting } from "./ghosting";
 import { greenFlag } from "./green-flag";
 import { hardballing } from "./hardballing";
 import { ick } from "./ick";
+import { kittenfishing } from "./kittenfishing";
 import { loveBombing } from "./love-bombing";
 import { match } from "./match";
 import { orbiting } from "./orbiting";
@@ -44,10 +46,12 @@ export const GLOSSARY_CONTENT: Record<string, LocalizedGlossaryEntry> = {
   "floodlighting": floodlighting,
   "fomo": fomo,
   "future-faking": futureFaking,
+  gaslighting,
   "ghosting": ghosting,
   "green-flag": greenFlag,
   "hardballing": hardballing,
   "ick": ick,
+  kittenfishing,
   "love-bombing": loveBombing,
   "match": match,
   "orbiting": orbiting,
