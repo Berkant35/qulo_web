@@ -130,7 +130,12 @@
     "desc": "Download de app en gebruik je uitnodigingscode.",
     "redirecting": "Doorsturen...",
     "downloadPrompt": "Download op je telefoon",
-    "code": "Uitnodigingscode"
+    "code": "Uitnodigingscode",
+    "reward": "Jullie krijgen allebei {reward} paarse diamanten.",
+    "howTo": "Vul deze code na je registratie in op het scherm “Diamanten” bij “Heb je een verwijscode?”.",
+    "copy": "Code kopiëren",
+    "copied": "Gekopieerd",
+    "download": "Download de app"
   },
   "notFound": {
     "title": "Pagina niet gevonden",

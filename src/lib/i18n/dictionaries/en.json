@@ -159,7 +159,12 @@
     "desc": "Download the app and use your invite code.",
     "redirecting": "Redirecting...",
     "downloadPrompt": "Download on your phone",
-    "code": "Invite code"
+    "code": "Invite code",
+    "reward": "You both get {reward} purple diamonds.",
+    "howTo": "After signing up, enter this code under “Have a referral code?” on the Diamonds screen.",
+    "copy": "Copy code",
+    "copied": "Copied",
+    "download": "Get the app"
   },
   "notFound": {
     "title": "Page Not Found",

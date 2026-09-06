@@ -130,7 +130,12 @@
     "desc": "Lade die App herunter und verwende deinen Einladungscode.",
     "redirecting": "Weiterleitung...",
     "downloadPrompt": "Auf deinem Handy herunterladen",
-    "code": "Einladungscode"
+    "code": "Einladungscode",
+    "reward": "Ihr bekommt beide {reward} lila Diamanten.",
+    "howTo": "Gib diesen Code nach der Registrierung im Bildschirm „Diamanten“ unter „Hast du einen Empfehlungscode?“ ein.",
+    "copy": "Code kopieren",
+    "copied": "Kopiert",
+    "download": "App herunterladen"
   },
   "notFound": {
     "title": "Seite nicht gefunden",

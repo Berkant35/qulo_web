@@ -28,12 +28,20 @@ const APPLE_PROVIDER_TOKEN = process.env.NEXT_PUBLIC_APPLE_PROVIDER_TOKEN || "";
  * part of the site, not the page — per-page campaigns would fragment the
  * report into noise.
  */
-export function storeLinks(campaign: string): { ios: string; android: string } {
-  const referrer = new URLSearchParams({
+export function storeLinks(
+  campaign: string,
+  content?: string,
+): { ios: string; android: string } {
+  const params: Record<string, string> = {
     utm_source: "quloapp.com",
     utm_medium: "web",
     utm_campaign: campaign,
-  }).toString();
+  };
+  // `content` rides in `utm_content` — used by the invite landing to carry the
+  // referral code into the Play referrer, where the app can read it back via
+  // the Install Referrer API and Play Console breaks installs down by it.
+  if (content) params.utm_content = content;
+  const referrer = new URLSearchParams(params).toString();
 
   const apple = new URL(APP_STORE_URL);
   if (APPLE_PROVIDER_TOKEN) {
@@ -62,6 +70,8 @@ export const SOCIAL = {
  * both stores are shown side by side, `storeLinks()` is still right — there is
  * nothing to guess.
  */
-export function STORE_REDIRECT(campaign: string): string {
-  return `/go/app?c=${encodeURIComponent(campaign)}`;
+export function STORE_REDIRECT(campaign: string, code?: string): string {
+  const qs = new URLSearchParams({ c: campaign });
+  if (code) qs.set("code", code);
+  return `/go/app?${qs.toString()}`;
 }

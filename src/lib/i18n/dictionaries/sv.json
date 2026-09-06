@@ -130,7 +130,12 @@
     "desc": "Ladda ner appen och använd din inbjudningskod.",
     "redirecting": "Omdirigerar...",
     "downloadPrompt": "Ladda ner på din telefon",
-    "code": "Inbjudningskod"
+    "code": "Inbjudningskod",
+    "reward": "Ni får {reward} lila diamanter var.",
+    "howTo": "Efter registreringen anger du koden på skärmen ”Diamanter” under ”Har du en inbjudningskod?”.",
+    "copy": "Kopiera kod",
+    "copied": "Kopierat",
+    "download": "Ladda ner appen"
   },
   "notFound": {
     "title": "Sidan hittades inte",

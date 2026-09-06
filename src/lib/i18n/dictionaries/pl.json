@@ -130,7 +130,12 @@
     "desc": "Pobierz aplikację i użyj kodu zaproszenia.",
     "redirecting": "Przekierowywanie...",
     "downloadPrompt": "Pobierz na telefon",
-    "code": "Kod zaproszenia"
+    "code": "Kod zaproszenia",
+    "reward": "Oboje dostaniecie {reward} fioletowych diamentów.",
+    "howTo": "Po rejestracji wpisz ten kod na ekranie „Diamenty” w polu „Masz kod polecający?”.",
+    "copy": "Kopiuj kod",
+    "copied": "Skopiowano",
+    "download": "Pobierz aplikację"
   },
   "notFound": {
     "title": "Strona nie znaleziona",

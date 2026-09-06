@@ -22,10 +22,19 @@ const PLAY_STORE =
 /** Campaign labels are ours, but the query string is not — validate, don't trust. */
 const CAMPAIGN = /^[a-z0-9-]{1,40}$/;
 
+/**
+ * Referral codes are 8 chars from the server's unambiguous alphabet
+ * (no I/O/0/1); accept a slightly wider shape so a future code format still
+ * passes, but never anything that could smuggle extra parameters.
+ */
+const REFERRAL_CODE = /^[A-Z0-9]{4,16}$/;
+
 export default (request: Request): Response => {
   const url = new URL(request.url);
   const raw = url.searchParams.get("c") || "";
   const campaign = CAMPAIGN.test(raw) ? raw : "web-unknown";
+  const rawCode = (url.searchParams.get("code") || "").toUpperCase();
+  const code = REFERRAL_CODE.test(rawCode) ? rawCode : "";
 
   const ua = request.headers.get("user-agent") || "";
   const isAndroid = /android/i.test(ua) && !/windows phone/i.test(ua);
@@ -37,6 +46,9 @@ export default (request: Request): Response => {
       utm_medium: "web",
       utm_campaign: campaign,
     });
+    // The invite landing passes the referral code; it lands in `utm_content`,
+    // which Play Console reports on and the app can read back after install.
+    if (code) referrer.set("utm_content", code);
     target = `${PLAY_STORE}&referrer=${encodeURIComponent(referrer.toString())}`;
   }
 

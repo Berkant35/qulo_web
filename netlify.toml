@@ -117,6 +117,99 @@
   to = "/en/"
   status = 302
 
+# Invite links are shared without a locale prefix (`/invite/<code>`); serve the
+# visitor's own language first, Turkish stays the fallback below. Same
+# mechanism as the apex language rules above — first match wins.
+[[redirects]]
+  from = "/invite/*"
+  to = "/en/invite/index.html"
+  status = 200
+  conditions = {Language = ["en"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/de/invite/index.html"
+  status = 200
+  conditions = {Language = ["de"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/fr/invite/index.html"
+  status = 200
+  conditions = {Language = ["fr"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/es/invite/index.html"
+  status = 200
+  conditions = {Language = ["es"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/ar/invite/index.html"
+  status = 200
+  conditions = {Language = ["ar"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/ru/invite/index.html"
+  status = 200
+  conditions = {Language = ["ru"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/pt/invite/index.html"
+  status = 200
+  conditions = {Language = ["pt"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/it/invite/index.html"
+  status = 200
+  conditions = {Language = ["it"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/ja/invite/index.html"
+  status = 200
+  conditions = {Language = ["ja"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/ko/invite/index.html"
+  status = 200
+  conditions = {Language = ["ko"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/zh/invite/index.html"
+  status = 200
+  conditions = {Language = ["zh"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/nl/invite/index.html"
+  status = 200
+  conditions = {Language = ["nl"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/pl/invite/index.html"
+  status = 200
+  conditions = {Language = ["pl"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/sv/invite/index.html"
+  status = 200
+  conditions = {Language = ["sv"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/hi/invite/index.html"
+  status = 200
+  conditions = {Language = ["hi"]}
+
 [[redirects]]
   from = "/invite/*"
   to = "/tr/invite/index.html"

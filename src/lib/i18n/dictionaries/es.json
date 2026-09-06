@@ -130,7 +130,12 @@
     "desc": "Descarga la app y usa tu código de invitación.",
     "redirecting": "Redirigiendo...",
     "downloadPrompt": "Descarga en tu teléfono",
-    "code": "Código de invitación"
+    "code": "Código de invitación",
+    "reward": "Ambos recibís {reward} diamantes morados.",
+    "howTo": "Después de registrarte, introduce este código en la pantalla «Diamantes», en «¿Tienes un código de referido?».",
+    "copy": "Copiar código",
+    "copied": "Copiado",
+    "download": "Descargar la app"
   },
   "notFound": {
     "title": "Página no encontrada",

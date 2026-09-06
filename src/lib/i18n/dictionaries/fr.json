@@ -130,7 +130,12 @@
     "desc": "Téléchargez l'app et utilisez votre code d'invitation.",
     "redirecting": "Redirection...",
     "downloadPrompt": "Téléchargez sur votre téléphone",
-    "code": "Code d'invitation"
+    "code": "Code d'invitation",
+    "reward": "Vous recevez chacun {reward} diamants violets.",
+    "howTo": "Après ton inscription, saisis ce code dans l'écran « Diamants », champ « Tu as un code de parrainage ? ».",
+    "copy": "Copier le code",
+    "copied": "Copié",
+    "download": "Télécharger l'app"
   },
   "notFound": {
     "title": "Page non trouvée",

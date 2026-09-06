@@ -130,7 +130,12 @@
     "desc": "Baixe o app e use seu código de convite.",
     "redirecting": "Redirecionando...",
     "downloadPrompt": "Baixe no seu celular",
-    "code": "Código de convite"
+    "code": "Código de convite",
+    "reward": "Vocês dois ganham {reward} diamantes roxos.",
+    "howTo": "Depois de se cadastrar, insira este código na tela “Diamantes”, em “Tem um código de convite?”.",
+    "copy": "Copiar código",
+    "copied": "Copiado",
+    "download": "Baixar o app"
   },
   "notFound": {
     "title": "Página não encontrada",

@@ -159,7 +159,12 @@
     "desc": "Uygulamayı indir ve davet kodunu kullan.",
     "redirecting": "Yönlendiriliyorsun...",
     "downloadPrompt": "Telefonundan indir",
-    "code": "Davet kodu"
+    "code": "Davet kodu",
+    "reward": "İkinize de {reward} mor elmas hediye.",
+    "howTo": "Kaydolduktan sonra Elmaslar ekranında “Davet kodun var mı?” alanına bu kodu gir.",
+    "copy": "Kodu kopyala",
+    "copied": "Kopyalandı",
+    "download": "Uygulamayı indir"
   },
   "notFound": {
     "title": "Sayfa Bulunamadı",

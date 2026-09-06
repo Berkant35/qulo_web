@@ -130,7 +130,12 @@
     "desc": "Scarica l'app e usa il tuo codice di invito.",
     "redirecting": "Reindirizzamento...",
     "downloadPrompt": "Scarica sul tuo telefono",
-    "code": "Codice di invito"
+    "code": "Codice di invito",
+    "reward": "Ricevete entrambi {reward} diamanti viola.",
+    "howTo": "Dopo la registrazione, inserisci questo codice nella schermata “Diamanti” alla voce “Hai un codice referral?”.",
+    "copy": "Copia codice",
+    "copied": "Copiato",
+    "download": "Scarica l'app"
   },
   "notFound": {
     "title": "Pagina non trovata",

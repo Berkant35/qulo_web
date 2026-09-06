@@ -130,7 +130,12 @@
     "desc": "下载应用并使用你的邀请码。",
     "redirecting": "正在跳转...",
     "downloadPrompt": "在手机上下载",
-    "code": "邀请码"
+    "code": "邀请码",
+    "reward": "你们双方各得 {reward} 颗紫钻。",
+    "howTo": "注册后，在“钻石”页面的“有邀请码？”处输入此邀请码。",
+    "copy": "复制邀请码",
+    "copied": "已复制",
+    "download": "下载应用"
   },
   "notFound": {
     "title": "页面未找到",
