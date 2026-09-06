@@ -1,7 +1,7 @@
 /**
  * Structural parity guard for the structured articles in
- * `src/app/[locale]/blog/[slug]/_content/` and
- * `src/app/[locale]/advice/[slug]/_content/`.
+ * `src/app/[locale]/blog/[slug]/_content/`, `src/app/[locale]/advice/[slug]/_content/`,
+ * `src/app/[locale]/questions/_content/` and `src/app/[locale]/answers/_content/`.
  *
  * Each article must exist in all 16 locales, and every locale must mirror `en`
  * exactly in block-type sequence, `accent: "green"` indices and `ul` item
@@ -20,6 +20,7 @@ const DIRS = [
   "src/app/[locale]/blog/[slug]/_content",
   "src/app/[locale]/advice/[slug]/_content",
   "src/app/[locale]/questions/_content",
+  "src/app/[locale]/answers/_content",
 ];
 
 /** Evaluate the exported object literal without importing TypeScript. */

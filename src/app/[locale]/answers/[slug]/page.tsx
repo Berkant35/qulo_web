@@ -19,6 +19,7 @@ import { howQuestionBasedMatchingWorks } from "../_content/how-question-based-ma
 import { isQuloFree } from "../_content/is-qulo-free";
 import { isQuloSafe } from "../_content/is-qulo-safe";
 import { whatMakesAGoodDatingAppQuestion } from "../_content/what-makes-a-good-dating-app-question";
+import { whyAmINotGettingMatches } from "../_content/why-am-i-not-getting-matches";
 
 /** Body content keyed by slug. Every entry in ANSWER_PAGES needs one. */
 const ANSWER_BODIES: Record<string, LocalizedArticle> = {
@@ -26,6 +27,7 @@ const ANSWER_BODIES: Record<string, LocalizedArticle> = {
   "is-qulo-free": isQuloFree,
   "is-qulo-safe": isQuloSafe,
   "what-makes-a-good-dating-app-question": whatMakesAGoodDatingAppQuestion,
+  "why-am-i-not-getting-matches": whyAmINotGettingMatches,
 };
 
 export function generateStaticParams() {
