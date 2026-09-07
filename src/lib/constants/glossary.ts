@@ -144,6 +144,13 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     article: { type: "blog", slug: "what-actually-predicts-compatibility" },
   },
   {
+    slug: "grim-keeping",
+    emoji: "🙄",
+    related: ["green-flag", "red-flag", "compatibility", "beige-flag"],
+    keywords: ["grim-keeping", "grim keeping meaning", "bonding over shared dislikes", "negative bonding"],
+    article: { type: "blog", slug: "what-actually-predicts-compatibility" },
+  },
+  {
     slug: "hardballing",
     emoji: "🎯",
     related: ["situationship", "breadcrumbing", "talking-stage"],

@@ -13,6 +13,7 @@ import { futureFaking } from "./future-faking";
 import { gaslighting } from "./gaslighting";
 import { ghosting } from "./ghosting";
 import { greenFlag } from "./green-flag";
+import { grimKeeping } from "./grim-keeping";
 import { hardballing } from "./hardballing";
 import { ick } from "./ick";
 import { kittenfishing } from "./kittenfishing";
@@ -51,6 +52,7 @@ export const GLOSSARY_CONTENT: Record<string, LocalizedGlossaryEntry> = {
   gaslighting,
   "ghosting": ghosting,
   "green-flag": greenFlag,
+  "grim-keeping": grimKeeping,
   "hardballing": hardballing,
   "ick": ick,
   kittenfishing,
