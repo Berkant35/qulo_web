@@ -21,6 +21,7 @@ import { match } from "./match";
 import { orbiting } from "./orbiting";
 import { quizDating } from "./quiz-dating";
 import { redFlag } from "./red-flag";
+import { romanceScam } from "./romance-scam";
 import { rizz } from "./rizz";
 import { situationship } from "./situationship";
 import { slowDating } from "./slow-dating";
@@ -57,6 +58,7 @@ export const GLOSSARY_CONTENT: Record<string, LocalizedGlossaryEntry> = {
   "orbiting": orbiting,
   "quiz-dating": quizDating,
   "red-flag": redFlag,
+  "romance-scam": romanceScam,
   "rizz": rizz,
   "situationship": situationship,
   "slow-dating": slowDating,

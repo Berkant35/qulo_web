@@ -198,6 +198,13 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     article: { type: "blog", slug: "online-dating-safety-tips" },
   },
   {
+    slug: "romance-scam",
+    emoji: "🎣",
+    related: ["catfishing", "kittenfishing", "cloaking", "red-flag"],
+    keywords: ["romance scam", "romance scam signs", "online dating fraud", "dating scammer"],
+    article: { type: "blog", slug: "online-dating-safety-tips" },
+  },
+  {
     slug: "rizz",
     emoji: "😎",
     related: ["talking-stage", "chatfishing", "ick"],
