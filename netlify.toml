@@ -119,26 +119,11 @@
 
 # Shareable quiz. `/q` is the create page, `/q/<slug>` the play page; both are
 # static files under each locale, so the locale-less links are rewritten to the
-# visitor's language (Turkish last as the fallback). `/:locale/q/<slug>` has no
-# file on disk, so it falls through to the play page of that locale.
+# visitor's language. First match wins, so the conditional rules come first and
+# Turkish is the unconditional fallback at the end of each group.
+# `/:locale/q/<slug>` has no file on disk, so it falls through to that locale's play page.
 [[redirects]]
   from = "/q"
-  to = "/tr/q/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/q/"
-  to = "/tr/q/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/q"
-  to = "/en/q/index.html"
-  status = 200
-  conditions = {Language = ["en"]}
-
-[[redirects]]
-  from = "/q/"
   to = "/en/q/index.html"
   status = 200
   conditions = {Language = ["en"]}
@@ -150,28 +135,105 @@
   conditions = {Language = ["de"]}
 
 [[redirects]]
+  from = "/q"
+  to = "/fr/q/index.html"
+  status = 200
+  conditions = {Language = ["fr"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/es/q/index.html"
+  status = 200
+  conditions = {Language = ["es"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/ar/q/index.html"
+  status = 200
+  conditions = {Language = ["ar"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/ru/q/index.html"
+  status = 200
+  conditions = {Language = ["ru"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/pt/q/index.html"
+  status = 200
+  conditions = {Language = ["pt"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/it/q/index.html"
+  status = 200
+  conditions = {Language = ["it"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/ja/q/index.html"
+  status = 200
+  conditions = {Language = ["ja"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/ko/q/index.html"
+  status = 200
+  conditions = {Language = ["ko"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/zh/q/index.html"
+  status = 200
+  conditions = {Language = ["zh"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/nl/q/index.html"
+  status = 200
+  conditions = {Language = ["nl"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/pl/q/index.html"
+  status = 200
+  conditions = {Language = ["pl"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/sv/q/index.html"
+  status = 200
+  conditions = {Language = ["sv"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/hi/q/index.html"
+  status = 200
+  conditions = {Language = ["hi"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/tr/q/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/q/"
+  to = "/en/q/index.html"
+  status = 200
+  conditions = {Language = ["en"]}
+
+[[redirects]]
   from = "/q/"
   to = "/de/q/index.html"
   status = 200
   conditions = {Language = ["de"]}
 
 [[redirects]]
-  from = "/q"
-  to = "/fr/q/index.html"
-  status = 200
-  conditions = {Language = ["fr"]}
-
-[[redirects]]
   from = "/q/"
   to = "/fr/q/index.html"
   status = 200
   conditions = {Language = ["fr"]}
-
-[[redirects]]
-  from = "/q"
-  to = "/es/q/index.html"
-  status = 200
-  conditions = {Language = ["es"]}
 
 [[redirects]]
   from = "/q/"
@@ -180,22 +242,10 @@
   conditions = {Language = ["es"]}
 
 [[redirects]]
-  from = "/q"
-  to = "/ar/q/index.html"
-  status = 200
-  conditions = {Language = ["ar"]}
-
-[[redirects]]
   from = "/q/"
   to = "/ar/q/index.html"
   status = 200
   conditions = {Language = ["ar"]}
-
-[[redirects]]
-  from = "/q"
-  to = "/ru/q/index.html"
-  status = 200
-  conditions = {Language = ["ru"]}
 
 [[redirects]]
   from = "/q/"
@@ -204,22 +254,10 @@
   conditions = {Language = ["ru"]}
 
 [[redirects]]
-  from = "/q"
-  to = "/pt/q/index.html"
-  status = 200
-  conditions = {Language = ["pt"]}
-
-[[redirects]]
   from = "/q/"
   to = "/pt/q/index.html"
   status = 200
   conditions = {Language = ["pt"]}
-
-[[redirects]]
-  from = "/q"
-  to = "/it/q/index.html"
-  status = 200
-  conditions = {Language = ["it"]}
 
 [[redirects]]
   from = "/q/"
@@ -228,22 +266,10 @@
   conditions = {Language = ["it"]}
 
 [[redirects]]
-  from = "/q"
-  to = "/ja/q/index.html"
-  status = 200
-  conditions = {Language = ["ja"]}
-
-[[redirects]]
   from = "/q/"
   to = "/ja/q/index.html"
   status = 200
   conditions = {Language = ["ja"]}
-
-[[redirects]]
-  from = "/q"
-  to = "/ko/q/index.html"
-  status = 200
-  conditions = {Language = ["ko"]}
 
 [[redirects]]
   from = "/q/"
@@ -252,22 +278,10 @@
   conditions = {Language = ["ko"]}
 
 [[redirects]]
-  from = "/q"
-  to = "/zh/q/index.html"
-  status = 200
-  conditions = {Language = ["zh"]}
-
-[[redirects]]
   from = "/q/"
   to = "/zh/q/index.html"
   status = 200
   conditions = {Language = ["zh"]}
-
-[[redirects]]
-  from = "/q"
-  to = "/nl/q/index.html"
-  status = 200
-  conditions = {Language = ["nl"]}
 
 [[redirects]]
   from = "/q/"
@@ -276,22 +290,10 @@
   conditions = {Language = ["nl"]}
 
 [[redirects]]
-  from = "/q"
-  to = "/pl/q/index.html"
-  status = 200
-  conditions = {Language = ["pl"]}
-
-[[redirects]]
   from = "/q/"
   to = "/pl/q/index.html"
   status = 200
   conditions = {Language = ["pl"]}
-
-[[redirects]]
-  from = "/q"
-  to = "/sv/q/index.html"
-  status = 200
-  conditions = {Language = ["sv"]}
 
 [[redirects]]
   from = "/q/"
@@ -300,20 +302,14 @@
   conditions = {Language = ["sv"]}
 
 [[redirects]]
-  from = "/q"
-  to = "/hi/q/index.html"
-  status = 200
-  conditions = {Language = ["hi"]}
-
-[[redirects]]
   from = "/q/"
   to = "/hi/q/index.html"
   status = 200
   conditions = {Language = ["hi"]}
 
 [[redirects]]
-  from = "/q/*"
-  to = "/tr/q/play/index.html"
+  from = "/q/"
+  to = "/tr/q/index.html"
   status = 200
 
 [[redirects]]
@@ -405,6 +401,11 @@
   to = "/hi/q/play/index.html"
   status = 200
   conditions = {Language = ["hi"]}
+
+[[redirects]]
+  from = "/q/*"
+  to = "/tr/q/play/index.html"
+  status = 200
 
 [[redirects]]
   from = "/:locale/q/*"
