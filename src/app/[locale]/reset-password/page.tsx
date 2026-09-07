@@ -2,12 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
+import { API_URL } from "@/lib/constants/api";
 
 type State = "form" | "loading" | "success" | "error";
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://qulo-server-production.up.railway.app";
 
 export default function ResetPasswordPage() {
   const t = useTranslations("resetPassword");

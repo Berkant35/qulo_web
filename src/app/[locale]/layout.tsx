@@ -8,6 +8,7 @@ import { alternateLanguages } from "@/lib/seo/alternates";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { RootHtml } from "@/components/layout/RootHtml";
 import { ROOT_METADATA } from "@/lib/constants/rootMetadata";
+import { StickyInstallBar } from "@/components/shared/StickyInstallBar";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -136,6 +137,7 @@ export default async function LocaleLayout({
         {/* JSON-LD structured data — static server constants only, no user input */}
         <JsonLd data={jsonLd} />
         {children}
+        <StickyInstallBar />
       </NextIntlClientProvider>
     </RootHtml>
   );
