@@ -171,6 +171,13 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     article: { type: "blog", slug: "online-dating-safety-tips" },
   },
   {
+    slug: "love-languages",
+    emoji: "💬",
+    related: ["compatibility", "quiz-dating", "green-flag", "slow-dating"],
+    keywords: ["love languages", "5 love languages", "love language test", "what are the love languages"],
+    article: { type: "blog", slug: "what-actually-predicts-compatibility" },
+  },
+  {
     slug: "match",
     emoji: "💕",
     related: ["quiz-dating", "compatibility", "talking-stage"],

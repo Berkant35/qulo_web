@@ -16,6 +16,7 @@ import { greenFlag } from "./green-flag";
 import { hardballing } from "./hardballing";
 import { ick } from "./ick";
 import { kittenfishing } from "./kittenfishing";
+import { loveLanguages } from "./love-languages";
 import { loveBombing } from "./love-bombing";
 import { match } from "./match";
 import { orbiting } from "./orbiting";
@@ -54,6 +55,7 @@ export const GLOSSARY_CONTENT: Record<string, LocalizedGlossaryEntry> = {
   "ick": ick,
   kittenfishing,
   "love-bombing": loveBombing,
+  "love-languages": loveLanguages,
   "match": match,
   "orbiting": orbiting,
   "quiz-dating": quizDating,
