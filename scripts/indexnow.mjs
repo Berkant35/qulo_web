@@ -56,6 +56,10 @@ function urlsForChangedFiles(ref) {
   const locales = ["en","tr","de","fr","es","ar","ru","pt","it","ja","ko","zh","nl","pl","sv","hi"];
   const paths = new Set();
   for (const f of files) {
+    // `_content/index.ts` is the barrel file, not a page. Without this it maps
+    // to `/glossary/index/`, which 301s — 16 fabricated URLs per submission,
+    // and a script that claims to send only what changed should not send those.
+    if (f.endsWith("/index.ts")) continue;
     let m;
     if ((m = f.match(/glossary\/_content\/([a-z0-9-]+)\.ts$/))) paths.add(`/glossary/${m[1]}/`);
     else if ((m = f.match(/answers\/_content\/([a-z0-9-]+)\.ts$/))) paths.add(`/answers/${m[1]}/`);
