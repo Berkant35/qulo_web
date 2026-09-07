@@ -39,6 +39,63 @@ const NOINDEX_ROUTES = ["/invite", "/email-verified", "/reset-password"];
  */
 const TEMPLATE_ROUTES = ["/dating/", "/country/"];
 
+/**
+ * Real last-modified dates for leaf content, read from git.
+ *
+ * WHY: `new Date()` at build time stamps every one of ~1300 URLs with the same
+ * instant, so the sitemap claims the whole site changed on every deploy. Bing
+ * treats `lastmod` as a freshness signal for AI recrawling and Google says the
+ * value has to be accurate to be used at all — a site-wide identical timestamp
+ * is noise, and noise gets discounted. One content file maps to 16 locale URLs,
+ * so ~70 `git log` calls cover the leaves; everything else keeps build time,
+ * which is honest for pages assembled from many sources.
+ *
+ * If git is unavailable (shallow clone, exported tarball) this degrades to the
+ * old behaviour rather than failing the build.
+ */
+const CONTENT_DIRS = [
+  ["src/app/[locale]/glossary/_content", "/glossary/"],
+  ["src/app/[locale]/answers/_content", "/answers/"],
+  ["src/app/[locale]/blog/[slug]/_content", "/blog/"],
+  ["src/app/[locale]/advice/[slug]/_content", "/advice/"],
+];
+
+function buildContentDates() {
+  const { execFileSync } = require("node:child_process");
+  const { readdirSync } = require("node:fs");
+  const dates = new Map();
+  for (const [dir, prefix] of CONTENT_DIRS) {
+    let files;
+    try {
+      files = readdirSync(dir).filter((f) => f.endsWith(".ts") && f !== "index.ts");
+    } catch {
+      continue;
+    }
+    for (const file of files) {
+      try {
+        const iso = execFileSync(
+          "git",
+          ["log", "-1", "--format=%cI", "--", `${dir}/${file}`],
+          { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
+        ).trim();
+        if (iso) dates.set(`${prefix}${file.replace(/\.ts$/, "")}/`, new Date(iso).toISOString());
+      } catch {
+        // no git history for this file — fall through to build time
+      }
+    }
+  }
+  return dates;
+}
+
+const CONTENT_DATES = buildContentDates();
+
+/** `/en/glossary/ghosting/` -> `/glossary/ghosting/` */
+function contentKey(path) {
+  const m = path.match(/^\/[a-z]{2}(\/(?:glossary|answers|blog|advice)\/[^/]+\/?)$/);
+  if (!m) return undefined;
+  return m[1].endsWith("/") ? m[1] : `${m[1]}/`;
+}
+
 /** Higher priority for the pages we actually want surfaced first. */
 const PRIORITY_RULES = [
   { test: (path) => /^\/[a-z]{2}\/?$/.test(path), priority: 1.0, changefreq: "daily" },
@@ -71,7 +128,9 @@ module.exports = {
       loc: path,
       changefreq: rule?.changefreq ?? config.changefreq,
       priority: rule?.priority ?? config.priority,
-      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+      lastmod: config.autoLastmod
+        ? CONTENT_DATES.get(contentKey(path) ?? "") ?? new Date().toISOString()
+        : undefined,
     };
   },
   robotsTxtOptions: {
