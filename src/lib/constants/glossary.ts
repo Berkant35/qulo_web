@@ -53,6 +53,12 @@ export type LocalizedGlossaryEntry = Record<string, GlossaryEntry>;
 
 export const GLOSSARY_TERMS: GlossaryTerm[] = [
   {
+    slug: "limerence",
+    emoji: "\u{1F300}",
+    related: ["love-bombing", "future-faking", "situationship", "talking-stage", "orbiting"],
+    keywords: ["limerence", "limerence meaning", "what is limerence", "obsessive crush"],
+  },
+  {
     slug: "beige-flag",
     emoji: "🤎",
     related: ["green-flag", "red-flag", "ick"],

@@ -17,6 +17,7 @@ import { grimKeeping } from "./grim-keeping";
 import { hardballing } from "./hardballing";
 import { ick } from "./ick";
 import { kittenfishing } from "./kittenfishing";
+import { limerence } from "./limerence";
 import { loveLanguages } from "./love-languages";
 import { loveBombing } from "./love-bombing";
 import { match } from "./match";
@@ -55,7 +56,8 @@ export const GLOSSARY_CONTENT: Record<string, LocalizedGlossaryEntry> = {
   "grim-keeping": grimKeeping,
   "hardballing": hardballing,
   "ick": ick,
-  kittenfishing,
+  "kittenfishing": kittenfishing,
+  "limerence": limerence,
   "love-bombing": loveBombing,
   "love-languages": loveLanguages,
   "match": match,
