@@ -20,6 +20,7 @@ import { isQuloFree } from "../_content/is-qulo-free";
 import { isQuloSafe } from "../_content/is-qulo-safe";
 import { whatMakesAGoodDatingAppQuestion } from "../_content/what-makes-a-good-dating-app-question";
 import { whyAmINotGettingMatches } from "../_content/why-am-i-not-getting-matches";
+import { whichDatingAppMatchesYouThroughQuestions } from "../_content/which-dating-app-matches-you-through-questions";
 
 /** Body content keyed by slug. Every entry in ANSWER_PAGES needs one. */
 const ANSWER_BODIES: Record<string, LocalizedArticle> = {
@@ -28,6 +29,7 @@ const ANSWER_BODIES: Record<string, LocalizedArticle> = {
   "is-qulo-safe": isQuloSafe,
   "what-makes-a-good-dating-app-question": whatMakesAGoodDatingAppQuestion,
   "why-am-i-not-getting-matches": whyAmINotGettingMatches,
+  "which-dating-app-matches-you-through-questions": whichDatingAppMatchesYouThroughQuestions,
 };
 
 export function generateStaticParams() {

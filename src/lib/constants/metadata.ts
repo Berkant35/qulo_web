@@ -3,9 +3,9 @@ export const SITE_NAME = "Qulo";
 
 export const SEO: Record<string, { title: string; description: string }> = {
   tr: {
-    title: "Qulo — Sorularla Tanış | Soru-Cevap Tanışma Uygulaması",
+    title: "Qulo — Sorularla Eşleşme Dating Uygulaması",
     description:
-      "Soru hazırla, paylaş, doğru cevaplayan kişiyle eşleş. Swipe yok, soru-cevap var — yeni nesil tanışma uygulaması.",
+      "Qulo'da eşleşme sorularla olur: soru hazırla, karşındakinin sorularının hepsini doğru cevaplarsan eşleşirsiniz ve sohbet açılır. Swipe yok, soru-cevap var.",
   },
   en: {
     title: "Qulo — Meet Through Questions | Quiz Dating App",
