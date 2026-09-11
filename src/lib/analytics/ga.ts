@@ -13,10 +13,20 @@ import { storeClickFromHref } from "./store-link";
  */
 
 /**
+ * GA4 web stream of Firebase project qulo-b2f1a (web app "faf" → quloapp.com).
  * Public by design: the measurement ID is visible in every GA-enabled page.
- * Empty means analytics is off — no banner, no script (previews, forks).
  */
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+const PRODUCTION_MEASUREMENT_ID = "G-44TT0TFKF8";
+
+/**
+ * Production builds measure by default; `next dev` never does, so local work
+ * does not pollute the property. `NEXT_PUBLIC_GA_MEASUREMENT_ID` overrides it
+ * both ways: another ID for tests, or an empty string to switch analytics off
+ * (e.g. Netlify deploy previews). Empty = no banner, no script.
+ */
+export const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ??
+  (process.env.NODE_ENV === "production" ? PRODUCTION_MEASUREMENT_ID : "");
 
 /** localStorage key holding the visitor's choice — also watched across tabs. */
 export const CONSENT_STORAGE_KEY = "qulo_analytics_consent";
