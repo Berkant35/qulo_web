@@ -6,6 +6,7 @@ import { rtlLocales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { alternateLanguages } from "@/lib/seo/alternates";
+import { CookieSettingsButton } from "@/components/footer/CookieSettingsButton";
 
 /** Per-locale breadcrumb label for the Privacy Policy page */
 const PRIVACY_LABELS: Record<string, string> = {
@@ -83,6 +84,11 @@ export default async function PrivacyPolicyPage({
               <div className="text-qulo-text-secondary leading-relaxed text-base whitespace-pre-line">
                 {t(body)}
               </div>
+              {/* The policy promises withdrawal "at the end of this section": pages
+                  without the site footer still need a way to change the choice. */}
+              {body === "cookies" && (
+                <CookieSettingsButton className="mt-4 text-sm text-qulo-purple underline hover:text-white" />
+              )}
             </section>
           ))}
         </div>

@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import { RootHtml } from "@/components/layout/RootHtml";
 import { ROOT_METADATA } from "@/lib/constants/rootMetadata";
 import { StickyInstallBar } from "@/components/shared/StickyInstallBar";
+import { Analytics } from "@/components/analytics/Analytics";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -138,6 +139,7 @@ export default async function LocaleLayout({
         <JsonLd data={jsonLd} />
         {children}
         <StickyInstallBar />
+        <Analytics />
       </NextIntlClientProvider>
     </RootHtml>
   );

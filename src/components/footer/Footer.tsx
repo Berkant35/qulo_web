@@ -3,8 +3,10 @@
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { GA_MEASUREMENT_ID } from "@/lib/analytics/ga";
 import { SOCIAL } from "@/lib/constants/links";
 import { FooterLinkColumn, type FooterLinkItem } from "./FooterLinkColumn";
+import { CookieSettingsButton } from "./CookieSettingsButton";
 
 const COMPANY_LINKS: readonly FooterLinkItem[] = [
   { href: "about", labelKey: "about" },
@@ -107,7 +109,13 @@ export function Footer() {
               titleClassName="text-qulo-purple"
               locale={locale}
               items={LEGAL_LINKS}
-            />
+            >
+              {GA_MEASUREMENT_ID && (
+                <li>
+                  <CookieSettingsButton />
+                </li>
+              )}
+            </FooterLinkColumn>
 
             {/* Social */}
             <div>

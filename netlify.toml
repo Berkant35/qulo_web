@@ -637,6 +637,10 @@
 #   style-src  'unsafe-inline'  Next injects critical CSS inline.
 #   img/font   'self'           every image, stylesheet and font is self-hosted.
 #   connect-src                 the reset-password form posts to the API.
+#   *.googletagmanager.com /    Google Analytics 4 (script, collect beacons,
+#   *.google-analytics.com      pixel fallback) — Google's documented GA4 CSP.
+#   *.analytics.google.com      gtag.js is only requested after the visitor
+#                               consents (src/lib/analytics/ga.ts).
 [[headers]]
   for = "/*"
   [headers.values]
@@ -644,7 +648,7 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://qulo-server-production.up.railway.app; manifest-src 'self'; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://qulo-server-production.up.railway.app https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; manifest-src 'self'; upgrade-insecure-requests"
 
 [[headers]]
   for = "/.well-known/apple-app-site-association"

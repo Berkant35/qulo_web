@@ -25,6 +25,10 @@ export default function ResetPasswordPage() {
       return;
     }
     setToken(tokenParam);
+    // Drop the token from the address bar once it is in memory: it is a one-hour
+    // credential and must not linger in history, bookmarks or anything that
+    // records page URLs.
+    window.history.replaceState(null, "", window.location.pathname);
     if (newPasswordRef.current) newPasswordRef.current.focus();
   }, []);
 

@@ -20,6 +20,8 @@ interface FooterLinkColumnProps {
   titleClassName: string;
   locale: string;
   items: readonly FooterLinkItem[];
+  /** Extra `<li>` entries that are not page links (e.g. the cookie settings button). */
+  children?: React.ReactNode;
 }
 
 export function FooterLinkColumn({
@@ -27,6 +29,7 @@ export function FooterLinkColumn({
   titleClassName,
   locale,
   items,
+  children,
 }: FooterLinkColumnProps) {
   const t = useTranslations("footer");
 
@@ -51,6 +54,7 @@ export function FooterLinkColumn({
             </Link>
           </li>
         ))}
+        {children}
       </ul>
     </div>
   );
