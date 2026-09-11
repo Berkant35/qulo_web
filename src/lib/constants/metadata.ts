@@ -8,9 +8,9 @@ export const SEO: Record<string, { title: string; description: string }> = {
       "Qulo'da eşleşme sorularla olur: soru hazırla, karşındakinin sorularının hepsini doğru cevaplarsan eşleşirsiniz ve sohbet açılır. Swipe yok, soru-cevap var.",
   },
   en: {
-    title: "Qulo — Meet Through Questions | Quiz Dating App",
+    title: "Qulo — Question-Based Dating App | Meet Through Questions",
     description:
-      "Create questions, share them, match with the person who answers correctly. Question-based dating — no swiping, just a quiz.",
+      "On Qulo you match through questions: write your own, and match with the person who answers all of them correctly. Question-based dating — no swiping, just a quiz.",
   },
   de: {
     title: "Qulo — Kennenlernen durch Fragen | Quiz Dating App",

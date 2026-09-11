@@ -123,7 +123,6 @@ export default async function LocaleLayout({
         "https://twitter.com/quloapp",
         "https://instagram.com/quloapp",
         "https://www.tiktok.com/@quloapp",
-        "https://github.com/quloapp",
       ],
       foundingDate: "2026",
       description: seoData.description,
