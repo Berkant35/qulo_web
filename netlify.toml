@@ -562,6 +562,16 @@
   to = "/en/privacy-policy/index.html"
   status = 200
 
+[[redirects]]
+  from = "/:locale/community-guidelines"
+  to = "/en/community-guidelines/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/:locale/safety-tips"
+  to = "/en/safety-tips/index.html"
+  status = 200
+
 # Supported locales (tr, en) — direct rewrite
 [[redirects]]
   from = "/tr/reset-password"
