@@ -7,7 +7,7 @@ import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { FAQ, faqTitle } from "@/components/shared/FAQ";
-import { contentLocales, rtlLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales, rtlLocales } from "@/lib/i18n/config";
 import { LANDING_PAGES } from "@/lib/constants/landings";
 import { landingLabels } from "@/lib/constants/landingLabels";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
@@ -120,7 +120,7 @@ export default async function FeatureLandingPage({
           <Breadcrumb
             locale={locale}
             items={[
-              { label: labels.section, href: contentPath(locale, "/features") },
+              { label: labels.section, href: `/${locale}/features` },
               { label: title },
             ]}
           />
@@ -222,19 +222,19 @@ export default async function FeatureLandingPage({
               {labels.navAbout}
             </Link>
             <Link
-              href={contentPath(locale, "/blog")}
+              href={`/${locale}/blog`}
               className="text-qulo-text-secondary hover:text-qulo-purple transition-colors"
             >
               Blog
             </Link>
             <Link
-              href={contentPath(locale, "/dating")}
+              href={`/${locale}/dating`}
               className="text-qulo-text-secondary hover:text-qulo-purple transition-colors"
             >
               {labels.navCities}
             </Link>
             <Link
-              href={contentPath(locale, "/features")}
+              href={`/${locale}/features`}
               className="text-qulo-text-secondary hover:text-qulo-purple transition-colors"
             >
               {labels.navFeatures}

@@ -8,7 +8,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { ArticleBlocks } from "@/components/blog/ArticleBlocks";
-import { contentLocales, rtlLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales, rtlLocales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
@@ -126,7 +126,7 @@ export default async function GlossaryTermPage({
           <Breadcrumb
             locale={locale}
             items={[
-              { label: labels.hubTitle, href: contentPath(locale, "/glossary") },
+              { label: labels.hubTitle, href: `/${locale}/glossary` },
               { label: entry.term },
             ]}
           />
@@ -173,7 +173,7 @@ export default async function GlossaryTermPage({
                 {related.map((item) => (
                   <li key={item.slug}>
                     <Link
-                      href={`${contentPath(locale, `/glossary/${item.slug}`)}`}
+                      href={`/${locale}/glossary/${item.slug}`}
                       className="inline-flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-sm text-qulo-text-secondary hover:bg-white/[0.06] hover:text-white transition-colors"
                     >
                       <span aria-hidden="true">{item.emoji}</span>
@@ -196,7 +196,7 @@ export default async function GlossaryTermPage({
 
           <p className="mt-8">
             <Link
-              href={contentPath(locale, "/glossary")}
+              href={`/${locale}/glossary`}
               className="text-qulo-text-muted text-sm hover:text-white underline underline-offset-4"
             >
               ← {labels.backToGlossary}

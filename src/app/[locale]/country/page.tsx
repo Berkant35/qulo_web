@@ -4,7 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { contentLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
@@ -135,7 +135,7 @@ export default async function CountryIndexPage({
               return (
                 <Link
                   key={country.slug}
-                  href={`${contentPath(locale, `/country/${country.slug}`)}`}
+                  href={`/${locale}/country/${country.slug}`}
                   className="group flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 sm:p-6 transition-all duration-200 hover:border-qulo-purple/30 hover:bg-white/[0.05]"
                 >
                   <span className="text-3xl flex-shrink-0">{country.emoji}</span>

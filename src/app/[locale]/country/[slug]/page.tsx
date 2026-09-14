@@ -6,7 +6,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { contentLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
@@ -415,7 +415,7 @@ export default async function CountryDetailPage({
             <Breadcrumb
               locale={locale}
               items={[
-                { label: allCountriesLabel, href: contentPath(locale, "/country") },
+                { label: allCountriesLabel, href: `/${locale}/country` },
                 { label: countryName },
               ]}
             />
@@ -470,7 +470,7 @@ export default async function CountryDetailPage({
                 {linkedCities.map((city) => (
                   <Link
                     key={city.slug}
-                    href={`${contentPath(locale, `/dating/${city.slug}`)}`}
+                    href={`/${locale}/dating/${city.slug}`}
                     className="text-sm px-5 py-3 rounded-full border border-qulo-purple/30 bg-qulo-purple/10 text-white hover:border-qulo-purple/60 hover:bg-qulo-purple/20 transition-colors"
                   >
                     {city.emoji} {city.names[locale] || city.names.en}
@@ -549,7 +549,7 @@ export default async function CountryDetailPage({
             {otherCountries.map((oc) => (
               <Link
                 key={oc.slug}
-                href={`${contentPath(locale, `/country/${oc.slug}`)}`}
+                href={`/${locale}/country/${oc.slug}`}
                 className="text-xs px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.03] text-qulo-text-secondary hover:text-white hover:border-qulo-purple/30 transition-colors"
               >
                 {oc.emoji} {getCountryName(oc, locale)}
@@ -564,19 +564,19 @@ export default async function CountryDetailPage({
               {locale === "tr" ? "Hakkinda" : "About"}
             </Link>
             <Link
-              href={contentPath(locale, "/blog")}
+              href={`/${locale}/blog`}
               className="text-xs text-qulo-purple hover:underline"
             >
               Blog
             </Link>
             <Link
-              href={contentPath(locale, "/dating")}
+              href={`/${locale}/dating`}
               className="text-xs text-qulo-purple hover:underline"
             >
               {locale === "tr" ? "Sehirler" : "Cities"}
             </Link>
             <Link
-              href={contentPath(locale, "/country")}
+              href={`/${locale}/country`}
               className="text-xs text-qulo-purple hover:underline"
             >
               {allCountriesLabel}

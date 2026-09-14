@@ -72,4 +72,4 @@ if (failures.length > 0) {
   console.error(`verify:analytics — ${failures.length} sorun:\n- ${failures.join("\n- ")}`);
   process.exit(1);
 }
-console.log("verify:analytics — CSP, 16 dil sozlugu ve derleme ciktisi temiz");
+console.log(`verify:analytics — CSP, ${files.length} dil sozlugu ve derleme ciktisi temiz`);

@@ -5,7 +5,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { contentLocales, rtlLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales, rtlLocales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
@@ -139,7 +139,7 @@ export default async function GlossaryPage({
                       >
                         <h2 className="text-xl font-bold text-white mb-2">
                           <Link
-                            href={`${contentPath(locale, `/glossary/${term.slug}`)}`}
+                            href={`/${locale}/glossary/${term.slug}`}
                             className="hover:text-qulo-green transition-colors"
                           >
                             <span className="mr-2" aria-hidden="true">

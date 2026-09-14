@@ -42,11 +42,11 @@ function getLabels(locale: string) {
  * the bullet now says. It currently covers 10 of the app's 16 languages.
  */
 const FEATURES_FREE: Record<string, string[]> = {
-  tr: ["2-4 soru oluşturma", "Günlük 10 eşleşme keşfi", "Mesajlaşma", "Temel filtreleme", "16 dil desteği"],
+  tr: ["2-4 soru oluşturma", "Günlük 10 eşleşme keşfi", "Mesajlaşma", "Temel filtreleme", "18 dil desteği"],
   en: ["Create 2-4 questions", "10 daily match discoveries", "Messaging", "Basic filters", "16 language support"],
-  de: ["2-4 Fragen erstellen", "10 Matches pro Tag", "Messaging", "Grundfilter", "16 Sprachen"],
-  fr: ["Créer 2-4 questions", "10 découvertes par jour", "Messagerie", "Filtres de base", "16 langues"],
-  es: ["Crear 2-4 preguntas", "10 descubrimientos diarios", "Mensajería", "Filtros básicos", "16 idiomas"],
+  de: ["2-4 Fragen erstellen", "10 Matches pro Tag", "Messaging", "Grundfilter", "18 Sprachen"],
+  fr: ["Créer 2-4 questions", "10 découvertes par jour", "Messagerie", "Filtres de base", "18 langues"],
+  es: ["Crear 2-4 preguntas", "10 descubrimientos diarios", "Mensajería", "Filtros básicos", "18 idiomas"],
 };
 
 const FEATURES_PLUS: Record<string, string[]> = {

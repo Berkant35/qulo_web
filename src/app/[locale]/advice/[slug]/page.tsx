@@ -6,7 +6,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { contentLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
@@ -228,7 +228,7 @@ export default async function AdvicePostPage({
           <Breadcrumb
             locale={locale}
             items={[
-              { label: adviceHeading, href: contentPath(locale, "/advice") },
+              { label: adviceHeading, href: `/${locale}/advice` },
               { label: title },
             ]}
           />
@@ -236,7 +236,7 @@ export default async function AdvicePostPage({
           {/* Back to advice */}
           <nav className="mb-8">
             <Link
-              href={contentPath(locale, "/advice")}
+              href={`/${locale}/advice`}
               className="text-sm text-qulo-text-secondary hover:text-qulo-purple transition-colors"
             >
               &larr; {labels.backToAdvice}
@@ -308,7 +308,7 @@ export default async function AdvicePostPage({
                 {otherGuides.map((rg) => (
                   <Link
                     key={rg.slug}
-                    href={`${contentPath(locale, `/advice/${rg.slug}`)}`}
+                    href={`/${locale}/advice/${rg.slug}`}
                     className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-5 hover:border-qulo-purple/30 hover:bg-white/[0.05] transition-all duration-200"
                   >
                     <div className="text-2xl mb-2" aria-hidden="true">{rg.emoji}</div>
@@ -328,22 +328,22 @@ export default async function AdvicePostPage({
           <section className="mt-12 rounded-xl border border-white/[0.08] bg-white/[0.02] p-6 text-center">
             <p className="text-sm text-qulo-text-secondary">
               {locale === "tr" && (
-                <>Daha fazla içerik için <Link href={contentPath(locale, "/blog")} className="text-qulo-purple hover:underline">Qulo Blog</Link> ve <Link href={contentPath(locale, "/glossary")} className="text-qulo-purple hover:underline">Dating Sözlüğü</Link>&apos;nü ziyaret edin.</>
+                <>Daha fazla içerik için <Link href={`/${locale}/blog`} className="text-qulo-purple hover:underline">Qulo Blog</Link> ve <Link href={`/${locale}/glossary`} className="text-qulo-purple hover:underline">Dating Sözlüğü</Link>&apos;nü ziyaret edin.</>
               )}
               {locale === "en" && (
-                <>For more content, visit the <Link href={contentPath(locale, "/blog")} className="text-qulo-purple hover:underline">Qulo Blog</Link> and <Link href={contentPath(locale, "/glossary")} className="text-qulo-purple hover:underline">Dating Glossary</Link>.</>
+                <>For more content, visit the <Link href={`/${locale}/blog`} className="text-qulo-purple hover:underline">Qulo Blog</Link> and <Link href={`/${locale}/glossary`} className="text-qulo-purple hover:underline">Dating Glossary</Link>.</>
               )}
               {locale === "de" && (
-                <>Für mehr Inhalte besuchen Sie den <Link href={contentPath(locale, "/blog")} className="text-qulo-purple hover:underline">Qulo Blog</Link> und das <Link href={contentPath(locale, "/glossary")} className="text-qulo-purple hover:underline">Dating-Glossar</Link>.</>
+                <>Für mehr Inhalte besuchen Sie den <Link href={`/${locale}/blog`} className="text-qulo-purple hover:underline">Qulo Blog</Link> und das <Link href={`/${locale}/glossary`} className="text-qulo-purple hover:underline">Dating-Glossar</Link>.</>
               )}
               {locale === "fr" && (
-                <>Pour plus de contenu, visitez le <Link href={contentPath(locale, "/blog")} className="text-qulo-purple hover:underline">Blog Qulo</Link> et le <Link href={contentPath(locale, "/glossary")} className="text-qulo-purple hover:underline">Glossaire du Dating</Link>.</>
+                <>Pour plus de contenu, visitez le <Link href={`/${locale}/blog`} className="text-qulo-purple hover:underline">Blog Qulo</Link> et le <Link href={`/${locale}/glossary`} className="text-qulo-purple hover:underline">Glossaire du Dating</Link>.</>
               )}
               {locale === "es" && (
-                <>Para más contenido, visita el <Link href={contentPath(locale, "/blog")} className="text-qulo-purple hover:underline">Blog de Qulo</Link> y el <Link href={contentPath(locale, "/glossary")} className="text-qulo-purple hover:underline">Glosario de Citas</Link>.</>
+                <>Para más contenido, visita el <Link href={`/${locale}/blog`} className="text-qulo-purple hover:underline">Blog de Qulo</Link> y el <Link href={`/${locale}/glossary`} className="text-qulo-purple hover:underline">Glosario de Citas</Link>.</>
               )}
               {!["tr", "en", "de", "fr", "es"].includes(locale) && (
-                <>For more content, visit the <Link href={contentPath(locale, "/blog")} className="text-qulo-purple hover:underline">Qulo Blog</Link> and <Link href={contentPath(locale, "/glossary")} className="text-qulo-purple hover:underline">Dating Glossary</Link>.</>
+                <>For more content, visit the <Link href={`/${locale}/blog`} className="text-qulo-purple hover:underline">Qulo Blog</Link> and <Link href={`/${locale}/glossary`} className="text-qulo-purple hover:underline">Dating Glossary</Link>.</>
               )}
             </p>
           </section>

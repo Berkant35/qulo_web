@@ -4,7 +4,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { FaqList, faqPageSchema, type FAQItem } from "@/components/shared/FAQ";
-import { locales, rtlLocales, contentPath } from "@/lib/i18n/config";
+import { locales, rtlLocales, contentPath, isContentLocale } from "@/lib/i18n/config";
 import { ANSWER_PAGES, answerQuestion } from "@/lib/constants/answers";
 import { ANSWER_LABELS } from "@/lib/constants/answerLabels";
 
@@ -68,29 +68,33 @@ export default async function HelpPage({
             </section>
           ))}
 
-          <section className="mt-4" aria-labelledby="help-answers">
-            <h2
-              id="help-answers"
-              className="text-base font-semibold text-qulo-purple mb-2 uppercase tracking-wider"
-            >
-              {answerLabels.hubTitle}
-            </h2>
-            <p className="text-qulo-text-secondary text-sm mb-4">
-              {answerLabels.hubIntro}
-            </p>
-            <ul className="space-y-2">
-              {ANSWER_PAGES.map((page) => (
-                <li key={page.slug}>
-                  <Link
-                    href={`${contentPath(locale, `/answers/${page.slug}`)}`}
-                    className="text-qulo-text-secondary text-sm hover:text-white hover:underline"
-                  >
-                    {answerQuestion(page, locale)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
+          {isContentLocale(locale) && (
+  
+            <section className="mt-4" aria-labelledby="help-answers">
+              <h2
+                id="help-answers"
+                className="text-base font-semibold text-qulo-purple mb-2 uppercase tracking-wider"
+              >
+                {answerLabels.hubTitle}
+              </h2>
+              <p className="text-qulo-text-secondary text-sm mb-4">
+                {answerLabels.hubIntro}
+              </p>
+              <ul className="space-y-2">
+                {ANSWER_PAGES.map((page) => (
+                  <li key={page.slug}>
+                    <Link
+                      href={contentPath(locale, `/answers/${page.slug}`)}
+                      className="text-qulo-text-secondary text-sm hover:text-white hover:underline"
+                    >
+                      {answerQuestion(page, locale)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+          )}
 
           <div className="mt-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6">
             <h2 className="text-lg font-semibold text-white mb-2">

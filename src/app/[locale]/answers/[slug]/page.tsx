@@ -9,7 +9,7 @@ import { StoreButtons } from "@/components/hero/StoreButtons";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { SourceList } from "@/components/shared/SourceList";
 import { ArticleBlocks, type LocalizedArticle } from "@/components/blog/ArticleBlocks";
-import { contentLocales, rtlLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales, rtlLocales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
@@ -137,7 +137,7 @@ export default async function AnswerPage({
           <Breadcrumb
             locale={locale}
             items={[
-              { label: labels.hubTitle, href: contentPath(locale, "/answers") },
+              { label: labels.hubTitle, href: `/${locale}/answers` },
               { label: question },
             ]}
           />
@@ -176,7 +176,7 @@ export default async function AnswerPage({
               {others.map((other) => (
                 <li key={other.slug}>
                   <Link
-                    href={`${contentPath(locale, `/answers/${other.slug}`)}`}
+                    href={`/${locale}/answers/${other.slug}`}
                     className="text-qulo-text-secondary hover:text-white underline underline-offset-4"
                   >
                     {answerQuestion(other, locale)}

@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { contentLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales } from "@/lib/i18n/config";
 import {
   PAGE_SEO,
   SITE_URL,
@@ -177,17 +177,17 @@ export default async function SitemapHtmlPage({
   const mainPages: SitemapLink[] = [
     { href: `/${locale}`, label: SITE_NAME },
     { href: `/${locale}/about`, label: t("about") },
-    { href: contentPath(locale, "/press"), label: t("press") },
-    { href: contentPath(locale, "/features"), label: nav("features") },
-    { href: contentPath(locale, "/advice"), label: t("advice") },
-    { href: contentPath(locale, "/how-to"), label: t("howto") },
-    { href: contentPath(locale, "/blog"), label: t("blog") },
-    { href: contentPath(locale, "/answers"), label: t("answers") },
-    { href: contentPath(locale, "/questions"), label: t("questions") },
-    { href: contentPath(locale, "/glossary"), label: t("glossary") },
+    { href: `/${locale}/press`, label: t("press") },
+    { href: `/${locale}/features`, label: nav("features") },
+    { href: `/${locale}/advice`, label: t("advice") },
+    { href: `/${locale}/how-to`, label: t("howto") },
+    { href: `/${locale}/blog`, label: t("blog") },
+    { href: `/${locale}/answers`, label: t("answers") },
+    { href: `/${locale}/questions`, label: t("questions") },
+    { href: `/${locale}/glossary`, label: t("glossary") },
     { href: `/${locale}/pricing`, label: t("pricing") },
-    { href: contentPath(locale, "/dating-statistics"), label: t("statistics") },
-    { href: contentPath(locale, "/trends/2026"), label: t("trends") },
+    { href: `/${locale}/dating-statistics`, label: t("statistics") },
+    { href: `/${locale}/trends/2026`, label: t("trends") },
   ];
 
   // Every glossary term, so the 432 term pages are reachable from a crawlable
@@ -195,42 +195,42 @@ export default async function SitemapHtmlPage({
   const glossaryPages: SitemapLink[] = SORTED_GLOSSARY_TERMS.flatMap((term) => {
     const entry = GLOSSARY_CONTENT[term.slug]?.[locale];
     return entry
-      ? [{ href: `${contentPath(locale, `/glossary/${term.slug}`)}`, label: entry.term }]
+      ? [{ href: `/${locale}/glossary/${term.slug}`, label: entry.term }]
       : [];
   }).sort((a, b) => a.label.localeCompare(b.label, locale));
 
   const answerPages: SitemapLink[] = ANSWER_PAGES.map((page) => ({
-    href: `${contentPath(locale, `/answers/${page.slug}`)}`,
+    href: `/${locale}/answers/${page.slug}`,
     label: answerQuestion(page, locale),
   }));
 
   const featurePages: SitemapLink[] = LANDING_PAGES.map((landing) => ({
-    href: `${contentPath(locale, `/features/${landing.slug}`)}`,
+    href: `/${locale}/features/${landing.slug}`,
     label: getLandingTitle(landing, locale),
   }));
 
   const advicePages: SitemapLink[] = ADVICE_GUIDES.map((guide) => ({
-    href: `${contentPath(locale, `/advice/${guide.slug}`)}`,
+    href: `/${locale}/advice/${guide.slug}`,
     label: getAdviceTitle(guide, locale),
   }));
 
   const howtoPages: SitemapLink[] = HOW_TO_GUIDES.map((guide) => ({
-    href: `${contentPath(locale, `/how-to/${guide.slug}`)}`,
+    href: `/${locale}/how-to/${guide.slug}`,
     label: getHowToTitle(guide, locale),
   }));
 
   const blogPages: SitemapLink[] = BLOG_POSTS.map((post) => ({
-    href: `${contentPath(locale, `/blog/${post.slug}`)}`,
+    href: `/${locale}/blog/${post.slug}`,
     label: getBlogTitle(post, locale),
   }));
 
   const cityPages: SitemapLink[] = CITIES.map((city) => ({
-    href: `${contentPath(locale, `/dating/${city.slug}`)}`,
+    href: `/${locale}/dating/${city.slug}`,
     label: getCityName(city, locale),
   }));
 
   const countryPages: SitemapLink[] = COUNTRIES.map((country) => ({
-    href: `${contentPath(locale, `/country/${country.slug}`)}`,
+    href: `/${locale}/country/${country.slug}`,
     label: getCountryName(country, locale),
   }));
 

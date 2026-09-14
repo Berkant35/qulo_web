@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { rtlLocales, contentLocales, contentPath } from "@/lib/i18n/config";
+import { rtlLocales, contentLocales } from "@/lib/i18n/config";
 import { LANDING_PAGES } from "@/lib/constants/landings";
 import { landingLabels } from "@/lib/constants/landingLabels";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
@@ -102,7 +102,7 @@ export default async function FeaturesIndexPage({
               return (
                 <Link
                   key={lp.slug}
-                  href={`${contentPath(locale, `/features/${lp.slug}`)}`}
+                  href={`/${locale}/features/${lp.slug}`}
                   className="block rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 hover:border-qulo-purple/40 transition-colors"
                 >
                   <p className="text-qulo-green text-xs font-semibold uppercase tracking-[0.15em] mb-2">

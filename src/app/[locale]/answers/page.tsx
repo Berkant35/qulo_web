@@ -5,7 +5,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { contentLocales, rtlLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales, rtlLocales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
@@ -96,7 +96,7 @@ export default async function AnswersHubPage({
               >
                 <h2 className="text-lg font-semibold text-white mb-2">
                   <Link
-                    href={`${contentPath(locale, `/answers/${page.slug}`)}`}
+                    href={`/${locale}/answers/${page.slug}`}
                     className="hover:text-qulo-purple"
                   >
                     {answerQuestion(page, locale)}

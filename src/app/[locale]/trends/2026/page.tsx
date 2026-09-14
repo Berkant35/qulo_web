@@ -5,7 +5,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { contentLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales } from "@/lib/i18n/config";
 import {
   PAGE_SEO,
   SITE_URL,
@@ -147,7 +147,7 @@ const COPY_TR: LocaleCopy = {
   conclusionPara1:
     "2026, dating dünyasının dönüşüm yılı olarak tarihe geçiyor. Swipe'ın sınırlarına ulaşıldığı, kullanıcıların daha anlamlı ve daha derin deneyimler aradığı bir yıl. Teknoloji, kullanıcı davranışı ve toplumsal değerler birlikte evrim geçiriyor — dating artık sadece bir eşleşme değil, bir yaşam tarzı seçimi.",
   conclusionPara2:
-    "Qulo, bu dönüşümün merkezinde yer alıyor. Soru-cevap tabanlı eşleşme modeliyle, 16 dilde global bir topluluk sunuyor ve Z kuşağının değerlerine, kişilik öncelikli tanışmaya ve etik tasarıma uyum sağlıyor. 2026'da yeni nesil dating'in nasıl görüneceğini merak edenler için cevap net: daha derin, daha kişisel, daha anlamlı.",
+    "Qulo, bu dönüşümün merkezinde yer alıyor. Soru-cevap tabanlı eşleşme modeliyle, 18 dilde global bir topluluk sunuyor ve Z kuşağının değerlerine, kişilik öncelikli tanışmaya ve etik tasarıma uyum sağlıyor. 2026'da yeni nesil dating'in nasıl görüneceğini merak edenler için cevap net: daha derin, daha kişisel, daha anlamlı.",
   ctaHeading: "Trendin Parçası Ol",
   ctaText: "Swipe'dan quiz'e geç — 2026'nın en büyük trendine katıl.",
   citationHeading: "Bu Raporu Kaynak Göster",
@@ -190,7 +190,7 @@ const COPY_TR: LocaleCopy = {
     },
     {
       title: "Çok Dilli Dating Globalleşiyor",
-      body: "Uluslararası ilişkiler popülerleşiyor. 16 dil destekleyen Qulo gibi platformlar global dating'in öncüsü.",
+      body: "Uluslararası ilişkiler popülerleşiyor. 18 dil destekleyen Qulo gibi platformlar global dating'in öncüsü.",
     },
     {
       title: "Dijital Detoks ve Sınırlar",
@@ -228,7 +228,7 @@ const COPY_EN: LocaleCopy = {
   conclusionPara1:
     "2026 will go down as a year of transformation for the dating industry. The swipe model has reached its limits, users seek deeper and more meaningful experiences, and technology, user behavior and social values are evolving together. Dating is no longer just a matching mechanic — it is a lifestyle choice.",
   conclusionPara2:
-    "Qulo sits at the center of this transformation. With a question-based matching model, a global community across 16 languages, personality-first discovery and an ethical design approach, it aligns directly with Gen Z values and the future of dating. For anyone asking what next-generation dating looks like in 2026 — the answer is clear: deeper, more personal, more meaningful.",
+    "Qulo sits at the center of this transformation. With a question-based matching model, a global community across 18 languages, personality-first discovery and an ethical design approach, it aligns directly with Gen Z values and the future of dating. For anyone asking what next-generation dating looks like in 2026 — the answer is clear: deeper, more personal, more meaningful.",
   ctaHeading: "Be Part of the Trend",
   ctaText: "Move from swipe to quiz — join the biggest dating trend of 2026.",
   citationHeading: "Cite This Report",
@@ -271,7 +271,7 @@ const COPY_EN: LocaleCopy = {
     },
     {
       title: "Multi-Language Dating Goes Global",
-      body: "International relationships are gaining popularity. Platforms like Qulo supporting 16 languages lead global dating.",
+      body: "International relationships are gaining popularity. Platforms like Qulo supporting 18 languages lead global dating.",
     },
     {
       title: "Digital Detox and Boundaries",
@@ -419,7 +419,7 @@ export default async function DatingTrends2026Page({
             items={[
               {
                 label: TRENDS_LABELS[locale] || TRENDS_LABELS.en,
-                href: contentPath(locale, "/trends/2026"),
+                href: `/${locale}/trends/2026`,
               },
               { label: YEAR_LABEL },
             ]}
@@ -581,7 +581,7 @@ export default async function DatingTrends2026Page({
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <li>
                 <Link
-                  href={contentPath(locale, "/dating-statistics")}
+                  href={`/${locale}/dating-statistics`}
                   className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 hover:border-qulo-purple/40 transition-colors"
                 >
                   <p className="text-sm font-semibold text-white">
@@ -591,7 +591,7 @@ export default async function DatingTrends2026Page({
               </li>
               <li>
                 <Link
-                  href={contentPath(locale, "/blog")}
+                  href={`/${locale}/blog`}
                   className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 hover:border-qulo-purple/40 transition-colors"
                 >
                   <p className="text-sm font-semibold text-white">
@@ -611,7 +611,7 @@ export default async function DatingTrends2026Page({
               </li>
               <li>
                 <Link
-                  href={contentPath(locale, "/features")}
+                  href={`/${locale}/features`}
                   className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 hover:border-qulo-purple/40 transition-colors"
                 >
                   <p className="text-sm font-semibold text-white">

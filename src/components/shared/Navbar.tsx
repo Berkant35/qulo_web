@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { contentPath } from "@/lib/i18n/config";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { NeonButton } from "./NeonButton";
+import { contentPath } from "@/lib/i18n/config";
 import { STORE_REDIRECT } from "@/lib/constants/links";
 
 export function Navbar() {
@@ -76,7 +76,10 @@ export function Navbar() {
 
           {/* Right side */}
           <div className="flex items-center gap-4">
-            <LanguageSwitcher />
+            {/* 18 dil 375px'te logo ve indirme butonunu ekran disina itiyor; mobilde dil secimi altbilgide. */}
+            <div className="hidden sm:block">
+              <LanguageSwitcher />
+            </div>
             {/* The only store link above the fold, so it must be right in the
                 first paint: /go/app reads the User-Agent at the edge. Choosing
                 the store in the browser left Android users pointed at the App

@@ -6,7 +6,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { contentLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
@@ -263,7 +263,7 @@ export default async function BlogPostPage({
           <Breadcrumb
             locale={locale}
             items={[
-              { label: "Blog", href: contentPath(locale, "/blog") },
+              { label: "Blog", href: `/${locale}/blog` },
               { label: title },
             ]}
           />
@@ -271,7 +271,7 @@ export default async function BlogPostPage({
           {/* Back to blog */}
           <nav className="mb-8">
             <Link
-              href={contentPath(locale, "/blog")}
+              href={`/${locale}/blog`}
               className="text-sm text-qulo-text-secondary hover:text-qulo-purple transition-colors"
             >
               &larr; {labels.backToBlog}
@@ -360,7 +360,7 @@ export default async function BlogPostPage({
                 {otherPosts.map((rp) => (
                   <Link
                     key={rp.slug}
-                    href={`${contentPath(locale, `/blog/${rp.slug}`)}`}
+                    href={`/${locale}/blog/${rp.slug}`}
                     className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-5 hover:border-qulo-purple/30 hover:bg-white/[0.05] transition-all duration-200"
                   >
                     <h3 className="text-sm font-semibold text-white mb-1">

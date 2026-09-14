@@ -7,12 +7,14 @@ const inter = Inter({
   display: "swap",
 });
 
-// Inter'de Tay glifi yok; yigindaki ikinci font glif bazinda devreye girer (yalniz th sayfalarinda indirilir mi? Hayir —
-// next/font self-host eder ve tek CSS degiskeni olarak eklenir; Latin sayfalarda kullanilmadigi icin tarayici indirmez).
+// Inter'de Tay glifi yok; font yigininda ikinci sirada durur ve tarayici yalniz Tay glifi
+// gerektiginde (unicode-range) indirir. `preload: false` sart: aksi halde next/font 18 dilin
+// hepsine `<link rel=preload as=font>` basar ve ~27 KB Latin sayfalarda bosa iner.
 const notoThai = Noto_Sans_Thai({
   subsets: ["thai"],
   variable: "--font-thai",
   display: "swap",
+  preload: false,
 });
 
 interface RootHtmlProps {

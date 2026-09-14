@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { StoreButtons } from "@/components/hero/StoreButtons";
@@ -42,15 +43,6 @@ export async function generateMetadata({
   };
 }
 
-function HowToJsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
-
 export default async function AboutPage({
   params,
 }: {
@@ -86,7 +78,7 @@ export default async function AboutPage({
       <Navbar />
 
       {/* HowTo JSON-LD — trusted i18n content only */}
-      <HowToJsonLd data={howToJsonLd} />
+      <JsonLd data={howToJsonLd} />
 
       <div className="pt-24 pb-20 px-6">
         <div className="max-w-3xl mx-auto">

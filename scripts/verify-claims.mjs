@@ -109,7 +109,22 @@ const NAMES_A_PLAN =
   /premium|plus\b|paid plan|ücretli|abonelik|bezahlt|Abo\b|payant|abonnement|de pago|suscripci|a pagamento|abbonamento|pago|assinatura|betaald|abonnem|płatn|subskrypc|betald|prenumerat|платн|подписк|مدفوع|اشتراك|有料|プラン|유료|플랜|付费|会员|सशुल्क|प्लान|พรีเมียม|แพลน|berbayar|langganan|paket/i;
 
 const flagged = (line) =>
-  RANGE.test(line) && MENTIONS_QUESTIONS.test(line) && !NAMES_A_PLAN.test(line);
+  (RANGE.test(line) && MENTIONS_QUESTIONS.test(line) && !NAMES_A_PLAN.test(line)) ||
+  staleLanguageCount(line);
+
+/**
+ * Second claim: how many languages the app speaks. 16 was true until 2026-09-14;
+ * th/id made it 18 and the old number survived in 107 lines. Any two-digit
+ * number next to a "languages" word that is not the current count fails.
+ */
+const LANGUAGE_WORD =
+  "(?:languages|dil(?:de|i)?|Sprachen|langues|idiomas|lingue|talen|język\\w*|språk|языках|لغة|言語|か国語|개 언어|种语言|種語言|भाषा\\w*|ภาษา|bahasa)";
+const LANGUAGE_COUNT_CLAIM = new RegExp(`(?<!\\d)(\\d{2})\\s*(?:\\p{L}+\\s+)?(?:の)?${LANGUAGE_WORD}`, "iu");
+const CURRENT_LANGUAGE_COUNT = 18;
+const staleLanguageCount = (line) => {
+  const m = LANGUAGE_COUNT_CLAIM.exec(line);
+  return m !== null && Number(m[1]) !== CURRENT_LANGUAGE_COUNT;
+};
 
 /* ---- fixtures: the guard checks itself before it checks the repo ---- */
 
@@ -122,6 +137,9 @@ const MUST_MATCH = [
   "بين سؤالين وعشرة", "2問から10問の質問", "질문 2개에서 10개", "2 到 10 个问题", "2 से 10 सवाल",
   "คำถาม 2 ถึง 10 ข้อ", "สองถึงสิบคำถาม", "2 sampai 10 pertanyaan", "dua hingga sepuluh pertanyaan",
 ];
+
+const MUST_FLAG_LANGUAGE_COUNT = ["We support 16 different languages.", "16 farklı dilde", "16の言語", "16种语言", "Kami mendukung 16 bahasa", "รองรับ 16 ภาษา"];
+const MUST_NOT_FLAG_LANGUAGE_COUNT = ["We support 18 different languages.", "18 dilde", "рассчитан на 18 языках", "18 ภาษา"];
 
 const MUST_NOT_MATCH = [
   // The corrected wording, in a few languages.
@@ -138,6 +156,8 @@ const MUST_NOT_MATCH = [
 const selfTestFailures = [
   ...MUST_MATCH.filter((s) => !RANGE.test(s)).map((s) => `should match: ${s}`),
   ...MUST_NOT_MATCH.filter((s) => flagged(s)).map((s) => `should NOT flag: ${s}`),
+  ...MUST_FLAG_LANGUAGE_COUNT.filter((s) => !staleLanguageCount(s)).map((s) => `should flag stale count: ${s}`),
+  ...MUST_NOT_FLAG_LANGUAGE_COUNT.filter((s) => staleLanguageCount(s)).map((s) => `should NOT flag count: ${s}`),
 ];
 
 if (selfTestFailures.length) {

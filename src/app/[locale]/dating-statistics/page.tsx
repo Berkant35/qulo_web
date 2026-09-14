@@ -5,7 +5,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { contentLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales } from "@/lib/i18n/config";
 import {
   PAGE_SEO,
   SITE_URL,
@@ -538,7 +538,7 @@ export default async function DatingStatisticsPage({
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <li>
                 <Link
-                  href={contentPath(locale, "/blog/what-is-swipe-fatigue")}
+                  href={`/${locale}/blog/what-is-swipe-fatigue`}
                   className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 hover:border-qulo-purple/40 transition-colors"
                 >
                   <p className="text-sm font-semibold text-white">
@@ -548,7 +548,7 @@ export default async function DatingStatisticsPage({
               </li>
               <li>
                 <Link
-                  href={contentPath(locale, "/blog/quiz-dating-future-of-matching")}
+                  href={`/${locale}/blog/quiz-dating-future-of-matching`}
                   className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 hover:border-qulo-purple/40 transition-colors"
                 >
                   <p className="text-sm font-semibold text-white">
@@ -568,7 +568,7 @@ export default async function DatingStatisticsPage({
               </li>
               <li>
                 <Link
-                  href={contentPath(locale, "/glossary")}
+                  href={`/${locale}/glossary`}
                   className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 hover:border-qulo-purple/40 transition-colors"
                 >
                   <p className="text-sm font-semibold text-white">

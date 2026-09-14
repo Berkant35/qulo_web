@@ -6,7 +6,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { contentLocales, contentPath } from "@/lib/i18n/config";
+import { contentLocales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
@@ -407,7 +407,7 @@ export default async function DatingCityPage({
             <Breadcrumb
               locale={locale}
               items={[
-                { label: "Dating", href: contentPath(locale, "/dating") },
+                { label: "Dating", href: `/${locale}/dating` },
                 { label: cityName },
               ]}
             />
@@ -511,7 +511,7 @@ export default async function DatingCityPage({
             {otherCities.map((oc) => (
               <Link
                 key={oc.slug}
-                href={`${contentPath(locale, `/dating/${oc.slug}`)}`}
+                href={`/${locale}/dating/${oc.slug}`}
                 className="text-xs px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.03] text-qulo-text-secondary hover:text-white hover:border-qulo-purple/30 transition-colors"
               >
                 {oc.emoji} {getCityName(oc, locale)}
@@ -526,13 +526,13 @@ export default async function DatingCityPage({
               {locale === "tr" ? "Hakkinda" : "About"}
             </Link>
             <Link
-              href={contentPath(locale, "/blog")}
+              href={`/${locale}/blog`}
               className="text-xs text-qulo-purple hover:underline"
             >
               Blog
             </Link>
             <Link
-              href={contentPath(locale, "/dating")}
+              href={`/${locale}/dating`}
               className="text-xs text-qulo-purple hover:underline"
             >
               {otherCitiesLabel}
