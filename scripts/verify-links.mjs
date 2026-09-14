@@ -9,12 +9,18 @@
  * time rather than typed, so a mistake in the generator would multiply across
  * sixteen locales before anyone noticed.
  *
+ * A guard that passes on nothing is worse than no guard: a build once died
+ * while replacing `out/` (ENOTEMPTY), left it half-empty, and this script
+ * printed "every internal link on 0 pages resolves". So before scanning it
+ * asserts the floor — every locale's home page shipped.
+ *
  * Run: `npm run verify:links` (requires a build first)
  */
 import { readdirSync, readFileSync, statSync, existsSync } from "node:fs";
 import { join } from "node:path";
+import { locales } from "./lib/locales.mjs";
 
-const OUT = "out";
+const OUT = process.env.VERIFY_LINKS_OUT ?? "out";
 
 if (!existsSync(OUT)) {
   console.error(`FAIL — ${OUT}/ does not exist. Run \`npm run build\` first.`);
@@ -45,6 +51,15 @@ function collect(dir, prefix) {
 }
 
 collect(OUT, "");
+
+const missingHomes = locales.filter((locale) => !pages.some((page) => page.url === `/${locale}/`));
+if (missingHomes.length) {
+  console.error(
+    `FAIL — ${OUT}/ is not a complete export: no home page for ${missingHomes.join(", ")} ` +
+      `(${pages.length} pages found). Run \`npm run build\` again.`,
+  );
+  process.exit(1);
+}
 
 /**
  * Paths served by Netlify rather than by a file in `out/` — edge functions and
