@@ -4,12 +4,16 @@ import Link from "next/link";
 import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { rtlLocales } from "@/lib/i18n/config";
+import { rtlLocales, contentLocales, contentPath } from "@/lib/i18n/config";
 import { LANDING_PAGES } from "@/lib/constants/landings";
 import { landingLabels } from "@/lib/constants/landingLabels";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+
+export function generateStaticParams() {
+  return contentLocales.map((locale) => ({ locale }));
+}
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 
 /* ---------- Metadata ---------- */
 export async function generateMetadata({
@@ -24,7 +28,7 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/features`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages = alternateLanguages("/features");
+  const languages = contentAlternateLanguages("/features");
 
   return {
     title: seo.title,
@@ -98,7 +102,7 @@ export default async function FeaturesIndexPage({
               return (
                 <Link
                   key={lp.slug}
-                  href={`/${locale}/features/${lp.slug}`}
+                  href={`${contentPath(locale, `/features/${lp.slug}`)}`}
                   className="block rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 hover:border-qulo-purple/40 transition-colors"
                 >
                   <p className="text-qulo-green text-xs font-semibold uppercase tracking-[0.15em] mb-2">

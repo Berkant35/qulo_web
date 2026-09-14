@@ -12,6 +12,7 @@ const TERMS_LABELS: Record<string, string> = {
   tr: "Şartlar", en: "Terms", de: "Bedingungen", fr: "Conditions", es: "Términos",
   ar: "الشروط", ru: "Условия", pt: "Termos", it: "Termini", ja: "規約",
   ko: "약관", zh: "条款", nl: "Voorwaarden", pl: "Warunki", sv: "Villkor", hi: "शर्तें",
+  th: "ข้อกำหนด", id: "Ketentuan",
 };
 
 export async function generateMetadata({

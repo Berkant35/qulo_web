@@ -109,6 +109,18 @@
   status = 302
   conditions = {Language = ["hi"]}
 
+[[redirects]]
+  from = "/"
+  to = "/th/"
+  status = 302
+  conditions = {Language = ["th"]}
+
+[[redirects]]
+  from = "/"
+  to = "/id/"
+  status = 302
+  conditions = {Language = ["id"]}
+
 # Anything we do not publish a language for. English rather than Turkish:
 # a visitor whose browser asked for none of the sixteen is, by definition, not
 # asking for Turkish either, and English is the one most likely to be readable.
@@ -214,6 +226,18 @@
 
 [[redirects]]
   from = "/q"
+  to = "/th/q/index.html"
+  status = 200
+  conditions = {Language = ["th"]}
+
+[[redirects]]
+  from = "/q"
+  to = "/id/q/index.html"
+  status = 200
+  conditions = {Language = ["id"]}
+
+[[redirects]]
+  from = "/q"
   to = "/tr/q/index.html"
   status = 200
 
@@ -309,6 +333,18 @@
 
 [[redirects]]
   from = "/q/"
+  to = "/th/q/index.html"
+  status = 200
+  conditions = {Language = ["th"]}
+
+[[redirects]]
+  from = "/q/"
+  to = "/id/q/index.html"
+  status = 200
+  conditions = {Language = ["id"]}
+
+[[redirects]]
+  from = "/q/"
   to = "/tr/q/index.html"
   status = 200
 
@@ -401,6 +437,18 @@
   to = "/hi/q/play/index.html"
   status = 200
   conditions = {Language = ["hi"]}
+
+[[redirects]]
+  from = "/q/*"
+  to = "/th/q/play/index.html"
+  status = 200
+  conditions = {Language = ["th"]}
+
+[[redirects]]
+  from = "/q/*"
+  to = "/id/q/play/index.html"
+  status = 200
+  conditions = {Language = ["id"]}
 
 [[redirects]]
   from = "/q/*"
@@ -504,6 +552,18 @@
   to = "/hi/invite/index.html"
   status = 200
   conditions = {Language = ["hi"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/th/invite/index.html"
+  status = 200
+  conditions = {Language = ["th"]}
+
+[[redirects]]
+  from = "/invite/*"
+  to = "/id/invite/index.html"
+  status = 200
+  conditions = {Language = ["id"]}
 
 [[redirects]]
   from = "/invite/*"

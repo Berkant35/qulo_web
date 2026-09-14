@@ -4,14 +4,14 @@ import { setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { locales } from "@/lib/i18n/config";
+import { contentLocales, contentPath } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { CITIES } from "@/lib/constants/cities";
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return contentLocales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -24,7 +24,7 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/dating`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages = alternateLanguages("/dating");
+  const languages = contentAlternateLanguages("/dating");
 
   return {
     title: seo.title,
@@ -136,7 +136,7 @@ export default async function DatingIndexPage({
               return (
                 <Link
                   key={city.slug}
-                  href={`/${locale}/dating/${city.slug}`}
+                  href={`${contentPath(locale, `/dating/${city.slug}`)}`}
                   className="group flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 sm:p-6 transition-all duration-200 hover:border-qulo-purple/30 hover:bg-white/[0.05]"
                 >
                   <span className="text-3xl flex-shrink-0">{city.emoji}</span>

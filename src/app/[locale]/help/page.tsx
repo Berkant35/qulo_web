@@ -4,7 +4,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { FaqList, faqPageSchema, type FAQItem } from "@/components/shared/FAQ";
-import { locales, rtlLocales } from "@/lib/i18n/config";
+import { locales, rtlLocales, contentPath } from "@/lib/i18n/config";
 import { ANSWER_PAGES, answerQuestion } from "@/lib/constants/answers";
 import { ANSWER_LABELS } from "@/lib/constants/answerLabels";
 
@@ -82,7 +82,7 @@ export default async function HelpPage({
               {ANSWER_PAGES.map((page) => (
                 <li key={page.slug}>
                   <Link
-                    href={`/${locale}/answers/${page.slug}`}
+                    href={`${contentPath(locale, `/answers/${page.slug}`)}`}
                     className="text-qulo-text-secondary text-sm hover:text-white hover:underline"
                   >
                     {answerQuestion(page, locale)}

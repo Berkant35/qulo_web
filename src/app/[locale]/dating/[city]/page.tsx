@@ -6,17 +6,17 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { locales } from "@/lib/i18n/config";
+import { contentLocales, contentPath } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { CITIES, type City } from "@/lib/constants/cities";
 
 /* ------------------------------------------------------------------ */
-/*  Static params — 16 locales x 10 cities = 160 pages                */
+/*  Static params — 16 contentLocales x 10 cities = 160 pages                */
 /* ------------------------------------------------------------------ */
 export function generateStaticParams() {
-  return locales.flatMap((locale) =>
+  return contentLocales.flatMap((locale) =>
     CITIES.map((city) => ({ locale, city: city.slug })),
   );
 }
@@ -297,14 +297,14 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/dating/${citySlug}`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages = alternateLanguages(`/dating/${citySlug}`);
+  const languages = contentAlternateLanguages(`/dating/${citySlug}`);
 
   // Deliberately noindex, follow.
   //
   // These pages are template-identical: a measurement across the export found
   // Istanbul and Paris sharing 98% of their words, with only the city name and
   // a population figure varying, and the same holds for the title and meta
-  // description. 352 such URLs — city plus country, across 16 locales — were
+  // description. 352 such URLs — city plus country, across 16 contentLocales — were
   // 23% of the sitemap. That is the doorway-page pattern Google's own guidelines
   // name, and at that share it risks dragging the site-level quality signal down
   // onto pages that earn their place.
@@ -407,7 +407,7 @@ export default async function DatingCityPage({
             <Breadcrumb
               locale={locale}
               items={[
-                { label: "Dating", href: `/${locale}/dating` },
+                { label: "Dating", href: contentPath(locale, "/dating") },
                 { label: cityName },
               ]}
             />
@@ -511,7 +511,7 @@ export default async function DatingCityPage({
             {otherCities.map((oc) => (
               <Link
                 key={oc.slug}
-                href={`/${locale}/dating/${oc.slug}`}
+                href={`${contentPath(locale, `/dating/${oc.slug}`)}`}
                 className="text-xs px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.03] text-qulo-text-secondary hover:text-white hover:border-qulo-purple/30 transition-colors"
               >
                 {oc.emoji} {getCityName(oc, locale)}
@@ -526,13 +526,13 @@ export default async function DatingCityPage({
               {locale === "tr" ? "Hakkinda" : "About"}
             </Link>
             <Link
-              href={`/${locale}/blog`}
+              href={contentPath(locale, "/blog")}
               className="text-xs text-qulo-purple hover:underline"
             >
               Blog
             </Link>
             <Link
-              href={`/${locale}/dating`}
+              href={contentPath(locale, "/dating")}
               className="text-xs text-qulo-purple hover:underline"
             >
               {otherCitiesLabel}

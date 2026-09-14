@@ -13,6 +13,7 @@ const GUIDELINES_LABELS: Record<string, string> = {
   ar: "إرشادات المجتمع", ru: "Правила", pt: "Regras", it: "Linee Guida", ja: "ガイドライン",
   ko: "가이드라인", zh: "社区准则", nl: "Richtlijnen", pl: "Zasady", sv: "Regler",
   hi: "दिशानिर्देश",
+  th: "กฎของชุมชน", id: "Pedoman",
 };
 
 export async function generateMetadata({

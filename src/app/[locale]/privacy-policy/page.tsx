@@ -13,6 +13,7 @@ const PRIVACY_LABELS: Record<string, string> = {
   tr: "Gizlilik", en: "Privacy", de: "Datenschutz", fr: "Confidentialité", es: "Privacidad",
   ar: "الخصوصية", ru: "Конфиденциальность", pt: "Privacidade", it: "Privacy", ja: "プライバシー",
   ko: "개인정보", zh: "隐私", nl: "Privacy", pl: "Prywatność", sv: "Integritet", hi: "गोपनीयता",
+  th: "ความเป็นส่วนตัว", id: "Privasi",
 };
 
 export async function generateMetadata({

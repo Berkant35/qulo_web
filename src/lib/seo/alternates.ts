@@ -1,4 +1,4 @@
-import { locales } from "@/lib/i18n/config";
+import { contentLocales, locales } from "@/lib/i18n/config";
 import { SITE_URL } from "@/lib/constants/metadata";
 
 /**
@@ -27,8 +27,21 @@ export const X_DEFAULT_LOCALE = "en";
  * the apex.
  */
 export function alternateLanguages(pathAfterLocale: string): Record<string, string> {
+  return buildAlternates(locales, pathAfterLocale);
+}
+
+/**
+ * hreflang map for structured content (blog, glossary, advice, answers, how-to…)
+ * that exists only in `contentLocales`. Listing a th/id URL here would point
+ * search engines at a page that is never generated.
+ */
+export function contentAlternateLanguages(pathAfterLocale: string): Record<string, string> {
+  return buildAlternates(contentLocales, pathAfterLocale);
+}
+
+function buildAlternates(list: readonly string[], pathAfterLocale: string): Record<string, string> {
   const languages: Record<string, string> = {};
-  for (const locale of locales) {
+  for (const locale of list) {
     languages[locale] = `${SITE_URL}/${locale}${pathAfterLocale}`;
   }
   languages["x-default"] = `${SITE_URL}/${X_DEFAULT_LOCALE}${pathAfterLocale}`;

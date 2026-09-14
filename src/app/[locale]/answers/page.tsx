@@ -5,15 +5,15 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { locales, rtlLocales } from "@/lib/i18n/config";
+import { contentLocales, rtlLocales, contentPath } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { ANSWER_PAGES, answerQuestion, answerSummary } from "@/lib/constants/answers";
 import { ANSWER_LABELS } from "@/lib/constants/answerLabels";
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return contentLocales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -25,7 +25,7 @@ export async function generateMetadata({
   const labels = ANSWER_LABELS[locale] || ANSWER_LABELS.en;
   const pageUrl = `${SITE_URL}/${locale}/answers`;
 
-  const languages = alternateLanguages("/answers");
+  const languages = contentAlternateLanguages("/answers");
 
   return {
     title: `${labels.hubTitle} — ${SITE_NAME}`,
@@ -96,7 +96,7 @@ export default async function AnswersHubPage({
               >
                 <h2 className="text-lg font-semibold text-white mb-2">
                   <Link
-                    href={`/${locale}/answers/${page.slug}`}
+                    href={`${contentPath(locale, `/answers/${page.slug}`)}`}
                     className="hover:text-qulo-purple"
                   >
                     {answerQuestion(page, locale)}

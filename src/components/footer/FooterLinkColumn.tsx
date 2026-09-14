@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils/cn";
+import { contentPath } from "@/lib/i18n/config";
 
 export interface FooterLinkItem {
   /** Path after the locale segment, e.g. "privacy-policy" */
@@ -47,7 +48,7 @@ export function FooterLinkColumn({
         {items.map(({ href, labelKey, label }) => (
           <li key={href}>
             <Link
-              href={`/${locale}/${href}`}
+              href={contentPath(locale, `/${href}`)}
               className="text-xs text-qulo-text-secondary hover:text-white transition-colors"
             >
               {labelKey ? t(labelKey) : label}

@@ -1,4 +1,4 @@
-import type { Locale } from "@/lib/i18n/config";
+import type { ContentLocale } from "@/lib/i18n/config";
 
 /**
  * Every string on /[locale]/press.
@@ -115,7 +115,7 @@ export interface PressLabels {
   ctaText: string;
 }
 
-export const PRESS_LABELS: Record<Locale, PressLabels> = {
+export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
   en: {
     breadcrumb: "Press kit",
     eyebrow: "For journalists",
@@ -1224,7 +1224,7 @@ export const PRESS_LABELS: Record<Locale, PressLabels> = {
  * under `hreflang="ja"`, which is exactly what the old `getCopy` did.
  */
 export function pressLabelsFor(locale: string): PressLabels {
-  const labels = PRESS_LABELS[locale as Locale];
+  const labels = PRESS_LABELS[locale as ContentLocale];
   if (!labels) {
     throw new Error(`pressLabels: no press copy for locale "${locale}"`);
   }

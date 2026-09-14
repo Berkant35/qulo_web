@@ -5,7 +5,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { locales } from "@/lib/i18n/config";
+import { contentLocales, contentPath } from "@/lib/i18n/config";
 import {
   PAGE_SEO,
   SITE_URL,
@@ -13,7 +13,7 @@ import {
   OG_LOCALES,
 } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import {
   STAT_CATEGORIES,
   getHighlightStats,
@@ -39,7 +39,7 @@ const STATISTICS_LABELS: Record<string, string> = {
 };
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return contentLocales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -50,7 +50,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const seo = PAGE_SEO.statistics[locale] || PAGE_SEO.statistics.en;
   const pageUrl = `${SITE_URL}/${locale}/${PAGE_SLUG}`;
-  const languages = alternateLanguages(`/${PAGE_SLUG}`);
+  const languages = contentAlternateLanguages(`/${PAGE_SLUG}`);
   return {
     title: seo.title,
     description: seo.description,
@@ -538,7 +538,7 @@ export default async function DatingStatisticsPage({
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <li>
                 <Link
-                  href={`/${locale}/blog/what-is-swipe-fatigue`}
+                  href={contentPath(locale, "/blog/what-is-swipe-fatigue")}
                   className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 hover:border-qulo-purple/40 transition-colors"
                 >
                   <p className="text-sm font-semibold text-white">
@@ -548,7 +548,7 @@ export default async function DatingStatisticsPage({
               </li>
               <li>
                 <Link
-                  href={`/${locale}/blog/quiz-dating-future-of-matching`}
+                  href={contentPath(locale, "/blog/quiz-dating-future-of-matching")}
                   className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 hover:border-qulo-purple/40 transition-colors"
                 >
                   <p className="text-sm font-semibold text-white">
@@ -568,7 +568,7 @@ export default async function DatingStatisticsPage({
               </li>
               <li>
                 <Link
-                  href={`/${locale}/glossary`}
+                  href={contentPath(locale, "/glossary")}
                   className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 hover:border-qulo-purple/40 transition-colors"
                 >
                   <p className="text-sm font-semibold text-white">

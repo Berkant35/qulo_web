@@ -82,6 +82,16 @@ export const SEO: Record<string, { title: string; description: string }> = {
     description:
       "सवाल बनाएं, शेयर करें, सही जवाब देने वाले से मैच करें। स्वाइप नहीं, सवालों से मुलाकात।",
   },
+  id: {
+    title: "Qulo — Kencan Berbasis Pertanyaan | Aplikasi Kencan Kuis",
+    description:
+      "Di Qulo kamu cocok lewat pertanyaan: tulis pertanyaanmu, lalu cocok dengan orang yang menjawab semuanya dengan benar. Tanpa menggeser, cukup kuis.",
+  },
+  th: {
+    title: "Qulo — แอปหาคู่ผ่านคำถาม | รู้จักกันผ่านคำถาม",
+    description:
+      "บน Qulo คุณแมตช์ผ่านคำถาม: เขียนคำถามของคุณเอง แล้วแมตช์กับคนที่ตอบถูกทุกข้อ การเดตแบบใช้คำถาม — ไม่ต้องปัด แค่เล่นควิซ",
+  },
 };
 
 /** FAQ data for FAQPage structured data — Google rich snippets */
@@ -198,6 +208,20 @@ export const FAQ_DATA: Record<string, { q: string; a: string }[]> = {
     { q: "क्या Qulo सुरक्षित है?", a: "हाँ। आपका डेटा एन्क्रिप्ट करके सुरक्षित रखा जाता है, प्रोफ़ाइल सत्यापन उपलब्ध है और आप अनचाहे उपयोगकर्ताओं को ब्लॉक कर सकते हैं।" },
     { q: "यह किन देशों में उपलब्ध है?", a: "Qulo दुनिया भर में उपलब्ध है। हम 16 अलग-अलग भाषाओं का समर्थन करते हैं।" },
   ],
+  id: [
+    { q: "Bagaimana cara kerja Qulo?", a: "Kamu membuat pertanyaan, pengguna lain menjawabnya. Kamu cocok dengan orang yang menjawab semua pertanyaanmu dengan benar. Tanpa menggeser, cukup kuis!" },
+    { q: "Apakah Qulo gratis?", a: "Ya, Qulo gratis digunakan. Pilihan langganan Plus dan Premium tersedia untuk fitur tambahan." },
+    { q: "Apa bedanya Qulo dengan aplikasi kencan lain?", a: "Qulo menggunakan sistem kecocokan tanya jawab, bukan menggeser. Hasilnya adalah kecocokan yang lebih dalam dan lebih bermakna." },
+    { q: "Apakah Qulo aman?", a: "Ya. Datamu dienkripsi, verifikasi profil tersedia, dan kamu bisa memblokir pengguna yang tidak diinginkan." },
+    { q: "Di negara mana saja Qulo tersedia?", a: "Qulo tersedia di seluruh dunia. Kami mendukung 16 bahasa." },
+  ],
+  th: [
+    { q: "Qulo ทำงานอย่างไร?", a: "คุณสร้างคำถาม ผู้ใช้คนอื่นมาตอบ คุณจะแมตช์กับคนที่ตอบคำถามของคุณถูกทุกข้อ ไม่ต้องปัด แค่เล่นควิซ!" },
+    { q: "Qulo ฟรีไหม?", a: "ใช่ Qulo ใช้งานได้ฟรี มีตัวเลือกสมัครสมาชิก Plus และ Premium สำหรับฟีเจอร์เพิ่มเติม" },
+    { q: "Qulo ต่างจากแอปหาคู่อื่นอย่างไร?", a: "Qulo ใช้ระบบแมตช์แบบถาม-ตอบแทนการปัด ทำให้ได้แมตช์ที่ลึกซึ้งและมีความหมายมากกว่า" },
+    { q: "Qulo ปลอดภัยไหม?", a: "ใช่ ข้อมูลของคุณถูกเข้ารหัส มีการยืนยันโปรไฟล์ และคุณสามารถบล็อกผู้ใช้ที่ไม่ต้องการได้" },
+    { q: "Qulo ใช้ได้ในประเทศไหนบ้าง?", a: "Qulo ใช้ได้ทั่วโลก เรารองรับ 16 ภาษา" },
+  ],
 };
 
 /** Per-page SEO metadata for sub-pages */
@@ -219,6 +243,8 @@ export const PAGE_SEO: Record<string, Record<string, { title: string; descriptio
     pl: { title: "Polityka prywatności — Qulo", description: "Polityka prywatności Qulo. Dowiedz się, jak Twoje dane są zbierane, wykorzystywane i chronione." },
     sv: { title: "Integritetspolicy — Qulo", description: "Qulos integritetspolicy. Läs hur dina uppgifter samlas in, används och skyddas." },
     hi: { title: "गोपनीयता नीति — Qulo", description: "Qulo की गोपनीयता नीति। जानें कि आपका डेटा कैसे एकत्र किया, उपयोग किया और सुरक्षित रखा जाता है।" },
+    id: { title: "Kebijakan Privasi — Qulo", description: "Kebijakan privasi Qulo. Pelajari cara data Anda dikumpulkan, digunakan, dan dilindungi." },
+    th: { title: "นโยบายความเป็นส่วนตัว — Qulo", description: "นโยบายความเป็นส่วนตัวของ Qulo เรียนรู้ว่าข้อมูลของคุณถูกเก็บรวบรวม ใช้ และคุ้มครองอย่างไร" },
   },
   terms: {
     tr: { title: "Kullanım Koşulları — Qulo", description: "Qulo kullanım koşulları ve hizmet şartları. Uygulamayı kullanmadan önce okuyun." },
@@ -237,6 +263,8 @@ export const PAGE_SEO: Record<string, Record<string, { title: string; descriptio
     pl: { title: "Regulamin — Qulo", description: "Regulamin korzystania z Qulo. Przeczytaj go przed rozpoczęciem korzystania z aplikacji." },
     sv: { title: "Användarvillkor — Qulo", description: "Qulos användarvillkor. Läs dem innan du använder appen." },
     hi: { title: "सेवा की शर्तें — Qulo", description: "Qulo की सेवा की शर्तें। ऐप का उपयोग करने से पहले पढ़ें।" },
+    id: { title: "Ketentuan Layanan — Qulo", description: "Ketentuan layanan Qulo. Baca sebelum menggunakan aplikasi." },
+    th: { title: "ข้อกำหนดการให้บริการ — Qulo", description: "ข้อกำหนดการให้บริการของ Qulo โปรดอ่านก่อนใช้แอป" },
   },
   communityGuidelines: {
     tr: { title: "Topluluk Kuralları — Qulo", description: "Qulo'yu güvenli tutan kurallar: neler beklediğimiz, neye izin verilmediği ve sınır aşıldığında ne olduğu." },
@@ -291,6 +319,8 @@ export const PAGE_SEO: Record<string, Record<string, { title: string; descriptio
     pl: { title: "Pomoc i najczęściej zadawane pytania — Qulo", description: "Najczęściej zadawane pytania i centrum pomocy Qulo. Jak to działa, konto i logowanie, diamenty i Premium, bezpieczeństwo i prywatność." },
     sv: { title: "Hjälp & Vanliga Frågor — Qulo", description: "Vanliga frågor och Qulos hjälpcenter. Så fungerar det, konto & inloggning, diamanter & Premium, säkerhet & integritet." },
     hi: { title: "सहायता और अक्सर पूछे जाने वाले सवाल — Qulo", description: "Qulo के अक्सर पूछे जाने वाले सवाल और सहायता केंद्र। यह कैसे काम करता है, खाता और लॉगिन, हीरे और प्रीमियम, सुरक्षा और गोपनीयता।" },
+    id: { title: "Bantuan & FAQ — Qulo", description: "Pertanyaan yang sering diajukan dan pusat bantuan Qulo. Cara kerja, pengelolaan akun, dan lainnya." },
+    th: { title: "ช่วยเหลือและคำถามที่พบบ่อย — Qulo", description: "คำถามที่พบบ่อยและศูนย์ช่วยเหลือของ Qulo วิธีใช้งาน การจัดการบัญชี และอื่น ๆ" },
   },
   blog: {
     tr: { title: "Blog — Qulo | Dating, İlişkiler ve Uyumluluk", description: "Qulo blog: dating trendleri, ilişki ipuçları, swipe yorgunluğu, quiz dating ve daha fazlası." },
@@ -507,6 +537,8 @@ export const PAGE_SEO: Record<string, Record<string, { title: string; descriptio
     pl: { title: "Ceny — Qulo", description: "Plany członkowskie Qulo: Free, Plus, Premium." },
     sv: { title: "Priser — Qulo", description: "Qulo medlemskapsplaner: Free, Plus, Premium." },
     hi: { title: "कीमत — Qulo", description: "Qulo सदस्यता योजनाएं: Free, Plus, Premium।" },
+    id: { title: "Harga — Qulo | Gratis, Plus, Premium", description: "Paket keanggotaan Qulo: Gratis, Plus ($4,99/bulan), Premium ($9,99/bulan). Selalu mulai gratis." },
+    th: { title: "ราคา — Qulo | Free, Plus, Premium", description: "แพ็กเกจสมาชิก Qulo: Free, Plus ($4.99/เดือน), Premium ($9.99/เดือน) เริ่มต้นฟรีเสมอ" },
   },
   sitemap: {
     tr: { title: "Site Haritası — Qulo", description: "Qulo web sitesindeki tüm sayfaların listesi." },
@@ -525,6 +557,8 @@ export const PAGE_SEO: Record<string, Record<string, { title: string; descriptio
     pl: { title: "Mapa strony — Qulo", description: "Wszystkie strony w serwisie Qulo." },
     sv: { title: "Webbplatskarta — Qulo", description: "Alla sidor på Qulo-webbplatsen." },
     hi: { title: "साइटमैप — Qulo", description: "Qulo वेबसाइट के सभी पृष्ठ।" },
+    id: { title: "Peta Situs — Qulo", description: "Semua halaman di situs web Qulo." },
+    th: { title: "แผนผังเว็บไซต์ — Qulo", description: "ทุกหน้าบนเว็บไซต์ Qulo" },
   },
   about: {
     tr: { title: "Qulo Hakkında — Soru-Cevap Tabanlı Dating Uygulaması", description: "Qulo nedir? Swipe yerine soru-cevap ile eşleşen yeni nesil dating uygulaması. Quiz dating app ile tanışmanın yeni yolu." },
@@ -543,6 +577,8 @@ export const PAGE_SEO: Record<string, Record<string, { title: string; descriptio
     pl: { title: "O Qulo — Aplikacja randkowa oparta na pytaniach", description: "Czym jest Qulo? Aplikacja randkowa nowej generacji, która łączy przez pytania." },
     sv: { title: "Om Qulo — Frågebaserad Dejtingapp", description: "Vad är Qulo? En dejtingapp av nästa generation som matchar genom frågor." },
     hi: { title: "Qulo के बारे में — सवाल-आधारित डेटिंग ऐप", description: "Qulo क्या है? स्वाइप की जगह सवालों से मैच करने वाला अगली पीढ़ी का डेटिंग ऐप।" },
+    id: { title: "Tentang Qulo — Aplikasi Kencan Berbasis Kuis", description: "Apa itu Qulo? Aplikasi kencan generasi baru yang mencocokkan lewat pertanyaan, bukan menggeser. Temukan cara baru berkencan dengan aplikasi kencan kuis." },
+    th: { title: "เกี่ยวกับ Qulo — แอปหาคู่แบบควิซ", description: "Qulo คืออะไร? แอปหาคู่ยุคใหม่ที่แมตช์ผ่านคำถามแทนการปัด ค้นพบวิธีเดตแบบใหม่ด้วยแอปหาคู่แบบควิซ" },
   },
 };
 
@@ -552,4 +588,5 @@ export const OG_LOCALES: Record<string, string> = {
   ar: "ar_SA", ru: "ru_RU", pt: "pt_BR", it: "it_IT", ja: "ja_JP",
   ko: "ko_KR", zh: "zh_CN", nl: "nl_NL", pl: "pl_PL", sv: "sv_SE",
   hi: "hi_IN",
+  th: "th_TH", id: "id_ID",
 };

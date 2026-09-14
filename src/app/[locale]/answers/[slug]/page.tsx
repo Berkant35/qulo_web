@@ -9,10 +9,10 @@ import { StoreButtons } from "@/components/hero/StoreButtons";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { SourceList } from "@/components/shared/SourceList";
 import { ArticleBlocks, type LocalizedArticle } from "@/components/blog/ArticleBlocks";
-import { locales, rtlLocales } from "@/lib/i18n/config";
+import { contentLocales, rtlLocales, contentPath } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { ANSWER_PAGES, answerQuestion, answerSummary } from "@/lib/constants/answers";
 import { ANSWER_LABELS } from "@/lib/constants/answerLabels";
 import { howQuestionBasedMatchingWorks } from "../_content/how-question-based-matching-works";
@@ -33,7 +33,7 @@ const ANSWER_BODIES: Record<string, LocalizedArticle> = {
 };
 
 export function generateStaticParams() {
-  return locales.flatMap((locale) =>
+  return contentLocales.flatMap((locale) =>
     ANSWER_PAGES.map((page) => ({ locale, slug: page.slug })),
   );
 }
@@ -51,7 +51,7 @@ export async function generateMetadata({
   const summary = answerSummary(page, locale);
   const pageUrl = `${SITE_URL}/${locale}/answers/${slug}`;
 
-  const languages = alternateLanguages(`/answers/${slug}`);
+  const languages = contentAlternateLanguages(`/answers/${slug}`);
 
   return {
     title: `${question} — ${SITE_NAME}`,
@@ -137,7 +137,7 @@ export default async function AnswerPage({
           <Breadcrumb
             locale={locale}
             items={[
-              { label: labels.hubTitle, href: `/${locale}/answers` },
+              { label: labels.hubTitle, href: contentPath(locale, "/answers") },
               { label: question },
             ]}
           />
@@ -176,7 +176,7 @@ export default async function AnswerPage({
               {others.map((other) => (
                 <li key={other.slug}>
                   <Link
-                    href={`/${locale}/answers/${other.slug}`}
+                    href={`${contentPath(locale, `/answers/${other.slug}`)}`}
                     className="text-qulo-text-secondary hover:text-white underline underline-offset-4"
                   >
                     {answerQuestion(other, locale)}

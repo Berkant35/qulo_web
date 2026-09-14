@@ -8,16 +8,16 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { ArticleBlocks } from "@/components/blog/ArticleBlocks";
-import { locales, rtlLocales } from "@/lib/i18n/config";
+import { contentLocales, rtlLocales, contentPath } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { GLOSSARY_TERMS, SORTED_GLOSSARY_TERMS } from "@/lib/constants/glossary";
 import { GLOSSARY_LABELS } from "@/lib/constants/glossaryLabels";
 import { GLOSSARY_CONTENT } from "../_content";
 
 export function generateStaticParams() {
-  return locales.flatMap((locale) =>
+  return contentLocales.flatMap((locale) =>
     GLOSSARY_TERMS.map((term) => ({ locale, slug: term.slug })),
   );
 }
@@ -47,7 +47,7 @@ export async function generateMetadata({
   const title = headline(labels.question, entry.term);
   const pageUrl = `${SITE_URL}/${locale}/glossary/${slug}`;
 
-  const languages = alternateLanguages(`/glossary/${slug}`);
+  const languages = contentAlternateLanguages(`/glossary/${slug}`);
 
   return {
     title: `${title} — ${SITE_NAME}`,
@@ -126,7 +126,7 @@ export default async function GlossaryTermPage({
           <Breadcrumb
             locale={locale}
             items={[
-              { label: labels.hubTitle, href: `/${locale}/glossary` },
+              { label: labels.hubTitle, href: contentPath(locale, "/glossary") },
               { label: entry.term },
             ]}
           />
@@ -173,7 +173,7 @@ export default async function GlossaryTermPage({
                 {related.map((item) => (
                   <li key={item.slug}>
                     <Link
-                      href={`/${locale}/glossary/${item.slug}`}
+                      href={`${contentPath(locale, `/glossary/${item.slug}`)}`}
                       className="inline-flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-sm text-qulo-text-secondary hover:bg-white/[0.06] hover:text-white transition-colors"
                     >
                       <span aria-hidden="true">{item.emoji}</span>
@@ -196,7 +196,7 @@ export default async function GlossaryTermPage({
 
           <p className="mt-8">
             <Link
-              href={`/${locale}/glossary`}
+              href={contentPath(locale, "/glossary")}
               className="text-qulo-text-muted text-sm hover:text-white underline underline-offset-4"
             >
               ← {labels.backToGlossary}

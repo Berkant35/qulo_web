@@ -15,6 +15,7 @@ const ABOUT_LABELS: Record<string, string> = {
   tr: "Hakkında", en: "About", de: "Über uns", fr: "À propos", es: "Acerca de",
   ar: "حول", ru: "О нас", pt: "Sobre", it: "Chi siamo", ja: "概要",
   ko: "소개", zh: "关于", nl: "Over ons", pl: "O nas", sv: "Om oss", hi: "के बारे में",
+  th: "เกี่ยวกับ", id: "Tentang",
 };
 
 export async function generateMetadata({

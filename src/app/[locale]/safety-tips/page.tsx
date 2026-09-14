@@ -13,6 +13,7 @@ const SAFETY_LABELS: Record<string, string> = {
   ar: "السلامة", ru: "Безопасность", pt: "Segurança", it: "Sicurezza", ja: "安全",
   ko: "안전", zh: "安全", nl: "Veiligheid", pl: "Bezpieczeństwo", sv: "Säkerhet",
   hi: "सुरक्षा",
+  th: "ความปลอดภัย", id: "Keamanan",
 };
 
 export async function generateMetadata({

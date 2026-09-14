@@ -7,18 +7,18 @@ import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { FAQ, faqTitle } from "@/components/shared/FAQ";
-import { locales, rtlLocales } from "@/lib/i18n/config";
+import { contentLocales, rtlLocales, contentPath } from "@/lib/i18n/config";
 import { LANDING_PAGES } from "@/lib/constants/landings";
 import { landingLabels } from "@/lib/constants/landingLabels";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { getFeatureFaqs } from "@/lib/constants/faqs";
 import { LANDING_CONTENT } from "../_content";
 
-/* ---------- Static params: 16 locales x 3 slugs = 48 pages ---------- */
+/* ---------- Static params: 16 contentLocales x 3 slugs = 48 pages ---------- */
 export function generateStaticParams() {
-  return locales.flatMap((locale) =>
+  return contentLocales.flatMap((locale) =>
     LANDING_PAGES.map((lp) => ({ locale, slug: lp.slug })),
   );
 }
@@ -38,7 +38,7 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/features/${slug}`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages = alternateLanguages(`/features/${slug}`);
+  const languages = contentAlternateLanguages(`/features/${slug}`);
 
   return {
     title,
@@ -75,7 +75,7 @@ export default async function FeatureLandingPage({
   const landing = LANDING_PAGES.find((lp) => lp.slug === slug);
   if (!landing) notFound();
 
-  /* No English fallback on purpose: every slug carries all 16 locales, and a
+  /* No English fallback on purpose: every slug carries all 16 contentLocales, and a
      missing one should fail loudly rather than serve English under a canonical
      URL that promises a translation. */
   const content = LANDING_CONTENT[slug]?.[locale];
@@ -120,7 +120,7 @@ export default async function FeatureLandingPage({
           <Breadcrumb
             locale={locale}
             items={[
-              { label: labels.section, href: `/${locale}/features` },
+              { label: labels.section, href: contentPath(locale, "/features") },
               { label: title },
             ]}
           />
@@ -222,19 +222,19 @@ export default async function FeatureLandingPage({
               {labels.navAbout}
             </Link>
             <Link
-              href={`/${locale}/blog`}
+              href={contentPath(locale, "/blog")}
               className="text-qulo-text-secondary hover:text-qulo-purple transition-colors"
             >
               Blog
             </Link>
             <Link
-              href={`/${locale}/dating`}
+              href={contentPath(locale, "/dating")}
               className="text-qulo-text-secondary hover:text-qulo-purple transition-colors"
             >
               {labels.navCities}
             </Link>
             <Link
-              href={`/${locale}/features`}
+              href={contentPath(locale, "/features")}
               className="text-qulo-text-secondary hover:text-qulo-purple transition-colors"
             >
               {labels.navFeatures}

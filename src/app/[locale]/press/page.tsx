@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { locales } from "@/lib/i18n/config";
+import { contentLocales } from "@/lib/i18n/config";
 import {
   PAGE_SEO,
   SITE_URL,
@@ -14,7 +14,7 @@ import {
   OG_LOCALES,
 } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import {
   pressLabelsFor,
   type PressFactKey,
@@ -100,7 +100,7 @@ const BRAND_COLORS: {
 ];
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return contentLocales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -111,7 +111,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const seo = PAGE_SEO.press[locale] || PAGE_SEO.press.en;
   const pageUrl = `${SITE_URL}/${locale}/${PAGE_SLUG}`;
-  const languages = alternateLanguages(`/${PAGE_SLUG}`);
+  const languages = contentAlternateLanguages(`/${PAGE_SLUG}`);
   return {
     title: seo.title,
     description: seo.description,

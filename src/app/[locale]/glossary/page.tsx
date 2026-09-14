@@ -5,16 +5,16 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { locales, rtlLocales } from "@/lib/i18n/config";
+import { contentLocales, rtlLocales, contentPath } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { SORTED_GLOSSARY_TERMS } from "@/lib/constants/glossary";
 import { GLOSSARY_LABELS } from "@/lib/constants/glossaryLabels";
 import { GLOSSARY_CONTENT } from "./_content";
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return contentLocales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -25,7 +25,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const seo = PAGE_SEO.glossary[locale] || PAGE_SEO.glossary.en;
   const pageUrl = `${SITE_URL}/${locale}/glossary`;
-  const languages = alternateLanguages("/glossary");
+  const languages = contentAlternateLanguages("/glossary");
   return {
     title: seo.title,
     description: seo.description,
@@ -139,7 +139,7 @@ export default async function GlossaryPage({
                       >
                         <h2 className="text-xl font-bold text-white mb-2">
                           <Link
-                            href={`/${locale}/glossary/${term.slug}`}
+                            href={`${contentPath(locale, `/glossary/${term.slug}`)}`}
                             className="hover:text-qulo-green transition-colors"
                           >
                             <span className="mr-2" aria-hidden="true">

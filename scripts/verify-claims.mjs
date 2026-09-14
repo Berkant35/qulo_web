@@ -75,7 +75,12 @@ const WORDS = [
   ["två", "tio"],
   ["двух", "десяти"],
   ["दो", "दस"],
+  ["dua", "sepuluh"],
 ].map(([a, b]) => `${fence(a)}[^.!?]{0,20}${fence(b)}`);
+
+// Thai writes no spaces between words, so a letter-fence never matches; the
+// numerals are distinctive enough on their own ("สอง…สิบ" inside one clause).
+WORDS.push("สอง[^.!?]{0,20}สิบ");
 
 /**
  * Arabic is fenced on neither side: it writes conjunctions and prepositions as
@@ -94,14 +99,14 @@ const RANGE = new RegExp(`${DIGITS}|${WORDS.join("|")}`, "iu");
  * product uses for a set of them.
  */
 const MENTIONS_QUESTIONS =
-  /question|soru|frage|pregunta|domanda|pergunta|vraag|vrage|pytan|pytań|fråg|вопрос|سؤال|أسئلة|質問|問\b|질문|问题|सवाल|प्रश्न|quiz/i;
+  /question|soru|frage|pregunta|domanda|pergunta|vraag|vrage|pytan|pytań|fråg|вопрос|سؤال|أسئلة|質問|問\b|질문|问题|सवाल|प्रश्न|quiz|คำถาม|pertanyaan|kuis/i;
 
 /**
  * The corrected form names the paid tier alongside the range, so a line that
  * mentions a plan is describing the real limits rather than overstating them.
  */
 const NAMES_A_PLAN =
-  /premium|plus\b|paid plan|ücretli|abonelik|bezahlt|Abo\b|payant|abonnement|de pago|suscripci|a pagamento|abbonamento|pago|assinatura|betaald|abonnem|płatn|subskrypc|betald|prenumerat|платн|подписк|مدفوع|اشتراك|有料|プラン|유료|플랜|付费|会员|सशुल्क|प्लान/i;
+  /premium|plus\b|paid plan|ücretli|abonelik|bezahlt|Abo\b|payant|abonnement|de pago|suscripci|a pagamento|abbonamento|pago|assinatura|betaald|abonnem|płatn|subskrypc|betald|prenumerat|платн|подписк|مدفوع|اشتراك|有料|プラン|유료|플랜|付费|会员|सशुल्क|प्लान|พรีเมียม|แพลน|berbayar|langganan|paket/i;
 
 const flagged = (line) =>
   RANGE.test(line) && MENTIONS_QUESTIONS.test(line) && !NAMES_A_PLAN.test(line);
@@ -115,6 +120,7 @@ const MUST_MATCH = [
   "entre 2 e 10 perguntas", "tussen de 2 en 10 vragen", "od 2 do 10 pytań",
   "mellan 2 och 10 frågor", "от 2 до 10 вопросов", "من 2 إلى 10 أسئلة",
   "بين سؤالين وعشرة", "2問から10問の質問", "질문 2개에서 10개", "2 到 10 个问题", "2 से 10 सवाल",
+  "คำถาม 2 ถึง 10 ข้อ", "สองถึงสิบคำถาม", "2 sampai 10 pertanyaan", "dua hingga sepuluh pertanyaan",
 ];
 
 const MUST_NOT_MATCH = [

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { contentPath } from "@/lib/i18n/config";
 import Link from "next/link";
 import { findTerm, glossaryTerms } from "@/lib/seo/glossaryLinks";
 
@@ -48,7 +49,7 @@ function linkGlossaryTerms(text: string, budget: LinkBudget, key: string): React
       text.slice(0, at),
       <Link
         key={`${key}-${slug}`}
-        href={`/${budget.locale}/glossary/${slug}`}
+        href={`${contentPath(budget.locale, `/glossary/${slug}`)}`}
         className="text-qulo-purple underline underline-offset-4 decoration-qulo-purple/40 hover:decoration-qulo-purple"
       >
         {text.slice(at, at + term.length)}

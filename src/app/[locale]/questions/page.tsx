@@ -6,16 +6,16 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { ArticleBlocks } from "@/components/blog/ArticleBlocks";
-import { locales, rtlLocales } from "@/lib/i18n/config";
+import { contentLocales, rtlLocales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { EXAMPLE_QUESTIONS, QUESTION_CATEGORIES } from "@/lib/constants/exampleQuestions";
 import { QUESTION_LABELS } from "@/lib/constants/questionLabels";
 import { writingQuestions } from "./_content/writing-questions";
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return contentLocales.map((locale) => ({ locale }));
 }
 
 function labelsFor(locale: string) {
@@ -34,7 +34,7 @@ export async function generateMetadata({
   const description = seo?.description ?? labels.intro;
   const pageUrl = `${SITE_URL}/${locale}/questions`;
 
-  const languages = alternateLanguages("/questions");
+  const languages = contentAlternateLanguages("/questions");
 
   return {
     title,

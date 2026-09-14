@@ -6,10 +6,10 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { locales } from "@/lib/i18n/config";
+import { contentLocales, contentPath } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { BLOG_POSTS } from "@/lib/constants/blog";
 import { ArticleBlocks, type LocalizedArticle } from "@/components/blog/ArticleBlocks";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -33,7 +33,7 @@ import { attachmentStylesDatingApps } from "./_content/attachment-styles-dating-
 /* ------------------------------------------------------------------ */
 export function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
-  for (const locale of locales) {
+  for (const locale of contentLocales) {
     for (const post of BLOG_POSTS) {
       params.push({ locale, slug: post.slug });
     }
@@ -58,7 +58,7 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/blog/${slug}`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages = alternateLanguages(`/blog/${slug}`);
+  const languages = contentAlternateLanguages(`/blog/${slug}`);
 
   return {
     title: `${title} — Qulo Blog`,
@@ -133,7 +133,7 @@ const READ_LABELS: Record<string, { readTime: string; backToBlog: string; relate
 
 /**
  * Every blog post, authored as structured data and fully translated into all 16
- * locales. New posts go here; there is no per-locale JSX fallback any more.
+ * contentLocales. New posts go here; there is no per-locale JSX fallback any more.
  */
 const STRUCTURED_ARTICLES: Record<string, LocalizedArticle> = {
   "is-cuffing-season-real": isCuffingSeasonReal,
@@ -263,7 +263,7 @@ export default async function BlogPostPage({
           <Breadcrumb
             locale={locale}
             items={[
-              { label: "Blog", href: `/${locale}/blog` },
+              { label: "Blog", href: contentPath(locale, "/blog") },
               { label: title },
             ]}
           />
@@ -271,7 +271,7 @@ export default async function BlogPostPage({
           {/* Back to blog */}
           <nav className="mb-8">
             <Link
-              href={`/${locale}/blog`}
+              href={contentPath(locale, "/blog")}
               className="text-sm text-qulo-text-secondary hover:text-qulo-purple transition-colors"
             >
               &larr; {labels.backToBlog}
@@ -360,7 +360,7 @@ export default async function BlogPostPage({
                 {otherPosts.map((rp) => (
                   <Link
                     key={rp.slug}
-                    href={`/${locale}/blog/${rp.slug}`}
+                    href={`${contentPath(locale, `/blog/${rp.slug}`)}`}
                     className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-5 hover:border-qulo-purple/30 hover:bg-white/[0.05] transition-all duration-200"
                   >
                     <h3 className="text-sm font-semibold text-white mb-1">

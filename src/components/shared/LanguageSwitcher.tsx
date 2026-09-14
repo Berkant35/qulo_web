@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { locales } from "@/lib/i18n/config";
+import { isContentLocale, isContentRoute, locales } from "@/lib/i18n/config";
 
 export function LanguageSwitcher() {
   const pathname = usePathname();
@@ -13,6 +13,9 @@ export function LanguageSwitcher() {
   function buildLocalePath(locale: string) {
     // Replace the leading locale segment
     const withoutLocale = pathname.replace(/^\/[a-z]{2}/, "") || "/";
+    // Structured content is not translated into every UI language; send those
+    // locales to their home page instead of a URL that was never generated.
+    if (isContentRoute(withoutLocale) && !isContentLocale(locale)) return `/${locale}/`;
     return `/${locale}${withoutLocale}`;
   }
 

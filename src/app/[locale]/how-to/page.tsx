@@ -4,14 +4,14 @@ import { setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { locales } from "@/lib/i18n/config";
+import { contentLocales, contentPath } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { HOW_TO_GUIDES } from "@/lib/constants/howto";
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return contentLocales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -24,7 +24,7 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/how-to`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages = alternateLanguages("/how-to");
+  const languages = contentAlternateLanguages("/how-to");
 
   return {
     title: seo.title,
@@ -244,7 +244,7 @@ export default async function HowToIndexPage({
                   key={guide.slug}
                   className="group rounded-2xl border border-white/[0.08] bg-white/[0.03] p-7 transition-all duration-200 hover:border-qulo-green/30 hover:bg-white/[0.05] flex flex-col"
                 >
-                  <Link href={`/${locale}/how-to/${guide.slug}`} className="block flex-1 flex flex-col">
+                  <Link href={`${contentPath(locale, `/how-to/${guide.slug}`)}`} className="block flex-1 flex flex-col">
                     <div className="text-4xl mb-4" aria-hidden="true">{guide.emoji}</div>
 
                     <div className="flex items-center gap-3 text-xs text-qulo-text-secondary mb-3">
@@ -285,7 +285,7 @@ export default async function HowToIndexPage({
               {locale === "tr" && (
                 <>
                   Daha genel dating tavsiyeleri mi arıyorsunuz?{" "}
-                  <Link href={`/${locale}/advice`} className="text-qulo-purple hover:underline">
+                  <Link href={contentPath(locale, "/advice")} className="text-qulo-purple hover:underline">
                     Dating Tavsiyeleri
                   </Link>{" "}
                   hub&apos;ına göz atın.
@@ -294,7 +294,7 @@ export default async function HowToIndexPage({
               {locale === "en" && (
                 <>
                   Looking for general dating advice?{" "}
-                  <Link href={`/${locale}/advice`} className="text-qulo-purple hover:underline">
+                  <Link href={contentPath(locale, "/advice")} className="text-qulo-purple hover:underline">
                     Visit the Advice hub
                   </Link>
                   .
@@ -303,7 +303,7 @@ export default async function HowToIndexPage({
               {locale === "de" && (
                 <>
                   Suchen Sie allgemeine Dating-Ratschläge?{" "}
-                  <Link href={`/${locale}/advice`} className="text-qulo-purple hover:underline">
+                  <Link href={contentPath(locale, "/advice")} className="text-qulo-purple hover:underline">
                     Besuchen Sie den Ratgeber-Hub
                   </Link>
                   .
@@ -312,7 +312,7 @@ export default async function HowToIndexPage({
               {locale === "fr" && (
                 <>
                   Vous cherchez des conseils généraux de dating ?{" "}
-                  <Link href={`/${locale}/advice`} className="text-qulo-purple hover:underline">
+                  <Link href={contentPath(locale, "/advice")} className="text-qulo-purple hover:underline">
                     Visitez le hub Conseils
                   </Link>
                   .
@@ -321,7 +321,7 @@ export default async function HowToIndexPage({
               {locale === "es" && (
                 <>
                   ¿Buscas consejos generales de citas?{" "}
-                  <Link href={`/${locale}/advice`} className="text-qulo-purple hover:underline">
+                  <Link href={contentPath(locale, "/advice")} className="text-qulo-purple hover:underline">
                     Visita el hub de Consejos
                   </Link>
                   .
@@ -330,7 +330,7 @@ export default async function HowToIndexPage({
               {!["tr", "en", "de", "fr", "es"].includes(locale) && (
                 <>
                   Looking for general dating advice?{" "}
-                  <Link href={`/${locale}/advice`} className="text-qulo-purple hover:underline">
+                  <Link href={contentPath(locale, "/advice")} className="text-qulo-purple hover:underline">
                     Visit the Advice hub
                   </Link>
                   .

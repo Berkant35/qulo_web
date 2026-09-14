@@ -6,10 +6,10 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { locales } from "@/lib/i18n/config";
+import { contentLocales, contentPath } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
-import { alternateLanguages } from "@/lib/seo/alternates";
+import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { HOW_TO_GUIDES } from "@/lib/constants/howto";
 
 /* ------------------------------------------------------------------ */
@@ -17,7 +17,7 @@ import { HOW_TO_GUIDES } from "@/lib/constants/howto";
 /* ------------------------------------------------------------------ */
 export function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
-  for (const locale of locales) {
+  for (const locale of contentLocales) {
     for (const guide of HOW_TO_GUIDES) {
       params.push({ locale, slug: guide.slug });
     }
@@ -42,7 +42,7 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/${locale}/how-to/${slug}`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
 
-  const languages = alternateLanguages(`/how-to/${slug}`);
+  const languages = contentAlternateLanguages(`/how-to/${slug}`);
 
   return {
     title: `${title} — Qulo`,
@@ -254,7 +254,7 @@ export default async function HowToDetailPage({
           <Breadcrumb
             locale={locale}
             items={[
-              { label: labels.backToHub, href: `/${locale}/how-to` },
+              { label: labels.backToHub, href: contentPath(locale, "/how-to") },
               { label: title },
             ]}
           />
@@ -262,7 +262,7 @@ export default async function HowToDetailPage({
           {/* Back link */}
           <nav className="mb-8">
             <Link
-              href={`/${locale}/how-to`}
+              href={contentPath(locale, "/how-to")}
               className="text-sm text-qulo-text-secondary hover:text-qulo-green transition-colors"
             >
               &larr; {labels.backToHub}
@@ -376,7 +376,7 @@ export default async function HowToDetailPage({
                 {otherGuides.map((rg) => (
                   <Link
                     key={rg.slug}
-                    href={`/${locale}/how-to/${rg.slug}`}
+                    href={`${contentPath(locale, `/how-to/${rg.slug}`)}`}
                     className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-5 hover:border-qulo-green/30 hover:bg-white/[0.05] transition-all duration-200"
                   >
                     <div className="text-2xl mb-2" aria-hidden="true">{rg.emoji}</div>

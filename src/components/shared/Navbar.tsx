@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { contentPath } from "@/lib/i18n/config";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -42,13 +43,13 @@ export function Navbar() {
           {/* Nav links */}
           <nav className="hidden sm:flex items-center gap-6">
             <Link
-              href={`/${locale}/features`}
+              href={contentPath(locale, "/features")}
               className="text-sm text-qulo-text-secondary hover:text-white transition-colors"
             >
               {t("features")}
             </Link>
             <Link
-              href={`/${locale}/advice`}
+              href={contentPath(locale, "/advice")}
               className="text-sm text-qulo-text-secondary hover:text-white transition-colors"
             >
               {t("advice")}
@@ -60,7 +61,7 @@ export function Navbar() {
               {t("about")}
             </Link>
             <Link
-              href={`/${locale}/blog`}
+              href={contentPath(locale, "/blog")}
               className="text-sm text-qulo-text-secondary hover:text-white transition-colors"
             >
               {t("blog")}

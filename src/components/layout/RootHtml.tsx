@@ -1,9 +1,17 @@
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_Thai } from "next/font/google";
 import "@/app/globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+// Inter'de Tay glifi yok; yigindaki ikinci font glif bazinda devreye girer (yalniz th sayfalarinda indirilir mi? Hayir —
+// next/font self-host eder ve tek CSS degiskeni olarak eklenir; Latin sayfalarda kullanilmadigi icin tarayici indirmez).
+const notoThai = Noto_Sans_Thai({
+  subsets: ["thai"],
+  variable: "--font-thai",
   display: "swap",
 });
 
@@ -55,7 +63,7 @@ export function RootHtml({ lang, dir = "ltr", children }: RootHtmlProps) {
         <meta name="apple-mobile-web-app-title" content="Qulo" />
       </head>
       <body
-        className={`${inter.variable} font-sans bg-qulo-bg text-white antialiased`}
+        className={`${inter.variable} ${notoThai.variable} font-sans bg-qulo-bg text-white antialiased`}
       >
         {/* Skip to main content — accessibility + SEO */}
         <a

@@ -20,7 +20,7 @@ const SEED_DIR = "../qulo-server/src/data/seed";
 const OUT = "src/lib/constants/exampleQuestions.ts";
 const PER_CATEGORY = 2;
 
-const LOCALES = ["tr","en","de","fr","es","ar","ru","pt","it","ja","ko","zh","nl","pl","sv","hi"];
+const LOCALES = ["tr","en","de","fr","es","ar","ru","pt","it","ja","ko","zh","nl","pl","sv","hi","th","id"];
 
 /** Category order on the page — broad interest first, niche last. */
 const CATEGORIES = [
