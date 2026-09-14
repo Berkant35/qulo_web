@@ -25,7 +25,7 @@ import type { LocalizedArticle } from "@/components/blog/ArticleBlocks";
  *    range ending at 10 without naming the paid plan in the same sentence.
  *  - Nothing in the product calls a model at request time. The suggestions
  *    feature reads a pre-built `ai_question_bank` table — a library written
- *    with AI in advance, covering 10 of the app's 16 languages — so the copy
+ *    with AI in advance, covering all 18 of the app's languages — so the copy
  *    now says you pick a ready-made question rather than have one written for
  *    you. Discovery order is a fixed, hand-weighted formula, which is why the
  *    "AI-powered matching" category now states plainly that Qulo is not in it.
@@ -84,7 +84,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Game elements (badges, levels, rewards, challenges) are making the dating experience more enjoyable and engaging. Qulo's diamond economy, power systems, and level mechanics are leading examples of this trend — the app rewards you for thinking about someone, not for scrolling past them." },
 
     { type: "h2", text: "AI-Powered Personalization" },
-    { type: "p", text: "Across the industry, artificial intelligence plays a role at every stage of the dating experience, from question suggestions to match optimization. On Qulo its part is narrower, and worth stating plainly: the suggested questions come from a library written with AI in advance and stored ready-made, so you pick one rather than have a model write for you. That library currently covers 10 of the app's 18 languages, and nothing about who you are shown is decided by a model." },
+    { type: "p", text: "Across the industry, artificial intelligence plays a role at every stage of the dating experience, from question suggestions to match optimization. On Qulo its part is narrower, and worth stating plainly: the suggested questions come from a library written with AI in advance and stored ready-made, so you pick one rather than have a model write for you. That library currently covers all 18 of the app's languages, and nothing about who you are shown is decided by a model." },
 
     { type: "h2", text: "Personality-First Approach" },
     { type: "p", text: "The \"personality-first dating\" movement prioritizes values, thoughts, and personality compatibility beyond physical appearance. This trend is spreading rapidly, especially among Gen Z users searching for alternative dating apps." },
@@ -149,7 +149,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Oyunlaştırma öğeleri (rozet, seviye, ödül, meydan okuma) dating deneyimini daha eğlenceli ve bağlayıcı kılıyor. Qulo'nun elmas ekonomisi, güç sistemleri ve seviye mekanikleri bu trendin öncü örneklerinden — uygulama sizi birinin yanından kaydırıp geçtiğiniz için değil, biri hakkında düşündüğünüz için ödüllendiriyor." },
 
     { type: "h2", text: "Yapay Zekâ Destekli Kişiselleştirme" },
-    { type: "p", text: "Sektör genelinde yapay zekâ, soru önerilerinden eşleşme optimizasyonuna kadar dating deneyiminin her aşamasında rol oynuyor. Qulo'da ise payı daha dar ve bunu açıkça söylemek gerekiyor: önerilen sorular, önceden yapay zekâ ile yazılıp hazır hâlde saklanan bir kütüphaneden geliyor; yani bir model sizin için soru yazmıyor, siz hazır olanların arasından seçiyorsunuz. Bu kütüphane şu an uygulamanın 18 dilinden 10'unu kapsıyor ve kimin karşınıza çıkacağına hiçbir model karar vermiyor." },
+    { type: "p", text: "Sektör genelinde yapay zekâ, soru önerilerinden eşleşme optimizasyonuna kadar dating deneyiminin her aşamasında rol oynuyor. Qulo'da ise payı daha dar ve bunu açıkça söylemek gerekiyor: önerilen sorular, önceden yapay zekâ ile yazılıp hazır hâlde saklanan bir kütüphaneden geliyor; yani bir model sizin için soru yazmıyor, siz hazır olanların arasından seçiyorsunuz. Bu kütüphane şu an uygulamanın 18 dilinin tamamını kapsıyor ve kimin karşınıza çıkacağına hiçbir model karar vermiyor." },
 
     { type: "h2", text: "Kişilik Öncelikli Yaklaşım" },
     { type: "p", text: "\"Personality-first dating\" hareketi, fiziksel görünümün ötesinde değer, düşünce ve kişilik uyumluluğunu ön plana çıkarıyor. Bu eğilim, özellikle Z kuşağı arasında hızla yayılıyor." },
@@ -214,7 +214,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Spielelemente (Abzeichen, Level, Belohnungen, Herausforderungen) machen das Dating-Erlebnis unterhaltsamer und fesselnder. Qulos Diamanten-Ökonomie, Kräftesystem und Level-Mechanik sind Vorreiter dieses Trends — die App belohnt dich dafür, dass du über jemanden nachdenkst, nicht dafür, dass du an ihm vorbeiwischst." },
 
     { type: "h2", text: "KI-gestützte Personalisierung" },
-    { type: "p", text: "Branchenweit spielt künstliche Intelligenz in jeder Phase des Dating-Erlebnisses eine Rolle, von Fragenvorschlägen bis zur Match-Optimierung. Bei Qulo ist ihr Anteil kleiner, und das gehört klar gesagt: Die vorgeschlagenen Fragen stammen aus einer Bibliothek, die vorab mit KI geschrieben und fertig abgelegt wurde — du wählst also eine aus, statt dir eine von einem Modell schreiben zu lassen. Diese Bibliothek deckt derzeit 10 der 18 Sprachen der App ab, und wer dir angezeigt wird, entscheidet kein Modell." },
+    { type: "p", text: "Branchenweit spielt künstliche Intelligenz in jeder Phase des Dating-Erlebnisses eine Rolle, von Fragenvorschlägen bis zur Match-Optimierung. Bei Qulo ist ihr Anteil kleiner, und das gehört klar gesagt: Die vorgeschlagenen Fragen stammen aus einer Bibliothek, die vorab mit KI geschrieben und fertig abgelegt wurde — du wählst also eine aus, statt dir eine von einem Modell schreiben zu lassen. Diese Bibliothek deckt derzeit alle 18 Sprachen der App ab, und wer dir angezeigt wird, entscheidet kein Modell." },
 
     { type: "h2", text: "Persönlichkeit zuerst" },
     { type: "p", text: "Die Bewegung des „Personality-First-Dating“ stellt Werte, Gedanken und charakterliche Passung über das Äußere. Dieser Trend verbreitet sich rasant, besonders unter Nutzerinnen und Nutzern der Gen Z, die nach alternativen Dating-Apps suchen." },
@@ -279,7 +279,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Les éléments de jeu (badges, niveaux, récompenses, défis) rendent l'expérience plus plaisante et plus engageante. L'économie de diamants de Qulo, son système de pouvoirs et ses mécaniques de niveaux sont des exemples marquants de cette tendance — l'application vous récompense parce que vous pensez à quelqu'un, pas parce que vous l'avez fait défiler." },
 
     { type: "h2", text: "La personnalisation par IA" },
-    { type: "p", text: "Dans tout le secteur, l'intelligence artificielle intervient à chaque étape de l'expérience, de la suggestion de questions à l'optimisation des matchs. Chez Qulo, sa part est plus étroite, et autant le dire clairement : les questions proposées viennent d'une bibliothèque rédigée à l'avance avec de l'IA et conservée telle quelle — vous en choisissez une, aucun modèle n'écrit pour vous. Cette bibliothèque couvre aujourd'hui 10 des 18 langues de l'application, et aucun modèle ne décide qui vous est montré." },
+    { type: "p", text: "Dans tout le secteur, l'intelligence artificielle intervient à chaque étape de l'expérience, de la suggestion de questions à l'optimisation des matchs. Chez Qulo, sa part est plus étroite, et autant le dire clairement : les questions proposées viennent d'une bibliothèque rédigée à l'avance avec de l'IA et conservée telle quelle — vous en choisissez une, aucun modèle n'écrit pour vous. Cette bibliothèque couvre aujourd'hui les 18 langues de l'application, et aucun modèle ne décide qui vous est montré." },
 
     { type: "h2", text: "L'approche personnalité d'abord" },
     { type: "p", text: "Le mouvement du « personality-first dating » place les valeurs, les idées et la compatibilité de caractère avant l'apparence physique. Cette tendance se répand vite, surtout chez les utilisateurs de la génération Z en quête d'applications de rencontre alternatives." },
@@ -344,7 +344,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Los elementos de juego (insignias, niveles, recompensas, retos) hacen la experiencia más divertida y envolvente. La economía de diamantes de Qulo, su sistema de poderes y sus mecánicas de nivel son ejemplos destacados de esta tendencia — la app te recompensa por pensar en alguien, no por pasar de largo." },
 
     { type: "h2", text: "Personalización con IA" },
-    { type: "p", text: "En todo el sector, la inteligencia artificial interviene en cada etapa de la experiencia, desde la sugerencia de preguntas hasta la optimización de los matches. En Qulo su papel es más estrecho, y conviene decirlo con claridad: las preguntas sugeridas salen de una biblioteca escrita de antemano con IA y guardada ya hecha, así que eliges una en vez de pedirle a un modelo que la escriba. Esa biblioteca cubre hoy 10 de los 18 idiomas de la aplicación, y ningún modelo decide a quién ves." },
+    { type: "p", text: "En todo el sector, la inteligencia artificial interviene en cada etapa de la experiencia, desde la sugerencia de preguntas hasta la optimización de los matches. En Qulo su papel es más estrecho, y conviene decirlo con claridad: las preguntas sugeridas salen de una biblioteca escrita de antemano con IA y guardada ya hecha, así que eliges una en vez de pedirle a un modelo que la escriba. Esa biblioteca cubre hoy los 18 idiomas de la aplicación, y ningún modelo decide a quién ves." },
 
     { type: "h2", text: "Enfoque centrado en la personalidad" },
     { type: "p", text: "El movimiento del «personality-first dating» pone los valores, las ideas y la compatibilidad de carácter por delante del aspecto físico. Esta tendencia se extiende rápido, sobre todo entre usuarios de la generación Z que buscan apps de citas alternativas." },
@@ -409,7 +409,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "عناصر اللعب (الشارات والمستويات والمكافآت والتحديات) تجعل تجربة المواعدة أكثر متعة وجاذبية. واقتصاد الألماس في Qulo وأنظمة القوى وميكانيكا المستويات أمثلة رائدة على هذا الاتجاه — فالتطبيق يكافئك لأنك فكّرت في شخص ما، لا لأنك مررت من أمامه." },
 
     { type: "h2", text: "التخصيص المدعوم بالذكاء الاصطناعي" },
-    { type: "p", text: "على مستوى القطاع، يؤدي الذكاء الاصطناعي دورًا في كل مرحلة من تجربة المواعدة، من اقتراح الأسئلة إلى تحسين التوافقات. أما في Qulo فدوره أضيق، ويستحق القول بوضوح: الأسئلة المقترحة تأتي من مكتبة كُتبت مسبقًا بالذكاء الاصطناعي وحُفظت جاهزة، فأنت تختار منها بدل أن يكتب لك نموذج. وتغطي هذه المكتبة حاليًا 10 لغات من لغات التطبيق الست عشرة، ولا يقرر أي نموذج من تراه." },
+    { type: "p", text: "على مستوى القطاع، يؤدي الذكاء الاصطناعي دورًا في كل مرحلة من تجربة المواعدة، من اقتراح الأسئلة إلى تحسين التوافقات. أما في Qulo فدوره أضيق، ويستحق القول بوضوح: الأسئلة المقترحة تأتي من مكتبة كُتبت مسبقًا بالذكاء الاصطناعي وحُفظت جاهزة، فأنت تختار منها بدل أن يكتب لك نموذج. وتغطي هذه المكتبة حاليًا لغات التطبيق الثماني عشرة كلها، ولا يقرر أي نموذج من تراه." },
 
     { type: "h2", text: "نهج الشخصية أولًا" },
     { type: "p", text: "تضع حركة «المواعدة التي تبدأ من الشخصية» القيم والأفكار وتوافق الطباع فوق المظهر الخارجي. وينتشر هذا الاتجاه بسرعة، خصوصًا بين مستخدمي الجيل Z الباحثين عن تطبيقات مواعدة بديلة." },
@@ -474,7 +474,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Игровые элементы (значки, уровни, награды, испытания) делают знакомства приятнее и увлекательнее. Алмазная экономика Qulo, система сил и уровневая механика — показательные примеры этого тренда: приложение вознаграждает вас за то, что вы подумали о человеке, а не за то, что пролистнули мимо." },
 
     { type: "h2", text: "Персонализация на основе ИИ" },
-    { type: "p", text: "В индустрии искусственный интеллект участвует на каждом этапе знакомства — от подсказок для вопросов до оптимизации совпадений. В Qulo его роль уже, и это стоит сказать прямо: предлагаемые вопросы берутся из библиотеки, написанной с помощью ИИ заранее и сохранённой в готовом виде, — вы выбираете из неё, а не просите модель написать за вас. Сейчас библиотека покрывает 10 из 16 языков приложения, и ни одна модель не решает, кого вы увидите." },
+    { type: "p", text: "В индустрии искусственный интеллект участвует на каждом этапе знакомства — от подсказок для вопросов до оптимизации совпадений. В Qulo его роль уже, и это стоит сказать прямо: предлагаемые вопросы берутся из библиотеки, написанной с помощью ИИ заранее и сохранённой в готовом виде, — вы выбираете из неё, а не просите модель написать за вас. Сейчас библиотека покрывает все 18 языков приложения, и ни одна модель не решает, кого вы увидите." },
 
     { type: "h2", text: "Подход «сначала личность»" },
     { type: "p", text: "Движение «personality-first dating» ставит ценности, мысли и совместимость характеров выше внешности. Тренд распространяется быстро, особенно среди пользователей поколения Z, которые ищут альтернативные приложения для знакомств." },
@@ -539,7 +539,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Elementos de jogo (medalhas, níveis, recompensas, desafios) deixam a experiência mais divertida e envolvente. A economia de diamantes do Qulo, o sistema de poderes e as mecânicas de nível são exemplos de destaque dessa tendência — o aplicativo recompensa você por pensar em alguém, não por passar direto." },
 
     { type: "h2", text: "Personalização com IA" },
-    { type: "p", text: "No setor como um todo, a inteligência artificial atua em todas as etapas da experiência, da sugestão de perguntas à otimização dos matches. No Qulo o papel dela é mais estreito, e vale dizer com clareza: as perguntas sugeridas vêm de uma biblioteca escrita com IA de antemão e guardada pronta, ou seja, você escolhe uma em vez de pedir que um modelo escreva por você. Essa biblioteca cobre hoje 10 dos 18 idiomas do aplicativo, e nenhum modelo decide quem aparece para você." },
+    { type: "p", text: "No setor como um todo, a inteligência artificial atua em todas as etapas da experiência, da sugestão de perguntas à otimização dos matches. No Qulo o papel dela é mais estreito, e vale dizer com clareza: as perguntas sugeridas vêm de uma biblioteca escrita com IA de antemão e guardada pronta, ou seja, você escolhe uma em vez de pedir que um modelo escreva por você. Essa biblioteca cobre hoje todos os 18 idiomas do aplicativo, e nenhum modelo decide quem aparece para você." },
 
     { type: "h2", text: "Abordagem que começa pela personalidade" },
     { type: "p", text: "O movimento do “personality-first dating” coloca valores, ideias e compatibilidade de temperamento acima da aparência física. A tendência se espalha rápido, sobretudo entre usuários da geração Z em busca de aplicativos de relacionamento alternativos." },
@@ -604,7 +604,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Gli elementi di gioco (distintivi, livelli, ricompense, sfide) rendono l'esperienza più divertente e coinvolgente. L'economia dei diamanti di Qulo, il sistema dei poteri e le meccaniche dei livelli sono esempi di punta di questa tendenza — l'app ti premia perché hai pensato a qualcuno, non perché gli sei scorso davanti." },
 
     { type: "h2", text: "Personalizzazione con l'IA" },
-    { type: "p", text: "Nel settore l'intelligenza artificiale interviene in ogni fase dell'esperienza, dai suggerimenti per le domande all'ottimizzazione dei match. Su Qulo il suo ruolo è più stretto, e conviene dirlo chiaramente: le domande suggerite arrivano da una libreria scritta in anticipo con l'IA e conservata già pronta, quindi ne scegli una invece di farla scrivere a un modello. Quella libreria copre oggi 10 delle 18 lingue dell'app, e nessun modello decide chi ti viene mostrato." },
+    { type: "p", text: "Nel settore l'intelligenza artificiale interviene in ogni fase dell'esperienza, dai suggerimenti per le domande all'ottimizzazione dei match. Su Qulo il suo ruolo è più stretto, e conviene dirlo chiaramente: le domande suggerite arrivano da una libreria scritta in anticipo con l'IA e conservata già pronta, quindi ne scegli una invece di farla scrivere a un modello. Quella libreria copre oggi tutte le 18 lingue dell'app, e nessun modello decide chi ti viene mostrato." },
 
     { type: "h2", text: "L'approccio che parte dalla personalità" },
     { type: "p", text: "Il movimento del «personality-first dating» mette valori, idee e affinità caratteriale davanti all'aspetto fisico. La tendenza si diffonde in fretta, soprattutto fra gli utenti della generazione Z che cercano app di incontri alternative." },
@@ -669,7 +669,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "バッジ、レベル、報酬、チャレンジといったゲーム的要素が、出会いの体験をより楽しく、より夢中にさせている。Quloのダイヤ経済、パワーの仕組み、レベル設計はこの流れを代表する例だ——このアプリは、誰かの前を通り過ぎたことではなく、誰かについて考えたことに報いる。" },
 
     { type: "h2", text: "AIによるパーソナライズ" },
-    { type: "p", text: "業界全体では、人工知能は質問の提案からマッチの最適化まで、体験のあらゆる段階に関わっている。ただしQuloでの役割はもっと狭く、はっきり書いておきたい。提案される質問は、あらかじめAIで書かれて既製の形で保管されたライブラリから来る。つまりモデルがその場で書くのではなく、あなたが選ぶ。このライブラリは現在アプリの18言語のうち18言語をカバーしており、誰が表示されるかをモデルが決めることはない。" },
+    { type: "p", text: "業界全体では、人工知能は質問の提案からマッチの最適化まで、体験のあらゆる段階に関わっている。ただしQuloでの役割はもっと狭く、はっきり書いておきたい。提案される質問は、あらかじめAIで書かれて既製の形で保管されたライブラリから来る。つまりモデルがその場で書くのではなく、あなたが選ぶ。このライブラリは現在アプリの18言語すべてをカバーしており、誰が表示されるかをモデルが決めることはない。" },
 
     { type: "h2", text: "人柄を最優先する考え方" },
     { type: "p", text: "「パーソナリティ・ファースト」の潮流は、外見よりも価値観、考え方、性格の相性を重んじる。別の選択肢を探すZ世代の利用者を中心に、この流れは急速に広がっている。" },
@@ -734,7 +734,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "배지, 레벨, 보상, 챌린지 같은 게임 요소가 데이팅 경험을 더 즐겁고 몰입감 있게 만든다. Qulo의 다이아 경제, 파워 시스템, 레벨 구조는 이 흐름을 앞서 보여 주는 예다 — 이 앱은 누군가를 스쳐 지나갔다고 보상하지 않고, 누군가를 생각했다고 보상한다." },
 
     { type: "h2", text: "인공지능 기반 개인화" },
-    { type: "p", text: "업계 전체로 보면 인공지능은 질문 추천부터 매칭 최적화까지 데이팅 경험의 모든 단계에 관여한다. 다만 Qulo에서의 역할은 더 좁고, 분명히 밝혀 둘 만하다. 추천되는 질문은 미리 AI로 써서 완성된 채로 보관해 둔 라이브러리에서 나온다. 모델이 그 자리에서 써 주는 것이 아니라, 이용자가 고르는 것이다. 이 라이브러리는 현재 앱의 18개 언어 가운데 10개를 담고 있고, 누가 보이는지는 어떤 모델도 결정하지 않는다." },
+    { type: "p", text: "업계 전체로 보면 인공지능은 질문 추천부터 매칭 최적화까지 데이팅 경험의 모든 단계에 관여한다. 다만 Qulo에서의 역할은 더 좁고, 분명히 밝혀 둘 만하다. 추천되는 질문은 미리 AI로 써서 완성된 채로 보관해 둔 라이브러리에서 나온다. 모델이 그 자리에서 써 주는 것이 아니라, 이용자가 고르는 것이다. 이 라이브러리는 현재 앱의 18개 언어를 모두 담고 있고, 누가 보이는지는 어떤 모델도 결정하지 않는다." },
 
     { type: "h2", text: "성격을 앞세우는 접근" },
     { type: "p", text: "‘퍼스낼리티 퍼스트’ 흐름은 외모보다 가치관, 생각, 성격의 궁합을 앞에 둔다. 이 흐름은 특히 대안적인 데이팅 앱을 찾는 Z세대 이용자들 사이에서 빠르게 퍼지고 있다." },
@@ -799,7 +799,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "徽章、等级、奖励、挑战这些游戏元素，让约会体验更有意思、也更让人投入。Qulo 的钻石经济、能力体系和等级机制正是这股趋势的代表 —— 这款应用奖励的是你认真想过一个人，而不是你从他面前划了过去。" },
 
     { type: "h2", text: "人工智能驱动的个性化" },
-    { type: "p", text: "就整个行业而言，从问题建议到匹配优化，人工智能出现在约会体验的每一个环节。不过在 Qulo，它的角色要窄得多，这一点值得说清楚：推荐的问题来自一个事先用人工智能写好、成品存放的题库，你是从中挑选，而不是让模型当场替你写。该题库目前覆盖应用 18 种语言中的 10 种，而你会看到谁，没有任何模型参与决定。" },
+    { type: "p", text: "就整个行业而言，从问题建议到匹配优化，人工智能出现在约会体验的每一个环节。不过在 Qulo，它的角色要窄得多，这一点值得说清楚：推荐的问题来自一个事先用人工智能写好、成品存放的题库，你是从中挑选，而不是让模型当场替你写。该题库目前覆盖应用全部 18 种语言，而你会看到谁，没有任何模型参与决定。" },
 
     { type: "h2", text: "性格优先的取向" },
     { type: "p", text: "“性格优先”的潮流把价值观、想法和性情上的契合放在外貌之前。这股风气正在迅速蔓延，尤其是在寻找另类约会应用的 Z 世代用户中间。" },
@@ -864,7 +864,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Spelelementen (badges, levels, beloningen, uitdagingen) maken het daten leuker en meeslepender. De diamanteneconomie van Qulo, het krachtensysteem en de levelmechaniek zijn toonaangevende voorbeelden van deze trend — de app beloont je omdat je over iemand hebt nagedacht, niet omdat je hem voorbij hebt geswipet." },
 
     { type: "h2", text: "Personalisatie met AI" },
-    { type: "p", text: "In de branche als geheel speelt kunstmatige intelligentie in elke fase van de datingervaring een rol, van vraagsuggesties tot het optimaliseren van matches. Bij Qulo is die rol smaller, en dat mag helder gezegd worden: de voorgestelde vragen komen uit een bibliotheek die vooraf met AI is geschreven en kant-en-klaar is opgeslagen — je kiest er dus een, in plaats van er een door een model te laten schrijven. Die bibliotheek dekt op dit moment 10 van de 18 talen van de app, en geen enkel model bepaalt wie je te zien krijgt." },
+    { type: "p", text: "In de branche als geheel speelt kunstmatige intelligentie in elke fase van de datingervaring een rol, van vraagsuggesties tot het optimaliseren van matches. Bij Qulo is die rol smaller, en dat mag helder gezegd worden: de voorgestelde vragen komen uit een bibliotheek die vooraf met AI is geschreven en kant-en-klaar is opgeslagen — je kiest er dus een, in plaats van er een door een model te laten schrijven. Die bibliotheek dekt op dit moment alle 18 talen van de app, en geen enkel model bepaalt wie je te zien krijgt." },
 
     { type: "h2", text: "Persoonlijkheid eerst" },
     { type: "p", text: "De beweging van ‘personality-first dating’ zet waarden, ideeën en karakterklik boven het uiterlijk. Die trend verspreidt zich snel, vooral onder gebruikers uit gen Z die op zoek zijn naar alternatieve datingapps." },
@@ -929,7 +929,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Elementy gry (odznaki, poziomy, nagrody, wyzwania) sprawiają, że randkowanie jest przyjemniejsze i bardziej wciągające. Diamentowa ekonomia Qulo, system mocy i mechanika poziomów to czołowe przykłady tego trendu — aplikacja nagradza cię za to, że pomyślałeś o kimś, a nie za to, że go minąłeś." },
 
     { type: "h2", text: "Personalizacja oparta na sztucznej inteligencji" },
-    { type: "p", text: "W całej branży sztuczna inteligencja pojawia się na każdym etapie randkowania, od podpowiadania pytań po optymalizację dopasowań. W Qulo jej rola jest węższa i warto powiedzieć to wprost: proponowane pytania pochodzą z biblioteki napisanej wcześniej z pomocą sztucznej inteligencji i przechowywanej w gotowej postaci — wybierasz z niej, zamiast prosić model, żeby napisał za ciebie. Ta biblioteka obejmuje dziś 10 z 18 języków aplikacji, a o tym, kogo zobaczysz, nie decyduje żaden model." },
+    { type: "p", text: "W całej branży sztuczna inteligencja pojawia się na każdym etapie randkowania, od podpowiadania pytań po optymalizację dopasowań. W Qulo jej rola jest węższa i warto powiedzieć to wprost: proponowane pytania pochodzą z biblioteki napisanej wcześniej z pomocą sztucznej inteligencji i przechowywanej w gotowej postaci — wybierasz z niej, zamiast prosić model, żeby napisał za ciebie. Ta biblioteka obejmuje dziś wszystkie 18 języków aplikacji, a o tym, kogo zobaczysz, nie decyduje żaden model." },
 
     { type: "h2", text: "Podejście „najpierw osobowość”" },
     { type: "p", text: "Ruch „personality-first dating” stawia wartości, poglądy i zgodność charakterów ponad wygląd. Trend rozprzestrzenia się szybko, zwłaszcza wśród użytkowników pokolenia Z szukających alternatywnych aplikacji randkowych." },
@@ -994,7 +994,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "Spelinslag (märken, nivåer, belöningar, utmaningar) gör dejtandet roligare och mer engagerande. Qulos diamantekonomi, kraftsystem och nivåmekanik är ledande exempel på trenden — appen belönar dig för att du tänkte på någon, inte för att du svepte förbi." },
 
     { type: "h2", text: "Personalisering med AI" },
-    { type: "p", text: "I branschen som helhet finns artificiell intelligens med i varje del av dejtingupplevelsen, från frågeförslag till optimering av matchningar. I Qulo är rollen smalare, och det tål att sägas rakt ut: de föreslagna frågorna kommer från ett bibliotek som skrivits i förväg med AI och sparats färdigt — du väljer alltså en fråga i stället för att låta en modell skriva åt dig. Biblioteket täcker i dag 10 av appens 18 språk, och ingen modell avgör vem du får se." },
+    { type: "p", text: "I branschen som helhet finns artificiell intelligens med i varje del av dejtingupplevelsen, från frågeförslag till optimering av matchningar. I Qulo är rollen smalare, och det tål att sägas rakt ut: de föreslagna frågorna kommer från ett bibliotek som skrivits i förväg med AI och sparats färdigt — du väljer alltså en fråga i stället för att låta en modell skriva åt dig. Biblioteket täcker i dag alla appens 18 språk, och ingen modell avgör vem du får se." },
 
     { type: "h2", text: "Personligheten först" },
     { type: "p", text: "Rörelsen ”personality-first dating” sätter värderingar, tankar och personkemi före utseendet. Trenden sprider sig snabbt, särskilt bland generation Z-användare som letar efter alternativa dejtingappar." },
@@ -1059,7 +1059,7 @@ export const datingAppsWithoutSwiping: LocalizedArticle = {
     { type: "p", text: "खेल के तत्व (बैज, लेवल, इनाम, चुनौतियाँ) डेटिंग के अनुभव को ज़्यादा मज़ेदार और बाँधे रखने वाला बनाते हैं। Qulo की डायमंड अर्थव्यवस्था, पावर सिस्टम और लेवल की बनावट इस रुझान की अगुआ मिसालें हैं — यह ऐप आपको किसी के आगे से गुज़र जाने पर नहीं, किसी के बारे में सोचने पर इनाम देता है।" },
 
     { type: "h2", text: "एआई से होने वाला निजीकरण" },
-    { type: "p", text: "पूरे उद्योग में, सवालों के सुझाव से लेकर मैच को बेहतर बनाने तक, कृत्रिम बुद्धिमत्ता डेटिंग के हर पड़ाव में मौजूद है। पर Qulo में उसकी भूमिका इससे कहीं छोटी है, और यह साफ़ कह देना बेहतर है: सुझाए गए सवाल एक ऐसी लाइब्रेरी से आते हैं जो पहले से एआई की मदद से लिखकर तैयार रखी गई है — यानी कोई मॉडल आपके लिए सवाल नहीं लिखता, आप बने-बनाए सवालों में से चुनते हैं। यह लाइब्रेरी फ़िलहाल ऐप की 18 भाषाओं में से 10 को कवर करती है, और आपको कौन दिखेगा, यह कोई मॉडल तय नहीं करता।" },
+    { type: "p", text: "पूरे उद्योग में, सवालों के सुझाव से लेकर मैच को बेहतर बनाने तक, कृत्रिम बुद्धिमत्ता डेटिंग के हर पड़ाव में मौजूद है। पर Qulo में उसकी भूमिका इससे कहीं छोटी है, और यह साफ़ कह देना बेहतर है: सुझाए गए सवाल एक ऐसी लाइब्रेरी से आते हैं जो पहले से एआई की मदद से लिखकर तैयार रखी गई है — यानी कोई मॉडल आपके लिए सवाल नहीं लिखता, आप बने-बनाए सवालों में से चुनते हैं। यह लाइब्रेरी फ़िलहाल ऐप की सभी 18 भाषाओं को कवर करती है, और आपको कौन दिखेगा, यह कोई मॉडल तय नहीं करता।" },
 
     { type: "h2", text: "शख़्सियत को पहले रखने वाला नज़रिया" },
     { type: "p", text: "‘पर्सनैलिटी-फ़र्स्ट डेटिंग’ की धारा दिखावट से आगे बढ़कर मूल्यों, विचारों और स्वभाव के मेल को अहमियत देती है। यह रुझान तेज़ी से फैल रहा है, ख़ासकर उन जेन-ज़ी उपयोगकर्ताओं में जो वैकल्पिक डेटिंग ऐप्स तलाश रहे हैं।" },

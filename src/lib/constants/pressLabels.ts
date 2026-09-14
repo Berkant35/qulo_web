@@ -1,4 +1,4 @@
-import type { ContentLocale } from "@/lib/i18n/config";
+import { locales, type ContentLocale } from "@/lib/i18n/config";
 
 /**
  * Every string on /[locale]/press.
@@ -31,9 +31,11 @@ import type { ContentLocale } from "@/lib/i18n/config";
  *  - Platforms are iOS and Android. quloapp.com is a marketing site, and each
  *    locale says so — a journalist who reads "18 languages" next to a web
  *    address will otherwise write that there is a web app.
- *  - 18 languages is the app interface. The in-app library of suggested
- *    questions covers 10 of them, which is why the third paragraph separates
- *    the two numbers instead of letting "18 languages" stand for everything.
+ *  - The language count is `locales.length` from config.ts, never a typed
+ *    digit: the 16→18 change left "16개" and "16 种" behind in two locales.
+ *    The in-app library of suggested questions (`ai_question_bank`) covers
+ *    every one of those languages — live table checked 2026-09-14 — so the
+ *    third paragraph says so instead of leaving the reader to guess.
  *  - No identity verification, photo screening, fake-profile detection,
  *    personality measurement or AI matching is claimed, because none exists.
  *    The second paragraph states the absence of scoring positively (no
@@ -115,6 +117,8 @@ export interface PressLabels {
   ctaText: string;
 }
 
+const LANGUAGE_COUNT = locales.length;
+
 export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
   en: {
     breadcrumb: "Press kit",
@@ -129,7 +133,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       category: { term: "Category", value: "Dating app built on questions" },
       platforms: { term: "Platforms", value: "iOS, Android" },
       price: { term: "Price", value: "Free, with paid plans" },
-      languages: { term: "App languages", value: "18" },
+      languages: { term: "App languages", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "Based in", value: "Istanbul, Turkey" },
       tagline: { term: "Tagline", value: "Meet through questions" },
       website: { term: "Website", value: "quloapp.com" },
@@ -138,7 +142,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo is a dating app where people meet by answering questions instead of swiping. On the free plan every member writes 2 to 4 multiple-choice questions about themselves, and up to 10 on a paid plan, with four options each and one marked correct.",
       "To reach you, somebody has to answer every one of those questions correctly; a single wrong answer and there is no match. Hints can be bought inside the app when a question is hard to guess. Nothing else is scored — no percentage, no ranking, no compatibility figure.",
-      "Qulo runs on iOS and Android. quloapp.com is a marketing site, not a web version of the app. The interface is available in 18 languages, and the library of suggested questions inside the app covers 10 of them.",
+      `Qulo runs on iOS and Android. quloapp.com is a marketing site, not a web version of the app. The interface is available in ${LANGUAGE_COUNT} languages, and the library of suggested questions inside the app covers every one of them.`,
     ],
     logosHeading: "Logos",
     logosSubtitle:
@@ -195,7 +199,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       category: { term: "Kategori", value: "Soru tabanlı tanışma uygulaması" },
       platforms: { term: "Platformlar", value: "iOS, Android" },
       price: { term: "Ücret", value: "Ücretsiz, ücretli planlar da var" },
-      languages: { term: "Uygulama dilleri", value: "18" },
+      languages: { term: "Uygulama dilleri", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "Merkez", value: "İstanbul, Türkiye" },
       tagline: { term: "Slogan", value: "Sorularla tanış" },
       website: { term: "Web sitesi", value: "quloapp.com" },
@@ -204,7 +208,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo, insanların kaydırarak değil soru cevaplayarak tanıştığı bir uygulama. Ücretsiz planda herkes kendisi hakkında 2 ila 4 çoktan seçmeli soru yazar, ücretli planda 10'a kadar; her sorunun dört şıkkı vardır ve biri doğru olarak işaretlenir.",
       "Sana ulaşmak isteyen kişinin bu soruların hepsini doğru bilmesi gerekir; tek yanlış varsa eşleşme olmaz. Tahmin edilmesi zor bir soruda uygulama içinden ipucu satın alınabilir. Bunun dışında ölçülen bir şey yok: yüzde de yok, sıralama da, uyum puanı da.",
-      "Qulo iOS ve Android'de çalışıyor. quloapp.com bir tanıtım sitesi, uygulamanın web sürümü değil. Arayüz 18 dilde; uygulama içindeki hazır soru kütüphanesi bu dillerin 10'unu kapsıyor.",
+      `Qulo iOS ve Android'de çalışıyor. quloapp.com bir tanıtım sitesi, uygulamanın web sürümü değil. Arayüz ${LANGUAGE_COUNT} dilde; uygulama içindeki hazır soru kütüphanesi bu dillerin tamamını kapsıyor.`,
     ],
     logosHeading: "Logolar",
     logosSubtitle:
@@ -261,7 +265,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       category: { term: "Kategorie", value: "Dating-App auf Fragenbasis" },
       platforms: { term: "Plattformen", value: "iOS, Android" },
       price: { term: "Preis", value: "Kostenlos, mit bezahlten Tarifen" },
-      languages: { term: "Sprachen der App", value: "18" },
+      languages: { term: "Sprachen der App", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "Sitz", value: "Istanbul, Türkei" },
       tagline: { term: "Slogan", value: "Kennenlernen durch Fragen" },
       website: { term: "Website", value: "quloapp.com" },
@@ -270,7 +274,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo ist eine Dating-App, in der man sich über Fragen kennenlernt statt über Wischen. Im kostenlosen Tarif schreibt jedes Mitglied 2 bis 4 Multiple-Choice-Fragen über sich, im bezahlten bis zu 10, mit je vier Antwortmöglichkeiten, von denen eine als richtig markiert ist.",
       "Wer dich erreichen will, muss jede dieser Fragen richtig beantworten; eine falsche Antwort, und es gibt kein Match. Ist eine Frage schwer zu erraten, lassen sich in der App Hinweise kaufen. Sonst wird nichts bewertet: keine Prozentzahl, kein Ranking, kein Kompatibilitätswert.",
-      "Qulo läuft auf iOS und Android. quloapp.com ist eine Infoseite, keine Webversion der App. Die Oberfläche gibt es in 18 Sprachen; die Bibliothek mit Fragenvorschlägen in der App deckt 10 davon ab.",
+      `Qulo läuft auf iOS und Android. quloapp.com ist eine Infoseite, keine Webversion der App. Die Oberfläche gibt es in ${LANGUAGE_COUNT} Sprachen; die Bibliothek mit Fragenvorschlägen in der App deckt alle davon ab.`,
     ],
     logosHeading: "Logos",
     logosSubtitle:
@@ -330,7 +334,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       },
       platforms: { term: "Plateformes", value: "iOS, Android" },
       price: { term: "Prix", value: "Gratuit, avec des formules payantes" },
-      languages: { term: "Langues de l'application", value: "18" },
+      languages: { term: "Langues de l'application", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "Siège", value: "Istanbul, Turquie" },
       tagline: { term: "Slogan", value: "Rencontrez par les questions" },
       website: { term: "Site web", value: "quloapp.com" },
@@ -339,7 +343,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo est une application de rencontre où l'on fait connaissance en répondant à des questions plutôt qu'en swipant. Avec la formule gratuite, chaque membre écrit de 2 à 4 questions à choix multiple sur lui-même, et jusqu'à 10 avec un abonnement payant, quatre options par question dont une cochée comme correcte.",
       "Pour vous atteindre, il faut répondre juste à toutes ces questions : une seule erreur et il n'y a pas de match. Quand une question est difficile à deviner, des indices s'achètent dans l'application. Rien d'autre n'est noté : ni pourcentage, ni classement, ni score de compatibilité.",
-      "Qulo fonctionne sur iOS et Android. quloapp.com est un site de présentation, pas une version web de l'application. L'interface existe en 18 langues et la bibliothèque de questions suggérées dans l'application en couvre 10.",
+      `Qulo fonctionne sur iOS et Android. quloapp.com est un site de présentation, pas une version web de l'application. L'interface existe en ${LANGUAGE_COUNT} langues et la bibliothèque de questions suggérées dans l'application les couvre toutes.`,
     ],
     logosHeading: "Logos",
     logosSubtitle:
@@ -402,7 +406,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       },
       platforms: { term: "Plataformas", value: "iOS, Android" },
       price: { term: "Precio", value: "Gratis, con planes de pago" },
-      languages: { term: "Idiomas de la app", value: "18" },
+      languages: { term: "Idiomas de la app", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "Sede", value: "Estambul, Turquía" },
       tagline: { term: "Lema", value: "Conoce a través de preguntas" },
       website: { term: "Sitio web", value: "quloapp.com" },
@@ -411,7 +415,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo es una app de citas en la que la gente se conoce respondiendo preguntas en lugar de deslizando. En el plan gratuito cada persona escribe de 2 a 4 preguntas de opción múltiple sobre sí misma, y hasta 10 con un plan de pago, con cuatro opciones cada una y una marcada como correcta.",
       "Para llegar hasta ti hay que acertar todas esas preguntas: un solo fallo y no hay match. Cuando una pregunta es difícil de adivinar, dentro de la app se pueden comprar pistas. No se puntúa nada más: ni porcentajes, ni clasificaciones, ni índice de compatibilidad.",
-      "Qulo funciona en iOS y Android. quloapp.com es un sitio de presentación, no una versión web de la app. La interfaz está en 18 idiomas y la biblioteca de preguntas sugeridas dentro de la app cubre 10 de ellos.",
+      `Qulo funciona en iOS y Android. quloapp.com es un sitio de presentación, no una versión web de la app. La interfaz está en ${LANGUAGE_COUNT} idiomas y la biblioteca de preguntas sugeridas dentro de la app los cubre todos.`,
     ],
     logosHeading: "Logos",
     logosSubtitle:
@@ -471,7 +475,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       category: { term: "الفئة", value: "تطبيق مواعدة قائم على الأسئلة" },
       platforms: { term: "المنصات", value: "iOS، Android" },
       price: { term: "السعر", value: "مجاني، مع خطط مدفوعة" },
-      languages: { term: "لغات التطبيق", value: "18" },
+      languages: { term: "لغات التطبيق", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "المقر", value: "إسطنبول، تركيا" },
       tagline: { term: "الشعار النصي", value: "تعارف من خلال الأسئلة" },
       website: { term: "الموقع", value: "quloapp.com" },
@@ -480,7 +484,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo تطبيق مواعدة يتعارف فيه الناس بالإجابة عن الأسئلة بدل التمرير. في الخطة المجانية يكتب كل عضو عن نفسه من سؤالين إلى أربعة أسئلة اختيار من متعدد، وحتى عشرة أسئلة في خطة مدفوعة، لكل سؤال أربعة خيارات واحد منها محدَّد بوصفه الصحيح.",
       "من يريد الوصول إليك عليه أن يجيب عن هذه الأسئلة كلها إجابة صحيحة؛ خطأ واحد يعني ألا يحدث التطابق. وحين يصعب تخمين سؤال يمكن شراء تلميحات داخل التطبيق. وما عدا ذلك لا يُقاس شيء: لا نسبة مئوية ولا ترتيب ولا درجة توافق.",
-      "يعمل Qulo على iOS وAndroid. أما quloapp.com فهو موقع تعريفي، وليس نسخة ويب من التطبيق. وواجهة التطبيق متاحة بـ18 لغة، ومكتبة الأسئلة المقترحة داخله تغطي 10 منها.",
+      `يعمل Qulo على iOS وAndroid. أما quloapp.com فهو موقع تعريفي، وليس نسخة ويب من التطبيق. وواجهة التطبيق متاحة بـ${LANGUAGE_COUNT} لغة، ومكتبة الأسئلة المقترحة داخله تغطيها جميعًا.`,
     ],
     logosHeading: "الشعارات",
     logosSubtitle:
@@ -546,7 +550,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       },
       platforms: { term: "Платформы", value: "iOS, Android" },
       price: { term: "Цена", value: "Бесплатно, есть платные тарифы" },
-      languages: { term: "Языки приложения", value: "18" },
+      languages: { term: "Языки приложения", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "Где базируется", value: "Стамбул, Турция" },
       tagline: { term: "Слоган", value: "Знакомства через вопросы" },
       website: { term: "Сайт", value: "quloapp.com" },
@@ -555,7 +559,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo — приложение для знакомств, где люди сходятся, отвечая на вопросы, а не свайпая. На бесплатном тарифе каждый пишет о себе от 2 до 4 вопросов с вариантами ответа, на платном — до 10; в каждом вопросе четыре варианта, и один отмечен как верный.",
       "Чтобы дойти до вас, человек должен ответить верно на все эти вопросы: одна ошибка — и совпадения не будет. Если вопрос трудно угадать, подсказки можно купить в приложении. Больше ничего не оценивается: ни процентов, ни рейтинга, ни показателя совместимости.",
-      "Qulo работает на iOS и Android. quloapp.com — сайт-визитка, а не веб-версия приложения. Интерфейс переведён на 16 языков, а библиотека готовых вопросов внутри приложения охватывает 10 из них.",
+      `Qulo работает на iOS и Android. quloapp.com — сайт-визитка, а не веб-версия приложения. Интерфейс переведён на ${LANGUAGE_COUNT} языков, и библиотека готовых вопросов внутри приложения охватывает их все.`,
     ],
     logosHeading: "Логотипы",
     logosSubtitle:
@@ -621,7 +625,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       },
       platforms: { term: "Plataformas", value: "iOS, Android" },
       price: { term: "Preço", value: "Grátis, com planos pagos" },
-      languages: { term: "Idiomas do app", value: "18" },
+      languages: { term: "Idiomas do app", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "Sede", value: "Istambul, Turquia" },
       tagline: { term: "Slogan", value: "Conheça através de perguntas" },
       website: { term: "Site", value: "quloapp.com" },
@@ -630,7 +634,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "O Qulo é um app de relacionamento em que as pessoas se conhecem respondendo perguntas, e não deslizando. No plano gratuito cada pessoa escreve de 2 a 4 perguntas de múltipla escolha sobre si, e até 10 num plano pago, com quatro alternativas em cada uma e a correta marcada.",
       "Para chegar até você, alguém precisa acertar todas essas perguntas: um único erro e não há match. Quando uma pergunta é difícil de adivinhar, dá para comprar dicas dentro do app. Nada além disso é pontuado: não há porcentagem, ranking nem índice de compatibilidade.",
-      "O Qulo roda em iOS e Android. quloapp.com é um site de apresentação, não uma versão web do app. A interface está em 18 idiomas e a biblioteca de perguntas sugeridas dentro do app cobre 10 deles.",
+      `O Qulo roda em iOS e Android. quloapp.com é um site de apresentação, não uma versão web do app. A interface está em ${LANGUAGE_COUNT} idiomas e a biblioteca de perguntas sugeridas dentro do app cobre todos eles.`,
     ],
     logosHeading: "Logos",
     logosSubtitle:
@@ -693,7 +697,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       },
       platforms: { term: "Piattaforme", value: "iOS, Android" },
       price: { term: "Prezzo", value: "Gratis, con piani a pagamento" },
-      languages: { term: "Lingue dell'app", value: "18" },
+      languages: { term: "Lingue dell'app", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "Sede", value: "Istanbul, Turchia" },
       tagline: { term: "Slogan", value: "Incontra attraverso le domande" },
       website: { term: "Sito", value: "quloapp.com" },
@@ -702,7 +706,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo è un'app di incontri in cui ci si conosce rispondendo a delle domande invece di scorrere i profili. Con il piano gratuito ogni persona scrive da 2 a 4 domande a risposta multipla su di sé, e fino a 10 con un piano a pagamento, quattro opzioni ciascuna e una segnata come giusta.",
       "Per arrivare a te bisogna indovinare tutte quelle domande: basta un errore e il match non c'è. Quando una domanda è difficile da indovinare si possono comprare degli indizi dentro l'app. Nient'altro viene misurato: niente percentuali, niente classifiche, nessun punteggio di compatibilità.",
-      "Qulo funziona su iOS e Android. quloapp.com è un sito di presentazione, non una versione web dell'app. L'interfaccia è in 18 lingue e la libreria di domande suggerite dentro l'app ne copre 10.",
+      `Qulo funziona su iOS e Android. quloapp.com è un sito di presentazione, non una versione web dell'app. L'interfaccia è in ${LANGUAGE_COUNT} lingue e la libreria di domande suggerite dentro l'app le copre tutte.`,
     ],
     logosHeading: "Loghi",
     logosSubtitle:
@@ -762,7 +766,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       category: { term: "カテゴリー", value: "質問で出会うデーティングアプリ" },
       platforms: { term: "対応OS", value: "iOS、Android" },
       price: { term: "料金", value: "無料、有料プランあり" },
-      languages: { term: "アプリの対応言語", value: "18言語" },
+      languages: { term: "アプリの対応言語", value: `${LANGUAGE_COUNT}言語` },
       basedIn: { term: "拠点", value: "トルコ・イスタンブール" },
       tagline: { term: "タグライン", value: "質問で出会う" },
       website: { term: "ウェブサイト", value: "quloapp.com" },
@@ -771,7 +775,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Quloは、スワイプではなく質問に答えることで人と出会うデーティングアプリです。無料プランでは自分について選択式の質問を2〜4問、有料プランなら最大10問まで用意し、それぞれ四つの選択肢のうち一つを正解として設定します。",
       "あなたに届くには、その質問すべてに正解しなければなりません。一問でも間違えればマッチは成立しません。推測が難しい質問には、アプリ内でヒントを購入できます。それ以外に測られるものはなく、パーセンテージも順位も相性スコアもありません。",
-      "QuloはiOSとAndroidで動きます。quloapp.comは紹介用のサイトで、アプリのウェブ版ではありません。画面表示は18言語に対応し、アプリ内の質問例のライブラリはそのうち18言語をカバーしています。",
+      `QuloはiOSとAndroidで動きます。quloapp.comは紹介用のサイトで、アプリのウェブ版ではありません。画面表示は${LANGUAGE_COUNT}言語に対応し、アプリ内の質問例のライブラリもそのすべてをカバーしています。`,
     ],
     logosHeading: "ロゴ",
     logosSubtitle:
@@ -828,7 +832,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       category: { term: "분류", value: "질문으로 만나는 데이팅 앱" },
       platforms: { term: "지원 플랫폼", value: "iOS, Android" },
       price: { term: "가격", value: "무료, 유료 플랜 있음" },
-      languages: { term: "앱 지원 언어", value: "16개" },
+      languages: { term: "앱 지원 언어", value: `${LANGUAGE_COUNT}개` },
       basedIn: { term: "거점", value: "터키 이스탄불" },
       tagline: { term: "태그라인", value: "질문으로 만남" },
       website: { term: "웹사이트", value: "quloapp.com" },
@@ -837,7 +841,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo는 스와이프가 아니라 질문에 답하며 사람을 만나는 데이팅 앱입니다. 무료 플랜에서는 자기 자신에 대한 객관식 질문을 2~4개, 유료 플랜에서는 최대 10개까지 쓰고, 질문마다 보기를 네 개 두어 그중 하나를 정답으로 지정합니다.",
       "누군가 나에게 닿으려면 그 질문을 모두 맞혀야 합니다. 하나라도 틀리면 매칭은 이루어지지 않습니다. 맞히기 어려운 질문에는 앱 안에서 힌트를 살 수 있습니다. 그 밖에 측정되는 것은 없습니다. 백분율도, 순위도, 궁합 점수도 없습니다.",
-      "Qulo는 iOS와 Android에서 작동합니다. quloapp.com은 소개용 사이트이며 앱의 웹 버전이 아닙니다. 화면은 18개 언어를 지원하고, 앱 안의 추천 질문 라이브러리는 그중 18개 언어를 담고 있습니다.",
+      `Qulo는 iOS와 Android에서 작동합니다. quloapp.com은 소개용 사이트이며 앱의 웹 버전이 아닙니다. 화면은 ${LANGUAGE_COUNT}개 언어를 지원하고, 앱 안의 추천 질문 라이브러리도 그 언어를 모두 담고 있습니다.`,
     ],
     logosHeading: "로고",
     logosSubtitle:
@@ -889,7 +893,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       category: { term: "类别", value: "以问答配对的交友应用" },
       platforms: { term: "平台", value: "iOS、Android" },
       price: { term: "价格", value: "免费，另有付费方案" },
-      languages: { term: "应用语言", value: "16 种" },
+      languages: { term: "应用语言", value: `${LANGUAGE_COUNT} 种` },
       basedIn: { term: "所在地", value: "土耳其伊斯坦布尔" },
       tagline: { term: "标语", value: "通过问题认识" },
       website: { term: "网站", value: "quloapp.com" },
@@ -898,7 +902,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo 是一款靠答题而不是滑动来认识人的交友应用。免费方案下，每个人为自己写 2 到 4 道选择题，付费方案最多 10 道；每题四个选项，其中一个标为正确答案。",
       "别人要走到你面前，必须把这些题全部答对；错一道就没有配对。遇到难猜的题，可以在应用内购买提示。除此之外不再衡量任何东西：没有百分比，没有排名，也没有所谓的契合度分数。",
-      "Qulo 支持 iOS 和 Android。quloapp.com 是介绍用的网站，不是应用的网页版。界面提供 18 种语言，应用内的推荐题库覆盖其中 10 种。",
+      `Qulo 支持 iOS 和 Android。quloapp.com 是介绍用的网站，不是应用的网页版。界面提供 ${LANGUAGE_COUNT} 种语言，应用内的推荐题库覆盖全部这些语言。`,
     ],
     logosHeading: "Logo",
     logosSubtitle: "点击可在新标签页打开 SVG 文件，完整文件列表见下方。",
@@ -947,7 +951,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       category: { term: "Categorie", value: "Datingapp op basis van vragen" },
       platforms: { term: "Platforms", value: "iOS, Android" },
       price: { term: "Prijs", value: "Gratis, met betaalde abonnementen" },
-      languages: { term: "Talen in de app", value: "18" },
+      languages: { term: "Talen in de app", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "Gevestigd in", value: "Istanbul, Turkije" },
       tagline: { term: "Slogan", value: "Ontmoet via vragen" },
       website: { term: "Website", value: "quloapp.com" },
@@ -956,7 +960,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo is een datingapp waarin mensen elkaar leren kennen door vragen te beantwoorden in plaats van te swipen. In het gratis plan schrijft iedereen 2 tot 4 meerkeuzevragen over zichzelf, en met een betaald abonnement tot 10, met vier opties per vraag en één als juist gemarkeerd.",
       "Wie jou wil bereiken, moet al die vragen goed beantwoorden; één fout antwoord en er is geen match. Is een vraag lastig te raden, dan kun je in de app hints kopen. Verder wordt er niets gemeten: geen percentage, geen ranglijst, geen compatibiliteitscijfer.",
-      "Qulo draait op iOS en Android. quloapp.com is een informatiesite, geen webversie van de app. De interface is er in 18 talen en de bibliotheek met voorbeeldvragen in de app dekt er 10 van.",
+      `Qulo draait op iOS en Android. quloapp.com is een informatiesite, geen webversie van de app. De interface is er in ${LANGUAGE_COUNT} talen en de bibliotheek met voorbeeldvragen in de app dekt ze allemaal.`,
     ],
     logosHeading: "Logo's",
     logosSubtitle:
@@ -1019,7 +1023,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       },
       platforms: { term: "Platformy", value: "iOS, Android" },
       price: { term: "Cena", value: "Za darmo, z planami płatnymi" },
-      languages: { term: "Języki aplikacji", value: "18" },
+      languages: { term: "Języki aplikacji", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "Siedziba", value: "Stambuł, Turcja" },
       tagline: { term: "Hasło", value: "Poznawaj przez pytania" },
       website: { term: "Strona", value: "quloapp.com" },
@@ -1028,7 +1032,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo to aplikacja randkowa, w której ludzie poznają się przez odpowiadanie na pytania, a nie przez przesuwanie. W planie darmowym każdy pisze o sobie od 2 do 4 pytań wielokrotnego wyboru, a w planie płatnym nawet 10, po cztery odpowiedzi w każdym, z jedną oznaczoną jako poprawna.",
       "Żeby do ciebie dotrzeć, ktoś musi odpowiedzieć poprawnie na wszystkie te pytania; jeden błąd i dopasowania nie ma. Gdy pytanie trudno zgadnąć, w aplikacji można kupić podpowiedzi. Poza tym nic nie jest mierzone: żadnych procentów, rankingów ani wskaźnika dopasowania.",
-      "Qulo działa na iOS i Androidzie. quloapp.com to strona informacyjna, a nie wersja webowa aplikacji. Interfejs jest w 18 językach, a biblioteka podpowiadanych pytań w aplikacji obejmuje 10 z nich.",
+      `Qulo działa na iOS i Androidzie. quloapp.com to strona informacyjna, a nie wersja webowa aplikacji. Interfejs jest w ${LANGUAGE_COUNT} językach, a biblioteka podpowiadanych pytań w aplikacji obejmuje je wszystkie.`,
     ],
     logosHeading: "Logo",
     logosSubtitle:
@@ -1088,7 +1092,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       category: { term: "Kategori", value: "Dejtingapp byggd på frågor" },
       platforms: { term: "Plattformar", value: "iOS, Android" },
       price: { term: "Pris", value: "Gratis, med betalda abonnemang" },
-      languages: { term: "Språk i appen", value: "18" },
+      languages: { term: "Språk i appen", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "Bas", value: "Istanbul, Turkiet" },
       tagline: { term: "Slogan", value: "Träffas genom frågor" },
       website: { term: "Webbplats", value: "quloapp.com" },
@@ -1097,7 +1101,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo är en dejtingapp där man lär känna varandra genom att svara på frågor i stället för att svepa. I gratisplanen skriver var och en 2 till 4 flervalsfrågor om sig själv, och upp till 10 med ett betalt abonnemang, fyra alternativ per fråga och ett markerat som rätt.",
       "Den som vill nå fram till dig måste svara rätt på varenda fråga; ett enda fel svar och det blir ingen matchning. Är en fråga svår att gissa går det att köpa ledtrådar i appen. Något annat mäts inte: ingen procentsats, ingen rangordning, inget kompatibilitetsvärde.",
-      "Qulo finns för iOS och Android. quloapp.com är en informationssida, inte en webbversion av appen. Gränssnittet finns på 18 språk, och biblioteket med föreslagna frågor inne i appen täcker 10 av dem.",
+      `Qulo finns för iOS och Android. quloapp.com är en informationssida, inte en webbversion av appen. Gränssnittet finns på ${LANGUAGE_COUNT} språk, och biblioteket med föreslagna frågor inne i appen täcker alla.`,
     ],
     logosHeading: "Logotyper",
     logosSubtitle:
@@ -1157,7 +1161,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
       category: { term: "श्रेणी", value: "सवालों पर आधारित डेटिंग ऐप" },
       platforms: { term: "प्लेटफ़ॉर्म", value: "iOS, Android" },
       price: { term: "कीमत", value: "मुफ़्त, सशुल्क प्लान भी" },
-      languages: { term: "ऐप की भाषाएँ", value: "18" },
+      languages: { term: "ऐप की भाषाएँ", value: String(LANGUAGE_COUNT) },
       basedIn: { term: "ठिकाना", value: "इस्तांबुल, तुर्की" },
       tagline: { term: "टैगलाइन", value: "सवालों से मिलें" },
       website: { term: "वेबसाइट", value: "quloapp.com" },
@@ -1166,7 +1170,7 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
     aboutParagraphs: [
       "Qulo एक डेटिंग ऐप है जिसमें लोग स्वाइप करके नहीं, सवालों के जवाब देकर एक-दूसरे से मिलते हैं। मुफ़्त प्लान में हर कोई अपने बारे में 2 से 4 बहुविकल्पीय सवाल लिखता है और सशुल्क प्लान में 10 तक; हर सवाल में चार विकल्प होते हैं और एक सही चिह्नित होता है।",
       "आप तक पहुँचने के लिए सामने वाले को वे सारे सवाल सही करने होते हैं; एक भी गलत हुआ तो मैच नहीं होता। जिस सवाल का अंदाज़ा लगाना मुश्किल हो, उसके लिए ऐप में संकेत खरीदे जा सकते हैं। इसके अलावा कुछ नहीं आँका जाता — न प्रतिशत, न रैंकिंग, न कोई अनुकूलता स्कोर।",
-      "Qulo iOS और Android पर चलता है। quloapp.com एक परिचय वाली साइट है, ऐप का वेब संस्करण नहीं। इंटरफ़ेस 18 भाषाओं में है और ऐप के भीतर सुझाए गए सवालों की लाइब्रेरी उनमें से 18 भाषाओं को कवर करती है।",
+      `Qulo iOS और Android पर चलता है। quloapp.com एक परिचय वाली साइट है, ऐप का वेब संस्करण नहीं। इंटरफ़ेस ${LANGUAGE_COUNT} भाषाओं में है और ऐप के भीतर सुझाए गए सवालों की लाइब्रेरी उन सभी को कवर करती है।`,
     ],
     logosHeading: "लोगो",
     logosSubtitle:

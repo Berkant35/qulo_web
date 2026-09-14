@@ -1,4 +1,4 @@
-import type { Locale } from "@/lib/i18n/config";
+import { isLocale, type Locale } from "@/lib/i18n/config";
 
 /**
  * Yasal/kurumsal sayfalarin breadcrumb etiketleri (kisa bicim: "Privacy", "Privacy Policy" degil).
@@ -33,3 +33,12 @@ export const BREADCRUMB_LABELS: Record<Locale, BreadcrumbLabels> = {
   th: { privacy: "ความเป็นส่วนตัว", terms: "ข้อกำหนด", guidelines: "กฎของชุมชน", safety: "ความปลอดภัย", about: "เกี่ยวกับ" },
   id: { privacy: "Privasi", terms: "Ketentuan", guidelines: "Pedoman", safety: "Keamanan", about: "Tentang" },
 };
+
+/**
+ * Route params arrive as `string`. Every generated page passes a real locale,
+ * but the type does not say so; an unknown code reads English (the x-default)
+ * instead of throwing on an undefined map entry.
+ */
+export function breadcrumbLabelsFor(locale: string): BreadcrumbLabels {
+  return BREADCRUMB_LABELS[isLocale(locale) ? locale : "en"];
+}

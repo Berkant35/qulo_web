@@ -39,11 +39,12 @@ function getLabels(locale: string) {
  * "AI question suggestions" was removed: nothing calls a model at request
  * time. The feature reads a pre-built `ai_question_bank` table, so it is a
  * library of ready-made questions written with AI in advance — which is what
- * the bullet now says. It currently covers 10 of the app's 16 languages.
+ * the bullet now says. It covers all 18 of the app's languages (live table
+ * checked 2026-09-14: every locale has 369+ rows).
  */
 const FEATURES_FREE: Record<string, string[]> = {
   tr: ["2-4 soru oluşturma", "Günlük 10 eşleşme keşfi", "Mesajlaşma", "Temel filtreleme", "18 dil desteği"],
-  en: ["Create 2-4 questions", "10 daily match discoveries", "Messaging", "Basic filters", "16 language support"],
+  en: ["Create 2-4 questions", "10 daily match discoveries", "Messaging", "Basic filters", "18 language support"],
   de: ["2-4 Fragen erstellen", "10 Matches pro Tag", "Messaging", "Grundfilter", "18 Sprachen"],
   fr: ["Créer 2-4 questions", "10 découvertes par jour", "Messagerie", "Filtres de base", "18 langues"],
   es: ["Crear 2-4 preguntas", "10 descubrimientos diarios", "Mensajería", "Filtros básicos", "18 idiomas"],

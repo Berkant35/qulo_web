@@ -3,16 +3,17 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { LanguageSelect } from "./LanguageSelect";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { NeonButton } from "./NeonButton";
-import { contentPath } from "@/lib/i18n/config";
+import { contentPath, localeFromPathname } from "@/lib/i18n/config";
 import { STORE_REDIRECT } from "@/lib/constants/links";
 
 export function Navbar() {
   const t = useTranslations("nav");
   const pathname = usePathname();
 
-  const locale = pathname.split("/")[1] || "tr";
+  const locale = localeFromPathname(pathname);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -76,9 +77,13 @@ export function Navbar() {
 
           {/* Right side */}
           <div className="flex items-center gap-4">
-            {/* 18 dil 375px'te logo ve indirme butonunu ekran disina itiyor; mobilde dil secimi altbilgide. */}
+            {/* 18 inline links push the logo and the download button off a 375px
+                screen, and not every page has a footer: phones get a select. */}
             <div className="hidden sm:block">
               <LanguageSwitcher />
+            </div>
+            <div className="sm:hidden">
+              <LanguageSelect />
             </div>
             {/* The only store link above the fold, so it must be right in the
                 first paint: /go/app reads the User-Agent at the edge. Choosing

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { BREADCRUMB_LABELS } from "@/lib/constants/breadcrumbLabels";
+import { breadcrumbLabelsFor } from "@/lib/constants/breadcrumbLabels";
 import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { rtlLocales, type Locale } from "@/lib/i18n/config";
+import { rtlLocales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { alternateLanguages } from "@/lib/seo/alternates";
@@ -52,7 +52,7 @@ export default async function CommunityGuidelinesPage({
         <div className="max-w-2xl mx-auto">
           <Breadcrumb
             locale={locale}
-            items={[{ label: BREADCRUMB_LABELS[locale as Locale].guidelines }]}
+            items={[{ label: breadcrumbLabelsFor(locale).guidelines }]}
           />
 
           <h1 className="text-4xl font-bold text-qulo-purple mb-3">

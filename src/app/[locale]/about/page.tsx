@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import type { Locale } from "@/lib/i18n/config";
-import { BREADCRUMB_LABELS } from "@/lib/constants/breadcrumbLabels";
-import { JsonLd } from "@/components/shared/JsonLd";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { breadcrumbLabelsFor } from "@/lib/constants/breadcrumbLabels";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { Navbar } from "@/components/shared/Navbar";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
@@ -80,7 +79,7 @@ export default async function AboutPage({
 
           <Breadcrumb
             locale={locale}
-            items={[{ label: BREADCRUMB_LABELS[locale as Locale].about }]}
+            items={[{ label: breadcrumbLabelsFor(locale).about }]}
           />
 
           {/* Hero Section */}

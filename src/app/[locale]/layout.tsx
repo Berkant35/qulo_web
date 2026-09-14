@@ -88,7 +88,7 @@ export default async function LocaleLayout({
       featureList: [
         "Question-based matching",
         "Ready-made question suggestions",
-        "16 language support",
+        "18 language support",
         "Quiz dating",
         "Real-time chat",
         "Voice messages in chat",

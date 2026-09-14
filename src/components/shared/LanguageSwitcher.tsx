@@ -3,36 +3,36 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { isContentLocale, isContentRoute, locales } from "@/lib/i18n/config";
+import { locales, localeFromPathname, switchLocalePath } from "@/lib/i18n/config";
 
-/** Strips the leading locale segment exactly; a 2-letter regex would mis-cut a future `pt-BR`. */
-const LOCALE_PREFIX = new RegExp(`^/(?:${locales.join("|")})(?=/|$)`);
+interface LanguageSwitcherProps {
+  /**
+   * The header owns the one `<nav aria-label="Language">` landmark. The footer
+   * copy passes `false` and renders a labelled group instead — two landmarks
+   * with the same name are announced twice by screen readers.
+   */
+  landmark?: boolean;
+}
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ landmark = true }: LanguageSwitcherProps) {
   const pathname = usePathname();
   const t = useTranslations("footer");
-
-  // Extract current locale from pathname
-  const currentLocale = locales.find((loc) => pathname.startsWith(`/${loc}`)) ?? "tr";
-
-  function buildLocalePath(locale: string) {
-    // Replace the leading locale segment
-    const withoutLocale = pathname.replace(LOCALE_PREFIX, "") || "/";
-    // Structured content is not translated into every UI language; send those
-    // locales to their home page instead of a URL that was never generated.
-    if (isContentRoute(withoutLocale) && !isContentLocale(locale)) return `/${locale}/`;
-    return `/${locale}${withoutLocale}`;
-  }
+  const currentLocale = localeFromPathname(pathname);
+  const Wrapper = landmark ? "nav" : "div";
 
   return (
-    <nav aria-label={t("language")} className="flex flex-wrap items-center gap-1">
+    <Wrapper
+      aria-label={t("language")}
+      role={landmark ? undefined : "group"}
+      className="flex flex-wrap items-center gap-1"
+    >
       {locales.map((locale, i) => (
         <span key={locale} className="flex items-center gap-1">
           {i > 0 && (
             <span aria-hidden="true" className="text-white/20 text-xs select-none">|</span>
           )}
           <Link
-            href={buildLocalePath(locale)}
+            href={switchLocalePath(pathname, locale)}
             lang={locale}
             hrefLang={locale}
             aria-current={locale === currentLocale ? "true" : undefined}
@@ -46,6 +46,6 @@ export function LanguageSwitcher() {
           </Link>
         </span>
       ))}
-    </nav>
+    </Wrapper>
   );
 }

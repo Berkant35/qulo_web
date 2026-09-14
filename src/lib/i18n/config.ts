@@ -43,3 +43,26 @@ export function contentPath(locale: string, pathAfterLocale: string): string {
   const target = isContentRoute(pathAfterLocale) && !isContentLocale(locale) ? "en" : locale;
   return `/${target}${pathAfterLocale}`;
 }
+
+export const isLocale = (value: string): value is Locale =>
+  (locales as readonly string[]).includes(value);
+
+/** Leading locale segment, matched exactly: `/th/about` → th; `/thai/…` is not Thai. */
+const LOCALE_PREFIX = new RegExp(`^/(${locales.join("|")})(?=/|$)`);
+
+export function localeFromPathname(pathname: string): Locale {
+  const code = LOCALE_PREFIX.exec(pathname)?.[1];
+  return code !== undefined && isLocale(code) ? code : defaultLocale;
+}
+
+/**
+ * The same page in another locale (language switcher). Structured content is
+ * not translated into every UI language; from those pages a UI-only locale goes
+ * to its home instead of a URL that was never generated. The home form carries
+ * the trailing slash the site is exported with.
+ */
+export function switchLocalePath(pathname: string, target: Locale): string {
+  const pathAfterLocale = pathname.replace(LOCALE_PREFIX, "") || "/";
+  if (isContentRoute(pathAfterLocale) && !isContentLocale(target)) return `/${target}/`;
+  return `/${target}${pathAfterLocale}`;
+}

@@ -14,4 +14,6 @@ function readList(name) {
 
 export const locales = readList("locales");
 export const contentLocales = readList("contentLocales");
-export const defaultLocale = source.match(/export const defaultLocale: Locale = "([a-z-]+)";/)?.[1] ?? "tr";
+const defaultMatch = source.match(/export const defaultLocale: Locale = "([a-z-]+)";/);
+if (!defaultMatch) throw new Error("config.ts icinde 'defaultLocale' bulunamadi");
+export const defaultLocale = defaultMatch[1];

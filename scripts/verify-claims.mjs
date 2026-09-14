@@ -29,6 +29,7 @@
  */
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, extname } from "node:path";
+import { locales } from "./lib/locales.mjs";
 
 const ROOTS = ["src"];
 const EXTENSIONS = new Set([".ts", ".tsx", ".json"]);
@@ -113,14 +114,23 @@ const flagged = (line) =>
   staleLanguageCount(line);
 
 /**
- * Second claim: how many languages the app speaks. 16 was true until 2026-09-14;
- * th/id made it 18 and the old number survived in 107 lines. Any two-digit
- * number next to a "languages" word that is not the current count fails.
+ * Second claim: how many languages the app speaks. The count is read from
+ * `src/lib/i18n/config.ts` (via lib/locales.mjs), so the 19th language moves
+ * the guard on its own. 16 was true until 2026-09-14; th/id made it 18 and the
+ * old number survived in 107 lines, four of them behind a singular "language",
+ * a Russian case ending and two CJK counters this pattern did not know.
+ *
+ * Latin words carry a trailing letter-fence: without it "dil" fires inside
+ * "dilek"/"dilemmas" and "talen" inside "talenten" (the fixtures pin this).
+ * Thai, Arabic, Devanagari and the CJK counters are left unfenced — no spaces,
+ * attached prefixes, combining marks.
  */
+const LATIN_LANGUAGE_WORDS =
+  "languages?|dil(?:de|i|den|e|ler|lerde|leri|lere)?|Sprachen|langues|idiomas|lingue|talen|język\\p{L}*|språk|bahasa";
 const LANGUAGE_WORD =
-  "(?:languages|dil(?:de|i)?|Sprachen|langues|idiomas|lingue|talen|język\\w*|språk|языках|لغة|言語|か国語|개 언어|种语言|種語言|भाषा\\w*|ภาษา|bahasa)";
-const LANGUAGE_COUNT_CLAIM = new RegExp(`(?<!\\d)(\\d{2})\\s*(?:\\p{L}+\\s+)?(?:の)?${LANGUAGE_WORD}`, "iu");
-const CURRENT_LANGUAGE_COUNT = 18;
+  `(?:(?:${LATIN_LANGUAGE_WORDS})(?!\\p{L})|язык\\p{L}*|لغة|لغات|言語|か国語|개 언어|种语言|種語言|भाषा|ภาษา)`;
+const LANGUAGE_COUNT_CLAIM = new RegExp(`(?<!\\d)(\\d{2})(?!\\d)\\s*(?:\\p{L}+\\s+)?(?:の)?${LANGUAGE_WORD}`, "iu");
+const CURRENT_LANGUAGE_COUNT = locales.length;
 const staleLanguageCount = (line) => {
   const m = LANGUAGE_COUNT_CLAIM.exec(line);
   return m !== null && Number(m[1]) !== CURRENT_LANGUAGE_COUNT;
@@ -138,8 +148,16 @@ const MUST_MATCH = [
   "คำถาม 2 ถึง 10 ข้อ", "สองถึงสิบคำถาม", "2 sampai 10 pertanyaan", "dua hingga sepuluh pertanyaan",
 ];
 
-const MUST_FLAG_LANGUAGE_COUNT = ["We support 16 different languages.", "16 farklı dilde", "16の言語", "16种语言", "Kami mendukung 16 bahasa", "รองรับ 16 ภาษา"];
-const MUST_NOT_FLAG_LANGUAGE_COUNT = ["We support 18 different languages.", "18 dilde", "рассчитан на 18 языках", "18 ภาษา"];
+const MUST_FLAG_LANGUAGE_COUNT = [
+  "We support 16 different languages.", "16 language support", "16 farklı dilde", "16 dil desteği",
+  "16 Sprachen", "in 16 talen", "Интерфейс переведён на 16 языков", "на 16 языках", "16の言語", "16种语言",
+  "Kami mendukung 16 bahasa", "รองรับ 16 ภาษา",
+];
+const MUST_NOT_FLAG_LANGUAGE_COUNT = [
+  "We support 18 different languages.", "18 language support", "18 dilde", "рассчитан на 18 языках", "18 ภาษา",
+  // Same letters, different word: a fence must stop "dil" and "talen" from matching inside these.
+  "12 farklı dilek", "80 talenten", "16 dilemmas",
+];
 
 const MUST_NOT_MATCH = [
   // The corrected wording, in a few languages.
@@ -183,7 +201,7 @@ function walk(dir) {
     readFileSync(path, "utf8")
       .split("\n")
       .forEach((line, i) => {
-        if (/^\s*(\*|\/\/)/.test(line)) return; // doc comments record the fix
+        if (/^\s*(\/\*\*?|\*|\/\/)/.test(line)) return; // doc comments record the fix; "BCP 47 language tag" is not a claim
         if (flagged(line)) {
           hits.push(`${path}:${i + 1} — ${line.trim().slice(0, 110)}`);
         }

@@ -151,7 +151,7 @@ export function Footer() {
               <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-600 mb-3">
                 {t("language")}
               </p>
-              <LanguageSwitcher />
+              <LanguageSwitcher landmark={false} />
             </div>
           </div>
         </div>
