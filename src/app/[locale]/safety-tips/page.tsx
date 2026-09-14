@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { BREADCRUMB_LABELS } from "@/lib/constants/breadcrumbLabels";
 import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { rtlLocales } from "@/lib/i18n/config";
+import { rtlLocales, type Locale } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { alternateLanguages } from "@/lib/seo/alternates";
 
-/** Per-locale breadcrumb label for the Safety Tips page */
-const SAFETY_LABELS: Record<string, string> = {
-  tr: "Güvenlik", en: "Safety", de: "Sicherheit", fr: "Sécurité", es: "Seguridad",
-  ar: "السلامة", ru: "Безопасность", pt: "Segurança", it: "Sicurezza", ja: "安全",
-  ko: "안전", zh: "安全", nl: "Veiligheid", pl: "Bezpieczeństwo", sv: "Säkerhet",
-  hi: "सुरक्षा",
-  th: "ความปลอดภัย", id: "Keamanan",
-};
 
 export async function generateMetadata({
   params,
@@ -58,7 +51,7 @@ export default async function SafetyTipsPage({
         <div className="max-w-2xl mx-auto">
           <Breadcrumb
             locale={locale}
-            items={[{ label: SAFETY_LABELS[locale] || SAFETY_LABELS.en }]}
+            items={[{ label: BREADCRUMB_LABELS[locale as Locale].safety }]}
           />
 
           <h1 className="text-4xl font-bold text-qulo-purple mb-3">

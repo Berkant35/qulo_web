@@ -15,13 +15,13 @@
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
+import { contentLocales } from "./lib/locales.mjs";
 
 const SEED_DIR = "../qulo-server/src/data/seed";
 const OUT = "src/lib/constants/exampleQuestions.ts";
 const PER_CATEGORY = 2;
 
-// = contentLocales (src/lib/i18n/config.ts): /questions yalniz icerik dillerinde uretilir, th/id blogu olu veri olurdu.
-const LOCALES = ["tr","en","de","fr","es","ar","ru","pt","it","ja","ko","zh","nl","pl","sv","hi"];
+const LOCALES = contentLocales; // tek kaynak: src/lib/i18n/config.ts
 
 /** Category order on the page — broad interest first, niche last. */
 const CATEGORIES = [

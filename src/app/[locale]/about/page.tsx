@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import type { Locale } from "@/lib/i18n/config";
+import { BREADCRUMB_LABELS } from "@/lib/constants/breadcrumbLabels";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
@@ -11,13 +13,6 @@ import { ogImages } from "@/lib/seo/openGraph";
 import { alternateLanguages } from "@/lib/seo/alternates";
 import { getAboutFaqs } from "@/lib/constants/faqs";
 
-/** Per-locale breadcrumb label for the About page */
-const ABOUT_LABELS: Record<string, string> = {
-  tr: "Hakkında", en: "About", de: "Über uns", fr: "À propos", es: "Acerca de",
-  ar: "حول", ru: "О нас", pt: "Sobre", it: "Chi siamo", ja: "概要",
-  ko: "소개", zh: "关于", nl: "Over ons", pl: "O nas", sv: "Om oss", hi: "के बारे में",
-  th: "เกี่ยวกับ", id: "Tentang",
-};
 
 export async function generateMetadata({
   params,
@@ -85,7 +80,7 @@ export default async function AboutPage({
 
           <Breadcrumb
             locale={locale}
-            items={[{ label: ABOUT_LABELS[locale] || ABOUT_LABELS.en }]}
+            items={[{ label: BREADCRUMB_LABELS[locale as Locale].about }]}
           />
 
           {/* Hero Section */}

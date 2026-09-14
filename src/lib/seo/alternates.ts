@@ -14,7 +14,9 @@ import { SITE_URL } from "@/lib/constants/metadata";
 export const X_DEFAULT_LOCALE = "en";
 
 /**
- * hreflang map for a page that exists in every locale.
+ * hreflang map for a page that exists in every UI locale (18): home, legal, help,
+ * pricing, about. Structured content uses `contentAlternateLanguages` (16) — picking
+ * the wrong one silently advertises URLs that are never generated.
  *
  * `pathAfterLocale` is everything after the locale segment, starting with a
  * slash, or an empty string for a locale home page:
@@ -39,7 +41,8 @@ export function contentAlternateLanguages(pathAfterLocale: string): Record<strin
   return buildAlternates(contentLocales, pathAfterLocale);
 }
 
-function buildAlternates(list: readonly string[], pathAfterLocale: string): Record<string, string> {
+/** Yalniz iki resmi liste gecebilir; rastgele bir dizi vermek derleme hatasidir. */
+function buildAlternates(list: typeof locales | typeof contentLocales, pathAfterLocale: string): Record<string, string> {
   const languages: Record<string, string> = {};
   for (const locale of list) {
     languages[locale] = `${SITE_URL}/${locale}${pathAfterLocale}`;

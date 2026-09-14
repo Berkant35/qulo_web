@@ -15,8 +15,9 @@
  */
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { contentLocales } from "./lib/locales.mjs";
 
-const LOCALES = ["tr","en","de","fr","es","ar","ru","pt","it","ja","ko","zh","nl","pl","sv","hi"];
+const LOCALES = contentLocales; // tek kaynak: src/lib/i18n/config.ts
 const DIR = "src/app/[locale]/glossary/_content";
 
 /** Evaluate the exported object literal without importing TypeScript. */

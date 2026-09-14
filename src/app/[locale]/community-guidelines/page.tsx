@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { BREADCRUMB_LABELS } from "@/lib/constants/breadcrumbLabels";
 import { Navbar } from "@/components/shared/Navbar";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { rtlLocales } from "@/lib/i18n/config";
+import { rtlLocales, type Locale } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { alternateLanguages } from "@/lib/seo/alternates";
 
-/** Per-locale breadcrumb label for the Community Guidelines page */
-const GUIDELINES_LABELS: Record<string, string> = {
-  tr: "Topluluk Kuralları", en: "Guidelines", de: "Richtlinien", fr: "Règles", es: "Normas",
-  ar: "إرشادات المجتمع", ru: "Правила", pt: "Regras", it: "Linee Guida", ja: "ガイドライン",
-  ko: "가이드라인", zh: "社区准则", nl: "Richtlijnen", pl: "Zasady", sv: "Regler",
-  hi: "दिशानिर्देश",
-  th: "กฎของชุมชน", id: "Pedoman",
-};
 
 export async function generateMetadata({
   params,
@@ -59,7 +52,7 @@ export default async function CommunityGuidelinesPage({
         <div className="max-w-2xl mx-auto">
           <Breadcrumb
             locale={locale}
-            items={[{ label: GUIDELINES_LABELS[locale] || GUIDELINES_LABELS.en }]}
+            items={[{ label: BREADCRUMB_LABELS[locale as Locale].guidelines }]}
           />
 
           <h1 className="text-4xl font-bold text-qulo-purple mb-3">

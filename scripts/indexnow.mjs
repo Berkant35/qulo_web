@@ -25,6 +25,7 @@
  */
 import { readFileSync, readdirSync } from "node:fs";
 import { execFileSync } from "node:child_process";
+import { locales as allLocales } from "./lib/locales.mjs";
 
 const HOST = "quloapp.com";
 const ORIGIN = `https://${HOST}`;
@@ -53,7 +54,7 @@ function urlsForChangedFiles(ref) {
   // shell would happily interpret metacharacters in it.
   const out = execFileSync("git", ["diff", "--name-only", ref, "HEAD"], { encoding: "utf8" });
   const files = out.split("\n").filter(Boolean);
-  const locales = ["en","tr","de","fr","es","ar","ru","pt","it","ja","ko","zh","nl","pl","sv","hi","th","id"];
+  const locales = allLocales; // tek kaynak: src/lib/i18n/config.ts
   const paths = new Set();
   for (const f of files) {
     // `_content/index.ts` is the barrel file, not a page. Without this it maps
