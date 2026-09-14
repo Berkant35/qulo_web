@@ -9,7 +9,9 @@
     "blog": "Blog",
     "help": "Pomoc",
     "features": "Funkcje",
-    "advice": "Porady"
+    "advice": "Porady",
+    "skipToContent": "Przejdź do treści",
+    "mainNavigation": "Nawigacja główna"
   },
   "hero": {
     "label": "Randki nowej generacji",

@@ -9,7 +9,9 @@
     "blog": "บล็อก",
     "help": "ช่วยเหลือ",
     "features": "ฟีเจอร์",
-    "advice": "คำแนะนำ"
+    "advice": "คำแนะนำ",
+    "skipToContent": "ข้ามไปยังเนื้อหา",
+    "mainNavigation": "เมนูหลัก"
   },
   "hero": {
     "label": "การเดตยุคใหม่",

@@ -11,6 +11,7 @@ import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { HOW_TO_GUIDES } from "@/lib/constants/howto";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -97,22 +98,6 @@ function formatTotalTime(iso: string, locale: string): string {
     pt: "min", it: "min", nl: "min", pl: "min", sv: "min", hi: "मिनट",
   };
   return `${minutes} ${unit[locale] || "min"}`;
-}
-
-/**
- * JSON-LD renderer — data sourced entirely from server-side static constants
- * (howto.ts) and route params validated by generateStaticParams against a fixed
- * list. No user input is serialized. This is the canonical Next.js pattern for
- * structured data and is identical to the approach used in /advice pages.
- */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
 }
 
 const LABELS: Record<

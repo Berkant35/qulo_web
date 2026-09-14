@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
-import { locales, rtlLocales, type Locale } from "@/lib/i18n/config";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import { locales, rtlLocales } from "@/lib/i18n/config";
 import { SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { alternateLanguages } from "@/lib/seo/alternates";
@@ -21,7 +21,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const seo = SEO[locale as Locale] || SEO.tr;
+  const seo = SEO[locale] || SEO.tr;
   const pageUrl = `${SITE_URL}/${locale}`;
   const ogLocale = OG_LOCALES[locale] || "en_US";
   const alternateOgLocales = locales
@@ -67,10 +67,11 @@ export default async function LocaleLayout({
   const { locale } = await params;
   setRequestLocale(locale);
   const messages = await getMessages();
+  const nav = await getTranslations("nav");
 
   const dir = rtlLocales.includes(locale) ? "rtl" : "ltr";
 
-  const seoData = SEO[locale as Locale] || SEO.en;
+  const seoData = SEO[locale] || SEO.en;
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -88,7 +89,7 @@ export default async function LocaleLayout({
       featureList: [
         "Question-based matching",
         "Ready-made question suggestions",
-        "18 language support",
+        `${locales.length} language support`,
         "Quiz dating",
         "Real-time chat",
         "Voice messages in chat",
@@ -99,7 +100,7 @@ export default async function LocaleLayout({
       "@type": "WebSite",
       name: SITE_NAME,
       url: SITE_URL,
-      inLanguage: locales as unknown as string[],
+      inLanguage: [...locales],
       potentialAction: {
         "@type": "SearchAction",
         target: {
@@ -132,7 +133,7 @@ export default async function LocaleLayout({
   ];
 
   return (
-    <RootHtml lang={locale} dir={dir}>
+    <RootHtml lang={locale} dir={dir} skipLabel={nav("skipToContent")}>
       <NextIntlClientProvider locale={locale} messages={messages}>
         {/* JSON-LD structured data — static server constants only, no user input */}
         <JsonLd data={jsonLd} />

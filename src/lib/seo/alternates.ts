@@ -3,7 +3,7 @@ import { SITE_URL } from "@/lib/constants/metadata";
 
 /**
  * The locale Google should show a visitor whose language matches none of the
- * sixteen we publish.
+ * eighteen we publish.
  *
  * English, matching the apex redirect: a browser that asked for none of our
  * languages is by definition not asking for Turkish either, and English is the

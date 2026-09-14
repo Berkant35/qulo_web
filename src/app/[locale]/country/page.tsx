@@ -9,6 +9,7 @@ import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metad
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { COUNTRIES } from "@/lib/constants/countries";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 export function generateStaticParams() {
   return contentLocales.map((locale) => ({ locale }));
@@ -66,17 +67,6 @@ const LABELS: Record<string, { heading: string; subtitle: string; breadcrumb: st
   sv: { heading: "Dejting efter land", subtitle: "Traffa manniskor med Qulo i lander varlden over.", breadcrumb: "Lander" },
   hi: { heading: "देश के अनुसार डेटिंग", subtitle: "दुनिया भर के देशों में Qulo से लोगों से मिलें।", breadcrumb: "देश" },
 };
-
-/** JSON-LD helper — uses only static server constants, no user input */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      /* Static server constants only — no user input, safe from XSS */
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
 
 export default async function CountryIndexPage({
   params,

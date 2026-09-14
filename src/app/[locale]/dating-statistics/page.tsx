@@ -26,6 +26,7 @@ import {
 } from "@/lib/constants/stats";
 import { SourceLine } from "@/components/shared/SourceLine";
 import { SourceList } from "@/components/shared/SourceList";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 const PAGE_SLUG = "dating-statistics";
 const PUBLISHED_AT = "2026-04-16";
@@ -73,22 +74,6 @@ export async function generateMetadata({
       images: ogImages(),
     },
   };
-}
-
-/**
- * JSON-LD renderer — only static trusted content from constants.
- * Uses dangerouslySetInnerHTML because Next.js requires it for
- * application/ld+json scripts. Content is fully static (no user input):
- * derived from constants/stats.ts + constants/metadata.ts + locale slug.
- */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
 }
 
 /** Per-locale UI strings — kept inline for simple maintenance */

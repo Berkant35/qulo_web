@@ -9,6 +9,7 @@ import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metad
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { HOW_TO_GUIDES } from "@/lib/constants/howto";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 export function generateStaticParams() {
   return contentLocales.map((locale) => ({ locale }));
@@ -150,22 +151,6 @@ function formatTotalTime(iso: string, locale: string): string {
     pt: "min", it: "min", nl: "min", pl: "min", sv: "min", hi: "मिनट",
   };
   return `${minutes} ${unit[locale] || "min"}`;
-}
-
-/**
- * JSON-LD structured data renderer — the source data is built entirely from
- * server-side static constants (howto.ts, metadata.ts) and route params that
- * are validated against a fixed list in generateStaticParams. No user input is
- * serialized. This is the standard pattern for SEO rich snippets.
- */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
 }
 
 export default async function HowToIndexPage({

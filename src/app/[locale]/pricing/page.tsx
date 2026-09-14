@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer/Footer";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { FAQ, type FAQItem } from "@/components/shared/FAQ";
 import { StoreButtons } from "@/components/hero/StoreButtons";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { locales } from "@/lib/i18n/config";
 import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
@@ -104,7 +105,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  * Enables Google rich snippets with price + star rating in search results.
  */
 function ProductJsonLd() {
-  const json = JSON.stringify({
+  const data = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: "Qulo Dating App",
@@ -116,14 +117,8 @@ function ProductJsonLd() {
       { "@type": "Offer", name: "Plus", price: "4.99", priceCurrency: "USD", availability: "https://schema.org/InStock" },
       { "@type": "Offer", name: "Premium", price: "9.99", priceCurrency: "USD", availability: "https://schema.org/InStock" },
     ],
-  });
-  return (
-    <script
-      type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: json }}
-    />
-  );
+  };
+  return <JsonLd data={data} />;
 }
 
 export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {

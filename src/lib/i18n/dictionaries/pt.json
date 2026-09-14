@@ -9,7 +9,9 @@
     "blog": "Blog",
     "help": "Ajuda",
     "features": "Recursos",
-    "advice": "Conselhos"
+    "advice": "Conselhos",
+    "skipToContent": "Pular para o conteúdo",
+    "mainNavigation": "Navegação principal"
   },
   "hero": {
     "label": "Encontros de nova geração",

@@ -9,7 +9,9 @@
     "blog": "Blog",
     "help": "Help",
     "features": "Functies",
-    "advice": "Advies"
+    "advice": "Advies",
+    "skipToContent": "Ga naar de inhoud",
+    "mainNavigation": "Hoofdnavigatie"
   },
   "hero": {
     "label": "Next-gen dating",

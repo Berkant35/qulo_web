@@ -9,7 +9,9 @@
     "blog": "Blog",
     "help": "Bantuan",
     "features": "Fitur",
-    "advice": "Saran"
+    "advice": "Saran",
+    "skipToContent": "Lewati ke konten",
+    "mainNavigation": "Navigasi utama"
   },
   "hero": {
     "label": "Kencan generasi baru",

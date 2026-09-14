@@ -7,7 +7,7 @@
  *    gtag.js and the dashboard just shows zero, with no error anywhere.
  * 2. Every locale has the consent banner strings and says so in its privacy
  *    policy — the banner must never render a raw key, and the policy must
- *    disclose Google Analytics in all 16 languages, not only in tr/en.
+ *    disclose Google Analytics in every dictionary language, not only in tr/en.
  * 3. The built HTML does not reference gtag.js — it may only be injected at
  *    runtime after consent. A <script src> in the HTML would load it for
  *    everyone, consent or not.

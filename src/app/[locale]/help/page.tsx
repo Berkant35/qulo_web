@@ -69,7 +69,6 @@ export default async function HelpPage({
           ))}
 
           {isContentLocale(locale) && (
-  
             <section className="mt-4" aria-labelledby="help-answers">
               <h2
                 id="help-answers"

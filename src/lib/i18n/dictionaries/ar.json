@@ -9,7 +9,9 @@
     "blog": "المدونة",
     "help": "مساعدة",
     "features": "ميزات",
-    "advice": "نصائح"
+    "advice": "نصائح",
+    "skipToContent": "تخطي إلى المحتوى",
+    "mainNavigation": "التنقل الرئيسي"
   },
   "hero": {
     "label": "مواعدة الجيل الجديد",

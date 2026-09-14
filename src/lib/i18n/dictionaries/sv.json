@@ -9,7 +9,9 @@
     "blog": "Blogg",
     "help": "Hjälp",
     "features": "Funktioner",
-    "advice": "Råd"
+    "advice": "Råd",
+    "skipToContent": "Hoppa till innehållet",
+    "mainNavigation": "Huvudnavigering"
   },
   "hero": {
     "label": "Nästa generationens dejting",

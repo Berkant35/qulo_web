@@ -9,6 +9,7 @@ import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metad
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { CITIES } from "@/lib/constants/cities";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 export function generateStaticParams() {
   return contentLocales.map((locale) => ({ locale }));
@@ -66,17 +67,6 @@ const LABELS: Record<string, { heading: string; subtitle: string }> = {
   sv: { heading: "Dejting i stader", subtitle: "Traffa manniskor med Qulo i varldens storsta stader." },
   hi: { heading: "शहरों में डेटिंग", subtitle: "दुनिया के सबसे बड़े शहरों में Qulo से लोगों से मिलें।" },
 };
-
-/** JSON-LD helper — uses only static server constants, no user input */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      /* Static server constants only — no user input, safe from XSS */
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
 
 export default async function DatingIndexPage({
   params,

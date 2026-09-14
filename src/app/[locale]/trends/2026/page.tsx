@@ -21,6 +21,7 @@ import {
 } from "@/lib/constants/stats";
 import { SourceLine } from "@/components/shared/SourceLine";
 import { SourceList } from "@/components/shared/SourceList";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 const PAGE_SLUG = "trends/2026";
 const PUBLISHED_AT = "2026-01-15";
@@ -80,21 +81,6 @@ export async function generateMetadata({
       images: ogImages(),
     },
   };
-}
-
-/**
- * JSON-LD renderer — only static trusted content from constants.
- * Follows the same pattern as dating-statistics/page.tsx: content is fully
- * static (no user input), derived from constants + locale slug.
- */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
 }
 
 interface TrendCopy {

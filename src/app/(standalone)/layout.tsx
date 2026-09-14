@@ -18,5 +18,9 @@ export default function StandaloneLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <RootHtml lang="en">{children}</RootHtml>;
+  return (
+    <RootHtml lang="en" skipLabel="Skip to content">
+      {children}
+    </RootHtml>
+  );
 }

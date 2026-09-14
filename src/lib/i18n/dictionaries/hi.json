@@ -9,7 +9,9 @@
     "blog": "ब्लॉग",
     "help": "सहायता",
     "features": "विशेषताएं",
-    "advice": "सलाह"
+    "advice": "सलाह",
+    "skipToContent": "सामग्री पर जाएँ",
+    "mainNavigation": "मुख्य नेविगेशन"
   },
   "hero": {
     "label": "अगली पीढ़ी की डेटिंग",

@@ -47,3 +47,17 @@ test("switchLocalePath: ana sayfa her bicimde trailingSlash'li ana sayfaya gider
   assert.equal(switchLocalePath("/tr/", "th"), "/th/");
   assert.equal(switchLocalePath("/", "th"), "/th/");
 });
+
+import { contentPath } from "../src/lib/i18n/config.ts";
+
+/**
+ * Menü/altbilgi linkleri: icerik rotasi, icerigi olmayan dilde (th/id) Ingilizce
+ * surume gider; diger her yol ziyaretcinin dilinde kalir. (Dil secicinin aksine
+ * ana sayfaya degil, x-default'a — link metni "Blog" diyorsa blog acilmali.)
+ */
+test("contentPath: icerik rotasi UI-only dilde /en'e, digerleri kendi dilinde", () => {
+  assert.equal(contentPath("th", "/blog"), "/en/blog");
+  assert.equal(contentPath("id", "/glossary/ghosting"), "/en/glossary/ghosting");
+  assert.equal(contentPath("th", "/about"), "/th/about");
+  assert.equal(contentPath("de", "/blog"), "/de/blog");
+});

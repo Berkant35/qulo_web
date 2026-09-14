@@ -9,7 +9,9 @@
     "blog": "博客",
     "help": "帮助",
     "features": "功能",
-    "advice": "建议"
+    "advice": "建议",
+    "skipToContent": "跳至内容",
+    "mainNavigation": "主导航"
   },
   "hero": {
     "label": "新一代交友",

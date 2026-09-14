@@ -9,6 +9,7 @@ import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metad
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { BLOG_POSTS } from "@/lib/constants/blog";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 export function generateStaticParams() {
   return contentLocales.map((locale) => ({ locale }));
@@ -72,16 +73,6 @@ function formatDate(iso: string, locale: string): string {
   } catch {
     return iso;
   }
-}
-
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      /* Static server constants only — no user input */
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
 }
 
 export default async function BlogIndexPage({

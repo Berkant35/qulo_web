@@ -6,12 +6,13 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { contentLocales } from "@/lib/i18n/config";
+import { contentLocales, locales } from "@/lib/i18n/config";
 import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { COUNTRIES, type Country } from "@/lib/constants/countries";
 import { CITIES } from "@/lib/constants/cities";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 /* ------------------------------------------------------------------ */
 /*  Static params — 16 contentLocales x 10 countries = 160 pages              */
@@ -347,16 +348,6 @@ export async function generateMetadata({
 /* ------------------------------------------------------------------ */
 /*  JSON-LD helper — static server constants only, no user input       */
 /* ------------------------------------------------------------------ */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      /* Static server constants only — no user input */
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
-
 /* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
@@ -517,7 +508,7 @@ export default async function CountryDetailPage({
               </p>
             </div>
             <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 text-center">
-              <p className="text-3xl font-bold text-qulo-green mb-1">16</p>
+              <p className="text-3xl font-bold text-qulo-green mb-1">{locales.length}</p>
               <p className="text-xs text-qulo-text-secondary">
                 {statsLabels.languages}
               </p>

@@ -122,7 +122,7 @@
   conditions = {Language = ["id"]}
 
 # Anything we do not publish a language for. English rather than Turkish:
-# a visitor whose browser asked for none of the sixteen is, by definition, not
+# a visitor whose browser asked for none of the eighteen is, by definition, not
 # asking for Turkish either, and English is the one most likely to be readable.
 [[redirects]]
   from = "/"

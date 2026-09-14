@@ -9,7 +9,9 @@
     "blog": "Blog",
     "help": "Aiuto",
     "features": "Funzionalità",
-    "advice": "Consigli"
+    "advice": "Consigli",
+    "skipToContent": "Vai al contenuto",
+    "mainNavigation": "Navigazione principale"
   },
   "hero": {
     "label": "Incontri di nuova generazione",

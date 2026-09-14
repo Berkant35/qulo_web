@@ -42,7 +42,7 @@ export function Navbar() {
           </a>
 
           {/* Nav links */}
-          <nav className="hidden sm:flex items-center gap-6">
+          <nav aria-label={t("mainNavigation")} className="hidden sm:flex items-center gap-6">
             <Link
               href={contentPath(locale, "/features")}
               className="text-sm text-qulo-text-secondary hover:text-white transition-colors"

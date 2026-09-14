@@ -9,6 +9,7 @@ import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metad
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { ADVICE_GUIDES } from "@/lib/constants/advice";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 export function generateStaticParams() {
   return contentLocales.map((locale) => ({ locale }));
@@ -80,20 +81,6 @@ function formatDate(iso: string, locale: string): string {
   } catch {
     return iso;
   }
-}
-
-/**
- * JSON-LD structured data — trusted server-side constants only (no user input).
- * Standard Next.js Server Component pattern for SEO rich snippets.
- */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
 }
 
 export default async function AdviceIndexPage({

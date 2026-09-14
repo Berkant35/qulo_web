@@ -9,7 +9,9 @@
     "blog": "Blog",
     "help": "Yardım",
     "features": "Özellikler",
-    "advice": "Tavsiyeler"
+    "advice": "Tavsiyeler",
+    "skipToContent": "İçeriğe atla",
+    "mainNavigation": "Ana menü"
   },
   "hero": {
     "label": "Sorularla eşleşme dating uygulaması",

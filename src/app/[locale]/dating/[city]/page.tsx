@@ -11,6 +11,7 @@ import { SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { CITIES, type City } from "@/lib/constants/cities";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 /* ------------------------------------------------------------------ */
 /*  Static params — 16 contentLocales x 10 cities = 160 pages                */
@@ -339,16 +340,6 @@ export async function generateMetadata({
 /* ------------------------------------------------------------------ */
 /*  JSON-LD helper — static server constants only, no user input       */
 /* ------------------------------------------------------------------ */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      /* Static server constants only — no user input */
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
-
 /* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */

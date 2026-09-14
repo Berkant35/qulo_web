@@ -1,4 +1,4 @@
-import { locales, type ContentLocale } from "@/lib/i18n/config";
+import { isContentLocale, locales, type ContentLocale } from "@/lib/i18n/config";
 
 /**
  * Every string on /[locale]/press.
@@ -1221,16 +1221,15 @@ export const PRESS_LABELS: Record<ContentLocale, PressLabels> = {
 /**
  * Labels for a locale.
  *
- * Throws rather than returning English. `PRESS_LABELS` is keyed by `Locale`, so
- * the sixteen shipped locales are guaranteed at compile time and this can only
- * fire on a locale that is not in `locales` at all — which `generateStaticParams`
- * never produces. A loud build failure beats a page that serves English prose
+ * Throws rather than returning English. `PRESS_LABELS` is keyed by
+ * `ContentLocale`, so every content locale is guaranteed at compile time and
+ * this can only fire on a locale outside that list — which the press page's
+ * `generateStaticParams` never produces. A loud build failure beats a page that serves English prose
  * under `hreflang="ja"`, which is exactly what the old `getCopy` did.
  */
 export function pressLabelsFor(locale: string): PressLabels {
-  const labels = PRESS_LABELS[locale as ContentLocale];
-  if (!labels) {
+  if (!isContentLocale(locale)) {
     throw new Error(`pressLabels: no press copy for locale "${locale}"`);
   }
-  return labels;
+  return PRESS_LABELS[locale];
 }

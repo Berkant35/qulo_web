@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
+import { localeFromPathname } from "@/lib/i18n/config";
 import { GA_MEASUREMENT_ID } from "@/lib/analytics/ga";
 import { SOCIAL } from "@/lib/constants/links";
 import { FooterLinkColumn, type FooterLinkItem } from "./FooterLinkColumn";
@@ -44,7 +45,7 @@ const LEGAL_LINKS: readonly FooterLinkItem[] = [
 export function Footer() {
   const t = useTranslations("footer");
   const pathname = usePathname();
-  const locale = pathname.split("/")[1] || "tr";
+  const locale = localeFromPathname(pathname);
 
   return (
     <footer className="relative">

@@ -16,6 +16,7 @@ import { firstDateTips } from "./_content/first-date-tips";
 import { datingProfileGuide } from "./_content/dating-profile-guide";
 import { redFlagsOnlineDating } from "./_content/red-flags-online-dating";
 import { longDistanceRelationships } from "./_content/long-distance-relationships";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -90,20 +91,6 @@ function formatDate(iso: string, locale: string): string {
   } catch {
     return iso;
   }
-}
-
-/**
- * JSON-LD helper — renders structured data from static server constants.
- * No user input is involved; all values come from hardcoded advice.ts / metadata.ts.
- */
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
 }
 
 const READ_LABELS: Record<string, { readTime: string; backToAdvice: string; relatedGuides: string }> = {

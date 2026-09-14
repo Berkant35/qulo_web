@@ -9,7 +9,9 @@
     "blog": "Blog",
     "help": "Ayuda",
     "features": "Características",
-    "advice": "Consejos"
+    "advice": "Consejos",
+    "skipToContent": "Saltar al contenido",
+    "mainNavigation": "Navegación principal"
   },
   "hero": {
     "label": "Citas de nueva generación",

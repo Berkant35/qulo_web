@@ -7,7 +7,7 @@
  * behind two call-to-action buttons and returning 404 in production — and
  * because 268 of the internal links on this site are now generated at render
  * time rather than typed, so a mistake in the generator would multiply across
- * sixteen locales before anyone noticed.
+ * eighteen locales before anyone noticed.
  *
  * A guard that passes on nothing is worse than no guard: a build once died
  * while replacing `out/` (ENOTEMPTY), left it half-empty, and this script

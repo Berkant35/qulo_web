@@ -129,12 +129,10 @@ const LATIN_LANGUAGE_WORDS =
   "languages?|dil(?:de|i|den|e|ler|lerde|leri|lere)?|Sprachen|langues|idiomas|lingue|talen|język\\p{L}*|språk|bahasa";
 const LANGUAGE_WORD =
   `(?:(?:${LATIN_LANGUAGE_WORDS})(?!\\p{L})|язык\\p{L}*|لغة|لغات|言語|か国語|개 언어|种语言|種語言|भाषा|ภาษา)`;
-const LANGUAGE_COUNT_CLAIM = new RegExp(`(?<!\\d)(\\d{2})(?!\\d)\\s*(?:\\p{L}+\\s+)?(?:の)?${LANGUAGE_WORD}`, "iu");
+const LANGUAGE_COUNT_CLAIM = new RegExp(`(?<!\\d)(\\d{2})(?!\\d)\\s*(?:\\p{L}+\\s+)?(?:の)?${LANGUAGE_WORD}`, "giu");
 const CURRENT_LANGUAGE_COUNT = locales.length;
-const staleLanguageCount = (line) => {
-  const m = LANGUAGE_COUNT_CLAIM.exec(line);
-  return m !== null && Number(m[1]) !== CURRENT_LANGUAGE_COUNT;
-};
+const staleLanguageCount = (line) =>
+  [...line.matchAll(LANGUAGE_COUNT_CLAIM)].some((m) => Number(m[1]) !== CURRENT_LANGUAGE_COUNT);
 
 /* ---- fixtures: the guard checks itself before it checks the repo ---- */
 
@@ -152,6 +150,8 @@ const MUST_FLAG_LANGUAGE_COUNT = [
   "We support 16 different languages.", "16 language support", "16 farklı dilde", "16 dil desteği",
   "16 Sprachen", "in 16 talen", "Интерфейс переведён на 16 языков", "на 16 языках", "16の言語", "16种语言",
   "Kami mendukung 16 bahasa", "รองรับ 16 ภาษา",
+  // Second claim on the same line must not hide behind a correct first one.
+  "18 languages today, 16 languages last week",
 ];
 const MUST_NOT_FLAG_LANGUAGE_COUNT = [
   "We support 18 different languages.", "18 language support", "18 dilde", "рассчитан на 18 языках", "18 ภาษา",

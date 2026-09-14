@@ -22,6 +22,8 @@ interface RootHtmlProps {
   lang: string;
   /** Text direction — "rtl" for Arabic, "ltr" everywhere else. */
   dir?: "ltr" | "rtl";
+  /** Skip-link text, translated by the caller: it is the first thing a screen reader announces. */
+  skipLabel: string;
   children: React.ReactNode;
 }
 
@@ -38,7 +40,7 @@ interface RootHtmlProps {
  * every localized page declared itself English to exactly the clients that decide
  * what language a page is in.
  */
-export function RootHtml({ lang, dir = "ltr", children }: RootHtmlProps) {
+export function RootHtml({ lang, dir = "ltr", skipLabel, children }: RootHtmlProps) {
   return (
     <html lang={lang} dir={dir} suppressHydrationWarning>
       <head>
@@ -72,7 +74,7 @@ export function RootHtml({ lang, dir = "ltr", children }: RootHtmlProps) {
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-qulo-purple focus:text-white focus:rounded-lg focus:text-sm"
         >
-          Skip to content
+          {skipLabel}
         </a>
         {children}
       </body>

@@ -9,7 +9,9 @@
     "blog": "블로그",
     "help": "도움말",
     "features": "기능",
-    "advice": "조언"
+    "advice": "조언",
+    "skipToContent": "본문으로 건너뛰기",
+    "mainNavigation": "주 메뉴"
   },
   "hero": {
     "label": "차세대 데이팅",

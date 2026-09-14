@@ -9,7 +9,9 @@
     "blog": "Blog",
     "help": "Hilfe",
     "features": "Funktionen",
-    "advice": "Ratgeber"
+    "advice": "Ratgeber",
+    "skipToContent": "Zum Inhalt springen",
+    "mainNavigation": "Hauptnavigation"
   },
   "hero": {
     "label": "Dating der nächsten Generation",

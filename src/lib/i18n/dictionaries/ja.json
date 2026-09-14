@@ -9,7 +9,9 @@
     "blog": "ブログ",
     "help": "ヘルプ",
     "features": "機能",
-    "advice": "アドバイス"
+    "advice": "アドバイス",
+    "skipToContent": "コンテンツへスキップ",
+    "mainNavigation": "メインナビゲーション"
   },
   "hero": {
     "label": "次世代マッチング",
