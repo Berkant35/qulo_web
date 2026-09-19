@@ -25,7 +25,7 @@
  */
 import { readFileSync, readdirSync } from "node:fs";
 import { execFileSync } from "node:child_process";
-import { locales as allLocales } from "./lib/locales.mjs";
+import { pathsForChangedFiles, urlsForPaths } from "./lib/indexnow-urls.mjs";
 
 const HOST = "quloapp.com";
 const ORIGIN = `https://${HOST}`;
@@ -48,27 +48,14 @@ function findKey() {
   return key;
 }
 
-/** Map a changed content file to the URLs it renders as, across all locales. */
+/** Map changed content files to the URLs they render as. */
 function urlsForChangedFiles(ref) {
   // execFileSync, not a shell string: `ref` comes from the command line and a
   // shell would happily interpret metacharacters in it.
   const out = execFileSync("git", ["diff", "--name-only", ref, "HEAD"], { encoding: "utf8" });
-  const files = out.split("\n").filter(Boolean);
-  const locales = allLocales; // tek kaynak: src/lib/i18n/config.ts
-  const paths = new Set();
-  for (const f of files) {
-    // `_content/index.ts` is the barrel file, not a page. Without this it maps
-    // to `/glossary/index/`, which 301s — 16 fabricated URLs per submission,
-    // and a script that claims to send only what changed should not send those.
-    if (f.endsWith("/index.ts")) continue;
-    let m;
-    if ((m = f.match(/glossary\/_content\/([a-z0-9-]+)\.ts$/))) paths.add(`/glossary/${m[1]}/`);
-    else if ((m = f.match(/answers\/_content\/([a-z0-9-]+)\.ts$/))) paths.add(`/answers/${m[1]}/`);
-    else if ((m = f.match(/blog\/\[slug\]\/_content\/([a-z0-9-]+)\.ts$/))) paths.add(`/blog/${m[1]}/`);
-    else if ((m = f.match(/advice\/\[slug\]\/_content\/([a-z0-9-]+)\.ts$/))) paths.add(`/advice/${m[1]}/`);
-    else if ((m = f.match(/\[locale\]\/([a-z0-9-]+)\/page\.tsx$/))) paths.add(`/${m[1]}/`);
-  }
-  return [...paths].flatMap((p) => locales.map((l) => `${ORIGIN}/${l}${p}`));
+  // The mapping itself lives in ./lib/indexnow-urls.mjs, under test — it is
+  // where every past mistake has been (barrel files, th/id content routes).
+  return urlsForPaths(pathsForChangedFiles(out.split("\n").filter(Boolean)), ORIGIN);
 }
 
 const args = process.argv.slice(2);
