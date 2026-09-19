@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { locales, rtlLocales } from "@/lib/i18n/config";
-import { SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
+import { SEO, SITE_URL, SITE_NAME, OG_LOCALES, APP_JSON_LD_ID } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { alternateLanguages } from "@/lib/seo/alternates";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -76,16 +76,20 @@ export default async function LocaleLayout({
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
+      // Same `@id` as the plans block on /pricing, so the two are one app
+      // rather than two that disagree about what it costs. Here: free to
+      // install. There: the paid tiers, on the page that lists them.
+      "@id": APP_JSON_LD_ID,
       name: SITE_NAME,
       applicationCategory: "SocialNetworkingApplication",
       operatingSystem: "iOS, Android",
       url: SITE_URL,
       description: seoData.description,
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-      },
+      // No `offers` here on purpose. This node and the one on /pricing share an
+      // `@id`, so a consumer merges them — declaring a single free Offer here
+      // and three there would leave the merged app with a duplicate Free tier.
+      // The plans live on the page that shows them; "free to start" is the
+      // price-0 Offer in that list.
       featureList: [
         "Question-based matching",
         "Ready-made question suggestions",

@@ -1,6 +1,13 @@
 export const SITE_URL = "https://quloapp.com";
 export const SITE_NAME = "Qulo";
 
+/**
+ * Stable `@id` for the app entity. The site-wide `SoftwareApplication` (in the
+ * locale layout) and the plans block on /pricing both use it, so search engines
+ * merge them into one app instead of two that disagree about the price.
+ */
+export const APP_JSON_LD_ID = `${SITE_URL}/#app`;
+
 export const SEO: Record<string, { title: string; description: string }> = {
   tr: {
     title: "Qulo — Sorularla Eşleşme Dating Uygulaması",

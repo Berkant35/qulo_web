@@ -7,7 +7,7 @@ import { FAQ, type FAQItem } from "@/components/shared/FAQ";
 import { StoreButtons } from "@/components/hero/StoreButtons";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { locales } from "@/lib/i18n/config";
-import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES } from "@/lib/constants/metadata";
+import { PAGE_SEO, SITE_URL, SITE_NAME, OG_LOCALES, APP_JSON_LD_ID } from "@/lib/constants/metadata";
 import { ogImages } from "@/lib/seo/openGraph";
 import { alternateLanguages } from "@/lib/seo/alternates";
 
@@ -101,21 +101,45 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 /**
- * JSON-LD for Product schema — built from static server constants only, no user input.
- * Enables Google rich snippets with price + star rating in search results.
+ * JSON-LD for the app's plans — static server constants only, no user input.
+ *
+ * This used to be `@type: "Product"`. It was wrong twice over:
+ *
+ *  1. Nothing is sold on this page. Purchases happen inside the app, through
+ *     the App Store and Play billing. Google's Product guidance is for pages
+ *     where the product can be bought, and marking one up otherwise is what
+ *     put this page in the **Merchant listings** report — which then asked for
+ *     `shippingDetails` and `hasMerchantReturnPolicy` (reported 2026-09-19,
+ *     8 items each). There is nothing to ship and the refund route is the
+ *     store's, not ours, so those fields could never be answered honestly.
+ *  2. It described the app a second time, as a separate entity from the
+ *     site-wide `SoftwareApplication`, with a different offer set — that one
+ *     says the app is free, this one said it costs 4.99/9.99. Two entities,
+ *     one app, contradicting each other.
+ *
+ * `SoftwareApplication` is the documented type for an app, and sharing
+ * `APP_JSON_LD_ID` with the site-wide declaration makes the two one entity:
+ * free to install, with paid tiers. The prices stay because they are true and
+ * visible on this page.
+ *
+ * The old comment also claimed this enabled a star rating. There is no
+ * `aggregateRating` here and there must not be one — we have no ratings of our
+ * own to report, and store ratings are not ours to mark up.
  */
-function ProductJsonLd() {
+function PlansJsonLd() {
   const data = {
     "@context": "https://schema.org",
-    "@type": "Product",
-    name: "Qulo Dating App",
+    "@type": "SoftwareApplication",
+    "@id": APP_JSON_LD_ID,
+    name: SITE_NAME,
+    applicationCategory: "SocialNetworkingApplication",
+    operatingSystem: "iOS, Android",
     description: "Question-based dating app with Free, Plus, and Premium tiers",
     image: `${SITE_URL}/images/og-image.png`,
-    brand: { "@type": "Brand", name: "Qulo" },
     offers: [
-      { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD", availability: "https://schema.org/InStock" },
-      { "@type": "Offer", name: "Plus", price: "4.99", priceCurrency: "USD", availability: "https://schema.org/InStock" },
-      { "@type": "Offer", name: "Premium", price: "9.99", priceCurrency: "USD", availability: "https://schema.org/InStock" },
+      { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD" },
+      { "@type": "Offer", name: "Plus", price: "4.99", priceCurrency: "USD" },
+      { "@type": "Offer", name: "Premium", price: "9.99", priceCurrency: "USD" },
     ],
   };
   return <JsonLd data={data} />;
@@ -133,7 +157,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
   return (
     <main className="min-h-screen bg-qulo-bg text-white">
       <Navbar />
-      <ProductJsonLd />
+      <PlansJsonLd />
 
       <div className="pt-24 pb-20 px-6">
         <div className="max-w-5xl mx-auto">
