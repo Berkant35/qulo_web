@@ -31,6 +31,8 @@ import { JsonLd } from "@/components/shared/JsonLd";
 const PAGE_SLUG = "dating-statistics";
 const PUBLISHED_AT = "2026-04-16";
 const MODIFIED_AT = "2026-09-01";
+/** Licence for this compilation — declared in JSON-LD and shown on the page. */
+const DATASET_LICENSE = "https://creativecommons.org/licenses/by/4.0/";
 
 /** Per-locale breadcrumb label for the Dating Statistics page */
 const STATISTICS_LABELS: Record<string, string> = {
@@ -90,6 +92,8 @@ type UiCopy = {
   citationApaLabel: string;
   citationMlaLabel: string;
   citationLinkLabel: string;
+  licenseNote: string;
+  licenseLinkLabel: string;
   shareHeading: string;
   shareTwitter: string;
   shareLinkedIn: string;
@@ -143,6 +147,12 @@ function getCopy(locale: string): UiCopy {
     citationApaLabel: "APA",
     citationMlaLabel: "MLA",
     citationLinkLabel: isTr ? "Düz bağlantı" : "Plain link",
+    // The licence the Dataset JSON-LD declares, in words, on the page itself.
+    // It covers our compilation only — the figures belong to their sources.
+    licenseNote: isTr
+      ? "Bu derlemeyi — etiketleri, gruplamayı ve sayfa metnini — kaynak göstererek serbestçe kullanabilirsiniz (CC BY 4.0). Rakamların kendisi aşağıda listelenen yayıncılara aittir; onları kullanmadan önce kendi koşullarına bakın."
+      : "You may reuse this compilation — its labels, grouping and page text — with attribution, under CC BY 4.0. The figures themselves belong to the publishers listed below; check their own terms before reusing them.",
+    licenseLinkLabel: isTr ? "Lisans metni" : "Licence text",
     shareHeading: isTr ? "Sosyal Medyada Paylaş" : "Share on Social Media",
     shareTwitter: "Twitter / X",
     shareLinkedIn: "LinkedIn",
@@ -253,6 +263,12 @@ export default async function DatingStatisticsPage({
       name: SITE_NAME,
       url: SITE_URL,
     },
+    // Search Console flagged this as missing on 2026-09-18 (non-critical).
+    // It covers the compilation — the labels, grouping and page text — not the
+    // underlying figures, which stay their publishers' and are each credited in
+    // `citation`. The page states the same thing in words (`licenseNote`), so
+    // the markup is not a claim the reader cannot see.
+    license: DATASET_LICENSE,
     citation: getAllSources().map((source) => ({
       "@type": "CreativeWork",
       name: source.title,
@@ -443,6 +459,20 @@ export default async function DatingStatisticsPage({
                 </code>
               </div>
             </div>
+
+            {/* The licence the Dataset JSON-LD declares, in words. Structured
+                data must not promise something the reader cannot see. */}
+            <p className="mt-6 text-xs text-qulo-text-secondary">
+              {copy.licenseNote}{" "}
+              <a
+                href={DATASET_LICENSE}
+                target="_blank"
+                rel="license noopener noreferrer"
+                className="text-qulo-green hover:underline focus:underline"
+              >
+                {copy.licenseLinkLabel}
+              </a>
+            </p>
 
             <div className="mt-8">
               <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-qulo-green mb-3">
