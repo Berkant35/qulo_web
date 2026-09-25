@@ -25,8 +25,28 @@ const CITATION_CRAWLERS = [
   "meta-externalagent",
 ];
 
-/** Utility routes: real pages users land on, but nothing to index. */
-const NOINDEX_ROUTES = ["/invite", "/email-verified", "/reset-password"];
+/**
+ * Routes that set `robots: index: false` in their own metadata.
+ *
+ * A URL cannot be in the sitemap and noindexed at the same time: the sitemap
+ * asks Google to index it, the page tells Google not to. Google reports the
+ * pair as wasted discovery, and on 2026-09-25 Search Console had **1,224 URLs
+ * sitting in "Discovered - currently not indexed"** against 229 indexed — so
+ * discovery budget is the scarce thing here, not page count.
+ *
+ * `/invite`, `/email-verified`, `/reset-password` carry the homepage's
+ * canonical. `/sitemap-html` is a navigation aid, not a destination.
+ * `/q/play` is the landing page for a shared quiz link — thin by design.
+ * All of them stay live and crawlable; they just stop asking to be indexed
+ * in two contradictory places.
+ */
+const NOINDEX_ROUTES = [
+  "/invite",
+  "/email-verified",
+  "/reset-password",
+  "/sitemap-html",
+  "/q/play",
+];
 
 /**
  * Location pages, excluded from the sitemap and noindexed in-page.

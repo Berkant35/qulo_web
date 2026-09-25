@@ -92,6 +92,43 @@ for (const page of pages) {
   }
 }
 
+/**
+ * A sitemap URL may not be noindexed.
+ *
+ * The sitemap asks Google to index a URL; `robots: noindex` on the page tells
+ * it not to. Google spends discovery on the URL and then drops it, and on
+ * 2026-09-25 this site had 1,224 URLs in "Discovered - currently not indexed"
+ * against 229 indexed — discovery budget is the scarce resource, so a URL that
+ * contradicts itself is not a harmless inconsistency. 34 such URLs
+ * (`/sitemap-html`, `/q/play`) were in the sitemap until that day; the
+ * exclusion lives in `next-sitemap.config.js` and this keeps it there.
+ */
+const sitemapFiles = readdirSync(OUT).filter((f) => /^sitemap-\d+\.xml$/.test(f));
+if (sitemapFiles.length === 0) {
+  console.error(`FAIL — ${OUT}/ icinde sitemap-N.xml yok; derleme yarim.`);
+  process.exit(1);
+}
+const sitemapPaths = sitemapFiles.flatMap((f) =>
+  [...readFileSync(join(OUT, f), "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) =>
+    loc.replace(/^https?:\/\/[^/]+/, ""),
+  ),
+);
+if (sitemapPaths.length === 0) {
+  console.error("FAIL — site haritasinda hic URL yok; bu guard hicbir sey dogrulamaz.");
+  process.exit(1);
+}
+const noindexed = sitemapPaths.filter((path) => {
+  const file = join(OUT, path.replace(/^\//, ""), "index.html");
+  return existsSync(file) && /<meta name="robots"[^>]*content="[^"]*noindex/.test(readFileSync(file, "utf8"));
+});
+if (noindexed.length > 0) {
+  console.error(
+    `FAIL — ${noindexed.length} site haritasi URL'si noindex (sitemap "dizine ekle" derken sayfa "ekleme" diyor):\n` +
+      noindexed.slice(0, 5).map((p) => `  - ${p}`).join("\n"),
+  );
+  process.exit(1);
+}
+
 if (broken.size) {
   console.error(`FAIL — ${broken.size} internal target(s) do not exist in ${OUT}/:`);
   for (const [target, sources] of [...broken].sort()) {
@@ -102,4 +139,7 @@ if (broken.size) {
   }
   process.exit(1);
 }
-console.log(`PASS — every internal link on ${pages.length} pages resolves`);
+console.log(
+  `PASS — every internal link on ${pages.length} pages resolves, ` +
+    `${sitemapPaths.length} site haritasi URL'sinin hicbiri noindex degil`,
+);
