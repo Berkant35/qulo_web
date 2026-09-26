@@ -17,6 +17,8 @@ import { datingProfileGuide } from "./_content/dating-profile-guide";
 import { redFlagsOnlineDating } from "./_content/red-flags-online-dating";
 import { longDistanceRelationships } from "./_content/long-distance-relationships";
 import { JsonLd } from "@/components/shared/JsonLd";
+import { landingLabels } from "@/lib/constants/landingLabels";
+import { readTimeLabel } from "@/lib/constants/readingLabels";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -93,12 +95,23 @@ function formatDate(iso: string, locale: string): string {
   }
 }
 
-const READ_LABELS: Record<string, { readTime: string; backToAdvice: string; relatedGuides: string }> = {
-  tr: { readTime: "dk okuma", backToAdvice: "Tüm Rehberler", relatedGuides: "Diğer Rehberler" },
-  en: { readTime: "min read", backToAdvice: "All Guides", relatedGuides: "Related Guides" },
-  de: { readTime: "Min. Lesezeit", backToAdvice: "Alle Leitfäden", relatedGuides: "Weitere Leitfäden" },
-  fr: { readTime: "min de lecture", backToAdvice: "Tous les guides", relatedGuides: "Guides connexes" },
-  es: { readTime: "min de lectura", backToAdvice: "Todas las guías", relatedGuides: "Guías relacionadas" },
+const READ_LABELS: Record<string, { backToAdvice: string; relatedGuides: string }> = {
+  tr: { backToAdvice: "Tüm Rehberler", relatedGuides: "Diğer Rehberler" },
+  en: { backToAdvice: "All Guides", relatedGuides: "Related Guides" },
+  de: { backToAdvice: "Alle Leitfäden", relatedGuides: "Weitere Leitfäden" },
+  fr: { backToAdvice: "Tous les guides", relatedGuides: "Guides connexes" },
+  es: { backToAdvice: "Todas las guías", relatedGuides: "Guías relacionadas" },
+  ar: { backToAdvice: "كل الأدلة", relatedGuides: "أدلة ذات صلة" },
+  ru: { backToAdvice: "Все руководства", relatedGuides: "Похожие руководства" },
+  pt: { backToAdvice: "Todos os guias", relatedGuides: "Guias relacionados" },
+  it: { backToAdvice: "Tutte le guide", relatedGuides: "Guide correlate" },
+  ja: { backToAdvice: "すべてのガイド", relatedGuides: "関連ガイド" },
+  ko: { backToAdvice: "전체 가이드", relatedGuides: "관련 가이드" },
+  zh: { backToAdvice: "全部指南", relatedGuides: "相关指南" },
+  nl: { backToAdvice: "Alle gidsen", relatedGuides: "Gerelateerde gidsen" },
+  pl: { backToAdvice: "Wszystkie poradniki", relatedGuides: "Powiązane poradniki" },
+  sv: { backToAdvice: "Alla guider", relatedGuides: "Relaterade guider" },
+  hi: { backToAdvice: "सभी गाइड", relatedGuides: "संबंधित गाइड" },
 };
 
 /* ------------------------------------------------------------------ */
@@ -191,15 +204,14 @@ export default async function AdvicePostPage({
     inLanguage: locale,
   };
 
-  const CTA_LABELS: Record<string, { ctaTitle: string; ctaDesc: string }> = {
-    tr: { ctaTitle: "Qulo'yu Indir", ctaDesc: "Sorularla tanismanin yeni yolunu kesfet. Hemen dene, ucretsiz!" },
-    en: { ctaTitle: "Download Qulo", ctaDesc: "Discover the new way to meet through questions. Try it now, for free!" },
-    de: { ctaTitle: "Qulo herunterladen", ctaDesc: "Entdecken Sie den neuen Weg, sich durch Fragen kennenzulernen." },
-    fr: { ctaTitle: "Telecharger Qulo", ctaDesc: "Decouvrez la nouvelle facon de se rencontrer par les questions." },
-    es: { ctaTitle: "Descargar Qulo", ctaDesc: "Descubre la nueva forma de conocerse a traves de preguntas." },
-  };
-
-  const cta = CTA_LABELS[locale] || CTA_LABELS.en;
+  // The app CTA is the same promise everywhere, so it lives in one place.
+  // These three article templates each carried their own copy in tr/en/de/fr/es
+  // only, which served eleven locales an English call to action under a
+  // translated headline — and the tr/fr copies here had their diacritics
+  // stripped ("Qulo'yu Indir", "Decouvrez"). LANDING_LABELS already carries the
+  // reviewed wording in all 16 content locales; if the two ever have to differ,
+  // that is the moment to split them, not before.
+  const cta = landingLabels(locale);
   const adviceHeading = READ_LABELS[locale]?.backToAdvice || READ_LABELS.en.backToAdvice;
 
   return (
@@ -239,7 +251,7 @@ export default async function AdvicePostPage({
               </time>
               <span aria-hidden="true" className="w-1 h-1 rounded-full bg-qulo-purple/50" />
               <span>
-                {guide.readingTime} {labels.readTime}
+                {guide.readingTime} {readTimeLabel(locale)}
               </span>
               <span aria-hidden="true" className="w-1 h-1 rounded-full bg-qulo-purple/50" />
               <span className="px-2 py-0.5 rounded-full border border-qulo-purple/20 text-qulo-purple uppercase tracking-wide">

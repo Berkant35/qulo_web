@@ -10,6 +10,7 @@ import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { BLOG_POSTS } from "@/lib/constants/blog";
 import { JsonLd } from "@/components/shared/JsonLd";
+import { readTimeLabel } from "@/lib/constants/readingLabels";
 
 export function generateStaticParams() {
   return contentLocales.map((locale) => ({ locale }));
@@ -49,12 +50,10 @@ export async function generateMetadata({
   };
 }
 
-const LABELS: Record<string, { heading: string; readTime: string }> = {
-  tr: { heading: "Blog", readTime: "dk okuma" },
-  en: { heading: "Blog", readTime: "min read" },
-  de: { heading: "Blog", readTime: "Min. Lesezeit" },
-  fr: { heading: "Blog", readTime: "min de lecture" },
-  es: { heading: "Blog", readTime: "min de lectura" },
+const HEADINGS: Record<string, string> = {
+  tr: "Blog", en: "Blog", de: "Blog", fr: "Blog", es: "Blog",
+  ar: "المدونة", ru: "Блог", pt: "Blog", it: "Blog", ja: "ブログ",
+  ko: "블로그", zh: "博客", nl: "Blog", pl: "Blog", sv: "Blogg", hi: "ब्लॉग",
 };
 
 function formatDate(iso: string, locale: string): string {
@@ -83,7 +82,7 @@ export default async function BlogIndexPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const labels = LABELS[locale] || LABELS.en;
+  const heading = HEADINGS[locale] || HEADINGS.en;
   const sortedPosts = [...BLOG_POSTS].sort(
     (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   );
@@ -92,7 +91,7 @@ export default async function BlogIndexPage({
   const collectionJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: labels.heading,
+    name: heading,
     url: `${SITE_URL}/${locale}/blog`,
     mainEntity: {
       "@type": "ItemList",
@@ -116,7 +115,7 @@ export default async function BlogIndexPage({
         <div className="max-w-3xl mx-auto">
           <Breadcrumb
             locale={locale}
-            items={[{ label: labels.heading }]}
+            items={[{ label: heading }]}
           />
 
           {/* Header */}
@@ -124,7 +123,7 @@ export default async function BlogIndexPage({
             <p className="text-qulo-purple text-xs font-semibold uppercase tracking-[0.2em] mb-4">
               Qulo
             </p>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">{labels.heading}</h1>
+            <h1 className="text-4xl sm:text-5xl font-bold mb-4">{heading}</h1>
             <p className="text-qulo-text-secondary text-base max-w-xl mx-auto">
               {(PAGE_SEO.blog[locale] || PAGE_SEO.blog.en).description}
             </p>
@@ -148,7 +147,7 @@ export default async function BlogIndexPage({
                       </time>
                       <span aria-hidden="true" className="w-1 h-1 rounded-full bg-qulo-purple/50" />
                       <span>
-                        {post.readingTime} {labels.readTime}
+                        {post.readingTime} {readTimeLabel(locale)}
                       </span>
                     </div>
 

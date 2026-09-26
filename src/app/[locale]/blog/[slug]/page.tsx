@@ -27,6 +27,8 @@ import { isCuffingSeasonReal } from "./_content/is-cuffing-season-real";
 import { paradoxOfChoiceDating } from "./_content/paradox-of-choice-dating";
 import { howToAnswerWell } from "./_content/how-to-answer-well";
 import { attachmentStylesDatingApps } from "./_content/attachment-styles-dating-apps";
+import { landingLabels } from "@/lib/constants/landingLabels";
+import { readTimeLabel } from "@/lib/constants/readingLabels";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -108,23 +110,23 @@ function formatDate(iso: string, locale: string): string {
  * JSON-LD helper — renders structured data from static server constants.
  * No user input is involved; all values come from hardcoded blog.ts / metadata.ts.
  */
-const READ_LABELS: Record<string, { readTime: string; backToBlog: string; relatedPosts: string }> = {
-  tr: { readTime: "dk okuma", backToBlog: "Blog'a Dön", relatedPosts: "Diğer Yazılar" },
-  en: { readTime: "min read", backToBlog: "Back to Blog", relatedPosts: "Related Posts" },
-  de: { readTime: "Min. Lesezeit", backToBlog: "Zurück zum Blog", relatedPosts: "Weitere Artikel" },
-  fr: { readTime: "min de lecture", backToBlog: "Retour au Blog", relatedPosts: "Articles connexes" },
-  es: { readTime: "min de lectura", backToBlog: "Volver al Blog", relatedPosts: "Artículos relacionados" },
-  ar: { readTime: "دقيقة قراءة", backToBlog: "العودة إلى المدونة", relatedPosts: "مقالات ذات صلة" },
-  ru: { readTime: "мин чтения", backToBlog: "Назад в блог", relatedPosts: "Похожие статьи" },
-  pt: { readTime: "min de leitura", backToBlog: "Voltar ao Blog", relatedPosts: "Artigos relacionados" },
-  it: { readTime: "min di lettura", backToBlog: "Torna al Blog", relatedPosts: "Articoli correlati" },
-  ja: { readTime: "分で読めます", backToBlog: "ブログへ戻る", relatedPosts: "関連記事" },
-  ko: { readTime: "분 분량", backToBlog: "블로그로 돌아가기", relatedPosts: "관련 글" },
-  zh: { readTime: "分钟阅读", backToBlog: "返回博客", relatedPosts: "相关文章" },
-  nl: { readTime: "min leestijd", backToBlog: "Terug naar blog", relatedPosts: "Gerelateerde artikelen" },
-  pl: { readTime: "min czytania", backToBlog: "Powrót do bloga", relatedPosts: "Powiązane artykuły" },
-  sv: { readTime: "min läsning", backToBlog: "Tillbaka till bloggen", relatedPosts: "Relaterade artiklar" },
-  hi: { readTime: "मिनट पढ़ें", backToBlog: "ब्लॉग पर वापस", relatedPosts: "संबंधित लेख" },
+const READ_LABELS: Record<string, { backToBlog: string; relatedPosts: string }> = {
+  tr: { backToBlog: "Blog'a Dön", relatedPosts: "Diğer Yazılar" },
+  en: { backToBlog: "Back to Blog", relatedPosts: "Related Posts" },
+  de: { backToBlog: "Zurück zum Blog", relatedPosts: "Weitere Artikel" },
+  fr: { backToBlog: "Retour au Blog", relatedPosts: "Articles connexes" },
+  es: { backToBlog: "Volver al Blog", relatedPosts: "Artículos relacionados" },
+  ar: { backToBlog: "العودة إلى المدونة", relatedPosts: "مقالات ذات صلة" },
+  ru: { backToBlog: "Назад в блог", relatedPosts: "Похожие статьи" },
+  pt: { backToBlog: "Voltar ao Blog", relatedPosts: "Artigos relacionados" },
+  it: { backToBlog: "Torna al Blog", relatedPosts: "Articoli correlati" },
+  ja: { backToBlog: "ブログへ戻る", relatedPosts: "関連記事" },
+  ko: { backToBlog: "블로그로 돌아가기", relatedPosts: "관련 글" },
+  zh: { backToBlog: "返回博客", relatedPosts: "相关文章" },
+  nl: { backToBlog: "Terug naar blog", relatedPosts: "Gerelateerde artikelen" },
+  pl: { backToBlog: "Powrót do bloga", relatedPosts: "Powiązane artykuły" },
+  sv: { backToBlog: "Tillbaka till bloggen", relatedPosts: "Relaterade artiklar" },
+  hi: { backToBlog: "ब्लॉग पर वापस", relatedPosts: "संबंधित लेख" },
 };
 
 /* ------------------------------------------------------------------ */
@@ -240,15 +242,14 @@ export default async function BlogPostPage({
   };
   const referencesLabel = REFERENCE_LABELS[locale] || REFERENCE_LABELS.en;
 
-  const CTA_LABELS: Record<string, { ctaTitle: string; ctaDesc: string }> = {
-    tr: { ctaTitle: "Qulo'yu İndir", ctaDesc: "Sorularla tanışmanın yeni yolunu keşfet. Hemen dene, ücretsiz!" },
-    en: { ctaTitle: "Download Qulo", ctaDesc: "Discover the new way to meet through questions. Try it now, for free!" },
-    de: { ctaTitle: "Qulo herunterladen", ctaDesc: "Entdecken Sie den neuen Weg, sich durch Fragen kennenzulernen." },
-    fr: { ctaTitle: "Télécharger Qulo", ctaDesc: "Découvrez la nouvelle façon de se rencontrer par les questions." },
-    es: { ctaTitle: "Descargar Qulo", ctaDesc: "Descubre la nueva forma de conocerse a través de preguntas." },
-  };
-
-  const cta = CTA_LABELS[locale] || CTA_LABELS.en;
+  // The app CTA is the same promise everywhere, so it lives in one place.
+  // These three article templates each carried their own copy in tr/en/de/fr/es
+  // only, which served eleven locales an English call to action under a
+  // translated headline — and the tr/fr copies here had their diacritics
+  // stripped ("Qulo'yu Indir", "Decouvrez"). LANDING_LABELS already carries the
+  // reviewed wording in all 16 content locales; if the two ever have to differ,
+  // that is the moment to split them, not before.
+  const cta = landingLabels(locale);
 
   return (
     <main className="min-h-screen bg-qulo-bg text-white">
@@ -286,7 +287,7 @@ export default async function BlogPostPage({
               </time>
               <span aria-hidden="true" className="w-1 h-1 rounded-full bg-qulo-purple/50" />
               <span>
-                {post.readingTime} {labels.readTime}
+                {post.readingTime} {readTimeLabel(locale)}
               </span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold leading-tight mb-4">

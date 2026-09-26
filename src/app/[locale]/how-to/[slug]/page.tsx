@@ -12,6 +12,7 @@ import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { HOW_TO_GUIDES } from "@/lib/constants/howto";
 import { JsonLd } from "@/components/shared/JsonLd";
+import { landingLabels } from "@/lib/constants/landingLabels";
 
 /* ------------------------------------------------------------------ */
 /*  Static params                                                      */
@@ -157,6 +158,105 @@ const LABELS: Record<
     readyToStart: "¿Listo para empezar?",
     introBadge: "Guía paso a paso",
   },
+  ar: {
+    totalTime: "الوقت الإجمالي",
+    stepsCount: "خطوات",
+    backToHub: "كل الأدلة",
+    relatedGuides: "أدلة أخرى",
+    step: "خطوة",
+    readyToStart: "هل أنت مستعد؟",
+    introBadge: "دليل خطوة بخطوة",
+  },
+  ru: {
+    totalTime: "Общее время",
+    stepsCount: "шагов",
+    backToHub: "Все руководства",
+    relatedGuides: "Другие руководства",
+    step: "Шаг",
+    readyToStart: "Готовы начать?",
+    introBadge: "Пошаговое руководство",
+  },
+  pt: {
+    totalTime: "Tempo total",
+    stepsCount: "passos",
+    backToHub: "Todos os guias",
+    relatedGuides: "Outros guias",
+    step: "Passo",
+    readyToStart: "Pronto para começar?",
+    introBadge: "Guia passo a passo",
+  },
+  it: {
+    totalTime: "Tempo totale",
+    stepsCount: "passaggi",
+    backToHub: "Tutte le guide",
+    relatedGuides: "Altre guide",
+    step: "Passaggio",
+    readyToStart: "Pronto a iniziare?",
+    introBadge: "Guida passo a passo",
+  },
+  ja: {
+    totalTime: "所要時間",
+    stepsCount: "ステップ",
+    backToHub: "すべてのガイド",
+    relatedGuides: "ほかのガイド",
+    step: "ステップ",
+    readyToStart: "はじめる準備はできましたか？",
+    introBadge: "ステップごとのガイド",
+  },
+  ko: {
+    totalTime: "총 소요 시간",
+    stepsCount: "단계",
+    backToHub: "전체 가이드",
+    relatedGuides: "다른 가이드",
+    step: "단계",
+    readyToStart: "시작할 준비가 되셨나요?",
+    introBadge: "단계별 가이드",
+  },
+  zh: {
+    totalTime: "总时长",
+    stepsCount: "个步骤",
+    backToHub: "全部指南",
+    relatedGuides: "其他指南",
+    step: "步骤",
+    readyToStart: "准备好开始了吗？",
+    introBadge: "分步指南",
+  },
+  nl: {
+    totalTime: "Totale tijd",
+    stepsCount: "stappen",
+    backToHub: "Alle gidsen",
+    relatedGuides: "Andere gidsen",
+    step: "Stap",
+    readyToStart: "Klaar om te beginnen?",
+    introBadge: "Stap-voor-stap gids",
+  },
+  pl: {
+    totalTime: "Łączny czas",
+    stepsCount: "kroków",
+    backToHub: "Wszystkie poradniki",
+    relatedGuides: "Inne poradniki",
+    step: "Krok",
+    readyToStart: "Gotowy zaczynać?",
+    introBadge: "Poradnik krok po kroku",
+  },
+  sv: {
+    totalTime: "Total tid",
+    stepsCount: "steg",
+    backToHub: "Alla guider",
+    relatedGuides: "Andra guider",
+    step: "Steg",
+    readyToStart: "Klar att börja?",
+    introBadge: "Steg-för-steg-guide",
+  },
+  hi: {
+    totalTime: "कुल समय",
+    stepsCount: "चरण",
+    backToHub: "सभी गाइड",
+    relatedGuides: "अन्य गाइड",
+    step: "चरण",
+    readyToStart: "शुरू करने के लिए तैयार हैं?",
+    introBadge: "चरण-दर-चरण गाइड",
+  },
 };
 
 /* ------------------------------------------------------------------ */
@@ -216,15 +316,14 @@ export default async function HowToDetailPage({
     })),
   };
 
-  const CTA_LABELS: Record<string, { ctaTitle: string; ctaDesc: string }> = {
-    tr: { ctaTitle: "Qulo'yu Indir", ctaDesc: "Sorularla tanismanin yeni yolunu kesfet. Hemen dene, ucretsiz!" },
-    en: { ctaTitle: "Download Qulo", ctaDesc: "Discover the new way to meet through questions. Try it now, for free!" },
-    de: { ctaTitle: "Qulo herunterladen", ctaDesc: "Entdecken Sie den neuen Weg, sich durch Fragen kennenzulernen." },
-    fr: { ctaTitle: "Telecharger Qulo", ctaDesc: "Decouvrez la nouvelle facon de se rencontrer par les questions." },
-    es: { ctaTitle: "Descargar Qulo", ctaDesc: "Descubre la nueva forma de conocerse a traves de preguntas." },
-  };
-
-  const cta = CTA_LABELS[locale] || CTA_LABELS.en;
+  // The app CTA is the same promise everywhere, so it lives in one place.
+  // These three article templates each carried their own copy in tr/en/de/fr/es
+  // only, which served eleven locales an English call to action under a
+  // translated headline — and the tr/fr copies here had their diacritics
+  // stripped ("Qulo'yu Indir", "Decouvrez"). LANDING_LABELS already carries the
+  // reviewed wording in all 16 content locales; if the two ever have to differ,
+  // that is the moment to split them, not before.
+  const cta = landingLabels(locale);
 
   return (
     <main className="min-h-screen bg-qulo-bg text-white">

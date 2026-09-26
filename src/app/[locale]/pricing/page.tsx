@@ -21,6 +21,17 @@ const LABELS: Record<string, { title: string; subtitle: string; mostPopular: str
   de: { title: "Preise", subtitle: "Einfache, transparente Preise. Immer kostenlos starten.", mostPopular: "AM BELIEBTESTEN", faqTitle: "Häufig gestellte Fragen", everythingInFree: "Alles in Free +", everythingInPlus: "Alles in Plus +", perMonth: "/Monat", forever: "für immer" },
   fr: { title: "Tarifs", subtitle: "Tarification simple et transparente.", mostPopular: "LE PLUS POPULAIRE", faqTitle: "Questions fréquemment posées", everythingInFree: "Tout de Free +", everythingInPlus: "Tout de Plus +", perMonth: "/mois", forever: "pour toujours" },
   es: { title: "Precios", subtitle: "Precios simples y transparentes.", mostPopular: "MÁS POPULAR", faqTitle: "Preguntas frecuentes", everythingInFree: "Todo de Free +", everythingInPlus: "Todo de Plus +", perMonth: "/mes", forever: "para siempre" },
+  ar: { title: "الأسعار", subtitle: "أسعار بسيطة وواضحة. البداية مجانية دائمًا.", mostPopular: "الأكثر شيوعًا", faqTitle: "الأسئلة الشائعة", everythingInFree: "كل ما في Free +", everythingInPlus: "كل ما في Plus +", perMonth: "/شهر", forever: "للأبد" },
+  ru: { title: "Тарифы", subtitle: "Простые и прозрачные тарифы. Начать всегда бесплатно.", mostPopular: "САМЫЙ ПОПУЛЯРНЫЙ", faqTitle: "Частые вопросы", everythingInFree: "Всё из Free +", everythingInPlus: "Всё из Plus +", perMonth: "/мес", forever: "навсегда" },
+  pt: { title: "Preços", subtitle: "Preços simples e transparentes. Começar é sempre grátis.", mostPopular: "MAIS POPULAR", faqTitle: "Perguntas frequentes", everythingInFree: "Tudo do Free +", everythingInPlus: "Tudo do Plus +", perMonth: "/mês", forever: "para sempre" },
+  it: { title: "Prezzi", subtitle: "Prezzi semplici e trasparenti. Iniziare è sempre gratis.", mostPopular: "PIÙ POPOLARE", faqTitle: "Domande frequenti", everythingInFree: "Tutto di Free +", everythingInPlus: "Tutto di Plus +", perMonth: "/mese", forever: "per sempre" },
+  ja: { title: "料金プラン", subtitle: "シンプルで分かりやすい料金。はじめるのはいつでも無料です。", mostPopular: "人気プラン", faqTitle: "よくある質問", everythingInFree: "Free のすべて +", everythingInPlus: "Plus のすべて +", perMonth: "/月", forever: "ずっと無料" },
+  ko: { title: "요금제", subtitle: "간단하고 투명한 요금제. 시작은 언제나 무료입니다.", mostPopular: "가장 인기", faqTitle: "자주 묻는 질문", everythingInFree: "Free의 모든 기능 +", everythingInPlus: "Plus의 모든 기능 +", perMonth: "/월", forever: "계속 무료" },
+  zh: { title: "价格方案", subtitle: "简单透明的价格。开始使用永远免费。", mostPopular: "最受欢迎", faqTitle: "常见问题", everythingInFree: "包含 Free 的全部 +", everythingInPlus: "包含 Plus 的全部 +", perMonth: "/月", forever: "永久免费" },
+  nl: { title: "Prijzen", subtitle: "Eenvoudige, transparante prijzen. Beginnen is altijd gratis.", mostPopular: "MEEST GEKOZEN", faqTitle: "Veelgestelde vragen", everythingInFree: "Alles van Free +", everythingInPlus: "Alles van Plus +", perMonth: "/maand", forever: "altijd" },
+  pl: { title: "Cennik", subtitle: "Proste, przejrzyste ceny. Start jest zawsze bezpłatny.", mostPopular: "NAJPOPULARNIEJSZY", faqTitle: "Często zadawane pytania", everythingInFree: "Wszystko z Free +", everythingInPlus: "Wszystko z Plus +", perMonth: "/mies.", forever: "na zawsze" },
+  sv: { title: "Priser", subtitle: "Enkla, transparenta priser. Att börja är alltid gratis.", mostPopular: "POPULÄRAST", faqTitle: "Vanliga frågor", everythingInFree: "Allt i Free +", everythingInPlus: "Allt i Plus +", perMonth: "/mån", forever: "för alltid" },
+  hi: { title: "कीमतें", subtitle: "आसान और पारदर्शी कीमतें। शुरुआत हमेशा मुफ़्त है।", mostPopular: "सबसे लोकप्रिय", faqTitle: "अक्सर पूछे जाने वाले सवाल", everythingInFree: "Free की सभी सुविधाएँ +", everythingInPlus: "Plus की सभी सुविधाएँ +", perMonth: "/महीना", forever: "हमेशा मुफ़्त" },
 };
 
 function getLabels(locale: string) {
@@ -49,6 +60,17 @@ const FEATURES_FREE: Record<string, string[]> = {
   de: ["2-4 Fragen erstellen", "10 Matches pro Tag", "Messaging", "Grundfilter", "18 Sprachen"],
   fr: ["Créer 2-4 questions", "10 découvertes par jour", "Messagerie", "Filtres de base", "18 langues"],
   es: ["Crear 2-4 preguntas", "10 descubrimientos diarios", "Mensajería", "Filtros básicos", "18 idiomas"],
+  ar: ["إنشاء 2-4 أسئلة", "10 اكتشافات تطابق يوميًا", "المراسلة", "فلاتر أساسية", "دعم 18 لغة"],
+  ru: ["Создание 2-4 вопросов", "10 подборок совпадений в день", "Сообщения", "Базовые фильтры", "Поддержка 18 языков"],
+  pt: ["Criar 2-4 perguntas", "10 descobertas por dia", "Mensagens", "Filtros básicos", "Suporte a 18 idiomas"],
+  it: ["Crea 2-4 domande", "10 scoperte al giorno", "Messaggi", "Filtri di base", "Supporto in 18 lingue"],
+  ja: ["2〜4問の質問を作成", "1日10件のマッチ候補", "メッセージ", "基本フィルター", "18言語対応"],
+  ko: ["질문 2~4개 작성", "하루 10명 매칭 탐색", "메시지", "기본 필터", "18개 언어 지원"],
+  zh: ["创建 2-4 个问题", "每天 10 次匹配发现", "消息", "基础筛选", "支持 18 种语言"],
+  nl: ["2-4 vragen maken", "10 matchsuggesties per dag", "Berichten", "Basisfilters", "18 talen"],
+  pl: ["Tworzenie 2-4 pytań", "10 propozycji dopasowań dziennie", "Wiadomości", "Podstawowe filtry", "18 języków"],
+  sv: ["Skapa 2-4 frågor", "10 matchförslag per dag", "Meddelanden", "Grundfilter", "18 språk"],
+  hi: ["2-4 सवाल बनाएँ", "रोज़ 10 मैच सुझाव", "मैसेजिंग", "बेसिक फ़िल्टर", "18 भाषाओं का समर्थन"],
 };
 
 const FEATURES_PLUS: Record<string, string[]> = {
@@ -57,6 +79,17 @@ const FEATURES_PLUS: Record<string, string[]> = {
   de: ["Bis zu 6 Fragen erstellen", "Unbegrenzte Matches", "Erweiterte Filter", "Boost (1/Tag)", "Powers (3/Tag)", "Werbefreie Nutzung"],
   fr: ["Créer jusqu'à 6 questions", "Matchs illimités", "Filtres avancés", "Boost (1/jour)", "Pouvoirs (3/jour)", "Sans publicité"],
   es: ["Crear hasta 6 preguntas", "Matches ilimitados", "Filtros avanzados", "Boost (1/día)", "Poderes (3/día)", "Sin anuncios"],
+  ar: ["إنشاء حتى 6 أسئلة", "اكتشاف تطابقات بلا حدود", "فلاتر متقدمة", "Boost (1 يوميًا)", "قدرات (3 يوميًا)", "تجربة بدون إعلانات"],
+  ru: ["Создание до 6 вопросов", "Неограниченный поиск совпадений", "Расширенные фильтры", "Boost (1/день)", "Силы (3/день)", "Без рекламы"],
+  pt: ["Criar até 6 perguntas", "Descoberta ilimitada de matches", "Filtros avançados", "Boost (1/dia)", "Poderes (3/dia)", "Sem anúncios"],
+  it: ["Crea fino a 6 domande", "Scoperta illimitata di match", "Filtri avanzati", "Boost (1/giorno)", "Poteri (3/giorno)", "Senza pubblicità"],
+  ja: ["最大6問の質問を作成", "マッチ候補は無制限", "詳細フィルター", "ブースト（1日1回）", "パワー（1日3回）", "広告なし"],
+  ko: ["질문 최대 6개 작성", "매칭 탐색 무제한", "고급 필터", "부스트 (1일 1회)", "파워 (1일 3회)", "광고 없음"],
+  zh: ["创建最多 6 个问题", "无限匹配发现", "高级筛选", "Boost（每天 1 次）", "能力（每天 3 次）", "无广告"],
+  nl: ["Tot 6 vragen maken", "Onbeperkt matches ontdekken", "Geavanceerde filters", "Boost (1/dag)", "Powers (3/dag)", "Zonder advertenties"],
+  pl: ["Tworzenie do 6 pytań", "Nieograniczone odkrywanie dopasowań", "Filtry zaawansowane", "Boost (1/dzień)", "Moce (3/dzień)", "Bez reklam"],
+  sv: ["Skapa upp till 6 frågor", "Obegränsat med matchförslag", "Avancerade filter", "Boost (1/dag)", "Krafter (3/dag)", "Utan annonser"],
+  hi: ["6 सवाल तक बनाएँ", "असीमित मैच खोज", "एडवांस्ड फ़िल्टर", "बूस्ट (रोज़ 1)", "पावर (रोज़ 3)", "विज्ञापन नहीं"],
 };
 
 const FEATURES_PREMIUM: Record<string, string[]> = {
@@ -65,8 +98,23 @@ const FEATURES_PREMIUM: Record<string, string[]> = {
   de: ["Bis zu 10 Fragen erstellen", "Unbegrenzte Boosts", "Unbegrenzte Powers", "Profil-Besucher sehen", "Bibliothek vorgefertigter Fragenvorschläge", "Premium-Support", "Passport"],
   fr: ["Créer jusqu'à 10 questions", "Boost illimité", "Pouvoirs illimités", "Voir qui a vu votre profil", "Bibliothèque de questions toutes prêtes", "Support prioritaire", "Passport"],
   es: ["Crear hasta 10 preguntas", "Boost ilimitado", "Poderes ilimitados", "Ver quién vio tu perfil", "Biblioteca de preguntas ya escritas", "Soporte prioritario", "Passport"],
+  ar: ["إنشاء حتى 10 أسئلة", "Boost بلا حدود", "قدرات بلا حدود", "شاهد من زار ملفك", "مكتبة أسئلة جاهزة", "دعم ذو أولوية", "Passport"],
+  ru: ["Создание до 10 вопросов", "Неограниченный boost", "Неограниченные силы", "Кто смотрел ваш профиль", "Библиотека готовых вопросов", "Приоритетная поддержка", "Passport"],
+  pt: ["Criar até 10 perguntas", "Boost ilimitado", "Poderes ilimitados", "Veja quem viu seu perfil", "Biblioteca de perguntas prontas", "Suporte prioritário", "Passport"],
+  it: ["Crea fino a 10 domande", "Boost illimitato", "Poteri illimitati", "Scopri chi ha visto il tuo profilo", "Libreria di domande pronte", "Supporto prioritario", "Passport"],
+  ja: ["最大10問の質問を作成", "ブースト無制限", "パワー無制限", "プロフィールを見た人がわかる", "既製の質問ライブラリ", "優先サポート", "Passport"],
+  ko: ["질문 최대 10개 작성", "부스트 무제한", "파워 무제한", "프로필 방문자 보기", "미리 만들어진 질문 라이브러리", "우선 지원", "Passport"],
+  zh: ["创建最多 10 个问题", "无限 Boost", "无限能力", "查看谁看过你的资料", "现成问题库", "优先客服", "Passport"],
+  nl: ["Tot 10 vragen maken", "Onbeperkt boosten", "Onbeperkte powers", "Zie wie je profiel bekeek", "Bibliotheek met kant-en-klare vragen", "Voorrang bij support", "Passport"],
+  pl: ["Tworzenie do 10 pytań", "Nieograniczony boost", "Nieograniczone moce", "Zobacz, kto oglądał Twój profil", "Biblioteka gotowych pytań", "Priorytetowe wsparcie", "Passport"],
+  sv: ["Skapa upp till 10 frågor", "Obegränsad boost", "Obegränsade krafter", "Se vem som besökt din profil", "Bibliotek med färdiga frågor", "Prioriterad support", "Passport"],
+  hi: ["10 सवाल तक बनाएँ", "असीमित बूस्ट", "असीमित पावर", "देखें किसने आपकी प्रोफ़ाइल देखी", "तैयार सवालों की लाइब्रेरी", "प्राथमिकता वाला सपोर्ट", "Passport"],
 };
 
+// i18n-partial-ok: 2026-09-26 — bu SSS para ve iade iddialari tasiyor (soru ust
+// siniri 4/6/10, alt sinir 2, 14 gunluk magaza iade politikasi). 14 dile aceleyle
+// cevrilmesi yanlis bir hukuki/fiyat iddiasi yaymak riski demek; ayri bir icerik
+// turunde, `verify:claims` ile birlikte yapilacak. Backlog: tasks/todo.md.
 const FAQ_DATA_PRICING: Record<string, FAQItem[]> = {
   tr: [
     { q: "Qulo ücretsiz mi?", a: "Evet, Qulo Free tier her zaman ücretsizdir. 2 ila 4 soru oluşturabilir, eşleşebilir ve mesajlaşabilirsiniz." },

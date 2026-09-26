@@ -10,6 +10,7 @@ import { ogImages } from "@/lib/seo/openGraph";
 import { contentAlternateLanguages } from "@/lib/seo/alternates";
 import { ADVICE_GUIDES } from "@/lib/constants/advice";
 import { JsonLd } from "@/components/shared/JsonLd";
+import { readTimeLabel } from "@/lib/constants/readingLabels";
 
 export function generateStaticParams() {
   return contentLocales.map((locale) => ({ locale }));
@@ -57,12 +58,23 @@ export async function generateMetadata({
   };
 }
 
-const LABELS: Record<string, { heading: string; subheading: string; readTime: string; readMore: string }> = {
-  tr: { heading: "Dating Tavsiyeleri", subheading: "Uzman rehberleri ile daha iyi dating deneyimi", readTime: "dk okuma", readMore: "Rehberi Oku" },
-  en: { heading: "Dating Advice", subheading: "Better dating experience with expert guides", readTime: "min read", readMore: "Read Guide" },
-  de: { heading: "Dating-Ratgeber", subheading: "Besseres Dating-Erlebnis mit Expertenleitfäden", readTime: "Min. Lesezeit", readMore: "Leitfaden lesen" },
-  fr: { heading: "Conseils Dating", subheading: "Meilleure expérience de dating avec guides experts", readTime: "min de lecture", readMore: "Lire le guide" },
-  es: { heading: "Consejos de Citas", subheading: "Mejor experiencia de citas con guías expertas", readTime: "min de lectura", readMore: "Leer guía" },
+const LABELS: Record<string, { heading: string; subheading: string; readMore: string }> = {
+  tr: { heading: "Dating Tavsiyeleri", subheading: "Uzman rehberleri ile daha iyi dating deneyimi", readMore: "Rehberi Oku" },
+  en: { heading: "Dating Advice", subheading: "Better dating experience with expert guides", readMore: "Read Guide" },
+  de: { heading: "Dating-Ratgeber", subheading: "Besseres Dating-Erlebnis mit Expertenleitfäden", readMore: "Leitfaden lesen" },
+  fr: { heading: "Conseils Dating", subheading: "Meilleure expérience de dating avec guides experts", readMore: "Lire le guide" },
+  es: { heading: "Consejos de Citas", subheading: "Mejor experiencia de citas con guías expertas", readMore: "Leer guía" },
+  ar: { heading: "نصائح المواعدة", subheading: "تجربة مواعدة أفضل مع أدلة الخبراء", readMore: "اقرأ الدليل" },
+  ru: { heading: "Советы по знакомствам", subheading: "Лучший опыт знакомств с экспертными руководствами", readMore: "Читать руководство" },
+  pt: { heading: "Conselhos de Namoro", subheading: "Uma experiência de namoro melhor com guias de especialistas", readMore: "Ler guia" },
+  it: { heading: "Consigli per gli Appuntamenti", subheading: "Un'esperienza migliore con guide di esperti", readMore: "Leggi la guida" },
+  ja: { heading: "デートのアドバイス", subheading: "専門家のガイドでより良い出会いを", readMore: "ガイドを読む" },
+  ko: { heading: "데이팅 조언", subheading: "전문가 가이드로 더 나은 데이팅 경험", readMore: "가이드 읽기" },
+  zh: { heading: "约会建议", subheading: "用专家指南获得更好的约会体验", readMore: "阅读指南" },
+  nl: { heading: "Datingadvies", subheading: "Een betere datingervaring met expertgidsen", readMore: "Gids lezen" },
+  pl: { heading: "Porady Randkowe", subheading: "Lepsze randkowanie dzięki poradnikom ekspertów", readMore: "Przeczytaj poradnik" },
+  sv: { heading: "Dejtingråd", subheading: "En bättre dejtingupplevelse med expertguider", readMore: "Läs guiden" },
+  hi: { heading: "डेटिंग सलाह", subheading: "विशेषज्ञ गाइड के साथ बेहतर डेटिंग अनुभव", readMore: "गाइड पढ़ें" },
 };
 
 function formatDate(iso: string, locale: string): string {
@@ -158,7 +170,7 @@ export default async function AdviceIndexPage({
                       </time>
                       <span aria-hidden="true" className="w-1 h-1 rounded-full bg-qulo-purple/50" />
                       <span>
-                        {guide.readingTime} {labels.readTime}
+                        {guide.readingTime} {readTimeLabel(locale)}
                       </span>
                     </div>
 

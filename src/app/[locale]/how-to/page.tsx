@@ -120,6 +120,116 @@ const LABELS: Record<
     introBody:
       "Estas guías están creadas por el equipo de Qulo. Desde cero para los recién llegados, con consejos de optimización para usuarios experimentados.",
   },
+  ar: {
+    heading: "كيفية استخدام Qulo",
+    subheading: "استفد من Qulo إلى أقصى حد مع أدلة خطوة بخطوة",
+    totalTime: "الوقت الإجمالي",
+    readGuide: "ابدأ الدليل",
+    steps: "خطوات",
+    introTitle: "أدلة الاستخدام الرسمية",
+    introBody:
+      "هذه الأدلة من إعداد فريق Qulo: من الصفر للمستخدمين الجدد، ونصائح لتحسين التجربة لمن لديهم خبرة.",
+  },
+  ru: {
+    heading: "Как пользоваться Qulo",
+    subheading: "Получите максимум от Qulo с пошаговыми руководствами",
+    totalTime: "Общее время",
+    readGuide: "Начать руководство",
+    steps: "шагов",
+    introTitle: "Официальные руководства",
+    introBody:
+      "Эти руководства подготовила команда Qulo: с нуля для новичков и советы по оптимизации для опытных пользователей.",
+  },
+  pt: {
+    heading: "Como usar o Qulo",
+    subheading: "Aproveite ao máximo o Qulo com guias passo a passo",
+    totalTime: "Tempo total",
+    readGuide: "Começar o guia",
+    steps: "passos",
+    introTitle: "Guias de uso oficiais",
+    introBody:
+      "Estes guias foram criados pela equipe do Qulo: do zero para quem está começando e dicas de otimização para quem já tem experiência.",
+  },
+  it: {
+    heading: "Come usare Qulo",
+    subheading: "Ottieni il massimo da Qulo con guide passo a passo",
+    totalTime: "Tempo totale",
+    readGuide: "Inizia la guida",
+    steps: "passaggi",
+    introTitle: "Guide d'uso ufficiali",
+    introBody:
+      "Queste guide sono realizzate dal team di Qulo: da zero per chi inizia e consigli di ottimizzazione per chi ha già esperienza.",
+  },
+  ja: {
+    heading: "Qulo の使い方",
+    subheading: "ステップごとのガイドで Qulo を使いこなしましょう",
+    totalTime: "所要時間",
+    readGuide: "ガイドをはじめる",
+    steps: "ステップ",
+    introTitle: "公式の使い方ガイド",
+    introBody:
+      "これらのガイドは Qulo チームが作成しています。はじめての方には基本から、慣れた方には使いこなしのヒントを。",
+  },
+  ko: {
+    heading: "Qulo 사용법",
+    subheading: "단계별 가이드로 Qulo를 제대로 활용해 보세요",
+    totalTime: "총 소요 시간",
+    readGuide: "가이드 시작",
+    steps: "단계",
+    introTitle: "공식 사용 가이드",
+    introBody:
+      "이 가이드는 Qulo 팀이 만들었습니다. 처음 쓰는 분에게는 기초부터, 익숙한 분에게는 활용 팁을 담았습니다.",
+  },
+  zh: {
+    heading: "如何使用 Qulo",
+    subheading: "用分步指南把 Qulo 用到极致",
+    totalTime: "总时长",
+    readGuide: "开始阅读指南",
+    steps: "个步骤",
+    introTitle: "官方使用指南",
+    introBody:
+      "这些指南由 Qulo 团队编写：新手可以从零开始，老用户可以看优化技巧。",
+  },
+  nl: {
+    heading: "Hoe gebruik je Qulo",
+    subheading: "Haal het meeste uit Qulo met stap-voor-stap gidsen",
+    totalTime: "Totale tijd",
+    readGuide: "Gids starten",
+    steps: "stappen",
+    introTitle: "Officiële gebruiksgidsen",
+    introBody:
+      "Deze gidsen zijn gemaakt door het Qulo-team: vanaf nul voor nieuwe gebruikers, met optimalisatietips voor ervaren gebruikers.",
+  },
+  pl: {
+    heading: "Jak korzystać z Qulo",
+    subheading: "Wykorzystaj Qulo w pełni dzięki poradnikom krok po kroku",
+    totalTime: "Łączny czas",
+    readGuide: "Zacznij poradnik",
+    steps: "kroków",
+    introTitle: "Oficjalne poradniki",
+    introBody:
+      "Te poradniki przygotował zespół Qulo: od zera dla nowych osób i wskazówki optymalizacyjne dla doświadczonych użytkowników.",
+  },
+  sv: {
+    heading: "Så använder du Qulo",
+    subheading: "Få ut mest av Qulo med steg-för-steg-guider",
+    totalTime: "Total tid",
+    readGuide: "Starta guiden",
+    steps: "steg",
+    introTitle: "Officiella användarguider",
+    introBody:
+      "Guiderna är skrivna av Qulo-teamet: från grunden för nya användare och optimeringstips för vana användare.",
+  },
+  hi: {
+    heading: "Qulo कैसे इस्तेमाल करें",
+    subheading: "चरण-दर-चरण गाइड के साथ Qulo का पूरा फ़ायदा उठाएँ",
+    totalTime: "कुल समय",
+    readGuide: "गाइड शुरू करें",
+    steps: "चरण",
+    introTitle: "आधिकारिक उपयोग गाइड",
+    introBody:
+      "ये गाइड Qulo टीम ने बनाई हैं: नए उपयोगकर्ताओं के लिए शुरुआत से, और अनुभवी लोगों के लिए बेहतर इस्तेमाल के सुझाव।",
+  },
 };
 
 function formatDate(iso: string, locale: string): string {
