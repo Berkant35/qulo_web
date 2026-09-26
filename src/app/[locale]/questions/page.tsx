@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/footer/Footer";
@@ -155,6 +156,16 @@ export default async function QuestionsPage({
                 shows roughly one page per visitor, so a reader who has to click
                 through to the home page to find a download link does not. */}
             <StoreButtons campaign="web-questions" />
+            {/* And the no-install version of the same thing. /q was reachable
+                only by typing the URL — 0 pages linked to it — so in three
+                weeks the only quizzes in the database were the developer's two
+                test rows. A reader here already wants to write a question. */}
+            <Link
+              href={`/${locale}/q`}
+              className="mt-4 inline-block text-sm text-qulo-green hover:underline focus:underline"
+            >
+              {labels.tryQuizLink}
+            </Link>
           </div>
         </div>
       </div>

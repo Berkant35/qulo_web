@@ -39,6 +39,16 @@ export interface QuestionLabels {
   ctaTitle: string;
   ctaDesc: string;
   ctaLink: string;
+  /**
+   * Link to `/q` — the browser version of the mechanic, no install needed.
+   *
+   * `/q` shipped on 2026-09-06 and was linked from nowhere: on 2026-09-26 a
+   * scan of the built site found 0 pages pointing at it, and the database had
+   * 2 quizzes, both created by the developer on the day after launch. A reader
+   * of this page has exactly the intent the quiz serves, so it belongs here —
+   * next to the store buttons, not instead of them.
+   */
+  tryQuizLink: string;
 }
 
 export const QUESTION_LABELS: Record<string, QuestionLabels> = {
@@ -65,6 +75,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "On Qulo you write 2 to 4 questions on the free plan — up to 10 on a paid plan — and match with whoever answers every one of them correctly.",
     ctaLink: "Get Qulo →",
+    tryQuizLink: "Try it in your browser →",
   },
   tr: {
     title: "Tanışma uygulaması soruları: ne sorulur, nasıl yazılır",
@@ -89,6 +100,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "Qulo'da ücretsiz planda 2 ila 4 soru yazarsın, ücretli planda 10'a kadar. Hepsini doğru bilen kişiyle eşleşirsin.",
     ctaLink: "Qulo'yu indir →",
+    tryQuizLink: "Tarayıcıda dene →",
   },
   de: {
     title: "Fragen für Dating-Apps: was du fragst und wie du eigene schreibst",
@@ -113,6 +125,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "Bei Qulo schreibst du im kostenlosen Tarif 2 bis 4 Fragen, im bezahlten bis zu 10 — und matchst mit allen, die jede davon richtig beantworten.",
     ctaLink: "Qulo holen →",
+    tryQuizLink: "Im Browser testen →",
   },
   fr: {
     title: "Questions à poser sur une app de rencontre — et comment écrire les vôtres",
@@ -137,6 +150,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "Sur Qulo, vous écrivez 2 à 4 questions avec la formule gratuite, jusqu'à 10 avec un abonnement payant, et vous matchez avec ceux qui répondent juste à toutes.",
     ctaLink: "Télécharger Qulo →",
+    tryQuizLink: "Essayer dans le navigateur →",
   },
   es: {
     title: "Preguntas para apps de citas: cuáles hacer y cómo escribir las tuyas",
@@ -161,6 +175,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "En Qulo escribes de 2 a 4 preguntas en el plan gratuito y hasta 10 en un plan de pago; haces match con quien las acierta todas.",
     ctaLink: "Descargar Qulo →",
+    tryQuizLink: "Pruébalo en el navegador →",
   },
   ar: {
     title: "أسئلة تطبيقات المواعدة: ماذا تسأل وكيف تكتب أسئلتك",
@@ -185,6 +200,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "في Qulo تكتب من سؤالين إلى أربعة أسئلة في الخطة المجانية، وحتى عشرة في خطة مدفوعة، وتتطابق مع من يجيب عنها كلها بشكل صحيح.",
     ctaLink: "حمّل Qulo →",
+    tryQuizLink: "جرّبه في المتصفح →",
   },
   ru: {
     title: "Вопросы для приложений знакомств: что спросить и как написать свои",
@@ -209,6 +225,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "В Qulo вы пишете от 2 до 4 вопросов на бесплатном тарифе и до 10 — на платном, а пара находится только с тем, кто ответит верно на все.",
     ctaLink: "Установить Qulo →",
+    tryQuizLink: "Попробовать в браузере →",
   },
   pt: {
     title: "Perguntas para apps de namoro: o que perguntar e como escrever as suas",
@@ -233,6 +250,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "No Qulo você escreve de 2 a 4 perguntas no plano gratuito e até 10 num plano pago, e dá match com quem acerta todas elas.",
     ctaLink: "Baixar o Qulo →",
+    tryQuizLink: "Testar no navegador →",
   },
   it: {
     title: "Domande per le app di incontri: quali fare e come scrivere le tue",
@@ -257,6 +275,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "Su Qulo scrivi da 2 a 4 domande con il piano gratuito e fino a 10 con un piano a pagamento, e fai match con chi le indovina tutte.",
     ctaLink: "Scarica Qulo →",
+    tryQuizLink: "Provalo nel browser →",
   },
   ja: {
     title: "マッチングアプリの質問例と、自分で書くときのコツ",
@@ -281,6 +300,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "Quloでは無料プランで2〜4問、有料プランなら最大10問の質問を用意し、そのすべてに正解した相手とマッチします。",
     ctaLink: "Quloを入手 →",
+    tryQuizLink: "ブラウザで試す →",
   },
   ko: {
     title: "데이팅 앱 질문 예시와 직접 쓰는 법",
@@ -305,6 +325,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "Qulo에서는 무료 플랜에서 질문 2~4개, 유료 플랜에서는 최대 10개를 만들고, 그걸 전부 맞힌 사람과 매칭됩니다.",
     ctaLink: "Qulo 받기 →",
+    tryQuizLink: "브라우저에서 해보기 →",
   },
   zh: {
     title: "约会应用问什么问题，以及怎么自己写",
@@ -329,6 +350,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "在 Qulo，免费版可以写 2 到 4 个问题，付费会员最多 10 个，只有全部答对的人才能和你配对。",
     ctaLink: "下载 Qulo →",
+    tryQuizLink: "在浏览器里试试 →",
   },
   nl: {
     title: "Vragen voor datingapps: wat je vraagt en hoe je ze zelf schrijft",
@@ -353,6 +375,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "Op Qulo schrijf je 2 tot 4 vragen in het gratis plan en tot 10 met een betaald abonnement, en match je met wie ze allemaal goed heeft.",
     ctaLink: "Qulo downloaden →",
+    tryQuizLink: "Probeer het in je browser →",
   },
   pl: {
     title: "Pytania w aplikacjach randkowych: o co pytać i jak napisać własne",
@@ -377,6 +400,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "W Qulo piszesz od 2 do 4 pytań w planie darmowym i do 10 w planie płatnym, a łączysz się z kimś dopiero wtedy, gdy odpowie dobrze na wszystkie.",
     ctaLink: "Pobierz Qulo →",
+    tryQuizLink: "Wypróbuj w przeglądarce →",
   },
   sv: {
     title: "Frågor i dejtingappar: vad du frågar och hur du skriver egna",
@@ -401,6 +425,7 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "På Qulo skriver du 2 till 4 frågor i gratisplanen och upp till 10 med ett betalt abonnemang, och matchar med den som svarar rätt på allihop.",
     ctaLink: "Hämta Qulo →",
+    tryQuizLink: "Testa i webbläsaren →",
   },
   hi: {
     title: "डेटिंग ऐप के सवाल: क्या पूछें और अपने सवाल कैसे लिखें",
@@ -425,5 +450,6 @@ export const QUESTION_LABELS: Record<string, QuestionLabels> = {
     ctaDesc:
       "Qulo पर आप मुफ़्त प्लान में 2 से 4 सवाल लिखते हैं और सशुल्क प्लान में 10 तक; मैच सिर्फ़ उसी से होता है जो सब सही जवाब दे।",
     ctaLink: "Qulo डाउनलोड करें →",
+    tryQuizLink: "ब्राउज़र में आज़माएँ →",
   },
 };

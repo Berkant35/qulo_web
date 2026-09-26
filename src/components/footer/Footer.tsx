@@ -17,6 +17,11 @@ const COMPANY_LINKS: readonly FooterLinkItem[] = [
   { href: "help", labelKey: "help" },
   { href: "answers", labelKey: "answers" },
   { href: "questions", labelKey: "questions" },
+  // /q — the browser version of the mechanic. It shipped on 2026-09-06 and no
+  // page linked to it, so in three weeks the only rows in `web_quizzes` were
+  // the developer's two test quizzes. A site-wide link is the floor: a page
+  // reachable only by typing its URL is not a feature.
+  { href: "q", labelKey: "quiz" },
   { href: "pricing", labelKey: "pricing" },
   { href: "glossary", labelKey: "glossary" },
   { href: "dating-statistics", labelKey: "statistics" },
