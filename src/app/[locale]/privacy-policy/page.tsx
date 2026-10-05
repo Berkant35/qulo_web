@@ -32,6 +32,7 @@ const sections = [
   { title: "dataCollectionTitle", body: "dataCollection" },
   { title: "dataNotCollectedTitle", body: "dataNotCollected" },
   { title: "usageTitle", body: "usage" },
+  { title: "matchPreferenceTitle", body: "matchPreference" },
   { title: "sharingTitle", body: "sharing" },
   { title: "retentionTitle", body: "retention" },
   { title: "securityTitle", body: "security" },
@@ -72,7 +73,7 @@ export default async function PrivacyPolicyPage({
             {t("lastUpdated")}
           </p>
           {sections.map(({ title, body }) => (
-            <section key={title} className="mb-8">
+            <section key={title} id={body === "matchPreference" ? "match-preference" : undefined} className="mb-8">
               <h2 className="text-xl font-semibold text-white mb-3">
                 {t(title)}
               </h2>
