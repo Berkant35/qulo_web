@@ -33,6 +33,7 @@ const sections = [
   { title: "dataNotCollectedTitle", body: "dataNotCollected" },
   { title: "usageTitle", body: "usage" },
   { title: "matchPreferenceTitle", body: "matchPreference" },
+  { title: "identityLabelsTitle", body: "identityLabels" },
   { title: "sharingTitle", body: "sharing" },
   { title: "retentionTitle", body: "retention" },
   { title: "securityTitle", body: "security" },

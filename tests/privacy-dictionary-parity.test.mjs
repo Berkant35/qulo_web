@@ -23,3 +23,11 @@ test('eşleşme tercihi bölümü (KVKK m.6) her dilde var', () => {
     assert.ok(pp.matchPreference.includes('2026-10-v1'), `${f} rıza kaydı sürümü (2026-10-v1) eksik`);
   }
 });
+
+test('profil etiketleri bölümü (identityLabels) her dilde var ve identity_labels sürümünü taşır', () => {
+  for (const f of files) {
+    const pp = load(f).privacyPolicy;
+    assert.ok(pp.identityLabelsTitle && pp.identityLabels, `${f} identityLabels bölümü eksik`);
+    assert.ok(pp.identityLabels.includes('2026-10-v1'), `${f} sürüm etiketi yok`);
+  }
+});
