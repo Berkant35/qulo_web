@@ -4,7 +4,7 @@
   "description": "Question-based dating app. Match through answers, not swipes. AI-powered next-gen dating.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#050508",
+  "background_color": "#070A1E",
   "theme_color": "#BB86FC",
   "orientation": "portrait-primary",
   "lang": "en",
@@ -21,9 +21,21 @@
       "purpose": "any"
     },
     {
-      "src": "/brand/purple_diamond.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ],
